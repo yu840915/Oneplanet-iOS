@@ -14,6 +14,7 @@
 		E05BB268226D5D2E00721F20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E05BB266226D5D2E00721F20 /* LaunchScreen.storyboard */; };
 		E05BB273226D5D2F00721F20 /* OneplanetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BB272226D5D2F00721F20 /* OneplanetTests.swift */; };
 		E06261C8226D640D00A96F55 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E06261C7226D640D00A96F55 /* StoreKit.framework */; };
+		E06261CE226D6F2200A96F55 /* ModelBlocks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E06261CD226D6F2200A96F55 /* ModelBlocks.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +40,7 @@
 		E05BB274226D5D2F00721F20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E06261C6226D63E700A96F55 /* Oneplanet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Oneplanet.entitlements; sourceTree = "<group>"; };
 		E06261C7226D640D00A96F55 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		E06261CD226D6F2200A96F55 /* ModelBlocks.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ModelBlocks.framework; path = Carthage/Build/iOS/ModelBlocks.framework; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E06261CE226D6F2200A96F55 /* ModelBlocks.framework in Frameworks */,
 				E06261C8226D640D00A96F55 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -88,7 +91,8 @@
 				E05BB261226D5D2A00721F20 /* Main.storyboard */,
 				E05BB264226D5D2E00721F20 /* Assets.xcassets */,
 				E05BB266226D5D2E00721F20 /* LaunchScreen.storyboard */,
-				E05BB269226D5D2E00721F20 /* Info.plist */,
+				E06261CB226D6EBE00A96F55 /* Supporting Files */,
+				E06261CC226D6EF900A96F55 /* Frameworks */,
 			);
 			path = Oneplanet;
 			sourceTree = "<group>";
@@ -110,6 +114,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E06261CB226D6EBE00A96F55 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E05BB269226D5D2E00721F20 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E06261CC226D6EF900A96F55 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E06261CD226D6F2200A96F55 /* ModelBlocks.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -118,6 +138,7 @@
 			buildConfigurationList = E05BB277226D5D2F00721F20 /* Build configuration list for PBXNativeTarget "Oneplanet" */;
 			buildPhases = (
 				E05BB256226D5D2A00721F20 /* Sources */,
+				E06261CA226D6E3A00A96F55 /* Copy Carthage Dependencies */,
 				E05BB257226D5D2A00721F20 /* Frameworks */,
 				E05BB258226D5D2A00721F20 /* Resources */,
 			);
@@ -213,6 +234,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E06261CA226D6E3A00A96F55 /* Copy Carthage Dependencies */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/ModelBlocks.framework",
+			);
+			name = "Copy Carthage Dependencies";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E05BB256226D5D2A00721F20 /* Sources */ = {
@@ -320,6 +363,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -374,6 +418,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -385,6 +430,10 @@
 				CODE_SIGN_ENTITLEMENTS = Oneplanet/Oneplanet.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4DF2W26X76;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Oneplanet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -392,7 +441,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = tw.com.mores.theonecollection.Oneplanet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -404,6 +453,10 @@
 				CODE_SIGN_ENTITLEMENTS = Oneplanet/Oneplanet.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4DF2W26X76;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Oneplanet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -411,7 +464,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = tw.com.mores.theonecollection.Oneplanet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -431,7 +484,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = tw.com.mores.theonecollection.OneplanetTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Oneplanet.app/Oneplanet";
 			};
@@ -452,7 +505,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = tw.com.mores.theonecollection.OneplanetTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Oneplanet.app/Oneplanet";
 			};

@@ -19,6 +19,7 @@
 		E03C32B0226D8E8F00C32FD7 /* NavigationBarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03C32AF226D8E8F00C32FD7 /* NavigationBarStyle.swift */; };
 		E03C32B3226D925100C32FD7 /* ServiceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03C32B2226D925100C32FD7 /* ServiceConstants.swift */; };
 		E03C32B5226D969500C32FD7 /* ColorPalette .swift in Sources */ = {isa = PBXBuildFile; fileRef = E03C32B4226D969500C32FD7 /* ColorPalette .swift */; };
+		E03C32B7226DA39700C32FD7 /* SwiftGif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E03C32B6226DA39700C32FD7 /* SwiftGif.framework */; };
 		E05BB25E226D5D2A00721F20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BB25D226D5D2A00721F20 /* AppDelegate.swift */; };
 		E05BB260226D5D2A00721F20 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BB25F226D5D2A00721F20 /* RootViewController.swift */; };
 		E05BB263226D5D2A00721F20 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E05BB261226D5D2A00721F20 /* Main.storyboard */; };
@@ -54,6 +55,7 @@
 		E03C32AF226D8E8F00C32FD7 /* NavigationBarStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarStyle.swift; sourceTree = "<group>"; };
 		E03C32B2226D925100C32FD7 /* ServiceConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceConstants.swift; sourceTree = "<group>"; };
 		E03C32B4226D969500C32FD7 /* ColorPalette .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorPalette .swift"; sourceTree = "<group>"; };
+		E03C32B6226DA39700C32FD7 /* SwiftGif.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftGif.framework; path = Carthage/Build/iOS/SwiftGif.framework; sourceTree = SOURCE_ROOT; };
 		E05BB25A226D5D2A00721F20 /* Oneplanet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oneplanet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E05BB25D226D5D2A00721F20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E05BB25F226D5D2A00721F20 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E06261CE226D6F2200A96F55 /* ModelBlocks.framework in Frameworks */,
+				E03C32B7226DA39700C32FD7 /* SwiftGif.framework in Frameworks */,
 				E03C329C226D75F400C32FD7 /* SwiftyBeaver.framework in Frameworks */,
 				E06261C8226D640D00A96F55 /* StoreKit.framework in Frameworks */,
 				6868F9DB5BA3F9DA5AAF9145 /* Pods_Oneplanet.framework in Frameworks */,
@@ -187,6 +190,7 @@
 		E06261CC226D6EF900A96F55 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E03C32B6226DA39700C32FD7 /* SwiftGif.framework */,
 				E03C329B226D75F400C32FD7 /* SwiftyBeaver.framework */,
 				E06261CD226D6F2200A96F55 /* ModelBlocks.framework */,
 			);
@@ -348,6 +352,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/ModelBlocks.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyBeaver.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftGif.framework",
 			);
 			name = "Copy Carthage Dependencies";
 			outputPaths = (

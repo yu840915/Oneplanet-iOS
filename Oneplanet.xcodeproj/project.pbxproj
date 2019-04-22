@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6868F9DB5BA3F9DA5AAF9145 /* Pods_Oneplanet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C23D84EC0F174A064CAA41E1 /* Pods_Oneplanet.framework */; };
 		B4FA7DD93CACAF00C41D6CE9 /* Pods_OneplanetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD31476F85B0E94B50970A99 /* Pods_OneplanetTests.framework */; };
+		E03C329A226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03C3299226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift */; };
 		E05BB25E226D5D2A00721F20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BB25D226D5D2A00721F20 /* AppDelegate.swift */; };
 		E05BB260226D5D2A00721F20 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BB25F226D5D2A00721F20 /* ViewController.swift */; };
 		E05BB263226D5D2A00721F20 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E05BB261226D5D2A00721F20 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 		220D39E57B4B40157A7689B2 /* Pods-OneplanetTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneplanetTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneplanetTests/Pods-OneplanetTests.release.xcconfig"; sourceTree = "<group>"; };
 		47881963BA2439BD65729786 /* Pods-Oneplanet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Oneplanet.release.xcconfig"; path = "Pods/Target Support Files/Pods-Oneplanet/Pods-Oneplanet.release.xcconfig"; sourceTree = "<group>"; };
 		C23D84EC0F174A064CAA41E1 /* Pods_Oneplanet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Oneplanet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E03C3299226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireAPIAccessOperation.swift; sourceTree = "<group>"; };
 		E05BB25A226D5D2A00721F20 /* Oneplanet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oneplanet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E05BB25D226D5D2A00721F20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E05BB25F226D5D2A00721F20 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			children = (
 				E06261C6226D63E700A96F55 /* Oneplanet.entitlements */,
 				E05BB25D226D5D2A00721F20 /* AppDelegate.swift */,
+				E03C3299226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift */,
 				E05BB25F226D5D2A00721F20 /* ViewController.swift */,
 				E05BB261226D5D2A00721F20 /* Main.storyboard */,
 				E05BB264226D5D2E00721F20 /* Assets.xcassets */,
@@ -340,6 +343,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E05BB260226D5D2A00721F20 /* ViewController.swift in Sources */,
+				E03C329A226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift in Sources */,
 				E05BB25E226D5D2A00721F20 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

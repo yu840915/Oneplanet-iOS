@@ -10,7 +10,7 @@ import UIKit
 
 class NavigationBarStyle {
     static let translucent = TranslucentNavigationBarStyle()
-    
+    fileprivate init() {}
     func configure(_ bar: UINavigationBar) {
     }
 }

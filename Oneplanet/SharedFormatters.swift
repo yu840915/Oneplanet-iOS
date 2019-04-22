@@ -8,7 +8,9 @@
 
 import Foundation
 
-class SharedNumberFormatters {
+struct SharedNumberFormatters {
+    private init() {}
+    
     static let integer: NumberFormatter = {
         let value = NumberFormatter()
         value.numberStyle = .decimal

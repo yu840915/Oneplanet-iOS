@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  RootViewController.swift
 //  Oneplanet
 //
 //  Created by 立宣于 on 2019/4/22.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class RootViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

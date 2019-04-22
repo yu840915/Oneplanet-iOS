@@ -20,7 +20,7 @@
 		E03C32B3226D925100C32FD7 /* ServiceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03C32B2226D925100C32FD7 /* ServiceConstants.swift */; };
 		E03C32B5226D969500C32FD7 /* ColorPalette .swift in Sources */ = {isa = PBXBuildFile; fileRef = E03C32B4226D969500C32FD7 /* ColorPalette .swift */; };
 		E05BB25E226D5D2A00721F20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BB25D226D5D2A00721F20 /* AppDelegate.swift */; };
-		E05BB260226D5D2A00721F20 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BB25F226D5D2A00721F20 /* ViewController.swift */; };
+		E05BB260226D5D2A00721F20 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BB25F226D5D2A00721F20 /* RootViewController.swift */; };
 		E05BB263226D5D2A00721F20 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E05BB261226D5D2A00721F20 /* Main.storyboard */; };
 		E05BB265226D5D2E00721F20 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E05BB264226D5D2E00721F20 /* Assets.xcassets */; };
 		E05BB268226D5D2E00721F20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E05BB266226D5D2E00721F20 /* LaunchScreen.storyboard */; };
@@ -56,7 +56,7 @@
 		E03C32B4226D969500C32FD7 /* ColorPalette .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorPalette .swift"; sourceTree = "<group>"; };
 		E05BB25A226D5D2A00721F20 /* Oneplanet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oneplanet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E05BB25D226D5D2A00721F20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E05BB25F226D5D2A00721F20 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E05BB25F226D5D2A00721F20 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		E05BB262226D5D2A00721F20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E05BB264226D5D2E00721F20 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E05BB267226D5D2E00721F20 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -144,7 +144,7 @@
 				E03C329D226D772400C32FD7 /* Logger.swift */,
 				E03C3299226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift */,
 				E03C32B1226D902F00C32FD7 /* Shared Configurations */,
-				E05BB25F226D5D2A00721F20 /* ViewController.swift */,
+				E05BB25F226D5D2A00721F20 /* RootViewController.swift */,
 				E05BB261226D5D2A00721F20 /* Main.storyboard */,
 				E05BB266226D5D2E00721F20 /* LaunchScreen.storyboard */,
 				E05BB264226D5D2E00721F20 /* Assets.xcassets */,
@@ -383,7 +383,7 @@
 			files = (
 				E03C32AC226D872A00C32FD7 /* Localized.swift in Sources */,
 				E03C32B5226D969500C32FD7 /* ColorPalette .swift in Sources */,
-				E05BB260226D5D2A00721F20 /* ViewController.swift in Sources */,
+				E05BB260226D5D2A00721F20 /* RootViewController.swift in Sources */,
 				E03C329A226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift in Sources */,
 				E03C32AE226D8E6800C32FD7 /* SharedFormatters.swift in Sources */,
 				E03C32B0226D8E8F00C32FD7 /* NavigationBarStyle.swift in Sources */,

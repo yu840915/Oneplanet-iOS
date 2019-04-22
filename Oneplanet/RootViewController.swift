@@ -51,7 +51,11 @@ class RootViewController: UIViewController {
     }
     
     private func startLoginFlow() {
-        performSegue(withIdentifier: SegueID.showWelcomePage, sender: nil)
+        if UserProgressChecklist.watchWelcomeMessage.isFinished {
+            performSegue(withIdentifier: SegueID.showLogin, sender: nil)
+        } else {
+            performSegue(withIdentifier: SegueID.showWelcomePage, sender: nil)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

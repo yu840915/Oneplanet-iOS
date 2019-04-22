@@ -14,7 +14,21 @@ class RootViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        performSegue(withIdentifier: SegueID.showWelcomePage, sender: nil)
+    }
 
 }
 
+extension RootViewController {
+    struct SegueID {
+        static let showLogin = "showLogin"
+        static let showWelcomePage = "showWelcomePage"
+    }
+}

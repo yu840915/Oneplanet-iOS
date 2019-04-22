@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		6868F9DB5BA3F9DA5AAF9145 /* Pods_Oneplanet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C23D84EC0F174A064CAA41E1 /* Pods_Oneplanet.framework */; };
 		B4FA7DD93CACAF00C41D6CE9 /* Pods_OneplanetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD31476F85B0E94B50970A99 /* Pods_OneplanetTests.framework */; };
+		E0190F47226DAA7300C212D5 /* LoginHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F46226DAA7300C212D5 /* LoginHomeViewController.swift */; };
+		E0190F49226DB0E000C212D5 /* WelcomeMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F48226DB0E000C212D5 /* WelcomeMessageViewController.swift */; };
+		E0190F4B226DB55400C212D5 /* UIComponentFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F4A226DB55400C212D5 /* UIComponentFactories.swift */; };
 		E03C329A226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03C3299226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift */; };
 		E03C329C226D75F400C32FD7 /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E03C329B226D75F400C32FD7 /* SwiftyBeaver.framework */; };
 		E03C329E226D772400C32FD7 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03C329D226D772400C32FD7 /* Logger.swift */; };
@@ -20,6 +23,7 @@
 		E03C32B3226D925100C32FD7 /* ServiceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03C32B2226D925100C32FD7 /* ServiceConstants.swift */; };
 		E03C32B5226D969500C32FD7 /* ColorPalette .swift in Sources */ = {isa = PBXBuildFile; fileRef = E03C32B4226D969500C32FD7 /* ColorPalette .swift */; };
 		E03C32B7226DA39700C32FD7 /* SwiftGif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E03C32B6226DA39700C32FD7 /* SwiftGif.framework */; };
+		E03C32B9226DA44A00C32FD7 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E03C32B8226DA44A00C32FD7 /* Onboarding.storyboard */; };
 		E05BB25E226D5D2A00721F20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BB25D226D5D2A00721F20 /* AppDelegate.swift */; };
 		E05BB260226D5D2A00721F20 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BB25F226D5D2A00721F20 /* RootViewController.swift */; };
 		E05BB263226D5D2A00721F20 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E05BB261226D5D2A00721F20 /* Main.storyboard */; };
@@ -45,6 +49,9 @@
 		220D39E57B4B40157A7689B2 /* Pods-OneplanetTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneplanetTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneplanetTests/Pods-OneplanetTests.release.xcconfig"; sourceTree = "<group>"; };
 		47881963BA2439BD65729786 /* Pods-Oneplanet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Oneplanet.release.xcconfig"; path = "Pods/Target Support Files/Pods-Oneplanet/Pods-Oneplanet.release.xcconfig"; sourceTree = "<group>"; };
 		C23D84EC0F174A064CAA41E1 /* Pods_Oneplanet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Oneplanet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0190F46226DAA7300C212D5 /* LoginHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginHomeViewController.swift; sourceTree = "<group>"; };
+		E0190F48226DB0E000C212D5 /* WelcomeMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeMessageViewController.swift; sourceTree = "<group>"; };
+		E0190F4A226DB55400C212D5 /* UIComponentFactories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponentFactories.swift; sourceTree = "<group>"; };
 		E03C3299226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireAPIAccessOperation.swift; sourceTree = "<group>"; };
 		E03C329B226D75F400C32FD7 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/iOS/SwiftyBeaver.framework; sourceTree = SOURCE_ROOT; };
 		E03C329D226D772400C32FD7 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -56,6 +63,7 @@
 		E03C32B2226D925100C32FD7 /* ServiceConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceConstants.swift; sourceTree = "<group>"; };
 		E03C32B4226D969500C32FD7 /* ColorPalette .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorPalette .swift"; sourceTree = "<group>"; };
 		E03C32B6226DA39700C32FD7 /* SwiftGif.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftGif.framework; path = Carthage/Build/iOS/SwiftGif.framework; sourceTree = SOURCE_ROOT; };
+		E03C32B8226DA44A00C32FD7 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		E05BB25A226D5D2A00721F20 /* Oneplanet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oneplanet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E05BB25D226D5D2A00721F20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E05BB25F226D5D2A00721F20 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -114,9 +122,20 @@
 				E03C32B2226D925100C32FD7 /* ServiceConstants.swift */,
 				E03C32AD226D8E6800C32FD7 /* SharedFormatters.swift */,
 				E03C32AF226D8E8F00C32FD7 /* NavigationBarStyle.swift */,
+				E0190F4A226DB55400C212D5 /* UIComponentFactories.swift */,
 				E03C32B4226D969500C32FD7 /* ColorPalette .swift */,
 			);
 			name = "Shared Configurations";
+			sourceTree = "<group>";
+		};
+		E03C32BA226DA45900C32FD7 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				E03C32B8226DA44A00C32FD7 /* Onboarding.storyboard */,
+				E0190F46226DAA7300C212D5 /* LoginHomeViewController.swift */,
+				E0190F48226DB0E000C212D5 /* WelcomeMessageViewController.swift */,
+			);
+			name = Onboarding;
 			sourceTree = "<group>";
 		};
 		E05BB251226D5D2A00721F20 = {
@@ -149,6 +168,7 @@
 				E03C32B1226D902F00C32FD7 /* Shared Configurations */,
 				E05BB25F226D5D2A00721F20 /* RootViewController.swift */,
 				E05BB261226D5D2A00721F20 /* Main.storyboard */,
+				E03C32BA226DA45900C32FD7 /* Onboarding */,
 				E05BB266226D5D2E00721F20 /* LaunchScreen.storyboard */,
 				E05BB264226D5D2E00721F20 /* Assets.xcassets */,
 				E06261CB226D6EBE00A96F55 /* Supporting Files */,
@@ -293,6 +313,7 @@
 				E05BB268226D5D2E00721F20 /* LaunchScreen.storyboard in Resources */,
 				E03C32A3226D866200C32FD7 /* Localizable.strings in Resources */,
 				E05BB265226D5D2E00721F20 /* Assets.xcassets in Resources */,
+				E03C32B9226DA44A00C32FD7 /* Onboarding.storyboard in Resources */,
 				E05BB263226D5D2A00721F20 /* Main.storyboard in Resources */,
 				E03C32A6226D866500C32FD7 /* InfoPlist.strings in Resources */,
 			);
@@ -388,13 +409,16 @@
 			files = (
 				E03C32AC226D872A00C32FD7 /* Localized.swift in Sources */,
 				E03C32B5226D969500C32FD7 /* ColorPalette .swift in Sources */,
+				E0190F4B226DB55400C212D5 /* UIComponentFactories.swift in Sources */,
 				E05BB260226D5D2A00721F20 /* RootViewController.swift in Sources */,
 				E03C329A226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift in Sources */,
 				E03C32AE226D8E6800C32FD7 /* SharedFormatters.swift in Sources */,
+				E0190F47226DAA7300C212D5 /* LoginHomeViewController.swift in Sources */,
 				E03C32B0226D8E8F00C32FD7 /* NavigationBarStyle.swift in Sources */,
 				E05BB25E226D5D2A00721F20 /* AppDelegate.swift in Sources */,
 				E03C329E226D772400C32FD7 /* Logger.swift in Sources */,
 				E03C32B3226D925100C32FD7 /* ServiceConstants.swift in Sources */,
+				E0190F49226DB0E000C212D5 /* WelcomeMessageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

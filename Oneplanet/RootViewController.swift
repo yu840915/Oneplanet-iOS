@@ -9,10 +9,11 @@
 import UIKit
 
 class RootViewController: UIViewController {
-
+    
+    private var restoreUserSessionOperation: RestoreUserSessionOperation?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -21,9 +22,41 @@ class RootViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        restoreUserSession()
+    }
+    
+    private func restoreUserSession() {
+        guard restoreUserSessionOperation == nil else {
+            return
+        }
+        let op = RestoreUserSessionOperation()
+        restoreUserSessionOperation = op
+        op.completionBlock = {[weak self] in
+            self?.handleSessionRestoration()
+        }
+        OperationQueue.main.addOperation(op)
+    }
+    
+    private func handleSessionRestoration() {
+        let op = restoreUserSessionOperation!
+        if let session = op.session {
+            startUserFlow(with: session)
+        } else {
+            startLoginFlow()
+        }
+    }
+    
+    private func startUserFlow(with session: UserSession) {
+        
+    }
+    
+    private func startLoginFlow() {
         performSegue(withIdentifier: SegueID.showWelcomePage, sender: nil)
     }
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+    }
 }
 
 extension RootViewController {

@@ -15,7 +15,6 @@ class LoginHomeViewController: UIViewController {
         NavigationBarStyle.translucent.configure(navigationController!.navigationBar)
         navigationController!.navigationBar.barStyle = .blackTranslucent
         navigationItem.hidesBackButton = true
-
     }
     
 

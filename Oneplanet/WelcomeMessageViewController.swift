@@ -8,8 +8,9 @@
 
 import UIKit
 
-class WelcomeMessageViewController: UIViewController {
-
+class WelcomeMessageViewController: UIViewController, AuthorizationFlowEntryPoint {
+    var authorizationCompletion: ((UserSession) -> ())!
+    
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var skipButton: UIButton!
     

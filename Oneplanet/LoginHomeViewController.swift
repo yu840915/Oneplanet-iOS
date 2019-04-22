@@ -8,8 +8,13 @@
 
 import UIKit
 
-class LoginHomeViewController: UIViewController {
+protocol AuthorizationFlowEntryPoint: AnyObject {
+    var authorizationCompletion: ((UserSession)->())! {set get}
+}
 
+class LoginHomeViewController: UIViewController, AuthorizationFlowEntryPoint {
+    var authorizationCompletion: ((UserSession) -> ())!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationBarStyle.translucent.configure(navigationController!.navigationBar)

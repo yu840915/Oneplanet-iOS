@@ -50,6 +50,11 @@ class RootViewController: UIViewController {
         
     }
     
+    private func dismissLoginFlowAndStarUserFlow(with session: UserSession) {
+        dismiss(animated: true, completion: nil)
+        startUserFlow(with: session)
+    }
+    
     private func startLoginFlow() {
         if UserProgressChecklist.watchWelcomeMessage.isFinished {
             performSegue(withIdentifier: SegueID.showLogin, sender: nil)
@@ -59,7 +64,13 @@ class RootViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if let nav = segue.destination as? UINavigationController, let authFlow = nav.viewControllers.first as? AuthorizationFlowEntryPoint {
+            authFlow.authorizationCompletion = {[weak self] session in
+                OperationQueue.main.addOperation {
+                    self?.dismissLoginFlowAndStarUserFlow(with: session)
+                }
+            }
+        }
     }
 }
 

@@ -16,6 +16,7 @@
 		E0190F4F226DD06B00C212D5 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F4E226DD06B00C212D5 /* Preferences.swift */; };
 		E0190F51226DD1E200C212D5 /* ChecklistItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F50226DD1E200C212D5 /* ChecklistItemTests.swift */; };
 		E0190F53226DD62200C212D5 /* UserProgressChecklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F52226DD62200C212D5 /* UserProgressChecklist.swift */; };
+		E0190F55226EC82500C212D5 /* UserFlowRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F54226EC82500C212D5 /* UserFlowRootViewController.swift */; };
 		E03C329A226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03C3299226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift */; };
 		E03C329C226D75F400C32FD7 /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E03C329B226D75F400C32FD7 /* SwiftyBeaver.framework */; };
 		E03C329E226D772400C32FD7 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03C329D226D772400C32FD7 /* Logger.swift */; };
@@ -60,6 +61,7 @@
 		E0190F4E226DD06B00C212D5 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		E0190F50226DD1E200C212D5 /* ChecklistItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItemTests.swift; sourceTree = "<group>"; };
 		E0190F52226DD62200C212D5 /* UserProgressChecklist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProgressChecklist.swift; sourceTree = "<group>"; };
+		E0190F54226EC82500C212D5 /* UserFlowRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFlowRootViewController.swift; sourceTree = "<group>"; };
 		E03C3299226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireAPIAccessOperation.swift; sourceTree = "<group>"; };
 		E03C329B226D75F400C32FD7 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/iOS/SwiftyBeaver.framework; sourceTree = SOURCE_ROOT; };
 		E03C329D226D772400C32FD7 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				E05BB25F226D5D2A00721F20 /* RootViewController.swift */,
 				E0190F4C226DCCFB00C212D5 /* UserSession.swift */,
 				E05BB261226D5D2A00721F20 /* Main.storyboard */,
+				E0190F54226EC82500C212D5 /* UserFlowRootViewController.swift */,
 				E03C32BA226DA45900C32FD7 /* Onboarding */,
 				E05BB266226D5D2E00721F20 /* LaunchScreen.storyboard */,
 				E05BB264226D5D2E00721F20 /* Assets.xcassets */,
@@ -422,6 +425,7 @@
 				E03C32AC226D872A00C32FD7 /* Localized.swift in Sources */,
 				E03C32B5226D969500C32FD7 /* ColorPalette .swift in Sources */,
 				E0190F53226DD62200C212D5 /* UserProgressChecklist.swift in Sources */,
+				E0190F55226EC82500C212D5 /* UserFlowRootViewController.swift in Sources */,
 				E0190F4B226DB55400C212D5 /* UIComponentFactories.swift in Sources */,
 				E05BB260226D5D2A00721F20 /* RootViewController.swift in Sources */,
 				E03C329A226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift in Sources */,

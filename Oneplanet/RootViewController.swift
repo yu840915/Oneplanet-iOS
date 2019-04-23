@@ -11,6 +11,9 @@ import UIKit
 class RootViewController: UIViewController {
     
     private var restoreUserSessionOperation: RestoreUserSessionOperation?
+    @IBOutlet weak var containerView: UIView!
+    private var userFlowRootController: UserFlowRootViewController?
+    private var shouldAddConstraintsForUserFlow = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,8 +49,34 @@ class RootViewController: UIViewController {
         }
     }
     
+    private func logOut() {
+        endUserFlow()
+        startLoginFlow()
+    }
+    
     private func startUserFlow(with session: UserSession) {
-        
+        guard userFlowRootController == nil else {
+            assertionFailure("User flow already exists")
+            return
+        }
+        let vc = storyboard!.instantiateViewController(withIdentifier: UserFlowRootViewController.defaultStoryboardID) as! UserFlowRootViewController
+        vc.userSession = session
+        addChild(vc)
+        containerView.addSubview(vc.view)
+        vc.didMove(toParent: self)
+        userFlowRootController = vc
+        shouldAddConstraintsForUserFlow = true
+        updateViewConstraints()
+    }
+    
+    private func endUserFlow() {
+        guard let vc = userFlowRootController else {
+            assertionFailure("User flow doesn't exist")
+            return
+        }
+        vc.willMove(toParent: nil)
+        vc.view.removeFromSuperview()
+        vc.removeFromParent()
     }
     
     private func dismissLoginFlowAndStarUserFlow(with session: UserSession) {
@@ -71,6 +100,18 @@ class RootViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    override func updateViewConstraints() {
+        if shouldAddConstraintsForUserFlow,
+            let content = userFlowRootController?.view {
+            shouldAddConstraintsForUserFlow = false
+            content.translatesAutoresizingMaskIntoConstraints = false
+            let views = ["content": content]
+            containerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|[content]|", options: [], metrics: nil, views: views))
+            containerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[content]|", options: [], metrics: nil, views: views))
+        }
+        super.updateViewConstraints()
     }
 }
 

@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol DefaultInstanceFactory: AnyObject {
+    associatedtype ViewControllerType where ViewControllerType: UIViewController
+    static func fromDefaultStoryboard() -> ViewControllerType
+}
+
 class RootViewController: UIViewController {
     
     private var restoreUserSessionOperation: RestoreUserSessionOperation?

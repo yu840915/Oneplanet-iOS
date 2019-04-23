@@ -17,6 +17,8 @@
 		E0190F51226DD1E200C212D5 /* ChecklistItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F50226DD1E200C212D5 /* ChecklistItemTests.swift */; };
 		E0190F53226DD62200C212D5 /* UserProgressChecklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F52226DD62200C212D5 /* UserProgressChecklist.swift */; };
 		E0190F55226EC82500C212D5 /* UserFlowRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F54226EC82500C212D5 /* UserFlowRootViewController.swift */; };
+		E0190F57226EDBC900C212D5 /* CameraImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F56226EDBC900C212D5 /* CameraImagePickerViewController.swift */; };
+		E0190F5A226EDD1100C212D5 /* SupportingFlows.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0190F59226EDD1100C212D5 /* SupportingFlows.storyboard */; };
 		E03C329A226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03C3299226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift */; };
 		E03C329C226D75F400C32FD7 /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E03C329B226D75F400C32FD7 /* SwiftyBeaver.framework */; };
 		E03C329E226D772400C32FD7 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03C329D226D772400C32FD7 /* Logger.swift */; };
@@ -62,6 +64,8 @@
 		E0190F50226DD1E200C212D5 /* ChecklistItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItemTests.swift; sourceTree = "<group>"; };
 		E0190F52226DD62200C212D5 /* UserProgressChecklist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProgressChecklist.swift; sourceTree = "<group>"; };
 		E0190F54226EC82500C212D5 /* UserFlowRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFlowRootViewController.swift; sourceTree = "<group>"; };
+		E0190F56226EDBC900C212D5 /* CameraImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraImagePickerViewController.swift; sourceTree = "<group>"; };
+		E0190F59226EDD1100C212D5 /* SupportingFlows.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SupportingFlows.storyboard; sourceTree = "<group>"; };
 		E03C3299226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireAPIAccessOperation.swift; sourceTree = "<group>"; };
 		E03C329B226D75F400C32FD7 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/iOS/SwiftyBeaver.framework; sourceTree = SOURCE_ROOT; };
 		E03C329D226D772400C32FD7 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -126,6 +130,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		E0190F58226EDBD000C212D5 /* Supporting Flows */ = {
+			isa = PBXGroup;
+			children = (
+				E0190F59226EDD1100C212D5 /* SupportingFlows.storyboard */,
+				E0190F56226EDBC900C212D5 /* CameraImagePickerViewController.swift */,
+			);
+			path = "Supporting Flows";
+			sourceTree = "<group>";
+		};
 		E03C32B1226D902F00C32FD7 /* Shared Configurations */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +195,7 @@
 				E0190F4C226DCCFB00C212D5 /* UserSession.swift */,
 				E05BB261226D5D2A00721F20 /* Main.storyboard */,
 				E0190F54226EC82500C212D5 /* UserFlowRootViewController.swift */,
+				E0190F58226EDBD000C212D5 /* Supporting Flows */,
 				E03C32BA226DA45900C32FD7 /* Onboarding */,
 				E05BB266226D5D2E00721F20 /* LaunchScreen.storyboard */,
 				E05BB264226D5D2E00721F20 /* Assets.xcassets */,
@@ -329,6 +343,7 @@
 				E03C32A3226D866200C32FD7 /* Localizable.strings in Resources */,
 				E05BB265226D5D2E00721F20 /* Assets.xcassets in Resources */,
 				E03C32B9226DA44A00C32FD7 /* Onboarding.storyboard in Resources */,
+				E0190F5A226EDD1100C212D5 /* SupportingFlows.storyboard in Resources */,
 				E05BB263226D5D2A00721F20 /* Main.storyboard in Resources */,
 				E03C32A6226D866500C32FD7 /* InfoPlist.strings in Resources */,
 			);
@@ -431,6 +446,7 @@
 				E03C329A226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift in Sources */,
 				E03C32AE226D8E6800C32FD7 /* SharedFormatters.swift in Sources */,
 				E0190F47226DAA7300C212D5 /* LoginHomeViewController.swift in Sources */,
+				E0190F57226EDBC900C212D5 /* CameraImagePickerViewController.swift in Sources */,
 				E03C32B0226D8E8F00C32FD7 /* NavigationBarStyle.swift in Sources */,
 				E0190F4F226DD06B00C212D5 /* Preferences.swift in Sources */,
 				E05BB25E226D5D2A00721F20 /* AppDelegate.swift in Sources */,

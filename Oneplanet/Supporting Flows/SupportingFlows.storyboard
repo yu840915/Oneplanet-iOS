@@ -151,10 +151,10 @@
             </objects>
             <point key="canvasLocation" x="-517" y="800"/>
         </scene>
-        <!--View Controller-->
+        <!--Library Image Picker View Controller-->
         <scene sceneID="3CB-lW-VAk">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="RHr-jD-uUZ" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="RHr-jD-uUZ" customClass="LibraryImagePickerViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YEh-wV-KO1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -165,10 +165,10 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fv7-jD-RMB" userLabel="Preview View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
                                         <subviews>
-                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NTv-Pk-OOR">
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NTv-Pk-OOR">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EEA-YT-5Bi">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EEA-YT-5Bi">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
                                                     </imageView>
                                                 </subviews>
@@ -180,6 +180,9 @@
                                                     <constraint firstItem="EEA-YT-5Bi" firstAttribute="leading" secondItem="NTv-Pk-OOR" secondAttribute="leading" id="nqh-NL-RL1"/>
                                                     <constraint firstItem="EEA-YT-5Bi" firstAttribute="top" secondItem="NTv-Pk-OOR" secondAttribute="top" id="xyx-E9-Lem"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outlet property="delegate" destination="RHr-jD-uUZ" id="ctN-DK-i6A"/>
+                                                </connections>
                                             </scrollView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_avatar_frame" translatesAutoresizingMaskIntoConstraints="NO" id="US0-jb-Em5" userLabel="Avatar Indicator">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
@@ -188,10 +191,14 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Fv7-jD-RMB" secondAttribute="height" id="1WS-u0-I5y"/>
+                                            <constraint firstItem="NTv-Pk-OOR" firstAttribute="centerY" secondItem="Fv7-jD-RMB" secondAttribute="centerY" id="6rj-dp-vYz"/>
+                                            <constraint firstItem="NTv-Pk-OOR" firstAttribute="height" secondItem="Fv7-jD-RMB" secondAttribute="height" id="IBf-AS-iYL"/>
                                             <constraint firstItem="US0-jb-Em5" firstAttribute="height" secondItem="Fv7-jD-RMB" secondAttribute="height" id="Yy0-f4-0gP"/>
+                                            <constraint firstItem="NTv-Pk-OOR" firstAttribute="width" secondItem="Fv7-jD-RMB" secondAttribute="width" id="gnj-cQ-GPf"/>
                                             <constraint firstItem="US0-jb-Em5" firstAttribute="centerY" secondItem="Fv7-jD-RMB" secondAttribute="centerY" id="mf3-sB-AmT"/>
                                             <constraint firstItem="US0-jb-Em5" firstAttribute="centerX" secondItem="Fv7-jD-RMB" secondAttribute="centerX" id="nXt-jT-GHa"/>
                                             <constraint firstItem="US0-jb-Em5" firstAttribute="width" secondItem="Fv7-jD-RMB" secondAttribute="width" id="pZN-b0-CJp"/>
+                                            <constraint firstItem="NTv-Pk-OOR" firstAttribute="centerX" secondItem="Fv7-jD-RMB" secondAttribute="centerX" id="ve3-Qw-QLp"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ec-Fr-IIK">
@@ -234,11 +241,24 @@
                     <navigationItem key="navigationItem" id="t3h-ay-4sQ">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="oti-cg-b2g">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="cancel:" destination="RHr-jD-uUZ" id="MpN-rW-ku0"/>
+                            </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="tkr-gY-UDs">
                             <color key="tintColor" name="button green"/>
+                            <connections>
+                                <action selector="done:" destination="RHr-jD-uUZ" id="pt8-eP-NOL"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="avatarIndicator" destination="US0-jb-Em5" id="5W2-m6-opH"/>
+                        <outlet property="cancelButtonItem" destination="oti-cg-b2g" id="ZOM-hq-8CY"/>
+                        <outlet property="doneButtonItem" destination="tkr-gY-UDs" id="ihG-wR-5ye"/>
+                        <outlet property="imageScrollView" destination="NTv-Pk-OOR" id="07O-OJ-abK"/>
+                        <outlet property="imageView" destination="EEA-YT-5Bi" id="LE9-Zy-cw1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GGd-qi-XLy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

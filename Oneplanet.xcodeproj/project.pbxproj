@@ -39,6 +39,7 @@
 		E05BB273226D5D2F00721F20 /* OneplanetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BB272226D5D2F00721F20 /* OneplanetTests.swift */; };
 		E06261C8226D640D00A96F55 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E06261C7226D640D00A96F55 /* StoreKit.framework */; };
 		E06261CE226D6F2200A96F55 /* ModelBlocks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E06261CD226D6F2200A96F55 /* ModelBlocks.framework */; };
+		E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		E06261C6226D63E700A96F55 /* Oneplanet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Oneplanet.entitlements; sourceTree = "<group>"; };
 		E06261C7226D640D00A96F55 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		E06261CD226D6F2200A96F55 /* ModelBlocks.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ModelBlocks.framework; path = Carthage/Build/iOS/ModelBlocks.framework; sourceTree = SOURCE_ROOT; };
+		E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryImagePickerViewController.swift; sourceTree = "<group>"; };
 		E606D7D88F63D6FCB0821922 /* Pods-OneplanetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneplanetTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneplanetTests/Pods-OneplanetTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FD31476F85B0E94B50970A99 /* Pods_OneplanetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneplanetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -135,6 +137,7 @@
 			children = (
 				E0190F59226EDD1100C212D5 /* SupportingFlows.storyboard */,
 				E0190F56226EDBC900C212D5 /* CameraImagePickerViewController.swift */,
+				E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */,
 			);
 			path = "Supporting Flows";
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */,
 				E03C32AC226D872A00C32FD7 /* Localized.swift in Sources */,
 				E03C32B5226D969500C32FD7 /* ColorPalette .swift in Sources */,
 				E0190F53226DD62200C212D5 /* UserProgressChecklist.swift in Sources */,

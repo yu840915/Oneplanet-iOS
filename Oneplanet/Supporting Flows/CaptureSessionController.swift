@@ -155,7 +155,7 @@ class PrepareCaptureSessionOperation: Operation {
         }
         session.sessionPreset = .photo
         session.addInput(camera.deviceInput)
-        session.canAddOutput(photoOutput)
+        session.addOutput(photoOutput)
         session.commitConfiguration()
         captureSessionController = CaptureSessionController(captureSession: session, photoOutput: photoOutput, cameraControllers: cameras)
     }

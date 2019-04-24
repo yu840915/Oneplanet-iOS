@@ -48,7 +48,7 @@ class CameraImagePickerViewController: UIViewController, DefaultInstanceFactory 
     private func setUpForPreview() {
         captureSessionController.previewLayer.connection?.videoOrientation = .portrait
         previewView.layer.addSublayer(captureSessionController.previewLayer)
-        captureSessionController.previewLayer.bounds = previewView.bounds
+        captureSessionController.previewLayer.frame = previewView.bounds
     }
     
     private func updateOutputOrientation() {
@@ -56,7 +56,17 @@ class CameraImagePickerViewController: UIViewController, DefaultInstanceFactory 
     }
     
     override func viewDidLayoutSubviews() {
-        captureSessionController.previewLayer.bounds = previewView.bounds
+        captureSessionController.previewLayer.frame = previewView.bounds
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        captureSessionController.startRunning()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        captureSessionController.stopRunning()
     }
     
     private func updateViewsForCaptureSessionCapabilities() {

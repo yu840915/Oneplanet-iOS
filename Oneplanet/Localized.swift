@@ -50,4 +50,7 @@ class LocalizedErrorsTitles {//errtl_
 }
 
 class LocalizedErrors {//err_
+    var noCameraAccess: String {
+        return NSLocalizedString("err_no_camera_access", comment: "")
+    }
 }

@@ -10,4 +10,6 @@
 "tl_dismiss" = "Dismiss";
 "tl_done" = "Done";
 
+"err_no_camera_access" = "We need to access you camera";
+
 "errtl_cannot_capture_photo" = "Cannot Take Photo";

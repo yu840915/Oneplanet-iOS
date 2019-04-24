@@ -42,6 +42,8 @@
 		E06589BB227001F300C9E4E6 /* AskForAuthorizationOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06589BA227001F300C9E4E6 /* AskForAuthorizationOperation.swift */; };
 		E06589BD22700AEC00C9E4E6 /* CaptureSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06589BC22700AEC00C9E4E6 /* CaptureSessionController.swift */; };
 		E06589BF22701B9F00C9E4E6 /* CapturePhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06589BE22701B9F00C9E4E6 /* CapturePhotoOperation.swift */; };
+		E06589C12270333100C9E4E6 /* PickImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06589C02270333100C9E4E6 /* PickImageOperation.swift */; };
+		E06589C32270362300C9E4E6 /* GenericAppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06589C22270362300C9E4E6 /* GenericAppError.swift */; };
 		E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +100,8 @@
 		E06589BA227001F300C9E4E6 /* AskForAuthorizationOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskForAuthorizationOperation.swift; sourceTree = "<group>"; };
 		E06589BC22700AEC00C9E4E6 /* CaptureSessionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSessionController.swift; sourceTree = "<group>"; };
 		E06589BE22701B9F00C9E4E6 /* CapturePhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturePhotoOperation.swift; sourceTree = "<group>"; };
+		E06589C02270333100C9E4E6 /* PickImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickImageOperation.swift; sourceTree = "<group>"; };
+		E06589C22270362300C9E4E6 /* GenericAppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericAppError.swift; sourceTree = "<group>"; };
 		E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryImagePickerViewController.swift; sourceTree = "<group>"; };
 		E606D7D88F63D6FCB0821922 /* Pods-OneplanetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneplanetTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneplanetTests/Pods-OneplanetTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FD31476F85B0E94B50970A99 /* Pods_OneplanetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneplanetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -143,6 +147,7 @@
 			children = (
 				E0190F59226EDD1100C212D5 /* SupportingFlows.storyboard */,
 				E0190F56226EDBC900C212D5 /* CameraImagePickerViewController.swift */,
+				E06589C02270333100C9E4E6 /* PickImageOperation.swift */,
 				E06589BC22700AEC00C9E4E6 /* CaptureSessionController.swift */,
 				E06589BE22701B9F00C9E4E6 /* CapturePhotoOperation.swift */,
 				E06589BA227001F300C9E4E6 /* AskForAuthorizationOperation.swift */,
@@ -155,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				E03C32B2226D925100C32FD7 /* ServiceConstants.swift */,
+				E06589C22270362300C9E4E6 /* GenericAppError.swift */,
 				E03C32AD226D8E6800C32FD7 /* SharedFormatters.swift */,
 				E03C32AF226D8E8F00C32FD7 /* NavigationBarStyle.swift */,
 				E0190F4A226DB55400C212D5 /* UIComponentFactories.swift */,
@@ -454,6 +460,7 @@
 				E03C32B5226D969500C32FD7 /* ColorPalette .swift in Sources */,
 				E06589BF22701B9F00C9E4E6 /* CapturePhotoOperation.swift in Sources */,
 				E0190F53226DD62200C212D5 /* UserProgressChecklist.swift in Sources */,
+				E06589C32270362300C9E4E6 /* GenericAppError.swift in Sources */,
 				E0190F55226EC82500C212D5 /* UserFlowRootViewController.swift in Sources */,
 				E06589BD22700AEC00C9E4E6 /* CaptureSessionController.swift in Sources */,
 				E0190F4B226DB55400C212D5 /* UIComponentFactories.swift in Sources */,
@@ -461,6 +468,7 @@
 				E06589BB227001F300C9E4E6 /* AskForAuthorizationOperation.swift in Sources */,
 				E03C329A226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift in Sources */,
 				E03C32AE226D8E6800C32FD7 /* SharedFormatters.swift in Sources */,
+				E06589C12270333100C9E4E6 /* PickImageOperation.swift in Sources */,
 				E0190F47226DAA7300C212D5 /* LoginHomeViewController.swift in Sources */,
 				E0190F57226EDBC900C212D5 /* CameraImagePickerViewController.swift in Sources */,
 				E03C32B0226D8E8F00C32FD7 /* NavigationBarStyle.swift in Sources */,

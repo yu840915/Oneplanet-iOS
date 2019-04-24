@@ -9,15 +9,22 @@
 import UIKit
 import AVFoundation
 
-class CameraImagePickerViewController: UIViewController {
+class CameraImagePickerViewController: UIViewController, DefaultInstanceFactory {
+    class func fromDefaultStoryboard() -> UINavigationController {
+        return UIStoryboard(name: "SupportingFlows", bundle: nil).instantiateViewController(withIdentifier: "CameraImagePickerEntryPoint") as! UINavigationController
+    }
     @IBOutlet weak var switchButton: UIButton!
     @IBOutlet weak var flashButton: UIButton!
+    @IBOutlet weak var cancelButtonItem: UIBarButtonItem!
     var captureSessionController: CaptureSessionController!
     private var eventRegistrations: [Any]?
     @IBOutlet weak var previewView: UIView!
+    var onCancel: (()->())?
+    var onPickingImage: ((AVCapturePhoto)->())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cancelButtonItem.title = Localized.titles.cancel
         registerEvents()
         setUpForPreview()
         updateViewsForCaptureSessionCapabilities()
@@ -63,7 +70,7 @@ class CameraImagePickerViewController: UIViewController {
     
     private func handlePhotoCapture(_ photo: AVCapturePhoto?, error: Error?) {
         if let photo = photo {
-            
+            onPickingImage?(photo)
         } else if let error = error {
             showAlert(for: error)
         }
@@ -88,8 +95,11 @@ class CameraImagePickerViewController: UIViewController {
         updateViewsForCaptureSessionStates()
     }
     
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        onCancel?()
+    }
+    
     @IBAction func takePhoto(_ sender: UIButton) {
         captureSessionController.takePhotoIfReady()
     }
 }
-

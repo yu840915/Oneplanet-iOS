@@ -28,12 +28,13 @@ class LibraryImagePickerViewController: UIViewController, DefaultInstanceFactory
     @IBOutlet var imageWidthSnap: NSLayoutConstraint!
     @IBOutlet var imageHeightSnap: NSLayoutConstraint!
     private var imageAspectRatio: NSLayoutConstraint?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         if let item = photoList.first {
             updateSelectedItemIfNeeded(item)
         }
+        updateViewsForStates()
     }
     
     private func updateSelectedItemIfNeeded(_ item: PhotoListItem) {
@@ -42,6 +43,10 @@ class LibraryImagePickerViewController: UIViewController, DefaultInstanceFactory
         }
         selectedPhoto = item
         fetchImageForSelectedItem()
+    }
+    
+    private func updateViewsForStates() {
+        doneButtonItem.isEnabled = selectedImage != nil
     }
     
     private func fetchImageForSelectedItem() {
@@ -93,6 +98,7 @@ class LibraryImagePickerViewController: UIViewController, DefaultInstanceFactory
         imageView.addConstraint(layout)
         imageAspectRatio = layout
         imageScrollView.setNeedsLayout()
+        updateViewsForStates()
     }
     
     private func computeMaxZoomScale(for image: UIImage) -> CGFloat {
@@ -102,8 +108,25 @@ class LibraryImagePickerViewController: UIViewController, DefaultInstanceFactory
     }
     
     @IBAction func done(_ sender: UIBarButtonItem) {
-        guard let image = selectedImage else { return }
-        onPickingImage?(image)
+        guard let image = selectedImage, !imageScrollView.isDragging else { return }
+        cropImageAndNotify(image)
+    }
+    
+    private func cropImageAndNotify(_ image: UIImage) {
+        guard let ciImg = CIImage(image: image)?.cropped(to: cropRect(for: image)) else {
+            return
+        }
+        let result = UIImage(ciImage: ciImg)
+        onPickingImage?(result)
+    }
+    
+    private func cropRect(for image: UIImage) -> CGRect {
+        let multiplier = image.size.width / imageScrollView.contentSize.width
+        let size = imageScrollView.frame.size
+        var origin = imageScrollView.contentOffset
+        origin.y = imageScrollView.contentSize.height - origin.y - size.height
+        return CGRect(x: origin.x * multiplier, y: origin.y * multiplier, width: size.width * multiplier, height: size.height * multiplier)
+
     }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {

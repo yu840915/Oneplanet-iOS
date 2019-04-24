@@ -19,6 +19,7 @@ class RootViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     private var userFlowRootController: UserFlowRootViewController?
     private var shouldAddConstraintsForUserFlow = false
+    private var pickingOP: PickImageOperation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +31,13 @@ class RootViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        restoreUserSession()
+        let op = PickLibraryImageOperation(presenter: self)
+        op.completionBlock = {
+            debugPrint(self.pickingOP)
+        }
+        pickingOP = op
+        op.start()
+//        restoreUserSession()
     }
     
     private func restoreUserSession() {

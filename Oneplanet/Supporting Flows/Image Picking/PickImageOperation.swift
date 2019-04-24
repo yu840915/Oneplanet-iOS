@@ -106,7 +106,61 @@ class PickCameraImageOperation: PickImageOperation {
     }
 }
 
+class PickLibraryImageOperation: PickImageOperation {
+    private var authorizationOperation: AskForPhotoLibraryAuthorizationOperation?
+    private var pickerFlow: LibraryImagePickerViewController?
+    
+    override func main() {
+        checkPermission()
+    }
+    
+    private func checkPermission() {
+        switch AskForPhotoLibraryAuthorizationOperation.authorizationStatus {
+        case .notDetermined: askForPermissin()
+        case .authorized: prepareLibraryFlow()
+        case .denied: fail(with: MissingInputPermissionError(Localized.errors.noCameraAccess))
+        }
+    }
+    
+    private func askForPermissin() {
+        let op = AskForPhotoLibraryAuthorizationOperation()
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.checkPermission()
+            }
+        }
+        authorizationOperation = op
+        op.start()
+    }
+    
+    private func prepareLibraryFlow() {
+        let nav = LibraryImagePickerViewController.fromDefaultStoryboard()
+        let vc = nav.viewControllers.first as! LibraryImagePickerViewController
+        vc.onPickingImage = {[weak self] image in
+            self?.handlePickedImage(image)
+        }
+        vc.onCancel = {[weak self] in
+            self?.handleUserCancel()
+        }
+        presenter.present(nav, animated: true, completion: nil)
+        pickerFlow = vc
+    }
+    
+    private func handlePickedImage(_ image: UIImage) {
+        dismissPickerFlow()
+        finishPickingImage(image)
+    }
+    
+    private func handleUserCancel() {
+        dismissPickerFlow()
+        finish()
+    }
 
+    private func dismissPickerFlow() {
+        let vc = presenter ?? pickerFlow
+        vc?.dismiss(animated: true, completion: nil)
+    }
+}
 
 class MissingInputPermissionError: GenericAppError {
 }

@@ -44,6 +44,7 @@
 		E06589BF22701B9F00C9E4E6 /* CapturePhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06589BE22701B9F00C9E4E6 /* CapturePhotoOperation.swift */; };
 		E06589C12270333100C9E4E6 /* PickImageOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06589C02270333100C9E4E6 /* PickImageOperation.swift */; };
 		E06589C32270362300C9E4E6 /* GenericAppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06589C22270362300C9E4E6 /* GenericAppError.swift */; };
+		E06589C622705B4F00C9E4E6 /* PhotoGridCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06589C522705B4F00C9E4E6 /* PhotoGridCollectionViewController.swift */; };
 		E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -102,6 +103,7 @@
 		E06589BE22701B9F00C9E4E6 /* CapturePhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturePhotoOperation.swift; sourceTree = "<group>"; };
 		E06589C02270333100C9E4E6 /* PickImageOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickImageOperation.swift; sourceTree = "<group>"; };
 		E06589C22270362300C9E4E6 /* GenericAppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericAppError.swift; sourceTree = "<group>"; };
+		E06589C522705B4F00C9E4E6 /* PhotoGridCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGridCollectionViewController.swift; sourceTree = "<group>"; };
 		E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryImagePickerViewController.swift; sourceTree = "<group>"; };
 		E606D7D88F63D6FCB0821922 /* Pods-OneplanetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneplanetTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneplanetTests/Pods-OneplanetTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FD31476F85B0E94B50970A99 /* Pods_OneplanetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneplanetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,12 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				E0190F59226EDD1100C212D5 /* SupportingFlows.storyboard */,
-				E0190F56226EDBC900C212D5 /* CameraImagePickerViewController.swift */,
-				E06589C02270333100C9E4E6 /* PickImageOperation.swift */,
-				E06589BC22700AEC00C9E4E6 /* CaptureSessionController.swift */,
-				E06589BE22701B9F00C9E4E6 /* CapturePhotoOperation.swift */,
-				E06589BA227001F300C9E4E6 /* AskForAuthorizationOperation.swift */,
-				E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */,
+				E06589C42270536A00C9E4E6 /* Image Picking */,
 			);
 			path = "Supporting Flows";
 			sourceTree = "<group>";
@@ -262,6 +259,20 @@
 				E06261CD226D6F2200A96F55 /* ModelBlocks.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E06589C42270536A00C9E4E6 /* Image Picking */ = {
+			isa = PBXGroup;
+			children = (
+				E06589BA227001F300C9E4E6 /* AskForAuthorizationOperation.swift */,
+				E06589C02270333100C9E4E6 /* PickImageOperation.swift */,
+				E0190F56226EDBC900C212D5 /* CameraImagePickerViewController.swift */,
+				E06589BC22700AEC00C9E4E6 /* CaptureSessionController.swift */,
+				E06589BE22701B9F00C9E4E6 /* CapturePhotoOperation.swift */,
+				E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */,
+				E06589C522705B4F00C9E4E6 /* PhotoGridCollectionViewController.swift */,
+			);
+			path = "Image Picking";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -476,6 +487,7 @@
 				E05BB25E226D5D2A00721F20 /* AppDelegate.swift in Sources */,
 				E03C329E226D772400C32FD7 /* Logger.swift in Sources */,
 				E03C32B3226D925100C32FD7 /* ServiceConstants.swift in Sources */,
+				E06589C622705B4F00C9E4E6 /* PhotoGridCollectionViewController.swift in Sources */,
 				E0190F4D226DCCFB00C212D5 /* UserSession.swift in Sources */,
 				E0190F49226DB0E000C212D5 /* WelcomeMessageViewController.swift in Sources */,
 			);

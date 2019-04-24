@@ -24,7 +24,11 @@ class LibraryImagePickerViewController: UIViewController, DefaultInstanceFactory
     var photoList: PhotoList = PhotoList()
     private var selectedPhoto: PhotoListItem?
     private var fetchImageOperation: FetchImageOperaion?
-
+    private var selectedImage: UIImage?
+    @IBOutlet var imageWidthSnap: NSLayoutConstraint!
+    @IBOutlet var imageHeightSnap: NSLayoutConstraint!
+    private var imageAspectRatio: NSLayoutConstraint?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let item = photoList.first {
@@ -65,10 +69,41 @@ class LibraryImagePickerViewController: UIViewController, DefaultInstanceFactory
                 return
         }
         fetchImageOperation = nil
-        imageView.image = op.image
+        if let image = op.image {
+            setUpImage(image)
+        }
+    }
+    
+    private func setUpImage(_ image: UIImage) {
+        imageScrollView.zoomScale = 1.0
+        imageScrollView.maximumZoomScale = computeMaxZoomScale(for: image)
+        imageHeightSnap.isActive = false
+        imageWidthSnap.isActive = false
+        if image.size.height > image.size.width {
+            imageWidthSnap.isActive = true
+        } else {
+            imageHeightSnap.isActive = true
+        }
+        imageView.image = image
+        if let layout = imageAspectRatio {
+            imageView.removeConstraint(layout)
+        }
+        let layout = NSLayoutConstraint(item: imageView, attribute: .width, relatedBy: .equal, toItem: imageView, attribute: .height, multiplier: image.size.width / image.size.height, constant: 0)
+        selectedImage = image
+        imageView.addConstraint(layout)
+        imageAspectRatio = layout
+        imageScrollView.setNeedsLayout()
+    }
+    
+    private func computeMaxZoomScale(for image: UIImage) -> CGFloat {
+        let w = image.size.width / imageView.bounds.width
+        let h = image.size.height / imageView.bounds.height
+        return max(1, min(w, h, 2.0))
     }
     
     @IBAction func done(_ sender: UIBarButtonItem) {
+        guard let image = selectedImage else { return }
+        onPickingImage?(image)
     }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 private let reuseIdentifier = "cell"
 
@@ -14,10 +15,22 @@ class PhotoGridCollectionViewController: UICollectionViewController {
     var photoList: PhotoList!
     private var updateClock: UpdateClock?
     var itemSelectionHandler: ((PhotoListItem)->())?
+    private var eventRegistrations: [Any]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        registerEvents()
         updateThumbnailSize()
+    }
+    
+    private func registerEvents() {
+        var registrations: [Any] = []
+        registrations.append(photoList.changeObservers.add({[weak self] (changes) in
+            OperationQueue.main.addOperation {
+                self?.update(forChanges: changes)
+            }
+        }))
+        eventRegistrations = registrations
     }
 
     private func updateThumbnailSize() {
@@ -51,6 +64,26 @@ class PhotoGridCollectionViewController: UICollectionViewController {
             }
         }
     }
+    
+    private func update(forChanges changes: PHFetchResultChangeDetails<PHAsset>) {
+        if changes.hasIncrementalChanges {
+            let collectionView = self.collectionView!
+            collectionView.performBatchUpdates({
+                if let removed = changes.removedIndexes, !removed.isEmpty {
+                    collectionView.deleteItems(at: removed.map({ IndexPath(item: $0, section: 0) }))
+                }
+                if let inserted = changes.insertedIndexes, !inserted.isEmpty {
+                    collectionView.insertItems(at: inserted.map({ IndexPath(item: $0, section: 0) }))
+                }
+                changes.enumerateMoves { fromIndex, toIndex in
+                    collectionView.moveItem(at: IndexPath(item: fromIndex, section: 0),
+                                            to: IndexPath(item: toIndex, section: 0))
+                }
+            })
+        } else {
+            collectionView.reloadData()
+        }
+    }
 
     // MARK: UICollectionViewDataSource
 
@@ -80,45 +113,5 @@ class PhotoGridCollectionViewController: UICollectionViewController {
 }
 
 class PhotoGridCell: UICollectionViewCell {
-    
     @IBOutlet weak var imageView: UIImageView!
-}
-
-class UpdateClock {
-    private var displayLink: CADisplayLink!
-    private var actionTarget: DisplayLinkActionTarget
-    
-    convenience init(preferredInterval interval: TimeInterval = 1, runloopMode mode: RunLoop.Mode = .common, onTick: @escaping ()->Void) {
-        self.init(preferredFrameRate: Int(1.0 / interval), runloopMode: mode, onTick: onTick)
-    }
-    
-    init(preferredFrameRate: Int, runloopMode mode: RunLoop.Mode = .common, onTick: @escaping ()->Void) {
-        actionTarget = DisplayLinkActionTarget(tickAction: onTick)
-        displayLink = CADisplayLink(target: actionTarget, selector: #selector(DisplayLinkActionTarget.triggerUIUpdate(sender:)))
-        displayLink.preferredFramesPerSecond = preferredFrameRate
-        displayLink.add(to: .main, forMode: mode)
-    }
-    
-    deinit {
-        displayLink.invalidate()
-    }
-    
-}
-
-fileprivate extension UpdateClock {
-    
-    class DisplayLinkActionTarget {
-        
-        let tickAction: ()->Void
-        
-        init(tickAction: @escaping ()->Void) {
-            self.tickAction = tickAction
-        }
-        
-        @objc func triggerUIUpdate(sender: Any) {
-            tickAction()
-        }
-        
-    }
-    
 }

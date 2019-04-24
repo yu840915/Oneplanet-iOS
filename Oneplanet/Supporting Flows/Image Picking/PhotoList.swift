@@ -52,9 +52,7 @@ class PhotoList: NSObject {
 
 extension PhotoList: PHPhotoLibraryChangeObserver {
     func photoLibraryDidChange(_ changeInstance: PHChange) {
-        guard let change = changeInstance.changeDetails(for: fetchedAssets) else {
-            return
-        }
+        guard let change = changeInstance.changeDetails(for: fetchedAssets) else { return }
         fetchedAssets = change.fetchResultAfterChanges
         changeObservers.invokeEach{$0(change)}
     }

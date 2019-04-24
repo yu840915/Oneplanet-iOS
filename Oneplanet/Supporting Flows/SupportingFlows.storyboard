@@ -170,10 +170,10 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fv7-jD-RMB" userLabel="Preview View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
                                         <subviews>
-                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NTv-Pk-OOR">
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NTv-Pk-OOR">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EEA-YT-5Bi">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EEA-YT-5Bi">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
                                                     </imageView>
                                                 </subviews>
@@ -193,7 +193,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Fv7-jD-RMB" secondAttribute="height" id="1WS-u0-I5y"/>
                                             <constraint firstItem="NTv-Pk-OOR" firstAttribute="centerY" secondItem="Fv7-jD-RMB" secondAttribute="centerY" id="6rj-dp-vYz"/>
@@ -261,8 +261,10 @@
                         <outlet property="avatarIndicator" destination="US0-jb-Em5" id="5W2-m6-opH"/>
                         <outlet property="cancelButtonItem" destination="oti-cg-b2g" id="ZOM-hq-8CY"/>
                         <outlet property="doneButtonItem" destination="tkr-gY-UDs" id="ihG-wR-5ye"/>
+                        <outlet property="imageHeightSnap" destination="PeI-Uj-2I1" id="nah-KG-oqO"/>
                         <outlet property="imageScrollView" destination="NTv-Pk-OOR" id="07O-OJ-abK"/>
                         <outlet property="imageView" destination="EEA-YT-5Bi" id="LE9-Zy-cw1"/>
+                        <outlet property="imageWidthSnap" destination="KMa-cv-Syc" id="a8f-ZV-yE4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GGd-qi-XLy" userLabel="First Responder" sceneMemberID="firstResponder"/>

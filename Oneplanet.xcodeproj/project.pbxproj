@@ -46,6 +46,7 @@
 		E06589C32270362300C9E4E6 /* GenericAppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06589C22270362300C9E4E6 /* GenericAppError.swift */; };
 		E06589C622705B4F00C9E4E6 /* PhotoGridCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06589C522705B4F00C9E4E6 /* PhotoGridCollectionViewController.swift */; };
 		E06589C8227060EC00C9E4E6 /* PhotoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06589C7227060EC00C9E4E6 /* PhotoList.swift */; };
+		E06589CA2270C1A500C9E4E6 /* UpdateClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06589C92270C1A500C9E4E6 /* UpdateClock.swift */; };
 		E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +107,7 @@
 		E06589C22270362300C9E4E6 /* GenericAppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericAppError.swift; sourceTree = "<group>"; };
 		E06589C522705B4F00C9E4E6 /* PhotoGridCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGridCollectionViewController.swift; sourceTree = "<group>"; };
 		E06589C7227060EC00C9E4E6 /* PhotoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoList.swift; sourceTree = "<group>"; };
+		E06589C92270C1A500C9E4E6 /* UpdateClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateClock.swift; sourceTree = "<group>"; };
 		E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryImagePickerViewController.swift; sourceTree = "<group>"; };
 		E606D7D88F63D6FCB0821922 /* Pods-OneplanetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneplanetTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneplanetTests/Pods-OneplanetTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FD31476F85B0E94B50970A99 /* Pods_OneplanetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneplanetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,6 +216,7 @@
 				E0190F54226EC82500C212D5 /* UserFlowRootViewController.swift */,
 				E0190F58226EDBD000C212D5 /* Supporting Flows */,
 				E03C32BA226DA45900C32FD7 /* Onboarding */,
+				E06589CB2270C21000C9E4E6 /* Utilities */,
 				E05BB266226D5D2E00721F20 /* LaunchScreen.storyboard */,
 				E05BB264226D5D2E00721F20 /* Assets.xcassets */,
 				E06261CB226D6EBE00A96F55 /* Supporting Files */,
@@ -276,6 +279,14 @@
 				E06589C7227060EC00C9E4E6 /* PhotoList.swift */,
 			);
 			path = "Image Picking";
+			sourceTree = "<group>";
+		};
+		E06589CB2270C21000C9E4E6 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				E06589C92270C1A500C9E4E6 /* UpdateClock.swift */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -488,6 +499,7 @@
 				E0190F57226EDBC900C212D5 /* CameraImagePickerViewController.swift in Sources */,
 				E03C32B0226D8E8F00C32FD7 /* NavigationBarStyle.swift in Sources */,
 				E0190F4F226DD06B00C212D5 /* Preferences.swift in Sources */,
+				E06589CA2270C1A500C9E4E6 /* UpdateClock.swift in Sources */,
 				E05BB25E226D5D2A00721F20 /* AppDelegate.swift in Sources */,
 				E03C329E226D772400C32FD7 /* Logger.swift in Sources */,
 				E03C32B3226D925100C32FD7 /* ServiceConstants.swift in Sources */,

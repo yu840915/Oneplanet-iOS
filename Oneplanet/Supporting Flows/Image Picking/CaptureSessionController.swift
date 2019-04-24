@@ -94,9 +94,7 @@ class CaptureSessionController {
         case .landscapeLeft: result = .landscapeRight
         case .landscapeRight: result = .landscapeLeft
         }
-        photoOutput.connections
-            .filter{$0.isVideoOrientationSupported}
-            .forEach{$0.videoOrientation = result}
+        photoOutput.connection(with: .video)!.videoOrientation = result
     }
 
 }

@@ -20,7 +20,7 @@ class CameraImagePickerViewController: UIViewController, DefaultInstanceFactory 
     private var eventRegistrations: [Any]?
     @IBOutlet weak var previewView: UIView!
     var onCancel: (()->())?
-    var onPickingImage: ((AVCapturePhoto)->())?
+    var onPickingImage: ((UIImage)->())?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,10 +80,27 @@ class CameraImagePickerViewController: UIViewController, DefaultInstanceFactory 
     
     private func handlePhotoCapture(_ photo: AVCapturePhoto?, error: Error?) {
         if let photo = photo {
-            onPickingImage?(photo)
+            processCapturedPhotoAndNotify(photo)
         } else if let error = error {
             showAlert(for: error)
         }
+    }
+    
+    private func processCapturedPhotoAndNotify(_ photo: AVCapturePhoto) {
+        guard let data = photo.fileDataRepresentation(),
+            let uiImg = UIImage(data: data),
+            let cgImg = uiImg.cgImage?.cropping(to: cropRect(for: uiImg)) else {
+            return
+        }
+        onPickingImage?(UIImage(cgImage: cgImg, scale: uiImg.scale, orientation: uiImg.imageOrientation))
+    }
+    
+    private func cropRect(for image: UIImage) -> CGRect {
+        let len = min(image.size.width, image.size.height)
+        let size = CGSize(width: len, height: len)
+        let x = (max(image.size.width, image.size.height) - len) / 2
+        return CGRect(origin: CGPoint(x: x, y: 0), size: size)
+
     }
     
     private func showAlert(for error: Error) {

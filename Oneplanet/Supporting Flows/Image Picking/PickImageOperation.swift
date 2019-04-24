@@ -77,7 +77,7 @@ class PickCameraImageOperation: PickImageOperation {
         let vc = nav.viewControllers.first as! CameraImagePickerViewController
         vc.captureSessionController = session
         vc.onPickingImage = {[weak self] photo in
-            self?.handlePickedPhoto(photo)
+            self?.handlePickedImage(photo)
         }
         vc.onCancel = {[weak self] in
             self?.handleUserCancel()
@@ -85,14 +85,9 @@ class PickCameraImageOperation: PickImageOperation {
         presenter.present(nav, animated: true, completion: nil)
     }
     
-    private func handlePickedPhoto(_ photo: AVCapturePhoto) {
+    private func handlePickedImage(_ image: UIImage) {
         dismissCameraFlow()
-        if let cg = photo.cgImageRepresentation()?.takeRetainedValue() {
-            finishPickingImage(UIImage(cgImage: cg))
-        } else {
-            assertionFailure("Cannot get CG image representation")
-            finish()
-        }
+        finishPickingImage(image)
     }
     
     private func handleUserCancel() {

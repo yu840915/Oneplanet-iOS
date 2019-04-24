@@ -42,7 +42,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1H8-bb-yDx" userLabel="View Finder View">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="csT-TX-sHY">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="csT-TX-sHY" userLabel="Preview View">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
@@ -127,6 +127,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="flashButton" destination="3gF-u4-Wkb" id="Okr-gx-Zoi"/>
+                        <outlet property="previewView" destination="csT-TX-sHY" id="Vvm-uL-zkv"/>
                         <outlet property="switchButton" destination="shO-qZ-E1q" id="gbJ-4y-zTJ"/>
                     </connections>
                 </viewController>

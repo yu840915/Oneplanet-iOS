@@ -14,6 +14,7 @@ class CameraImagePickerViewController: UIViewController {
     @IBOutlet weak var flashButton: UIButton!
     var captureSessionController: CaptureSessionController!
     private var captureRegistration: Any?
+    @IBOutlet weak var previewView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +23,19 @@ class CameraImagePickerViewController: UIViewController {
                 self?.handlePhotoCapture(photo, error: error)
             }
         })
+        setUpForPreview()
         updateViewsForCaptureSessionCapabilities()
         updateViewsForCaptureSessionStates()
+    }
+    
+    private func setUpForPreview() {
+        captureSessionController.previewLayer.connection?.videoOrientation = .portrait
+        previewView.layer.addSublayer(captureSessionController.previewLayer)
+        captureSessionController.previewLayer.bounds = previewView.bounds
+    }
+    
+    override func viewDidLayoutSubviews() {
+        captureSessionController.previewLayer.bounds = previewView.bounds
     }
     
     private func updateViewsForCaptureSessionCapabilities() {

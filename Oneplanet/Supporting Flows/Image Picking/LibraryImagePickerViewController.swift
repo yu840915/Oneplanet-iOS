@@ -21,11 +21,51 @@ class LibraryImagePickerViewController: UIViewController, DefaultInstanceFactory
     var onCancel: (()->())?
     var onPickingImage: ((UIImage)->())?
     var photoGridViewController: PhotoGridCollectionViewController!
+    var photoList: PhotoList = PhotoList()
+    private var selectedPhoto: PhotoListItem?
+    private var fetchImageOperation: FetchImageOperaion?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        if let item = photoList.first {
+            updateSelectedItemIfNeeded(item)
+        }
+    }
+    
+    private func updateSelectedItemIfNeeded(_ item: PhotoListItem) {
+        guard selectedPhoto !== item else {
+            return
+        }
+        selectedPhoto = item
+        fetchImageForSelectedItem()
+    }
+    
+    private func fetchImageForSelectedItem() {
+        guard let photo = selectedPhoto else {return}
+        guard fetchImageOperation?.asset != photo.asset else {
+            return
+        }
+        fetchImageOperation?.cancel()
+        let width = imageView.bounds.width * UIScreen.main.scale
+        let op = FetchImageOperaion(asset: photo.asset, targetSize: CGSize(width: width, height: width))
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didFetchImage()
+            }
+        }
+        fetchImageOperation = op
+        op.start()
+    }
+    
+    private func didFetchImage() {
+        guard let photo = selectedPhoto else {return}
+        guard let op = fetchImageOperation,
+            op.asset == photo.asset else {
+                fetchImageOperation = nil
+                return
+        }
+        fetchImageOperation = nil
+        imageView.image = op.image
     }
     
     @IBAction func done(_ sender: UIBarButtonItem) {
@@ -37,13 +77,14 @@ class LibraryImagePickerViewController: UIViewController, DefaultInstanceFactory
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? PhotoGridCollectionViewController {
             photoGridViewController = vc
+            vc.photoList = photoList
+            vc.itemSelectionHandler = {[weak self] item in
+                self?.updateSelectedItemIfNeeded(item)
+            }
         }
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
 
 }

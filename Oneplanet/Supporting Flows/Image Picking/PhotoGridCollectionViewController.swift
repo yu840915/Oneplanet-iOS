@@ -11,84 +11,114 @@ import UIKit
 private let reuseIdentifier = "cell"
 
 class PhotoGridCollectionViewController: UICollectionViewController {
-
+    var photoList: PhotoList!
+    private var updateClock: UpdateClock?
+    var itemSelectionHandler: ((PhotoListItem)->())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+        updateThumbnailSize()
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    private func updateThumbnailSize() {
+        let layout = collectionViewLayout as! UICollectionViewFlowLayout
+        let width = ((UIScreen.main.bounds.width - 3 * layout.minimumInteritemSpacing) / 4).rounded(.towardZero)
+        layout.itemSize = CGSize(width: width, height: width)
+        let pixelWidth = UIScreen.main.scale * width
+        photoList.preferredThumbnailSize = CGSize(width: pixelWidth, height: pixelWidth)
     }
-    */
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        updateClock = UpdateClock(preferredFrameRate: 10, onTick: {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.updateVisibleCells()
+            }
+        })
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        updateClock = nil
+    }
+    
+    private func updateVisibleCells() {
+        let indexPaths = collectionView.indexPathsForVisibleItems
+        for indexPath in indexPaths {
+            let cell = collectionView.cellForItem(at: indexPath) as! PhotoGridCell
+            if cell.imageView.image == nil {
+                cell.imageView.image = photoList[indexPath.row].thumbnail
+            }
+        }
+    }
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        return photoList.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
-    
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoGridCell
+        cell.imageView.image = photoList[indexPath.row].thumbnail
         return cell
     }
 
     // MARK: UICollectionViewDelegate
 
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
         return true
     }
-    */
 
-    /*
-    // Uncomment this method to specify if the specified item should be selected
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return true
     }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        itemSelectionHandler?(photoList[indexPath.row])
     }
-    */
-
 }
 
 class PhotoGridCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
+}
+
+class UpdateClock {
+    private var displayLink: CADisplayLink!
+    private var actionTarget: DisplayLinkActionTarget
+    
+    convenience init(preferredInterval interval: TimeInterval = 1, runloopMode mode: RunLoop.Mode = .common, onTick: @escaping ()->Void) {
+        self.init(preferredFrameRate: Int(1.0 / interval), runloopMode: mode, onTick: onTick)
+    }
+    
+    init(preferredFrameRate: Int, runloopMode mode: RunLoop.Mode = .common, onTick: @escaping ()->Void) {
+        actionTarget = DisplayLinkActionTarget(tickAction: onTick)
+        displayLink = CADisplayLink(target: actionTarget, selector: #selector(DisplayLinkActionTarget.triggerUIUpdate(sender:)))
+        displayLink.preferredFramesPerSecond = preferredFrameRate
+        displayLink.add(to: .main, forMode: mode)
+    }
+    
+    deinit {
+        displayLink.invalidate()
+    }
+    
+}
+
+fileprivate extension UpdateClock {
+    
+    class DisplayLinkActionTarget {
+        
+        let tickAction: ()->Void
+        
+        init(tickAction: @escaping ()->Void) {
+            self.tickAction = tickAction
+        }
+        
+        @objc func triggerUIUpdate(sender: Any) {
+            tickAction()
+        }
+        
+    }
+    
 }

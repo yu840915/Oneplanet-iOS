@@ -13,25 +13,39 @@ class CameraImagePickerViewController: UIViewController {
     @IBOutlet weak var switchButton: UIButton!
     @IBOutlet weak var flashButton: UIButton!
     var captureSessionController: CaptureSessionController!
-    private var captureRegistration: Any?
+    private var eventRegistrations: [Any]?
     @IBOutlet weak var previewView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        captureRegistration = captureSessionController.didCapturePhotoObservers.add({[weak self] (photo, error) in
-            OperationQueue.main.addOperation {
-                self?.handlePhotoCapture(photo, error: error)
-            }
-        })
+        registerEvents()
         setUpForPreview()
         updateViewsForCaptureSessionCapabilities()
         updateViewsForCaptureSessionStates()
+        updateOutputOrientation()
+    }
+    
+    private func registerEvents() {
+        var registrations = [Any]()
+        registrations.append(captureSessionController.didCapturePhotoObservers.add({[weak self] (photo, error) in
+            OperationQueue.main.addOperation {
+                self?.handlePhotoCapture(photo, error: error)
+            }
+        }))
+        registrations.append(NotificationCenter.default.addObserver(forName: UIDevice.orientationDidChangeNotification, object: nil, queue: .main, using: {[weak self] (_) in
+            self?.updateOutputOrientation()
+        }))
+        eventRegistrations = registrations
     }
     
     private func setUpForPreview() {
         captureSessionController.previewLayer.connection?.videoOrientation = .portrait
         previewView.layer.addSublayer(captureSessionController.previewLayer)
         captureSessionController.previewLayer.bounds = previewView.bounds
+    }
+    
+    private func updateOutputOrientation() {
+        captureSessionController.updateOutputOrientation(for: UIDevice.current.orientation)
     }
     
     override func viewDidLayoutSubviews() {

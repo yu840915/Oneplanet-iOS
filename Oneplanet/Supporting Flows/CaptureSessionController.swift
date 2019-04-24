@@ -84,6 +84,21 @@ class CaptureSessionController {
         captureOperation = nil
         didCapturePhotoObservers.invokeEach{$0(op.photo, op.error)}
     }
+    
+    func updateOutputOrientation(for orientation: UIDeviceOrientation) {
+        var result: AVCaptureVideoOrientation = .portrait
+        switch orientation {
+        case .faceDown, .faceUp, .unknown: return
+        case .portrait: result = .portrait
+        case .portraitUpsideDown: result = .portraitUpsideDown
+        case .landscapeLeft: result = .landscapeRight
+        case .landscapeRight: result = .landscapeLeft
+        }
+        photoOutput.connections
+            .filter{$0.isVideoOrientationSupported}
+            .forEach{$0.videoOrientation = result}
+    }
+
 }
 
 class CameraController {
@@ -143,5 +158,20 @@ class PrepareCaptureSessionOperation: Operation {
         session.canAddOutput(photoOutput)
         session.commitConfiguration()
         captureSessionController = CaptureSessionController(captureSession: session, photoOutput: photoOutput, cameraControllers: cameras)
+    }
+}
+
+class OutputOrientation {
+    private(set) var currentOrientaion: AVCaptureVideoOrientation = .portrait
+    
+    func updateVideoOrientation(for orientation: UIDeviceOrientation) -> AVCaptureVideoOrientation {
+        switch orientation {
+        case .faceDown, .faceUp, .unknown: break
+        case .portrait: currentOrientaion = .portrait
+        case .portraitUpsideDown: currentOrientaion = .portraitUpsideDown
+        case .landscapeLeft: currentOrientaion = .landscapeRight
+        case .landscapeRight: currentOrientaion = .landscapeLeft
+        }
+        return currentOrientaion
     }
 }

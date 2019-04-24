@@ -9,3 +9,5 @@
 "tl_cancel" = "Cancel";
 "tl_dismiss" = "Dismiss";
 "tl_done" = "Done";
+
+"errtl_cannot_capture_photo" = "Cannot Take Photo";

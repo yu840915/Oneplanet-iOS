@@ -39,6 +39,9 @@
 		E05BB273226D5D2F00721F20 /* OneplanetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BB272226D5D2F00721F20 /* OneplanetTests.swift */; };
 		E06261C8226D640D00A96F55 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E06261C7226D640D00A96F55 /* StoreKit.framework */; };
 		E06261CE226D6F2200A96F55 /* ModelBlocks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E06261CD226D6F2200A96F55 /* ModelBlocks.framework */; };
+		E06589BB227001F300C9E4E6 /* AskForAuthorizationOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06589BA227001F300C9E4E6 /* AskForAuthorizationOperation.swift */; };
+		E06589BD22700AEC00C9E4E6 /* CaptureSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06589BC22700AEC00C9E4E6 /* CaptureSessionController.swift */; };
+		E06589BF22701B9F00C9E4E6 /* CapturePhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06589BE22701B9F00C9E4E6 /* CapturePhotoOperation.swift */; };
 		E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +95,9 @@
 		E06261C6226D63E700A96F55 /* Oneplanet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Oneplanet.entitlements; sourceTree = "<group>"; };
 		E06261C7226D640D00A96F55 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		E06261CD226D6F2200A96F55 /* ModelBlocks.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ModelBlocks.framework; path = Carthage/Build/iOS/ModelBlocks.framework; sourceTree = SOURCE_ROOT; };
+		E06589BA227001F300C9E4E6 /* AskForAuthorizationOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskForAuthorizationOperation.swift; sourceTree = "<group>"; };
+		E06589BC22700AEC00C9E4E6 /* CaptureSessionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSessionController.swift; sourceTree = "<group>"; };
+		E06589BE22701B9F00C9E4E6 /* CapturePhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturePhotoOperation.swift; sourceTree = "<group>"; };
 		E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryImagePickerViewController.swift; sourceTree = "<group>"; };
 		E606D7D88F63D6FCB0821922 /* Pods-OneplanetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneplanetTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneplanetTests/Pods-OneplanetTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FD31476F85B0E94B50970A99 /* Pods_OneplanetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneplanetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +143,9 @@
 			children = (
 				E0190F59226EDD1100C212D5 /* SupportingFlows.storyboard */,
 				E0190F56226EDBC900C212D5 /* CameraImagePickerViewController.swift */,
+				E06589BC22700AEC00C9E4E6 /* CaptureSessionController.swift */,
+				E06589BE22701B9F00C9E4E6 /* CapturePhotoOperation.swift */,
+				E06589BA227001F300C9E4E6 /* AskForAuthorizationOperation.swift */,
 				E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */,
 			);
 			path = "Supporting Flows";
@@ -443,10 +452,13 @@
 				E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */,
 				E03C32AC226D872A00C32FD7 /* Localized.swift in Sources */,
 				E03C32B5226D969500C32FD7 /* ColorPalette .swift in Sources */,
+				E06589BF22701B9F00C9E4E6 /* CapturePhotoOperation.swift in Sources */,
 				E0190F53226DD62200C212D5 /* UserProgressChecklist.swift in Sources */,
 				E0190F55226EC82500C212D5 /* UserFlowRootViewController.swift in Sources */,
+				E06589BD22700AEC00C9E4E6 /* CaptureSessionController.swift in Sources */,
 				E0190F4B226DB55400C212D5 /* UIComponentFactories.swift in Sources */,
 				E05BB260226D5D2A00721F20 /* RootViewController.swift in Sources */,
+				E06589BB227001F300C9E4E6 /* AskForAuthorizationOperation.swift in Sources */,
 				E03C329A226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift in Sources */,
 				E03C32AE226D8E6800C32FD7 /* SharedFormatters.swift in Sources */,
 				E0190F47226DAA7300C212D5 /* LoginHomeViewController.swift in Sources */,

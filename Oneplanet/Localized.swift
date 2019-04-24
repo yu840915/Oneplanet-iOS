@@ -43,6 +43,10 @@ class LocalizedPhrase { //ph_
 }
 
 class LocalizedErrorsTitles {//errtl_
+    var cannotCapturePhoto: String {
+        return NSLocalizedString("errtl_cannot_capture_photo", comment: "")
+    }
+
 }
 
 class LocalizedErrors {//err_

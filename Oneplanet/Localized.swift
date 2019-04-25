@@ -28,6 +28,9 @@ class LocalizedTitles {//tl_
     var done: String {
         return NSLocalizedString("tl_done", comment: "")
     }
+    var allPhotos: String {
+        return NSLocalizedString("tl_all_photos", comment: "")
+    }
 }
 
 class LocalizedActivityMessages {//act_
@@ -43,7 +46,14 @@ class LocalizedPhrase { //ph_
 }
 
 class LocalizedErrorsTitles {//errtl_
+    var cannotCapturePhoto: String {
+        return NSLocalizedString("errtl_cannot_capture_photo", comment: "")
+    }
+
 }
 
 class LocalizedErrors {//err_
+    var noCameraAccess: String {
+        return NSLocalizedString("err_no_camera_access", comment: "")
+    }
 }

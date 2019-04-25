@@ -14,6 +14,9 @@ struct ServiceConstants {
     static var appVersionString: String {
         return Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
     }
+    static var bundleID: String {
+        return Bundle.main.bundleIdentifier!
+    }
 }
 
 struct ServiceURLs {

@@ -13,6 +13,6 @@ class BarButtonItemFactory {
     static let shared = BarButtonItemFactory()
     
     func makeTitlelessBack() -> UIBarButtonItem {
-        return UIBarButtonItem()
+        return UIBarButtonItem(image: UIImage(named: "ic_back_nor"), style: .plain, target: nil, action: nil)
     }
 }

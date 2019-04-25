@@ -16,9 +16,11 @@ class Localized {
     static let messages = LocalizedMessages()
     static let phrase = LocalizedPhrase()
     static let activity = LocalizedActivityMessages()
+    static let placeholder = LocalizedPlaceholder()
 }
 
 class LocalizedTitles {//tl_
+    fileprivate init() {}
     var cancel: String {
         return NSLocalizedString("tl_cancel", comment: "")
     }
@@ -28,24 +30,66 @@ class LocalizedTitles {//tl_
     var done: String {
         return NSLocalizedString("tl_done", comment: "")
     }
+    var skip: String {
+        return NSLocalizedString("tl_skip", comment: "")
+    }
     var allPhotos: String {
         return NSLocalizedString("tl_all_photos", comment: "")
+    }
+    var signUp: String {
+        return NSLocalizedString("tl_signup", comment: "")
+    }
+    var logIn: String {
+        return NSLocalizedString("tl_login", comment: "")
+    }
+    var title: String {
+        return NSLocalizedString("tl_title", comment: "")
+    }
+    var tos: String {
+        return NSLocalizedString("tl_tos", comment: "")
+    }
+    var pp: String {
+        return NSLocalizedString("tl_pp", comment: "")
+    }
+    var next: String {
+        return NSLocalizedString("tl_next", comment: "")
+    }
+}
+
+class LocalizedPlaceholder {//pl_
+    fileprivate init() {}
+    var email: String {
+        return NSLocalizedString("pl_email", comment: "")
     }
 }
 
 class LocalizedActivityMessages {//act_
+    fileprivate init() {}
 }
 
 class LocalizedWarnings {//warn_
+    fileprivate init() {}
 }
 
 class LocalizedMessages {//msg_
+    fileprivate init() {}
+    var loginPrompt: String {
+        return NSLocalizedString("msg_login_prompt", comment: "")
+    }
 }
 
 class LocalizedPhrase { //ph_
+    fileprivate init() {}
+    var geustLogin: String {
+        return NSLocalizedString("ph_guest_login", comment: "")
+    }
+    var or: String {
+        return NSLocalizedString("ph_or", comment: "")
+    }
 }
 
 class LocalizedErrorsTitles {//errtl_
+    fileprivate init() {}
     var cannotCapturePhoto: String {
         return NSLocalizedString("errtl_cannot_capture_photo", comment: "")
     }
@@ -53,6 +97,7 @@ class LocalizedErrorsTitles {//errtl_
 }
 
 class LocalizedErrors {//err_
+    fileprivate init() {}
     var noCameraAccess: String {
         return NSLocalizedString("err_no_camera_access", comment: "")
     }

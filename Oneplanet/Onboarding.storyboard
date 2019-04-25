@@ -216,6 +216,13 @@
                         <viewLayoutGuide key="safeArea" id="q33-PI-vbC"/>
                     </view>
                     <navigationItem key="navigationItem" id="nko-vK-iFD"/>
+                    <connections>
+                        <outlet property="guestLoginButton" destination="qCK-6p-yLj" id="sSe-ie-eVb"/>
+                        <outlet property="logInButton" destination="hxc-8Y-S3t" id="sa5-K9-FYH"/>
+                        <outlet property="loginPromptLabel" destination="Hh2-a6-3VL" id="oLb-RU-scm"/>
+                        <outlet property="signUpButton" destination="KFs-U8-0fE" id="1kx-wn-SEl"/>
+                        <outlet property="termsTextView" destination="ZOE-0s-Svs" id="jZL-aJ-eOA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QoN-lO-KC4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -10,6 +10,20 @@
 "tl_dismiss" = "Dismiss";
 "tl_done" = "Done";
 "tl_all_photos" = "All Photos";
+"tl_signup" = "Sign Up";
+"tl_login" = "Log In";
+"tl_title" = "Title";
+"tl_tos" = "Terms";
+"tl_pp" = "Privacy Policy";
+"tl_next" = "Next";
+"tl_skip" = "Skip";
+
+"pl_email" = "Email Address";
+
+"msg_login_prompt" = "Already have an account?";
+
+"ph_guest_login" = "Later";
+"ph_or" = "or";
 
 "err_no_camera_access" = "We need to access you camera";
 

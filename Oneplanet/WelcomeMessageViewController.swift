@@ -13,23 +13,34 @@ class WelcomeMessageViewController: UIViewController, AuthorizationFlowEntryPoin
     
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var skipButton: UIButton!
+    private var contentViewController: WelcomeMessageContentCollectionViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationBarStyle.translucent.configure(navigationController!.navigationBar)
         navigationController!.navigationBar.barStyle = .blackTranslucent
+        updatePageControl()
     }
     
-
+    private func updatePageControl() {
+        let shouldShow = contentViewController.imageReferences.count > 1
+        pageControl.isHidden = !shouldShow
+        if shouldShow {
+            pageControl.numberOfPages = contentViewController.imageReferences.count
+            pageControl.currentPage = contentViewController.currentIndex
+        }
+    }
     
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let vc = segue.destination as? WelcomeMessageContentCollectionViewController {
+            vc.currentIndexDidChange = {[weak self] in
+                self?.updatePageControl()
+            }
+            vc.imageReferences = [NativeImageReference(image: UIImage(named: "im_first1")!), NativeImageReference(image: UIImage(named: "im_first2")!), NativeImageReference(image: UIImage(named: "im_first3")!)]
+            contentViewController = vc
+        }
     }
-    */
 
 }

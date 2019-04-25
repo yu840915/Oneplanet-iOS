@@ -14,12 +14,10 @@ protocol DefaultInstanceFactory: AnyObject {
 }
 
 class RootViewController: UIViewController {
-    
     private var restoreUserSessionOperation: RestoreUserSessionOperation?
     @IBOutlet weak var containerView: UIView!
     private var userFlowRootController: UserFlowRootViewController?
     private var shouldAddConstraintsForUserFlow = false
-    private var pickingOP: PickImageOperation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,13 +29,7 @@ class RootViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let op = PickLibraryImageOperation(presenter: self)
-        op.completionBlock = {
-            debugPrint(self.pickingOP)
-        }
-        pickingOP = op
-        op.start()
-//        restoreUserSession()
+        restoreUserSession()
     }
     
     private func restoreUserSession() {
@@ -47,7 +39,9 @@ class RootViewController: UIViewController {
         let op = RestoreUserSessionOperation()
         restoreUserSessionOperation = op
         op.completionBlock = {[weak self] in
-            self?.handleSessionRestoration()
+            OperationQueue.main.addOperation {
+                self?.handleSessionRestoration()
+            }
         }
         OperationQueue.main.addOperation(op)
     }

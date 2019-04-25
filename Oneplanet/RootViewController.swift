@@ -31,7 +31,7 @@ class RootViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let op = PickCameraImageOperation(initialCameraPosition: .front, presenter: self)
+        let op = PickLibraryImageOperation(presenter: self)
         op.completionBlock = {
             debugPrint(self.pickingOP)
         }

@@ -28,6 +28,9 @@ class LocalizedTitles {//tl_
     var done: String {
         return NSLocalizedString("tl_done", comment: "")
     }
+    var allPhotos: String {
+        return NSLocalizedString("tl_all_photos", comment: "")
+    }
 }
 
 class LocalizedActivityMessages {//act_

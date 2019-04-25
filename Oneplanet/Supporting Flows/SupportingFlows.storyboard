@@ -244,12 +244,24 @@
                         <viewLayoutGuide key="safeArea" id="aLb-K4-3N6"/>
                     </view>
                     <navigationItem key="navigationItem" id="t3h-ay-4sQ">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="oti-cg-b2g">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="cancel:" destination="RHr-jD-uUZ" id="MpN-rW-ku0"/>
                             </connections>
                         </barButtonItem>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="j6X-tO-2K5" userLabel="Header Button">
+                            <rect key="frame" x="184" y="7" width="46" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                            <state key="normal" title="All Photos">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="showCollectionList:" destination="RHr-jD-uUZ" eventType="touchUpInside" id="RSF-gR-0Ty"/>
+                            </connections>
+                        </button>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="tkr-gY-UDs">
                             <color key="tintColor" name="button green"/>
                             <connections>
@@ -261,6 +273,7 @@
                         <outlet property="avatarIndicator" destination="US0-jb-Em5" id="5W2-m6-opH"/>
                         <outlet property="cancelButtonItem" destination="oti-cg-b2g" id="ZOM-hq-8CY"/>
                         <outlet property="doneButtonItem" destination="tkr-gY-UDs" id="ihG-wR-5ye"/>
+                        <outlet property="headerButton" destination="j6X-tO-2K5" id="FLE-78-EVF"/>
                         <outlet property="imageHeightSnap" destination="PeI-Uj-2I1" id="nah-KG-oqO"/>
                         <outlet property="imageScrollView" destination="NTv-Pk-OOR" id="07O-OJ-abK"/>
                         <outlet property="imageView" destination="EEA-YT-5Bi" id="LE9-Zy-cw1"/>

@@ -9,6 +9,7 @@
 "tl_cancel" = "Cancel";
 "tl_dismiss" = "Dismiss";
 "tl_done" = "Done";
+"tl_all_photos" = "All Photos";
 
 "err_no_camera_access" = "We need to access you camera";
 

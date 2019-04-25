@@ -18,6 +18,7 @@ class LibraryImagePickerViewController: UIViewController, DefaultInstanceFactory
     @IBOutlet weak var imageScrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var avatarIndicator: UIImageView!
+    @IBOutlet weak var headerButton: UIButton!
     var onCancel: (()->())?
     var onPickingImage: ((UIImage)->())?
     var photoGridViewController: PhotoGridCollectionViewController!
@@ -34,7 +35,19 @@ class LibraryImagePickerViewController: UIViewController, DefaultInstanceFactory
         if let item = photoList.first {
             updateSelectedItemIfNeeded(item)
         }
+        updateHeader()
         updateViewsForStates()
+    }
+    
+    private func updateHeader() {
+        let title = Localized.titles.allPhotos
+        let attrTitle = NSMutableAttributedString(string: title + " ", attributes: [.foregroundColor : UIColor.white, .font: UIFont.systemFont(ofSize: 17, weight: .semibold)])
+        let arrow = NSTextAttachment()
+        let img = #imageLiteral(resourceName: "ic_filterdown_nor")
+        arrow.image = img
+        arrow.bounds = CGRect(origin: CGPoint(x: 0, y: 2), size: CGSize(width: img.size.width, height: img.size.height))
+        attrTitle.append(NSAttributedString(attachment: arrow))
+        headerButton.setAttributedTitle(attrTitle, for: .normal)
     }
     
     private func updateSelectedItemIfNeeded(_ item: PhotoListItem) {
@@ -110,6 +123,9 @@ class LibraryImagePickerViewController: UIViewController, DefaultInstanceFactory
     @IBAction func done(_ sender: UIBarButtonItem) {
         guard let image = selectedImage, !imageScrollView.isDragging else { return }
         cropImageAndNotify(image)
+    }
+    
+    @IBAction func showCollectionList(_ sender: Any) {
     }
     
     private func cropImageAndNotify(_ image: UIImage) {

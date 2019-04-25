@@ -35,7 +35,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="im_bglogin" translatesAutoresizingMaskIntoConstraints="NO" id="BOL-Hc-1Qs">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="im_bgall" translatesAutoresizingMaskIntoConstraints="NO" id="BOL-Hc-1Qs">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -155,39 +155,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_bglogin" translatesAutoresizingMaskIntoConstraints="NO" id="ebB-c1-gia">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_bgall" translatesAutoresizingMaskIntoConstraints="NO" id="ebB-c1-gia">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_logotext" translatesAutoresizingMaskIntoConstraints="NO" id="JKi-h0-wD3">
-                                <rect key="frame" x="135.5" y="128" width="143" height="33"/>
+                                <rect key="frame" x="135.5" y="136" width="143" height="33"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="GPY-Wn-iWr">
-                                <rect key="frame" x="184" y="737.5" width="46" height="104.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="GPY-Wn-iWr">
+                                <rect key="frame" x="36" y="610" width="342" height="232"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KFs-U8-0fE">
-                                        <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KFs-U8-0fE" userLabel="Sign Up Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="342" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                        <state key="normal" title="Sign Up" backgroundImage="bt_biggreen_nor">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hh2-a6-3VL">
-                                        <rect key="frame" x="0.0" y="30" width="46" height="14.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hh2-a6-3VL" userLabel="Log In Label">
+                                        <rect key="frame" x="0.0" y="57" width="342" height="14.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" name="default text"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxc-8Y-S3t">
-                                        <rect key="frame" x="0.0" y="44.5" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxc-8Y-S3t" userLabel="Log In Button">
+                                        <rect key="frame" x="0.0" y="87.5" width="342" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                        <state key="normal" title="Log In" backgroundImage="bt_bigwhite_nor">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qCK-6p-yLj">
-                                        <rect key="frame" x="0.0" y="74.5" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qCK-6p-yLj" userLabel="Guest Button">
+                                        <rect key="frame" x="0.0" y="144.5" width="342" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                        <state key="normal" title="Later" backgroundImage="bt_bigwhite_nor">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                     </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="By login" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZOE-0s-Svs">
+                                        <rect key="frame" x="0.0" y="201.5" width="342" height="30.5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="JKi-h0-wD3" firstAttribute="top" secondItem="q33-PI-vbC" secondAttribute="top" constant="40" id="14D-Dw-Akv"/>
+                            <constraint firstItem="JKi-h0-wD3" firstAttribute="top" secondItem="q33-PI-vbC" secondAttribute="top" constant="48" id="14D-Dw-Akv"/>
                             <constraint firstItem="ebB-c1-gia" firstAttribute="centerX" secondItem="d5g-QK-rgD" secondAttribute="centerX" id="3hu-J1-eDN"/>
                             <constraint firstItem="ebB-c1-gia" firstAttribute="width" secondItem="d5g-QK-rgD" secondAttribute="width" id="6Qm-6l-YhS"/>
                             <constraint firstItem="GPY-Wn-iWr" firstAttribute="centerX" secondItem="q33-PI-vbC" secondAttribute="centerX" id="Dci-xw-B5N"/>
@@ -195,6 +211,7 @@
                             <constraint firstItem="ebB-c1-gia" firstAttribute="height" secondItem="d5g-QK-rgD" secondAttribute="height" id="OWP-Oa-COH"/>
                             <constraint firstItem="ebB-c1-gia" firstAttribute="centerY" secondItem="d5g-QK-rgD" secondAttribute="centerY" id="TuQ-xw-0pY"/>
                             <constraint firstItem="JKi-h0-wD3" firstAttribute="centerX" secondItem="q33-PI-vbC" secondAttribute="centerX" id="dzR-26-UsJ"/>
+                            <constraint firstItem="GPY-Wn-iWr" firstAttribute="leading" secondItem="q33-PI-vbC" secondAttribute="leading" constant="36" id="v1n-lA-ViC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="q33-PI-vbC"/>
                     </view>
@@ -212,7 +229,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_bglogin" translatesAutoresizingMaskIntoConstraints="NO" id="JkY-ob-eeE">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_bgall" translatesAutoresizingMaskIntoConstraints="NO" id="JkY-ob-eeE">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                         </subviews>
@@ -228,12 +245,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gn1-gb-H1q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1027" y="154"/>
+            <point key="canvasLocation" x="1301" y="155"/>
         </scene>
     </scenes>
     <resources>
+        <image name="bt_biggreen_nor" width="41" height="41"/>
+        <image name="bt_bigwhite_nor" width="41" height="41"/>
         <image name="bt_smallwirewhite_nor" width="29" height="28"/>
-        <image name="im_bglogin" width="375" height="812"/>
+        <image name="im_bgall" width="609" height="812"/>
         <image name="ui_logotext" width="143" height="33"/>
         <namedColor name="default text">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -189,7 +189,7 @@
                                                     <outlet property="delegate" destination="RHr-jD-uUZ" id="ctN-DK-i6A"/>
                                                 </connections>
                                             </scrollView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_avatar_frame" translatesAutoresizingMaskIntoConstraints="NO" id="US0-jb-Em5" userLabel="Avatar Indicator">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_myphotomask_nor" translatesAutoresizingMaskIntoConstraints="NO" id="US0-jb-Em5" userLabel="Avatar Indicator">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
                                             </imageView>
                                         </subviews>
@@ -209,7 +209,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ec-Fr-IIK">
                                         <rect key="frame" x="0.0" y="414" width="414" height="394"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_camera_nor" translatesAutoresizingMaskIntoConstraints="NO" id="Du7-pi-FLj">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_cameramaterial_nor" translatesAutoresizingMaskIntoConstraints="NO" id="Du7-pi-FLj">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="394"/>
                                             </imageView>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LXW-3G-Bwy">
@@ -252,7 +252,7 @@
                             </connections>
                         </barButtonItem>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="j6X-tO-2K5" userLabel="Header Button">
-                            <rect key="frame" x="184" y="7" width="46" height="30"/>
+                            <rect key="frame" x="166.5" y="5.5" width="81" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                             <state key="normal" title="All Photos">
@@ -339,8 +339,9 @@
         <image name="ic_cameraflash_nor" width="21" height="29"/>
         <image name="ic_cameraflash_tap" width="21" height="29"/>
         <image name="ic_camerarotation_nor" width="33" height="27"/>
-        <image name="im_avatar_frame" width="375" height="375"/>
         <image name="ui_camera_nor" width="375" height="349"/>
+        <image name="ui_cameramaterial_nor" width="375" height="375"/>
+        <image name="ui_myphotomask_nor" width="750" height="750"/>
         <namedColor name="button green">
             <color red="0.37254901960784315" green="0.82352941176470584" blue="0.80784313725490198" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

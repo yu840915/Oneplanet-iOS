@@ -1,6 +1,17 @@
 {
   "images" : [
     {
+      "resizing" : {
+        "mode" : "3-part-horizontal",
+        "center" : {
+          "mode" : "tile",
+          "width" : 1
+        },
+        "cap-insets" : {
+          "right" : 20,
+          "left" : 20
+        }
+      },
       "idiom" : "universal",
       "filename" : "bt_bigwirewhite_tap.pdf",
       "scale" : "1x"

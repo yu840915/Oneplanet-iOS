@@ -1,6 +1,17 @@
 {
   "images" : [
     {
+      "resizing" : {
+        "mode" : "3-part-horizontal",
+        "center" : {
+          "mode" : "tile",
+          "width" : 1
+        },
+        "cap-insets" : {
+          "right" : 20,
+          "left" : 20
+        }
+      },
       "idiom" : "universal",
       "filename" : "bt_bigwhite_nor.pdf",
       "scale" : "1x"

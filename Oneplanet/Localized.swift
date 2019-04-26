@@ -65,6 +65,9 @@ class LocalizedPlaceholder {//pl_
     var password: String {
         return NSLocalizedString("pl_password", comment: "")
     }
+    var nickname: String {
+        return NSLocalizedString("pl_nickname", comment: "")
+    }
 }
 
 class LocalizedActivityMessages {//act_
@@ -85,6 +88,9 @@ class LocalizedMessages {//msg_
     }
     var passwordRules: String {
         return NSLocalizedString("msg_password_rules", comment: "")
+    }
+    var addAvatarPrompt: String {
+        return NSLocalizedString("msg_add_avatar_prompt", comment: "")
     }
 }
 
@@ -116,6 +122,24 @@ class LocalizedPhrase { //ph_
     }
     var forgetPassword: String {
         return NSLocalizedString("ph_forget_password", comment: "")
+    }
+    var newUserGreeting: String {
+        return NSLocalizedString("ph_newuser_greeting", comment: "")
+    }
+    var addAvatar: String {
+        return NSLocalizedString("ph_add_avatar", comment: "")
+    }
+    var avatarAdded: String {
+        return NSLocalizedString("ph_avatar_added", comment: "")
+    }
+    var changeAvatar: String {
+        return NSLocalizedString("ph_change_avatar", comment: "")
+    }
+    var takePhoto: String {
+        return NSLocalizedString("ph_take_photo", comment: "")
+    }
+    var fromLibrary: String {
+        return NSLocalizedString("ph_from_library", comment: "")
     }
 }
 

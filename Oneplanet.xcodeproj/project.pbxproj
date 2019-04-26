@@ -53,6 +53,7 @@
 		E07276E322731334001239C0 /* EmailVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276E222731334001239C0 /* EmailVerificationViewController.swift */; };
 		E07276E52273459D001239C0 /* SignUpPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276E42273459D001239C0 /* SignUpPasswordViewController.swift */; };
 		E07276E722735511001239C0 /* LoginPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276E622735511001239C0 /* LoginPasswordViewController.swift */; };
+		E07276E92273633A001239C0 /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276E82273633A001239C0 /* CreateProfileViewController.swift */; };
 		E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -120,6 +121,7 @@
 		E07276E222731334001239C0 /* EmailVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationViewController.swift; sourceTree = "<group>"; };
 		E07276E42273459D001239C0 /* SignUpPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPasswordViewController.swift; sourceTree = "<group>"; };
 		E07276E622735511001239C0 /* LoginPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPasswordViewController.swift; sourceTree = "<group>"; };
+		E07276E82273633A001239C0 /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
 		E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryImagePickerViewController.swift; sourceTree = "<group>"; };
 		E606D7D88F63D6FCB0821922 /* Pods-OneplanetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneplanetTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneplanetTests/Pods-OneplanetTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FD31476F85B0E94B50970A99 /* Pods_OneplanetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneplanetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -196,6 +198,7 @@
 				E07276E0227307F5001239C0 /* LogInViewController.swift */,
 				E07276E622735511001239C0 /* LoginPasswordViewController.swift */,
 				E07276E222731334001239C0 /* EmailVerificationViewController.swift */,
+				E07276E82273633A001239C0 /* CreateProfileViewController.swift */,
 			);
 			name = Onboarding;
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 				E06589CA2270C1A500C9E4E6 /* UpdateClock.swift in Sources */,
 				E07276E1227307F5001239C0 /* LogInViewController.swift in Sources */,
 				E05BB25E226D5D2A00721F20 /* AppDelegate.swift in Sources */,
+				E07276E92273633A001239C0 /* CreateProfileViewController.swift in Sources */,
 				E03C329E226D772400C32FD7 /* Logger.swift in Sources */,
 				E07276DF2272D4BA001239C0 /* SignUpViewController.swift in Sources */,
 				E03C32B3226D925100C32FD7 /* ServiceConstants.swift in Sources */,

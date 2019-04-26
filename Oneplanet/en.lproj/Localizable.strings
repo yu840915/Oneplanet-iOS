@@ -21,13 +21,16 @@
 "pl_email" = "Email Address";
 
 "msg_login_prompt" = "Already have an account?";
+"msg_email_verification_instruction" = "The email has been sent. Please click the link in the email to complete the registration process.";
 
 "msgf_accept_tos" = "By signing up or login, you agree to our %@.";
+"msgf_resend_verification_email" = "You did not receive the email? %@.";
 
 "ph_guest_login" = "Later";
 "ph_or" = "or";
 "ph_social_login" = "Quick registration";
 "ph_email_signup" = "Or Sign Up With Email";
+"ph_resend_email" = "Resend the email";
 
 "err_no_camera_access" = "We need to access you camera";
 

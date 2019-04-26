@@ -77,6 +77,9 @@ class LocalizedMessages {//msg_
     var loginPrompt: String {
         return NSLocalizedString("msg_login_prompt", comment: "")
     }
+    var emailVerificationInstruction: String {
+        return NSLocalizedString("msg_email_verification_instruction", comment: "")
+    }
 }
 
 class LocalizedMessageFormats {//msgf_
@@ -84,7 +87,9 @@ class LocalizedMessageFormats {//msgf_
     var acceptTOS: String {
         return NSLocalizedString("msgf_accept_tos", comment: "")
     }
-
+    var resendVerificationEmail: String {
+        return NSLocalizedString("msgf_resend_verification_email", comment: "")
+    }
 }
 class LocalizedPhrase { //ph_
     fileprivate init() {}
@@ -99,6 +104,9 @@ class LocalizedPhrase { //ph_
     }
     var emailSignUp: String {
         return NSLocalizedString("ph_email_signup", comment: "")
+    }
+    var resendEmail: String {
+        return NSLocalizedString("ph_resend_email", comment: "")
     }
 }
 

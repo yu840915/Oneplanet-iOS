@@ -16,8 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         setUpLogger()
-        UINavigationBar.appearance().backIndicatorImage = UIImage(named: "ic_back_nor")
-        UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(named: "ic_back_nor")
+        DefaultStyleConfiguration.config()
         return true
     }
 
@@ -46,3 +45,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+class DefaultStyleConfiguration {
+    class func config() {
+        UINavigationBar.appearance().backIndicatorImage = UIImage(named: "ic_back_nor")
+        UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(named: "ic_back_nor")
+    }
+}

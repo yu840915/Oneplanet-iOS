@@ -62,6 +62,9 @@ class LocalizedPlaceholder {//pl_
     var email: String {
         return NSLocalizedString("pl_email", comment: "")
     }
+    var password: String {
+        return NSLocalizedString("pl_password", comment: "")
+    }
 }
 
 class LocalizedActivityMessages {//act_
@@ -79,6 +82,9 @@ class LocalizedMessages {//msg_
     }
     var emailVerificationInstruction: String {
         return NSLocalizedString("msg_email_verification_instruction", comment: "")
+    }
+    var passwordRules: String {
+        return NSLocalizedString("msg_password_rules", comment: "")
     }
 }
 
@@ -107,6 +113,9 @@ class LocalizedPhrase { //ph_
     }
     var resendEmail: String {
         return NSLocalizedString("ph_resend_email", comment: "")
+    }
+    var forgetPassword: String {
+        return NSLocalizedString("ph_forget_password", comment: "")
     }
 }
 

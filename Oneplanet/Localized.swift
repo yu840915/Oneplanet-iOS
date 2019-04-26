@@ -14,6 +14,7 @@ class Localized {
     static let errors = LocalizedErrors()
     static let errorTitles = LocalizedErrorsTitles()
     static let messages = LocalizedMessages()
+    static let messageFormats = LocalizedMessageFormats()
     static let phrase = LocalizedPhrase()
     static let activity = LocalizedActivityMessages()
     static let placeholder = LocalizedPlaceholder()
@@ -78,6 +79,13 @@ class LocalizedMessages {//msg_
     }
 }
 
+class LocalizedMessageFormats {//msgf_
+    fileprivate init() {}
+    var acceptTOS: String {
+        return NSLocalizedString("msgf_accept_tos", comment: "")
+    }
+
+}
 class LocalizedPhrase { //ph_
     fileprivate init() {}
     var geustLogin: String {

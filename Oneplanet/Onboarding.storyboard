@@ -197,6 +197,9 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="mx8-ii-qdX" id="8qv-Et-n6W"/>
+                                        </connections>
                                     </textView>
                                 </subviews>
                             </stackView>

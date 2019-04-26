@@ -39,17 +39,36 @@ class LoginHomeViewController: UIViewController, AuthorizationFlowEntryPoint {
     }
     
     private func prepareTermsTextView() {
+        let text = String(format: Localized.messageFormats.acceptTOS, Localized.titles.tos)
+        let tosRange = (text as NSString).range(of: Localized.titles.tos)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        let attrStr = NSMutableAttributedString(string: text, attributes: [.foregroundColor : ColorPalette.whithText, .paragraphStyle: paragraphStyle])
+        attrStr.addAttributes([.link : "https://www.apple.com"], range: tosRange)
+        termsTextView.attributedText = attrStr
+        termsTextView.linkTextAttributes = [
+            .foregroundColor : ColorPalette.whithText,
+            .underlineStyle: NSUnderlineStyle.single.rawValue,
+            .font: UIFont.systemFont(ofSize: 12, weight: .semibold)]
+    }
+    
+    fileprivate func showWebPage(for url: URL) {
         
     }
     
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
     }
-    */
 
+}
+
+extension LoginHomeViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        OperationQueue.main.addOperation {
+            self.showWebPage(for: URL)
+        }
+        return false
+    }
 }

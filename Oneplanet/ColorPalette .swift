@@ -12,5 +12,6 @@ struct ColorPalette {
     private init(){}
     static let alertRed = UIColor(named: "alert red")!
     static let buttonGreen = UIColor(named: "button green")!
-    static let whithText = UIColor.white
+    static let defaultText = UIColor(named: "default text")!
+    static let defaultPlaceholder = UIColor(named: "default placeholder")!
 }

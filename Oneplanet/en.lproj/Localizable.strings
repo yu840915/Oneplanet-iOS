@@ -26,6 +26,8 @@
 
 "ph_guest_login" = "Later";
 "ph_or" = "or";
+"ph_social_login" = "Quick registration";
+"ph_email_signup" = "Or Sign Up With Email";
 
 "err_no_camera_access" = "We need to access you camera";
 

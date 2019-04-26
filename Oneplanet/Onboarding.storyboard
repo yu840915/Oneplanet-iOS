@@ -18,6 +18,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jGq-7T-kg7">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <connections>
                         <segue destination="mx8-ii-qdX" kind="relationship" relationship="rootViewController" id="tsN-kf-rSQ"/>
@@ -138,6 +139,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="O9d-Lz-EGZ">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <connections>
                         <segue destination="zih-dm-v0x" kind="relationship" relationship="rootViewController" id="JKU-2n-Yfl"/>
@@ -170,6 +172,9 @@
                                         <state key="normal" title="Sign Up" backgroundImage="bt_biggreen_nor">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="eEN-ri-BUE" kind="show" id="kFE-LS-eBY"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hh2-a6-3VL" userLabel="Log In Label">
                                         <rect key="frame" x="0.0" y="57" width="342" height="14.5"/>
@@ -231,10 +236,10 @@
             </objects>
             <point key="canvasLocation" x="170" y="155"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign Up View Controller-->
         <scene sceneID="T86-IZ-gA7">
             <objects>
-                <viewController id="eEN-ri-BUE" sceneMemberID="viewController">
+                <viewController id="eEN-ri-BUE" customClass="SignUpViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V8m-Gy-69f">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -242,16 +247,136 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_bgall" translatesAutoresizingMaskIntoConstraints="NO" id="JkY-ob-eeE">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="QYM-Bf-NoL">
+                                <rect key="frame" x="36" y="124" width="342" height="230"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GfW-Je-4D7">
+                                        <rect key="frame" x="0.0" y="0.0" width="342" height="68.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick registration" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0SD-4F-Glf" userLabel="Social Login Label">
+                                                <rect key="frame" x="120.5" y="0.0" width="101" height="14.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" name="default text"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hYW-0B-eD7">
+                                                <rect key="frame" x="89" y="24.5" width="164" height="44"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9B-mE-afC" userLabel="Facebook Button">
+                                                        <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                                        <state key="normal" image="ic_facebook_nor"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FdQ-bK-JZO" userLabel="Twitter Button">
+                                                        <rect key="frame" x="60" y="0.0" width="44" height="44"/>
+                                                        <state key="normal" image="ic_twitter_nor"/>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4s-51-9hf" userLabel="WeChat Button">
+                                                        <rect key="frame" x="120" y="0.0" width="44" height="44"/>
+                                                        <state key="normal" image="ic_wechat_nor"/>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="x1Z-WF-vio">
+                                        <rect key="frame" x="0.0" y="94.5" width="342" height="68.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick registration" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Y6-lC-qlb" userLabel="Email Login Label">
+                                                <rect key="frame" x="0.0" y="0.0" width="342" height="14.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" name="default text"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="6wr-Kl-ocA">
+                                                <rect key="frame" x="0.0" y="24.5" width="342" height="44"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fmc-oh-zZm" customClass="InputFieldView" customModule="Oneplanet" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_fieldwhite_nor" translatesAutoresizingMaskIntoConstraints="NO" id="Yy2-Cl-jri" userLabel="Normal Background">
+                                                                <rect key="frame" x="0.0" y="1.5" width="342" height="41"/>
+                                                            </imageView>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ui_fieldwhite_fai" translatesAutoresizingMaskIntoConstraints="NO" id="aNH-cj-YcL" userLabel="Rejecting Background">
+                                                                <rect key="frame" x="0.0" y="1" width="342" height="41"/>
+                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            </imageView>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="RWG-0t-MU4">
+                                                                <rect key="frame" x="16" y="0.0" width="310" height="44"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="Yy2-Cl-jri" firstAttribute="width" secondItem="fmc-oh-zZm" secondAttribute="width" id="6VO-4H-qjV"/>
+                                                            <constraint firstAttribute="height" constant="44" id="NMi-qZ-hAf"/>
+                                                            <constraint firstItem="RWG-0t-MU4" firstAttribute="centerX" secondItem="fmc-oh-zZm" secondAttribute="centerX" id="Nla-cL-izC"/>
+                                                            <constraint firstItem="RWG-0t-MU4" firstAttribute="leading" secondItem="fmc-oh-zZm" secondAttribute="leading" constant="16" id="TFv-QG-jqY"/>
+                                                            <constraint firstItem="Yy2-Cl-jri" firstAttribute="centerX" secondItem="fmc-oh-zZm" secondAttribute="centerX" id="Tus-eI-4fI"/>
+                                                            <constraint firstItem="RWG-0t-MU4" firstAttribute="centerY" secondItem="fmc-oh-zZm" secondAttribute="centerY" id="azh-iA-9lY"/>
+                                                            <constraint firstItem="RWG-0t-MU4" firstAttribute="height" secondItem="fmc-oh-zZm" secondAttribute="height" id="qOi-ow-UMD"/>
+                                                            <constraint firstItem="Yy2-Cl-jri" firstAttribute="centerY" secondItem="fmc-oh-zZm" secondAttribute="centerY" id="uoh-r6-pQY"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <outlet property="normalBackgroundImage" destination="Yy2-Cl-jri" id="Sye-xp-Zwn"/>
+                                                            <outlet property="rejectingBackgroundImage" destination="aNH-cj-YcL" id="99M-ok-l9S"/>
+                                                            <outlet property="textField" destination="RWG-0t-MU4" id="kAR-1D-9bi"/>
+                                                        </connections>
+                                                    </view>
+                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jsf-0N-wcC" userLabel="Error View">
+                                                        <rect key="frame" x="0.0" y="0.0" width="342" height="0.0"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fKU-1x-cbk" userLabel="Error Label">
+                                                                <rect key="frame" x="16" y="0.0" width="310" height="0.0"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <color key="textColor" name="alert red"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstItem="fKU-1x-cbk" firstAttribute="height" secondItem="jsf-0N-wcC" secondAttribute="height" id="d7i-4m-emE"/>
+                                                            <constraint firstItem="fKU-1x-cbk" firstAttribute="leading" secondItem="jsf-0N-wcC" secondAttribute="leading" constant="16" id="h4n-E2-1YO"/>
+                                                            <constraint firstAttribute="trailing" secondItem="fKU-1x-cbk" secondAttribute="trailing" constant="16" id="itd-yJ-uM2"/>
+                                                            <constraint firstItem="fKU-1x-cbk" firstAttribute="centerY" secondItem="jsf-0N-wcC" secondAttribute="centerY" id="pLB-Bd-Vj2"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="joi-ar-0z5" userLabel="Sign Up Button">
+                                        <rect key="frame" x="0.0" y="189" width="342" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                        <state key="normal" title="Sign Up" backgroundImage="bt_biggreen_nor">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="QYM-Bf-NoL" firstAttribute="leading" secondItem="Tm8-CA-aKB" secondAttribute="leading" constant="36" id="3vj-ja-Qge"/>
                             <constraint firstItem="JkY-ob-eeE" firstAttribute="centerX" secondItem="V8m-Gy-69f" secondAttribute="centerX" id="5jv-FF-Sbx"/>
                             <constraint firstItem="JkY-ob-eeE" firstAttribute="height" secondItem="V8m-Gy-69f" secondAttribute="height" id="Gyf-st-oTd"/>
+                            <constraint firstItem="QYM-Bf-NoL" firstAttribute="top" secondItem="Tm8-CA-aKB" secondAttribute="top" constant="36" id="JDw-RR-yhl"/>
                             <constraint firstItem="JkY-ob-eeE" firstAttribute="centerY" secondItem="V8m-Gy-69f" secondAttribute="centerY" id="MuD-Fh-0j3"/>
+                            <constraint firstItem="QYM-Bf-NoL" firstAttribute="centerX" secondItem="Tm8-CA-aKB" secondAttribute="centerX" id="Z41-0e-mSt"/>
                             <constraint firstItem="JkY-ob-eeE" firstAttribute="width" secondItem="V8m-Gy-69f" secondAttribute="width" id="hp4-ir-cNj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Tm8-CA-aKB"/>
                     </view>
+                    <connections>
+                        <outlet property="emailFieldView" destination="fmc-oh-zZm" id="OwB-hj-upB"/>
+                        <outlet property="emailLoginLabel" destination="4Y6-lC-qlb" id="SCB-DB-2i4"/>
+                        <outlet property="inputErrorLabel" destination="fKU-1x-cbk" id="CzI-Kw-A0N"/>
+                        <outlet property="inputErrorView" destination="jsf-0N-wcC" id="rdL-Xc-3iM"/>
+                        <outlet property="signUpButton" destination="joi-ar-0z5" id="hfh-Qk-XOO"/>
+                        <outlet property="socialLoginLabel" destination="0SD-4F-Glf" id="68Z-TY-CmW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gn1-gb-H1q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -262,13 +387,21 @@
         <image name="bt_biggreen_nor" width="41" height="41"/>
         <image name="bt_bigwhite_nor" width="41" height="41"/>
         <image name="bt_smallwirewhite_nor" width="29" height="28"/>
+        <image name="ic_facebook_nor" width="44" height="44"/>
+        <image name="ic_twitter_nor" width="44" height="44"/>
+        <image name="ic_wechat_nor" width="44" height="44"/>
         <image name="im_bgall" width="609" height="812"/>
+        <image name="ui_fieldwhite_fai" width="35" height="41"/>
+        <image name="ui_fieldwhite_nor" width="35" height="41"/>
         <image name="ui_logotext" width="143" height="33"/>
+        <namedColor name="alert red">
+            <color red="0.90196078431372551" green="0.0" blue="0.070588235294117646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="default text">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hIs-qp-m5a"/>
+        <segue reference="tsN-kf-rSQ"/>
     </inferredMetricsTieBreakers>
 </document>

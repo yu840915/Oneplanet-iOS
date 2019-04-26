@@ -94,6 +94,12 @@ class LocalizedPhrase { //ph_
     var or: String {
         return NSLocalizedString("ph_or", comment: "")
     }
+    var socialLogin: String {
+        return NSLocalizedString("ph_social_login", comment: "")
+    }
+    var emailSignUp: String {
+        return NSLocalizedString("ph_email_signup", comment: "")
+    }
 }
 
 class LocalizedErrorsTitles {//errtl_

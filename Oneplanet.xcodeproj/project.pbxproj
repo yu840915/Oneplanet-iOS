@@ -48,6 +48,7 @@
 		E06589C8227060EC00C9E4E6 /* PhotoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06589C7227060EC00C9E4E6 /* PhotoList.swift */; };
 		E06589CA2270C1A500C9E4E6 /* UpdateClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06589C92270C1A500C9E4E6 /* UpdateClock.swift */; };
 		E06589CD2271ADFD00C9E4E6 /* WelcomeMessageContentCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06589CC2271ADFD00C9E4E6 /* WelcomeMessageContentCollectionViewController.swift */; };
+		E07276DF2272D4BA001239C0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276DE2272D4BA001239C0 /* SignUpViewController.swift */; };
 		E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +111,7 @@
 		E06589C7227060EC00C9E4E6 /* PhotoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoList.swift; sourceTree = "<group>"; };
 		E06589C92270C1A500C9E4E6 /* UpdateClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateClock.swift; sourceTree = "<group>"; };
 		E06589CC2271ADFD00C9E4E6 /* WelcomeMessageContentCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeMessageContentCollectionViewController.swift; sourceTree = "<group>"; };
+		E07276DE2272D4BA001239C0 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryImagePickerViewController.swift; sourceTree = "<group>"; };
 		E606D7D88F63D6FCB0821922 /* Pods-OneplanetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneplanetTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneplanetTests/Pods-OneplanetTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FD31476F85B0E94B50970A99 /* Pods_OneplanetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneplanetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,9 +180,10 @@
 			isa = PBXGroup;
 			children = (
 				E03C32B8226DA44A00C32FD7 /* Onboarding.storyboard */,
-				E0190F46226DAA7300C212D5 /* LoginHomeViewController.swift */,
 				E0190F48226DB0E000C212D5 /* WelcomeMessageViewController.swift */,
 				E06589CC2271ADFD00C9E4E6 /* WelcomeMessageContentCollectionViewController.swift */,
+				E0190F46226DAA7300C212D5 /* LoginHomeViewController.swift */,
+				E07276DE2272D4BA001239C0 /* SignUpViewController.swift */,
 			);
 			name = Onboarding;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				E06589CA2270C1A500C9E4E6 /* UpdateClock.swift in Sources */,
 				E05BB25E226D5D2A00721F20 /* AppDelegate.swift in Sources */,
 				E03C329E226D772400C32FD7 /* Logger.swift in Sources */,
+				E07276DF2272D4BA001239C0 /* SignUpViewController.swift in Sources */,
 				E03C32B3226D925100C32FD7 /* ServiceConstants.swift in Sources */,
 				E06589C622705B4F00C9E4E6 /* PhotoGridCollectionViewController.swift in Sources */,
 				E0190F4D226DCCFB00C212D5 /* UserSession.swift in Sources */,

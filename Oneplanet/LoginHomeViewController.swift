@@ -27,6 +27,7 @@ class LoginHomeViewController: UIViewController, AuthorizationFlowEntryPoint {
         NavigationBarStyle.translucent.configure(navigationController!.navigationBar)
         navigationController!.navigationBar.barStyle = .blackTranslucent
         navigationItem.hidesBackButton = true
+        navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
         localizeTitles()
         prepareTermsTextView()
     }
@@ -43,11 +44,11 @@ class LoginHomeViewController: UIViewController, AuthorizationFlowEntryPoint {
         let tosRange = (text as NSString).range(of: Localized.titles.tos)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
-        let attrStr = NSMutableAttributedString(string: text, attributes: [.foregroundColor : ColorPalette.whithText, .paragraphStyle: paragraphStyle])
+        let attrStr = NSMutableAttributedString(string: text, attributes: [.foregroundColor : ColorPalette.defaultText, .paragraphStyle: paragraphStyle])
         attrStr.addAttributes([.link : "https://www.apple.com"], range: tosRange)
         termsTextView.attributedText = attrStr
         termsTextView.linkTextAttributes = [
-            .foregroundColor : ColorPalette.whithText,
+            .foregroundColor : ColorPalette.defaultText,
             .underlineStyle: NSUnderlineStyle.single.rawValue,
             .font: UIFont.systemFont(ofSize: 12, weight: .semibold)]
     }

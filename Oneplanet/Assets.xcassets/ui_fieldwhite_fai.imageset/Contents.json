@@ -1,6 +1,17 @@
 {
   "images" : [
     {
+      "resizing" : {
+        "mode" : "3-part-horizontal",
+        "center" : {
+          "mode" : "tile",
+          "width" : 1
+        },
+        "cap-insets" : {
+          "right" : 17,
+          "left" : 17
+        }
+      },
       "idiom" : "universal",
       "filename" : "ui_fieldwhite_fai.pdf",
       "scale" : "1x"

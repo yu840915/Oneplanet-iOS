@@ -49,8 +49,10 @@ class WelcomeMessageContentCollectionViewController: UICollectionViewController 
         let size = flowLayout.itemSize
         let expectedSize = CGSize(width: UIScreen.main.bounds.width, height: view.bounds.height)
         if size != expectedSize {
-            flowLayout.itemSize = expectedSize
-            flowLayout.invalidateLayout()
+            OperationQueue.main.addOperation {
+                flowLayout.itemSize = expectedSize
+                flowLayout.invalidateLayout()
+            }
         }
     }
     

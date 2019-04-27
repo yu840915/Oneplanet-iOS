@@ -149,6 +149,14 @@
             </objects>
             <point key="canvasLocation" x="-949" y="872"/>
         </scene>
+        <!--WebViewEntry-->
+        <scene sceneID="XyM-WZ-guk">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SupportingFlows" referencedIdentifier="WebViewEntry" id="P9D-i1-6PR" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jYk-AR-G9K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1106" y="-1099"/>
+        </scene>
         <!--Login Home View Controller-->
         <scene sceneID="Mfi-6V-MYF">
             <objects>
@@ -233,6 +241,7 @@
                         <outlet property="loginPromptLabel" destination="Hh2-a6-3VL" id="oLb-RU-scm"/>
                         <outlet property="signUpButton" destination="KFs-U8-0fE" id="1kx-wn-SEl"/>
                         <outlet property="termsTextView" destination="ZOE-0s-Svs" id="jZL-aJ-eOA"/>
+                        <segue destination="P9D-i1-6PR" kind="presentation" identifier="showTerms" id="CSo-ej-kXS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QoN-lO-KC4" userLabel="First Responder" sceneMemberID="firstResponder"/>

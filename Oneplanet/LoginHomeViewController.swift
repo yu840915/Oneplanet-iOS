@@ -45,7 +45,7 @@ class LoginHomeViewController: UIViewController, AuthorizationFlowEntryPoint {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
         let attrStr = NSMutableAttributedString(string: text, attributes: [.foregroundColor : ColorPalette.defaultText, .paragraphStyle: paragraphStyle])
-        attrStr.addAttributes([.link : "https://www.apple.com"], range: tosRange)
+        attrStr.addAttributes([.link : "https://www.google.com"], range: tosRange)
         termsTextView.attributedText = attrStr
         termsTextView.linkTextAttributes = [
             .foregroundColor : ColorPalette.defaultText,
@@ -53,14 +53,19 @@ class LoginHomeViewController: UIViewController, AuthorizationFlowEntryPoint {
             .font: UIFont.systemFont(ofSize: 12, weight: .semibold)]
     }
     
-    fileprivate func showWebPage(for url: URL) {
-        
+    fileprivate func showTermsPage(with url: URL) {
+        performSegue(withIdentifier: SegueID.showTerms, sender: URLRequest(url: url))
     }
     
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if let nav = segue.destination as? UINavigationController,
+            let vc = nav.viewControllers.first as? WebViewController {
+            NavigationBarStyle.darkGrey.configure(nav.navigationBar)
+            vc.request = sender as? URLRequest
+            vc.title = Localized.titles.tos
+        }
     }
 
 }
@@ -68,8 +73,14 @@ class LoginHomeViewController: UIViewController, AuthorizationFlowEntryPoint {
 extension LoginHomeViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         OperationQueue.main.addOperation {
-            self.showWebPage(for: URL)
+            self.showTermsPage(with: URL)
         }
         return false
+    }
+}
+
+extension LoginHomeViewController {
+    struct SegueID {
+        static let showTerms = "showTerms"
     }
 }

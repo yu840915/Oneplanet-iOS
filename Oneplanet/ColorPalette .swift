@@ -14,4 +14,5 @@ struct ColorPalette {
     static let buttonGreen = UIColor(named: "button green")!
     static let defaultText = UIColor(named: "default text")!
     static let defaultPlaceholder = UIColor(named: "default placeholder")!
+    static let greyBar = #colorLiteral(red: 0.09803921569, green: 0.09803921569, blue: 0.09803921569, alpha: 1)
 }

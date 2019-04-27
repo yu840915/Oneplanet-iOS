@@ -29,6 +29,7 @@ class LibraryImagePickerViewController: UIViewController, DefaultInstanceFactory
     @IBOutlet var imageWidthSnap: NSLayoutConstraint!
     @IBOutlet var imageHeightSnap: NSLayoutConstraint!
     private var imageAspectRatio: NSLayoutConstraint?
+    private var renderContext: CIContext!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,7 @@ class LibraryImagePickerViewController: UIViewController, DefaultInstanceFactory
         }
         updateHeader()
         updateViewsForStates()
+        renderContext = CIContext(options: nil)
     }
     
     private func updateHeader() {
@@ -130,10 +132,12 @@ class LibraryImagePickerViewController: UIViewController, DefaultInstanceFactory
     }
     
     private func cropImageAndNotify(_ image: UIImage) {
-        guard let ciImg = CIImage(image: image)?.cropped(to: cropRect(for: image)) else {
+        let rect = cropRect(for: image)
+        guard let ciImg = CIImage(image: image),
+            let cgImg = renderContext.createCGImage(ciImg, from: rect) else {
             return
         }
-        let result = UIImage(ciImage: ciImg)
+        let result = UIImage(cgImage: cgImg)
         onPickingImage?(result)
     }
     
@@ -143,7 +147,6 @@ class LibraryImagePickerViewController: UIViewController, DefaultInstanceFactory
         var origin = imageScrollView.contentOffset
         origin.y = imageScrollView.contentSize.height - origin.y - size.height
         return CGRect(x: origin.x * multiplier, y: origin.y * multiplier, width: size.width * multiplier, height: size.height * multiplier)
-
     }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
@@ -161,7 +164,6 @@ class LibraryImagePickerViewController: UIViewController, DefaultInstanceFactory
             }
         }
     }
-
 }
 
 extension LibraryImagePickerViewController: UIScrollViewDelegate {

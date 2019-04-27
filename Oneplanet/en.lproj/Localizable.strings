@@ -42,8 +42,9 @@
 "ph_change_avatar" = "Change Profile Photo";
 "ph_take_photo" = "Take Photo";
 "ph_from_library" = "Choose from Library";
-
+"ph_open_settings" = "Open Settings";
 
 "err_no_camera_access" = "We need to access you camera";
 
 "errtl_cannot_capture_photo" = "Cannot Take Photo";
+"errtl_cannot_pick_avatar" = "Cannot Get Profile Image";

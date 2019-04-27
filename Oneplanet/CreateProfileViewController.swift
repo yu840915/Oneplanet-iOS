@@ -21,12 +21,16 @@ class CreateProfileViewController: UIViewController {
     @IBOutlet weak var addAvatarPromptLabel: UILabel!
     
     @IBOutlet weak var changeAvatarView: UIStackView!
+    private var pickImageOperation: PickImageOperation?
+    var profileDraft: ProfileDraft = ProfileDraft()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
         avatarImageView.layer.cornerRadius = 40.0
+        avatarImageView.layer.borderColor = UIColor.white.cgColor
         localizeTitles()
+        updateViewsForDraft()
     }
     
     private func localizeTitles() {
@@ -38,6 +42,23 @@ class CreateProfileViewController: UIViewController {
         avatarAddedLabel.text = Localized.phrase.avatarAdded
         nextButton.setTitle(Localized.titles.next, for: .normal)
     }
+    
+    private func updateViewsForDraft() {
+        let hasAvatar = profileDraft.avatar != nil
+        if let avatar = profileDraft.avatar {
+            avatarImageView.image = avatar
+        }
+        if hasAvatar {
+            addAvatarView.isHidden = true
+            changeAvatarView.isHidden = false
+            avatarImageView.layer.borderWidth = 1.0
+        } else {
+            addAvatarView.isHidden = false
+            changeAvatarView.isHidden = true
+            avatarImageView.layer.borderWidth = 0.0
+        }
+    }
+    
 
     @IBAction func startImagePickingFlow(_ sender: UIButton) {
         showPickerSelectionSheet()
@@ -45,13 +66,57 @@ class CreateProfileViewController: UIViewController {
     
     private func showPickerSelectionSheet() {
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        sheet.addAction(UIAlertAction(title: Localized.phrase.takePhoto, style: .default, handler: { (_) in
-            
+        sheet.addAction(UIAlertAction(title: Localized.phrase.takePhoto, style: .default, handler: {[weak self] (_) in
+            self?.showCameraPicker()
         }))
-        sheet.addAction(UIAlertAction(title: Localized.phrase.fromLibrary, style: .default, handler: { (_) in
-            
+        sheet.addAction(UIAlertAction(title: Localized.phrase.fromLibrary, style: .default, handler: { [weak self] (_) in
+            self?.showLibraryPicker()
         }))
         sheet.addAction(UIAlertAction(title: Localized.titles.cancel, style: .cancel, handler: nil))
         present(sheet, animated: true, completion: nil)
     }
+    
+    private func showCameraPicker() {
+        showPicker(with: PickCameraImageOperation(initialCameraPosition: .front, presenter: self))
+    }
+    
+    private func showLibraryPicker() {
+        showPicker(with: PickLibraryImageOperation(presenter: self))
+    }
+    
+    private func showPicker(with operation: PickImageOperation) {
+        operation.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didPickImage()
+            }
+        }
+        pickImageOperation = operation
+        operation.start()
+    }
+    
+    private func didPickImage() {
+        let op = pickImageOperation!
+        pickImageOperation = nil
+        if let image = op.image {
+            profileDraft.avatar = image
+            updateViewsForDraft()
+        } else if let error = op.error {
+            handlePickImageFailure(with: error)
+        }
+    }
+    
+    private func handlePickImageFailure(with error: Error) {
+        let alert = UIAlertController(title: Localized.errorTitles.cannotPickAvatar, message: error.localizedDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Localized.titles.dismiss, style: .cancel, handler: nil))
+        if error is MissingInputPermissionError {
+            alert.addAction(UIAlertAction(title: Localized.phrase.openSettings, style: .default, handler: {(_) in
+                UIApplication.shared.open(ServiceURLs.appSettings, options: [:], completionHandler: nil)
+            }))
+        }
+        present(alert, animated: true, completion: nil)
+    }
+}
+
+class ProfileDraft {
+    var avatar: UIImage?
 }

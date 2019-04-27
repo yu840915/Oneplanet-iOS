@@ -141,6 +141,9 @@ class LocalizedPhrase { //ph_
     var fromLibrary: String {
         return NSLocalizedString("ph_from_library", comment: "")
     }
+    var openSettings: String {
+        return NSLocalizedString("ph_open_settings", comment: "")
+    }
 }
 
 class LocalizedErrorsTitles {//errtl_
@@ -148,7 +151,9 @@ class LocalizedErrorsTitles {//errtl_
     var cannotCapturePhoto: String {
         return NSLocalizedString("errtl_cannot_capture_photo", comment: "")
     }
-
+    var cannotPickAvatar: String {
+        return NSLocalizedString("errtl_cannot_pick_avatar", comment: "")
+    }
 }
 
 class LocalizedErrors {//err_

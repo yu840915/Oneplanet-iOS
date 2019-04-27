@@ -18,6 +18,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="yOA-9T-K7l">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="default text"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <connections>
@@ -122,7 +123,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="C9y-FH-8yx">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="9q7-Hh-mTI">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="cancel:" destination="WnI-oe-gMb" id="5XV-J5-LZm"/>
                             </connections>
@@ -146,6 +146,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="eZq-Dt-ycB">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="default text"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <connections>
@@ -189,7 +190,7 @@
                                                     <outlet property="delegate" destination="RHr-jD-uUZ" id="ctN-DK-i6A"/>
                                                 </connections>
                                             </scrollView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_avatar_frame" translatesAutoresizingMaskIntoConstraints="NO" id="US0-jb-Em5" userLabel="Avatar Indicator">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_myphotomask_nor" translatesAutoresizingMaskIntoConstraints="NO" id="US0-jb-Em5" userLabel="Avatar Indicator">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
                                             </imageView>
                                         </subviews>
@@ -209,7 +210,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ec-Fr-IIK">
                                         <rect key="frame" x="0.0" y="414" width="414" height="394"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_camera_nor" translatesAutoresizingMaskIntoConstraints="NO" id="Du7-pi-FLj">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_cameramaterial_nor" translatesAutoresizingMaskIntoConstraints="NO" id="Du7-pi-FLj">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="394"/>
                                             </imageView>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LXW-3G-Bwy">
@@ -246,13 +247,12 @@
                     <navigationItem key="navigationItem" id="t3h-ay-4sQ">
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="oti-cg-b2g">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="cancel:" destination="RHr-jD-uUZ" id="MpN-rW-ku0"/>
                             </connections>
                         </barButtonItem>
-                        <button key="titleView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="j6X-tO-2K5" userLabel="Header Button">
-                            <rect key="frame" x="184" y="7" width="46" height="30"/>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="j6X-tO-2K5" userLabel="Header Button">
+                            <rect key="frame" x="166.5" y="5.5" width="81" height="33"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                             <state key="normal" title="All Photos">
@@ -332,6 +332,47 @@
             </objects>
             <point key="canvasLocation" x="321.73913043478262" y="1344.6428571428571"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="5Lr-OJ-8Rp">
+            <objects>
+                <navigationController storyboardIdentifier="WebViewEntry" id="2b4-B6-UKI" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ARJ-Da-2rC">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="dch-UP-rSw" kind="relationship" relationship="rootViewController" id="ClS-cQ-coK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LvL-uz-eNC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-517" y="1908"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="vL4-CU-RXg">
+            <objects>
+                <viewController id="dch-UP-rSw" customClass="WebViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dRF-NQ-ZjQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="rNw-Yx-3eM"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Fmt-lp-qcc">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="GnI-5Y-hey">
+                            <connections>
+                                <action selector="exit:" destination="dch-UP-rSw" id="NZ9-El-Upz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="exitButtonItem" destination="GnI-5Y-hey" id="fg2-Db-cZJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dEk-ST-5P6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="330" y="1910"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bt_camera_nor" width="80" height="80"/>
@@ -339,10 +380,14 @@
         <image name="ic_cameraflash_nor" width="21" height="29"/>
         <image name="ic_cameraflash_tap" width="21" height="29"/>
         <image name="ic_camerarotation_nor" width="33" height="27"/>
-        <image name="im_avatar_frame" width="375" height="375"/>
         <image name="ui_camera_nor" width="375" height="349"/>
+        <image name="ui_cameramaterial_nor" width="375" height="375"/>
+        <image name="ui_myphotomask_nor" width="750" height="750"/>
         <namedColor name="button green">
             <color red="0.37254901960784315" green="0.82352941176470584" blue="0.80784313725490198" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="default text">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

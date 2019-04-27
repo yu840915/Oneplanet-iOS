@@ -10,7 +10,41 @@
 "tl_dismiss" = "Dismiss";
 "tl_done" = "Done";
 "tl_all_photos" = "All Photos";
+"tl_signup" = "Sign Up";
+"tl_login" = "Log In";
+"tl_title" = "Title";
+"tl_tos" = "Terms";
+"tl_pp" = "Privacy Policy";
+"tl_next" = "Next";
+"tl_skip" = "Skip";
+
+"pl_email" = "Email Address";
+"pl_password" = "Password";
+"pl_nickname" = "Nickname";
+
+"msg_login_prompt" = "Already have an account?";
+"msg_email_verification_instruction" = "The email has been sent. Please click the link in the email to complete the registration process.";
+"msg_password_rules" = "6 to 12 alphanumeric characters";
+"msg_add_avatar_prompt" = "Add a profile photo so your friends know it’s you";
+
+"msgf_accept_tos" = "By signing up or login, you agree to our %@.";
+"msgf_resend_verification_email" = "You did not receive the email? %@.";
+
+"ph_guest_login" = "Later";
+"ph_or" = "or";
+"ph_social_login" = "Quick registration";
+"ph_email_signup" = "Or Sign Up With Email";
+"ph_resend_email" = "Resend the email";
+"ph_forget_password" = "Forget password?";
+"ph_newuser_greeting" = "Welcome to Oneplanet";
+"ph_add_avatar" = "Add Profile Photo";
+"ph_avatar_added" = "Profile Photo Added";
+"ph_change_avatar" = "Change Profile Photo";
+"ph_take_photo" = "Take Photo";
+"ph_from_library" = "Choose from Library";
+"ph_open_settings" = "Open Settings";
 
 "err_no_camera_access" = "We need to access you camera";
 
 "errtl_cannot_capture_photo" = "Cannot Take Photo";
+"errtl_cannot_pick_avatar" = "Cannot Get Profile Image";

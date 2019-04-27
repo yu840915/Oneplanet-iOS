@@ -17,6 +17,7 @@ class WelcomeMessageViewController: UIViewController, AuthorizationFlowEntryPoin
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        skipButton.setTitle(Localized.titles.skip, for: .normal)
         NavigationBarStyle.translucent.configure(navigationController!.navigationBar)
         navigationController!.navigationBar.barStyle = .blackTranslucent
         updatePageControl()

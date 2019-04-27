@@ -18,7 +18,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_bglogin" translatesAutoresizingMaskIntoConstraints="NO" id="nxk-uq-AfY">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_bgall" translatesAutoresizingMaskIntoConstraints="NO" id="nxk-uq-AfY">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M89-Us-3Ai" userLabel="Container View">
@@ -81,6 +81,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="im_bglogin" width="375" height="812"/>
+        <image name="im_bgall" width="609" height="812"/>
     </resources>
 </document>

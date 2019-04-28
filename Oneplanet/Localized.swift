@@ -161,4 +161,7 @@ class LocalizedErrors {//err_
     var noCameraAccess: String {
         return NSLocalizedString("err_no_camera_access", comment: "")
     }
+    var noLibraryAccess: String {
+        return NSLocalizedString("err_no_library_access", comment: "")
+    }
 }

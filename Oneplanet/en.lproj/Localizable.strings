@@ -44,7 +44,8 @@
 "ph_from_library" = "Choose from Library";
 "ph_open_settings" = "Open Settings";
 
-"err_no_camera_access" = "We need to access you camera";
+"err_no_camera_access" = "We need to access your camera";
+"err_no_library_access" = "We need to access your photo library";
 
 "errtl_cannot_capture_photo" = "Cannot Take Photo";
 "errtl_cannot_pick_avatar" = "Cannot Get Profile Image";

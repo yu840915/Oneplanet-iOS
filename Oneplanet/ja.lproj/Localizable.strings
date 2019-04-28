@@ -1,0 +1,51 @@
+/* 
+  Localizable.strings
+  Oneplanet
+
+  Created by 立宣于 on 2019/4/22.
+  Copyright © 2019 何一品居. All rights reserved.
+*/
+
+"tl_cancel" = "キャンセル";
+"tl_dismiss" = "閉じる";
+"tl_done" = "完成";
+"tl_all_photos" = "すべての写真";
+"tl_signup" = "新規登録";
+"tl_login" = "ログイン";
+"tl_title" = "タイトル";
+"tl_tos" = "利用規約";
+"tl_pp" = "Privacy Policy";
+"tl_next" = "次へ";
+"tl_skip" = "スキップ";
+
+"pl_email" = "メールアドレス";
+"pl_password" = "パスワード";
+"pl_nickname" = "Nickname";
+
+"msg_login_prompt" = "すでにアカウントをお持ちですか？";
+"msg_email_verification_instruction" = "電子メールに送信しております。 電子メール中のリンクをクリックして登録手続きを完了してください。";
+"msg_password_rules" = "6 to 12 alphanumeric characters";
+"msg_add_avatar_prompt" = "友達があなただとわかるようにプロフィール写真を登録してください。";
+
+"msgf_accept_tos" = "アカウントを作成することによって、%@に同意することになります。";
+"msgf_resend_verification_email" = "電子メールがみつかりませんか？%@.";
+
+"ph_guest_login" = "Later";
+"ph_or" = "または";
+"ph_social_login" = "クイック登録";
+"ph_email_signup" = "メールアドレス登録";
+"ph_resend_email" = "メールの再送を要求。";
+"ph_forget_password" = "Forget password?";
+"ph_newuser_greeting" = "Oneplanet へようこそ";
+"ph_add_avatar" = "プロフィール写真を追加する";
+"ph_avatar_added" = "プロフィール写真を変更しました";
+"ph_change_avatar" = "写真を変更する";
+"ph_take_photo" = "Take Photo";
+"ph_from_library" = "Choose from Library";
+"ph_open_settings" = "Open Settings";
+
+"err_no_camera_access" = "We need to access you camera";
+"err_no_library_access" = "We need to access your photo library";
+
+"errtl_cannot_capture_photo" = "Cannot Take Photo";
+"errtl_cannot_pick_avatar" = "Cannot Get Profile Image";

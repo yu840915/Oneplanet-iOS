@@ -1,0 +1,51 @@
+/*
+ Localizable.strings
+ Oneplanet
+ 
+ Created by 立宣于 on 2019/4/22.
+ Copyright © 2019 何一品居. All rights reserved.
+ */
+
+"tl_cancel" = "取消";
+"tl_dismiss" = "关闭";
+"tl_done" = "完成";
+"tl_all_photos" = "所有照片";
+"tl_signup" = "注册";
+"tl_login" = "登入";
+"tl_title" = "标题";
+"tl_tos" = "条款";
+"tl_pp" = "Privacy Policy";
+"tl_next" = "下一步";
+"tl_skip" = "略过";
+
+"pl_email" = "电子邮件地址";
+"pl_password" = "密码";
+"pl_nickname" = "昵称";
+
+"msg_login_prompt" = "已经有帐号？";
+"msg_email_verification_instruction" = "电子邮件已发送。请单击电子邮件中的链接以完成注册过程。";
+"msg_password_rules" = "请填入六到十二码英文或数字";
+"msg_add_avatar_prompt" = "添加个人资料照片，以便你的朋友知道这就是你。";
+
+"msgf_accept_tos" = "注册或登录即表示你同意我们的%@";
+"msgf_resend_verification_email" = "你没有收到电子邮件？%@";
+
+"ph_guest_login" = "访客进入";
+"ph_or" = "或";
+"ph_social_login" = "快速注册";
+"ph_email_signup" = "或使用电子邮件注册";
+"ph_resend_email" = "重新发送电子邮件";
+"ph_forget_password" = "忘记密码？";
+"ph_newuser_greeting" = "欢迎来到Oneplanet";
+"ph_add_avatar" = "添加个人资料照片";
+"ph_avatar_added" = "已新增大头贴照";
+"ph_change_avatar" = "更换个人照片";
+"ph_take_photo" = "拍照";
+"ph_from_library" = "从相簿中选取";
+"ph_open_settings" = "开启\"设定\"";
+
+"err_no_camera_access" = "We need to access you camera";
+"err_no_library_access" = "We need to access your photo library";
+
+"errtl_cannot_capture_photo" = "无法拍照";
+"errtl_cannot_pick_avatar" = "无法取得大头照";

@@ -59,6 +59,8 @@
 		E07276F62276C305001239C0 /* FirebaseMessagingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276F52276C305001239C0 /* FirebaseMessagingSession.swift */; };
 		E07276F82276D0DC001239C0 /* RequestUserNotificationAuthorizationOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276F72276D0DC001239C0 /* RequestUserNotificationAuthorizationOperation.swift */; };
 		E07276FA22773EC7001239C0 /* JLRoutes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E07276F922773EC6001239C0 /* JLRoutes.framework */; };
+		E07276FD2277424E001239C0 /* URLRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276FC2277424E001239C0 /* URLRouter.swift */; };
+		E07276FF227743D7001239C0 /* URLRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276FE227743D7001239C0 /* URLRouterTests.swift */; };
 		E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -138,6 +140,8 @@
 		E07276F52276C305001239C0 /* FirebaseMessagingSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseMessagingSession.swift; sourceTree = "<group>"; };
 		E07276F72276D0DC001239C0 /* RequestUserNotificationAuthorizationOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestUserNotificationAuthorizationOperation.swift; sourceTree = "<group>"; };
 		E07276F922773EC6001239C0 /* JLRoutes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JLRoutes.framework; path = Carthage/Build/iOS/JLRoutes.framework; sourceTree = SOURCE_ROOT; };
+		E07276FC2277424E001239C0 /* URLRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRouter.swift; sourceTree = "<group>"; };
+		E07276FE227743D7001239C0 /* URLRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRouterTests.swift; sourceTree = "<group>"; };
 		E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryImagePickerViewController.swift; sourceTree = "<group>"; };
 		E606D7D88F63D6FCB0821922 /* Pods-OneplanetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneplanetTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneplanetTests/Pods-OneplanetTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FD31476F85B0E94B50970A99 /* Pods_OneplanetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneplanetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -246,10 +250,10 @@
 			children = (
 				E06261C6226D63E700A96F55 /* Oneplanet.entitlements */,
 				E05BB25D226D5D2A00721F20 /* AppDelegate.swift */,
+				E07276FC2277424E001239C0 /* URLRouter.swift */,
 				E03C329D226D772400C32FD7 /* Logger.swift */,
 				E03C3299226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift */,
-				E07276F52276C305001239C0 /* FirebaseMessagingSession.swift */,
-				E07276F72276D0DC001239C0 /* RequestUserNotificationAuthorizationOperation.swift */,
+				E07276FB22773F54001239C0 /* Server Push Message */,
 				E03C32B1226D902F00C32FD7 /* Shared Configurations */,
 				E05BB25F226D5D2A00721F20 /* RootViewController.swift */,
 				E0190F4C226DCCFB00C212D5 /* UserSession.swift */,
@@ -271,6 +275,7 @@
 			children = (
 				E05BB272226D5D2F00721F20 /* OneplanetTests.swift */,
 				E0190F50226DD1E200C212D5 /* ChecklistItemTests.swift */,
+				E07276FE227743D7001239C0 /* URLRouterTests.swift */,
 				E05BB274226D5D2F00721F20 /* Info.plist */,
 			);
 			path = OneplanetTests;
@@ -330,6 +335,15 @@
 				E06589C92270C1A500C9E4E6 /* UpdateClock.swift */,
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		E07276FB22773F54001239C0 /* Server Push Message */ = {
+			isa = PBXGroup;
+			children = (
+				E07276F52276C305001239C0 /* FirebaseMessagingSession.swift */,
+				E07276F72276D0DC001239C0 /* RequestUserNotificationAuthorizationOperation.swift */,
+			);
+			name = "Server Push Message";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -557,6 +571,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E07276FD2277424E001239C0 /* URLRouter.swift in Sources */,
 				E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */,
 				E03C32AC226D872A00C32FD7 /* Localized.swift in Sources */,
 				E03C32B5226D969500C32FD7 /* ColorPalette .swift in Sources */,
@@ -600,6 +615,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E07276FF227743D7001239C0 /* URLRouterTests.swift in Sources */,
 				E05BB273226D5D2F00721F20 /* OneplanetTests.swift in Sources */,
 				E0190F51226DD1E200C212D5 /* ChecklistItemTests.swift in Sources */,
 			);

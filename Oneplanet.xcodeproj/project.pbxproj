@@ -58,6 +58,7 @@
 		E07276F32276AA85001239C0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E07276F22276AA84001239C0 /* GoogleService-Info.plist */; };
 		E07276F62276C305001239C0 /* FirebaseMessagingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276F52276C305001239C0 /* FirebaseMessagingSession.swift */; };
 		E07276F82276D0DC001239C0 /* RequestUserNotificationAuthorizationOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276F72276D0DC001239C0 /* RequestUserNotificationAuthorizationOperation.swift */; };
+		E07276FA22773EC7001239C0 /* JLRoutes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E07276F922773EC6001239C0 /* JLRoutes.framework */; };
 		E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -136,6 +137,7 @@
 		E07276F22276AA84001239C0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E07276F52276C305001239C0 /* FirebaseMessagingSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseMessagingSession.swift; sourceTree = "<group>"; };
 		E07276F72276D0DC001239C0 /* RequestUserNotificationAuthorizationOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestUserNotificationAuthorizationOperation.swift; sourceTree = "<group>"; };
+		E07276F922773EC6001239C0 /* JLRoutes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JLRoutes.framework; path = Carthage/Build/iOS/JLRoutes.framework; sourceTree = SOURCE_ROOT; };
 		E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryImagePickerViewController.swift; sourceTree = "<group>"; };
 		E606D7D88F63D6FCB0821922 /* Pods-OneplanetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneplanetTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneplanetTests/Pods-OneplanetTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FD31476F85B0E94B50970A99 /* Pods_OneplanetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneplanetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E07276FA22773EC7001239C0 /* JLRoutes.framework in Frameworks */,
 				E06261CE226D6F2200A96F55 /* ModelBlocks.framework in Frameworks */,
 				E03C32B7226DA39700C32FD7 /* SwiftGif.framework in Frameworks */,
 				E03C329C226D75F400C32FD7 /* SwiftyBeaver.framework in Frameworks */,
@@ -298,6 +301,7 @@
 		E06261CC226D6EF900A96F55 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E07276F922773EC6001239C0 /* JLRoutes.framework */,
 				E03C32B6226DA39700C32FD7 /* SwiftGif.framework */,
 				E03C329B226D75F400C32FD7 /* SwiftyBeaver.framework */,
 				E06261CD226D6F2200A96F55 /* ModelBlocks.framework */,
@@ -500,6 +504,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/ModelBlocks.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyBeaver.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftGif.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/JLRoutes.framework",
 			);
 			name = "Copy Carthage Dependencies";
 			outputPaths = (

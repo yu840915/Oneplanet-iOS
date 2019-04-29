@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseDynamicLinks
 import UserNotifications
+import JLRoutes
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

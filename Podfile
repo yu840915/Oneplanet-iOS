@@ -9,6 +9,8 @@ target 'Oneplanet' do
   pod 'Firebase/Core', '~> 5.17.0'
   pod 'Crashlytics', '~> 3.12.0'
   pod 'Firebase/Messaging'
+  pod 'Firebase/DynamicLinks'
+  pod 'Firebase/RemoteConfig'
 
   target 'OneplanetTests' do
     inherit! :search_paths

@@ -26,6 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         notificationDelegate = delegate
         UNUserNotificationCenter.current().delegate = delegate
         application.registerForRemoteNotifications()
+        if let url = launchOptions?[.url] as? URL {
+            router.handle(url)
+        }
         return true
     }
     
@@ -46,15 +49,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity,
                      restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-        let handled = DynamicLinks.dynamicLinks().handleUniversalLink(userActivity.webpageURL!) { (dynamiclink, error) in
-            
+        guard let pageUrl = userActivity.webpageURL else {
+            return false
         }
-        
+        let handled = DynamicLinks.dynamicLinks().handleUniversalLink(pageUrl) { (dynamiclink, error) in
+            if let url = dynamiclink?.url {
+                router.handle(url)
+            }
+        }
         return handled
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         completionHandler(.newData)
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        return router.handle(url)
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

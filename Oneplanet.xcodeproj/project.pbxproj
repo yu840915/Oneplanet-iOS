@@ -56,6 +56,8 @@
 		E07276E92273633A001239C0 /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276E82273633A001239C0 /* CreateProfileViewController.swift */; };
 		E07276EB2274B515001239C0 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276EA2274B515001239C0 /* WebViewController.swift */; };
 		E07276F32276AA85001239C0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E07276F22276AA84001239C0 /* GoogleService-Info.plist */; };
+		E07276F62276C305001239C0 /* FirebaseMessagingSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276F52276C305001239C0 /* FirebaseMessagingSession.swift */; };
+		E07276F82276D0DC001239C0 /* RequestUserNotificationAuthorizationOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276F72276D0DC001239C0 /* RequestUserNotificationAuthorizationOperation.swift */; };
 		E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -132,6 +134,8 @@
 		E07276F02276002A001239C0 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E07276F12276002A001239C0 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E07276F22276AA84001239C0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E07276F52276C305001239C0 /* FirebaseMessagingSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseMessagingSession.swift; sourceTree = "<group>"; };
+		E07276F72276D0DC001239C0 /* RequestUserNotificationAuthorizationOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestUserNotificationAuthorizationOperation.swift; sourceTree = "<group>"; };
 		E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryImagePickerViewController.swift; sourceTree = "<group>"; };
 		E606D7D88F63D6FCB0821922 /* Pods-OneplanetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneplanetTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneplanetTests/Pods-OneplanetTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FD31476F85B0E94B50970A99 /* Pods_OneplanetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneplanetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -241,6 +245,8 @@
 				E05BB25D226D5D2A00721F20 /* AppDelegate.swift */,
 				E03C329D226D772400C32FD7 /* Logger.swift */,
 				E03C3299226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift */,
+				E07276F52276C305001239C0 /* FirebaseMessagingSession.swift */,
+				E07276F72276D0DC001239C0 /* RequestUserNotificationAuthorizationOperation.swift */,
 				E03C32B1226D902F00C32FD7 /* Shared Configurations */,
 				E05BB25F226D5D2A00721F20 /* RootViewController.swift */,
 				E0190F4C226DCCFB00C212D5 /* UserSession.swift */,
@@ -558,6 +564,7 @@
 				E06589BB227001F300C9E4E6 /* AskForAuthorizationOperation.swift in Sources */,
 				E03C329A226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift in Sources */,
 				E03C32AE226D8E6800C32FD7 /* SharedFormatters.swift in Sources */,
+				E07276F82276D0DC001239C0 /* RequestUserNotificationAuthorizationOperation.swift in Sources */,
 				E06589C12270333100C9E4E6 /* PickImageOperation.swift in Sources */,
 				E0190F47226DAA7300C212D5 /* LoginHomeViewController.swift in Sources */,
 				E07276E52273459D001239C0 /* SignUpPasswordViewController.swift in Sources */,
@@ -568,6 +575,7 @@
 				E06589CA2270C1A500C9E4E6 /* UpdateClock.swift in Sources */,
 				E07276E1227307F5001239C0 /* LogInViewController.swift in Sources */,
 				E05BB25E226D5D2A00721F20 /* AppDelegate.swift in Sources */,
+				E07276F62276C305001239C0 /* FirebaseMessagingSession.swift in Sources */,
 				E07276E92273633A001239C0 /* CreateProfileViewController.swift in Sources */,
 				E03C329E226D772400C32FD7 /* Logger.swift in Sources */,
 				E07276DF2272D4BA001239C0 /* SignUpViewController.swift in Sources */,

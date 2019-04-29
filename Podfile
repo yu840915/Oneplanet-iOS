@@ -6,6 +6,7 @@ target 'Oneplanet' do
   use_frameworks!
 
   pod 'Alamofire', '~> 4.7'
+  pod 'Firebase/Core'
 
   target 'OneplanetTests' do
     inherit! :search_paths

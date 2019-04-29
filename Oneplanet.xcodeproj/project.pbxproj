@@ -55,6 +55,7 @@
 		E07276E722735511001239C0 /* LoginPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276E622735511001239C0 /* LoginPasswordViewController.swift */; };
 		E07276E92273633A001239C0 /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276E82273633A001239C0 /* CreateProfileViewController.swift */; };
 		E07276EB2274B515001239C0 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276EA2274B515001239C0 /* WebViewController.swift */; };
+		E07276F32276AA85001239C0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E07276F22276AA84001239C0 /* GoogleService-Info.plist */; };
 		E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -130,6 +131,7 @@
 		E07276EF2276001B001239C0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		E07276F02276002A001239C0 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E07276F12276002A001239C0 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E07276F22276AA84001239C0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryImagePickerViewController.swift; sourceTree = "<group>"; };
 		E606D7D88F63D6FCB0821922 /* Pods-OneplanetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneplanetTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneplanetTests/Pods-OneplanetTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FD31476F85B0E94B50970A99 /* Pods_OneplanetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneplanetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -280,6 +282,7 @@
 			children = (
 				E03C32AB226D872A00C32FD7 /* Localized.swift */,
 				E05BB269226D5D2E00721F20 /* Info.plist */,
+				E07276F22276AA84001239C0 /* GoogleService-Info.plist */,
 				E03C32A5226D866200C32FD7 /* Localizable.strings */,
 				E03C32A8226D866500C32FD7 /* InfoPlist.strings */,
 			);
@@ -416,6 +419,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E05BB268226D5D2E00721F20 /* LaunchScreen.storyboard in Resources */,
+				E07276F32276AA85001239C0 /* GoogleService-Info.plist in Resources */,
 				E03C32A3226D866200C32FD7 /* Localizable.strings in Resources */,
 				E05BB265226D5D2E00721F20 /* Assets.xcassets in Resources */,
 				E03C32B9226DA44A00C32FD7 /* Onboarding.storyboard in Resources */,
@@ -461,10 +465,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Oneplanet/Pods-Oneplanet-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

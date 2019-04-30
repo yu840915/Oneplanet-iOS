@@ -264,10 +264,7 @@
 			children = (
 				E06261C6226D63E700A96F55 /* Oneplanet.entitlements */,
 				E05BB25D226D5D2A00721F20 /* AppDelegate.swift */,
-				E07276FC2277424E001239C0 /* URLRouter.swift */,
 				E03C329D226D772400C32FD7 /* Logger.swift */,
-				E06F4FF922782C8C0067DAE4 /* InputValidators.swift */,
-				E06F4FFD22789C760067DAE4 /* AppLifeCycleObserver.swift */,
 				E03C3299226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift */,
 				E07276FB22773F54001239C0 /* Server Push Message */,
 				E03C32B1226D902F00C32FD7 /* Shared Configurations */,
@@ -350,7 +347,10 @@
 		E06589CB2270C21000C9E4E6 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				E07276FC2277424E001239C0 /* URLRouter.swift */,
+				E06F4FF922782C8C0067DAE4 /* InputValidators.swift */,
 				E06589C92270C1A500C9E4E6 /* UpdateClock.swift */,
+				E06F4FFD22789C760067DAE4 /* AppLifeCycleObserver.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";

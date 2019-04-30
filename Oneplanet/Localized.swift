@@ -31,6 +31,9 @@ class LocalizedTitles {//tl_
     var done: String {
         return NSLocalizedString("tl_done", comment: "")
     }
+    var ok: String {
+        return NSLocalizedString("tl_ok", comment: "")
+    }
     var skip: String {
         return NSLocalizedString("tl_skip", comment: "")
     }
@@ -92,6 +95,12 @@ class LocalizedMessages {//msg_
     var addAvatarPrompt: String {
         return NSLocalizedString("msg_add_avatar_prompt", comment: "")
     }
+    var sendResetLinkPrompt: String {
+        return NSLocalizedString("msg_send_resend_link_prompt", comment: "")
+    }
+    var sendResetLinkDescription: String {
+        return NSLocalizedString("msg_send_resend_link_description", comment: "")
+    }
 }
 
 class LocalizedMessageFormats {//msgf_
@@ -143,6 +152,9 @@ class LocalizedPhrase { //ph_
     }
     var openSettings: String {
         return NSLocalizedString("ph_open_settings", comment: "")
+    }
+    var removeAvatar: String {
+        return NSLocalizedString("ph_remove_avatar", comment: "")
     }
 }
 

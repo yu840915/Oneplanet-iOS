@@ -9,6 +9,7 @@
 "tl_cancel" = "Cancel";
 "tl_dismiss" = "Dismiss";
 "tl_done" = "Done";
+"tl_ok" = "OK";
 "tl_all_photos" = "All Photos";
 "tl_signup" = "Sign Up";
 "tl_login" = "Log In";
@@ -24,8 +25,10 @@
 
 "msg_login_prompt" = "Already have an account?";
 "msg_email_verification_instruction" = "The email has been sent. Please click the link in the email to complete the registration process.";
-"msg_password_rules" = "6 to 12 alphanumeric characters";
+"msg_password_rules" = "Please enter 6 to 12 characters in English or numbers";
 "msg_add_avatar_prompt" = "Add a profile photo so your friends know it’s you";
+"msg_send_resend_link_prompt" = "Forgot your password?";
+"msg_send_resend_link_description" = "Oneplanet will send an email to your email address and click on the link to set a new password.";
 
 "msgf_accept_tos" = "By signing up or login, you agree to our %@.";
 "msgf_resend_verification_email" = "You did not receive the email? %@.";
@@ -43,6 +46,7 @@
 "ph_take_photo" = "Take Photo";
 "ph_from_library" = "Choose from Library";
 "ph_open_settings" = "Open Settings";
+"ph_remove_avatar" = "Remove Current Photo";
 
 "err_no_camera_access" = "We need to access your camera";
 "err_no_library_access" = "We need to access your photo library";

@@ -27,6 +27,16 @@ class LoginPasswordViewController: UIViewController {
     }
 
     @IBAction func requirResetPasswordIfAllowed(_ sender: UIButton) {
+        let alert = UIAlertController(title: Localized.messages.sendResetLinkPrompt, message: Localized.messages.sendResetLinkDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Localized.titles.cancel, style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: Localized.titles.ok, style: .default, handler: {[weak self] (_) in
+            self?.sendResetLink()
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func sendResetLink() {
+        
     }
     
     /*

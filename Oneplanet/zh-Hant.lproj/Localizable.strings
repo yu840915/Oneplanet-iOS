@@ -9,6 +9,7 @@
 "tl_cancel" = "取消";
 "tl_dismiss" = "關閉";
 "tl_done" = "完成";
+"tl_ok" = "OK";
 "tl_all_photos" = "所有照片";
 "tl_signup" = "註冊";
 "tl_login" = "登入";
@@ -26,6 +27,8 @@
 "msg_email_verification_instruction" = "電子郵件已發送。請單擊電子郵件中的鏈接以完成註冊過程。";
 "msg_password_rules" = "請填入六到十二碼英文或數字";
 "msg_add_avatar_prompt" = "添加個人資料照片，以便你的朋友知道這就是你。";
+"msg_send_resend_link_prompt" = "忘記密碼了嗎?";
+"msg_send_resend_link_description" = "Oneplanet 將會寄送一封郵件到你的電子信箱，點擊電子郵件中的鏈接後即可以設定新密碼。";
 
 "msgf_accept_tos" = "註冊或登錄即表示你同意我們的%@";
 "msgf_resend_verification_email" = "你沒有收到電子郵件？%@";
@@ -43,6 +46,7 @@
 "ph_take_photo" = "拍照";
 "ph_from_library" = "從相簿中選取";
 "ph_open_settings" = "開啟「設定」";
+"ph_remove_avatar" = "Remove Current Photo";
 
 "err_no_camera_access" = "We need to access you camera";
 "err_no_library_access" = "We need to access your photo library";

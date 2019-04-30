@@ -22,14 +22,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         DefaultStyleConfiguration.config()
         FirebaseMessagingSession.current = FirebaseMessagingSession()
-        let delegate = UserNotificationDelegate()
-        notificationDelegate = delegate
-        UNUserNotificationCenter.current().delegate = delegate
+        setUpUserNotificationDelegate()
         application.registerForRemoteNotifications()
         if let url = launchOptions?[.url] as? URL {
             router.handle(url)
         }
+        appConfiguration.update()
         return true
+    }
+    
+    private func setUpUserNotificationDelegate() {
+        let delegate = UserNotificationDelegate()
+        notificationDelegate = delegate
+        UNUserNotificationCenter.current().delegate = delegate
     }
     
     

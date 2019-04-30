@@ -47,11 +47,14 @@
 "ph_from_library" = "Choose from Library";
 "ph_open_settings" = "Open Settings";
 "ph_remove_avatar" = "Remove Current Photo";
+"ph_try_again" = "もう一度実行";
 
 "err_no_camera_access" = "We need to access you camera";
 "err_no_library_access" = "We need to access your photo library";
 "err_invalid_email" = "有効なメールアドレスを入力してください";
 "err_conflicting_account" = "このメールアドレスは既に使われています。";
+"err_account_not_exist" = "The email you entered does not appear to belong to an account.\n Please check your email and try again";
 
 "errtl_cannot_capture_photo" = "Cannot Take Photo";
 "errtl_cannot_pick_avatar" = "Cannot Get Profile Image";
+"errtl_account_not_exist" = "Account Error";

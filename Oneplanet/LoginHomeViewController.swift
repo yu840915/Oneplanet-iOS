@@ -43,7 +43,7 @@ class LoginHomeViewController: UIViewController, AuthorizationFlowEntryPoint {
         signUpButton.setTitle(Localized.titles.signUp, for: .normal)
         logInButton.setTitle(Localized.titles.logIn, for: .normal)
         loginPromptLabel.text = Localized.messages.loginPrompt
-        guestLoginButton.setTitle(Localized.phrase.geustLogin, for: .normal)
+        guestLoginButton.setTitle(Localized.phrases.geustLogin, for: .normal)
     }
     
     private func prepareTermsTextView() {

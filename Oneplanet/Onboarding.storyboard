@@ -318,7 +318,7 @@
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" keyboardAppearance="alert"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" keyboardAppearance="alert" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                                 <connections>
                                                                     <action selector="updateEmailInput:" destination="eEN-ri-BUE" eventType="editingChanged" id="8e4-Wf-mN6"/>
                                                                     <outlet property="delegate" destination="eEN-ri-BUE" id="T80-tv-5gL"/>
@@ -619,7 +619,11 @@
                                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" keyboardAppearance="alert"/>
+                                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" keyboardAppearance="alert" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                                <connections>
+                                                                    <action selector="updateEmailInput:" destination="ogP-NA-qCD" eventType="editingChanged" id="crs-TY-5lC"/>
+                                                                    <outlet property="delegate" destination="ogP-NA-qCD" id="Rje-xv-cq3"/>
+                                                                </connections>
                                                             </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -678,7 +682,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="6yb-bA-4Ur" kind="show" id="afh-rS-qCL"/>
+                                                    <action selector="next:" destination="ogP-NA-qCD" eventType="touchUpInside" id="NFE-O8-E7U"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -687,6 +691,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="dm3-6Z-eRe" firstAttribute="centerY" secondItem="EHT-bT-EkQ" secondAttribute="centerY" id="1z4-RD-T6f"/>
                             <constraint firstItem="dm3-6Z-eRe" firstAttribute="height" secondItem="EHT-bT-EkQ" secondAttribute="height" id="Qnc-If-05d"/>
@@ -697,17 +702,27 @@
                             <constraint firstItem="dm3-6Z-eRe" firstAttribute="width" secondItem="EHT-bT-EkQ" secondAttribute="width" id="vec-Vd-BlR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="clT-JC-lI9"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="hYo-HU-0Q8" appends="YES" id="Jbp-aP-LLm"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="emailFieldView" destination="wJc-vE-ySv" id="FT7-nQ-eaU"/>
                         <outlet property="emailLoginLabel" destination="kJo-Hw-BK8" id="Waf-yy-7lO"/>
+                        <outlet property="endEditingTap" destination="hYo-HU-0Q8" id="F0W-Bb-BVo"/>
                         <outlet property="inputErrorLabel" destination="3GQ-NX-U9J" id="v9j-vY-T3E"/>
                         <outlet property="inputErrorView" destination="t2F-0X-nYk" id="VuZ-oa-3Tc"/>
                         <outlet property="nextButton" destination="zKf-00-ba5" id="5Fq-13-BA8"/>
                         <segue destination="QW0-15-aEk" kind="show" identifier="emailVerification" id="fWF-vv-mfI"/>
+                        <segue destination="6yb-bA-4Ur" kind="show" identifier="showPasswordField" id="evJ-6q-hzg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cys-45-bz7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="hYo-HU-0Q8">
+                    <connections>
+                        <action selector="endEditing:" destination="ogP-NA-qCD" id="GCE-gc-m4A"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1300" y="872"/>
         </scene>
@@ -1096,8 +1111,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="DpM-Uk-ZMO"/>
-        <segue reference="fWF-vv-mfI"/>
-        <segue reference="3qb-Ex-Cx6"/>
+        <segue reference="Bot-5J-LKD"/>
+        <segue reference="evJ-6q-hzg"/>
         <segue reference="hIs-qp-m5a"/>
     </inferredMetricsTieBreakers>
 </document>

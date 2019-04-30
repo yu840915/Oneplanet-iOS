@@ -15,7 +15,7 @@ class Localized {
     static let errorTitles = LocalizedErrorsTitles()
     static let messages = LocalizedMessages()
     static let messageFormats = LocalizedMessageFormats()
-    static let phrase = LocalizedPhrase()
+    static let phrases = LocalizedPhrase()
     static let activity = LocalizedActivityMessages()
     static let placeholder = LocalizedPlaceholder()
 }
@@ -156,6 +156,9 @@ class LocalizedPhrase { //ph_
     var removeAvatar: String {
         return NSLocalizedString("ph_remove_avatar", comment: "")
     }
+    var tryAgain: String {
+        return NSLocalizedString("ph_try_again", comment: "")
+    }
 }
 
 class LocalizedErrorsTitles {//errtl_
@@ -165,6 +168,9 @@ class LocalizedErrorsTitles {//errtl_
     }
     var cannotPickAvatar: String {
         return NSLocalizedString("errtl_cannot_pick_avatar", comment: "")
+    }
+    var accountDoesnotExist: String {
+        return NSLocalizedString("errtl_account_not_exist", comment: "")
     }
 }
 
@@ -181,5 +187,8 @@ class LocalizedErrors {//err_
     }
     var conflictingAccount: String {
         return NSLocalizedString("err_conflicting_account", comment: "")
+    }
+    var accountDoesnotExist: String {
+        return NSLocalizedString("err_account_not_exist", comment: "")
     }
 }

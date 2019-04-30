@@ -19,7 +19,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet var endEditingTap: UITapGestureRecognizer!
     
-    private var getUserVerificationStateOperation: GetAccountStateOperation?
+    private var getAccountStateOperation: GetAccountStateOperation?
     private(set) var emailAuthCredential: EmailAuthCredential!
     private var inputChangeHandle: Any?
     
@@ -41,8 +41,8 @@ class SignUpViewController: UIViewController {
     
     private func localizeTitles() {
         title = Localized.titles.signUp
-        socialLoginLabel.text = Localized.phrase.socialLogin
-        emailLoginLabel.text = Localized.phrase.emailSignUp
+        socialLoginLabel.text = Localized.phrases.socialLogin
+        emailLoginLabel.text = Localized.phrases.emailSignUp
         emailFieldView.textField.attributedPlaceholder = NSAttributedString(string: Localized.placeholder.email, attributes: [NSAttributedString.Key.foregroundColor : ColorPalette.defaultPlaceholder])
         signUpButton.setTitle(Localized.titles.signUp, for: .normal)
     }
@@ -51,36 +51,23 @@ class SignUpViewController: UIViewController {
         signUpButton.isEnabled = !emailAuthCredential.email.isEmpty
     }
 
-    @IBAction func next(_ sender: Any) {
-        emailAuthCredential.email = emailFieldView.textField.text ?? ""
-        getVerificationState()
-    }
-    
-    @IBAction func updateEmailInput(_ sender: Any) {
-        emailAuthCredential.email = emailFieldView.textField.text ?? ""
-    }
-    
-    @IBAction func endEditing(_ sender: Any) {
-        view.endEditing(false)
-    }
-    
-    private func getVerificationState() {
-        guard getUserVerificationStateOperation == nil else {
+    private func getAccountState() {
+        guard getAccountStateOperation == nil else {
             return
         }
         let op = GetAccountStateOperation(email: emailAuthCredential.email)
         op.completionBlock = {[weak self] in
             OperationQueue.main.addOperation {
-                self?.didGetVerificationState()
+                self?.didGetAccountState()
             }
         }
-        getUserVerificationStateOperation = op
+        getAccountStateOperation = op
         op.start()
     }
     
-    private func didGetVerificationState() {
-        let op = getUserVerificationStateOperation!
-        getUserVerificationStateOperation = nil
+    private func didGetAccountState() {
+        let op = getAccountStateOperation!
+        getAccountStateOperation = nil
         if op.success == true {
             resetErrorDisplay()
             switch op.state {
@@ -91,11 +78,8 @@ class SignUpViewController: UIViewController {
             case .unknown: break
             }
         } else if let err = op.error {
-            displayError(err)
+            showAlert(with: err)
         }
-    }
-    
-    private func showConflictingAccountAlert() {
     }
     
     private func resetErrorDisplay() {
@@ -104,7 +88,7 @@ class SignUpViewController: UIViewController {
         inputErrorView.isHidden = true
     }
     
-    private func displayError(_ error: Error) {
+    private func showAlert(with error: Error) {
         if let err = error as? InputError {
             showInputError(with: err.localizedDescription)
         } else {
@@ -119,7 +103,20 @@ class SignUpViewController: UIViewController {
         emailFieldView.isRejecting = true
         inputErrorView.isHidden = false
         inputErrorLabel.text = message
-
+    }
+    
+    @IBAction func next(_ sender: Any) {
+        emailAuthCredential.email = emailFieldView.textField.text ?? ""
+        getAccountState()
+    }
+    
+    @IBAction func updateEmailInput(_ sender: UITextField) {
+        guard sender.markedTextRange == nil else { return }
+        emailAuthCredential.email = emailFieldView.textField.text ?? ""
+    }
+    
+    @IBAction func endEditing(_ sender: Any) {
+        view.endEditing(false)
     }
     
     // MARK: - Navigation

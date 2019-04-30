@@ -30,8 +30,8 @@ class EmailVerificationViewController: UIViewController {
     }
     
     private func prepareActionTextView() {
-        let text = String(format: Localized.messageFormats.resendVerificationEmail, Localized.phrase.resendEmail)
-        let actionRange = (text as NSString).range(of: Localized.phrase.resendEmail)
+        let text = String(format: Localized.messageFormats.resendVerificationEmail, Localized.phrases.resendEmail)
+        let actionRange = (text as NSString).range(of: Localized.phrases.resendEmail)
         let attrStr = NSMutableAttributedString(string: text, attributes: [.foregroundColor : ColorPalette.defaultText])
         attrStr.addAttributes([.link : "https://www.apple.com"], range: actionRange)
         actionTextView.attributedText = attrStr

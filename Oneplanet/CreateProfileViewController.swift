@@ -35,11 +35,11 @@ class CreateProfileViewController: UIViewController {
     
     private func localizeTitles() {
         nameFieldView.textField.attributedPlaceholder = NSAttributedString(string: Localized.placeholder.nickname, attributes: [NSAttributedString.Key.foregroundColor : ColorPalette.defaultPlaceholder])
-        greetingLabel.text = Localized.phrase.newUserGreeting
-        addAvatarButton.setTitle(Localized.phrase.addAvatar, for: .normal)
+        greetingLabel.text = Localized.phrases.newUserGreeting
+        addAvatarButton.setTitle(Localized.phrases.addAvatar, for: .normal)
         addAvatarPromptLabel.text = Localized.messages.addAvatarPrompt
-        changeAvatarButton.setTitle(Localized.phrase.changeAvatar, for: .normal)
-        avatarAddedLabel.text = Localized.phrase.avatarAdded
+        changeAvatarButton.setTitle(Localized.phrases.changeAvatar, for: .normal)
+        avatarAddedLabel.text = Localized.phrases.avatarAdded
         nextButton.setTitle(Localized.titles.next, for: .normal)
     }
     
@@ -67,16 +67,16 @@ class CreateProfileViewController: UIViewController {
     }
     
     private func showPickerSelectionSheet() {
-        let sheet = UIAlertController(title: Localized.phrase.changeAvatar, message: nil, preferredStyle: .actionSheet)
+        let sheet = UIAlertController(title: Localized.phrases.changeAvatar, message: nil, preferredStyle: .actionSheet)
         if profileDraft.avatar != nil {
-            sheet.addAction(UIAlertAction(title: Localized.phrase.removeAvatar, style: .destructive, handler: {[weak self] (_) in
+            sheet.addAction(UIAlertAction(title: Localized.phrases.removeAvatar, style: .destructive, handler: {[weak self] (_) in
                 self?.deleteAvatar()
             }))
         }
-        sheet.addAction(UIAlertAction(title: Localized.phrase.takePhoto, style: .default, handler: {[weak self] (_) in
+        sheet.addAction(UIAlertAction(title: Localized.phrases.takePhoto, style: .default, handler: {[weak self] (_) in
             self?.showCameraPicker()
         }))
-        sheet.addAction(UIAlertAction(title: Localized.phrase.fromLibrary, style: .default, handler: { [weak self] (_) in
+        sheet.addAction(UIAlertAction(title: Localized.phrases.fromLibrary, style: .default, handler: { [weak self] (_) in
             self?.showLibraryPicker()
         }))
         sheet.addAction(UIAlertAction(title: Localized.titles.cancel, style: .cancel, handler: nil))
@@ -121,7 +121,7 @@ class CreateProfileViewController: UIViewController {
         let alert = UIAlertController(title: Localized.errorTitles.cannotPickAvatar, message: error.localizedDescription, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: Localized.titles.dismiss, style: .cancel, handler: nil))
         if error is MissingInputPermissionError {
-            alert.addAction(UIAlertAction(title: Localized.phrase.openSettings, style: .default, handler: {(_) in
+            alert.addAction(UIAlertAction(title: Localized.phrases.openSettings, style: .default, handler: {(_) in
                 UIApplication.shared.open(ServiceURLs.appSettings, options: [:], completionHandler: nil)
             }))
         }

@@ -22,7 +22,7 @@ class LoginPasswordViewController: UIViewController {
     private func localizeTitles() {
         title = Localized.titles.logIn
         loginButton.setTitle(Localized.titles.logIn, for: .normal)
-        forgetPasswordButton.setTitle(Localized.phrase.forgetPassword, for: .normal)
+        forgetPasswordButton.setTitle(Localized.phrases.forgetPassword, for: .normal)
         inputFieldView.textField.attributedPlaceholder = NSAttributedString(string: Localized.placeholder.password, attributes: [NSAttributedString.Key.foregroundColor : ColorPalette.defaultPlaceholder])
     }
 

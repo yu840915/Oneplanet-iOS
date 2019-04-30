@@ -36,6 +36,7 @@ class LoginHomeViewController: UIViewController, AuthorizationFlowEntryPoint {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         requestNotificationAuthorization()
+        router.resume()
     }
     
     private func localizeTitles() {

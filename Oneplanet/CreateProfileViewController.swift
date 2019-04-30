@@ -47,6 +47,8 @@ class CreateProfileViewController: UIViewController {
         let hasAvatar = profileDraft.avatar != nil
         if let avatar = profileDraft.avatar {
             avatarImageView.image = avatar
+        } else {
+            avatarImageView.image = #imageLiteral(resourceName: "ic_addmypic_nor")
         }
         if hasAvatar {
             addAvatarView.isHidden = true
@@ -65,7 +67,12 @@ class CreateProfileViewController: UIViewController {
     }
     
     private func showPickerSelectionSheet() {
-        let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let sheet = UIAlertController(title: Localized.phrase.changeAvatar, message: nil, preferredStyle: .actionSheet)
+        if profileDraft.avatar != nil {
+            sheet.addAction(UIAlertAction(title: Localized.phrase.removeAvatar, style: .destructive, handler: {[weak self] (_) in
+                self?.deleteAvatar()
+            }))
+        }
         sheet.addAction(UIAlertAction(title: Localized.phrase.takePhoto, style: .default, handler: {[weak self] (_) in
             self?.showCameraPicker()
         }))
@@ -74,6 +81,11 @@ class CreateProfileViewController: UIViewController {
         }))
         sheet.addAction(UIAlertAction(title: Localized.titles.cancel, style: .cancel, handler: nil))
         present(sheet, animated: true, completion: nil)
+    }
+    
+    private func deleteAvatar() {
+        profileDraft.avatar = nil
+        updateViewsForDraft()
     }
     
     private func showCameraPicker() {

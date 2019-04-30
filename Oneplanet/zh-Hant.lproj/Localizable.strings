@@ -46,7 +46,7 @@
 "ph_take_photo" = "拍照";
 "ph_from_library" = "從相簿中選取";
 "ph_open_settings" = "開啟「設定」";
-"ph_remove_avatar" = "Remove Current Photo";
+"ph_remove_avatar" = "刪除當前照片";
 
 "err_no_camera_access" = "We need to access you camera";
 "err_no_library_access" = "We need to access your photo library";

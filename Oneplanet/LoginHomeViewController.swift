@@ -21,7 +21,8 @@ class LoginHomeViewController: UIViewController, AuthorizationFlowEntryPoint {
     @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var guestLoginButton: UIButton!
     @IBOutlet weak var termsTextView: UITextView!
-    
+    private var requestNotificationAuthorizationOperation: RequestUserNotificationAuthorizationOperation?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationBarStyle.translucent.configure(navigationController!.navigationBar)
@@ -30,6 +31,12 @@ class LoginHomeViewController: UIViewController, AuthorizationFlowEntryPoint {
         navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
         localizeTitles()
         prepareTermsTextView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        requestNotificationAuthorization()
+        router.resume()
     }
     
     private func localizeTitles() {
@@ -57,6 +64,15 @@ class LoginHomeViewController: UIViewController, AuthorizationFlowEntryPoint {
         performSegue(withIdentifier: SegueID.showTerms, sender: URLRequest(url: url))
     }
     
+    private func requestNotificationAuthorization() {
+        guard requestNotificationAuthorizationOperation == nil else {
+            return
+        }
+        let op = RequestUserNotificationAuthorizationOperation()
+        requestNotificationAuthorizationOperation = op
+        op.start()
+    }
+
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

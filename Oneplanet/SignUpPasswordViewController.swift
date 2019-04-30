@@ -8,8 +8,10 @@
 
 import UIKit
 
-class SignUpPasswordViewController: UIViewController {
-
+class SignUpPasswordViewController: UIViewController, EmailAuthFlowStep {
+    
+    var emailAuthCredential: EmailAuthCredential!
+    var authorizationCompletion: ((UserSession) -> ())!
     @IBOutlet weak var passwordRuleLabel: UILabel!
     @IBOutlet weak var inputFieldView: InputFieldView!
     @IBOutlet weak var signUpButton: UIButton!

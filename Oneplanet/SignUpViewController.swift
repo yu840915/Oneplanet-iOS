@@ -9,7 +9,12 @@
 import UIKit
 import ModelBlocks
 
-class SignUpViewController: UIViewController {
+protocol EmailAuthFlowStep: AnyObject {
+    var emailAuthCredential: EmailAuthCredential! {set get}
+    var authorizationCompletion: ((UserSession)->())! {set get}
+}
+
+class SignUpViewController: UIViewController, EmailAuthFlowStep {
 
     @IBOutlet weak var socialLoginLabel: UILabel!
     @IBOutlet weak var emailLoginLabel: UILabel!
@@ -20,7 +25,8 @@ class SignUpViewController: UIViewController {
     @IBOutlet var endEditingTap: UITapGestureRecognizer!
     
     private var getAccountStateOperation: GetAccountStateOperation?
-    private(set) var emailAuthCredential: EmailAuthCredential!
+    var emailAuthCredential: EmailAuthCredential!
+    var authorizationCompletion: ((UserSession) -> ())!
     private var inputChangeHandle: Any?
     
     override func viewDidLoad() {
@@ -123,8 +129,12 @@ class SignUpViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? EmailVerificationViewController {
-            vc.credential = emailAuthCredential
+            vc.emailAuthCredential = emailAuthCredential
             vc.flow = .signUp
+            vc.needsSendVerificationLinkAutomatically = true
+            vc.authorizationCompletion = {[weak self] session in
+                self?.authorizationCompletion?(session)
+            }
         }
     }
 

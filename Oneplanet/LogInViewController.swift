@@ -9,7 +9,7 @@
 import UIKit
 import ModelBlocks
 
-class LogInViewController: UIViewController {
+class LogInViewController: UIViewController, EmailAuthFlowStep {
     
     @IBOutlet weak var emailLoginLabel: UILabel!
     @IBOutlet weak var emailFieldView: InputFieldView!
@@ -19,7 +19,8 @@ class LogInViewController: UIViewController {
     @IBOutlet var endEditingTap: UITapGestureRecognizer!
 
     private var getAccountStateOperation: GetAccountStateOperation?
-    private(set) var emailAuthCredential: EmailAuthCredential!
+    var emailAuthCredential: EmailAuthCredential!
+    var authorizationCompletion: ((UserSession) -> ())!
     private var inputChangeHandle: Any?
     
     override func viewDidLoad() {
@@ -122,8 +123,13 @@ class LogInViewController: UIViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? EmailAuthFlowStep {
+            vc.emailAuthCredential = emailAuthCredential
+            vc.authorizationCompletion = {[weak self] session in
+                self?.authorizationCompletion?(session)
+            }
+        }
         if let vc = segue.destination as? EmailVerificationViewController {
-            vc.credential = emailAuthCredential
             vc.flow = .logIn
         }
     }

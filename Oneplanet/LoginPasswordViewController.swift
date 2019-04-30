@@ -8,11 +8,14 @@
 
 import UIKit
 
-class LoginPasswordViewController: UIViewController {
-
+class LoginPasswordViewController: UIViewController, EmailAuthFlowStep {
+    
+    var emailAuthCredential: EmailAuthCredential!
+    var authorizationCompletion: ((UserSession) -> ())!
     @IBOutlet weak var inputFieldView: InputFieldView!
     @IBOutlet weak var forgetPasswordButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
+    private var resetPasswordOperation: SendResetPasswordLinkOperation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,17 +39,18 @@ class LoginPasswordViewController: UIViewController {
     }
     
     private func sendResetLink() {
-        
+        guard resetPasswordOperation == nil else { return }
+        let op = SendResetPasswordLinkOperation(email: emailAuthCredential.email)
+        op.completionBlock = {[weak self] in
+            
+        }
+        resetPasswordOperation = op
+        op.start()
     }
     
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
     }
-    */
-
 }

@@ -50,6 +50,7 @@
 
 "err_no_camera_access" = "We need to access your camera";
 "err_no_library_access" = "We need to access your photo library";
+"err_invalid_email" = "Please enter a valid email";
 
 "errtl_cannot_capture_photo" = "Cannot Take Photo";
 "errtl_cannot_pick_avatar" = "Cannot Get Profile Image";

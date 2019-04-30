@@ -11,6 +11,7 @@ target 'Oneplanet' do
   pod 'Firebase/Messaging'
   pod 'Firebase/DynamicLinks'
   pod 'Firebase/RemoteConfig'
+  pod 'Firebase/Auth'
 
   target 'OneplanetTests' do
     inherit! :search_paths

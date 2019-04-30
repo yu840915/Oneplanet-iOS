@@ -50,6 +50,7 @@
 
 "err_no_camera_access" = "We need to access you camera";
 "err_no_library_access" = "We need to access your photo library";
+"err_invalid_email" = "请输入有效电子邮件。";
 
 "errtl_cannot_capture_photo" = "无法拍照";
 "errtl_cannot_pick_avatar" = "无法取得大头照";

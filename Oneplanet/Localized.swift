@@ -176,4 +176,7 @@ class LocalizedErrors {//err_
     var noLibraryAccess: String {
         return NSLocalizedString("err_no_library_access", comment: "")
     }
+    var invalidEmail: String {
+        return NSLocalizedString("err_invalid_email", comment: "")
+    }
 }

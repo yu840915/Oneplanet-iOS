@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ModelBlocks
 
 class SignUpViewController: UIViewController {
 
@@ -16,11 +17,19 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var inputErrorView: UIView!
     @IBOutlet weak var inputErrorLabel: UILabel!
     @IBOutlet weak var signUpButton: UIButton!
+    private var getUserVerificationStateOperation: GetUserVerificationStateOperation?
+    private(set) var emailAuthCredential: EmailAuthCredential!
+    private var inputChangeHandle: Any?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
         localizeTitles()
+        emailAuthCredential = EmailAuthCredential()
+        inputChangeHandle = emailAuthCredential.inputDidChangeHandlers.add {[weak self] in
+            self?.updateViewForInputChange()
+        }
+        updateViewForInputChange()
     }
     
     private func localizeTitles() {
@@ -30,13 +39,75 @@ class SignUpViewController: UIViewController {
         emailFieldView.textField.attributedPlaceholder = NSAttributedString(string: Localized.placeholder.email, attributes: [NSAttributedString.Key.foregroundColor : ColorPalette.defaultPlaceholder])
         signUpButton.setTitle(Localized.titles.signUp, for: .normal)
     }
+    
+    private func updateViewForInputChange() {
+        signUpButton.isEnabled = !emailAuthCredential.email.isEmpty
+    }
 
+    @IBAction func next(_ sender: Any) {
+        emailAuthCredential.email = emailFieldView.textField.text ?? ""
+        getVerificationState()
+    }
+    
+    @IBAction func updateEmailInput(_ sender: Any) {
+        emailAuthCredential.email = emailFieldView.textField.text ?? ""
+    }
+    
+    private func getVerificationState() {
+        guard getUserVerificationStateOperation == nil else {
+            return
+        }
+        let op = GetUserVerificationStateOperation(email: emailAuthCredential.email)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didGetVerificationState()
+            }
+        }
+        getUserVerificationStateOperation = op
+        op.start()
+    }
+    
+    private func didGetVerificationState() {
+        let op = getUserVerificationStateOperation!
+        getUserVerificationStateOperation = nil
+        if op.success == true {
+            resetErrorDisplay()
+            performSegue(withIdentifier: SegueID.emailVerification, sender: emailAuthCredential)
+        } else if let err = op.error {
+            displayError(err)
+        }
+    }
+    
+    private func resetErrorDisplay() {
+        emailFieldView.isRejecting = false
+        inputErrorLabel.text = nil
+        inputErrorView.isHidden = true
+    }
+    
+    private func displayError(_ error: Error) {
+        if let err = error as? InputError {
+            emailFieldView.isRejecting = true
+            inputErrorView.isHidden = false
+            inputErrorLabel.text = err.localizedDescription
+        } else {
+            resetErrorDisplay()
+            let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: Localized.titles.dismiss, style: .cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
+    }
     
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     }
 
+}
+
+extension SignUpViewController {
+    struct SegueID {
+        static let emailVerification = "emailVerification"
+    }
 }
 
 class InputFieldView: UIView {

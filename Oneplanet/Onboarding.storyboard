@@ -902,7 +902,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Exit" id="Eg2-pH-2uT">
                             <color key="tintColor" name="alert red"/>
                             <connections>
-                                <action selector="invokeExitAction:" destination="QW0-15-aEk" id="GBQ-OQ-HFG"/>
+                                <action selector="exit:" destination="QW0-15-aEk" id="GBQ-OQ-HFG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

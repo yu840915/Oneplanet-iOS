@@ -14,13 +14,18 @@ class EmailVerificationViewController: UIViewController {
     
     var flow: Flow!
     var credential: EmailAuthCredential!
-    
+    private var getAccountStateOperation: GetAccountStateOperation?
+    private var needsGetAccountState = false
+    private var resendEmailOperation: Operation?
+    private var eventHandles: [Any]?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         NavigationBarStyle.translucent.configure(navigationController!.navigationBar)
         navigationController!.navigationBar.barStyle = .blackTranslucent
         prepareMessageLabel()
         prepareActionTextView()
+        registerEvents()
     }
     
     private func prepareMessageLabel() {
@@ -40,14 +45,64 @@ class EmailVerificationViewController: UIViewController {
             .font: UIFont.systemFont(ofSize: 12, weight: .semibold)]
     }
     
-    fileprivate func resendEmailIfAllowed() {
-        
-    }
-
-    @IBAction func invokeExitAction(_ sender: UIBarButtonItem) {
-        navigationController?.popToRootViewController(animated: true)
+    private func registerEvents() {
+        var handles = [Any]()
+        handles.append(AppLifeCycleObserver.willEnterForeground.observers.add {[weak self] (_) in
+            self?.prepareForNextVerificationRound()
+        })
+        handles.append(AppLifeCycleObserver.didBecomeActive.observers.add({[weak self] (_) in
+            self?.getAccountStateIfNeeded()
+        }))
+        eventHandles = handles
     }
     
+    fileprivate func resendEmailIfAllowed() {
+        guard resendEmailOperation == nil else { return }
+    }
+    
+    fileprivate func didResendEmail() {
+        //if no, clear op
+    }
+    
+    private func prepareForNextVerificationRound() {
+        needsGetAccountState = true
+        resendEmailOperation = nil
+    }
+    
+    private func getAccountStateIfNeeded() {
+        guard needsGetAccountState && getAccountStateOperation == nil else {
+            return
+        }
+        needsGetAccountState = false
+        let op = GetAccountStateOperation(email: credential.email)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didGetAccountState()
+            }
+        }
+        getAccountStateOperation = op
+        op.start()
+    }
+
+    private func didGetAccountState() {
+        let op = getAccountStateOperation!
+        getAccountStateOperation = nil
+        if op.success == true {
+            switch op.state {
+            case .verified:
+                performSegue(withIdentifier: flow.segueID, sender: nil)
+            case .pending: break
+            case .nonexist: navigationController?.popToRootViewController(animated: true)
+            case .unknown: break
+            }
+        } else if let err = op.error {
+            logger.debug("Cannot verify email, error \(err)")
+        }
+    }
+    
+    @IBAction func exit(_ sender: UIBarButtonItem) {
+        navigationController?.popToRootViewController(animated: true)
+    }
 }
 
 extension EmailVerificationViewController: UITextViewDelegate {

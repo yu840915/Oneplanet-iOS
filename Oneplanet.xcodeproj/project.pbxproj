@@ -50,6 +50,7 @@
 		E06589CD2271ADFD00C9E4E6 /* WelcomeMessageContentCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06589CC2271ADFD00C9E4E6 /* WelcomeMessageContentCollectionViewController.swift */; };
 		E06F4FFA22782C8C0067DAE4 /* InputValidators.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06F4FF922782C8C0067DAE4 /* InputValidators.swift */; };
 		E06F4FFC22782E7D0067DAE4 /* EmailAuthCredentialTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06F4FFB22782E7D0067DAE4 /* EmailAuthCredentialTests.swift */; };
+		E06F4FFE22789C760067DAE4 /* AppLifeCycleObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06F4FFD22789C760067DAE4 /* AppLifeCycleObserver.swift */; };
 		E07276DF2272D4BA001239C0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276DE2272D4BA001239C0 /* SignUpViewController.swift */; };
 		E07276E1227307F5001239C0 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276E0227307F5001239C0 /* LogInViewController.swift */; };
 		E07276E322731334001239C0 /* EmailVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276E222731334001239C0 /* EmailVerificationViewController.swift */; };
@@ -130,6 +131,7 @@
 		E06589CC2271ADFD00C9E4E6 /* WelcomeMessageContentCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeMessageContentCollectionViewController.swift; sourceTree = "<group>"; };
 		E06F4FF922782C8C0067DAE4 /* InputValidators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputValidators.swift; sourceTree = "<group>"; };
 		E06F4FFB22782E7D0067DAE4 /* EmailAuthCredentialTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAuthCredentialTests.swift; sourceTree = "<group>"; };
+		E06F4FFD22789C760067DAE4 /* AppLifeCycleObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLifeCycleObserver.swift; sourceTree = "<group>"; };
 		E07276DE2272D4BA001239C0 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		E07276E0227307F5001239C0 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		E07276E222731334001239C0 /* EmailVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationViewController.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				E07276FC2277424E001239C0 /* URLRouter.swift */,
 				E03C329D226D772400C32FD7 /* Logger.swift */,
 				E06F4FF922782C8C0067DAE4 /* InputValidators.swift */,
+				E06F4FFD22789C760067DAE4 /* AppLifeCycleObserver.swift */,
 				E03C3299226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift */,
 				E07276FB22773F54001239C0 /* Server Push Message */,
 				E03C32B1226D902F00C32FD7 /* Shared Configurations */,
@@ -612,6 +615,7 @@
 				E06589CA2270C1A500C9E4E6 /* UpdateClock.swift in Sources */,
 				E07276E1227307F5001239C0 /* LogInViewController.swift in Sources */,
 				E05BB25E226D5D2A00721F20 /* AppDelegate.swift in Sources */,
+				E06F4FFE22789C760067DAE4 /* AppLifeCycleObserver.swift in Sources */,
 				E07276F62276C305001239C0 /* FirebaseMessagingSession.swift in Sources */,
 				E07276E92273633A001239C0 /* CreateProfileViewController.swift in Sources */,
 				E03C329E226D772400C32FD7 /* Logger.swift in Sources */,

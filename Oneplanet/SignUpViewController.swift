@@ -17,6 +17,8 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var inputErrorView: UIView!
     @IBOutlet weak var inputErrorLabel: UILabel!
     @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet var endEditingTap: UITapGestureRecognizer!
+    
     private var getUserVerificationStateOperation: GetUserVerificationStateOperation?
     private(set) var emailAuthCredential: EmailAuthCredential!
     private var inputChangeHandle: Any?
@@ -30,6 +32,11 @@ class SignUpViewController: UIViewController {
             self?.updateViewForInputChange()
         }
         updateViewForInputChange()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        view.endEditing(false)
     }
     
     private func localizeTitles() {
@@ -51,6 +58,10 @@ class SignUpViewController: UIViewController {
     
     @IBAction func updateEmailInput(_ sender: Any) {
         emailAuthCredential.email = emailFieldView.textField.text ?? ""
+    }
+    
+    @IBAction func endEditing(_ sender: Any) {
+        view.endEditing(false)
     }
     
     private func getVerificationState() {
@@ -102,6 +113,21 @@ class SignUpViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     }
 
+}
+
+extension SignUpViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        endEditingTap.isEnabled = true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        endEditingTap.isEnabled = false
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(false)
+        return false
+    }
 }
 
 extension SignUpViewController {

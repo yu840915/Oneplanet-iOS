@@ -258,12 +258,13 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_bgall" translatesAutoresizingMaskIntoConstraints="NO" id="JkY-ob-eeE">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <gestureRecognizers/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="QYM-Bf-NoL">
-                                <rect key="frame" x="36" y="124" width="342" height="194"/>
+                                <rect key="frame" x="36" y="124" width="342" height="240"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GfW-Je-4D7">
-                                        <rect key="frame" x="0.0" y="0.0" width="342" height="46.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="342" height="68.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick registration" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0SD-4F-Glf" userLabel="Social Login Label">
                                                 <rect key="frame" x="120.5" y="0.0" width="101" height="14.5"/>
@@ -272,18 +273,18 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hYW-0B-eD7">
-                                                <rect key="frame" x="131" y="24.5" width="80" height="22"/>
+                                                <rect key="frame" x="89" y="24.5" width="164" height="44"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9B-mE-afC" userLabel="Facebook Button">
-                                                        <rect key="frame" x="0.0" y="0.0" width="16" height="22"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
                                                         <state key="normal" image="ic_facebook_nor"/>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FdQ-bK-JZO" userLabel="Twitter Button">
-                                                        <rect key="frame" x="32" y="0.0" width="16" height="22"/>
+                                                        <rect key="frame" x="60" y="0.0" width="44" height="44"/>
                                                         <state key="normal" image="ic_twitter_nor"/>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4s-51-9hf" userLabel="WeChat Button">
-                                                        <rect key="frame" x="64" y="0.0" width="16" height="22"/>
+                                                        <rect key="frame" x="120" y="0.0" width="44" height="44"/>
                                                         <state key="normal" image="ic_wechat_nor"/>
                                                     </button>
                                                 </subviews>
@@ -291,7 +292,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="x1Z-WF-vio">
-                                        <rect key="frame" x="0.0" y="72.5" width="342" height="68.5"/>
+                                        <rect key="frame" x="0.0" y="94.5" width="342" height="68.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or Sign Up With Email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Y6-lC-qlb" userLabel="Email Login Label">
                                                 <rect key="frame" x="0.0" y="0.0" width="342" height="14.5"/>
@@ -306,7 +307,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_fieldwhite_nor" translatesAutoresizingMaskIntoConstraints="NO" id="Yy2-Cl-jri" userLabel="Normal Background">
-                                                                <rect key="frame" x="0.0" y="14" width="342" height="16"/>
+                                                                <rect key="frame" x="0.0" y="1.5" width="342" height="41"/>
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ui_fieldwhite_fai" translatesAutoresizingMaskIntoConstraints="NO" id="aNH-cj-YcL" userLabel="Rejecting Background">
                                                                 <rect key="frame" x="0.0" y="1" width="342" height="41"/>
@@ -320,6 +321,7 @@
                                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" keyboardAppearance="alert"/>
                                                                 <connections>
                                                                     <action selector="updateEmailInput:" destination="eEN-ri-BUE" eventType="editingChanged" id="8e4-Wf-mN6"/>
+                                                                    <outlet property="delegate" destination="eEN-ri-BUE" id="T80-tv-5gL"/>
                                                                 </connections>
                                                             </textField>
                                                         </subviews>
@@ -363,9 +365,9 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yMB-YY-huk">
-                                        <rect key="frame" x="0.0" y="167" width="342" height="27"/>
+                                        <rect key="frame" x="0.0" y="189" width="342" height="51"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2xj-4f-1if">
+                                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2xj-4f-1if">
                                                 <rect key="frame" x="0.0" y="0.0" width="342" height="10"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -373,7 +375,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="joi-ar-0z5" userLabel="Sign Up Button">
-                                                <rect key="frame" x="0.0" y="10" width="342" height="17"/>
+                                                <rect key="frame" x="0.0" y="10" width="342" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                 <state key="normal" title="Sign Up" backgroundImage="bt_biggreen_nor">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -388,6 +390,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="QYM-Bf-NoL" firstAttribute="leading" secondItem="Tm8-CA-aKB" secondAttribute="leading" constant="36" id="3vj-ja-Qge"/>
                             <constraint firstItem="JkY-ob-eeE" firstAttribute="centerX" secondItem="V8m-Gy-69f" secondAttribute="centerX" id="5jv-FF-Sbx"/>
@@ -398,10 +401,14 @@
                             <constraint firstItem="JkY-ob-eeE" firstAttribute="width" secondItem="V8m-Gy-69f" secondAttribute="width" id="hp4-ir-cNj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Tm8-CA-aKB"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="7qS-BD-eF2" appends="YES" id="uoj-ty-ps5"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="emailFieldView" destination="fmc-oh-zZm" id="OwB-hj-upB"/>
                         <outlet property="emailLoginLabel" destination="4Y6-lC-qlb" id="SCB-DB-2i4"/>
+                        <outlet property="endEditingTap" destination="7qS-BD-eF2" id="zvV-Jd-6X0"/>
                         <outlet property="inputErrorLabel" destination="fKU-1x-cbk" id="CzI-Kw-A0N"/>
                         <outlet property="inputErrorView" destination="jsf-0N-wcC" id="rdL-Xc-3iM"/>
                         <outlet property="signUpButton" destination="joi-ar-0z5" id="hfh-Qk-XOO"/>
@@ -410,6 +417,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gn1-gb-H1q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer enabled="NO" id="7qS-BD-eF2">
+                    <connections>
+                        <action selector="endEditing:" destination="eEN-ri-BUE" id="xsS-Fc-nIt"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1299" y="-620"/>
         </scene>

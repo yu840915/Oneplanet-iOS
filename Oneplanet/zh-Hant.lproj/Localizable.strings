@@ -51,6 +51,7 @@
 "err_no_camera_access" = "We need to access you camera";
 "err_no_library_access" = "We need to access your photo library";
 "err_invalid_email" = "請輸入有效電子郵件";
+"err_conflicting_account" = "已有其他帳號使用此電子郵件地址";
 
 "errtl_cannot_capture_photo" = "無法拍照";
 "errtl_cannot_pick_avatar" = "無法取得大頭照";

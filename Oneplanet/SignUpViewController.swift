@@ -19,7 +19,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet var endEditingTap: UITapGestureRecognizer!
     
-    private var getUserVerificationStateOperation: GetUserVerificationStateOperation?
+    private var getUserVerificationStateOperation: GetAccountStateOperation?
     private(set) var emailAuthCredential: EmailAuthCredential!
     private var inputChangeHandle: Any?
     
@@ -68,7 +68,7 @@ class SignUpViewController: UIViewController {
         guard getUserVerificationStateOperation == nil else {
             return
         }
-        let op = GetUserVerificationStateOperation(email: emailAuthCredential.email)
+        let op = GetAccountStateOperation(email: emailAuthCredential.email)
         op.completionBlock = {[weak self] in
             OperationQueue.main.addOperation {
                 self?.didGetVerificationState()
@@ -83,10 +83,19 @@ class SignUpViewController: UIViewController {
         getUserVerificationStateOperation = nil
         if op.success == true {
             resetErrorDisplay()
-            performSegue(withIdentifier: SegueID.emailVerification, sender: emailAuthCredential)
+            switch op.state {
+            case .nonexist:
+                performSegue(withIdentifier: SegueID.emailVerification, sender: emailAuthCredential)
+            case .pending, .verified:
+                showInputError(with: Localized.errors.conflictingAccount)
+            case .unknown: break
+            }
         } else if let err = op.error {
             displayError(err)
         }
+    }
+    
+    private func showConflictingAccountAlert() {
     }
     
     private func resetErrorDisplay() {
@@ -97,9 +106,7 @@ class SignUpViewController: UIViewController {
     
     private func displayError(_ error: Error) {
         if let err = error as? InputError {
-            emailFieldView.isRejecting = true
-            inputErrorView.isHidden = false
-            inputErrorLabel.text = err.localizedDescription
+            showInputError(with: err.localizedDescription)
         } else {
             resetErrorDisplay()
             let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
@@ -108,9 +115,20 @@ class SignUpViewController: UIViewController {
         }
     }
     
+    private func showInputError(with message: String) {
+        emailFieldView.isRejecting = true
+        inputErrorView.isHidden = false
+        inputErrorLabel.text = message
+
+    }
+    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? EmailVerificationViewController {
+            vc.credential = emailAuthCredential
+            vc.flow = .signUp
+        }
     }
 
 }

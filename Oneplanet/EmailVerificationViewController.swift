@@ -12,7 +12,8 @@ class EmailVerificationViewController: UIViewController {
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var actionTextView: UITextView!
     
-    var exitAction: (()->())?
+    var flow: Flow!
+    var credential: EmailAuthCredential!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +45,7 @@ class EmailVerificationViewController: UIViewController {
     }
 
     @IBAction func invokeExitAction(_ sender: UIBarButtonItem) {
-        exitAction?()
+        navigationController?.popToRootViewController(animated: true)
     }
     
 }
@@ -53,5 +54,23 @@ extension EmailVerificationViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         resendEmailIfAllowed()
         return false
+    }
+}
+
+extension EmailVerificationViewController {
+    struct SegueID {
+        static let signUp = "signUpPassword"
+        static let logIn = "logInPassword"
+    }
+    enum Flow {
+        case signUp
+        case logIn
+        
+        var segueID: String {
+            switch self {
+            case .signUp: return SegueID.signUp
+            case .logIn: return SegueID.logIn
+            }
+        }
     }
 }

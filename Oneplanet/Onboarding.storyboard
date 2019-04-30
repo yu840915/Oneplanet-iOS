@@ -894,8 +894,8 @@
                     <connections>
                         <outlet property="actionTextView" destination="AWH-Br-NDf" id="h3M-0X-cVc"/>
                         <outlet property="messageLabel" destination="Nqo-3f-tpr" id="eyR-ce-njs"/>
-                        <segue destination="xml-pX-rLx" kind="show" id="KKv-Np-P5z"/>
-                        <segue destination="6yb-bA-4Ur" kind="show" id="3qb-Ex-Cx6"/>
+                        <segue destination="xml-pX-rLx" kind="show" identifier="signUpPassword" id="KKv-Np-P5z"/>
+                        <segue destination="6yb-bA-4Ur" kind="show" identifier="logInPassword" id="3qb-Ex-Cx6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a9s-Ix-52a" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1096,7 +1096,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="DpM-Uk-ZMO"/>
-        <segue reference="Bot-5J-LKD"/>
+        <segue reference="fWF-vv-mfI"/>
         <segue reference="3qb-Ex-Cx6"/>
         <segue reference="hIs-qp-m5a"/>
     </inferredMetricsTieBreakers>

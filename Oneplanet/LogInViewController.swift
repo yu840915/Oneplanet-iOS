@@ -16,10 +16,19 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var inputErrorLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
 
+    private var getUserVerificationStateOperation: GetAccountStateOperation?
+    private(set) var emailAuthCredential: EmailAuthCredential!
+    private var inputChangeHandle: Any?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
         localizeTitles()
+        emailAuthCredential = EmailAuthCredential()
+        inputChangeHandle = emailAuthCredential.inputDidChangeHandlers.add {[weak self] in
+            self?.updateViewForInputChange()
+        }
+        updateViewForInputChange()
     }
     
     private func localizeTitles() {
@@ -29,8 +38,23 @@ class LogInViewController: UIViewController {
         nextButton.setTitle(Localized.titles.next, for: .normal)
     }
 
+    private func updateViewForInputChange() {
+        nextButton.isEnabled = !emailAuthCredential.email.isEmpty
+    }
+    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? EmailVerificationViewController {
+            vc.credential = emailAuthCredential
+            vc.flow = .logIn
+        }
     }
+}
+
+extension LogInViewController {
+    struct SegueID {
+        static let emailVerification = "emailVerification"
+    }
+
 }

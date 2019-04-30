@@ -11,8 +11,9 @@ import FirebaseAuth
 import ModelBlocks
 import Alamofire
 
-class GetUserVerificationStateOperation: AlamofireAPIAccessOperation {
+class GetAccountStateOperation: AlamofireAPIAccessOperation {
     let email: String
+    var state: AccountState = .unknown
     init(email: String) {
         self.email = email
     }
@@ -25,6 +26,13 @@ class GetUserVerificationStateOperation: AlamofireAPIAccessOperation {
     override func handleHTTPResponse(_ response: HTTPURLResponse) throws {
         try super.handleHTTPResponse(response)
     }
+}
+
+enum AccountState {
+    case unknown
+    case nonexist
+    case verified
+    case pending
 }
 
 class EmailAuthCredential {

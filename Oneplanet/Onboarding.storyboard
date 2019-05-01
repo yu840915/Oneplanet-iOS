@@ -981,6 +981,10 @@
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                        <connections>
+                                                            <action selector="updateNickname:" destination="pM1-zm-etb" eventType="editingChanged" id="tcF-3m-oXd"/>
+                                                            <outlet property="delegate" destination="pM1-zm-etb" id="MTA-3T-elo"/>
+                                                        </connections>
                                                     </textField>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1085,17 +1089,24 @@
                                         <state key="normal" title="Next" backgroundImage="bt_biggreen_nor">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="submitProfile:" destination="pM1-zm-etb" eventType="touchUpInside" id="fnn-kF-szM"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="dc2-12-0uc" firstAttribute="top" secondItem="Arc-Ee-je6" secondAttribute="top" constant="54" id="8k8-9r-TzF"/>
                             <constraint firstItem="dc2-12-0uc" firstAttribute="leading" secondItem="Arc-Ee-je6" secondAttribute="leading" constant="36" id="P0z-hi-Ip7"/>
                             <constraint firstItem="dc2-12-0uc" firstAttribute="centerX" secondItem="Arc-Ee-je6" secondAttribute="centerX" id="d4J-nO-qjv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Arc-Ee-je6"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="pfl-yi-hGU" appends="YES" id="Dk0-JC-dV1"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="addAvatarButton" destination="aPB-ey-CBZ" id="rQd-NN-Znq"/>
@@ -1105,12 +1116,18 @@
                         <outlet property="avatarImageView" destination="qqg-1K-yf9" id="awn-TT-vDn"/>
                         <outlet property="changeAvatarButton" destination="SjC-gd-9zb" id="A8W-Cj-gyU"/>
                         <outlet property="changeAvatarView" destination="KKi-Hu-KQs" id="SOF-tz-Q8W"/>
+                        <outlet property="endEditingTap" destination="pfl-yi-hGU" id="EzM-vn-SzT"/>
                         <outlet property="greetingLabel" destination="rwg-xo-2aW" id="m6W-qp-Wgf"/>
                         <outlet property="nameFieldView" destination="3hw-c1-EdU" id="fQI-WK-2fN"/>
                         <outlet property="nextButton" destination="vDf-TH-ttu" id="d5C-Rk-0JY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EaL-MF-qMc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="pfl-yi-hGU">
+                    <connections>
+                        <action selector="endEditing:" destination="pM1-zm-etb" id="WWC-20-ATa"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="5216" y="155"/>
         </scene>

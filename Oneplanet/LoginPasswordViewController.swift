@@ -18,6 +18,7 @@ class LoginPasswordViewController: UIViewController, EmailAuthFlowStep {
     private var resetPasswordOperation: SendResetPasswordLinkOperation?
     @IBOutlet var endEditingTap: UITapGestureRecognizer!
     private var updateHandle: Any?
+    private var eventHandles: [Any]?
     private var logInOperaion: EmailLogInOperarion?
     private var session: UserSession?
 
@@ -25,9 +26,7 @@ class LoginPasswordViewController: UIViewController, EmailAuthFlowStep {
         super.viewDidLoad()
         localizeTitles()
         emailAuthCredential.password = ""
-        updateHandle = emailAuthCredential.inputDidChangeHandlers.add {[weak self] in
-            self?.updateViewsForInputChange()
-        }
+        registerEvents()
         updateViewsForInputChange()
     }
     
@@ -40,6 +39,27 @@ class LoginPasswordViewController: UIViewController, EmailAuthFlowStep {
         loginButton.setTitle(Localized.titles.logIn, for: .normal)
         forgetPasswordButton.setTitle(Localized.phrases.forgetPassword, for: .normal)
         inputFieldView.textField.attributedPlaceholder = NSAttributedString(string: Localized.placeholder.password, attributes: [NSAttributedString.Key.foregroundColor : ColorPalette.defaultPlaceholder])
+    }
+    
+    private func registerEvents() {
+        var handles = [Any]()
+        handles.append(emailAuthCredential.inputDidChangeHandlers.add {[weak self] in
+            self?.updateViewsForInputChange()
+        })
+        handles.append(AppLifeCycleObserver.willEnterForeground.observers.add {[weak self] (_) in
+            self?.cancelResetPasswordIfNeeded()
+        })
+        handles.append(AppLifeCycleObserver.didBecomeActive.observers.add({[weak self] (_) in
+            OperationQueue.main.addOperation {
+                self?.updateViewsForRunningActions()
+            }
+        }))
+        eventHandles = handles
+    }
+    
+    private func cancelResetPasswordIfNeeded() {
+        resetPasswordOperation?.cancel()
+        resetPasswordOperation = nil
     }
     
     private func updateViewsForRunningActions() {
@@ -106,6 +126,8 @@ class LoginPasswordViewController: UIViewController, EmailAuthFlowStep {
     }
     
     @IBAction func logIn(_ sender: UIButton) {
+        view.endEditing(false)
+        emailAuthCredential.password = inputFieldView.textField.text ?? ""
         logIn()
     }
     
@@ -148,7 +170,13 @@ extension LoginPasswordViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let result = ((textField.text ?? "") as NSString).replacingCharacters(in: range, with: string)
+        if result.isEmpty {
+            return true
+        }
         do {
+            if result.isEmpty {
+                return true
+            }
             try InputValidators.intermediatePassword.validate(result)
             return true
         } catch _  {

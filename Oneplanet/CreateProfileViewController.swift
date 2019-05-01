@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ModelBlocks
 
 class CreateProfileViewController: UIViewController, UserSessionDepending {
     
@@ -22,15 +23,20 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
     @IBOutlet weak var changeAvatarButton: UIButton!
     @IBOutlet weak var addAvatarPromptLabel: UILabel!
     @IBOutlet weak var changeAvatarView: UIStackView!
+    @IBOutlet var endEditingTap: UITapGestureRecognizer!
     
     private var pickImageOperation: PickImageOperation?
     var profileDraft: ProfileDraft = ProfileDraft()
+    private var updateHandle: Any?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
         avatarImageView.layer.cornerRadius = 40.0
         avatarImageView.layer.borderColor = UIColor.white.cgColor
+        updateHandle = profileDraft.updateObservers.add {[weak self] in
+            self?.updateViewsForDraft()
+        }
         localizeTitles()
         updateViewsForDraft()
     }
@@ -46,6 +52,7 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
     }
     
     private func updateViewsForDraft() {
+        nextButton.isEnabled = profileDraft.isValid
         let hasAvatar = profileDraft.avatar != nil
         if let avatar = profileDraft.avatar {
             avatarImageView.image = avatar
@@ -62,12 +69,7 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
             avatarImageView.layer.borderWidth = 0.0
         }
     }
-    
 
-    @IBAction func startImagePickingFlow(_ sender: UIButton) {
-        showPickerSelectionSheet()
-    }
-    
     private func showPickerSelectionSheet() {
         let sheet = UIAlertController(title: Localized.phrases.changeAvatar, message: nil, preferredStyle: .actionSheet)
         if profileDraft.avatar != nil {
@@ -129,8 +131,80 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
         }
         present(alert, animated: true, completion: nil)
     }
+    
+    @IBAction func submitProfile(_ sender: UIButton) {
+        view.endEditing(false)
+        profileDraft.nickname = nameFieldView.textField.text ?? ""
+    }
+    
+    @IBAction func endEditing(_ sender: UITapGestureRecognizer) {
+        view.endEditing(false)
+    }
+    
+    @IBAction func updateNickname(_ sender: UITextField) {
+        guard sender.markedTextRange == nil else { return }
+        profileDraft.nickname = sender.text ?? ""
+    }
+    
+    @IBAction func startImagePickingFlow(_ sender: UIButton) {
+        showPickerSelectionSheet()
+    }
+}
+
+extension CreateProfileViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        endEditingTap.isEnabled = true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        endEditingTap.isEnabled = false
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(false)
+        return false
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let result = ((textField.text ?? "") as NSString).replacingCharacters(in: range, with: string)
+        if result.isEmpty {
+            return true
+        }
+        do {
+            if result.isEmpty {
+                return true
+            }
+            try profileDraft.intermediateNicknameValidator.validate(result)
+            return true
+        } catch _  {
+            return false
+        }
+    }
 }
 
 class ProfileDraft {
+    let updateObservers = MulticastCallbackNode<()->()>()
+    let intermediateNicknameValidator = InputLengthValidator(max: 30)
+    let nicknameValidator = AndValidator([NonEmptyInputValidator(), InputLengthValidator(max: 30)])
+    var nickname: String = "" {
+        didSet {
+            if oldValue != nickname {
+                updateObservers.invokeEach{$0()}
+            }
+        }
+    }
     var avatar: UIImage?
+
+    func validate() throws {
+        try nicknameValidator.validate(nickname)
+    }
+    
+    var isValid: Bool {
+        do {
+            try validate()
+            return true
+        } catch _ {
+            return false
+        }
+    }
 }

@@ -98,3 +98,11 @@ class InputLengthValidator: TextInputValidator {
         return ""
     }
 }
+
+class NonEmptyInputValidator: TextInputValidator {
+    override func validate(_ input: String) throws {
+        if input.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            throw InputError(localizedDescription: "No contents")
+        }
+    }
+}

@@ -82,6 +82,7 @@ class EmailVerificationViewController: UIViewController, EmailAuthFlowStep {
     
     private func prepareForNextVerificationRound() {
         needsGetAccountState = true
+        resendEmailOperation?.cancel()
         resendEmailOperation = nil
     }
     

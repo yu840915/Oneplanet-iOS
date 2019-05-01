@@ -108,6 +108,7 @@ class LogInViewController: UIViewController, EmailAuthFlowStep {
     }
 
     @IBAction func next(_ sender: Any) {
+        view.endEditing(false)
         emailAuthCredential.email = emailFieldView.textField.text ?? ""
         getAccountState()
     }

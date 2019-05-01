@@ -85,6 +85,8 @@ class SignUpPasswordViewController: UIViewController, EmailAuthFlowStep {
     }
     
     @IBAction func signUp(_ sender: UIButton) {
+        view.endEditing(false)
+        emailAuthCredential.password = inputFieldView.textField.text ?? ""
         signUp()
     }
     
@@ -101,7 +103,7 @@ class SignUpPasswordViewController: UIViewController, EmailAuthFlowStep {
             vc.didCreateProfile = {[weak self] in
                 self?.notifyAuthorizationCompletion()
             }
-            vc.userSession = sender as! UserSession
+            vc.userSession = (sender as! UserSession)
         }
     }
 }
@@ -122,6 +124,9 @@ extension SignUpPasswordViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let result = ((textField.text ?? "") as NSString).replacingCharacters(in: range, with: string)
+        if result.isEmpty {
+            return true
+        }
         do {
             try InputValidators.intermediatePassword.validate(result)
             return true

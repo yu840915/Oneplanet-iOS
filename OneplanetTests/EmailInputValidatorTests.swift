@@ -79,4 +79,22 @@ class InputValidatorTests: XCTestCase {
         XCTAssertNoThrow(try validator.validate("一二三四五六七八"))
         XCTAssertNoThrow(try validator.validate("        "))
     }
+    
+    func testThrowsIfInputHasNoContents() {
+        let validator = NonEmptyInputValidator()
+        
+        XCTAssertThrowsError(try validator.validate(""))
+        XCTAssertThrowsError(try validator.validate(" "))
+        XCTAssertThrowsError(try validator.validate("    "))
+        XCTAssertThrowsError(try validator.validate("\t\r\n "))
+    }
+    
+    func testNotThrowIfInputHasContents() {
+        let validator = NonEmptyInputValidator()
+        
+        XCTAssertNoThrow(try validator.validate(" 1"))
+        XCTAssertNoThrow(try validator.validate(" 2"))
+        XCTAssertNoThrow(try validator.validate("    3"))
+        XCTAssertNoThrow(try validator.validate("\t\r\n 4"))
+    }
 }

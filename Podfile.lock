@@ -1,8 +1,33 @@
 PODS:
   - Alamofire (4.8.1)
+  - Bolts (1.9.0):
+    - Bolts/AppLinks (= 1.9.0)
+    - Bolts/Tasks (= 1.9.0)
+  - Bolts/AppLinks (1.9.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.9.0)
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
   - Fabric (1.9.0)
+  - FacebookCore (0.5.0):
+    - Bolts (~> 1.9)
+    - FBSDKCoreKit (~> 4.37)
+  - FacebookLogin (0.5.0):
+    - Bolts (~> 1.9)
+    - FacebookCore (~> 0.5)
+    - FBSDKCoreKit (~> 4.37)
+    - FBSDKLoginKit (~> 4.37)
+  - FacebookShare (0.5.0):
+    - Bolts (~> 1.9)
+    - FacebookCore (~> 0.5)
+    - FBSDKCoreKit (~> 4.37)
+    - FBSDKShareKit (~> 4.37)
+  - FBSDKCoreKit (4.40.0):
+    - Bolts (~> 1.9)
+  - FBSDKLoginKit (4.40.0):
+    - FBSDKCoreKit
+  - FBSDKShareKit (4.40.0):
+    - FBSDKCoreKit
   - Firebase/Auth (5.17.0):
     - Firebase/CoreOnly
     - FirebaseAuth (= 5.3.1)
@@ -99,6 +124,9 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.7)
   - Crashlytics (~> 3.12.0)
+  - FacebookCore (~> 0.5.0)
+  - FacebookLogin (~> 0.5.0)
+  - FacebookShare (~> 0.5.0)
   - Firebase/Auth
   - Firebase/Core (~> 5.17.0)
   - Firebase/DynamicLinks
@@ -108,8 +136,15 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - Bolts
     - Crashlytics
     - Fabric
+    - FacebookCore
+    - FacebookLogin
+    - FacebookShare
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - FBSDKShareKit
     - Firebase
     - FirebaseABTesting
     - FirebaseAnalytics
@@ -129,8 +164,15 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
+  FacebookCore: 74288d0add931d361b1596beae787ab72c438249
+  FacebookLogin: ebcf34714a1cb9f0759d9f071cfb01ed500996cf
+  FacebookShare: 963b4bb1124a64a395b1e428163d70b5774116e8
+  FBSDKCoreKit: ae214474b25033399c131dc81d258e412582a2ba
+  FBSDKLoginKit: 7a1e411d46acc8834588eca437daf34de42e1d52
+  FBSDKShareKit: 0e45916f4150da485928ae2a17ca021950b194f5
   Firebase: 59d557e064217fab6a03ff00baa73c06e73832e6
   FirebaseABTesting: 1f50b8d50f5e3469eea54e7463a7b7fe221d1f5e
   FirebaseAnalytics: 75e4bbc6417d190cc98ec1f17c41a4fad4c2c976
@@ -148,6 +190,6 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
 
-PODFILE CHECKSUM: bb4d7aea8c344d6e73801e7ab99c3058213b469e
+PODFILE CHECKSUM: 82a937b0fc5380a4ca5fada2236feae0f2c98dc6
 
 COCOAPODS: 1.5.3

@@ -6,10 +6,12 @@
 //  Copyright © 2019 何一品居. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import FirebaseAuth
 import ModelBlocks
 import Alamofire
+import FacebookCore
+import FacebookLogin
 
 class GetAccountStateOperation: AlamofireAPIAccessOperation {
     let email: String
@@ -47,7 +49,7 @@ class SendEmailVerificationOperation: AlamofireAPIAccessOperation {
     }
 }
 
-class EmailSignUpOperarion: AlamofireAPIAccessOperation {
+class EmailSignUpOperarion: AlamofireAPIAccessOperation, AuthenticationOperationType {
     let credential: EmailAuthCredential
     private(set) var token: String?
     init(credential: EmailAuthCredential) {
@@ -60,7 +62,7 @@ class EmailSignUpOperarion: AlamofireAPIAccessOperation {
     }
 }
 
-class EmailLogInOperarion: AlamofireAPIAccessOperation {
+class EmailLogInOperarion: AlamofireAPIAccessOperation, AuthenticationOperationType {
     let credential: EmailAuthCredential
     private(set) var token: String?
     init(credential: EmailAuthCredential) {
@@ -115,3 +117,69 @@ class EmailAuthCredential {
         }
     }
 }
+
+class GuestLogInOperation: AlamofireAPIAccessOperation, AuthenticationOperationType {
+    private(set) var token: String?
+}
+
+protocol AuthenticationOperationType: FailableOperationType {
+    var token: String? {get}
+}
+
+class FacebookLoginOperation: SimpleAsynchronousOperation, AuthenticationOperationType {
+    private(set) var success: Bool?
+    private(set) var error: Error?
+    private(set) var token: String?
+    let presenter: UIViewController
+    private let manager: LoginManager
+    init(presenter: UIViewController) {
+        self.presenter = presenter
+        manager = LoginManager(loginBehavior: .native, defaultAudience: .onlyMe)
+    }
+    
+    override func main() {
+        logInWithFacebook()
+    }
+    
+    private func logInWithFacebook() {
+        if let token = AccessToken.current {
+            submitTokenToFirebase(token)
+        } else {
+            manager.logIn(readPermissions: [.publicProfile], viewController: presenter) {[weak self] (result) in
+                self?.didLogIn(with: result)
+            }
+        }
+    }
+    
+    private func didLogIn(with result: LoginResult) {
+        switch result {
+        case .failed(let error):
+            fail(with: error)
+        case .cancelled:
+            success = false
+            finish()
+        case .success(let grantedPermissions, let declinedPermissions, let token):
+            handleSucessLogin(with: token, granted: grantedPermissions, declined: declinedPermissions)
+        }
+    }
+    
+    private func fail(with error: Error) {
+        self.error = error
+        success = false
+        finish()
+    }
+    
+    private func handleSucessLogin(with token: AccessToken, granted: Set<Permission>, declined: Set<Permission>) {
+        guard granted.contains(Permission(name: "public_profile")) else {
+            manager.logOut()
+            fail(with: GenericAppError("You need to grant public profile access to use Facebook login"))
+            return
+        }
+        submitTokenToFirebase(token)
+    }
+    
+    private func submitTokenToFirebase(_ token: AccessToken) {
+        
+    }
+}
+

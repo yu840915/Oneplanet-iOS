@@ -16,10 +16,6 @@
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict/>
-	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
@@ -48,6 +44,26 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				 <string>fb189187255076888</string>
+			 </array> 
+		</dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>189187255076888</string>
+	<key>FacebookDisplayName</key>
+	<string>Oneplanet</string>
+	<key>LSApplicationQueriesSchemes</key> 
+	<array> 
+		<string>fbapi</string> 
+		<string>fb-messenger-share-api</string> 
+		<string>fbauth2</string> 
+		<string>fbshareextension</string> 
 	</array>
 </dict>
 </plist>

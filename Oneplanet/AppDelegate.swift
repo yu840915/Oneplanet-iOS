@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseDynamicLinks
 import UserNotifications
+import FacebookCore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             router.handle(url)
         }
         appConfiguration.update()
+        SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         return true
     }
     
@@ -70,7 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return router.handle(url)
+        return router.handle(url) || SDKApplicationDelegate.shared.application(app, open: url, options: options)
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

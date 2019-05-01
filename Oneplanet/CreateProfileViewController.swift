@@ -8,9 +8,10 @@
 
 import UIKit
 
-class CreateProfileViewController: UIViewController {
+class CreateProfileViewController: UIViewController, UserSessionDepending {
     
     var didCreateProfile: (()->())?
+    var userSession: UserSession!
     @IBOutlet weak var nameFieldView: InputFieldView!
     @IBOutlet weak var greetingLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!

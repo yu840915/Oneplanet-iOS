@@ -522,7 +522,7 @@
                                                     <constraint firstAttribute="height" constant="10" id="UHk-S2-xGO"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xCP-KP-flj" userLabel="Sign Up Button">
+                                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xCP-KP-flj" userLabel="Sign Up Button">
                                                 <rect key="frame" x="0.0" y="10" width="342" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                 <state key="normal" title="Next" backgroundImage="bt_biggreen_nor">
@@ -562,7 +562,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sWv-fw-O22" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="hnB-TJ-LUg">
+                <tapGestureRecognizer enabled="NO" id="hnB-TJ-LUg">
                     <connections>
                         <action selector="endEditing:" destination="xml-pX-rLx" id="f4g-xL-eVh"/>
                     </connections>
@@ -776,6 +776,10 @@
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" keyboardAppearance="alert" returnKeyType="done" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                                <connections>
+                                                                    <action selector="updatePassword:" destination="6yb-bA-4Ur" eventType="editingChanged" id="6Td-A1-3t7"/>
+                                                                    <outlet property="delegate" destination="6yb-bA-4Ur" id="2h6-a4-VU9"/>
+                                                                </connections>
                                                             </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -840,6 +844,9 @@
                                                 <state key="normal" title="Log In" backgroundImage="bt_biggreen_nor">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="logIn:" destination="6yb-bA-4Ur" eventType="touchUpInside" id="an7-fE-Niy"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -847,6 +854,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="7Bd-MH-8N2" firstAttribute="height" secondItem="3g7-3Y-SD6" secondAttribute="height" id="2Uf-0l-gxZ"/>
                             <constraint firstItem="NzJ-Tb-Wj5" firstAttribute="top" secondItem="LaI-nH-ol1" secondAttribute="top" constant="-36" id="9Po-Lk-0Ya"/>
@@ -857,15 +865,23 @@
                             <constraint firstItem="7Bd-MH-8N2" firstAttribute="centerX" secondItem="3g7-3Y-SD6" secondAttribute="centerX" id="gB8-mx-IJm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NzJ-Tb-Wj5"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="hYh-4c-rvo" appends="YES" id="gGU-OD-7PW"/>
+                        </connections>
                     </view>
                     <connections>
+                        <outlet property="endEditingTap" destination="hYh-4c-rvo" id="iYM-he-n5D"/>
                         <outlet property="forgetPasswordButton" destination="GcD-q1-rGM" id="3cY-12-xGx"/>
                         <outlet property="inputFieldView" destination="yoE-RZ-igN" id="Ukf-IR-PqG"/>
                         <outlet property="loginButton" destination="H0p-b0-VsI" id="S09-06-Okv"/>
-                        <segue destination="pM1-zm-etb" kind="show" identifier="createProfile" id="DpM-Uk-ZMO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QE8-m2-9c2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer enabled="NO" id="hYh-4c-rvo">
+                    <connections>
+                        <action selector="endEditing:" destination="6yb-bA-4Ur" id="HZ7-U9-W7a"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3387" y="872"/>
         </scene>
@@ -1124,7 +1140,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="DpM-Uk-ZMO"/>
         <segue reference="fWF-vv-mfI"/>
         <segue reference="evJ-6q-hzg"/>
         <segue reference="hIs-qp-m5a"/>

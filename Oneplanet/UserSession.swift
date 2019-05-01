@@ -7,11 +7,42 @@
 //
 
 import Foundation
+import Alamofire
 
 class UserSession {
     let token: String
+    var profile: MyProfile?
+    
     init(token: String) {
         self.token = token
+    }
+    
+    func addingAuthorizationToken(to headers: [String: String]) -> [String: String] {
+        var result = headers
+        result["Authorization"] = "Bearer \(token)"
+        return result
+    }
+    
+    func addingAuthorizationToken(to request: URLRequest) -> URLRequest {
+        var result = request
+        result.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        return result
+    }
+    
+    var authorizationHeader: [String: String] {
+        return ["Authorization": "Bearer \(token)"]
+    }
+}
+
+class MyProfile {
+}
+
+class GetMyProfileOperation: AlamofireAPIAccessOperation {
+    private var profile: MyProfile?
+    private var missingProfile: Bool?
+    let session: UserSession
+    init(session: UserSession) {
+        self.session = session
     }
 }
 

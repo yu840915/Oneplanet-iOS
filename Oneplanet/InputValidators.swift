@@ -11,7 +11,9 @@ import ModelBlocks
 
 class InputValidators {
     static let email = EmailInputValidator()
-    static let password = TextInputValidator()
+    static let alphanumerics = AlphanumericInputValidator()
+    static let password = AndValidator([InputLengthValidator(min: 6, max: 12), alphanumerics])
+    static let intermediatePassword = AndValidator([InputLengthValidator(max: 12), alphanumerics])
 }
 
 class EmailInputValidator: TextInputValidator {
@@ -48,6 +50,51 @@ class AlphanumericInputValidator: TextInputValidator {
     }
 }
 
-class InputLengthValidator {
+class InputLengthValidator: TextInputValidator {
+    let min: Int?
+    let max: Int?
+    init(min: Int, max: Int) {
+        assert(max >= min)
+        assert(min >= 0)
+        self.min = min
+        self.max = max
+    }
     
+    init(min: Int) {
+        assert(min >= 0)
+        self.min = min
+        max = nil
+    }
+    
+    init(max: Int) {
+        assert(max >= 0)
+        self.max = max
+        min = nil
+    }
+    
+    override func validate(_ input: String) throws {
+        if let min = self.min {
+            if input.count < min {
+                throw InputError(localizedDescription: formattedErrorMessage)
+            }
+        }
+        if let max = self.max {
+            if input.count > max {
+                throw InputError(localizedDescription: formattedErrorMessage)
+            }
+        }
+    }
+    
+    private var formattedErrorMessage: String {
+        if let min = self.min, let max = self.max {
+            return "There should be \(min) to \(max) characters"
+        }
+        if let min = self.min {
+            return "There should be at least \(min) characters"
+        }
+        if let max = self.max {
+            return "There should be at most \(max) characters"
+        }
+        return ""
+    }
 }

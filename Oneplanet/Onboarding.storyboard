@@ -467,6 +467,10 @@
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" keyboardAppearance="alert" returnKeyType="done" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                                <connections>
+                                                                    <action selector="updatePassword:" destination="xml-pX-rLx" eventType="editingChanged" id="B7G-iI-GTj"/>
+                                                                    <outlet property="delegate" destination="xml-pX-rLx" id="8Ae-Eo-Vuq"/>
+                                                                </connections>
                                                             </textField>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -525,7 +529,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="pM1-zm-etb" kind="show" id="f0b-ZS-Flv"/>
+                                                    <action selector="signUp:" destination="xml-pX-rLx" eventType="touchUpInside" id="0v6-0L-obp"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -534,6 +538,7 @@
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="fva-0i-vdW" firstAttribute="height" secondItem="63V-WS-G3J" secondAttribute="height" id="5CY-Vu-njg"/>
                             <constraint firstItem="fva-0i-vdW" firstAttribute="centerY" secondItem="63V-WS-G3J" secondAttribute="centerY" id="LkP-hQ-IQO"/>
@@ -544,15 +549,24 @@
                             <constraint firstItem="lS4-YH-N1A" firstAttribute="leading" secondItem="63V-WS-G3J" secondAttribute="leading" constant="36" id="yI2-MU-F7a"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="x32-6b-x6g"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="hnB-TJ-LUg" appends="YES" id="RfD-su-HSH"/>
+                        </connections>
                     </view>
                     <connections>
+                        <outlet property="endEditingTap" destination="hnB-TJ-LUg" id="CXC-lp-54y"/>
                         <outlet property="inputFieldView" destination="6ls-SV-he4" id="Hsa-E7-HKp"/>
                         <outlet property="passwordRuleLabel" destination="1F1-XH-SbZ" id="Iuv-Do-y6o"/>
                         <outlet property="signUpButton" destination="xCP-KP-flj" id="jFB-Ny-daQ"/>
-                        <segue destination="pM1-zm-etb" kind="show" id="DGZ-tA-snB"/>
+                        <segue destination="pM1-zm-etb" kind="show" identifier="createProfile" id="DGZ-tA-snB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sWv-fw-O22" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="hnB-TJ-LUg">
+                    <connections>
+                        <action selector="endEditing:" destination="xml-pX-rLx" id="f4g-xL-eVh"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3388" y="-620"/>
         </scene>
@@ -718,7 +732,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cys-45-bz7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="hYo-HU-0Q8">
+                <tapGestureRecognizer enabled="NO" id="hYo-HU-0Q8">
                     <connections>
                         <action selector="endEditing:" destination="ogP-NA-qCD" id="GCE-gc-m4A"/>
                     </connections>
@@ -848,7 +862,7 @@
                         <outlet property="forgetPasswordButton" destination="GcD-q1-rGM" id="3cY-12-xGx"/>
                         <outlet property="inputFieldView" destination="yoE-RZ-igN" id="Ukf-IR-PqG"/>
                         <outlet property="loginButton" destination="H0p-b0-VsI" id="S09-06-Okv"/>
-                        <segue destination="pM1-zm-etb" kind="show" id="DpM-Uk-ZMO"/>
+                        <segue destination="pM1-zm-etb" kind="show" identifier="createProfile" id="DpM-Uk-ZMO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QE8-m2-9c2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1111,7 +1125,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="DpM-Uk-ZMO"/>
-        <segue reference="Bot-5J-LKD"/>
+        <segue reference="fWF-vv-mfI"/>
         <segue reference="evJ-6q-hzg"/>
         <segue reference="hIs-qp-m5a"/>
     </inferredMetricsTieBreakers>

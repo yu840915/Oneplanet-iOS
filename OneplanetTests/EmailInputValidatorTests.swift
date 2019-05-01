@@ -55,4 +55,28 @@ class InputValidatorTests: XCTestCase {
         XCTAssertNoThrow(try validator.validate("0"))
         XCTAssertNoThrow(try validator.validate("123"))
     }
+    
+    func testThrowsIfInputLenghtNotInRange() {
+        let validator = InputLengthValidator(min: 4, max: 8)
+        
+        XCTAssertThrowsError(try validator.validate(""))
+        XCTAssertThrowsError(try validator.validate("1"))
+        XCTAssertThrowsError(try validator.validate("123"))
+        XCTAssertThrowsError(try validator.validate("一二三"))
+        XCTAssertThrowsError(try validator.validate("   "))
+        XCTAssertThrowsError(try validator.validate("123456789"))
+        XCTAssertThrowsError(try validator.validate("一二三四五六七八九"))
+        XCTAssertThrowsError(try validator.validate("         "))
+    }
+
+    func testNotThrowIfInputLenghtInRange() {
+        let validator = InputLengthValidator(min: 4, max: 8)
+        
+        XCTAssertNoThrow(try validator.validate("1234"))
+        XCTAssertNoThrow(try validator.validate("一二三四"))
+        XCTAssertNoThrow(try validator.validate("    "))
+        XCTAssertNoThrow(try validator.validate("12345678"))
+        XCTAssertNoThrow(try validator.validate("一二三四五六七八"))
+        XCTAssertNoThrow(try validator.validate("        "))
+    }
 }

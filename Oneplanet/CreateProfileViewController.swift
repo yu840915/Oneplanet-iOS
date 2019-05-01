@@ -9,7 +9,8 @@
 import UIKit
 
 class CreateProfileViewController: UIViewController {
-
+    
+    var didCreateProfile: (()->())?
     @IBOutlet weak var nameFieldView: InputFieldView!
     @IBOutlet weak var greetingLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
@@ -19,8 +20,8 @@ class CreateProfileViewController: UIViewController {
     @IBOutlet weak var avatarAddedLabel: UILabel!
     @IBOutlet weak var changeAvatarButton: UIButton!
     @IBOutlet weak var addAvatarPromptLabel: UILabel!
-    
     @IBOutlet weak var changeAvatarView: UIStackView!
+    
     private var pickImageOperation: PickImageOperation?
     var profileDraft: ProfileDraft = ProfileDraft()
     

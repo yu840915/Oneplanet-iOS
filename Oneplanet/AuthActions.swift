@@ -55,7 +55,7 @@ class EmailSignUpOperarion: AlamofireAPIAccessOperation {
     }
     
     override func prepareDataRequest() throws -> DataRequest {
-        try InputValidators.email.validate(credential.email)
+        try credential.validate()
         return Alamofire.request(ServiceURLs.base.appendingPathComponent("auth"), method: .post, parameters: ["email": credential.email, "password": credential.password], encoding: JSONEncoding(), headers: nil)
     }
 }
@@ -68,7 +68,7 @@ class EmailLogInOperarion: AlamofireAPIAccessOperation {
     }
 
     override func prepareDataRequest() throws -> DataRequest {
-        try InputValidators.email.validate(credential.email)
+        try credential.validate()
         return Alamofire.request(ServiceURLs.base.appendingPathComponent("auth"), method: .post, parameters: ["email": credential.email, "password": credential.password], encoding: JSONEncoding(), headers: nil)
     }
 }
@@ -99,6 +99,19 @@ class EmailAuthCredential {
             if oldValue != password {
                 inputDidChangeHandlers.invokeEach{$0()}
             }
+        }
+    }
+    
+    func validate() throws {
+        try InputValidators.email.validate(email)
+        try InputValidators.password.validate(password)
+    }
+    var isValid: Bool {
+        do {
+            try validate()
+            return true
+        } catch _ {
+            return false
         }
     }
 }

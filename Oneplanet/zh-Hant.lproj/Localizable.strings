@@ -52,6 +52,7 @@
 "err_no_camera_access" = "We need to access you camera";
 "err_no_library_access" = "We need to access your photo library";
 "err_invalid_email" = "請輸入有效電子郵件";
+"err_non_alphanumerics" = "Only letters and digits are allowed";
 "err_conflicting_account" = "已有其他帳號使用此電子郵件地址";
 "err_account_not_exist" = "你輸入的電子郵件似乎不屬於某個帳號。請檢查電子郵件，然後再試一次。";
 

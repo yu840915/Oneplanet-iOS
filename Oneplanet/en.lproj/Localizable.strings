@@ -52,6 +52,7 @@
 "err_no_camera_access" = "We need to access your camera";
 "err_no_library_access" = "We need to access your photo library";
 "err_invalid_email" = "Please enter a valid email";
+"err_non_alphanumerics" = "Only letters and digits are allowed";
 "err_conflicting_account" = "This email is taken by another account";
 "err_account_not_exist" = "The email you entered does not appear to belong to an account.\n Please check your email and try again";
 

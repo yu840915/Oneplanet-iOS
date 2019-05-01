@@ -1,5 +1,5 @@
 //
-//  EmailInputValidatorTests.swift
+//  InputValidatorTests.swift
 //  OneplanetTests
 //
 //  Created by 立宣于 on 2019/4/30.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import Oneplanet
 
-class EmailInputValidatorTests: XCTestCase {
+class InputValidatorTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -35,5 +35,24 @@ class EmailInputValidatorTests: XCTestCase {
         XCTAssertNoThrow(try validator.validate("abc+1@gmail.com"))
         XCTAssertNoThrow(try validator.validate("abc_def@oneplanet.com"))
     }
+    
+    func testThrowsIfNonAlphanumerics() {
+        let validator = AlphanumericInputValidator()
 
+        XCTAssertThrowsError(try validator.validate("abc@aa"))
+        XCTAssertThrowsError(try validator.validate("好"))
+        XCTAssertThrowsError(try validator.validate("español"))
+        XCTAssertThrowsError(try validator.validate("ab c"))
+        XCTAssertThrowsError(try validator.validate(""))
+    }
+
+    func testNotThrowIfAlphanumerics() {
+        let validator = AlphanumericInputValidator()
+        
+        XCTAssertNoThrow(try validator.validate("abc123"))
+        XCTAssertNoThrow(try validator.validate("abc"))
+        XCTAssertNoThrow(try validator.validate("a"))
+        XCTAssertNoThrow(try validator.validate("0"))
+        XCTAssertNoThrow(try validator.validate("123"))
+    }
 }

@@ -185,6 +185,9 @@ class LocalizedErrors {//err_
     var invalidEmail: String {
         return NSLocalizedString("err_invalid_email", comment: "")
     }
+    var nonAlphanumericalCharacter: String {
+        return NSLocalizedString("err_non_alphanumerics", comment: "")
+    }
     var conflictingAccount: String {
         return NSLocalizedString("err_conflicting_account", comment: "")
     }

@@ -132,6 +132,7 @@ class FacebookLoginOperation: SimpleAsynchronousOperation, AuthenticationOperati
     private(set) var token: String?
     let presenter: UIViewController
     private let manager: LoginManager
+    private var firebaseAuthOperation: FirebaseAuthorizationOperation?
     init(presenter: UIViewController) {
         self.presenter = presenter
         manager = LoginManager(loginBehavior: .native, defaultAudience: .onlyMe)
@@ -163,7 +164,8 @@ class FacebookLoginOperation: SimpleAsynchronousOperation, AuthenticationOperati
         }
     }
     
-    private func fail(with error: Error) {
+    private func fail(with error: Error?) {
+        manager.logOut()
         self.error = error
         success = false
         finish()
@@ -171,7 +173,6 @@ class FacebookLoginOperation: SimpleAsynchronousOperation, AuthenticationOperati
     
     private func handleSucessLogin(with token: AccessToken, granted: Set<Permission>, declined: Set<Permission>) {
         guard granted.contains(Permission(name: "public_profile")) else {
-            manager.logOut()
             fail(with: GenericAppError("You need to grant public profile access to use Facebook login"))
             return
         }
@@ -179,7 +180,79 @@ class FacebookLoginOperation: SimpleAsynchronousOperation, AuthenticationOperati
     }
     
     private func submitTokenToFirebase(_ token: AccessToken) {
+        let cred = FacebookAuthProvider.credential(withAccessToken: token.authenticationToken)
+        let op = FirebaseAuthorizationOperation(credential: cred)
+        op.completionBlock = {[weak self] in
+            self?.didSubmitTokenToFirebase()
+        }
+        firebaseAuthOperation = op
+        op.start()
+    }
+    
+    private func didSubmitTokenToFirebase() {
+        let op = firebaseAuthOperation!
+        if let token = op.idToken {
+            submitTokenToAPIServer(with: token)
+        } else {
+            fail(with: op.error)
+        }
+    }
+    
+    private func submitTokenToAPIServer(with token: String) {
         
     }
 }
 
+class FirebaseAuthorizationOperation: SimpleAsynchronousOperation, FailableOperationType {
+    private(set) var success: Bool?
+    private(set) var error: Error?
+    private(set) var idToken: String?
+    private let auth: Auth
+    
+    let credential: AuthCredential
+    init(credential: AuthCredential) {
+        self.credential = credential
+        auth = Auth.auth()
+    }
+    
+    override func main() {
+        auth.signInAndRetrieveData(with: credential) {[weak self] (result, error) in
+            self?.didSignIn(result, error: error)
+        }
+    }
+    
+    private func didSignIn(_ result: AuthDataResult?, error: Error?) {
+        guard let result = result, result.user.displayName != nil else {
+            fail(with: error)
+            return
+        }
+        result.user.getIDToken {[weak self] (token, error) in
+            self?.didGetToken(token, error: error)
+        }
+        success = true
+        finish()
+    }
+    
+    private func didGetToken(_ token: String?, error: Error?) {
+        guard let token = token else {
+            fail(with: error)
+            return
+        }
+        idToken = token
+    }
+    
+    private func fail(with error: Error?) {
+        signOut()
+        success = false
+        self.error = error
+        finish()
+    }
+    
+    private func signOut() {
+        do {
+            try auth.signOut()
+        } catch let error {
+            logger.debug("Cannot sign out of Firebase, error: \(error)")
+        }
+    }
+}

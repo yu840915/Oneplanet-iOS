@@ -22,6 +22,11 @@ class LoginHomeViewController: UIViewController, AuthorizationFlowEntryPoint {
     @IBOutlet weak var guestLoginButton: UIButton!
     @IBOutlet weak var termsTextView: UITextView!
     private var requestNotificationAuthorizationOperation: RequestUserNotificationAuthorizationOperation?
+    private var authOperation: AuthenticationOperationType? {
+        didSet {
+            updateViewsForRunningAuthOperation()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +77,43 @@ class LoginHomeViewController: UIViewController, AuthorizationFlowEntryPoint {
         requestNotificationAuthorizationOperation = op
         op.start()
     }
-
+    
+    private func updateViewsForRunningAuthOperation() {
+        let allowsAction = authOperation == nil
+        logInButton.isEnabled = allowsAction
+        signUpButton.isEnabled = allowsAction
+        guestLoginButton.isEnabled = allowsAction
+        termsTextView.isSelectable = allowsAction
+    }
+    
+    @IBAction func guestLogIn(_ sender: Any) {
+        guard authOperation == nil else { return }
+        let op = GuestLogInOperation()
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didLogIn()
+            }
+        }
+        authOperation = op
+        op.start()
+    }
+    
+    private func didLogIn() {
+        let op = authOperation!
+        authOperation = nil
+        if let token = op.token {
+            authorizationCompletion?(UserSession(token: token))
+        } else if let error = op.error {
+            showAlert(with: error)
+        }
+    }
+    
+    private func showAlert(with error: Error) {
+        let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Localized.titles.dismiss, style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

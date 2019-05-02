@@ -206,6 +206,9 @@
                                         <state key="normal" title="Later" backgroundImage="bt_bigwhite_nor">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="guestLogIn:" destination="mx8-ii-qdX" eventType="touchUpInside" id="vjv-Ag-vDy"/>
+                                        </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="By login" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZOE-0s-Svs">
                                         <rect key="frame" x="0.0" y="129.5" width="342" height="30.5"/>

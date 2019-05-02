@@ -159,6 +159,7 @@ extension SignUpViewController: UITextFieldDelegate {
 extension SignUpViewController {
     struct SegueID {
         static let emailVerification = "emailVerification"
+        static let createProfile = "createProfile"
     }
 }
 

@@ -15,7 +15,6 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
     var userSession: UserSession!
     @IBOutlet weak var nameFieldView: InputFieldView!
     @IBOutlet weak var greetingLabel: UILabel!
-    @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var addAvatarButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var addAvatarView: UIStackView!
@@ -24,6 +23,7 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
     @IBOutlet weak var addAvatarPromptLabel: UILabel!
     @IBOutlet weak var changeAvatarView: UIStackView!
     @IBOutlet var endEditingTap: UITapGestureRecognizer!
+    @IBOutlet weak var avatarButton: UIButton!
     
     private var pickImageOperation: PickImageOperation?
     var profileDraft: ProfileDraft = ProfileDraft()
@@ -32,8 +32,8 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
-        avatarImageView.layer.cornerRadius = 40.0
-        avatarImageView.layer.borderColor = UIColor.white.cgColor
+        avatarButton.layer.cornerRadius = 40.0
+        avatarButton.layer.borderColor = UIColor.white.cgColor
         updateHandle = profileDraft.updateObservers.add {[weak self] in
             self?.updateViewsForDraft()
         }
@@ -55,18 +55,18 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
         nextButton.isEnabled = profileDraft.isValid
         let hasAvatar = profileDraft.avatar != nil
         if let avatar = profileDraft.avatar {
-            avatarImageView.image = avatar
+            avatarButton.setImage(avatar, for: .normal)
         } else {
-            avatarImageView.image = #imageLiteral(resourceName: "ic_addmypic_nor")
+            avatarButton.setImage(#imageLiteral(resourceName: "ic_addmypic_nor"), for: .normal)
         }
         if hasAvatar {
             addAvatarView.isHidden = true
             changeAvatarView.isHidden = false
-            avatarImageView.layer.borderWidth = 1.0
+            avatarButton.layer.borderWidth = 1.0
         } else {
             addAvatarView.isHidden = false
             changeAvatarView.isHidden = true
-            avatarImageView.layer.borderWidth = 0.0
+            avatarButton.layer.borderWidth = 0.0
         }
     }
 

@@ -417,6 +417,7 @@
                         <outlet property="signUpButton" destination="joi-ar-0z5" id="hfh-Qk-XOO"/>
                         <outlet property="socialLoginLabel" destination="0SD-4F-Glf" id="68Z-TY-CmW"/>
                         <segue destination="QW0-15-aEk" kind="show" identifier="emailVerification" id="Bot-5J-LKD"/>
+                        <segue destination="pM1-zm-etb" kind="show" identifier="createProfile" id="iev-We-Pda"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gn1-gb-H1q" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1018,19 +1019,23 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eRR-BC-dxc">
                                         <rect key="frame" x="0.0" y="120.5" width="342" height="96"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_addmypic_nor" translatesAutoresizingMaskIntoConstraints="NO" id="qqg-1K-yf9" userLabel="Avatar Image View">
+                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dp2-cs-sue" userLabel="Avatar Button">
                                                 <rect key="frame" x="131" y="8" width="80" height="80"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="80" id="2pd-tE-cn9"/>
-                                                    <constraint firstAttribute="width" secondItem="qqg-1K-yf9" secondAttribute="height" id="qLo-Yf-NBD"/>
+                                                    <constraint firstAttribute="width" constant="80" id="8DH-tj-wdu"/>
+                                                    <constraint firstAttribute="width" secondItem="Dp2-cs-sue" secondAttribute="height" multiplier="1:1" id="IeY-Ze-eUG"/>
                                                 </constraints>
-                                            </imageView>
+                                                <state key="normal" image="ic_addmypic_nor"/>
+                                                <connections>
+                                                    <action selector="startImagePickingFlow:" destination="pM1-zm-etb" eventType="touchUpInside" id="QJ1-Em-dxb"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="96" id="35J-qX-SXo"/>
-                                            <constraint firstItem="qqg-1K-yf9" firstAttribute="centerY" secondItem="eRR-BC-dxc" secondAttribute="centerY" id="Jhp-nh-RXE"/>
-                                            <constraint firstItem="qqg-1K-yf9" firstAttribute="centerX" secondItem="eRR-BC-dxc" secondAttribute="centerX" id="PIx-RG-qup"/>
+                                            <constraint firstItem="Dp2-cs-sue" firstAttribute="centerY" secondItem="eRR-BC-dxc" secondAttribute="centerY" id="3KE-Hl-c1o"/>
+                                            <constraint firstItem="Dp2-cs-sue" firstAttribute="centerX" secondItem="eRR-BC-dxc" secondAttribute="centerX" id="K62-gi-9oy"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="k0j-QC-DpK">
@@ -1116,7 +1121,7 @@
                         <outlet property="addAvatarPromptLabel" destination="Ows-Hb-CiN" id="UdH-js-hgL"/>
                         <outlet property="addAvatarView" destination="hCS-SM-DyG" id="eUq-Bb-Jcs"/>
                         <outlet property="avatarAddedLabel" destination="unV-cv-9O7" id="MA7-q6-grs"/>
-                        <outlet property="avatarImageView" destination="qqg-1K-yf9" id="awn-TT-vDn"/>
+                        <outlet property="avatarButton" destination="Dp2-cs-sue" id="PON-aV-DRO"/>
                         <outlet property="changeAvatarButton" destination="SjC-gd-9zb" id="A8W-Cj-gyU"/>
                         <outlet property="changeAvatarView" destination="KKi-Hu-KQs" id="SOF-tz-Q8W"/>
                         <outlet property="endEditingTap" destination="pfl-yi-hGU" id="EzM-vn-SzT"/>
@@ -1132,7 +1137,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="5216" y="155"/>
+            <point key="canvasLocation" x="5181" y="-620"/>
         </scene>
     </scenes>
     <resources>
@@ -1160,6 +1165,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="iev-We-Pda"/>
         <segue reference="fWF-vv-mfI"/>
         <segue reference="evJ-6q-hzg"/>
         <segue reference="hIs-qp-m5a"/>

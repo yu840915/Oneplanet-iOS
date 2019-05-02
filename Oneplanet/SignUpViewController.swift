@@ -59,7 +59,8 @@ class SignUpViewController: UIViewController, EmailAuthFlowStep {
     }
     
     private func updateViewForInputChange() {
-        signUpButton.isEnabled = !emailAuthCredential.email.isEmpty
+        let allowsAction = authOperation == nil
+        signUpButton.isEnabled = allowsAction && !emailAuthCredential.email.isEmpty
     }
 
     private func getAccountState() {
@@ -118,7 +119,7 @@ class SignUpViewController: UIViewController, EmailAuthFlowStep {
     
     private func updateViewsForRunningAuthOperation() {
         let allowsAction = authOperation == nil
-        signUpButton.isEnabled = allowsAction
+        updateViewForInputChange()
         emailFieldView.textField.isEnabled = allowsAction
         socialLoginButtons.forEach { $0.isEnabled = allowsAction }
     }
@@ -167,6 +168,14 @@ class SignUpViewController: UIViewController, EmailAuthFlowStep {
     
     @IBAction func weChatLogIn(_ sender: UIButton) {
         guard authOperation == nil else { return }
+        let op = WeChatLogInOperation(presenter: self)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didLogIn()
+            }
+        }
+        authOperation = op
+        op.start()
     }
     
     @IBAction func updateEmailInput(_ sender: UITextField) {

@@ -48,12 +48,13 @@ class LogInViewController: UIViewController, EmailAuthFlowStep {
     }
 
     private func updateViewForInputChange() {
-        nextButton.isEnabled = !emailAuthCredential.email.isEmpty
+        let allowsAction = authOperation == nil
+        nextButton.isEnabled = allowsAction && !emailAuthCredential.email.isEmpty
     }
     
     private func updateViewsForRunningAuthOperation() {
         let allowsAction = authOperation == nil
-        nextButton.isEnabled = allowsAction
+        updateViewForInputChange()
         emailFieldView.textField.isEnabled = allowsAction
         socialLoginButtons.forEach { $0.isEnabled = allowsAction }
     }
@@ -164,6 +165,14 @@ class LogInViewController: UIViewController, EmailAuthFlowStep {
     
     @IBAction func weChatLogIn(_ sender: UIButton) {
         guard authOperation == nil else { return }
+        let op = WeChatLogInOperation(presenter: self)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didLogIn()
+            }
+        }
+        authOperation = op
+        op.start()
     }
     
     @IBAction func endEditing(_ sender: Any) {

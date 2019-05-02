@@ -55,6 +55,7 @@
 		E06F5009227AFC770067DAE4 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E06F5008227AFC770067DAE4 /* libWeChatSDK.a */; };
 		E06F500B227AFC9B0067DAE4 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E06F500A227AFC9B0067DAE4 /* CoreTelephony.framework */; };
 		E06F500F227AFD740067DAE4 /* WeChatLogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06F500E227AFD740067DAE4 /* WeChatLogIn.swift */; };
+		E06F5011227B34880067DAE4 /* ProfileDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06F5010227B34880067DAE4 /* ProfileDraft.swift */; };
 		E07276DF2272D4BA001239C0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276DE2272D4BA001239C0 /* SignUpViewController.swift */; };
 		E07276E1227307F5001239C0 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276E0227307F5001239C0 /* LogInViewController.swift */; };
 		E07276E322731334001239C0 /* EmailVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276E222731334001239C0 /* EmailVerificationViewController.swift */; };
@@ -141,6 +142,7 @@
 		E06F5008227AFC770067DAE4 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWeChatSDK.a; path = Oneplanet/OpenSDK1.8.0_NoPay/libWeChatSDK.a; sourceTree = "<group>"; };
 		E06F500A227AFC9B0067DAE4 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		E06F500E227AFD740067DAE4 /* WeChatLogIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeChatLogIn.swift; sourceTree = "<group>"; };
+		E06F5010227B34880067DAE4 /* ProfileDraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDraft.swift; sourceTree = "<group>"; };
 		E07276DE2272D4BA001239C0 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		E07276E0227307F5001239C0 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		E07276E222731334001239C0 /* EmailVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationViewController.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				E07276E622735511001239C0 /* LoginPasswordViewController.swift */,
 				E07276E222731334001239C0 /* EmailVerificationViewController.swift */,
 				E07276E82273633A001239C0 /* CreateProfileViewController.swift */,
+				E06F5010227B34880067DAE4 /* ProfileDraft.swift */,
 				E08C3128227817680013DD0C /* AuthActions.swift */,
 				E06F500E227AFD740067DAE4 /* WeChatLogIn.swift */,
 			);
@@ -642,6 +645,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E06F5011227B34880067DAE4 /* ProfileDraft.swift in Sources */,
 				E07276FD2277424E001239C0 /* URLRouter.swift in Sources */,
 				E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */,
 				E03C32AC226D872A00C32FD7 /* Localized.swift in Sources */,

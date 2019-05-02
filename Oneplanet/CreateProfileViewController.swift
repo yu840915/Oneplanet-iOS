@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import ModelBlocks
 
 class CreateProfileViewController: UIViewController, UserSessionDepending {
     
@@ -29,6 +28,11 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
     var profileDraft: ProfileDraft = ProfileDraft()
     private var updateHandle: Any?
     private var downloadImageOperaion: DownloadImageOperaion?
+    private var createProfileOperation: CreateProfileOperation? {
+        didSet {
+            updateViewForRunningOperation()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,6 +104,11 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
             avatarButton.layer.borderWidth = 0.0
         }
     }
+    
+    private func updateViewForRunningOperation() {
+        let allowsAction = createProfileOperation == nil
+        [addAvatarButton, changeAvatarButton, nextButton, avatarButton].forEach{$0?.isEnabled = allowsAction}
+    }
 
     private func showPickerSelectionSheet() {
         let sheet = UIAlertController(title: Localized.phrases.changeAvatar, message: nil, preferredStyle: .actionSheet)
@@ -166,6 +175,38 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
     @IBAction func submitProfile(_ sender: UIButton) {
         view.endEditing(false)
         profileDraft.nickname = nameFieldView.textField.text ?? ""
+        submitProfile()
+    }
+    
+    private func submitProfile() {
+        guard createProfileOperation == nil else {
+            return
+        }
+        let op = CreateProfileOperation(draft: profileDraft, session: userSession)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didSubmitProfile()
+            }
+        }
+        createProfileOperation = op
+        op.start()
+    }
+    
+    private func didSubmitProfile() {
+        let op = createProfileOperation!
+        createProfileOperation = nil
+        if op.success == true {
+            didCreateProfile?()
+        }
+        if let error = op.error {
+            showAlert(with: error)
+        }
+    }
+    
+    private func showAlert(with error: Error) {
+        let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Localized.titles.dismiss, style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func endEditing(_ sender: UITapGestureRecognizer) {
@@ -213,45 +254,3 @@ extension CreateProfileViewController: UITextFieldDelegate {
     }
 }
 
-class ProfileDraft {
-    let updateObservers = MulticastCallbackNode<()->()>()
-    let intermediateNicknameValidator = InputLengthValidator(max: 30)
-    let nicknameValidator = AndValidator([NonEmptyInputValidator(), InputLengthValidator(max: 30)])
-    var nickname: String = "" {
-        didSet {
-            if oldValue != nickname {
-                updateObservers.invokeEach{$0()}
-            }
-        }
-    }
-    var avatar: UIImage?
-
-    func validate() throws {
-        try nicknameValidator.validate(nickname)
-    }
-    
-    var isValid: Bool {
-        do {
-            try validate()
-            return true
-        } catch _ {
-            return false
-        }
-    }
-}
-
-class DownloadImageOperaion: AlamofireAPIAccessOperation {
-    let url: URL
-    private(set) var image: UIImage?
-    init(url: URL) {
-        self.url = url
-    }
-    
-    override func prepareURLRequest() throws -> URLRequest {
-        return URLRequest(url: url)
-    }
-    
-    override func processData(with data: Data) throws {
-        image = UIImage(data: data)
-    }
-}

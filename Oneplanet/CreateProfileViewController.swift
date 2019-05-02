@@ -28,6 +28,7 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
     private var pickImageOperation: PickImageOperation?
     var profileDraft: ProfileDraft = ProfileDraft()
     private var updateHandle: Any?
+    private var downloadImageOperaion: DownloadImageOperaion?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,37 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
             self?.updateViewsForDraft()
         }
         localizeTitles()
+        setUpViewsForDraft()
+    }
+    
+    deinit {
+        downloadImageOperaion?.cancel()
+    }
+    
+    private func setUpViewsForDraft() {
+        if let nickname = userSession.socialProfile?.nickname {
+            profileDraft.nickname = String(nickname.prefix(30))
+            nameFieldView.textField.text = profileDraft.nickname
+        }
+        if let url = userSession.socialProfile?.avatarURL {
+            let op = DownloadImageOperaion(url: url)
+            op.completionBlock = {[weak self] in
+                OperationQueue.main.addOperation {
+                    self?.didDownloadAvatar()
+                }
+            }
+            downloadImageOperaion = op
+            op.start()
+        }
         updateViewsForDraft()
+    }
+    
+    private func didDownloadAvatar() {
+        let op = downloadImageOperaion!
+        downloadImageOperaion = nil
+        if let image = op.image, profileDraft.avatar == nil {
+            profileDraft.avatar = image
+        }
     }
     
     private func localizeTitles() {
@@ -206,5 +237,21 @@ class ProfileDraft {
         } catch _ {
             return false
         }
+    }
+}
+
+class DownloadImageOperaion: AlamofireAPIAccessOperation {
+    let url: URL
+    private(set) var image: UIImage?
+    init(url: URL) {
+        self.url = url
+    }
+    
+    override func prepareURLRequest() throws -> URLRequest {
+        return URLRequest(url: url)
+    }
+    
+    override func processData(with data: Data) throws {
+        image = UIImage(data: data)
     }
 }

@@ -281,14 +281,23 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9B-mE-afC" userLabel="Facebook Button">
                                                         <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
                                                         <state key="normal" image="ic_facebook_nor"/>
+                                                        <connections>
+                                                            <action selector="facebookLogIn:" destination="eEN-ri-BUE" eventType="touchUpInside" id="V9a-gg-WSk"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FdQ-bK-JZO" userLabel="Twitter Button">
                                                         <rect key="frame" x="60" y="0.0" width="44" height="44"/>
                                                         <state key="normal" image="ic_twitter_nor"/>
+                                                        <connections>
+                                                            <action selector="twitterLogIn:" destination="eEN-ri-BUE" eventType="touchUpInside" id="mSN-Oy-1tS"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4s-51-9hf" userLabel="WeChat Button">
                                                         <rect key="frame" x="120" y="0.0" width="44" height="44"/>
                                                         <state key="normal" image="ic_wechat_nor"/>
+                                                        <connections>
+                                                            <action selector="weChatLogIn:" destination="eEN-ri-BUE" eventType="touchUpInside" id="2Ll-hR-NaQ"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -416,6 +425,9 @@
                         <outlet property="inputErrorView" destination="jsf-0N-wcC" id="rdL-Xc-3iM"/>
                         <outlet property="signUpButton" destination="joi-ar-0z5" id="hfh-Qk-XOO"/>
                         <outlet property="socialLoginLabel" destination="0SD-4F-Glf" id="68Z-TY-CmW"/>
+                        <outletCollection property="socialLoginButtons" destination="x9B-mE-afC" collectionClass="NSMutableArray" id="Rd6-8W-V4L"/>
+                        <outletCollection property="socialLoginButtons" destination="FdQ-bK-JZO" collectionClass="NSMutableArray" id="KPY-1f-2cX"/>
+                        <outletCollection property="socialLoginButtons" destination="M4s-51-9hf" collectionClass="NSMutableArray" id="nhe-sv-8mk"/>
                         <segue destination="QW0-15-aEk" kind="show" identifier="emailVerification" id="Bot-5J-LKD"/>
                         <segue destination="pM1-zm-etb" kind="show" identifier="createProfile" id="iev-We-Pda"/>
                     </connections>
@@ -1166,7 +1178,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="iev-We-Pda"/>
-        <segue reference="fWF-vv-mfI"/>
+        <segue reference="Bot-5J-LKD"/>
         <segue reference="evJ-6q-hzg"/>
         <segue reference="hIs-qp-m5a"/>
     </inferredMetricsTieBreakers>

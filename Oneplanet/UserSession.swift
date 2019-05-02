@@ -8,10 +8,12 @@
 
 import Foundation
 import Alamofire
+import FirebaseAuth
 
 class UserSession {
     let token: String
     var profile: MyProfile?
+    var socialProfile: FirebaseAuth.User?
     
     init(token: String) {
         self.token = token

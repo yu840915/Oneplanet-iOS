@@ -127,10 +127,17 @@ protocol AuthenticationOperationType: FailableOperationType {
     var token: String? {get}
 }
 
-class FacebookLoginOperation: SimpleAsynchronousOperation, AuthenticationOperationType {
+protocol SocialAuthenticationOperationType: AuthenticationOperationType {
+    var user: FirebaseAuth.User? {get}
+}
+
+class FacebookLoginOperation: SimpleAsynchronousOperation, SocialAuthenticationOperationType {
     private(set) var success: Bool?
     private(set) var error: Error?
     private(set) var token: String?
+    var user: FirebaseAuth.User? {
+        return firebaseAuthOperation?.user
+    }
     let presenter: UIViewController
     private let manager: LoginManager
     private var firebaseAuthOperation: FirebaseAuthorizationOperation?
@@ -201,10 +208,13 @@ class FacebookLoginOperation: SimpleAsynchronousOperation, AuthenticationOperati
     }
 }
 
-class TwitterLogInOperation: SimpleAsynchronousOperation, AuthenticationOperationType {
+class TwitterLogInOperation: SimpleAsynchronousOperation, SocialAuthenticationOperationType {
     private(set) var success: Bool?
     private(set) var error: Error?
     private(set) var token: String?
+    var user: FirebaseAuth.User? {
+        return firebaseAuthOperation?.user
+    }
     let presenter: UIViewController
     private var firebaseAuthOperation: FirebaseAuthorizationOperation?
     init(presenter: UIViewController) {
@@ -261,6 +271,7 @@ class FirebaseAuthorizationOperation: SimpleAsynchronousOperation, FailableOpera
     private(set) var success: Bool?
     private(set) var error: Error?
     private(set) var idToken: String?
+    private(set) var user: FirebaseAuth.User?
     private let auth: Auth
     
     let credential: AuthCredential
@@ -280,11 +291,10 @@ class FirebaseAuthorizationOperation: SimpleAsynchronousOperation, FailableOpera
             fail(with: error)
             return
         }
+        user = result.user
         result.user.getIDToken {[weak self] (token, error) in
             self?.didGetToken(token, error: error)
         }
-        success = true
-        finish()
     }
     
     private func didGetToken(_ token: String?, error: Error?) {
@@ -293,6 +303,8 @@ class FirebaseAuthorizationOperation: SimpleAsynchronousOperation, FailableOpera
             return
         }
         idToken = token
+        success = true
+        finish()
     }
     
     private func fail(with error: Error?) {

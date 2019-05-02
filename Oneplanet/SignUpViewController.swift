@@ -17,13 +17,18 @@ protocol EmailAuthFlowStep: AnyObject {
 class SignUpViewController: UIViewController, EmailAuthFlowStep {
 
     @IBOutlet weak var socialLoginLabel: UILabel!
+    @IBOutlet var socialLoginButtons: [UIButton]!
     @IBOutlet weak var emailLoginLabel: UILabel!
     @IBOutlet weak var emailFieldView: InputFieldView!
     @IBOutlet weak var inputErrorView: UIView!
     @IBOutlet weak var inputErrorLabel: UILabel!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet var endEditingTap: UITapGestureRecognizer!
-    
+    private var authOperation: SocialAuthenticationOperationType? {
+        didSet {
+            updateViewsForRunningAuthOperation()
+        }
+    }
     private var getAccountStateOperation: GetAccountStateOperation?
     var emailAuthCredential: EmailAuthCredential!
     var authorizationCompletion: ((UserSession) -> ())!
@@ -111,10 +116,55 @@ class SignUpViewController: UIViewController, EmailAuthFlowStep {
         inputErrorLabel.text = message
     }
     
+    private func updateViewsForRunningAuthOperation() {
+        let allowsAction = authOperation == nil
+        signUpButton.isEnabled = allowsAction
+        emailFieldView.textField.isEnabled = allowsAction
+        socialLoginButtons.forEach { $0.isEnabled = allowsAction }
+    }
+    
+    private func didLogIn() {
+        let op = authOperation!
+        authOperation = nil
+        if let token = op.token {
+            performSegue(withIdentifier: SegueID.createProfile, sender: UserSession(token: token))
+        } else if let error = op.error {
+            showAlert(with: error)
+        }
+    }
+    
     @IBAction func next(_ sender: Any) {
         view.endEditing(false)
         emailAuthCredential.email = emailFieldView.textField.text ?? ""
         getAccountState()
+    }
+    
+    @IBAction func facebookLogIn(_ sender: UIButton) {
+        guard authOperation == nil else { return }
+        let op = FacebookLoginOperation(presenter: self)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didLogIn()
+            }
+        }
+        authOperation = op
+        op.start()
+    }
+    
+    @IBAction func twitterLogIn(_ sender: UIButton) {
+        guard authOperation == nil else { return }
+        let op = TwitterLogInOperation(presenter: self)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didLogIn()
+            }
+        }
+        authOperation = op
+        op.start()
+    }
+    
+    @IBAction func weChatLogIn(_ sender: UIButton) {
+        guard authOperation == nil else { return }
     }
     
     @IBAction func updateEmailInput(_ sender: UITextField) {
@@ -136,6 +186,9 @@ class SignUpViewController: UIViewController, EmailAuthFlowStep {
             vc.authorizationCompletion = {[weak self] session in
                 self?.authorizationCompletion?(session)
             }
+        }
+        if let vc = segue.destination as? CreateProfileViewController {
+            vc.userSession = (sender as! UserSession)
         }
     }
 

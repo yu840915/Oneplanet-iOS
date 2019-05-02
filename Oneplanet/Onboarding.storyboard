@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nIr-Ca-Nry">
-    <device id="retina6_1" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -16,7 +16,7 @@
             <objects>
                 <navigationController id="nIr-Ca-Nry" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jGq-7T-kg7">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
@@ -33,7 +33,7 @@
             <objects>
                 <viewController id="zih-dm-v0x" customClass="WelcomeMessageViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QFV-ub-Paq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="im_bgall" translatesAutoresizingMaskIntoConstraints="NO" id="BOL-Hc-1Qs">
@@ -41,16 +41,16 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PLC-hu-vtk">
-                                <rect key="frame" x="-10" y="0.0" width="434" height="896"/>
+                                <rect key="frame" x="-10" y="0.0" width="434" height="736"/>
                                 <connections>
                                     <segue destination="iUF-wp-lIy" kind="embed" id="BuK-aY-Sid"/>
                                 </connections>
                             </containerView>
                             <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="tbL-B9-Wr7">
-                                <rect key="frame" x="187.5" y="755" width="39" height="37"/>
+                                <rect key="frame" x="187.66666666666666" y="629" width="39" height="37"/>
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X85-4A-R0C" userLabel="Skip Button">
-                                <rect key="frame" x="318" y="825" width="76" height="17"/>
+                                <rect key="frame" x="318" y="688" width="76" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <inset key="contentEdgeInsets" minX="24" minY="0.0" maxX="24" maxY="0.0"/>
                                 <state key="normal" title="Skip" backgroundImage="bt_smallwirewhite_nor">
@@ -89,7 +89,7 @@
             <objects>
                 <collectionViewController id="iUF-wp-lIy" customClass="WelcomeMessageContentCollectionViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" prefetchingEnabled="NO" id="6aD-wm-DxP">
-                        <rect key="frame" x="0.0" y="0.0" width="434" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="434" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="20" minimumInteritemSpacing="10" id="JBX-tq-irV">
@@ -100,13 +100,13 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="cell" id="K5j-Aa-WfC" customClass="ImageTileCollectionViewCell" customModule="Oneplanet" customModuleProvider="target">
-                                <rect key="frame" x="10" y="37" width="378" height="822"/>
+                                <rect key="frame" x="10" y="-43" width="378" height="822"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="378" height="822"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JPl-54-SgY">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JPl-54-SgY">
                                             <rect key="frame" x="0.0" y="0.0" width="398" height="822"/>
                                         </imageView>
                                     </subviews>
@@ -137,7 +137,7 @@
             <objects>
                 <navigationController storyboardIdentifier="WelcomePageEntry" id="mRy-zb-ayP" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="O9d-Lz-EGZ">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
@@ -162,20 +162,20 @@
             <objects>
                 <viewController id="mx8-ii-qdX" customClass="LoginHomeViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d5g-QK-rgD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_bgall" translatesAutoresizingMaskIntoConstraints="NO" id="ebB-c1-gia">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_logotext" translatesAutoresizingMaskIntoConstraints="NO" id="JKi-h0-wD3">
-                                <rect key="frame" x="199" y="136" width="16" height="16"/>
+                                <rect key="frame" x="135.66666666666666" y="112" width="142.99999999999997" height="33"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="GPY-Wn-iWr">
-                                <rect key="frame" x="36" y="682" width="342" height="160"/>
+                                <rect key="frame" x="36" y="484.33333333333331" width="342" height="231.66666666666669"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KFs-U8-0fE" userLabel="Sign Up Button">
-                                        <rect key="frame" x="0.0" y="0.0" width="342" height="17"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="342" height="41"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                         <state key="normal" title="Sign Up" backgroundImage="bt_biggreen_nor">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -185,13 +185,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hh2-a6-3VL" userLabel="Log In Label">
-                                        <rect key="frame" x="0.0" y="33" width="342" height="14.5"/>
+                                        <rect key="frame" x="0.0" y="57.000000000000064" width="342" height="14.333333333333336"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <color key="textColor" name="default text"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxc-8Y-S3t" userLabel="Log In Button">
-                                        <rect key="frame" x="0.0" y="63.5" width="342" height="17"/>
+                                        <rect key="frame" x="0.0" y="87.333333333333314" width="342" height="41"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                         <state key="normal" title="Log In" backgroundImage="bt_bigwhite_nor">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -201,7 +201,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qCK-6p-yLj" userLabel="Guest Button">
-                                        <rect key="frame" x="0.0" y="96.5" width="342" height="17"/>
+                                        <rect key="frame" x="0.0" y="144.33333333333331" width="342" height="41"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                         <state key="normal" title="Later" backgroundImage="bt_bigwhite_nor">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -211,7 +211,7 @@
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="By login" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZOE-0s-Svs">
-                                        <rect key="frame" x="0.0" y="129.5" width="342" height="30.5"/>
+                                        <rect key="frame" x="0.0" y="201.33333333333331" width="342" height="30.333333333333343"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -256,27 +256,27 @@
             <objects>
                 <viewController id="eEN-ri-BUE" customClass="SignUpViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V8m-Gy-69f">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_bgall" translatesAutoresizingMaskIntoConstraints="NO" id="JkY-ob-eeE">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <gestureRecognizers/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="QYM-Bf-NoL">
-                                <rect key="frame" x="36" y="124" width="342" height="240"/>
+                                <rect key="frame" x="36" y="99.999999999999986" width="342" height="239.66666666666663"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="GfW-Je-4D7">
-                                        <rect key="frame" x="0.0" y="0.0" width="342" height="68.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="342" height="68.333333333333329"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick registration" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0SD-4F-Glf" userLabel="Social Login Label">
-                                                <rect key="frame" x="120.5" y="0.0" width="101" height="14.5"/>
+                                                <rect key="frame" x="120.66666666666666" y="0.0" width="100.66666666666666" height="14.333333333333334"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" name="default text"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="hYW-0B-eD7">
-                                                <rect key="frame" x="89" y="24.5" width="164" height="44"/>
+                                                <rect key="frame" x="89" y="24.333333333333329" width="164" height="44"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x9B-mE-afC" userLabel="Facebook Button">
                                                         <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
@@ -304,22 +304,22 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="x1Z-WF-vio">
-                                        <rect key="frame" x="0.0" y="94.5" width="342" height="68.5"/>
+                                        <rect key="frame" x="0.0" y="94.333333333333343" width="342" height="68.333333333333343"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Or Sign Up With Email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Y6-lC-qlb" userLabel="Email Login Label">
-                                                <rect key="frame" x="0.0" y="0.0" width="342" height="14.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="342" height="14.333333333333334"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" name="default text"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="6wr-Kl-ocA">
-                                                <rect key="frame" x="0.0" y="24.5" width="342" height="44"/>
+                                                <rect key="frame" x="0.0" y="24.333333333333314" width="342" height="44"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fmc-oh-zZm" customClass="InputFieldView" customModule="Oneplanet" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_fieldwhite_nor" translatesAutoresizingMaskIntoConstraints="NO" id="Yy2-Cl-jri" userLabel="Normal Background">
-                                                                <rect key="frame" x="0.0" y="1.5" width="342" height="41"/>
+                                                                <rect key="frame" x="0.0" y="1.6666666666666856" width="342" height="41"/>
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ui_fieldwhite_fai" translatesAutoresizingMaskIntoConstraints="NO" id="aNH-cj-YcL" userLabel="Rejecting Background">
                                                                 <rect key="frame" x="0.0" y="1" width="342" height="41"/>
@@ -377,7 +377,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="yMB-YY-huk">
-                                        <rect key="frame" x="0.0" y="189" width="342" height="51"/>
+                                        <rect key="frame" x="0.0" y="188.66666666666669" width="342" height="51"/>
                                         <subviews>
                                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2xj-4f-1if">
                                                 <rect key="frame" x="0.0" y="0.0" width="342" height="10"/>
@@ -446,32 +446,32 @@
             <objects>
                 <viewController id="xml-pX-rLx" customClass="SignUpPasswordViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="63V-WS-G3J">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_bgall" translatesAutoresizingMaskIntoConstraints="NO" id="fva-0i-vdW">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="lS4-YH-N1A">
-                                <rect key="frame" x="36" y="124" width="342" height="145.5"/>
+                                <rect key="frame" x="36" y="100.00000000000001" width="342" height="145.33333333333337"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="p8w-hf-P2Z">
-                                        <rect key="frame" x="0.0" y="0.0" width="342" height="68.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="342" height="68.333333333333329"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please enter 6 to 12 characters in English or numbers" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1F1-XH-SbZ" userLabel="Password Label">
-                                                <rect key="frame" x="0.0" y="0.0" width="342" height="14.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="342" height="14.333333333333334"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" name="default text"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Tt7-kd-3uZ">
-                                                <rect key="frame" x="0.0" y="24.5" width="342" height="44"/>
+                                                <rect key="frame" x="0.0" y="24.333333333333329" width="342" height="44"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6ls-SV-he4" customClass="InputFieldView" customModule="Oneplanet" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_fieldwhite_nor" translatesAutoresizingMaskIntoConstraints="NO" id="z2d-dw-GAZ" userLabel="Normal Background">
-                                                                <rect key="frame" x="0.0" y="1.5" width="342" height="41"/>
+                                                                <rect key="frame" x="0.0" y="1.6666666666666714" width="342" height="41"/>
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ui_fieldwhite_fai" translatesAutoresizingMaskIntoConstraints="NO" id="gUA-vg-lOQ" userLabel="Rejecting Background">
                                                                 <rect key="frame" x="0.0" y="1" width="342" height="41"/>
@@ -529,7 +529,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="IJt-hC-BUJ">
-                                        <rect key="frame" x="0.0" y="94.5" width="342" height="51"/>
+                                        <rect key="frame" x="0.0" y="94.333333333333343" width="342" height="51"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HoH-27-wuO">
                                                 <rect key="frame" x="0.0" y="0.0" width="342" height="10"/>
@@ -591,14 +591,14 @@
             <objects>
                 <viewController id="ogP-NA-qCD" customClass="LogInViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EHT-bT-EkQ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_bgall" translatesAutoresizingMaskIntoConstraints="NO" id="dm3-6Z-eRe">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="NtM-nd-hoI">
-                                <rect key="frame" x="36" y="124" width="342" height="215.5"/>
+                                <rect key="frame" x="36" y="100.00000000000001" width="342" height="215.33333333333337"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="LXG-JO-VjG">
                                         <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
@@ -609,36 +609,45 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iuu-ol-1Md" userLabel="Facebook Button">
                                                         <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
                                                         <state key="normal" image="ic_facebook_nor"/>
+                                                        <connections>
+                                                            <action selector="facebookLogIn:" destination="ogP-NA-qCD" eventType="touchUpInside" id="GkK-qm-TDi"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wsb-mG-ei5" userLabel="Twitter Button">
                                                         <rect key="frame" x="60" y="0.0" width="44" height="44"/>
                                                         <state key="normal" image="ic_twitter_nor"/>
+                                                        <connections>
+                                                            <action selector="twitterLogIn:" destination="ogP-NA-qCD" eventType="touchUpInside" id="N0I-Ya-Ag7"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OPo-aD-ROX" userLabel="WeChat Button">
                                                         <rect key="frame" x="120" y="0.0" width="44" height="44"/>
                                                         <state key="normal" image="ic_wechat_nor"/>
+                                                        <connections>
+                                                            <action selector="weChatLogIn:" destination="ogP-NA-qCD" eventType="touchUpInside" id="oJs-nc-hCT"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vHs-ZF-pp5">
-                                        <rect key="frame" x="0.0" y="70" width="342" height="68.5"/>
+                                        <rect key="frame" x="0.0" y="70" width="342" height="68.333333333333314"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick registration" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJo-Hw-BK8" userLabel="Email Login Label">
-                                                <rect key="frame" x="0.0" y="0.0" width="342" height="14.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="342" height="14.333333333333334"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" name="default text"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="shh-3H-wZh">
-                                                <rect key="frame" x="0.0" y="24.5" width="342" height="44"/>
+                                                <rect key="frame" x="0.0" y="24.333333333333343" width="342" height="44"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wJc-vE-ySv" customClass="InputFieldView" customModule="Oneplanet" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_fieldwhite_nor" translatesAutoresizingMaskIntoConstraints="NO" id="H5c-3N-YJK" userLabel="Normal Background">
-                                                                <rect key="frame" x="0.0" y="1.5" width="342" height="41"/>
+                                                                <rect key="frame" x="0.0" y="1.6666666666666572" width="342" height="41"/>
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ui_fieldwhite_fai" translatesAutoresizingMaskIntoConstraints="NO" id="21N-7D-ENn" userLabel="Rejecting Background">
                                                                 <rect key="frame" x="0.0" y="1" width="342" height="41"/>
@@ -696,7 +705,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Itx-BQ-7dS">
-                                        <rect key="frame" x="0.0" y="164.5" width="342" height="51"/>
+                                        <rect key="frame" x="0.0" y="164.33333333333331" width="342" height="51"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8UD-1V-Qbu">
                                                 <rect key="frame" x="0.0" y="0.0" width="342" height="10"/>
@@ -743,6 +752,9 @@
                         <outlet property="inputErrorLabel" destination="3GQ-NX-U9J" id="v9j-vY-T3E"/>
                         <outlet property="inputErrorView" destination="t2F-0X-nYk" id="VuZ-oa-3Tc"/>
                         <outlet property="nextButton" destination="zKf-00-ba5" id="5Fq-13-BA8"/>
+                        <outletCollection property="socialLoginButtons" destination="iuu-ol-1Md" collectionClass="NSMutableArray" id="kiW-Mr-Qj5"/>
+                        <outletCollection property="socialLoginButtons" destination="wsb-mG-ei5" collectionClass="NSMutableArray" id="fJb-ru-3cg"/>
+                        <outletCollection property="socialLoginButtons" destination="OPo-aD-ROX" collectionClass="NSMutableArray" id="ciE-xF-U9W"/>
                         <segue destination="QW0-15-aEk" kind="show" identifier="emailVerification" id="fWF-vv-mfI"/>
                         <segue destination="6yb-bA-4Ur" kind="show" identifier="showPasswordField" id="evJ-6q-hzg"/>
                     </connections>
@@ -761,14 +773,14 @@
             <objects>
                 <viewController id="6yb-bA-4Ur" customClass="LoginPasswordViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3g7-3Y-SD6">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_bgall" translatesAutoresizingMaskIntoConstraints="NO" id="7Bd-MH-8N2">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="LaI-nH-ol1">
-                                <rect key="frame" x="36" y="124" width="342" height="153"/>
+                                <rect key="frame" x="36" y="100" width="342" height="153"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5td-LH-kJR">
                                         <rect key="frame" x="0.0" y="0.0" width="342" height="76"/>
@@ -780,7 +792,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_fieldwhite_nor" translatesAutoresizingMaskIntoConstraints="NO" id="dCi-rt-6pM" userLabel="Normal Background">
-                                                                <rect key="frame" x="0.0" y="1.5" width="342" height="41"/>
+                                                                <rect key="frame" x="0.0" y="1.6666666666666714" width="342" height="41"/>
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ui_fieldwhite_fai" translatesAutoresizingMaskIntoConstraints="NO" id="4gf-0o-yvm" userLabel="Rejecting Background">
                                                                 <rect key="frame" x="0.0" y="1" width="342" height="41"/>
@@ -906,20 +918,20 @@
             <objects>
                 <viewController id="QW0-15-aEk" customClass="EmailVerificationViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GFK-9h-WZf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_bgall" translatesAutoresizingMaskIntoConstraints="NO" id="95t-2i-N4J">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The email has been sent. Please click the link in the email to complete the registration process." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nqo-3f-tpr" userLabel="Message Label">
-                                <rect key="frame" x="60" y="148" width="294" height="115"/>
+                                <rect key="frame" x="60" y="124" width="294" height="114.66666666666669"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" name="default text"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="By login" translatesAutoresizingMaskIntoConstraints="NO" id="AWH-Br-NDf" userLabel="Action Text View">
-                                <rect key="frame" x="50" y="283" width="314" height="30.5"/>
+                                <rect key="frame" x="50" y="258.66666666666669" width="314" height="30.666666666666686"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -968,7 +980,7 @@
             <objects>
                 <viewController id="pM1-zm-etb" customClass="CreateProfileViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WgE-oF-w5B">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="im_bgall" translatesAutoresizingMaskIntoConstraints="NO" id="V5y-4Y-yGA">
@@ -976,16 +988,16 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="dc2-12-0uc">
-                                <rect key="frame" x="36" y="142" width="342" height="395"/>
+                                <rect key="frame" x="36" y="118.00000000000003" width="342" height="394.66666666666674"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="B4b-IG-nRa">
-                                        <rect key="frame" x="0.0" y="0.0" width="342" height="84.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="342" height="84.333333333333329"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3hw-c1-EdU" customClass="InputFieldView" customModule="Oneplanet" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_fieldwhite_nor" translatesAutoresizingMaskIntoConstraints="NO" id="83W-WI-NSe" userLabel="Normal Background">
-                                                        <rect key="frame" x="0.0" y="1.5" width="342" height="41"/>
+                                                        <rect key="frame" x="0.0" y="1.6666666666666714" width="342" height="41"/>
                                                     </imageView>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ui_fieldwhite_fai" translatesAutoresizingMaskIntoConstraints="NO" id="NMh-VK-ql3" userLabel="Rejecting Background">
                                                         <rect key="frame" x="0.0" y="1" width="342" height="41"/>
@@ -1021,7 +1033,7 @@
                                                 </connections>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Oneplanet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwg-xo-2aW" userLabel="Greeting Label">
-                                                <rect key="frame" x="0.0" y="64" width="342" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="64" width="342" height="20.333333333333329"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <color key="textColor" name="default text"/>
                                                 <nil key="highlightedColor"/>
@@ -1029,7 +1041,7 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eRR-BC-dxc">
-                                        <rect key="frame" x="0.0" y="120.5" width="342" height="96"/>
+                                        <rect key="frame" x="0.0" y="120.33333333333334" width="342" height="96"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dp2-cs-sue" userLabel="Avatar Button">
                                                 <rect key="frame" x="131" y="8" width="80" height="80"/>
@@ -1051,10 +1063,10 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="k0j-QC-DpK">
-                                        <rect key="frame" x="0.0" y="252.5" width="342" height="65.5"/>
+                                        <rect key="frame" x="0.0" y="252.33333333333334" width="342" height="65.333333333333343"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hCS-SM-DyG" userLabel="Add Avatart Stack View">
-                                                <rect key="frame" x="0.0" y="0.0" width="342" height="65.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="342" height="65.333333333333329"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPB-ey-CBZ" userLabel="Add Avatar Button">
                                                         <rect key="frame" x="0.0" y="0.0" width="342" height="41"/>
@@ -1068,7 +1080,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a profile photo so your friends know it’s you." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ows-Hb-CiN" userLabel="Add Avatar Prompt Label">
-                                                        <rect key="frame" x="0.0" y="51" width="342" height="14.5"/>
+                                                        <rect key="frame" x="0.0" y="51" width="342" height="14.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" name="default text"/>
                                                         <nil key="highlightedColor"/>
@@ -1104,7 +1116,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDf-TH-ttu" userLabel="Next Button">
-                                        <rect key="frame" x="0.0" y="354" width="342" height="41"/>
+                                        <rect key="frame" x="0.0" y="353.66666666666669" width="342" height="41"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                         <state key="normal" title="Next" backgroundImage="bt_biggreen_nor">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1177,8 +1189,8 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iev-We-Pda"/>
-        <segue reference="Bot-5J-LKD"/>
+        <segue reference="DGZ-tA-snB"/>
+        <segue reference="fWF-vv-mfI"/>
         <segue reference="evJ-6q-hzg"/>
         <segue reference="hIs-qp-m5a"/>
     </inferredMetricsTieBreakers>

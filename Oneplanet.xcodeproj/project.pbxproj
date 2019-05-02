@@ -48,6 +48,14 @@
 		E06589C8227060EC00C9E4E6 /* PhotoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06589C7227060EC00C9E4E6 /* PhotoList.swift */; };
 		E06589CA2270C1A500C9E4E6 /* UpdateClock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06589C92270C1A500C9E4E6 /* UpdateClock.swift */; };
 		E06589CD2271ADFD00C9E4E6 /* WelcomeMessageContentCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06589CC2271ADFD00C9E4E6 /* WelcomeMessageContentCollectionViewController.swift */; };
+		E06F4FFA22782C8C0067DAE4 /* InputValidators.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06F4FF922782C8C0067DAE4 /* InputValidators.swift */; };
+		E06F4FFC22782E7D0067DAE4 /* EmailAuthCredentialTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06F4FFB22782E7D0067DAE4 /* EmailAuthCredentialTests.swift */; };
+		E06F4FFE22789C760067DAE4 /* AppLifeCycleObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06F4FFD22789C760067DAE4 /* AppLifeCycleObserver.swift */; };
+		E06F5000227ABE1C0067DAE4 /* OpenSDK1.8.0_NoPay in Resources */ = {isa = PBXBuildFile; fileRef = E06F4FFF227ABE1B0067DAE4 /* OpenSDK1.8.0_NoPay */; };
+		E06F5009227AFC770067DAE4 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E06F5008227AFC770067DAE4 /* libWeChatSDK.a */; };
+		E06F500B227AFC9B0067DAE4 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E06F500A227AFC9B0067DAE4 /* CoreTelephony.framework */; };
+		E06F500F227AFD740067DAE4 /* WeChatLogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06F500E227AFD740067DAE4 /* WeChatLogIn.swift */; };
+		E06F5011227B34880067DAE4 /* ProfileDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06F5010227B34880067DAE4 /* ProfileDraft.swift */; };
 		E07276DF2272D4BA001239C0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276DE2272D4BA001239C0 /* SignUpViewController.swift */; };
 		E07276E1227307F5001239C0 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276E0227307F5001239C0 /* LogInViewController.swift */; };
 		E07276E322731334001239C0 /* EmailVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276E222731334001239C0 /* EmailVerificationViewController.swift */; };
@@ -62,6 +70,8 @@
 		E07276FD2277424E001239C0 /* URLRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276FC2277424E001239C0 /* URLRouter.swift */; };
 		E07276FF227743D7001239C0 /* URLRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276FE227743D7001239C0 /* URLRouterTests.swift */; };
 		E07277012277EE3D001239C0 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07277002277EE3C001239C0 /* AppConfiguration.swift */; };
+		E08C3129227817680013DD0C /* AuthActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08C3128227817680013DD0C /* AuthActions.swift */; };
+		E08C312B227826850013DD0C /* EmailInputValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08C312A227826850013DD0C /* EmailInputValidatorTests.swift */; };
 		E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -124,6 +134,15 @@
 		E06589C7227060EC00C9E4E6 /* PhotoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoList.swift; sourceTree = "<group>"; };
 		E06589C92270C1A500C9E4E6 /* UpdateClock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateClock.swift; sourceTree = "<group>"; };
 		E06589CC2271ADFD00C9E4E6 /* WelcomeMessageContentCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeMessageContentCollectionViewController.swift; sourceTree = "<group>"; };
+		E06F4FF922782C8C0067DAE4 /* InputValidators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputValidators.swift; sourceTree = "<group>"; };
+		E06F4FFB22782E7D0067DAE4 /* EmailAuthCredentialTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailAuthCredentialTests.swift; sourceTree = "<group>"; };
+		E06F4FFD22789C760067DAE4 /* AppLifeCycleObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLifeCycleObserver.swift; sourceTree = "<group>"; };
+		E06F4FFF227ABE1B0067DAE4 /* OpenSDK1.8.0_NoPay */ = {isa = PBXFileReference; lastKnownFileType = folder; path = OpenSDK1.8.0_NoPay; sourceTree = "<group>"; };
+		E06F5001227ABE8A0067DAE4 /* Oneplanet-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Oneplanet-Bridging-Header.h"; sourceTree = "<group>"; };
+		E06F5008227AFC770067DAE4 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWeChatSDK.a; path = Oneplanet/OpenSDK1.8.0_NoPay/libWeChatSDK.a; sourceTree = "<group>"; };
+		E06F500A227AFC9B0067DAE4 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		E06F500E227AFD740067DAE4 /* WeChatLogIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeChatLogIn.swift; sourceTree = "<group>"; };
+		E06F5010227B34880067DAE4 /* ProfileDraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDraft.swift; sourceTree = "<group>"; };
 		E07276DE2272D4BA001239C0 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		E07276E0227307F5001239C0 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		E07276E222731334001239C0 /* EmailVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +163,8 @@
 		E07276FC2277424E001239C0 /* URLRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRouter.swift; sourceTree = "<group>"; };
 		E07276FE227743D7001239C0 /* URLRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRouterTests.swift; sourceTree = "<group>"; };
 		E07277002277EE3C001239C0 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
+		E08C3128227817680013DD0C /* AuthActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthActions.swift; sourceTree = "<group>"; };
+		E08C312A227826850013DD0C /* EmailInputValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailInputValidatorTests.swift; sourceTree = "<group>"; };
 		E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryImagePickerViewController.swift; sourceTree = "<group>"; };
 		E606D7D88F63D6FCB0821922 /* Pods-OneplanetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneplanetTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneplanetTests/Pods-OneplanetTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FD31476F85B0E94B50970A99 /* Pods_OneplanetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneplanetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,11 +175,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E06F500B227AFC9B0067DAE4 /* CoreTelephony.framework in Frameworks */,
 				E07276FA22773EC7001239C0 /* JLRoutes.framework in Frameworks */,
 				E06261CE226D6F2200A96F55 /* ModelBlocks.framework in Frameworks */,
 				E03C32B7226DA39700C32FD7 /* SwiftGif.framework in Frameworks */,
 				E03C329C226D75F400C32FD7 /* SwiftyBeaver.framework in Frameworks */,
 				E06261C8226D640D00A96F55 /* StoreKit.framework in Frameworks */,
+				E06F5009227AFC770067DAE4 /* libWeChatSDK.a in Frameworks */,
 				6868F9DB5BA3F9DA5AAF9145 /* Pods_Oneplanet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -224,6 +247,9 @@
 				E07276E622735511001239C0 /* LoginPasswordViewController.swift */,
 				E07276E222731334001239C0 /* EmailVerificationViewController.swift */,
 				E07276E82273633A001239C0 /* CreateProfileViewController.swift */,
+				E06F5010227B34880067DAE4 /* ProfileDraft.swift */,
+				E08C3128227817680013DD0C /* AuthActions.swift */,
+				E06F500E227AFD740067DAE4 /* WeChatLogIn.swift */,
 			);
 			name = Onboarding;
 			sourceTree = "<group>";
@@ -253,7 +279,6 @@
 			children = (
 				E06261C6226D63E700A96F55 /* Oneplanet.entitlements */,
 				E05BB25D226D5D2A00721F20 /* AppDelegate.swift */,
-				E07276FC2277424E001239C0 /* URLRouter.swift */,
 				E03C329D226D772400C32FD7 /* Logger.swift */,
 				E03C3299226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift */,
 				E07276FB22773F54001239C0 /* Server Push Message */,
@@ -279,6 +304,8 @@
 				E05BB272226D5D2F00721F20 /* OneplanetTests.swift */,
 				E0190F50226DD1E200C212D5 /* ChecklistItemTests.swift */,
 				E07276FE227743D7001239C0 /* URLRouterTests.swift */,
+				E08C312A227826850013DD0C /* EmailInputValidatorTests.swift */,
+				E06F4FFB22782E7D0067DAE4 /* EmailAuthCredentialTests.swift */,
 				E05BB274226D5D2F00721F20 /* Info.plist */,
 			);
 			path = OneplanetTests;
@@ -287,6 +314,8 @@
 		E06261C3226D63DB00A96F55 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E06F500A227AFC9B0067DAE4 /* CoreTelephony.framework */,
+				E06F5008227AFC770067DAE4 /* libWeChatSDK.a */,
 				E06261C7226D640D00A96F55 /* StoreKit.framework */,
 				C23D84EC0F174A064CAA41E1 /* Pods_Oneplanet.framework */,
 				FD31476F85B0E94B50970A99 /* Pods_OneplanetTests.framework */,
@@ -297,6 +326,8 @@
 		E06261CB226D6EBE00A96F55 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E06F5001227ABE8A0067DAE4 /* Oneplanet-Bridging-Header.h */,
+				E06F4FFF227ABE1B0067DAE4 /* OpenSDK1.8.0_NoPay */,
 				E03C32AB226D872A00C32FD7 /* Localized.swift */,
 				E05BB269226D5D2E00721F20 /* Info.plist */,
 				E07276F22276AA84001239C0 /* GoogleService-Info.plist */,
@@ -335,7 +366,10 @@
 		E06589CB2270C21000C9E4E6 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				E07276FC2277424E001239C0 /* URLRouter.swift */,
+				E06F4FF922782C8C0067DAE4 /* InputValidators.swift */,
 				E06589C92270C1A500C9E4E6 /* UpdateClock.swift */,
+				E06F4FFD22789C760067DAE4 /* AppLifeCycleObserver.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -363,6 +397,7 @@
 				E05BB258226D5D2A00721F20 /* Resources */,
 				A20C5EEB18D42B17AC3D0CD4 /* [CP] Embed Pods Frameworks */,
 				E07276F42276B24F001239C0 /* Fabric Set Up */,
+				2BFA4E1F6ECAF95563E04AFC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -404,6 +439,7 @@
 				TargetAttributes = {
 					E05BB259226D5D2A00721F20 = {
 						CreatedOnToolsVersion = 10.2.1;
+						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 1;
@@ -456,6 +492,7 @@
 				E03C32B9226DA44A00C32FD7 /* Onboarding.storyboard in Resources */,
 				E0190F5A226EDD1100C212D5 /* SupportingFlows.storyboard in Resources */,
 				E05BB263226D5D2A00721F20 /* Main.storyboard in Resources */,
+				E06F5000227ABE1C0067DAE4 /* OpenSDK1.8.0_NoPay in Resources */,
 				E03C32A6226D866500C32FD7 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -470,6 +507,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2BFA4E1F6ECAF95563E04AFC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Oneplanet/Pods-Oneplanet-resources.sh",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Oneplanet/Pods-Oneplanet-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		9DD2D5B827D9C8FDD1ED57A6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -496,15 +551,35 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Oneplanet/Pods-Oneplanet-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -535,14 +610,10 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 			);
 			name = "Fabric Set Up";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -574,6 +645,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E06F5011227B34880067DAE4 /* ProfileDraft.swift in Sources */,
 				E07276FD2277424E001239C0 /* URLRouter.swift in Sources */,
 				E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */,
 				E03C32AC226D872A00C32FD7 /* Localized.swift in Sources */,
@@ -593,19 +665,23 @@
 				E07276F82276D0DC001239C0 /* RequestUserNotificationAuthorizationOperation.swift in Sources */,
 				E06589C12270333100C9E4E6 /* PickImageOperation.swift in Sources */,
 				E0190F47226DAA7300C212D5 /* LoginHomeViewController.swift in Sources */,
+				E06F500F227AFD740067DAE4 /* WeChatLogIn.swift in Sources */,
 				E07276E52273459D001239C0 /* SignUpPasswordViewController.swift in Sources */,
 				E0190F57226EDBC900C212D5 /* CameraImagePickerViewController.swift in Sources */,
+				E08C3129227817680013DD0C /* AuthActions.swift in Sources */,
 				E03C32B0226D8E8F00C32FD7 /* NavigationBarStyle.swift in Sources */,
 				E0190F4F226DD06B00C212D5 /* Preferences.swift in Sources */,
 				E07276E722735511001239C0 /* LoginPasswordViewController.swift in Sources */,
 				E06589CA2270C1A500C9E4E6 /* UpdateClock.swift in Sources */,
 				E07276E1227307F5001239C0 /* LogInViewController.swift in Sources */,
 				E05BB25E226D5D2A00721F20 /* AppDelegate.swift in Sources */,
+				E06F4FFE22789C760067DAE4 /* AppLifeCycleObserver.swift in Sources */,
 				E07276F62276C305001239C0 /* FirebaseMessagingSession.swift in Sources */,
 				E07276E92273633A001239C0 /* CreateProfileViewController.swift in Sources */,
 				E03C329E226D772400C32FD7 /* Logger.swift in Sources */,
 				E07276DF2272D4BA001239C0 /* SignUpViewController.swift in Sources */,
 				E03C32B3226D925100C32FD7 /* ServiceConstants.swift in Sources */,
+				E06F4FFA22782C8C0067DAE4 /* InputValidators.swift in Sources */,
 				E07276EB2274B515001239C0 /* WebViewController.swift in Sources */,
 				E06589C622705B4F00C9E4E6 /* PhotoGridCollectionViewController.swift in Sources */,
 				E07277012277EE3D001239C0 /* AppConfiguration.swift in Sources */,
@@ -621,7 +697,9 @@
 			files = (
 				E07276FF227743D7001239C0 /* URLRouterTests.swift in Sources */,
 				E05BB273226D5D2F00721F20 /* OneplanetTests.swift in Sources */,
+				E08C312B227826850013DD0C /* EmailInputValidatorTests.swift in Sources */,
 				E0190F51226DD1E200C212D5 /* ChecklistItemTests.swift in Sources */,
+				E06F4FFC22782E7D0067DAE4 /* EmailAuthCredentialTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -729,10 +807,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Oneplanet/OpenSDK1.8.0_NoPay";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/Oneplanet/OpenSDK1.8.0_NoPay";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -786,9 +867,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/Oneplanet/OpenSDK1.8.0_NoPay";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/Oneplanet/OpenSDK1.8.0_NoPay";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -802,6 +886,7 @@
 			baseConfigurationReference = 170F43A3E959C6F322AE06A4 /* Pods-Oneplanet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Oneplanet/Oneplanet.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4DF2W26X76;
@@ -814,8 +899,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Oneplanet/OpenSDK1.8.0_NoPay",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = tw.com.mores.theonecollection.Oneplanet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Oneplanet/Oneplanet-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -826,6 +917,7 @@
 			baseConfigurationReference = 47881963BA2439BD65729786 /* Pods-Oneplanet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Oneplanet/Oneplanet.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4DF2W26X76;
@@ -838,8 +930,13 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Oneplanet/OpenSDK1.8.0_NoPay",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = tw.com.mores.theonecollection.Oneplanet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Oneplanet/Oneplanet-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

@@ -15,7 +15,7 @@ class Localized {
     static let errorTitles = LocalizedErrorsTitles()
     static let messages = LocalizedMessages()
     static let messageFormats = LocalizedMessageFormats()
-    static let phrase = LocalizedPhrase()
+    static let phrases = LocalizedPhrase()
     static let activity = LocalizedActivityMessages()
     static let placeholder = LocalizedPlaceholder()
 }
@@ -30,6 +30,9 @@ class LocalizedTitles {//tl_
     }
     var done: String {
         return NSLocalizedString("tl_done", comment: "")
+    }
+    var ok: String {
+        return NSLocalizedString("tl_ok", comment: "")
     }
     var skip: String {
         return NSLocalizedString("tl_skip", comment: "")
@@ -92,6 +95,12 @@ class LocalizedMessages {//msg_
     var addAvatarPrompt: String {
         return NSLocalizedString("msg_add_avatar_prompt", comment: "")
     }
+    var sendResetLinkPrompt: String {
+        return NSLocalizedString("msg_send_resend_link_prompt", comment: "")
+    }
+    var sendResetLinkDescription: String {
+        return NSLocalizedString("msg_send_resend_link_description", comment: "")
+    }
 }
 
 class LocalizedMessageFormats {//msgf_
@@ -144,6 +153,12 @@ class LocalizedPhrase { //ph_
     var openSettings: String {
         return NSLocalizedString("ph_open_settings", comment: "")
     }
+    var removeAvatar: String {
+        return NSLocalizedString("ph_remove_avatar", comment: "")
+    }
+    var tryAgain: String {
+        return NSLocalizedString("ph_try_again", comment: "")
+    }
 }
 
 class LocalizedErrorsTitles {//errtl_
@@ -154,6 +169,9 @@ class LocalizedErrorsTitles {//errtl_
     var cannotPickAvatar: String {
         return NSLocalizedString("errtl_cannot_pick_avatar", comment: "")
     }
+    var accountDoesnotExist: String {
+        return NSLocalizedString("errtl_account_not_exist", comment: "")
+    }
 }
 
 class LocalizedErrors {//err_
@@ -163,5 +181,17 @@ class LocalizedErrors {//err_
     }
     var noLibraryAccess: String {
         return NSLocalizedString("err_no_library_access", comment: "")
+    }
+    var invalidEmail: String {
+        return NSLocalizedString("err_invalid_email", comment: "")
+    }
+    var nonAlphanumericalCharacter: String {
+        return NSLocalizedString("err_non_alphanumerics", comment: "")
+    }
+    var conflictingAccount: String {
+        return NSLocalizedString("err_conflicting_account", comment: "")
+    }
+    var accountDoesnotExist: String {
+        return NSLocalizedString("err_account_not_exist", comment: "")
     }
 }

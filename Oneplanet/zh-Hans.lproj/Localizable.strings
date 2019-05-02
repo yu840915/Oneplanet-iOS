@@ -9,6 +9,7 @@
 "tl_cancel" = "取消";
 "tl_dismiss" = "关闭";
 "tl_done" = "完成";
+"tl_ok" = "OK";
 "tl_all_photos" = "所有照片";
 "tl_signup" = "注册";
 "tl_login" = "登入";
@@ -26,6 +27,8 @@
 "msg_email_verification_instruction" = "电子邮件已发送。请单击电子邮件中的链接以完成注册过程。";
 "msg_password_rules" = "请填入六到十二码英文或数字";
 "msg_add_avatar_prompt" = "添加个人资料照片，以便你的朋友知道这就是你。";
+"msg_send_resend_link_prompt" = "忘记密码了吗?";
+"msg_send_resend_link_description" = "Oneplanet 将会寄送一封邮件到你的电子信箱，点击电子邮件中的链接后即可以设定新密码。";
 
 "msgf_accept_tos" = "注册或登录即表示你同意我们的%@";
 "msgf_resend_verification_email" = "你没有收到电子邮件？%@";
@@ -43,9 +46,16 @@
 "ph_take_photo" = "拍照";
 "ph_from_library" = "从相簿中选取";
 "ph_open_settings" = "开启\"设定\"";
+"ph_remove_avatar" = "删除当前照片";
+"ph_try_again" = "再试一次";
 
 "err_no_camera_access" = "We need to access you camera";
 "err_no_library_access" = "We need to access your photo library";
+"err_invalid_email" = "请输入有效电子邮件。";
+"err_non_alphanumerics" = "Only letters and digits are allowed";
+"err_conflicting_account" = "已有其他账号使用此电子邮件地址";
+"err_account_not_exist" = "你输入的电子邮件似乎不属于某个帐号。请检查电子邮件，然后再试一次。";
 
 "errtl_cannot_capture_photo" = "无法拍照";
 "errtl_cannot_pick_avatar" = "无法取得大头照";
+"errtl_account_not_exist" = "帐号错误";

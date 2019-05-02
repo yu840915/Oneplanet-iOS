@@ -128,16 +128,14 @@ protocol AuthenticationOperationType: FailableOperationType {
 }
 
 protocol SocialAuthenticationOperationType: AuthenticationOperationType {
-    var user: FirebaseAuth.User? {get}
+    var publicProfile: PublicProfile? {get}
 }
 
 class FacebookLoginOperation: SimpleAsynchronousOperation, SocialAuthenticationOperationType {
     private(set) var success: Bool?
     private(set) var error: Error?
     private(set) var token: String?
-    var user: FirebaseAuth.User? {
-        return firebaseAuthOperation?.user
-    }
+    private(set) var publicProfile: PublicProfile?
     let presenter: UIViewController
     private let manager: LoginManager
     private var firebaseAuthOperation: FirebaseAuthorizationOperation?
@@ -212,9 +210,7 @@ class TwitterLogInOperation: SimpleAsynchronousOperation, SocialAuthenticationOp
     private(set) var success: Bool?
     private(set) var error: Error?
     private(set) var token: String?
-    var user: FirebaseAuth.User? {
-        return firebaseAuthOperation?.user
-    }
+    private(set) var publicProfile: PublicProfile?
     let presenter: UIViewController
     private var firebaseAuthOperation: FirebaseAuthorizationOperation?
     init(presenter: UIViewController) {
@@ -249,6 +245,7 @@ class TwitterLogInOperation: SimpleAsynchronousOperation, SocialAuthenticationOp
     private func didSubmitTokenToFirebase() {
         let op = firebaseAuthOperation!
         if let token = op.idToken {
+            publicProfile = op.user
             submitTokenToAPIServer(with: token)
         } else {
             fail(with: op.error)
@@ -271,7 +268,7 @@ class FirebaseAuthorizationOperation: SimpleAsynchronousOperation, FailableOpera
     private(set) var success: Bool?
     private(set) var error: Error?
     private(set) var idToken: String?
-    private(set) var user: FirebaseAuth.User?
+    private(set) var user: PublicProfile?
     private let auth: Auth
     
     let credential: AuthCredential
@@ -291,7 +288,7 @@ class FirebaseAuthorizationOperation: SimpleAsynchronousOperation, FailableOpera
             fail(with: error)
             return
         }
-        user = result.user
+        user = PublicProfile(nickname: result.user.displayName, avatarURL: result.user.photoURL)
         result.user.getIDToken {[weak self] (token, error) in
             self?.didGetToken(token, error: error)
         }
@@ -320,5 +317,14 @@ class FirebaseAuthorizationOperation: SimpleAsynchronousOperation, FailableOpera
         } catch let error {
             logger.debug("Cannot sign out of Firebase, error: \(error)")
         }
+    }
+}
+
+class PublicProfile {
+    let nickname: String?
+    let avatarURL: URL?
+    init(nickname: String?, avatarURL: URL?) {
+        self.nickname = nickname
+        self.avatarURL = avatarURL
     }
 }

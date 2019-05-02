@@ -13,7 +13,7 @@ import FirebaseAuth
 class UserSession {
     let token: String
     var profile: MyProfile?
-    var socialProfile: FirebaseAuth.User?
+    var socialProfile: PublicProfile?
     
     init(token: String) {
         self.token = token

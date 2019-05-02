@@ -32,6 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appConfiguration.update()
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         TWTRTwitter.sharedInstance().start(withConsumerKey:"pGvVuFgTun2H2yPeMICtD6j0E", consumerSecret:"iQQTaLzRwLmKYvKUz46uES0JBObeV3kjI4JBklDp4U5xX8pvdw")
+        WXApi.registerApp("wxc34b2b654e956933")
         return true
     }
     
@@ -74,7 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return router.handle(url) || SDKApplicationDelegate.shared.application(app, open: url, options: options) || TWTRTwitter.sharedInstance().application(app, open: url, options: options)
+        return router.handle(url) || SDKApplicationDelegate.shared.application(app, open: url, options: options) || TWTRTwitter.sharedInstance().application(app, open: url, options: options) || WXApi.handleOpen(url, delegate: WeChatLogInOperation.runningLogIn ?? self)
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -98,8 +99,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
     
+}
+
+extension AppDelegate: WXApiDelegate {
 }
 
 class DefaultStyleConfiguration {

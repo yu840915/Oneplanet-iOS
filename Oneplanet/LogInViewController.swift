@@ -125,7 +125,7 @@ class LogInViewController: UIViewController, EmailAuthFlowStep {
         authOperation = nil
         if let token = op.token {
             let session = UserSession(token: token)
-            session.socialProfile = op.user
+            session.socialProfile = op.publicProfile
             authorizationCompletion?(session)
         } else if let error = op.error {
             showAlert(with: error)

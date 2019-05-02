@@ -11,6 +11,7 @@ import Firebase
 import FirebaseDynamicLinks
 import UserNotifications
 import FacebookCore
+import TwitterKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -30,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         appConfiguration.update()
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        TWTRTwitter.sharedInstance().start(withConsumerKey:"pGvVuFgTun2H2yPeMICtD6j0E", consumerSecret:"iQQTaLzRwLmKYvKUz46uES0JBObeV3kjI4JBklDp4U5xX8pvdw")
         return true
     }
     
@@ -72,7 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return router.handle(url) || SDKApplicationDelegate.shared.application(app, open: url, options: options)
+        return router.handle(url) || SDKApplicationDelegate.shared.application(app, open: url, options: options) || TWTRTwitter.sharedInstance().application(app, open: url, options: options)
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

@@ -12,6 +12,7 @@ import ModelBlocks
 import Alamofire
 import FacebookCore
 import FacebookLogin
+import TwitterKit
 
 class GetAccountStateOperation: AlamofireAPIAccessOperation {
     let email: String
@@ -139,10 +140,7 @@ class FacebookLoginOperation: SimpleAsynchronousOperation, AuthenticationOperati
     }
     
     override func main() {
-        logInWithFacebook()
-    }
-    
-    private func logInWithFacebook() {
+        guard !isCancelled else { return }
         if let token = AccessToken.current {
             submitTokenToFirebase(token)
         } else {
@@ -162,13 +160,6 @@ class FacebookLoginOperation: SimpleAsynchronousOperation, AuthenticationOperati
         case .success(let grantedPermissions, let declinedPermissions, let token):
             handleSucessLogin(with: token, granted: grantedPermissions, declined: declinedPermissions)
         }
-    }
-    
-    private func fail(with error: Error?) {
-        manager.logOut()
-        self.error = error
-        success = false
-        finish()
     }
     
     private func handleSucessLogin(with token: AccessToken, granted: Set<Permission>, declined: Set<Permission>) {
@@ -201,6 +192,69 @@ class FacebookLoginOperation: SimpleAsynchronousOperation, AuthenticationOperati
     private func submitTokenToAPIServer(with token: String) {
         
     }
+    
+    private func fail(with error: Error?) {
+        manager.logOut()
+        self.error = error
+        success = false
+        finish()
+    }
+}
+
+class TwitterLogInOperation: SimpleAsynchronousOperation, AuthenticationOperationType {
+    private(set) var success: Bool?
+    private(set) var error: Error?
+    private(set) var token: String?
+    let presenter: UIViewController
+    private var firebaseAuthOperation: FirebaseAuthorizationOperation?
+    init(presenter: UIViewController) {
+        self.presenter = presenter
+    }
+    
+    override func main() {
+        guard !isCancelled else { return }
+        TWTRTwitter.sharedInstance().logIn(with: presenter) {[weak self] (session, error) in
+            self?.didLogIn(session, error: error)
+        }
+    }
+    
+    private func didLogIn(_ session: TWTRSession?, error: Error?) {
+        guard let session = session else {
+            fail(with: error)
+            return
+        }
+        submitTokenToFirebase(with: session)
+    }
+    
+    private func submitTokenToFirebase(with session: TWTRSession) {
+        let cred = TwitterAuthProvider.credential(withToken: session.authToken, secret: session.authTokenSecret)
+        let op = FirebaseAuthorizationOperation(credential: cred)
+        op.completionBlock = {[weak self] in
+            self?.didSubmitTokenToFirebase()
+        }
+        firebaseAuthOperation = op
+        op.start()
+    }
+    
+    private func didSubmitTokenToFirebase() {
+        let op = firebaseAuthOperation!
+        if let token = op.idToken {
+            submitTokenToAPIServer(with: token)
+        } else {
+            fail(with: op.error)
+        }
+    }
+    
+    private func submitTokenToAPIServer(with token: String) {
+        
+    }
+    
+    private func fail(with error: Error?) {
+        self.error = error
+        success = false
+        finish()
+    }
+    
 }
 
 class FirebaseAuthorizationOperation: SimpleAsynchronousOperation, FailableOperationType {

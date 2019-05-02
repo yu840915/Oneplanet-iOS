@@ -15,6 +15,7 @@ target 'Oneplanet' do
   pod 'FacebookCore', '~> 0.5.0'
   pod 'FacebookLogin', '~> 0.5.0'
   pod 'FacebookShare', '~> 0.5.0'
+  pod 'TwitterKit', '~> 3.4.2'
 
   target 'OneplanetTests' do
     inherit! :search_paths

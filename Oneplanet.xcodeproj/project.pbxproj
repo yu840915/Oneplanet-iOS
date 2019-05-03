@@ -56,6 +56,8 @@
 		E06F500B227AFC9B0067DAE4 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E06F500A227AFC9B0067DAE4 /* CoreTelephony.framework */; };
 		E06F500F227AFD740067DAE4 /* WeChatLogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06F500E227AFD740067DAE4 /* WeChatLogIn.swift */; };
 		E06F5011227B34880067DAE4 /* ProfileDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06F5010227B34880067DAE4 /* ProfileDraft.swift */; };
+		E06F5013227B4E2E0067DAE4 /* PreflightCheckFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06F5012227B4E2E0067DAE4 /* PreflightCheckFlowViewController.swift */; };
+		E06F5016227B4E7E0067DAE4 /* PreflightCheck.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E06F5015227B4E7E0067DAE4 /* PreflightCheck.storyboard */; };
 		E07276DF2272D4BA001239C0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276DE2272D4BA001239C0 /* SignUpViewController.swift */; };
 		E07276E1227307F5001239C0 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276E0227307F5001239C0 /* LogInViewController.swift */; };
 		E07276E322731334001239C0 /* EmailVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276E222731334001239C0 /* EmailVerificationViewController.swift */; };
@@ -143,6 +145,8 @@
 		E06F500A227AFC9B0067DAE4 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		E06F500E227AFD740067DAE4 /* WeChatLogIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeChatLogIn.swift; sourceTree = "<group>"; };
 		E06F5010227B34880067DAE4 /* ProfileDraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDraft.swift; sourceTree = "<group>"; };
+		E06F5012227B4E2E0067DAE4 /* PreflightCheckFlowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreflightCheckFlowViewController.swift; sourceTree = "<group>"; };
+		E06F5015227B4E7E0067DAE4 /* PreflightCheck.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PreflightCheck.storyboard; sourceTree = "<group>"; };
 		E07276DE2272D4BA001239C0 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		E07276E0227307F5001239C0 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		E07276E222731334001239C0 /* EmailVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationViewController.swift; sourceTree = "<group>"; };
@@ -287,6 +291,7 @@
 				E0190F4C226DCCFB00C212D5 /* UserSession.swift */,
 				E05BB261226D5D2A00721F20 /* Main.storyboard */,
 				E0190F54226EC82500C212D5 /* UserFlowRootViewController.swift */,
+				E06F5014227B4E510067DAE4 /* Preflight Check */,
 				E0190F58226EDBD000C212D5 /* Supporting Flows */,
 				E03C32BA226DA45900C32FD7 /* Onboarding */,
 				E06589CB2270C21000C9E4E6 /* Utilities */,
@@ -372,6 +377,15 @@
 				E06F4FFD22789C760067DAE4 /* AppLifeCycleObserver.swift */,
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		E06F5014227B4E510067DAE4 /* Preflight Check */ = {
+			isa = PBXGroup;
+			children = (
+				E06F5015227B4E7E0067DAE4 /* PreflightCheck.storyboard */,
+				E06F5012227B4E2E0067DAE4 /* PreflightCheckFlowViewController.swift */,
+			);
+			name = "Preflight Check";
 			sourceTree = "<group>";
 		};
 		E07276FB22773F54001239C0 /* Server Push Message */ = {
@@ -490,6 +504,7 @@
 				E03C32A3226D866200C32FD7 /* Localizable.strings in Resources */,
 				E05BB265226D5D2E00721F20 /* Assets.xcassets in Resources */,
 				E03C32B9226DA44A00C32FD7 /* Onboarding.storyboard in Resources */,
+				E06F5016227B4E7E0067DAE4 /* PreflightCheck.storyboard in Resources */,
 				E0190F5A226EDD1100C212D5 /* SupportingFlows.storyboard in Resources */,
 				E05BB263226D5D2A00721F20 /* Main.storyboard in Resources */,
 				E06F5000227ABE1C0067DAE4 /* OpenSDK1.8.0_NoPay in Resources */,
@@ -676,6 +691,7 @@
 				E07276E1227307F5001239C0 /* LogInViewController.swift in Sources */,
 				E05BB25E226D5D2A00721F20 /* AppDelegate.swift in Sources */,
 				E06F4FFE22789C760067DAE4 /* AppLifeCycleObserver.swift in Sources */,
+				E06F5013227B4E2E0067DAE4 /* PreflightCheckFlowViewController.swift in Sources */,
 				E07276F62276C305001239C0 /* FirebaseMessagingSession.swift in Sources */,
 				E07276E92273633A001239C0 /* CreateProfileViewController.swift in Sources */,
 				E03C329E226D772400C32FD7 /* Logger.swift in Sources */,

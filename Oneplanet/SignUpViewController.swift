@@ -130,6 +130,7 @@ class SignUpViewController: UIViewController, EmailAuthFlowStep {
         if let token = op.token {
             let session = UserSession(token: token)
             session.socialProfile = op.publicProfile
+            StoreUserSessionOperation(session: session).start()
             performSegue(withIdentifier: SegueID.createProfile, sender: session)
         } else if let error = op.error {
             showAlert(with: error)

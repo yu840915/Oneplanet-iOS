@@ -17,6 +17,7 @@ class UserFlowRootViewController: UIViewController, UserSessionDepending {
         return "UserSessionRootViewController"
     }
     var userSession: UserSession!
+    @IBOutlet weak var preflightCheckFlowView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,15 +25,19 @@ class UserFlowRootViewController: UIViewController, UserSessionDepending {
         // Do any additional setup after loading the view.
     }
     
+    private func startNormalFlow() {
+        preflightCheckFlowView.isHidden = true
+    }
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let vc = segue.destination as? PreflightCheckFlowViewController {
+            vc.userSession = userSession
+            vc.didFinishPreflightCheck = {[weak self] in
+                self?.startNormalFlow()
+            }
+        }
     }
-    */
 
 }

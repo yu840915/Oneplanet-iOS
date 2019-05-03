@@ -40,8 +40,8 @@ class MyProfile {
 }
 
 class GetMyProfileOperation: AlamofireAPIAccessOperation {
-    private var profile: MyProfile?
-    private var missingProfile: Bool?
+    private(set) var profile: MyProfile?
+    private(set) var missingProfile: Bool?
     let session: UserSession
     init(session: UserSession) {
         self.session = session
@@ -50,11 +50,56 @@ class GetMyProfileOperation: AlamofireAPIAccessOperation {
 
 class RestoreUserSessionOperation: Operation {
     private(set) var session: UserSession?
+    
+    override func main() {
+        guard let token = Preferences.accessToken.value else {
+            return
+        }
+        session = UserSession(token: token)
+        session?.socialProfile = preparePublicProfileIfExists()
+    }
+    
+    private func preparePublicProfileIfExists() -> PublicProfile? {
+        guard let user = Auth.auth().currentUser else {
+            return prepareNonFirebasePublicProfileIfExists()
+        }
+        return PublicProfile(nickname: user.displayName, avatarURL: user.photoURL)
+    }
+    
+    private func prepareNonFirebasePublicProfileIfExists() -> PublicProfile? {
+        guard let nickname = Preferences.profileNickname.value else {
+            return nil
+        }
+        return PublicProfile(nickname: nickname, avatarURL: Preferences.profileAvatarURL.value)
+    }
 }
 
 class StoreUserSessionOperation: Operation {
     let session: UserSession
     init(session: UserSession) {
         self.session = session
+    }
+    
+    override func main() {
+        Preferences.accessToken.value = session.token
+        storeNonFirebaseProfileIfNeeded()
+    }
+    
+    private func storeNonFirebaseProfileIfNeeded() {
+        guard let profile = session.socialProfile, Auth.auth().currentUser == nil else {
+            Preferences.profileNickname.value = nil
+            Preferences.profileAvatarURL.value = nil
+            return
+        }
+        Preferences.profileAvatarURL.value = profile.avatarURL
+        Preferences.profileNickname.value = profile.nickname
+    }
+}
+
+class LogOutOperation: Operation {
+    override func main() {
+        Preferences.accessToken.value = nil
+        Preferences.profileAvatarURL.value = nil
+        Preferences.profileNickname.value = nil
     }
 }

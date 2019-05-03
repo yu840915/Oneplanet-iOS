@@ -71,13 +71,38 @@
                     <view key="view" contentMode="scaleToFill" id="W5P-pb-O2G">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R8L-N4-Hb3">
+                                <rect key="frame" x="0.0" y="5" width="414" height="896"/>
+                                <connections>
+                                    <segue destination="oaO-Qs-4lc" kind="embed" id="W21-Aa-anS"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="R8L-N4-Hb3" firstAttribute="centerY" secondItem="eLJ-UA-7Rf" secondAttribute="centerY" id="4aN-7A-m7f"/>
+                            <constraint firstItem="R8L-N4-Hb3" firstAttribute="centerX" secondItem="eLJ-UA-7Rf" secondAttribute="centerX" id="NAG-Bt-yH5"/>
+                            <constraint firstItem="R8L-N4-Hb3" firstAttribute="width" secondItem="W5P-pb-O2G" secondAttribute="width" id="U1P-ra-Jq4"/>
+                            <constraint firstItem="R8L-N4-Hb3" firstAttribute="height" secondItem="W5P-pb-O2G" secondAttribute="height" id="iSV-nf-xQH"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="eLJ-UA-7Rf"/>
                     </view>
+                    <connections>
+                        <outlet property="preflightCheckFlowView" destination="R8L-N4-Hb3" id="Rnz-rU-LeI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="foh-Ve-dv3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2174" y="334"/>
+            <point key="canvasLocation" x="2390" y="398"/>
+        </scene>
+        <!--PreflightCheck-->
+        <scene sceneID="4gq-fZ-2Ki">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PreflightCheck" id="oaO-Qs-4lc" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OQR-63-Fon" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3096" y="398"/>
         </scene>
     </scenes>
     <resources>

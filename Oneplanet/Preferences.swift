@@ -10,6 +10,9 @@ import Foundation
 
 class Preferences {
     static let hasWatchedWelcomeMessage = BoolPreferencesItem(key: "OPNHasWatchedWelcomeMessage")
+    static let accessToken = StringPreferencesItem(key: "OPNAccessToken")
+    static let profileNickname = StringPreferencesItem(key: "OPNProfileNickname")
+    static let profileAvatarURL = URLPreferencesItem(key: "OPNProfileAvatarURL")
 }
 
 class PreferencesItem<T> {
@@ -43,3 +46,24 @@ class BoolPreferencesItem: PreferencesItem<Bool> {
     }
 }
 
+class StringPreferencesItem: PreferencesItem<String> {
+    override var value: String? {
+        set {
+            UserDefaults.standard.set(newValue, forKey: key)
+        }
+        get {
+            return UserDefaults.standard.string(forKey: key)
+        }
+    }
+}
+
+class URLPreferencesItem: PreferencesItem<URL> {
+    override var value: URL? {
+        set {
+            UserDefaults.standard.set(newValue, forKey: key)
+        }
+        get {
+            return UserDefaults.standard.url(forKey: key)
+        }
+    }
+}

@@ -101,7 +101,7 @@ class TwitterLogInOperation: SimpleAsynchronousOperation, SocialAuthenticationOp
     }
 }
 
-class SubmitTwitterTokenOperation: AlamofireAPIAccessOperation, AuthenticationOperationType {
+fileprivate class SubmitTwitterTokenOperation: AlamofireAPIAccessOperation, AuthenticationOperationType {
     let session: TWTRSession
     private(set) var token: String?
     init(session: TWTRSession) {
@@ -109,12 +109,12 @@ class SubmitTwitterTokenOperation: AlamofireAPIAccessOperation, AuthenticationOp
     }
 }
 
-class GetTwitterProfileOperation: SimpleAsynchronousOperation, FailableOperationType {
+fileprivate class GetTwitterProfileOperation: SimpleAsynchronousOperation, FailableOperationType {
     let session: TWTRSession
+    private let client: TWTRAPIClient
+    
     private(set) var success: Bool?
     private(set) var error: Error?
-    private let client: TWTRAPIClient
-
     private(set) var profile: PublicProfile?
 
     init(session: TWTRSession) {
@@ -123,7 +123,6 @@ class GetTwitterProfileOperation: SimpleAsynchronousOperation, FailableOperation
     }
     
     override func main() {
-        
         client.loadUser(withID: session.userID) {[weak self] (user, error) in
             self?.didLoadUser(user, error: error)
         }

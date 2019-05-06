@@ -20,6 +20,8 @@ class FacebookLoginOperation: SimpleAsynchronousOperation, SocialAuthenticationO
     let presenter: UIViewController
     private let manager: LoginManager
     private var submitTokenOperation: SubmitFacebookTokenOperation?
+    private var getProfileOperation: GetFacebookProfileOperation?
+    private var parallelOperations = Set<Operation>()
     init(presenter: UIViewController) {
         self.presenter = presenter
         manager = LoginManager(loginBehavior: .native, defaultAudience: .onlyMe)
@@ -28,7 +30,7 @@ class FacebookLoginOperation: SimpleAsynchronousOperation, SocialAuthenticationO
     override func main() {
         guard !isCancelled else { return }
         if let token = AccessToken.current {
-            submitToken(token)
+            submitTokenAndGetProfile(token)
         } else {
             manager.logIn(readPermissions: [.publicProfile], viewController: presenter) {[weak self] (result) in
                 self?.didLogIn(with: result)
@@ -53,25 +55,47 @@ class FacebookLoginOperation: SimpleAsynchronousOperation, SocialAuthenticationO
             fail(with: GenericAppError("You need to grant public profile access to use Facebook login"))
             return
         }
-        submitToken(token)
+        submitTokenAndGetProfile(token)
     }
     
-    private func submitToken(_ token: AccessToken) {
-        let op = SubmitFacebookTokenOperation(accessToken: token)
-        op.completionBlock = {[weak self] in
+    private func submitTokenAndGetProfile(_ token: AccessToken) {
+        let submitToken = SubmitFacebookTokenOperation(accessToken: token)
+        submitToken.completionBlock = {[weak self] in
             self?.didGetAccessToken()
         }
-        submitTokenOperation = op
-        op.start()
+        submitTokenOperation = submitToken
+        let getProfile = GetFacebookProfileOperation()
+        getProfile.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didGetProfile()
+            }
+        }
+        getProfileOperation = getProfile
+        parallelOperations = Set([getProfile, submitToken])
+        OperationQueue.main.addOperation {
+            self.parallelOperations.forEach{$0.start()}
+        }
     }
     
     private func didGetAccessToken() {
         let op = submitTokenOperation!
-        if let token = op.token {
-            self.token = token
-        } else {
-            fail(with: op.error)
-        }
+        parallelOperations.remove(op)
+        finishIfAllDone()
+    }
+    
+    private func didGetProfile() {
+        let op = getProfileOperation!
+        parallelOperations.remove(op)
+        finishIfAllDone()
+    }
+    
+    private func finishIfAllDone() {
+        guard parallelOperations.isEmpty else {return}
+        publicProfile = getProfileOperation?.profile
+        token = submitTokenOperation?.token
+        success = submitTokenOperation?.success
+        error = submitTokenOperation?.error ?? getProfileOperation?.error
+        finish()
     }
     
     private func fail(with error: Error?) {
@@ -82,11 +106,53 @@ class FacebookLoginOperation: SimpleAsynchronousOperation, SocialAuthenticationO
     }
 }
 
-class SubmitFacebookTokenOperation: AlamofireAPIAccessOperation, AuthenticationOperationType {
+fileprivate class SubmitFacebookTokenOperation: AlamofireAPIAccessOperation, AuthenticationOperationType {
     let fbAccessToken: AccessToken
     private(set) var token: String?
     init(accessToken: AccessToken) {
         fbAccessToken = accessToken
+        
     }
 }
 
+fileprivate class GetFacebookProfileOperation: SimpleAsynchronousOperation, FailableOperationType {
+    private(set) var success: Bool?
+    private(set) var error: Error?
+    private(set) var profile: PublicProfile?
+    private var request: GraphRequest?
+    
+    override func main() {
+        let req = GraphRequest(graphPath: "me")
+        request = req
+        req.start {[weak self] (res, result) in
+            self?.handelResponse(res, result: result)
+        }
+    }
+    
+    private func handelResponse(_ response: HTTPURLResponse?, result: GraphRequestResult<GraphRequest>) {
+        switch result {
+            
+        case .success(let res):
+            handleResponseDate(res)
+        case .failed(let error):
+            fail(with: error)
+        }
+    }
+    
+    private func handleResponseDate(_ response: GraphRequest.Response) {
+        guard let dict = response.dictionaryValue,
+            let name = dict["name"] as? String,
+            let id = dict["id"] as? String else {
+            return
+        }
+        profile = PublicProfile(nickname: name, avatarURL: URL(string: "https://graph.facebook.com/\(id)/picture?type=large"))
+        success = true
+        finish()
+    }
+    
+    private func fail(with error: Error?) {
+        success = false
+        self.error = error
+        finish()
+    }
+}

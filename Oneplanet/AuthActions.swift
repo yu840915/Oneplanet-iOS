@@ -9,9 +9,6 @@
 import UIKit
 import ModelBlocks
 import Alamofire
-import FacebookCore
-import FacebookLogin
-import TwitterKit
 
 class GetAccountStateOperation: AlamofireAPIAccessOperation {
     let email: String
@@ -130,152 +127,6 @@ protocol SocialAuthenticationOperationType: AuthenticationOperationType {
     var publicProfile: PublicProfile? {get}
 }
 
-class FacebookLoginOperation: SimpleAsynchronousOperation, SocialAuthenticationOperationType {
-    private(set) var success: Bool?
-    private(set) var error: Error?
-    private(set) var token: String?
-    private(set) var publicProfile: PublicProfile?
-    let presenter: UIViewController
-    private let manager: LoginManager
-    private var submitTokenOperation: SubmitFacebookTokenOperation?
-    init(presenter: UIViewController) {
-        self.presenter = presenter
-        manager = LoginManager(loginBehavior: .native, defaultAudience: .onlyMe)
-    }
-    
-    override func main() {
-        guard !isCancelled else { return }
-        if let token = AccessToken.current {
-            submitToken(token)
-        } else {
-            manager.logIn(readPermissions: [.publicProfile], viewController: presenter) {[weak self] (result) in
-                self?.didLogIn(with: result)
-            }
-        }
-    }
-    
-    private func didLogIn(with result: LoginResult) {
-        switch result {
-        case .failed(let error):
-            fail(with: error)
-        case .cancelled:
-            success = false
-            finish()
-        case .success(let grantedPermissions, let declinedPermissions, let token):
-            handleSucessLogin(with: token, granted: grantedPermissions, declined: declinedPermissions)
-        }
-    }
-    
-    private func handleSucessLogin(with token: AccessToken, granted: Set<Permission>, declined: Set<Permission>) {
-        guard granted.contains(Permission(name: "public_profile")) else {
-            fail(with: GenericAppError("You need to grant public profile access to use Facebook login"))
-            return
-        }
-        submitToken(token)
-    }
-    
-    private func submitToken(_ token: AccessToken) {
-        let op = SubmitFacebookTokenOperation(accessToken: token)
-        op.completionBlock = {[weak self] in
-            self?.didGetAccessToken()
-        }
-        submitTokenOperation = op
-        op.start()
-    }
-    
-    private func didGetAccessToken() {
-        let op = submitTokenOperation!
-        if let token = op.token {
-            self.token = token
-        } else {
-            fail(with: op.error)
-        }
-    }
-    
-    private func fail(with error: Error?) {
-        manager.logOut()
-        self.error = error
-        success = false
-        finish()
-    }
-}
-
-class TwitterLogInOperation: SimpleAsynchronousOperation, SocialAuthenticationOperationType {
-    private(set) var success: Bool?
-    private(set) var error: Error?
-    private(set) var token: String?
-    private(set) var publicProfile: PublicProfile?
-    let presenter: UIViewController
-    private var submitTokenOperation: SubmitTwitterTokenOperation?
-    init(presenter: UIViewController) {
-        self.presenter = presenter
-    }
-    
-    override func main() {
-        guard !isCancelled else { return }
-        TWTRTwitter.sharedInstance().logIn(with: presenter) {[weak self] (session, error) in
-            self?.didLogIn(session, error: error)
-        }
-    }
-    
-    private func didLogIn(_ session: TWTRSession?, error: Error?) {
-        guard let session = session else {
-            fail(with: error)
-            return
-        }
-        submitToken(with: session)
-    }
-    
-    private func submitToken(with session: TWTRSession) {
-        let op = SubmitTwitterTokenOperation(session: session)
-        op.completionBlock = {[weak self] in
-            self?.didGetAccessToken()
-        }
-        submitTokenOperation = op
-        op.start()
-    }
-    
-    private func didGetAccessToken() {
-        let op = submitTokenOperation!
-        if let token = op.token {
-            self.token = token
-        } else {
-            fail(with: op.error)
-        }
-    }
-    
-    private func fail(with error: Error?) {
-        if let err = (error as NSError?),
-            let code = TWTRLogInErrorCode(rawValue: err.code) {
-            switch code {
-            case .logInErrorCodeCancelled, .logInErrorCodeDenied: break
-            default: self.error = err
-            }
-        } else {
-            self.error = error
-        }
-        success = false
-        finish()
-    }
-}
-
-class SubmitFacebookTokenOperation: AlamofireAPIAccessOperation, AuthenticationOperationType {
-    let fbAccessToken: AccessToken
-    private(set) var token: String?
-    init(accessToken: AccessToken) {
-        fbAccessToken = accessToken
-    }
-}
-
-class SubmitTwitterTokenOperation: AlamofireAPIAccessOperation, AuthenticationOperationType {
-    let session: TWTRSession
-    private(set) var token: String?
-    init(session: TWTRSession) {
-        self.session = session
-    }
-}
-
-
 class PublicProfile {
     let nickname: String?
     let avatarURL: URL?
@@ -284,3 +135,4 @@ class PublicProfile {
         self.avatarURL = avatarURL
     }
 }
+

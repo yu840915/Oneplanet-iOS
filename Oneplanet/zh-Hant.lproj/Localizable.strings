@@ -18,6 +18,7 @@
 "tl_pp" = "Privacy Policy";
 "tl_next" = "下一步";
 "tl_skip" = "略過";
+"tl_exit" = "離開";
 
 "pl_email" = "電子郵件地址";
 "pl_password" = "密碼";
@@ -49,8 +50,8 @@
 "ph_remove_avatar" = "刪除當前照片";
 "ph_try_again" = "再試一次";
 
-"err_no_camera_access" = "We need to access you camera";
-"err_no_library_access" = "We need to access your photo library";
+"err_no_camera_access" = "啟用相機權限";
+"err_no_library_access" = "啟用圖庫存取權限";
 "err_invalid_email" = "請輸入有效電子郵件";
 "err_non_alphanumerics" = "Only letters and digits are allowed";
 "err_conflicting_account" = "已有其他帳號使用此電子郵件地址";

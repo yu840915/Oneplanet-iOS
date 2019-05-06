@@ -58,6 +58,9 @@ class LocalizedTitles {//tl_
     var next: String {
         return NSLocalizedString("tl_next", comment: "")
     }
+    var exit: String {
+        return NSLocalizedString("tl_exit", comment: "")
+    }
 }
 
 class LocalizedPlaceholder {//pl_

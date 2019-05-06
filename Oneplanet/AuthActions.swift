@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
 import ModelBlocks
 import Alamofire
 import FacebookCore
@@ -138,8 +137,7 @@ class FacebookLoginOperation: SimpleAsynchronousOperation, SocialAuthenticationO
     private(set) var publicProfile: PublicProfile?
     let presenter: UIViewController
     private let manager: LoginManager
-    private var firebaseAuthOperation: FirebaseAuthorizationOperation?
-    private var submitTokenOperation: SubmitFirebaseAuthorizationTokenOperation?
+    private var submitTokenOperation: SubmitFacebookTokenOperation?
     init(presenter: UIViewController) {
         self.presenter = presenter
         manager = LoginManager(loginBehavior: .native, defaultAudience: .onlyMe)
@@ -148,7 +146,7 @@ class FacebookLoginOperation: SimpleAsynchronousOperation, SocialAuthenticationO
     override func main() {
         guard !isCancelled else { return }
         if let token = AccessToken.current {
-            submitTokenToFirebase(token)
+            submitToken(token)
         } else {
             manager.logIn(readPermissions: [.publicProfile], viewController: presenter) {[weak self] (result) in
                 self?.didLogIn(with: result)
@@ -173,30 +171,11 @@ class FacebookLoginOperation: SimpleAsynchronousOperation, SocialAuthenticationO
             fail(with: GenericAppError("You need to grant public profile access to use Facebook login"))
             return
         }
-        submitTokenToFirebase(token)
+        submitToken(token)
     }
     
-    private func submitTokenToFirebase(_ token: AccessToken) {
-        let cred = FacebookAuthProvider.credential(withAccessToken: token.authenticationToken)
-        let op = FirebaseAuthorizationOperation(credential: cred)
-        op.completionBlock = {[weak self] in
-            self?.didSubmitTokenToFirebase()
-        }
-        firebaseAuthOperation = op
-        op.start()
-    }
-    
-    private func didSubmitTokenToFirebase() {
-        let op = firebaseAuthOperation!
-        if let token = op.idToken {
-            submitTokenToAPIServer(with: token)
-        } else {
-            fail(with: op.error)
-        }
-    }
-    
-    private func submitTokenToAPIServer(with token: String) {
-        let op = SubmitFirebaseAuthorizationTokenOperation(firebaseToken: token)
+    private func submitToken(_ token: AccessToken) {
+        let op = SubmitFacebookTokenOperation(accessToken: token)
         op.completionBlock = {[weak self] in
             self?.didGetAccessToken()
         }
@@ -209,7 +188,6 @@ class FacebookLoginOperation: SimpleAsynchronousOperation, SocialAuthenticationO
         if let token = op.token {
             self.token = token
         } else {
-            FirebaseAuthorizationOperation.signOut()
             fail(with: op.error)
         }
     }
@@ -228,8 +206,7 @@ class TwitterLogInOperation: SimpleAsynchronousOperation, SocialAuthenticationOp
     private(set) var token: String?
     private(set) var publicProfile: PublicProfile?
     let presenter: UIViewController
-    private var firebaseAuthOperation: FirebaseAuthorizationOperation?
-    private var submitTokenOperation: SubmitFirebaseAuthorizationTokenOperation?
+    private var submitTokenOperation: SubmitTwitterTokenOperation?
     init(presenter: UIViewController) {
         self.presenter = presenter
     }
@@ -246,31 +223,11 @@ class TwitterLogInOperation: SimpleAsynchronousOperation, SocialAuthenticationOp
             fail(with: error)
             return
         }
-        submitTokenToFirebase(with: session)
+        submitToken(with: session)
     }
     
-    private func submitTokenToFirebase(with session: TWTRSession) {
-        let cred = TwitterAuthProvider.credential(withToken: session.authToken, secret: session.authTokenSecret)
-        let op = FirebaseAuthorizationOperation(credential: cred)
-        op.completionBlock = {[weak self] in
-            self?.didSubmitTokenToFirebase()
-        }
-        firebaseAuthOperation = op
-        op.start()
-    }
-    
-    private func didSubmitTokenToFirebase() {
-        let op = firebaseAuthOperation!
-        if let token = op.idToken {
-            publicProfile = op.user
-            submitTokenToAPIServer(with: token)
-        } else {
-            fail(with: op.error)
-        }
-    }
-    
-    private func submitTokenToAPIServer(with token: String) {
-        let op = SubmitFirebaseAuthorizationTokenOperation(firebaseToken: token)
+    private func submitToken(with session: TWTRSession) {
+        let op = SubmitTwitterTokenOperation(session: session)
         op.completionBlock = {[weak self] in
             self?.didGetAccessToken()
         }
@@ -283,7 +240,6 @@ class TwitterLogInOperation: SimpleAsynchronousOperation, SocialAuthenticationOp
         if let token = op.token {
             self.token = token
         } else {
-            FirebaseAuthorizationOperation.signOut()
             fail(with: op.error)
         }
     }
@@ -303,82 +259,22 @@ class TwitterLogInOperation: SimpleAsynchronousOperation, SocialAuthenticationOp
     }
 }
 
-class SubmitFirebaseAuthorizationTokenOperation: AlamofireAPIAccessOperation, AuthenticationOperationType {
-    let firebaseToken: String
+class SubmitFacebookTokenOperation: AlamofireAPIAccessOperation, AuthenticationOperationType {
+    let fbAccessToken: AccessToken
     private(set) var token: String?
-    init(firebaseToken: String) {
-        self.firebaseToken = firebaseToken
-    }
-    
-    override func prepareDataRequest() throws -> DataRequest {
-        return Alamofire.request(ServiceURLs.base.appendingPathComponent("auth"), method: .post, parameters: ["token": firebaseToken], encoding: JSONEncoding(), headers: nil)
+    init(accessToken: AccessToken) {
+        fbAccessToken = accessToken
     }
 }
 
-class FirebaseAuthorizationOperation: SimpleAsynchronousOperation, FailableOperationType {
-    private(set) var success: Bool?
-    private(set) var error: Error?
-    private(set) var idToken: String?
-    private(set) var user: PublicProfile?
-    private let auth: Auth
-    
-    let credential: AuthCredential
-    init(credential: AuthCredential) {
-        self.credential = credential
-        auth = Auth.auth()
-    }
-    
-    override func main() {
-        auth.signInAndRetrieveData(with: credential) {[weak self] (result, error) in
-            self?.didSignIn(result, error: error)
-        }
-    }
-    
-    private func didSignIn(_ result: AuthDataResult?, error: Error?) {
-        guard let result = result, result.user.displayName != nil else {
-            fail(with: error)
-            return
-        }
-        user = PublicProfile(nickname: result.user.displayName, avatarURL: result.user.photoURL)
-        result.user.getIDToken {[weak self] (token, error) in
-            self?.didGetToken(token, error: error)
-        }
-    }
-    
-    private func didGetToken(_ token: String?, error: Error?) {
-        guard let token = token else {
-            fail(with: error)
-            return
-        }
-        idToken = token
-        success = true
-        finish()
-    }
-    
-    private func fail(with error: Error?) {
-        signOut()
-        success = false
-        self.error = error
-        finish()
-    }
-    
-    private func signOut() {
-        do {
-            try auth.signOut()
-        } catch let error {
-            logger.debug("Cannot sign out of Firebase, error: \(error)")
-        }
-    }
-    
-    class func signOut() {
-        do {
-            try Auth.auth().signOut()
-        } catch let error {
-            logger.debug("Cannot sign out of Firebase, error: \(error)")
-        }
-
+class SubmitTwitterTokenOperation: AlamofireAPIAccessOperation, AuthenticationOperationType {
+    let session: TWTRSession
+    private(set) var token: String?
+    init(session: TWTRSession) {
+        self.session = session
     }
 }
+
 
 class PublicProfile {
     let nickname: String?

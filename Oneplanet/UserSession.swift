@@ -8,7 +8,6 @@
 
 import Foundation
 import Alamofire
-import FirebaseAuth
 
 class UserSession {
     let token: String
@@ -60,13 +59,6 @@ class RestoreUserSessionOperation: Operation {
     }
     
     private func preparePublicProfileIfExists() -> PublicProfile? {
-        guard let user = Auth.auth().currentUser else {
-            return prepareNonFirebasePublicProfileIfExists()
-        }
-        return PublicProfile(nickname: user.displayName, avatarURL: user.photoURL)
-    }
-    
-    private func prepareNonFirebasePublicProfileIfExists() -> PublicProfile? {
         guard let nickname = Preferences.profileNickname.value else {
             return nil
         }
@@ -86,7 +78,7 @@ class StoreUserSessionOperation: Operation {
     }
     
     private func storeNonFirebaseProfileIfNeeded() {
-        guard let profile = session.socialProfile, Auth.auth().currentUser == nil else {
+        guard let profile = session.socialProfile else {
             Preferences.profileNickname.value = nil
             Preferences.profileAvatarURL.value = nil
             return

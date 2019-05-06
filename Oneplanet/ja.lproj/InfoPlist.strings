@@ -6,5 +6,5 @@
   Copyright © 2019 何一品居. All rights reserved.
 */
 
-"NSPhotoLibraryUsageDescription" = "This allows Onelanet to share photos from your library";
-"NSCameraUsageDescription" = "Allow access to your camera to start taking photos with the Oneplanet app";
+"NSPhotoLibraryUsageDescription" = "これによりOneplanetがライブラリから写真をシェアするようになります。";
+"NSCameraUsageDescription" = "Oneplanetがカメラへのアクセスを求めています。これよりOneplanetで写真を撮影することができます。";

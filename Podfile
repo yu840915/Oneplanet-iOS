@@ -11,7 +11,6 @@ target 'Oneplanet' do
   pod 'Firebase/Messaging'
   pod 'Firebase/DynamicLinks'
   pod 'Firebase/RemoteConfig'
-  pod 'Firebase/Auth'
   pod 'FacebookCore', '~> 0.5.0'
   pod 'FacebookLogin', '~> 0.5.0'
   pod 'FacebookShare', '~> 0.5.0'

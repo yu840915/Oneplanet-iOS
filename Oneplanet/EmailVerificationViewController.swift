@@ -11,6 +11,7 @@ import UIKit
 class EmailVerificationViewController: UIViewController, EmailAuthFlowStep {
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var actionTextView: UITextView!
+    @IBOutlet weak var exitButtonItem: UIBarButtonItem!
     
     var flow: Flow!
     var emailAuthCredential: EmailAuthCredential!
@@ -25,6 +26,7 @@ class EmailVerificationViewController: UIViewController, EmailAuthFlowStep {
         super.viewDidLoad()
         NavigationBarStyle.translucent.configure(navigationController!.navigationBar)
         navigationController!.navigationBar.barStyle = .blackTranslucent
+        exitButtonItem.title = Localized.titles.exit
         prepareMessageLabel()
         prepareActionTextView()
         registerEvents()

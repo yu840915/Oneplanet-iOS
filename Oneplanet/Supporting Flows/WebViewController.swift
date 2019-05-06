@@ -23,6 +23,7 @@ class WebViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        exitButtonItem.title = Localized.titles.cancel
         setUpWebView()
         startRequest()
     }
@@ -31,7 +32,6 @@ class WebViewController: UIViewController {
         let webConfiguration = WKWebViewConfiguration()
         webView = WKWebView(frame: self.view.frame, configuration: webConfiguration)
         view.addSubview(webView)
-        exitButtonItem.title = Localized.titles.cancel
         shouldAddConstraintsForWebView = true
         updateViewConstraints()
     }

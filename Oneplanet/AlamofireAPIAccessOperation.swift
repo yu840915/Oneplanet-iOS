@@ -53,6 +53,7 @@ class AlamofireAPIAccessOperation: SimpleAsynchronousOperation, FailableOperatio
     }
     
     open func handleHTTPResponse(_ response: HTTPURLResponse) throws {
+        logger.debug(response)
         switch response.statusCode {
         case 200...299, 300...399: try processHTTPResponseHeader(response.allHeaderFields)
         case 400...499: try handleClientError(with: response)

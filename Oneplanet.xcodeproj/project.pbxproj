@@ -75,6 +75,7 @@
 		E0837EF1227FF85100B13BAF /* SocialAuthOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0837EF0227FF85100B13BAF /* SocialAuthOperations.swift */; };
 		E0837EF3227FFFBF00B13BAF /* FacebookLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0837EF2227FFFBF00B13BAF /* FacebookLogin.swift */; };
 		E0837EF5228022C400B13BAF /* TwitterLogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0837EF4228022C400B13BAF /* TwitterLogIn.swift */; };
+		E0837EF722816B0D00B13BAF /* ImageAttachmentUploadFlowOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0837EF622816B0D00B13BAF /* ImageAttachmentUploadFlowOperation.swift */; };
 		E08C3129227817680013DD0C /* AuthActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08C3128227817680013DD0C /* AuthActions.swift */; };
 		E08C312B227826850013DD0C /* EmailInputValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08C312A227826850013DD0C /* EmailInputValidatorTests.swift */; };
 		E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */; };
@@ -173,6 +174,7 @@
 		E0837EF0227FF85100B13BAF /* SocialAuthOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialAuthOperations.swift; sourceTree = "<group>"; };
 		E0837EF2227FFFBF00B13BAF /* FacebookLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLogin.swift; sourceTree = "<group>"; };
 		E0837EF4228022C400B13BAF /* TwitterLogIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterLogIn.swift; sourceTree = "<group>"; };
+		E0837EF622816B0D00B13BAF /* ImageAttachmentUploadFlowOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAttachmentUploadFlowOperation.swift; sourceTree = "<group>"; };
 		E08C3128227817680013DD0C /* AuthActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthActions.swift; sourceTree = "<group>"; };
 		E08C312A227826850013DD0C /* EmailInputValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailInputValidatorTests.swift; sourceTree = "<group>"; };
 		E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryImagePickerViewController.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				E07276E222731334001239C0 /* EmailVerificationViewController.swift */,
 				E07276E82273633A001239C0 /* CreateProfileViewController.swift */,
 				E06F5010227B34880067DAE4 /* ProfileDraft.swift */,
+				E0837EF622816B0D00B13BAF /* ImageAttachmentUploadFlowOperation.swift */,
 				E08C3128227817680013DD0C /* AuthActions.swift */,
 				E0837EF0227FF85100B13BAF /* SocialAuthOperations.swift */,
 				E0837EF4228022C400B13BAF /* TwitterLogIn.swift */,
@@ -696,6 +699,7 @@
 				E03C32B0226D8E8F00C32FD7 /* NavigationBarStyle.swift in Sources */,
 				E0190F4F226DD06B00C212D5 /* Preferences.swift in Sources */,
 				E0837EF1227FF85100B13BAF /* SocialAuthOperations.swift in Sources */,
+				E0837EF722816B0D00B13BAF /* ImageAttachmentUploadFlowOperation.swift in Sources */,
 				E07276E722735511001239C0 /* LoginPasswordViewController.swift in Sources */,
 				E06589CA2270C1A500C9E4E6 /* UpdateClock.swift in Sources */,
 				E07276E1227307F5001239C0 /* LogInViewController.swift in Sources */,

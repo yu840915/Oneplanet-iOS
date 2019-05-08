@@ -49,6 +49,7 @@
 "ph_open_settings" = "Open Settings";
 "ph_remove_avatar" = "現在の写真を削除";
 "ph_try_again" = "もう一度実行";
+"ph_nickname_rule" = "Nickname cap 30 characters, can't use punctuation or emoji";
 
 "err_no_camera_access" = "カメラへのリクセルを求めています";
 "err_no_library_access" = "写真をライブラリに追加しようとしています";
@@ -56,6 +57,7 @@
 "err_non_alphanumerics" = "Only letters and digits are allowed";
 "err_conflicting_account" = "このメールアドレスは既に使われています。";
 "err_account_not_exist" = "有効なメールアドレスではないようです。";
+"err_invalid_nickname" = "Your nickname is in the wrong format";
 
 "errtl_cannot_capture_photo" = "Cannot Take Photo";
 "errtl_cannot_pick_avatar" = "Cannot Get Profile Image";

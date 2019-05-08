@@ -21,6 +21,7 @@ class WelcomeMessageViewController: UIViewController, AuthorizationFlowEntryPoin
         NavigationBarStyle.translucent.configure(navigationController!.navigationBar)
         navigationController!.navigationBar.barStyle = .blackTranslucent
         updatePageControl()
+        showSkipIfNeeded()
     }
     
     private func updatePageControl() {
@@ -32,12 +33,24 @@ class WelcomeMessageViewController: UIViewController, AuthorizationFlowEntryPoin
         }
     }
     
+    private func showSkipIfNeeded() {
+        let shouldShow = (contentViewController.imageReferences.count - 1) == contentViewController.currentIndex
+        if skipButton.isHidden {
+            skipButton.isHidden = !shouldShow
+        }
+    }
+    
+    private func handleIndexChange() {
+        updatePageControl()
+        showSkipIfNeeded()
+    }
+    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? WelcomeMessageContentCollectionViewController {
             vc.currentIndexDidChange = {[weak self] in
-                self?.updatePageControl()
+                self?.handleIndexChange()
             }
             vc.imageReferences = [NativeImageReference(image: UIImage(named: "im_first1")!), NativeImageReference(image: UIImage(named: "im_first2")!), NativeImageReference(image: UIImage(named: "im_first3")!)]
             contentViewController = vc

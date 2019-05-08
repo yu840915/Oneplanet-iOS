@@ -76,8 +76,8 @@ class LogInViewController: UIViewController, EmailAuthFlowStep {
     private func didGetAccountState() {
         let op = getAccountStateOperation!
         getAccountStateOperation = nil
+        resetErrorDisplay()
         if op.success == true {
-            resetErrorDisplay()
             switch op.state {
             case .verified:
                 performSegue(withIdentifier: SegueID.showPasswordField, sender: emailAuthCredential)

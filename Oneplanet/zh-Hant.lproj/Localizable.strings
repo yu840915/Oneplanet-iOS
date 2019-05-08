@@ -49,6 +49,7 @@
 "ph_open_settings" = "開啟「設定」";
 "ph_remove_avatar" = "刪除當前照片";
 "ph_try_again" = "再試一次";
+"ph_nickname_rule" = "暱稱上限 30 字元，不得包含標點符號或表情符號";
 
 "err_no_camera_access" = "啟用相機權限";
 "err_no_library_access" = "啟用圖庫存取權限";
@@ -56,6 +57,7 @@
 "err_non_alphanumerics" = "Only letters and digits are allowed";
 "err_conflicting_account" = "已有其他帳號使用此電子郵件地址";
 "err_account_not_exist" = "你輸入的電子郵件似乎不屬於某個帳號。請檢查電子郵件，然後再試一次。";
+"err_invalid_nickname" = "你的暱稱不符合規定。";
 
 "errtl_cannot_capture_photo" = "無法拍照";
 "errtl_cannot_pick_avatar" = "無法取得大頭照";

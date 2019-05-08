@@ -106,3 +106,17 @@ class NonEmptyInputValidator: TextInputValidator {
         }
     }
 }
+
+class NicknameInputValidator: TextInputValidator {
+    override func validate(_ input: String) throws {
+        var components = input.components(separatedBy: .whitespaces)
+        if components.last == "" {
+            components.removeLast()
+        }
+        try components.forEach { (str) in
+            if str.isEmpty || !CharacterSet(charactersIn: str).subtracting(.letters).isEmpty {
+                throw  InputError(localizedDescription: Localized.errors.invalidNickname)
+            }
+        }
+    }
+}

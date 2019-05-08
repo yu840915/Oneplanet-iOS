@@ -162,6 +162,9 @@ class LocalizedPhrase { //ph_
     var tryAgain: String {
         return NSLocalizedString("ph_try_again", comment: "")
     }
+    var nicknameRule: String {
+        return NSLocalizedString("ph_nickname_rule", comment: "")
+    }
 }
 
 class LocalizedErrorsTitles {//errtl_
@@ -196,5 +199,8 @@ class LocalizedErrors {//err_
     }
     var accountDoesnotExist: String {
         return NSLocalizedString("err_account_not_exist", comment: "")
+    }
+    var invalidNickname: String {
+        return NSLocalizedString("err_invalid_nickname", comment: "")
     }
 }

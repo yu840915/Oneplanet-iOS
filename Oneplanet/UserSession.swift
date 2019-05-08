@@ -8,11 +8,14 @@
 
 import Foundation
 import Alamofire
+import ModelBlocks
 
 class UserSession {
     let token: String
     var profile: MyProfile?
     var socialProfile: PublicProfile?
+    private(set) var isActive = true
+    let sessionBecomeInactiveObservers = MulticastCallbackNode<()->()>()
     
     init(token: String) {
         self.token = token
@@ -32,6 +35,12 @@ class UserSession {
     
     var authorizationHeader: [String: String] {
         return ["Authorization": "Bearer \(token)"]
+    }
+    
+    func deactivate() {
+        guard isActive else { return }
+        isActive = false
+        sessionBecomeInactiveObservers.invokeEach{$0()}
     }
 }
 
@@ -93,5 +102,6 @@ class LogOutOperation: Operation {
         Preferences.accessToken.value = nil
         Preferences.profileAvatarURL.value = nil
         Preferences.profileNickname.value = nil
+        FacebookLoginOperation.logOutIfNeeded()
     }
 }

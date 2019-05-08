@@ -13,6 +13,12 @@ import FacebookCore
 import FacebookLogin
 
 class FacebookLoginOperation: SimpleAsynchronousOperation, SocialAuthenticationOperationType {
+    class func logOutIfNeeded() {
+        if AccessToken.current != nil {
+            LoginManager().logOut()
+        }
+    }
+    
     private(set) var success: Bool?
     private(set) var error: Error?
     private(set) var token: String?
@@ -95,6 +101,9 @@ class FacebookLoginOperation: SimpleAsynchronousOperation, SocialAuthenticationO
         token = submitTokenOperation?.token
         success = submitTokenOperation?.success
         error = submitTokenOperation?.error ?? getProfileOperation?.error
+        if success == false {
+            manager.logOut()
+        }
         finish()
     }
     

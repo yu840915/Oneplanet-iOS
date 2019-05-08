@@ -17,6 +17,17 @@ struct TwitterCredentials {
 }
 
 class TwitterLogInOperation: SimpleAsynchronousOperation, SocialAuthenticationOperationType {
+    class func logOutIfNeeded() {
+        guard TWTRTwitter.sharedInstance().sessionStore.hasLoggedInUsers() else {
+            return
+        }
+        TWTRTwitter.sharedInstance().sessionStore.existingUserSessions().forEach {
+            if let session = $0 as? TWTRAuthSession {
+                TWTRTwitter.sharedInstance().sessionStore.logOutUserID(session.userID)
+            }
+        }
+    }
+    
     private(set) var success: Bool?
     private(set) var error: Error?
     private(set) var token: String?
@@ -83,6 +94,9 @@ class TwitterLogInOperation: SimpleAsynchronousOperation, SocialAuthenticationOp
         token = submitTokenOperation?.token
         success = submitTokenOperation?.success
         error = submitTokenOperation?.error ?? getProfileOperation?.error
+        if success == false {
+            TwitterLogInOperation.logOutIfNeeded()
+        }
         finish()
     }
     
@@ -97,6 +111,7 @@ class TwitterLogInOperation: SimpleAsynchronousOperation, SocialAuthenticationOp
             self.error = error
         }
         success = false
+        TwitterLogInOperation.logOutIfNeeded()
         finish()
     }
 }

@@ -18,6 +18,7 @@ class RootViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     private var userFlowRootController: UserFlowRootViewController?
     private var shouldAddConstraintsForUserFlow = false
+    private var sessionEndHandle: Any?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +58,7 @@ class RootViewController: UIViewController {
     
     private func logOut() {
         endUserFlow()
+        LogOutOperation().start()
         startLoginFlow()
     }
     
@@ -67,6 +69,11 @@ class RootViewController: UIViewController {
         }
         let vc = storyboard!.instantiateViewController(withIdentifier: UserFlowRootViewController.defaultStoryboardID) as! UserFlowRootViewController
         vc.userSession = session
+        sessionEndHandle = session.sessionBecomeInactiveObservers.add {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.logOut()
+            }
+        }
         addChild(vc)
         containerView.addSubview(vc.view)
         vc.didMove(toParent: self)

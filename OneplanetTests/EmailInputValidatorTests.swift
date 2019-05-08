@@ -97,4 +97,39 @@ class InputValidatorTests: XCTestCase {
         XCTAssertNoThrow(try validator.validate("    3"))
         XCTAssertNoThrow(try validator.validate("\t\r\n 4"))
     }
+    
+    func testThrowsIfInputIsInvalidNickname() {
+        let validator = NicknameInputValidator()
+        
+        XCTAssertThrowsError(try validator.validate("a  b"))
+        XCTAssertThrowsError(try validator.validate("a     b"))
+        XCTAssertThrowsError(try validator.validate("a  "))
+        XCTAssertThrowsError(try validator.validate("a \tb"))
+        XCTAssertThrowsError(try validator.validate("a\t\tb"))
+        XCTAssertThrowsError(try validator.validate("a\nb"))
+        for s in ["！","＠","＃","＄","％","＾","_","→","😀","(","✓","℃"] {
+            XCTAssertThrowsError(try validator.validate("a\(s)b"))
+        }
+    }
+    
+    func testNotThrowsIfInputIsValidNickname() {
+        let validator = NicknameInputValidator()
+        
+        XCTAssertNoThrow(try validator.validate("a "))
+        XCTAssertNoThrow(try validator.validate("a b"))
+        XCTAssertNoThrow(try validator.validate("a b "))
+        XCTAssertNoThrow(try validator.validate("abc def"))
+        XCTAssertNoThrow(try validator.validate("abc def "))
+        XCTAssertNoThrow(try validator.validate("silábicos pueden"))
+        XCTAssertNoThrow(try validator.validate("silábicos pueden "))
+        XCTAssertNoThrow(try validator.validate("中文 名字"))
+        XCTAssertNoThrow(try validator.validate("中文 名字 "))
+        XCTAssertNoThrow(try validator.validate("한글 한글"))
+        XCTAssertNoThrow(try validator.validate("한글 한글 "))
+        XCTAssertNoThrow(try validator.validate("ハン グル"))
+        XCTAssertNoThrow(try validator.validate("ハン グル "))
+        XCTAssertNoThrow(try validator.validate("Хангы́ль чосонгы́ль"))
+        XCTAssertNoThrow(try validator.validate("Хангы́ль чосонгы́ль "))
+        XCTAssertNoThrow(try validator.validate("abc中文"))
+    }
 }

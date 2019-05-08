@@ -197,4 +197,7 @@ class LocalizedErrors {//err_
     var accountDoesnotExist: String {
         return NSLocalizedString("err_account_not_exist", comment: "")
     }
+    var invalidNickname: String {
+        return NSLocalizedString("err_invalid_nickname", comment: "")
+    }
 }

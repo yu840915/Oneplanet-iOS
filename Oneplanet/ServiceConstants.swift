@@ -20,6 +20,6 @@ struct ServiceConstants {
 }
 
 struct ServiceURLs {
-    static var base: URL = URL(string: "https://api.oneplanet.live")!
+    static var base: URL = URL(string: "https://api.oneplanet-official.com")!
     static let appSettings = URL(string:UIApplication.openSettingsURLString)!
 }

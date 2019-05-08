@@ -162,6 +162,9 @@ class LocalizedPhrase { //ph_
     var tryAgain: String {
         return NSLocalizedString("ph_try_again", comment: "")
     }
+    var nicknameRule: String {
+        return NSLocalizedString("ph_nickname_rule", comment: "")
+    }
 }
 
 class LocalizedErrorsTitles {//errtl_

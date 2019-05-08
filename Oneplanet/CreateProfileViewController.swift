@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import ModelBlocks
 
 class CreateProfileViewController: UIViewController, UserSessionDepending {
     
     var didCreateProfile: (()->())?
     var userSession: UserSession!
+    @IBOutlet weak var nicknameRuleLabel: UILabel!
     @IBOutlet weak var nameFieldView: InputFieldView!
     @IBOutlet weak var greetingLabel: UILabel!
     @IBOutlet weak var addAvatarButton: UIButton!
@@ -23,6 +25,8 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
     @IBOutlet weak var changeAvatarView: UIStackView!
     @IBOutlet var endEditingTap: UITapGestureRecognizer!
     @IBOutlet weak var avatarButton: UIButton!
+    @IBOutlet weak var errorView: UIView!
+    @IBOutlet weak var errorLabel: UILabel!
     
     private var pickImageOperation: PickImageOperation?
     var profileDraft: ProfileDraft = ProfileDraft()
@@ -83,6 +87,7 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
         addAvatarPromptLabel.text = Localized.messages.addAvatarPrompt
         changeAvatarButton.setTitle(Localized.phrases.changeAvatar, for: .normal)
         avatarAddedLabel.text = Localized.phrases.avatarAdded
+        nicknameRuleLabel.text = Localized.phrases.nicknameRule
         nextButton.setTitle(Localized.titles.next, for: .normal)
     }
     
@@ -127,6 +132,12 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
         present(sheet, animated: true, completion: nil)
     }
     
+    private func resetErrorDisplay() {
+        nameFieldView.isRejecting = false
+        errorLabel.text = nil
+        errorView.isHidden = true
+    }
+
     private func deleteAvatar() {
         profileDraft.avatar = nil
         updateViewsForDraft()
@@ -195,6 +206,7 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
     private func didSubmitProfile() {
         let op = createProfileOperation!
         createProfileOperation = nil
+        resetErrorDisplay()
         if op.success == true {
             didCreateProfile?()
         }
@@ -204,9 +216,20 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
     }
     
     private func showAlert(with error: Error) {
-        let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: Localized.titles.dismiss, style: .cancel, handler: nil))
-        present(alert, animated: true, completion: nil)
+        if error is InputError {
+            showInputError(with: error.localizedDescription)
+        } else {
+            resetErrorDisplay()
+            let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: Localized.titles.dismiss, style: .cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    private func showInputError(with message: String) {
+        nameFieldView.isRejecting = true
+        errorView.isHidden = false
+        errorLabel.text = message
     }
     
     @IBAction func endEditing(_ sender: UITapGestureRecognizer) {

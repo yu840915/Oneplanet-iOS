@@ -12,7 +12,7 @@ import ModelBlocks
 class ProfileDraft {
     let updateObservers = MulticastCallbackNode<()->()>()
     let intermediateNicknameValidator = InputLengthValidator(max: 30)
-    let nicknameValidator = AndValidator([NonEmptyInputValidator(), InputLengthValidator(max: 30)])
+    let nicknameValidator = AndValidator([NonEmptyInputValidator(), InputLengthValidator(max: 30), NicknameInputValidator()])
     var nickname: String = "" {
         didSet {
             if oldValue != nickname {

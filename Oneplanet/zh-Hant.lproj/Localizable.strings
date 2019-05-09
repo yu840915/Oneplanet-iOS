@@ -11,7 +11,6 @@
 "tl_done" = "完成";
 "tl_ok" = "OK";
 "tl_all_photos" = "所有照片";
-"tl_signup" = "註冊";
 "tl_login" = "登入";
 "tl_title" = "標題";
 "tl_tos" = "條款";
@@ -21,31 +20,23 @@
 "tl_exit" = "離開";
 
 "pl_email" = "電子郵件地址";
-"pl_password" = "密碼";
 "pl_nickname" = "暱稱";
 
-"msg_login_prompt" = "已經有帳號？";
-"msg_email_verification_instruction" = "電子郵件已發送。請單擊電子郵件中的鏈接以完成註冊過程。";
-"msg_password_rules" = "請填入六到十二碼英文或數字";
+"msg_email_verification_instruction" = "電子郵件已發送。請單擊電子郵件中的鏈接以完成登入。";
 "msg_add_avatar_prompt" = "添加個人資料照片，以便你的朋友知道這就是你。";
-"msg_send_resend_link_prompt" = "忘記密碼了嗎?";
-"msg_send_resend_link_description" = "Oneplanet 將會寄送一封郵件到你的電子信箱，點擊電子郵件中的鏈接後即可以設定新密碼。";
 
 "msgf_accept_tos" = "註冊或登錄即表示你同意我們的%@";
 "msgf_resend_verification_email" = "你沒有收到電子郵件？%@";
 
 "ph_guest_login" = "訪客進入";
-"ph_or" = "或";
-"ph_social_login" = "快速註冊";
-"ph_email_signup" = "或使用電子郵件註冊";
+"ph_email_login" = "或使用電子郵件登入";
 "ph_resend_email" = "重新發送電子郵件";
-"ph_forget_password" = "忘記密碼？";
 "ph_newuser_greeting" = "歡迎來到Oneplanet";
 "ph_add_avatar" = "添加個人資料照片";
 "ph_avatar_added" = "已新增大頭貼照";
 "ph_change_avatar" = "更換個人照片";
 "ph_take_photo" = "拍照";
-"ph_from_library" = "從相簿中選取";
+"ph_from_library" = "從圖庫中選取";
 "ph_open_settings" = "開啟「設定」";
 "ph_remove_avatar" = "刪除當前照片";
 "ph_try_again" = "再試一次";
@@ -55,10 +46,8 @@
 "err_no_library_access" = "啟用圖庫存取權限";
 "err_invalid_email" = "請輸入有效電子郵件";
 "err_non_alphanumerics" = "Only letters and digits are allowed";
-"err_conflicting_account" = "已有其他帳號使用此電子郵件地址";
 "err_account_not_exist" = "你輸入的電子郵件似乎不屬於某個帳號。請檢查電子郵件，然後再試一次。";
 "err_invalid_nickname" = "你的暱稱不符合規定。";
 
 "errtl_cannot_capture_photo" = "無法拍照";
 "errtl_cannot_pick_avatar" = "無法取得大頭照";
-"errtl_account_not_exist" = "帳號錯誤";

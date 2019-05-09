@@ -40,9 +40,6 @@ class LocalizedTitles {//tl_
     var allPhotos: String {
         return NSLocalizedString("tl_all_photos", comment: "")
     }
-    var signUp: String {
-        return NSLocalizedString("tl_signup", comment: "")
-    }
     var logIn: String {
         return NSLocalizedString("tl_login", comment: "")
     }
@@ -68,9 +65,6 @@ class LocalizedPlaceholder {//pl_
     var email: String {
         return NSLocalizedString("pl_email", comment: "")
     }
-    var password: String {
-        return NSLocalizedString("pl_password", comment: "")
-    }
     var nickname: String {
         return NSLocalizedString("pl_nickname", comment: "")
     }
@@ -86,23 +80,11 @@ class LocalizedWarnings {//warn_
 
 class LocalizedMessages {//msg_
     fileprivate init() {}
-    var loginPrompt: String {
-        return NSLocalizedString("msg_login_prompt", comment: "")
-    }
     var emailVerificationInstruction: String {
         return NSLocalizedString("msg_email_verification_instruction", comment: "")
     }
-    var passwordRules: String {
-        return NSLocalizedString("msg_password_rules", comment: "")
-    }
     var addAvatarPrompt: String {
         return NSLocalizedString("msg_add_avatar_prompt", comment: "")
-    }
-    var sendResetLinkPrompt: String {
-        return NSLocalizedString("msg_send_resend_link_prompt", comment: "")
-    }
-    var sendResetLinkDescription: String {
-        return NSLocalizedString("msg_send_resend_link_description", comment: "")
     }
 }
 
@@ -120,20 +102,11 @@ class LocalizedPhrase { //ph_
     var geustLogin: String {
         return NSLocalizedString("ph_guest_login", comment: "")
     }
-    var or: String {
-        return NSLocalizedString("ph_or", comment: "")
-    }
-    var socialLogin: String {
-        return NSLocalizedString("ph_social_login", comment: "")
-    }
-    var emailSignUp: String {
-        return NSLocalizedString("ph_email_signup", comment: "")
+    var emailLogin: String {
+        return NSLocalizedString("ph_email_login", comment: "")
     }
     var resendEmail: String {
         return NSLocalizedString("ph_resend_email", comment: "")
-    }
-    var forgetPassword: String {
-        return NSLocalizedString("ph_forget_password", comment: "")
     }
     var newUserGreeting: String {
         return NSLocalizedString("ph_newuser_greeting", comment: "")
@@ -175,9 +148,6 @@ class LocalizedErrorsTitles {//errtl_
     var cannotPickAvatar: String {
         return NSLocalizedString("errtl_cannot_pick_avatar", comment: "")
     }
-    var accountDoesnotExist: String {
-        return NSLocalizedString("errtl_account_not_exist", comment: "")
-    }
 }
 
 class LocalizedErrors {//err_
@@ -193,9 +163,6 @@ class LocalizedErrors {//err_
     }
     var nonAlphanumericalCharacter: String {
         return NSLocalizedString("err_non_alphanumerics", comment: "")
-    }
-    var conflictingAccount: String {
-        return NSLocalizedString("err_conflicting_account", comment: "")
     }
     var accountDoesnotExist: String {
         return NSLocalizedString("err_account_not_exist", comment: "")

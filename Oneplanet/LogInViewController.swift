@@ -9,7 +9,16 @@
 import UIKit
 import ModelBlocks
 
-class LogInViewController: UIViewController, EmailAuthFlowStep {
+protocol AuthorizationFlowEntryPoint: AnyObject {
+    var authorizationCompletion: ((UserSession)->())! {set get}
+}
+
+protocol EmailAuthFlowStep: AnyObject {
+    var emailAuthCredential: EmailAuthCredential! {set get}
+    var authorizationCompletion: ((UserSession)->())! {set get}
+}
+
+class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlowEntryPoint {
     
     @IBOutlet var socialLoginButtons: [UIButton]!
     @IBOutlet weak var emailLoginLabel: UILabel!
@@ -17,9 +26,12 @@ class LogInViewController: UIViewController, EmailAuthFlowStep {
     @IBOutlet weak var inputErrorView: UIView!
     @IBOutlet weak var inputErrorLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var guestLoginButton: UIButton!
+    @IBOutlet weak var termsTextView: UITextView!
     @IBOutlet var endEditingTap: UITapGestureRecognizer!
 
-    private var authOperation: SocialAuthenticationOperationType? {
+    private var requestNotificationAuthorizationOperation: RequestUserNotificationAuthorizationOperation?
+    private var authOperation: AuthenticationOperationType? {
         didSet {
             updateViewsForRunningAuthOperation()
         }
@@ -31,8 +43,12 @@ class LogInViewController: UIViewController, EmailAuthFlowStep {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        NavigationBarStyle.translucent.configure(navigationController!.navigationBar)
+        navigationController!.navigationBar.barStyle = .blackTranslucent
+        navigationItem.hidesBackButton = true
         navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
         localizeTitles()
+        prepareTermsTextView()
         emailAuthCredential = EmailAuthCredential()
         inputChangeHandle = emailAuthCredential.inputDidChangeHandlers.add {[weak self] in
             self?.updateViewForInputChange()
@@ -41,12 +57,30 @@ class LogInViewController: UIViewController, EmailAuthFlowStep {
     }
     
     private func localizeTitles() {
-        title = Localized.titles.logIn
-        emailLoginLabel.text = Localized.phrases.or
+        emailLoginLabel.text = Localized.phrases.emailLogin
         emailFieldView.textField.attributedPlaceholder = NSAttributedString(string: Localized.placeholder.email, attributes: [NSAttributedString.Key.foregroundColor : ColorPalette.defaultPlaceholder])
-        nextButton.setTitle(Localized.titles.next, for: .normal)
+        nextButton.setTitle(Localized.titles.logIn, for: .normal)
+        guestLoginButton.setTitle(Localized.phrases.geustLogin, for: .normal)
     }
 
+    private func prepareTermsTextView() {
+        let text = String(format: Localized.messageFormats.acceptTOS, Localized.titles.tos)
+        let tosRange = (text as NSString).range(of: Localized.titles.tos)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        let attrStr = NSMutableAttributedString(string: text, attributes: [.foregroundColor : ColorPalette.defaultText, .paragraphStyle: paragraphStyle])
+        attrStr.addAttributes([.link : "https://www.google.com"], range: tosRange)
+        termsTextView.attributedText = attrStr
+        termsTextView.linkTextAttributes = [
+            .foregroundColor : ColorPalette.defaultText,
+            .underlineStyle: NSUnderlineStyle.single.rawValue,
+            .font: UIFont.systemFont(ofSize: 12, weight: .semibold)]
+    }
+    
+    fileprivate func showTermsPage(with url: URL) {
+        performSegue(withIdentifier: SegueID.showTerms, sender: URLRequest(url: url))
+    }
+    
     private func updateViewForInputChange() {
         let allowsAction = authOperation == nil
         nextButton.isEnabled = allowsAction && !emailAuthCredential.email.isEmpty
@@ -57,8 +91,25 @@ class LogInViewController: UIViewController, EmailAuthFlowStep {
         updateViewForInputChange()
         emailFieldView.textField.isEnabled = allowsAction
         socialLoginButtons.forEach { $0.isEnabled = allowsAction }
+        guestLoginButton.isEnabled = allowsAction
+        termsTextView.isSelectable = allowsAction
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        requestNotificationAuthorization()
+        router.resume()
+    }
+
+    private func requestNotificationAuthorization() {
+        guard requestNotificationAuthorizationOperation == nil else {
+            return
+        }
+        let op = RequestUserNotificationAuthorizationOperation()
+        requestNotificationAuthorizationOperation = op
+        op.start()
+    }
+
     private func getAccountState() {
         guard getAccountStateOperation == nil else {
             return
@@ -80,11 +131,11 @@ class LogInViewController: UIViewController, EmailAuthFlowStep {
         if op.success == true {
             switch op.state {
             case .verified:
-                performSegue(withIdentifier: SegueID.showPasswordField, sender: emailAuthCredential)
+                performSegue(withIdentifier: SegueID.emailVerification, sender: emailAuthCredential)
             case .pending:
                 performSegue(withIdentifier: SegueID.emailVerification, sender: emailAuthCredential)
             case .nonexist:
-                showAccountError()
+                break
             case .unknown: break
             }
         } else if let err = op.error {
@@ -96,12 +147,6 @@ class LogInViewController: UIViewController, EmailAuthFlowStep {
         emailFieldView.isRejecting = false
         inputErrorLabel.text = nil
         inputErrorView.isHidden = true
-    }
-    
-    private func showAccountError() {
-        let alert = UIAlertController(title: Localized.errorTitles.accountDoesnotExist, message: Localized.errors.accountDoesnotExist, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: Localized.phrases.tryAgain, style: .cancel, handler: nil))
-        present(alert, animated: true, completion: nil)
     }
     
     private func showInputError(with message: String) {
@@ -126,7 +171,9 @@ class LogInViewController: UIViewController, EmailAuthFlowStep {
         authOperation = nil
         if let token = op.token {
             let session = UserSession(token: token)
-            session.socialProfile = op.publicProfile
+            if let socialAuth = op as? SocialAuthenticationOperationType {
+                session.socialProfile = socialAuth.publicProfile
+            }
             StoreUserSessionOperation(session: session).start()
             authorizationCompletion?(session)
         } else if let error = op.error {
@@ -176,6 +223,28 @@ class LogInViewController: UIViewController, EmailAuthFlowStep {
         op.start()
     }
     
+    @IBAction func guestLogIn(_ sender: Any) {
+        guard authOperation == nil else { return }
+        let op = GuestLogInOperation()
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didLogInAsGuest()
+            }
+        }
+        authOperation = op
+        op.start()
+    }
+    
+    private func didLogInAsGuest() {
+        let op = authOperation!
+        authOperation = nil
+        if let token = op.token {
+            authorizationCompletion?(UserSession(token: token))
+        } else if let error = op.error {
+            showAlert(with: error)
+        }
+    }
+    
     @IBAction func endEditing(_ sender: Any) {
         view.endEditing(false)
     }
@@ -196,6 +265,12 @@ class LogInViewController: UIViewController, EmailAuthFlowStep {
         if let vc = segue.destination as? EmailVerificationViewController {
             vc.flow = .logIn
         }
+        if let nav = segue.destination as? UINavigationController,
+            let vc = nav.viewControllers.first as? WebViewController {
+            NavigationBarStyle.darkGrey.configure(nav.navigationBar)
+            vc.request = sender as? URLRequest
+            vc.title = Localized.titles.tos
+        }
     }
 }
 
@@ -214,10 +289,19 @@ extension LogInViewController: UITextFieldDelegate {
     }
 }
 
+extension LogInViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        OperationQueue.main.addOperation {
+            self.showTermsPage(with: URL)
+        }
+        return false
+    }
+}
+
 extension LogInViewController {
     struct SegueID {
         static let emailVerification = "emailVerification"
-        static let showPasswordField = "showPasswordField"
+        static let showTerms = "showTerms"
     }
 
 }

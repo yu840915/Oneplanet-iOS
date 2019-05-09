@@ -276,4 +276,3 @@ extension CreateProfileViewController: UITextFieldDelegate {
         }
     }
 }
-

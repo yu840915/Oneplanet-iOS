@@ -31,7 +31,7 @@ class EmailLinkLogInOperarion: AlamofireAPIAccessOperation, AuthenticationOperat
 
     override func prepareDataRequest() throws -> DataRequest {
         try credential.validate()
-        return Alamofire.request(ServiceURLs.base.appendingPathComponent("auth"), method: .post, parameters: ["email": credential.email, "password": credential.password], encoding: JSONEncoding(), headers: nil)
+        return Alamofire.request(ServiceURLs.base.appendingPathComponent("auth"), method: .post, parameters: ["email": credential.email], encoding: JSONEncoding(), headers: nil)
     }
 }
 
@@ -44,9 +44,9 @@ class EmailAuthCredential {
             }
         }
     }
-    var password: String = "" {
+    var magicLink: URL? = nil {
         didSet {
-            if oldValue != password {
+            if oldValue != magicLink {
                 inputDidChangeHandlers.invokeEach{$0()}
             }
         }
@@ -54,7 +54,6 @@ class EmailAuthCredential {
     
     func validate() throws {
         try InputValidators.email.validate(email)
-        try InputValidators.password.validate(password)
     }
     var isValid: Bool {
         do {

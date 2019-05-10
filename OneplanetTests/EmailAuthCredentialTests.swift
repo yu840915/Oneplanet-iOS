@@ -27,7 +27,7 @@ class EmailAuthCredentialTests: XCTestCase {
         }
         
         cred.email = "abc"
-        cred.password = "123"
+        cred.magicLink = URL(string: "https://www.google.com")
         
         XCTAssertEqual(count, 2)
     }

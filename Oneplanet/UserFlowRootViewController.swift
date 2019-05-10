@@ -17,15 +17,28 @@ class UserFlowRootViewController: UIViewController, UserSessionDepending {
         return "UserSessionRootViewController"
     }
     var userSession: UserSession!
+    var needsPreflightCheck = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        if !needsPreflightCheck {
+            startUserFlow()
+        }
     }
     
-    private func startNormalFlow() {
+    private func startUserFlow() {
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if needsPreflightCheck {
+            performSegue(withIdentifier: SegueID.preflightCheck, sender: nil)
+        }
+    }
+    
+    private func leavePreflightCheck() {
         dismiss(animated: true, completion: nil)
+        startUserFlow()
     }
 
     // MARK: - Navigation
@@ -34,9 +47,15 @@ class UserFlowRootViewController: UIViewController, UserSessionDepending {
         if let nav = segue.destination as? UINavigationController, let vc = nav.viewControllers.first as? PreflightCheckFlowViewController {
             vc.userSession = userSession
             vc.didFinishPreflightCheck = {[weak self] in
-                self?.startNormalFlow()
+                self?.leavePreflightCheck()
             }
         }
     }
 
+}
+
+extension UserFlowRootViewController {
+    struct SegueID {
+        static let preflightCheck = "preflightCheck"
+    }
 }

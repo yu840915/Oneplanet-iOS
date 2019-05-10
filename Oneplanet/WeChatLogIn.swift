@@ -26,17 +26,18 @@ class WeChatLogInOperation: SimpleAsynchronousOperation, SocialAuthenticationOpe
     }
     
     override func main() {
-        guard WXApi.isWXAppSupport() else {
-            fail(with: GenericAppError("Please install WeChat app first."))
-            return
-        }
         let req = SendAuthReq()
         req.openID = "wxc34b2b654e956933"
         req.scope = "snsapi_userinfo"
         req.state = state
         authReq = req
         WeChatLogInOperation.runningLogIn = self
-        WXApi.sendAuthReq(req, viewController: presenter, delegate: self)
+        WXApi.send(req)
+//        if WXApi.isWXAppSupport() {
+//            WXApi.send(req)
+//        } else {
+//            WXApi.sendAuthReq(req, viewController: presenter, delegate: self)
+//        }
     }
     
     func onResp(_ resp: BaseResp!) {

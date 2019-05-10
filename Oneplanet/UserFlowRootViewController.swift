@@ -17,7 +17,6 @@ class UserFlowRootViewController: UIViewController, UserSessionDepending {
         return "UserSessionRootViewController"
     }
     var userSession: UserSession!
-    @IBOutlet weak var preflightCheckFlowView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,13 +25,13 @@ class UserFlowRootViewController: UIViewController, UserSessionDepending {
     }
     
     private func startNormalFlow() {
-        preflightCheckFlowView.isHidden = true
+        dismiss(animated: true, completion: nil)
     }
 
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? PreflightCheckFlowViewController {
+        if let nav = segue.destination as? UINavigationController, let vc = nav.viewControllers.first as? PreflightCheckFlowViewController {
             vc.userSession = userSession
             vc.didFinishPreflightCheck = {[weak self] in
                 self?.startNormalFlow()

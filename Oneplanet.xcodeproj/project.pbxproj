@@ -248,7 +248,6 @@
 				E06589CC2271ADFD00C9E4E6 /* WelcomeMessageContentCollectionViewController.swift */,
 				E07276E0227307F5001239C0 /* LogInViewController.swift */,
 				E07276E222731334001239C0 /* EmailVerificationViewController.swift */,
-				E07276E82273633A001239C0 /* CreateProfileViewController.swift */,
 				E0BAB71E228482D1007E747C /* InputFieldView.swift */,
 				E06F5010227B34880067DAE4 /* ProfileDraft.swift */,
 				E0837EF622816B0D00B13BAF /* ImageAttachmentUploadFlowOperation.swift */,
@@ -387,6 +386,7 @@
 			children = (
 				E06F5015227B4E7E0067DAE4 /* PreflightCheck.storyboard */,
 				E06F5012227B4E2E0067DAE4 /* PreflightCheckFlowViewController.swift */,
+				E07276E82273633A001239C0 /* CreateProfileViewController.swift */,
 			);
 			name = "Preflight Check";
 			sourceTree = "<group>";

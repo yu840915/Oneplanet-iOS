@@ -17,9 +17,7 @@ class EmailVerificationViewController: UIViewController, EmailAuthFlowStep {
     var emailAuthCredential: EmailAuthCredential!
     var authorizationCompletion: ((UserSession) -> ())!
     var needsSendVerificationLinkAutomatically = false
-    private var getAccountStateOperation: GetAccountStateOperation?
-    private var needsGetAccountState = false
-    private var resendEmailOperation: SendEmailVerificationOperation?
+    private var resendEmailOperation: SendEmailLinkOperation?
     private var eventHandles: [Any]?
 
     override func viewDidLoad() {
@@ -45,7 +43,7 @@ class EmailVerificationViewController: UIViewController, EmailAuthFlowStep {
         let text = String(format: Localized.messageFormats.resendVerificationEmail, Localized.phrases.resendEmail)
         let actionRange = (text as NSString).range(of: Localized.phrases.resendEmail)
         let attrStr = NSMutableAttributedString(string: text, attributes: [.foregroundColor : ColorPalette.defaultText])
-        attrStr.addAttributes([.link : "https://www.apple.com"], range: actionRange)
+        attrStr.addAttributes([.link : ServiceURLs.base], range: actionRange)
         actionTextView.attributedText = attrStr
         actionTextView.linkTextAttributes = [
             .foregroundColor : ColorPalette.buttonGreen,
@@ -57,15 +55,12 @@ class EmailVerificationViewController: UIViewController, EmailAuthFlowStep {
         handles.append(AppLifeCycleObserver.willEnterForeground.observers.add {[weak self] (_) in
             self?.prepareForNextVerificationRound()
         })
-        handles.append(AppLifeCycleObserver.didBecomeActive.observers.add({[weak self] (_) in
-            self?.getAccountStateIfNeeded()
-        }))
         eventHandles = handles
     }
     
     fileprivate func sendVerificationLinkIfAllowed() {
         guard resendEmailOperation == nil else { return }
-        let op = SendEmailVerificationOperation(email: emailAuthCredential.email)
+        let op = SendEmailLinkOperation(email: emailAuthCredential.email)
         op.completionBlock = {[weak self] in
             self?.didResendEmail()
         }
@@ -83,40 +78,8 @@ class EmailVerificationViewController: UIViewController, EmailAuthFlowStep {
     }
     
     private func prepareForNextVerificationRound() {
-        needsGetAccountState = true
         resendEmailOperation?.cancel()
         resendEmailOperation = nil
-    }
-    
-    private func getAccountStateIfNeeded() {
-        guard needsGetAccountState && getAccountStateOperation == nil else {
-            return
-        }
-        needsGetAccountState = false
-        let op = GetAccountStateOperation(email: emailAuthCredential.email)
-        op.completionBlock = {[weak self] in
-            OperationQueue.main.addOperation {
-                self?.didGetAccountState()
-            }
-        }
-        getAccountStateOperation = op
-        op.start()
-    }
-
-    private func didGetAccountState() {
-        let op = getAccountStateOperation!
-        getAccountStateOperation = nil
-        if op.success == true {
-            switch op.state {
-            case .verified:
-                performSegue(withIdentifier: flow.segueID, sender: nil)
-            case .pending: break
-            case .nonexist: navigationController?.popToRootViewController(animated: true)
-            case .unknown: break
-            }
-        } else if let err = op.error {
-            logger.debug("Cannot verify email, error \(err)")
-        }
     }
     
     @IBAction func exit(_ sender: UIBarButtonItem) {

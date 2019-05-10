@@ -36,7 +36,11 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
             updateViewsForRunningAuthOperation()
         }
     }
-    private var getAccountStateOperation: GetAccountStateOperation?
+    private var sendEmailLinkOperation: SendEmailLinkOperation? {
+        didSet {
+            updateViewsForRunningAuthOperation()
+        }
+    }
     var emailAuthCredential: EmailAuthCredential!
     var authorizationCompletion: ((UserSession) -> ())!
     private var inputChangeHandle: Any?
@@ -82,7 +86,7 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
     }
     
     private func updateViewForInputChange() {
-        let allowsAction = authOperation == nil
+        let allowsAction = authOperation == nil && sendEmailLinkOperation == nil
         nextButton.isEnabled = allowsAction && !emailAuthCredential.email.isEmpty
     }
     
@@ -110,34 +114,26 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
         op.start()
     }
 
-    private func getAccountState() {
-        guard getAccountStateOperation == nil else {
+    private func sendEmailLink() {
+        guard sendEmailLinkOperation == nil else {
             return
         }
-        let op = GetAccountStateOperation(email: emailAuthCredential.email)
+        let op = SendEmailLinkOperation(email: emailAuthCredential.email)
         op.completionBlock = {[weak self] in
             OperationQueue.main.addOperation {
-                self?.didGetAccountState()
+                self?.didSendEmailLink()
             }
         }
-        getAccountStateOperation = op
+        sendEmailLinkOperation = op
         op.start()
     }
     
-    private func didGetAccountState() {
-        let op = getAccountStateOperation!
-        getAccountStateOperation = nil
+    private func didSendEmailLink() {
+        let op = sendEmailLinkOperation!
+        sendEmailLinkOperation = nil
         resetErrorDisplay()
         if op.success == true {
-            switch op.state {
-            case .verified:
-                performSegue(withIdentifier: SegueID.emailVerification, sender: emailAuthCredential)
-            case .pending:
-                performSegue(withIdentifier: SegueID.emailVerification, sender: emailAuthCredential)
-            case .nonexist:
-                break
-            case .unknown: break
-            }
+            performSegue(withIdentifier: SegueID.emailVerification, sender: emailAuthCredential)
         } else if let err = op.error {
             showAlert(with: err)
         }
@@ -184,7 +180,7 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
     @IBAction func next(_ sender: Any) {
         view.endEditing(false)
         emailAuthCredential.email = emailFieldView.textField.text ?? ""
-        getAccountState()
+        sendEmailLink()
     }
     
     @IBAction func facebookLogIn(_ sender: UIButton) {

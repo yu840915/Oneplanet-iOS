@@ -185,4 +185,17 @@ class URLRouterTests: XCTestCase {
         router.resume()
         XCTAssertEqual(count, 1)
     }
+    
+    func testCanGetURL() {
+        let router = URLRouter()
+        var url: URL?
+        router.add("/hello") { (params) -> Bool in
+            url = params[URLRouter.Keys.url] as? URL
+            return true
+        }
+        
+        router.handle(URL(string: "https://oneplanet.page.link/hello")!)
+        
+        XCTAssertEqual(url, URL(string: "https://oneplanet.page.link/hello")!)
+    }
 }

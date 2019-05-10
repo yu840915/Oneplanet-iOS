@@ -92,7 +92,7 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
     }
     
     private func updateViewsForDraft() {
-        nextButton.isEnabled = profileDraft.isValid
+        nextButton.isEnabled = !profileDraft.nickname.isEmpty
         let hasAvatar = profileDraft.avatar != nil
         if let avatar = profileDraft.avatar {
             avatarButton.setImage(avatar, for: .normal)
@@ -276,4 +276,3 @@ extension CreateProfileViewController: UITextFieldDelegate {
         }
     }
 }
-

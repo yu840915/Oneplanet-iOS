@@ -17,8 +17,6 @@ class PreflightCheckFlowViewController: UIViewController, UserSessionDepending {
     @IBOutlet weak var errorView: UIStackView!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var retryButton: UIButton!
-    private var contentViewController: UIViewController?
-    private var shouldAddConstraintsForContent = false
     
     private var getProfileOperation: GetMyProfileOperation? {
         didSet {
@@ -30,6 +28,12 @@ class PreflightCheckFlowViewController: UIViewController, UserSessionDepending {
         super.viewDidLoad()
         retryButton.setTitle(Localized.phrases.tryAgain, for: .normal)
         startPreflightCheck()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NavigationBarStyle.translucent.configure(navigationController!.navigationBar)
+        navigationController!.navigationBar.barStyle = .blackTranslucent
     }
     
     private func updateViewsForRunningOperations() {
@@ -68,19 +72,7 @@ class PreflightCheckFlowViewController: UIViewController, UserSessionDepending {
     }
     
     private func startProfileCreation() {
-        let nav = storyboard!.instantiateViewController(withIdentifier: "createProfileEntryPoint") as! UINavigationController
-        let vc = nav.viewControllers.first as! CreateProfileViewController
-        vc.userSession = userSession
-        vc.didCreateProfile = {[weak self] in
-            self?.didFinishPreflightCheck?()
-        }
-        addChild(vc)
-        containerView.addSubview(vc.view)
-        NavigationBarStyle.translucent.configure(nav.navigationBar)
-        vc.didMove(toParent: self)
-        contentViewController = vc
-        shouldAddConstraintsForContent = true
-        updateViewConstraints()
+        performSegue(withIdentifier: SegueID.createProfile, sender: userSession)
     }
     
     private func notifyFailure(with error: Error?) {
@@ -92,20 +84,21 @@ class PreflightCheckFlowViewController: UIViewController, UserSessionDepending {
         startPreflightCheck()
     }
     
-    override func updateViewConstraints() {
-        if shouldAddConstraintsForContent,
-            let content = contentViewController?.view {
-            shouldAddConstraintsForContent = false
-            content.translatesAutoresizingMaskIntoConstraints = false
-            let views = ["content": content]
-            containerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|[content]|", options: [], metrics: nil, views: views))
-            containerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[content]|", options: [], metrics: nil, views: views))
-        }
-        super.updateViewConstraints()
-    }
-    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? CreateProfileViewController {
+            vc.userSession = userSession
+            vc.didCreateProfile = {[weak self] in
+                self?.didFinishPreflightCheck?()
+            }
+
+        }
+    }
+}
+
+extension PreflightCheckFlowViewController {
+    struct SegueID {
+        static let createProfile = "createProfile"
     }
 }

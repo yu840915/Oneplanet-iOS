@@ -11,7 +11,6 @@
 "tl_done" = "Done";
 "tl_ok" = "OK";
 "tl_all_photos" = "All Photos";
-"tl_signup" = "Sign Up";
 "tl_login" = "Log In";
 "tl_title" = "Title";
 "tl_tos" = "Terms";
@@ -19,27 +18,20 @@
 "tl_next" = "Next";
 "tl_skip" = "Skip";
 "tl_exit" = "Exit";
+"tl_back" = "Back";
 
 "pl_email" = "Email Address";
-"pl_password" = "Password";
 "pl_nickname" = "Nickname";
 
-"msg_login_prompt" = "Already have an account?";
-"msg_email_verification_instruction" = "The email has been sent. Please click the link in the email to complete the registration process.";
-"msg_password_rules" = "Please enter 6 to 12 characters in English or numbers";
+"msg_email_verification_instruction" = "The email has been sent. Please click the link in the email to complete the login.";
 "msg_add_avatar_prompt" = "Add a profile photo so your friends know it’s you";
-"msg_send_resend_link_prompt" = "Forgot your password?";
-"msg_send_resend_link_description" = "Oneplanet will send an email to your email address and click on the link to set a new password.";
 
 "msgf_accept_tos" = "By signing up or login, you agree to our %@.";
 "msgf_resend_verification_email" = "You did not receive the email? %@.";
 
 "ph_guest_login" = "Guest";
-"ph_or" = "or";
-"ph_social_login" = "Quick registration";
-"ph_email_signup" = "Or Sign Up With Email";
+"ph_email_login" = "Or Login With Email";
 "ph_resend_email" = "Resend the email";
-"ph_forget_password" = "Forget password?";
 "ph_newuser_greeting" = "Welcome to Oneplanet";
 "ph_add_avatar" = "Add Profile Photo";
 "ph_avatar_added" = "Profile Photo Added";
@@ -55,10 +47,8 @@
 "err_no_library_access" = "Enable Library Access";
 "err_invalid_email" = "Please enter a valid email";
 "err_non_alphanumerics" = "Only letters and digits are allowed";
-"err_conflicting_account" = "This email is taken by another account";
 "err_account_not_exist" = "The email you entered does not appear to belong to an account.\n Please check your email and try again";
 "err_invalid_nickname" = "Your nickname is in the wrong format";
 
 "errtl_cannot_capture_photo" = "Cannot Take Photo";
 "errtl_cannot_pick_avatar" = "Cannot Get Profile Image";
-"errtl_account_not_exist" = "Account Error";

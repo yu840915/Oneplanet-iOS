@@ -45,6 +45,13 @@ class URLRouter {
     }
 }
 
+extension URLRouter {
+    struct Keys {
+        private init() {}
+        static let url = JLRouteURLKey
+    }
+}
+
 class DelayURLRouter: URLRouter {
     /*
      This one provides just-enough implementation of delayed routing, i.e., just stacks routing requests without querying handling capability.
@@ -67,3 +74,4 @@ class DelayURLRouter: URLRouter {
         waitingURLs.forEach{handle($0)}
     }
 }
+

@@ -9,6 +9,7 @@
 import Foundation
 import ModelBlocks
 import Firebase
+import FirebaseMessaging
 
 class FirebaseMessagingSession: NSObject, MessagingDelegate {
     static var current: FirebaseMessagingSession!
@@ -37,7 +38,6 @@ class FirebaseMessagingSession: NSObject, MessagingDelegate {
             logger.error("Cannot fetch Firebase instance ID, error \(err)")
         }
     }
-
     
     func setUpDeviceToken(_ data: Data) {
         Messaging.messaging().apnsToken = data

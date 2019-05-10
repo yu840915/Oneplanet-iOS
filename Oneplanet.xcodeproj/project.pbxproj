@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		6868F9DB5BA3F9DA5AAF9145 /* Pods_Oneplanet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C23D84EC0F174A064CAA41E1 /* Pods_Oneplanet.framework */; };
 		B4FA7DD93CACAF00C41D6CE9 /* Pods_OneplanetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD31476F85B0E94B50970A99 /* Pods_OneplanetTests.framework */; };
-		E0190F47226DAA7300C212D5 /* LoginHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F46226DAA7300C212D5 /* LoginHomeViewController.swift */; };
 		E0190F49226DB0E000C212D5 /* WelcomeMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F48226DB0E000C212D5 /* WelcomeMessageViewController.swift */; };
 		E0190F4B226DB55400C212D5 /* UIComponentFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F4A226DB55400C212D5 /* UIComponentFactories.swift */; };
 		E0190F4D226DCCFB00C212D5 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F4C226DCCFB00C212D5 /* UserSession.swift */; };
@@ -58,11 +57,8 @@
 		E06F5011227B34880067DAE4 /* ProfileDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06F5010227B34880067DAE4 /* ProfileDraft.swift */; };
 		E06F5013227B4E2E0067DAE4 /* PreflightCheckFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06F5012227B4E2E0067DAE4 /* PreflightCheckFlowViewController.swift */; };
 		E06F5016227B4E7E0067DAE4 /* PreflightCheck.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E06F5015227B4E7E0067DAE4 /* PreflightCheck.storyboard */; };
-		E07276DF2272D4BA001239C0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276DE2272D4BA001239C0 /* SignUpViewController.swift */; };
 		E07276E1227307F5001239C0 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276E0227307F5001239C0 /* LogInViewController.swift */; };
 		E07276E322731334001239C0 /* EmailVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276E222731334001239C0 /* EmailVerificationViewController.swift */; };
-		E07276E52273459D001239C0 /* SignUpPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276E42273459D001239C0 /* SignUpPasswordViewController.swift */; };
-		E07276E722735511001239C0 /* LoginPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276E622735511001239C0 /* LoginPasswordViewController.swift */; };
 		E07276E92273633A001239C0 /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276E82273633A001239C0 /* CreateProfileViewController.swift */; };
 		E07276EB2274B515001239C0 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276EA2274B515001239C0 /* WebViewController.swift */; };
 		E07276F32276AA85001239C0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E07276F22276AA84001239C0 /* GoogleService-Info.plist */; };
@@ -79,6 +75,7 @@
 		E08C3129227817680013DD0C /* AuthActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08C3128227817680013DD0C /* AuthActions.swift */; };
 		E08C312B227826850013DD0C /* EmailInputValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08C312A227826850013DD0C /* EmailInputValidatorTests.swift */; };
 		E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */; };
+		E0BAB71F228482D1007E747C /* InputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BAB71E228482D1007E747C /* InputFieldView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,7 +93,6 @@
 		220D39E57B4B40157A7689B2 /* Pods-OneplanetTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneplanetTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneplanetTests/Pods-OneplanetTests.release.xcconfig"; sourceTree = "<group>"; };
 		47881963BA2439BD65729786 /* Pods-Oneplanet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Oneplanet.release.xcconfig"; path = "Pods/Target Support Files/Pods-Oneplanet/Pods-Oneplanet.release.xcconfig"; sourceTree = "<group>"; };
 		C23D84EC0F174A064CAA41E1 /* Pods_Oneplanet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Oneplanet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E0190F46226DAA7300C212D5 /* LoginHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginHomeViewController.swift; sourceTree = "<group>"; };
 		E0190F48226DB0E000C212D5 /* WelcomeMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeMessageViewController.swift; sourceTree = "<group>"; };
 		E0190F4A226DB55400C212D5 /* UIComponentFactories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponentFactories.swift; sourceTree = "<group>"; };
 		E0190F4C226DCCFB00C212D5 /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
@@ -151,11 +147,8 @@
 		E06F5010227B34880067DAE4 /* ProfileDraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDraft.swift; sourceTree = "<group>"; };
 		E06F5012227B4E2E0067DAE4 /* PreflightCheckFlowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreflightCheckFlowViewController.swift; sourceTree = "<group>"; };
 		E06F5015227B4E7E0067DAE4 /* PreflightCheck.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PreflightCheck.storyboard; sourceTree = "<group>"; };
-		E07276DE2272D4BA001239C0 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		E07276E0227307F5001239C0 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		E07276E222731334001239C0 /* EmailVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailVerificationViewController.swift; sourceTree = "<group>"; };
-		E07276E42273459D001239C0 /* SignUpPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPasswordViewController.swift; sourceTree = "<group>"; };
-		E07276E622735511001239C0 /* LoginPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPasswordViewController.swift; sourceTree = "<group>"; };
 		E07276E82273633A001239C0 /* CreateProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
 		E07276EA2274B515001239C0 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		E07276EC2275FFDE001239C0 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -178,6 +171,7 @@
 		E08C3128227817680013DD0C /* AuthActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthActions.swift; sourceTree = "<group>"; };
 		E08C312A227826850013DD0C /* EmailInputValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailInputValidatorTests.swift; sourceTree = "<group>"; };
 		E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryImagePickerViewController.swift; sourceTree = "<group>"; };
+		E0BAB71E228482D1007E747C /* InputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldView.swift; sourceTree = "<group>"; };
 		E606D7D88F63D6FCB0821922 /* Pods-OneplanetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneplanetTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneplanetTests/Pods-OneplanetTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FD31476F85B0E94B50970A99 /* Pods_OneplanetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneplanetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -252,13 +246,9 @@
 				E03C32B8226DA44A00C32FD7 /* Onboarding.storyboard */,
 				E0190F48226DB0E000C212D5 /* WelcomeMessageViewController.swift */,
 				E06589CC2271ADFD00C9E4E6 /* WelcomeMessageContentCollectionViewController.swift */,
-				E0190F46226DAA7300C212D5 /* LoginHomeViewController.swift */,
-				E07276DE2272D4BA001239C0 /* SignUpViewController.swift */,
-				E07276E42273459D001239C0 /* SignUpPasswordViewController.swift */,
 				E07276E0227307F5001239C0 /* LogInViewController.swift */,
-				E07276E622735511001239C0 /* LoginPasswordViewController.swift */,
 				E07276E222731334001239C0 /* EmailVerificationViewController.swift */,
-				E07276E82273633A001239C0 /* CreateProfileViewController.swift */,
+				E0BAB71E228482D1007E747C /* InputFieldView.swift */,
 				E06F5010227B34880067DAE4 /* ProfileDraft.swift */,
 				E0837EF622816B0D00B13BAF /* ImageAttachmentUploadFlowOperation.swift */,
 				E08C3128227817680013DD0C /* AuthActions.swift */,
@@ -396,6 +386,7 @@
 			children = (
 				E06F5015227B4E7E0067DAE4 /* PreflightCheck.storyboard */,
 				E06F5012227B4E2E0067DAE4 /* PreflightCheckFlowViewController.swift */,
+				E07276E82273633A001239C0 /* CreateProfileViewController.swift */,
 			);
 			name = "Preflight Check";
 			sourceTree = "<group>";
@@ -678,6 +669,7 @@
 				E03C32B5226D969500C32FD7 /* ColorPalette .swift in Sources */,
 				E0837EF3227FFFBF00B13BAF /* FacebookLogin.swift in Sources */,
 				E06589BF22701B9F00C9E4E6 /* CapturePhotoOperation.swift in Sources */,
+				E0BAB71F228482D1007E747C /* InputFieldView.swift in Sources */,
 				E0190F53226DD62200C212D5 /* UserProgressChecklist.swift in Sources */,
 				E06589C32270362300C9E4E6 /* GenericAppError.swift in Sources */,
 				E06589C8227060EC00C9E4E6 /* PhotoList.swift in Sources */,
@@ -691,16 +683,13 @@
 				E03C32AE226D8E6800C32FD7 /* SharedFormatters.swift in Sources */,
 				E07276F82276D0DC001239C0 /* RequestUserNotificationAuthorizationOperation.swift in Sources */,
 				E06589C12270333100C9E4E6 /* PickImageOperation.swift in Sources */,
-				E0190F47226DAA7300C212D5 /* LoginHomeViewController.swift in Sources */,
 				E06F500F227AFD740067DAE4 /* WeChatLogIn.swift in Sources */,
-				E07276E52273459D001239C0 /* SignUpPasswordViewController.swift in Sources */,
 				E0190F57226EDBC900C212D5 /* CameraImagePickerViewController.swift in Sources */,
 				E08C3129227817680013DD0C /* AuthActions.swift in Sources */,
 				E03C32B0226D8E8F00C32FD7 /* NavigationBarStyle.swift in Sources */,
 				E0190F4F226DD06B00C212D5 /* Preferences.swift in Sources */,
 				E0837EF1227FF85100B13BAF /* SocialAuthOperations.swift in Sources */,
 				E0837EF722816B0D00B13BAF /* ImageAttachmentUploadFlowOperation.swift in Sources */,
-				E07276E722735511001239C0 /* LoginPasswordViewController.swift in Sources */,
 				E06589CA2270C1A500C9E4E6 /* UpdateClock.swift in Sources */,
 				E07276E1227307F5001239C0 /* LogInViewController.swift in Sources */,
 				E05BB25E226D5D2A00721F20 /* AppDelegate.swift in Sources */,
@@ -709,7 +698,6 @@
 				E07276F62276C305001239C0 /* FirebaseMessagingSession.swift in Sources */,
 				E07276E92273633A001239C0 /* CreateProfileViewController.swift in Sources */,
 				E03C329E226D772400C32FD7 /* Logger.swift in Sources */,
-				E07276DF2272D4BA001239C0 /* SignUpViewController.swift in Sources */,
 				E03C32B3226D925100C32FD7 /* ServiceConstants.swift in Sources */,
 				E06F4FFA22782C8C0067DAE4 /* InputValidators.swift in Sources */,
 				E07276EB2274B515001239C0 /* WebViewController.swift in Sources */,

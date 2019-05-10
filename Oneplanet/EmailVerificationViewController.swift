@@ -13,7 +13,6 @@ class EmailVerificationViewController: UIViewController, EmailAuthFlowStep {
     @IBOutlet weak var actionTextView: UITextView!
     @IBOutlet weak var exitButtonItem: UIBarButtonItem!
     
-    var flow: Flow!
     var emailAuthCredential: EmailAuthCredential!
     var authorizationCompletion: ((UserSession) -> ())!
     var needsSendVerificationLinkAutomatically = false
@@ -82,15 +81,25 @@ class EmailVerificationViewController: UIViewController, EmailAuthFlowStep {
         resendEmailOperation = nil
     }
     
+    func startPreflightCheck(with session: UserSession) {
+        performSegue(withIdentifier: SegueID.preflightCheck, sender: session)
+    }
+
+    func showAlert(with error: Error) {
+        let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Localized.titles.dismiss, style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func exit(_ sender: UIBarButtonItem) {
         navigationController?.popToRootViewController(animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? EmailAuthFlowStep {
-            vc.emailAuthCredential = emailAuthCredential
-            vc.authorizationCompletion = {[weak self] session in
-                self?.authorizationCompletion?(session)
+        if let nav = segue.destination as? UINavigationController, let vc = nav.viewControllers.first as? PreflightCheckFlowViewController {
+            vc.userSession = (sender as! UserSession)
+            vc.didFinishPreflightCheck = {[weak self] in
+                self?.authorizationCompletion(sender as! UserSession)
             }
         }
     }
@@ -105,18 +114,6 @@ extension EmailVerificationViewController: UITextViewDelegate {
 
 extension EmailVerificationViewController {
     struct SegueID {
-        static let signUp = "signUpPassword"
-        static let logIn = "logInPassword"
-    }
-    enum Flow {
-        case signUp
-        case logIn
-        
-        var segueID: String {
-            switch self {
-            case .signUp: return SegueID.signUp
-            case .logIn: return SegueID.logIn
-            }
-        }
+        static let preflightCheck = "preflightCheck"
     }
 }

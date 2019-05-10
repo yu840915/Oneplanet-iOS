@@ -371,6 +371,7 @@
                         <outletCollection property="socialLoginButtons" destination="OPo-aD-ROX" collectionClass="NSMutableArray" id="ciE-xF-U9W"/>
                         <segue destination="QW0-15-aEk" kind="show" identifier="emailVerification" id="fWF-vv-mfI"/>
                         <segue destination="P9D-i1-6PR" kind="presentation" identifier="showTerms" id="4Cb-fD-Szk"/>
+                        <segue destination="feC-ma-vZZ" kind="presentation" identifier="preflightCheck" modalTransitionStyle="crossDissolve" id="brT-UR-srq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cys-45-bz7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -381,6 +382,14 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="248" y="155"/>
+        </scene>
+        <!--PreflightCheck-->
+        <scene sceneID="WW8-4v-ROJ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PreflightCheck" id="feC-ma-vZZ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9AL-XJ-rHr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="864" y="732"/>
         </scene>
         <!--Email Verification View Controller-->
         <scene sceneID="RgW-qN-rFy">
@@ -434,6 +443,7 @@
                         <outlet property="actionTextView" destination="AWH-Br-NDf" id="h3M-0X-cVc"/>
                         <outlet property="exitButtonItem" destination="Eg2-pH-2uT" id="77t-WV-XoL"/>
                         <outlet property="messageLabel" destination="Nqo-3f-tpr" id="eyR-ce-njs"/>
+                        <segue destination="feC-ma-vZZ" kind="presentation" identifier="preflightCheck" modalTransitionStyle="crossDissolve" id="aed-ZJ-r1z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a9s-Ix-52a" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -460,6 +470,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="aed-ZJ-r1z"/>
         <segue reference="cDA-Cr-QNR"/>
     </inferredMetricsTieBreakers>
 </document>

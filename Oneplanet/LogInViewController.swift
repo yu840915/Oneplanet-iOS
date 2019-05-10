@@ -29,6 +29,8 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
     @IBOutlet weak var guestLoginButton: UIButton!
     @IBOutlet weak var termsTextView: UITextView!
     @IBOutlet var endEditingTap: UITapGestureRecognizer!
+    private var loginRounter: URLRouter!
+    private var session: UserSession?
 
     private var requestNotificationAuthorizationOperation: RequestUserNotificationAuthorizationOperation?
     private var authOperation: AuthenticationOperationType? {
@@ -41,6 +43,7 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
             updateViewsForRunningAuthOperation()
         }
     }
+    private weak var emailVerificationViewController: EmailVerificationViewController?
     var emailAuthCredential: EmailAuthCredential!
     var authorizationCompletion: ((UserSession) -> ())!
     private var inputChangeHandle: Any?
@@ -54,10 +57,67 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
         localizeTitles()
         prepareTermsTextView()
         emailAuthCredential = EmailAuthCredential()
+        setUpEmailLinkLoginHandler()
         inputChangeHandle = emailAuthCredential.inputDidChangeHandlers.add {[weak self] in
             self?.updateViewForInputChange()
         }
         updateViewForInputChange()
+    }
+    
+    deinit {
+        router.removeOverridingRouter(loginRounter)
+    }
+    
+    private func setUpEmailLinkLoginHandler() {
+        let loginRouter = URLRouter()
+        loginRouter.add("/magiclink") {[weak self] (info) -> Bool in
+            return self?.startEmailLinkLogInIfAllowed(with: info) ?? false
+        }
+        self.loginRounter = loginRouter
+        router.addOverridingRouter(loginRounter)
+    }
+    
+    private func startEmailLinkLogInIfAllowed(with info: [String: Any]) -> Bool {
+        guard session == nil, authOperation == nil else { return false }
+        guard let url = info[URLRouter.Keys.url] as? URL else { return false }
+        OperationQueue.main.addOperation {
+            self.logIn(withEmailLink: url)
+        }
+        return true
+    }
+    
+    private func logIn(withEmailLink url: URL) {
+        emailAuthCredential.magicLink = url
+        let op = EmailLinkLogInOperarion(credential: emailAuthCredential)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didLogInWithEmailLink()
+            }
+        }
+        authOperation = op
+        op.start()
+    }
+    
+    private func didLogInWithEmailLink() {
+        let op = authOperation!
+        authOperation = nil
+        if let token = op.token {
+            let session = UserSession(token: token)
+            StoreUserSessionOperation(session: session).start()
+            if let vc = emailVerificationViewController {
+                vc.startPreflightCheck(with: session)
+                self.session = session
+            } else {
+                startPreflightCheck(with: session)
+            }
+        } else if let error = op.error {
+            if let vc = emailVerificationViewController {
+                vc.showAlert(with: error)
+            } else {
+                showAlert(with: error)
+            }
+        }
+
     }
     
     private func localizeTitles() {
@@ -162,7 +222,7 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
         }
     }
 
-    private func didLogIn() {
+    private func didSocialLogIn() {
         let op = authOperation!
         authOperation = nil
         if let token = op.token {
@@ -171,12 +231,18 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
                 session.socialProfile = socialAuth.publicProfile
             }
             StoreUserSessionOperation(session: session).start()
-            authorizationCompletion?(session)
+            startPreflightCheck(with: session)
         } else if let error = op.error {
             showAlert(with: error)
         }
     }
     
+    private func startPreflightCheck(with session: UserSession) {
+        self.session = session
+        performSegue(withIdentifier: SegueID.preflightCheck, sender: session)
+    }
+    
+
     @IBAction func next(_ sender: Any) {
         view.endEditing(false)
         emailAuthCredential.email = emailFieldView.textField.text ?? ""
@@ -188,7 +254,7 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
         let op = FacebookLoginOperation(presenter: self)
         op.completionBlock = {[weak self] in
             OperationQueue.main.addOperation {
-                self?.didLogIn()
+                self?.didSocialLogIn()
             }
         }
         authOperation = op
@@ -200,7 +266,7 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
         let op = TwitterLogInOperation(presenter: self)
         op.completionBlock = {[weak self] in
             OperationQueue.main.addOperation {
-                self?.didLogIn()
+                self?.didSocialLogIn()
             }
         }
         authOperation = op
@@ -212,7 +278,7 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
         let op = WeChatLogInOperation(presenter: self)
         op.completionBlock = {[weak self] in
             OperationQueue.main.addOperation {
-                self?.didLogIn()
+                self?.didSocialLogIn()
             }
         }
         authOperation = op
@@ -240,7 +306,7 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
             showAlert(with: error)
         }
     }
-    
+
     @IBAction func endEditing(_ sender: Any) {
         view.endEditing(false)
     }
@@ -255,17 +321,23 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
         if let vc = segue.destination as? EmailAuthFlowStep {
             vc.emailAuthCredential = emailAuthCredential
             vc.authorizationCompletion = {[weak self] session in
-                self?.authorizationCompletion?(session)
+                self?.authorizationCompletion(session)
             }
         }
         if let vc = segue.destination as? EmailVerificationViewController {
-            vc.flow = .logIn
+            emailVerificationViewController = vc
         }
         if let nav = segue.destination as? UINavigationController,
             let vc = nav.viewControllers.first as? WebViewController {
             NavigationBarStyle.darkGrey.configure(nav.navigationBar)
             vc.request = sender as? URLRequest
             vc.title = Localized.titles.tos
+        }
+        if let nav = segue.destination as? UINavigationController, let vc = nav.viewControllers.first as? PreflightCheckFlowViewController {
+            vc.userSession = (sender as! UserSession)
+            vc.didFinishPreflightCheck = {[weak self] in
+                self?.authorizationCompletion(sender as! UserSession)
+            }
         }
     }
 }
@@ -298,6 +370,8 @@ extension LogInViewController {
     struct SegueID {
         static let emailVerification = "emailVerification"
         static let showTerms = "showTerms"
+        static let preflightCheck = "preflightCheck"
     }
 
 }
+

@@ -18,6 +18,7 @@
 "tl_next" = "Next";
 "tl_skip" = "Skip";
 "tl_exit" = "Exit";
+"tl_back" = "Back";
 
 "pl_email" = "Email Address";
 "pl_nickname" = "Nickname";

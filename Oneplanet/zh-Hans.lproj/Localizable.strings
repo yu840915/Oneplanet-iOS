@@ -18,6 +18,7 @@
 "tl_next" = "下一步";
 "tl_skip" = "略过";
 "tl_exit" = "出口";
+"tl_back" = "后退";
 
 "pl_email" = "电子邮件地址";
 "pl_nickname" = "昵称";

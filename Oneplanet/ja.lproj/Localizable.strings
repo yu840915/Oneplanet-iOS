@@ -18,6 +18,7 @@
 "tl_next" = "次へ";
 "tl_skip" = "スキップ";
 "tl_exit" = "出る";
+"tl_back" = "戻る";
 
 "pl_email" = "メールアドレス";
 "pl_nickname" = "ニックネーム";

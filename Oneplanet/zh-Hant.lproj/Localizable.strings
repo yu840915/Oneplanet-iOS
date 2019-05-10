@@ -18,6 +18,7 @@
 "tl_next" = "下一步";
 "tl_skip" = "略過";
 "tl_exit" = "離開";
+"tl_back" = "返回";
 
 "pl_email" = "電子郵件地址";
 "pl_nickname" = "暱稱";

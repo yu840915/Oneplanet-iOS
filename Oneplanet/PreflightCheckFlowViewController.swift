@@ -33,6 +33,7 @@ class PreflightCheckFlowViewController: UIViewController, UserSessionDepending {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NavigationBarStyle.translucent.configure(navigationController!.navigationBar)
+        navigationController!.navigationBar.barStyle = .blackTranslucent
     }
     
     private func updateViewsForRunningOperations() {

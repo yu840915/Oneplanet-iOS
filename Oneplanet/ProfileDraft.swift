@@ -43,6 +43,11 @@ class CreateProfileOperation: AlamofireAPIAccessOperation {
         self.draft = draft
         self.session = session
     }
+    
+    override func prepareURLRequest() throws -> URLRequest {
+        try draft.validate()
+        return try super.prepareURLRequest()
+    }
 }
 
 class DownloadImageOperaion: AlamofireAPIAccessOperation {

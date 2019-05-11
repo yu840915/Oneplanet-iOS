@@ -16,17 +16,28 @@ class UserFlowRootViewController: UIViewController, UserSessionDepending {
     class var defaultStoryboardID: String {
         return "UserSessionRootViewController"
     }
+    
     var userSession: UserSession!
     var needsPreflightCheck = true
+    private var mainViewController: UserFlowMainViewController?
+    private var shouldAddConstraintsForMainView = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         if !needsPreflightCheck {
-            startUserFlow()
+            startMainFlow()
         }
     }
     
-    private func startUserFlow() {
+    private func startMainFlow() {
+        guard mainViewController == nil else { return }
+        let vc = UserFlowMainViewController.fromDefaultStoryboard()
+        addChild(vc)
+        view.addSubview(vc.view)
+        vc.didMove(toParent: self)
+        mainViewController = vc
+        shouldAddConstraintsForMainView = true
+        updateViewConstraints()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -36,9 +47,20 @@ class UserFlowRootViewController: UIViewController, UserSessionDepending {
         }
     }
     
+    override func updateViewConstraints() {
+        if shouldAddConstraintsForMainView,
+            let content = mainViewController?.view {
+            shouldAddConstraintsForMainView = false
+            let views = ["content":  content]
+            view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|[content]|", options: [], metrics: nil, views: views))
+            view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[content]|", options: [], metrics: nil, views: views))
+        }
+        super.updateViewConstraints()
+    }
+    
     private func leavePreflightCheck() {
         dismiss(animated: true, completion: nil)
-        startUserFlow()
+        startMainFlow()
     }
 
     // MARK: - Navigation

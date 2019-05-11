@@ -48,12 +48,13 @@ class RootViewController: UIViewController {
     }
     
     private func handleSessionRestoration() {
-        let op = restoreUserSessionOperation!
-        if let session = op.session {
-            startUserFlow(with: session, needsPreflightCheck: true)
-        } else {
-            startLoginFlow()
-        }
+        startUserFlow(with: UserSession(token: "123"), needsPreflightCheck: false)
+//        let op = restoreUserSessionOperation!
+//        if let session = op.session {
+//            startUserFlow(with: session, needsPreflightCheck: true)
+//        } else {
+//            startLoginFlow()
+//        }
     }
     
     private func logOut() {

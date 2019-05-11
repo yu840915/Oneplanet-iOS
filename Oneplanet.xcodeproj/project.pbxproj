@@ -68,6 +68,8 @@
 		E07276FD2277424E001239C0 /* URLRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276FC2277424E001239C0 /* URLRouter.swift */; };
 		E07276FF227743D7001239C0 /* URLRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276FE227743D7001239C0 /* URLRouterTests.swift */; };
 		E07277012277EE3D001239C0 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07277002277EE3C001239C0 /* AppConfiguration.swift */; };
+		E0814FAE22864B10002F1C02 /* MainUserFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0814FAD22864B10002F1C02 /* MainUserFlow.storyboard */; };
+		E0814FB122864F79002F1C02 /* UserFlowMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0814FB022864F79002F1C02 /* UserFlowMainViewController.swift */; };
 		E0837EF1227FF85100B13BAF /* SocialAuthOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0837EF0227FF85100B13BAF /* SocialAuthOperations.swift */; };
 		E0837EF3227FFFBF00B13BAF /* FacebookLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0837EF2227FFFBF00B13BAF /* FacebookLogin.swift */; };
 		E0837EF5228022C400B13BAF /* TwitterLogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0837EF4228022C400B13BAF /* TwitterLogIn.swift */; };
@@ -164,6 +166,8 @@
 		E07276FC2277424E001239C0 /* URLRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRouter.swift; sourceTree = "<group>"; };
 		E07276FE227743D7001239C0 /* URLRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRouterTests.swift; sourceTree = "<group>"; };
 		E07277002277EE3C001239C0 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
+		E0814FAD22864B10002F1C02 /* MainUserFlow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainUserFlow.storyboard; sourceTree = "<group>"; };
+		E0814FB022864F79002F1C02 /* UserFlowMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFlowMainViewController.swift; sourceTree = "<group>"; };
 		E0837EF0227FF85100B13BAF /* SocialAuthOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialAuthOperations.swift; sourceTree = "<group>"; };
 		E0837EF2227FFFBF00B13BAF /* FacebookLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLogin.swift; sourceTree = "<group>"; };
 		E0837EF4228022C400B13BAF /* TwitterLogIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterLogIn.swift; sourceTree = "<group>"; };
@@ -293,6 +297,7 @@
 				E0190F4C226DCCFB00C212D5 /* UserSession.swift */,
 				E05BB261226D5D2A00721F20 /* Main.storyboard */,
 				E0190F54226EC82500C212D5 /* UserFlowRootViewController.swift */,
+				E0814FAF22864D5D002F1C02 /* Main User Flow */,
 				E06F5014227B4E510067DAE4 /* Preflight Check */,
 				E0190F58226EDBD000C212D5 /* Supporting Flows */,
 				E03C32BA226DA45900C32FD7 /* Onboarding */,
@@ -400,6 +405,15 @@
 			name = "Server Push Message";
 			sourceTree = "<group>";
 		};
+		E0814FAF22864D5D002F1C02 /* Main User Flow */ = {
+			isa = PBXGroup;
+			children = (
+				E0814FAD22864B10002F1C02 /* MainUserFlow.storyboard */,
+				E0814FB022864F79002F1C02 /* UserFlowMainViewController.swift */,
+			);
+			name = "Main User Flow";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -503,6 +517,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E05BB268226D5D2E00721F20 /* LaunchScreen.storyboard in Resources */,
+				E0814FAE22864B10002F1C02 /* MainUserFlow.storyboard in Resources */,
 				E07276F32276AA85001239C0 /* GoogleService-Info.plist in Resources */,
 				E03C32A3226D866200C32FD7 /* Localizable.strings in Resources */,
 				E05BB265226D5D2E00721F20 /* Assets.xcassets in Resources */,
@@ -691,6 +706,7 @@
 				E0837EF1227FF85100B13BAF /* SocialAuthOperations.swift in Sources */,
 				E0837EF722816B0D00B13BAF /* ImageAttachmentUploadFlowOperation.swift in Sources */,
 				E06589CA2270C1A500C9E4E6 /* UpdateClock.swift in Sources */,
+				E0814FB122864F79002F1C02 /* UserFlowMainViewController.swift in Sources */,
 				E07276E1227307F5001239C0 /* LogInViewController.swift in Sources */,
 				E05BB25E226D5D2A00721F20 /* AppDelegate.swift in Sources */,
 				E06F4FFE22789C760067DAE4 /* AppLifeCycleObserver.swift in Sources */,

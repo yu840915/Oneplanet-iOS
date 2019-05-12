@@ -70,6 +70,8 @@
 		E07277012277EE3D001239C0 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07277002277EE3C001239C0 /* AppConfiguration.swift */; };
 		E0814FAE22864B10002F1C02 /* MainUserFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0814FAD22864B10002F1C02 /* MainUserFlow.storyboard */; };
 		E0814FB122864F79002F1C02 /* UserFlowMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0814FB022864F79002F1C02 /* UserFlowMainViewController.swift */; };
+		E0814FB322865CC2002F1C02 /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0814FB222865CC2002F1C02 /* Me.storyboard */; };
+		E0814FB522873103002F1C02 /* RoughNumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0814FB422873103002F1C02 /* RoughNumberFormatterTests.swift */; };
 		E0837EF1227FF85100B13BAF /* SocialAuthOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0837EF0227FF85100B13BAF /* SocialAuthOperations.swift */; };
 		E0837EF3227FFFBF00B13BAF /* FacebookLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0837EF2227FFFBF00B13BAF /* FacebookLogin.swift */; };
 		E0837EF5228022C400B13BAF /* TwitterLogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0837EF4228022C400B13BAF /* TwitterLogIn.swift */; };
@@ -168,6 +170,8 @@
 		E07277002277EE3C001239C0 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
 		E0814FAD22864B10002F1C02 /* MainUserFlow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainUserFlow.storyboard; sourceTree = "<group>"; };
 		E0814FB022864F79002F1C02 /* UserFlowMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFlowMainViewController.swift; sourceTree = "<group>"; };
+		E0814FB222865CC2002F1C02 /* Me.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
+		E0814FB422873103002F1C02 /* RoughNumberFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoughNumberFormatterTests.swift; sourceTree = "<group>"; };
 		E0837EF0227FF85100B13BAF /* SocialAuthOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialAuthOperations.swift; sourceTree = "<group>"; };
 		E0837EF2227FFFBF00B13BAF /* FacebookLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLogin.swift; sourceTree = "<group>"; };
 		E0837EF4228022C400B13BAF /* TwitterLogIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterLogIn.swift; sourceTree = "<group>"; };
@@ -318,6 +322,7 @@
 				E07276FE227743D7001239C0 /* URLRouterTests.swift */,
 				E08C312A227826850013DD0C /* EmailInputValidatorTests.swift */,
 				E06F4FFB22782E7D0067DAE4 /* EmailAuthCredentialTests.swift */,
+				E0814FB422873103002F1C02 /* RoughNumberFormatterTests.swift */,
 				E05BB274226D5D2F00721F20 /* Info.plist */,
 			);
 			path = OneplanetTests;
@@ -410,6 +415,7 @@
 			children = (
 				E0814FAD22864B10002F1C02 /* MainUserFlow.storyboard */,
 				E0814FB022864F79002F1C02 /* UserFlowMainViewController.swift */,
+				E0814FB222865CC2002F1C02 /* Me.storyboard */,
 			);
 			name = "Main User Flow";
 			sourceTree = "<group>";
@@ -518,6 +524,7 @@
 			files = (
 				E05BB268226D5D2E00721F20 /* LaunchScreen.storyboard in Resources */,
 				E0814FAE22864B10002F1C02 /* MainUserFlow.storyboard in Resources */,
+				E0814FB322865CC2002F1C02 /* Me.storyboard in Resources */,
 				E07276F32276AA85001239C0 /* GoogleService-Info.plist in Resources */,
 				E03C32A3226D866200C32FD7 /* Localizable.strings in Resources */,
 				E05BB265226D5D2E00721F20 /* Assets.xcassets in Resources */,
@@ -730,6 +737,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E07276FF227743D7001239C0 /* URLRouterTests.swift in Sources */,
+				E0814FB522873103002F1C02 /* RoughNumberFormatterTests.swift in Sources */,
 				E05BB273226D5D2F00721F20 /* OneplanetTests.swift in Sources */,
 				E08C312B227826850013DD0C /* EmailInputValidatorTests.swift in Sources */,
 				E0190F51226DD1E200C212D5 /* ChecklistItemTests.swift in Sources */,

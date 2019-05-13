@@ -113,7 +113,7 @@ class PickLibraryImageOperation: PickImageOperation {
         switch AskForPhotoLibraryAuthorizationOperation.authorizationStatus {
         case .notDetermined: askForPermissin()
         case .authorized: prepareLibraryFlow()
-        case .denied: fail(with: MissingInputPermissionError(Localized.errors.noCameraAccess))
+        case .denied: fail(with: MissingInputPermissionError(Localized.errors.noLibraryAccess))
         }
     }
     

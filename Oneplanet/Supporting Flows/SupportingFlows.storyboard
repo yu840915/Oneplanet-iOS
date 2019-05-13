@@ -87,7 +87,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RPe-5n-XIY">
                                         <rect key="frame" x="0.0" y="414" width="414" height="394"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_camera_nor" translatesAutoresizingMaskIntoConstraints="NO" id="1NX-BD-CXu">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_cameramaterial_nor" translatesAutoresizingMaskIntoConstraints="NO" id="1NX-BD-CXu">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="394"/>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MXa-dM-2yK" userLabel="Snap Button">
@@ -380,7 +380,6 @@
         <image name="ic_cameraflash_nor" width="21" height="29"/>
         <image name="ic_cameraflash_tap" width="21" height="29"/>
         <image name="ic_camerarotation_nor" width="33" height="27"/>
-        <image name="ui_camera_nor" width="375" height="349"/>
         <image name="ui_cameramaterial_nor" width="375" height="375"/>
         <image name="ui_myphotomask_nor" width="750" height="750"/>
         <namedColor name="button green">

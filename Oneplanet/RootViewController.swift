@@ -13,6 +13,11 @@ protocol DefaultInstanceFactory: AnyObject {
     static func fromDefaultStoryboard() -> ViewControllerType
 }
 
+protocol DefaultViewInstanceFactory: AnyObject {
+    associatedtype ViewType where ViewType: UIView
+    static func fromDefaultNib() -> ViewType
+}
+
 class RootViewController: UIViewController {
     private var restoreUserSessionOperation: RestoreUserSessionOperation?
     @IBOutlet weak var containerView: UIView!

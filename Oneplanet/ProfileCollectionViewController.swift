@@ -11,17 +11,28 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class ProfileCollectionViewController: UICollectionViewController {
+    
+    fileprivate var sections: [Section] = [.detail, .emptyView]
+    fileprivate var posts: [Any] = []
+    private var idHeader: IDHeaderView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
+        let header = IDHeaderView.fromDefaultNib()
+        header.copyAction = {[weak self] in
+            self?.copyID()
+        }
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: header)
+        idHeader = header
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NavigationBarStyle.darkGrey.configure(navigationController!.navigationBar)
+    }
+    
+    private func copyID() {
+        
     }
 
     /*
@@ -37,66 +48,126 @@ class ProfileCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return sections.count
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        switch sections[section] {
+        case .detail, .emptyView: return 1
+        case .posts: return 0
+        }
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let section = sections[indexPath.section]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: section.reuseID, for: indexPath)
     
-        // Configure the cell
-    
+        switch section {
+        case .detail:
+            updateViews(inDetailCell: cell as! ProfileContainerCell)
+        case .posts:
+            updateViews(inPostCell: cell as! PostThumbnailCell, at: indexPath)
+        case .emptyView: break
+        }
         return cell
     }
-
+    
+    private func updateViews(inDetailCell cell: ProfileContainerCell) {
+        if cell.contentViewController == nil {
+            prepareContentViewController(for: cell)
+        }
+        //set up
+    }
+    
+    private func prepareContentViewController(for cell: ProfileContainerCell) {
+        let vc = ProfileDetailViewController.fromDefaultStoryboard()
+        addChild(vc)
+        cell.setUp(vc)
+        vc.didMove(toParent: self)
+    }
+    
+    private func updateViews(inPostCell cell: PostThumbnailCell, at indexPath: IndexPath) {
+        
+    }
+    
     // MARK: UICollectionViewDelegate
 
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
+        return sections[indexPath.section] == .posts
     }
-    */
 
-    /*
-    // Uncomment this method to specify if the specified item should be selected
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
+        return sections[indexPath.section] == .posts
     }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
-    }
-    */
+    
 
+}
+
+extension ProfileCollectionViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        switch sections[indexPath.section] {
+        case .detail:
+            return CGSize(width: collectionView.bounds.width, height: 475)
+        case .emptyView:
+            return CGSize(width: collectionView.bounds.width, height: 160)
+        case .posts:
+            let len = collectionView.bounds.width / 3
+            return CGSize(width: len, height: len)
+        }
+        
+    }
+}
+
+extension ProfileCollectionViewController {
+    enum Section: String {
+        case detail = "detailCell"
+        case posts = "postCell"
+        case emptyView = "emptyCell"
+        
+        var reuseID: String { return rawValue }
+    }
 }
 
 class ProfileContainerCell: UICollectionViewCell {
+    @IBOutlet weak var containerView: UIView!
     
+    private(set) weak var contentViewController: ProfileDetailViewController?
+    private var shouldAddConstraintsForContent = false
+
+    func setUp(_ controller: ProfileDetailViewController) {
+        guard contentViewController == nil else {
+            return
+        }
+        contentViewController = controller
+        containerView.addSubview(controller.view)
+        shouldAddConstraintsForContent = true
+        setNeedsUpdateConstraints()
+    }
+    
+    override func updateConstraints() {
+        if shouldAddConstraintsForContent,
+            let content = contentViewController?.view {
+            content.translatesAutoresizingMaskIntoConstraints = false
+            let views = ["content": content]
+            containerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|[content]|", options: [], metrics: nil, views: views))
+            containerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[content]|", options: [], metrics: nil, views: views))
+            shouldAddConstraintsForContent = false
+        }
+        super.updateConstraints()
+    }
 }
 
 class PostThumbnailCell: UICollectionViewCell {
-    
     @IBOutlet weak var imageView: UIImageView!
 }
 
 class EmptyPostListCell: UICollectionViewCell {
+    @IBOutlet weak var textLabel: UILabel!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        textLabel.text = Localized.emptyMessages.posts
+    }
 }

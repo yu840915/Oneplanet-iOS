@@ -42,6 +42,9 @@
 "ph_remove_avatar" = "刪除當前照片";
 "ph_try_again" = "再試一次";
 "ph_nickname_rule" = "暱稱上限 30 字元，不得包含標點符號或表情符號";
+"ph_copy_id" = "copy id";
+
+"no_posts" = "No Posts Yet";
 
 "err_no_camera_access" = "啟用相機權限";
 "err_no_library_access" = "啟用圖庫存取權限";

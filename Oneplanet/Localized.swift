@@ -149,6 +149,15 @@ class LocalizedPhrase { //ph_
     var copyID: String {
         return NSLocalizedString("ph_copy_id", comment: "")
     }
+    var follow: String {
+        return NSLocalizedString("ph_follow", comment: "")
+    }
+    var following: String {
+        return NSLocalizedString("ph_following", comment: "")
+    }
+    var chooseAlien: String {
+        return NSLocalizedString("ph_choose_alien", comment: "")
+    }
 }
 
 class EmptyMessages {//no_

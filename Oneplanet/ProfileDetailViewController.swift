@@ -24,8 +24,21 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
     override func viewDidLoad() {
         super.viewDidLoad()
         preferredContentSize = CGSize(width: UIView.noIntrinsicMetric, height: 475)
+        localizeTitles()
     }
     
+    private func localizeTitles() {
+        actionButton.setTitle(Localized.phrases.follow, for: .normal)
+        actionButton.setTitle(Localized.phrases.following, for: .selected)
+        actionButton.setTitle(Localized.phrases.following, for: [.selected, .highlighted])
+        chooseRaceButton.setTitle(Localized.phrases.chooseAlien, for: .normal)
+    }
+    
+    @IBAction func startChooseRece(_ sender: UIButton) {
+    }
+    
+    @IBAction func performAction(_ sender: UIButton) {
+    }
 }
 
 class AvatarView: UIView {

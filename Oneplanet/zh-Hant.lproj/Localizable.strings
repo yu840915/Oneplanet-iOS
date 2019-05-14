@@ -43,6 +43,9 @@
 "ph_try_again" = "再試一次";
 "ph_nickname_rule" = "暱稱上限 30 字元，不得包含標點符號或表情符號";
 "ph_copy_id" = "copy id";
+"ph_follow" = "Follow";
+"ph_following" = "Following";
+"ph_choose_alien" = "Choose Alien";
 
 "no_posts" = "No Posts Yet";
 

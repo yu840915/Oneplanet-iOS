@@ -10,8 +10,9 @@ import UIKit
 
 private let reuseIdentifier = "Cell"
 
-class ProfileCollectionViewController: UICollectionViewController {
+class ProfileCollectionViewController: UICollectionViewController, UserSessionDepending {
     
+    var userSession: UserSession!
     fileprivate var sections: [Section] = [.detail, .emptyView]
     fileprivate var posts: [Any] = []
     private var idHeader: IDHeaderView!
@@ -82,6 +83,7 @@ class ProfileCollectionViewController: UICollectionViewController {
     
     private func prepareContentViewController(for cell: ProfileContainerCell) {
         let vc = ProfileDetailViewController.fromDefaultStoryboard()
+        vc.userSession = userSession
         addChild(vc)
         cell.setUp(vc)
         vc.didMove(toParent: self)

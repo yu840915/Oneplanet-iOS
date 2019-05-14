@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol UserSessionDepending {
+protocol UserSessionDepending: AnyObject {
     var userSession: UserSession! {set get}
 }
 
@@ -32,6 +32,7 @@ class UserFlowRootViewController: UIViewController, UserSessionDepending {
     private func startMainFlow() {
         guard mainViewController == nil else { return }
         let vc = UserFlowMainViewController.fromDefaultStoryboard()
+        vc.userSession = userSession
         addChild(vc)
         view.addSubview(vc.view)
         vc.didMove(toParent: self)

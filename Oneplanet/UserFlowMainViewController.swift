@@ -8,7 +8,8 @@
 
 import UIKit
 
-class UserFlowMainViewController: UIViewController, DefaultInstanceFactory {
+class UserFlowMainViewController: UIViewController, UserSessionDepending, DefaultInstanceFactory {
+    var userSession: UserSession!
     
     class func fromDefaultStoryboard() -> UserFlowMainViewController {
         return UIStoryboard(name: "MainUserFlow", bundle: nil).instantiateInitialViewController() as! UserFlowMainViewController
@@ -21,14 +22,17 @@ class UserFlowMainViewController: UIViewController, DefaultInstanceFactory {
     }
     
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let tabbar = segue.destination as? UITabBarController {
+            tabbar.viewControllers?
+                .compactMap{$0 as? UINavigationController}
+                .compactMap{$0.viewControllers.first as? UserSessionDepending}
+                .forEach{
+                    $0.userSession = userSession
+            }
+        }
     }
-    */
 
 }

@@ -8,8 +8,8 @@
 
 import UIKit
 
-class ProfileDetailViewController: UIViewController, DefaultInstanceFactory {
-    
+class ProfileDetailViewController: UIViewController, UserSessionDepending, DefaultInstanceFactory {
+    var userSession: UserSession!
     class func fromDefaultStoryboard() -> ProfileDetailViewController {
         return UIStoryboard(name: "Me", bundle: nil).instantiateViewController(withIdentifier: "ProfileDetailViewController") as! ProfileDetailViewController
     }

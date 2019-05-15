@@ -114,7 +114,7 @@ class NicknameInputValidator: TextInputValidator {
             components.removeLast()
         }
         try components.forEach { (str) in
-            if str.isEmpty || !CharacterSet(charactersIn: str).subtracting(.letters).isEmpty {
+            if str.isEmpty || !CharacterSet(charactersIn: str).subtracting(.letters).subtracting(.decimalDigits).isEmpty {
                 throw  InputError(localizedDescription: Localized.errors.invalidNickname)
             }
         }

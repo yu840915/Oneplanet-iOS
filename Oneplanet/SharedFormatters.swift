@@ -19,3 +19,45 @@ struct SharedNumberFormatters {
         return value
     }()
 }
+
+class RoughNumberFormatter: Formatter {
+    private let formatter: NumberFormatter
+    
+    override init() {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 0
+        self.formatter = formatter
+        super.init()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 0
+        self.formatter = formatter
+        super.init(coder: aDecoder)
+    }
+    
+    override func string(for obj: Any?) -> String? {
+        return nil
+    }
+    
+    func string(for int: Int) -> String {
+        var sigVal = int
+        var suffix = ""
+        if int >= 10000 {
+            sigVal = quotient(form: int, divisor: 1000)
+            suffix = "k"
+        }
+        return (formatter.string(for: sigVal) ?? "") + suffix
+    }
+    
+    private func quotient(form int: Int, divisor: Int) -> Int {
+        var result = int / divisor
+        if int % divisor >= (divisor / 2) {
+            result += 1
+        }
+        return result
+    }
+}

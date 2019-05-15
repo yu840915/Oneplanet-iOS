@@ -13,6 +13,11 @@ protocol DefaultInstanceFactory: AnyObject {
     static func fromDefaultStoryboard() -> ViewControllerType
 }
 
+protocol DefaultViewInstanceFactory: AnyObject {
+    associatedtype ViewType where ViewType: UIView
+    static func fromDefaultNib() -> ViewType
+}
+
 class RootViewController: UIViewController {
     private var restoreUserSessionOperation: RestoreUserSessionOperation?
     @IBOutlet weak var containerView: UIView!
@@ -48,9 +53,10 @@ class RootViewController: UIViewController {
     }
     
     private func handleSessionRestoration() {
+//        startUserFlow(with: UserSession(token: "123"), needsPreflightCheck: false)
         let op = restoreUserSessionOperation!
         if let session = op.session {
-            startUserFlow(with: session)
+            startUserFlow(with: session, needsPreflightCheck: true)
         } else {
             startLoginFlow()
         }
@@ -62,13 +68,14 @@ class RootViewController: UIViewController {
         startLoginFlow()
     }
     
-    private func startUserFlow(with session: UserSession) {
+    private func startUserFlow(with session: UserSession, needsPreflightCheck: Bool) {
         guard userFlowRootController == nil else {
             assertionFailure("User flow already exists")
             return
         }
         let vc = storyboard!.instantiateViewController(withIdentifier: UserFlowRootViewController.defaultStoryboardID) as! UserFlowRootViewController
         vc.userSession = session
+        vc.needsPreflightCheck = needsPreflightCheck
         sessionEndHandle = session.sessionBecomeInactiveObservers.add {[weak self] in
             OperationQueue.main.addOperation {
                 self?.logOut()
@@ -94,7 +101,7 @@ class RootViewController: UIViewController {
     
     private func dismissLoginFlowAndStarUserFlow(with session: UserSession) {
         dismiss(animated: true, completion: nil)
-        startUserFlow(with: session)
+        startUserFlow(with: session, needsPreflightCheck: false)
     }
     
     private func startLoginFlow() {

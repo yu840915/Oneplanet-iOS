@@ -1,0 +1,198 @@
+//
+//  ProfileCollectionViewController.swift
+//  Oneplanet
+//
+//  Created by 立宣于 on 2019/5/13.
+//  Copyright © 2019 何一品居. All rights reserved.
+//
+
+import UIKit
+
+private let reuseIdentifier = "Cell"
+
+class ProfileCollectionViewController: UICollectionViewController, UserSessionDepending {
+    
+    var userSession: UserSession!
+    fileprivate var sections: [Section] = [.detail]
+    fileprivate var posts: [Any] = []
+    private var idHeader: IDHeaderView!
+    var profile: UserProfileDisplayable!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let header = IDHeaderView.fromDefaultNib()
+        header.copyAction = {[weak self] in
+            self?.copyID()
+        }
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: header)
+        idHeader = header
+        updateSections()
+        profile = FakeProfile()
+        updateViewsForProfile()
+    }
+    
+    private func updateViewsForProfile() {
+        idHeader.idLabel.text = profile.id
+    }
+    
+    private func updateSections() {
+        var result: [Section] = [.detail]
+        if posts.isEmpty {
+            result.append(.emptyView)
+        } else {
+            result.append(.posts)
+        }
+        sections = result
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NavigationBarStyle.darkGrey.configure(navigationController!.navigationBar)
+    }
+    
+    private func copyID() {
+        UIPasteboard.general.string = profile.id
+    }
+
+    // MARK: - Navigation
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    }
+    
+    // MARK: UICollectionViewDataSource
+
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return sections.count
+    }
+
+
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        switch sections[section] {
+        case .detail, .emptyView: return 1
+        case .posts: return posts.count
+        }
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let section = sections[indexPath.section]
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: section.reuseID, for: indexPath)
+    
+        switch section {
+        case .detail:
+            updateViews(inDetailCell: cell as! ProfileContainerCell)
+        case .posts:
+            updateViews(inPostCell: cell as! PostThumbnailCell, at: indexPath)
+        case .emptyView: break
+        }
+        return cell
+    }
+    
+    private func updateViews(inDetailCell cell: ProfileContainerCell) {
+        if cell.contentViewController == nil {
+            prepareContentViewController(for: cell)
+        }
+        cell.contentViewController?.profile = profile
+    }
+    
+    private func prepareContentViewController(for cell: ProfileContainerCell) {
+        let vc = ProfileDetailViewController.fromDefaultStoryboard()
+        vc.userSession = userSession
+        addChild(vc)
+        cell.setUp(vc)
+        vc.didMove(toParent: self)
+    }
+    
+    private func updateViews(inPostCell cell: PostThumbnailCell, at indexPath: IndexPath) {
+        
+    }
+    
+    // MARK: UICollectionViewDelegate
+
+    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
+        return sections[indexPath.section] == .posts
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        return sections[indexPath.section] == .posts
+    }
+
+}
+
+extension ProfileCollectionViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        switch sections[indexPath.section] {
+        case .detail:
+            return CGSize(width: collectionView.bounds.width, height: 475)
+        case .emptyView:
+            return CGSize(width: collectionView.bounds.width, height: 160)
+        case .posts:
+            let num: CGFloat = 3
+            let totalGap = (num - 1) * (collectionViewLayout as! UICollectionViewFlowLayout).minimumInteritemSpacing
+            let len = (collectionView.bounds.width - totalGap) / num
+            return CGSize(width: len, height: len)
+        }
+        
+    }
+}
+
+extension ProfileCollectionViewController {
+    enum Section: String {
+        case detail = "detailCell"
+        case posts = "postCell"
+        case emptyView = "emptyCell"
+        
+        var reuseID: String { return rawValue }
+    }
+}
+
+class ProfileContainerCell: UICollectionViewCell {
+    @IBOutlet weak var containerView: UIView!
+    
+    private(set) weak var contentViewController: ProfileDetailViewController?
+    private var shouldAddConstraintsForContent = false
+
+    func setUp(_ controller: ProfileDetailViewController) {
+        guard contentViewController == nil else {
+            return
+        }
+        contentViewController = controller
+        containerView.addSubview(controller.view)
+        shouldAddConstraintsForContent = true
+        setNeedsUpdateConstraints()
+    }
+    
+    override func updateConstraints() {
+        if shouldAddConstraintsForContent,
+            let content = contentViewController?.view {
+            content.translatesAutoresizingMaskIntoConstraints = false
+            let views = ["content": content]
+            containerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|[content]|", options: [], metrics: nil, views: views))
+            containerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[content]|", options: [], metrics: nil, views: views))
+            shouldAddConstraintsForContent = false
+        }
+        super.updateConstraints()
+    }
+}
+
+class PostThumbnailCell: UICollectionViewCell {
+    @IBOutlet weak var imageView: UIImageView!
+}
+
+class EmptyPostListCell: UICollectionViewCell {
+    @IBOutlet weak var textLabel: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        textLabel.text = Localized.emptyMessages.posts
+    }
+}
+
+fileprivate class FakeProfile: UserProfileDisplayable {
+    var id: String = "asdf5465413"
+    
+    var nickname: String = "Mike"
+    
+    var avatarURL: WebImage = WebImage(url: ServiceURLs.base.appendingPathComponent("/me/avatar"), accessToken: nil)
+    
+    var race: Race? = Race(color: .blue, avatar: #imageLiteral(resourceName: "im_userphotodefault_nor"))
+}

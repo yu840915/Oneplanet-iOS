@@ -42,6 +42,12 @@
 "ph_remove_avatar" = "Remove Current Photo";
 "ph_try_again" = "Try Again";
 "ph_nickname_rule" = "Nickname cap 30 characters, can't use punctuation or emoji";
+"ph_copy_id" = "copy id";
+"ph_follow" = "Follow";
+"ph_following" = "Following";
+"ph_choose_alien" = "Choose Alien";
+
+"no_posts" = "No Posts Yet";
 
 "err_no_camera_access" = "Enable Camera Access";
 "err_no_library_access" = "Enable Library Access";

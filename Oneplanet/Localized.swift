@@ -18,6 +18,7 @@ class Localized {
     static let phrases = LocalizedPhrase()
     static let activity = LocalizedActivityMessages()
     static let placeholder = LocalizedPlaceholder()
+    static let emptyMessages = EmptyMessages()
 }
 
 class LocalizedTitles {//tl_
@@ -60,6 +61,10 @@ class LocalizedTitles {//tl_
     }
     var back: String {
         return NSLocalizedString("tl_back", comment: "")
+    }
+    var me: String {
+        return "MY"
+//        return NSLocalizedString("tl_me", comment: "")
     }
 }
 
@@ -140,6 +145,24 @@ class LocalizedPhrase { //ph_
     }
     var nicknameRule: String {
         return NSLocalizedString("ph_nickname_rule", comment: "")
+    }
+    var copyID: String {
+        return NSLocalizedString("ph_copy_id", comment: "")
+    }
+    var follow: String {
+        return NSLocalizedString("ph_follow", comment: "")
+    }
+    var following: String {
+        return NSLocalizedString("ph_following", comment: "")
+    }
+    var chooseAlien: String {
+        return NSLocalizedString("ph_choose_alien", comment: "")
+    }
+}
+
+class EmptyMessages {//no_
+    var posts: String {
+        return NSLocalizedString("no_posts", comment: "")
     }
 }
 

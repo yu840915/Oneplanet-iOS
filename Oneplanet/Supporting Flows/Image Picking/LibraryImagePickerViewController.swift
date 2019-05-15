@@ -36,6 +36,7 @@ class LibraryImagePickerViewController: UIViewController, DefaultInstanceFactory
         if let item = photoList.first {
             updateSelectedItemIfNeeded(item)
         }
+        imageScrollView.decelerationRate = .fast
         updateHeader()
         updateViewsForStates()
         renderContext = CIContext(options: nil)

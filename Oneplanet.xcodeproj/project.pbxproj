@@ -18,6 +18,10 @@
 		E0190F55226EC82500C212D5 /* UserFlowRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F54226EC82500C212D5 /* UserFlowRootViewController.swift */; };
 		E0190F57226EDBC900C212D5 /* CameraImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F56226EDBC900C212D5 /* CameraImagePickerViewController.swift */; };
 		E0190F5A226EDD1100C212D5 /* SupportingFlows.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0190F59226EDD1100C212D5 /* SupportingFlows.storyboard */; };
+		E030E4D0228A71CB0084D383 /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030E4CF228A71CB0084D383 /* ProfileDetailViewController.swift */; };
+		E030E4D2228AB0B70084D383 /* IDHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E030E4D1228AB0B60084D383 /* IDHeaderView.xib */; };
+		E030E4D4228AB1ED0084D383 /* IDHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030E4D3228AB1ED0084D383 /* IDHeaderView.swift */; };
+		E030E4D7228BC3E90084D383 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030E4D6228BC3E90084D383 /* User.swift */; };
 		E03C329A226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03C3299226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift */; };
 		E03C329C226D75F400C32FD7 /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E03C329B226D75F400C32FD7 /* SwiftyBeaver.framework */; };
 		E03C329E226D772400C32FD7 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03C329D226D772400C32FD7 /* Logger.swift */; };
@@ -68,6 +72,11 @@
 		E07276FD2277424E001239C0 /* URLRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276FC2277424E001239C0 /* URLRouter.swift */; };
 		E07276FF227743D7001239C0 /* URLRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276FE227743D7001239C0 /* URLRouterTests.swift */; };
 		E07277012277EE3D001239C0 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07277002277EE3C001239C0 /* AppConfiguration.swift */; };
+		E0814FAE22864B10002F1C02 /* MainUserFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0814FAD22864B10002F1C02 /* MainUserFlow.storyboard */; };
+		E0814FB122864F79002F1C02 /* UserFlowMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0814FB022864F79002F1C02 /* UserFlowMainViewController.swift */; };
+		E0814FB322865CC2002F1C02 /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0814FB222865CC2002F1C02 /* Me.storyboard */; };
+		E0814FB522873103002F1C02 /* RoughNumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0814FB422873103002F1C02 /* RoughNumberFormatterTests.swift */; };
+		E0814FB722893FB0002F1C02 /* ProfileCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0814FB622893FAF002F1C02 /* ProfileCollectionViewController.swift */; };
 		E0837EF1227FF85100B13BAF /* SocialAuthOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0837EF0227FF85100B13BAF /* SocialAuthOperations.swift */; };
 		E0837EF3227FFFBF00B13BAF /* FacebookLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0837EF2227FFFBF00B13BAF /* FacebookLogin.swift */; };
 		E0837EF5228022C400B13BAF /* TwitterLogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0837EF4228022C400B13BAF /* TwitterLogIn.swift */; };
@@ -102,6 +111,10 @@
 		E0190F54226EC82500C212D5 /* UserFlowRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFlowRootViewController.swift; sourceTree = "<group>"; };
 		E0190F56226EDBC900C212D5 /* CameraImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraImagePickerViewController.swift; sourceTree = "<group>"; };
 		E0190F59226EDD1100C212D5 /* SupportingFlows.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SupportingFlows.storyboard; sourceTree = "<group>"; };
+		E030E4CF228A71CB0084D383 /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
+		E030E4D1228AB0B60084D383 /* IDHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IDHeaderView.xib; sourceTree = "<group>"; };
+		E030E4D3228AB1ED0084D383 /* IDHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDHeaderView.swift; sourceTree = "<group>"; };
+		E030E4D6228BC3E90084D383 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E03C3299226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireAPIAccessOperation.swift; sourceTree = "<group>"; };
 		E03C329B226D75F400C32FD7 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/iOS/SwiftyBeaver.framework; sourceTree = SOURCE_ROOT; };
 		E03C329D226D772400C32FD7 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -164,6 +177,11 @@
 		E07276FC2277424E001239C0 /* URLRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRouter.swift; sourceTree = "<group>"; };
 		E07276FE227743D7001239C0 /* URLRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRouterTests.swift; sourceTree = "<group>"; };
 		E07277002277EE3C001239C0 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
+		E0814FAD22864B10002F1C02 /* MainUserFlow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainUserFlow.storyboard; sourceTree = "<group>"; };
+		E0814FB022864F79002F1C02 /* UserFlowMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFlowMainViewController.swift; sourceTree = "<group>"; };
+		E0814FB222865CC2002F1C02 /* Me.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
+		E0814FB422873103002F1C02 /* RoughNumberFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoughNumberFormatterTests.swift; sourceTree = "<group>"; };
+		E0814FB622893FAF002F1C02 /* ProfileCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewController.swift; sourceTree = "<group>"; };
 		E0837EF0227FF85100B13BAF /* SocialAuthOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialAuthOperations.swift; sourceTree = "<group>"; };
 		E0837EF2227FFFBF00B13BAF /* FacebookLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLogin.swift; sourceTree = "<group>"; };
 		E0837EF4228022C400B13BAF /* TwitterLogIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterLogIn.swift; sourceTree = "<group>"; };
@@ -222,6 +240,19 @@
 				E06589C42270536A00C9E4E6 /* Image Picking */,
 			);
 			path = "Supporting Flows";
+			sourceTree = "<group>";
+		};
+		E030E4D5228BC3BD0084D383 /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				E0814FB222865CC2002F1C02 /* Me.storyboard */,
+				E0814FB622893FAF002F1C02 /* ProfileCollectionViewController.swift */,
+				E030E4CF228A71CB0084D383 /* ProfileDetailViewController.swift */,
+				E030E4D6228BC3E90084D383 /* User.swift */,
+				E030E4D1228AB0B60084D383 /* IDHeaderView.xib */,
+				E030E4D3228AB1ED0084D383 /* IDHeaderView.swift */,
+			);
+			name = Me;
 			sourceTree = "<group>";
 		};
 		E03C32B1226D902F00C32FD7 /* Shared Configurations */ = {
@@ -293,6 +324,7 @@
 				E0190F4C226DCCFB00C212D5 /* UserSession.swift */,
 				E05BB261226D5D2A00721F20 /* Main.storyboard */,
 				E0190F54226EC82500C212D5 /* UserFlowRootViewController.swift */,
+				E0814FAF22864D5D002F1C02 /* Main User Flow */,
 				E06F5014227B4E510067DAE4 /* Preflight Check */,
 				E0190F58226EDBD000C212D5 /* Supporting Flows */,
 				E03C32BA226DA45900C32FD7 /* Onboarding */,
@@ -313,6 +345,7 @@
 				E07276FE227743D7001239C0 /* URLRouterTests.swift */,
 				E08C312A227826850013DD0C /* EmailInputValidatorTests.swift */,
 				E06F4FFB22782E7D0067DAE4 /* EmailAuthCredentialTests.swift */,
+				E0814FB422873103002F1C02 /* RoughNumberFormatterTests.swift */,
 				E05BB274226D5D2F00721F20 /* Info.plist */,
 			);
 			path = OneplanetTests;
@@ -398,6 +431,16 @@
 				E07276F72276D0DC001239C0 /* RequestUserNotificationAuthorizationOperation.swift */,
 			);
 			name = "Server Push Message";
+			sourceTree = "<group>";
+		};
+		E0814FAF22864D5D002F1C02 /* Main User Flow */ = {
+			isa = PBXGroup;
+			children = (
+				E0814FAD22864B10002F1C02 /* MainUserFlow.storyboard */,
+				E0814FB022864F79002F1C02 /* UserFlowMainViewController.swift */,
+				E030E4D5228BC3BD0084D383 /* Me */,
+			);
+			name = "Main User Flow";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -503,6 +546,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E05BB268226D5D2E00721F20 /* LaunchScreen.storyboard in Resources */,
+				E0814FAE22864B10002F1C02 /* MainUserFlow.storyboard in Resources */,
+				E0814FB322865CC2002F1C02 /* Me.storyboard in Resources */,
 				E07276F32276AA85001239C0 /* GoogleService-Info.plist in Resources */,
 				E03C32A3226D866200C32FD7 /* Localizable.strings in Resources */,
 				E05BB265226D5D2E00721F20 /* Assets.xcassets in Resources */,
@@ -511,6 +556,7 @@
 				E0190F5A226EDD1100C212D5 /* SupportingFlows.storyboard in Resources */,
 				E05BB263226D5D2A00721F20 /* Main.storyboard in Resources */,
 				E06F5000227ABE1C0067DAE4 /* OpenSDK1.8.0_NoPay in Resources */,
+				E030E4D2228AB0B70084D383 /* IDHeaderView.xib in Resources */,
 				E03C32A6226D866500C32FD7 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -662,6 +708,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E06F5011227B34880067DAE4 /* ProfileDraft.swift in Sources */,
+				E030E4D4228AB1ED0084D383 /* IDHeaderView.swift in Sources */,
 				E0837EF5228022C400B13BAF /* TwitterLogIn.swift in Sources */,
 				E07276FD2277424E001239C0 /* URLRouter.swift in Sources */,
 				E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */,
@@ -674,6 +721,7 @@
 				E06589C32270362300C9E4E6 /* GenericAppError.swift in Sources */,
 				E06589C8227060EC00C9E4E6 /* PhotoList.swift in Sources */,
 				E0190F55226EC82500C212D5 /* UserFlowRootViewController.swift in Sources */,
+				E030E4D0228A71CB0084D383 /* ProfileDetailViewController.swift in Sources */,
 				E06589BD22700AEC00C9E4E6 /* CaptureSessionController.swift in Sources */,
 				E0190F4B226DB55400C212D5 /* UIComponentFactories.swift in Sources */,
 				E07276E322731334001239C0 /* EmailVerificationViewController.swift in Sources */,
@@ -687,10 +735,13 @@
 				E0190F57226EDBC900C212D5 /* CameraImagePickerViewController.swift in Sources */,
 				E08C3129227817680013DD0C /* AuthActions.swift in Sources */,
 				E03C32B0226D8E8F00C32FD7 /* NavigationBarStyle.swift in Sources */,
+				E030E4D7228BC3E90084D383 /* User.swift in Sources */,
 				E0190F4F226DD06B00C212D5 /* Preferences.swift in Sources */,
 				E0837EF1227FF85100B13BAF /* SocialAuthOperations.swift in Sources */,
+				E0814FB722893FB0002F1C02 /* ProfileCollectionViewController.swift in Sources */,
 				E0837EF722816B0D00B13BAF /* ImageAttachmentUploadFlowOperation.swift in Sources */,
 				E06589CA2270C1A500C9E4E6 /* UpdateClock.swift in Sources */,
+				E0814FB122864F79002F1C02 /* UserFlowMainViewController.swift in Sources */,
 				E07276E1227307F5001239C0 /* LogInViewController.swift in Sources */,
 				E05BB25E226D5D2A00721F20 /* AppDelegate.swift in Sources */,
 				E06F4FFE22789C760067DAE4 /* AppLifeCycleObserver.swift in Sources */,
@@ -714,6 +765,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E07276FF227743D7001239C0 /* URLRouterTests.swift in Sources */,
+				E0814FB522873103002F1C02 /* RoughNumberFormatterTests.swift in Sources */,
 				E05BB273226D5D2F00721F20 /* OneplanetTests.swift in Sources */,
 				E08C312B227826850013DD0C /* EmailInputValidatorTests.swift in Sources */,
 				E0190F51226DD1E200C212D5 /* ChecklistItemTests.swift in Sources */,

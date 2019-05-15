@@ -42,6 +42,12 @@
 "ph_remove_avatar" = "删除当前照片";
 "ph_try_again" = "再试一次";
 "ph_nickname_rule" = "昵称上限 30 字元，不得包含标点符号或表情符号";
+"ph_copy_id" = "copy id";
+"ph_follow" = "Follow";
+"ph_following" = "Following";
+"ph_choose_alien" = "Choose Alien";
+
+"no_posts" = "No Posts Yet";
 
 "err_no_camera_access" = "启用摄像头访问";
 "err_no_library_access" = "启用图库访问";

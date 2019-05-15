@@ -95,8 +95,10 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
         nextButton.isEnabled = !profileDraft.nickname.isEmpty
         let hasAvatar = profileDraft.avatar != nil
         if let avatar = profileDraft.avatar {
-            avatarButton.setImage(avatar, for: .normal)
+            avatarButton.setBackgroundImage(avatar, for: .normal)
+            avatarButton.setImage(nil, for: .normal)
         } else {
+            avatarButton.setBackgroundImage(nil, for: .normal)
             avatarButton.setImage(#imageLiteral(resourceName: "ic_addmypic_nor"), for: .normal)
         }
         if hasAvatar {

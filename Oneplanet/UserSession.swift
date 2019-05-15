@@ -49,10 +49,14 @@ class MyProfile {
 
 class GetMyProfileOperation: AlamofireAPIAccessOperation {
     private(set) var profile: MyProfile?
-    private(set) var missingProfile: Bool?
+    private(set) var missingProfile: Bool? = true
     let session: UserSession
     init(session: UserSession) {
         self.session = session
+    }
+    
+    override func prepareURLRequest() throws -> URLRequest {
+        return URLRequest(url: URL(string: "https://www.google.com")!)
     }
 }
 

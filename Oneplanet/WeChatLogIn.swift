@@ -15,6 +15,7 @@ class WeChatLogInOperation: SimpleAsynchronousOperation, SocialAuthenticationOpe
     private(set) var success: Bool?
     private(set) var error: Error?
     private(set) var token: String?
+    private(set) var profile: MyProfile?
     private(set) var publicProfile: PublicProfile?
     private var authReq: SendAuthReq?
     private var state = UUID().uuidString
@@ -86,10 +87,9 @@ class GetWeChatProfileOperation: AlamofireAPIAccessOperation {
     }
 }
 
-class SubmitWeChatAuthCodeOperation: AlamofireAPIAccessOperation {
+class SubmitWeChatAuthCodeOperation: LogInOperation {
     let authCode: String
     private(set) var wechatSession: WeChatSession?
-    private(set) var token: String?
     init(authCode: String) {
         self.authCode = authCode
     }

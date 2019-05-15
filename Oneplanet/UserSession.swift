@@ -12,13 +12,23 @@ import ModelBlocks
 
 class UserSession {
     let token: String
-    var profile: MyProfile?
+    let profileDidUpdate = MulticastCallbackNode<()->()>()
+    private(set) var profile: MyProfile? {
+        didSet {
+            profileDidUpdate.invokeEach{$0()}
+        }
+    }
     var socialProfile: PublicProfile?
     private(set) var isActive = true
     let sessionBecomeInactiveObservers = MulticastCallbackNode<()->()>()
     
     init(token: String) {
         self.token = token
+    }
+    
+    private func updateProfile(_ profile: MyProfile) {
+        profile.avatar = WebImage(url: ServiceURLs.base.appendingPathComponent("me/avatar.jpg"), accessToken: token)
+        self.profile = profile
     }
     
     func addingAuthorizationToken(to headers: [String: String]) -> [String: String] {
@@ -44,19 +54,31 @@ class UserSession {
     }
 }
 
-class MyProfile {
+class MyProfile: Decodable {
+    let id: String
+    let nickname: String
+    fileprivate(set) var avatar: WebImage!
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case nickname = "username"
+    }
 }
 
 class GetMyProfileOperation: AlamofireAPIAccessOperation {
     private(set) var profile: MyProfile?
-    private(set) var missingProfile: Bool? = true
     let session: UserSession
     init(session: UserSession) {
         self.session = session
     }
     
     override func prepareURLRequest() throws -> URLRequest {
-        return URLRequest(url: URL(string: "https://www.google.com")!)
+        let req = URLRequest(url: ServiceURLs.base.appendingPathComponent("me"))
+        return session.addingAuthorizationToken(to: req)
+    }
+    
+    override func processData(with data: Data) throws {
+        profile = try JSONDecoder.default.decode(MyProfile.self, from: data)
     }
 }
 

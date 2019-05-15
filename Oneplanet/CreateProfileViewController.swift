@@ -32,7 +32,7 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
     var profileDraft: ProfileDraft = ProfileDraft()
     private var updateHandle: Any?
     private var downloadImageOperaion: DownloadImageOperaion?
-    private var createProfileOperation: CreateProfileOperation? {
+    private var createProfileOperation: UpdateProfileOperation? {
         didSet {
             updateViewForRunningOperation()
         }
@@ -195,7 +195,7 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
         guard createProfileOperation == nil else {
             return
         }
-        let op = CreateProfileOperation(draft: profileDraft, session: userSession)
+        let op = UpdateProfileOperation(draft: profileDraft, session: userSession)
         op.completionBlock = {[weak self] in
             OperationQueue.main.addOperation {
                 self?.didSubmitProfile()

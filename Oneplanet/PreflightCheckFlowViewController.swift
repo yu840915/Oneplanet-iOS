@@ -27,13 +27,17 @@ class PreflightCheckFlowViewController: UIViewController, UserSessionDepending {
     override func viewDidLoad() {
         super.viewDidLoad()
         retryButton.setTitle(Localized.phrases.tryAgain, for: .normal)
-        startPreflightCheck()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NavigationBarStyle.translucent.configure(navigationController!.navigationBar)
         navigationController!.navigationBar.barStyle = .blackTranslucent
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        startPreflightCheck()
     }
     
     private func updateViewsForRunningOperations() {
@@ -45,7 +49,15 @@ class PreflightCheckFlowViewController: UIViewController, UserSessionDepending {
     }
     
     private func startPreflightCheck() {
-        getMyProfile()
+        if let profile = userSession.profile {
+            if profile.nickname.isEmpty {
+                startProfileCreation()
+            } else {
+                didFinishPreflightCheck?()
+            }
+        } else {
+            getMyProfile()
+        }
     }
     
     private func getMyProfile() {
@@ -62,10 +74,12 @@ class PreflightCheckFlowViewController: UIViewController, UserSessionDepending {
     private func didGetMyProfile() {
         let op = getProfileOperation!
         getProfileOperation = nil
-        if op.profile != nil {
-            didFinishPreflightCheck?()
-        } else if op.missingProfile == true {
-            startProfileCreation()
+        if let profile = op.profile {
+            if profile.nickname.isEmpty {
+                startProfileCreation()
+            } else {
+                didFinishPreflightCheck?()
+            }
         } else {
             notifyFailure(with: op.error)
         }

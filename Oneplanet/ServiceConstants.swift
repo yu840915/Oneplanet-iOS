@@ -23,3 +23,7 @@ struct ServiceURLs {
     static var base: URL = URL(string: "https://api.oneplanet-official.com")!
     static let appSettings = URL(string:UIApplication.openSettingsURLString)!
 }
+
+extension JSONDecoder {
+    static let `default` = JSONDecoder()
+}

@@ -13,7 +13,7 @@ private let reuseIdentifier = "Cell"
 class ProfileCollectionViewController: UICollectionViewController, UserSessionDepending {
     
     var userSession: UserSession!
-    fileprivate var sections: [Section] = [.detail, .emptyView]
+    fileprivate var sections: [Section] = [.detail, .posts]
     fileprivate var posts: [Any] = []
     private var idHeader: IDHeaderView!
 
@@ -36,16 +36,11 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
         
     }
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
     }
-    */
-
+    
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -56,7 +51,7 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch sections[section] {
         case .detail, .emptyView: return 1
-        case .posts: return 0
+        case .posts: return 30
         }
     }
 
@@ -115,7 +110,9 @@ extension ProfileCollectionViewController: UICollectionViewDelegateFlowLayout {
         case .emptyView:
             return CGSize(width: collectionView.bounds.width, height: 160)
         case .posts:
-            let len = collectionView.bounds.width / 3
+            let num: CGFloat = 3
+            let totalGap = (num - 1) * (collectionViewLayout as! UICollectionViewFlowLayout).minimumInteritemSpacing
+            let len = (collectionView.bounds.width - totalGap) / num
             return CGSize(width: len, height: len)
         }
         

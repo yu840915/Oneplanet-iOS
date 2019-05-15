@@ -44,6 +44,7 @@ class ImageAttachmentUploadFlowOperation: SimpleAsynchronousOperation, FailableO
     private func runNext() {
         guard !isCancelled else { return }
         if attachment.progress.isFinished {
+            success = true
             finish()
             return
         }

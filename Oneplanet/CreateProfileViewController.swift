@@ -76,7 +76,7 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
         let op = downloadImageOperaion!
         downloadImageOperaion = nil
         if let image = op.image, profileDraft.avatar == nil {
-            profileDraft.avatar = image
+            profileDraft.avatar = ImageAttachment(image: image)
         }
     }
     
@@ -95,7 +95,7 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
         nextButton.isEnabled = !profileDraft.nickname.isEmpty
         let hasAvatar = profileDraft.avatar != nil
         if let avatar = profileDraft.avatar {
-            avatarButton.setBackgroundImage(avatar, for: .normal)
+            avatarButton.setBackgroundImage(avatar.localImage, for: .normal)
             avatarButton.setImage(nil, for: .normal)
         } else {
             avatarButton.setBackgroundImage(nil, for: .normal)
@@ -167,7 +167,7 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
         let op = pickImageOperation!
         pickImageOperation = nil
         if let image = op.image {
-            profileDraft.avatar = image
+            profileDraft.avatar = ImageAttachment(image: image) 
             updateViewsForDraft()
         } else if let error = op.error {
             handlePickImageFailure(with: error)

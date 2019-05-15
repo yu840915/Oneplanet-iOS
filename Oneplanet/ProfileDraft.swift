@@ -21,7 +21,7 @@ class ProfileDraft {
             }
         }
     }
-    var avatar: UIImage?
+    var avatar: ImageAttachment?
     
     func validate() throws {
         try nicknameValidator.validate(nickname)
@@ -37,7 +37,66 @@ class ProfileDraft {
     }
 }
 
-class UpdateProfileOperation: AlamofireAPIAccessOperation {
+class UpdateProfileOperation: SimpleAsynchronousOperation, FailableOperationType {
+    let draft: ProfileDraft
+    let session: UserSession
+    private(set) var success: Bool?
+    private(set) var error: Error?
+    private var updateAvatarOperation: UpdateMyAvatarFlowOperaion?
+    private var updateContentOperation: UpdateProfileContentOperation?
+    private var parallelOperations = Set<Operation>()
+
+    init(draft: ProfileDraft, session: UserSession) {
+        self.draft = draft
+        self.session = session
+    }
+    
+    override func main() {
+        if let attachment = draft.avatar {
+            let updateAvatar = UpdateMyAvatarFlowOperaion(attachment: attachment, preset: ProcessImageOperation.Preset(compressionQuality: 1.0), session: session)
+            updateAvatar.completionBlock = {[weak self] in
+                OperationQueue.main.addOperation {
+                   self?.didUpdateAvatar()
+                }
+            }
+            updateAvatarOperation = updateAvatar
+            parallelOperations.insert(updateAvatar)
+        }
+        let updateContent = UpdateProfileContentOperation(draft: draft, session: session)
+        updateContent.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didUpdateContent()
+            }
+        }
+        updateContentOperation = updateContent
+        parallelOperations.insert(updateContent)
+        parallelOperations.forEach { $0.start() }
+    }
+    
+    private func didUpdateAvatar() {
+        parallelOperations.remove(updateAvatarOperation!)
+        finishIfAllDone()
+    }
+    
+    private func didUpdateContent() {
+        parallelOperations.remove(updateContentOperation!)
+        finishIfAllDone()
+    }
+    
+    private func finishIfAllDone() {
+        guard parallelOperations.isEmpty else {return}
+        if let contentSuccess = updateContentOperation?.success,
+            let avatarSuccess = updateAvatarOperation?.success {
+            success = contentSuccess && avatarSuccess
+        } else {
+            success = false
+        }
+        error = updateContentOperation?.error ?? updateAvatarOperation?.error
+        finish()
+    }
+}
+
+class UpdateProfileContentOperation: AlamofireAPIAccessOperation {
     let draft: ProfileDraft
     let session: UserSession
     init(draft: ProfileDraft, session: UserSession) {
@@ -60,7 +119,7 @@ class UpdateMyAvatarFlowOperaion: SimpleAsynchronousOperation, FailableOperation
     
     private var uploadImageOperation: UploadMyAvatarOperation?
 
-    init(attachment: ImageAttachment, preset: ProcessImageOperation.Preset, generatorURL: URL, session: UserSession) {
+    init(attachment: ImageAttachment, preset: ProcessImageOperation.Preset, session: UserSession) {
         self.session = session
         self.preset = preset
         self.attachment = attachment
@@ -73,6 +132,7 @@ class UpdateMyAvatarFlowOperaion: SimpleAsynchronousOperation, FailableOperation
     private func runNext() {
         guard !isCancelled else { return }
         if attachment.progress.isFinished {
+            success = true
             finish()
             return
         }

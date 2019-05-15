@@ -32,7 +32,7 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
     var profileDraft: ProfileDraft = ProfileDraft()
     private var updateHandle: Any?
     private var downloadImageOperaion: DownloadImageOperaion?
-    private var createProfileOperation: UpdateProfileOperation? {
+    private var updateProfileOperation: UpdateProfileOperation? {
         didSet {
             updateViewForRunningOperation()
         }
@@ -60,7 +60,7 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
             nameFieldView.textField.text = profileDraft.nickname
         }
         if let url = userSession.socialProfile?.avatarURL {
-            let op = DownloadImageOperaion(url: url)
+            let op = DownloadImageOperaion(info: WebImageInfo(url: url))
             op.completionBlock = {[weak self] in
                 OperationQueue.main.addOperation {
                     self?.didDownloadAvatar()
@@ -113,7 +113,7 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
     }
     
     private func updateViewForRunningOperation() {
-        let allowsAction = createProfileOperation == nil
+        let allowsAction = updateProfileOperation == nil
         [addAvatarButton, changeAvatarButton, nextButton, avatarButton].forEach{$0?.isEnabled = allowsAction}
     }
 
@@ -167,7 +167,7 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
         let op = pickImageOperation!
         pickImageOperation = nil
         if let image = op.image {
-            profileDraft.avatar = ImageAttachment(image: image) 
+            profileDraft.avatar = ImageAttachment(image: image)
             updateViewsForDraft()
         } else if let error = op.error {
             handlePickImageFailure(with: error)
@@ -192,7 +192,7 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
     }
     
     private func submitProfile() {
-        guard createProfileOperation == nil else {
+        guard updateProfileOperation == nil else {
             return
         }
         let op = UpdateProfileOperation(draft: profileDraft, session: userSession)
@@ -201,15 +201,19 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
                 self?.didSubmitProfile()
             }
         }
-        createProfileOperation = op
+        updateProfileOperation = op
         op.start()
     }
     
     private func didSubmitProfile() {
-        let op = createProfileOperation!
-        createProfileOperation = nil
+        let op = updateProfileOperation!
+        updateProfileOperation = nil
         resetErrorDisplay()
         if op.success == true {
+            userSession.updateProfile(
+                MyProfile(id: userSession.profile!.id,
+                          nickname: op.draft.nickname,
+                          avatar: userSession.profile!.avatar))
             didCreateProfile?()
         }
         if let error = op.error {

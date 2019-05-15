@@ -211,14 +211,18 @@ class UploadMyAvatarOperation: AlamofireAPIAccessOperation {
 
 
 class DownloadImageOperaion: AlamofireAPIAccessOperation {
-    let url: URL
+    let info: WebImageInfo
     private(set) var image: UIImage?
-    init(url: URL) {
-        self.url = url
+    init(info: WebImageInfo) {
+        self.info = info
     }
     
     override func prepareURLRequest() throws -> URLRequest {
-        return URLRequest(url: url)
+        var req = URLRequest(url: info.url)
+        if let token = info.accessToken {
+            req.setValue(token, forHTTPHeaderField: "Authorization")
+        }
+        return req
     }
     
     override func processData(with data: Data) throws {

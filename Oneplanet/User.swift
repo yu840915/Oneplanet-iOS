@@ -17,10 +17,10 @@ class Race {
     }
 }
 
-class WebImage {
+class WebImageInfo {
     let url: URL
     let accessToken: String?
-    init(url: URL, accessToken: String?) {
+    init(url: URL, accessToken: String? = nil) {
         self.url = url
         self.accessToken = accessToken
     }

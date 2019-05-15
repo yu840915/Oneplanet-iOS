@@ -26,8 +26,8 @@ class UserSession {
         self.token = token
     }
     
-    private func updateProfile(_ profile: MyProfile) {
-        profile.avatar = WebImage(url: ServiceURLs.base.appendingPathComponent("me/avatar.jpg"), accessToken: token)
+    func updateProfile(_ profile: MyProfile) {
+        profile.avatar = WebImageInfo(url: ServiceURLs.base.appendingPathComponent("me/avatar.jpg"), accessToken: token)
         self.profile = profile
     }
     
@@ -57,11 +57,17 @@ class UserSession {
 class MyProfile: Decodable {
     let id: String
     let nickname: String
-    fileprivate(set) var avatar: WebImage!
+    fileprivate(set) var avatar: WebImageInfo!
     
     enum CodingKeys: String, CodingKey {
         case id
         case nickname = "username"
+    }
+    
+    init(id: String, nickname: String, avatar: WebImageInfo) {
+        self.id = id
+        self.nickname = nickname
+        self.avatar = avatar
     }
 }
 

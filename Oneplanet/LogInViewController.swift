@@ -103,6 +103,7 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
         authOperation = nil
         if let token = op.token {
             let session = UserSession(token: token)
+            session.updateProfile(op.profile!)
             StoreUserSessionOperation(session: session).start()
             if let vc = emailVerificationViewController {
                 vc.startPreflightCheck(with: session)
@@ -227,6 +228,7 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
         authOperation = nil
         if let token = op.token {
             let session = UserSession(token: token)
+            session.updateProfile(op.profile!)
             if let socialAuth = op as? SocialAuthenticationOperationType {
                 session.socialProfile = socialAuth.publicProfile
             }

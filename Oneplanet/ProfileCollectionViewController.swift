@@ -192,7 +192,7 @@ fileprivate class FakeProfile: UserProfileDisplayable {
     
     var nickname: String = "Mike"
     
-    var avatarURL: WebImage = WebImage(url: ServiceURLs.base.appendingPathComponent("/me/avatar"), accessToken: nil)
+    var avatarURL: WebImageInfo = WebImageInfo(url: ServiceURLs.base.appendingPathComponent("/me/avatar"), accessToken: nil)
     
     var race: Race? = Race(color: .blue, avatar: #imageLiteral(resourceName: "im_userphotodefault_nor"))
 }

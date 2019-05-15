@@ -15,23 +15,38 @@ class SendEmailLinkOperation: AlamofireAPIAccessOperation {
     init(email: String) {
         self.email = email
     }
-
-    override func prepareDataRequest() throws -> DataRequest {
+    
+    override func prepareURLRequest() throws -> URLRequest {
         try InputValidators.email.validate(email)
-        return Alamofire.request(ServiceURLs.base.appendingPathComponent("auth"), method: .post, parameters: ["email": email], encoding: JSONEncoding(), headers: nil)
+        return try URLRequest(url: ServiceURLs.base.appendingPathComponent("verify").appendingPathComponent(email), method: .post)
     }
 }
 
-class EmailLinkLogInOperarion: AlamofireAPIAccessOperation, AuthenticationOperationType {
-    let credential: EmailAuthCredential
+class LogInOperation: AlamofireAPIAccessOperation, AuthenticationOperationType {
     private(set) var token: String?
+    private(set) var profile: MyProfile?
+    
+    override func processHTTPResponseHeader(_ header: [AnyHashable : Any]) throws {
+        guard let bearer = header["Authorization"] as? String else {
+            throw GenericAppError("Missing bearer token from log in")
+        }
+        token = bearer
+    }
+    
+    override func processData(with data: Data) throws {
+        profile = try JSONDecoder.default.decode(MyProfile.self, from: data)
+    }
+}
+
+class EmailLinkLogInOperarion: LogInOperation {
+    let credential: EmailAuthCredential
     init(credential: EmailAuthCredential) {
         self.credential = credential
     }
 
     override func prepareDataRequest() throws -> DataRequest {
         try credential.validate()
-        return Alamofire.request(ServiceURLs.base.appendingPathComponent("auth"), method: .post, parameters: ["email": credential.email], encoding: JSONEncoding(), headers: nil)
+        return Alamofire.request(ServiceURLs.base.appendingPathComponent("login/email"), method: .post, parameters: ["email": credential.email, "code": credential.code!], encoding: JSONEncoding(), headers: nil)
     }
 }
 
@@ -51,9 +66,15 @@ class EmailAuthCredential {
             }
         }
     }
+    var code: String? {
+        return nil
+    }
     
     func validate() throws {
         try InputValidators.email.validate(email)
+        if code == nil {
+            throw InputError(localizedDescription: "Code cannot be nil")
+        }
     }
     var isValid: Bool {
         do {
@@ -67,10 +88,12 @@ class EmailAuthCredential {
 
 class GuestLogInOperation: AlamofireAPIAccessOperation, AuthenticationOperationType {
     private(set) var token: String?
+    private(set) var profile: MyProfile?
 }
 
 protocol AuthenticationOperationType: FailableOperationType {
     var token: String? {get}
+    var profile: MyProfile? {get}
 }
 
 protocol SocialAuthenticationOperationType: AuthenticationOperationType {

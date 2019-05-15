@@ -22,6 +22,7 @@ class FacebookLoginOperation: SimpleAsynchronousOperation, SocialAuthenticationO
     private(set) var success: Bool?
     private(set) var error: Error?
     private(set) var token: String?
+    private(set) var profile: MyProfile?
     private(set) var publicProfile: PublicProfile?
     let presenter: UIViewController
     private let manager: LoginManager
@@ -99,6 +100,7 @@ class FacebookLoginOperation: SimpleAsynchronousOperation, SocialAuthenticationO
         guard parallelOperations.isEmpty else {return}
         publicProfile = getProfileOperation?.profile
         token = submitTokenOperation?.token
+        profile = submitTokenOperation?.profile
         success = submitTokenOperation?.success
         error = submitTokenOperation?.error ?? getProfileOperation?.error
         if success == false {
@@ -115,12 +117,14 @@ class FacebookLoginOperation: SimpleAsynchronousOperation, SocialAuthenticationO
     }
 }
 
-fileprivate class SubmitFacebookTokenOperation: AlamofireAPIAccessOperation, AuthenticationOperationType {
+fileprivate class SubmitFacebookTokenOperation: LogInOperation {
     let fbAccessToken: AccessToken
-    private(set) var token: String?
     init(accessToken: AccessToken) {
         fbAccessToken = accessToken
-        
+    }
+    
+    override func prepareDataRequest() throws -> DataRequest {
+        return Alamofire.request(ServiceURLs.base.appendingPathComponent("login/facebook-app"), method: .post, parameters: ["access_token": fbAccessToken], encoding: JSONEncoding(), headers: nil)
     }
 }
 

@@ -119,9 +119,11 @@ class LibraryImagePickerViewController: UIViewController, DefaultInstanceFactory
     }
     
     private func computeMaxZoomScale(for image: UIImage) -> CGFloat {
-        let w = image.size.width / imageView.bounds.width
-        let h = image.size.height / imageView.bounds.height
-        return max(1, min(w, h, 2.0))
+        let minLen: CGFloat = 100
+        let w = image.size.width / minLen
+        let h = image.size.height / minLen
+        let zoom = max(1, min(w, h, 3.0))
+        return zoom
     }
     
     @IBAction func done(_ sender: UIBarButtonItem) {

@@ -31,6 +31,7 @@ class TwitterLogInOperation: SimpleAsynchronousOperation, SocialAuthenticationOp
     private(set) var success: Bool?
     private(set) var error: Error?
     private(set) var token: String?
+    private(set) var profile: MyProfile?
     private(set) var publicProfile: PublicProfile?
     let presenter: UIViewController
     private var submitTokenOperation: SubmitTwitterTokenOperation?
@@ -92,6 +93,7 @@ class TwitterLogInOperation: SimpleAsynchronousOperation, SocialAuthenticationOp
         guard parallelOperations.isEmpty else {return}
         publicProfile = getProfileOperation?.profile
         token = submitTokenOperation?.token
+        profile = submitTokenOperation?.profile
         success = submitTokenOperation?.success
         error = submitTokenOperation?.error ?? getProfileOperation?.error
         if success == false {
@@ -116,11 +118,14 @@ class TwitterLogInOperation: SimpleAsynchronousOperation, SocialAuthenticationOp
     }
 }
 
-fileprivate class SubmitTwitterTokenOperation: AlamofireAPIAccessOperation, AuthenticationOperationType {
+fileprivate class SubmitTwitterTokenOperation: LogInOperation {
     let session: TWTRSession
-    private(set) var token: String?
     init(session: TWTRSession) {
         self.session = session
+    }
+
+    override func prepareDataRequest() throws -> DataRequest {
+        return Alamofire.request(ServiceURLs.base.appendingPathComponent("login/twitter-app"), method: .post, parameters: ["access_token_key": session.authToken, "access_token_secret": session.authTokenSecret], encoding: JSONEncoding(), headers: nil)
     }
 }
 

@@ -13,10 +13,11 @@ private let reuseIdentifier = "Cell"
 class ProfileCollectionViewController: UICollectionViewController, UserSessionDepending {
     
     var userSession: UserSession!
-    fileprivate var sections: [Section] = [.detail, .posts]
+    fileprivate var sections: [Section] = [.detail]
     fileprivate var posts: [Any] = []
     private var idHeader: IDHeaderView!
-
+    var profile: UserProfileDisplayable!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let header = IDHeaderView.fromDefaultNib()
@@ -25,6 +26,23 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
         }
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: header)
         idHeader = header
+        updateSections()
+        profile = FakeProfile()
+        updateViewsForProfile()
+    }
+    
+    private func updateViewsForProfile() {
+        idHeader.idLabel.text = profile.id
+    }
+    
+    private func updateSections() {
+        var result: [Section] = [.detail]
+        if posts.isEmpty {
+            result.append(.emptyView)
+        } else {
+            result.append(.posts)
+        }
+        sections = result
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,7 +51,7 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
     }
     
     private func copyID() {
-        
+        UIPasteboard.general.string = profile.id
     }
 
     // MARK: - Navigation
@@ -51,7 +69,7 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch sections[section] {
         case .detail, .emptyView: return 1
-        case .posts: return 30
+        case .posts: return posts.count
         }
     }
 
@@ -73,7 +91,7 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
         if cell.contentViewController == nil {
             prepareContentViewController(for: cell)
         }
-        //set up
+        cell.contentViewController?.profile = profile
     }
     
     private func prepareContentViewController(for cell: ProfileContainerCell) {
@@ -97,8 +115,6 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return sections[indexPath.section] == .posts
     }
-    
-    
 
 }
 
@@ -169,4 +185,14 @@ class EmptyPostListCell: UICollectionViewCell {
         super.awakeFromNib()
         textLabel.text = Localized.emptyMessages.posts
     }
+}
+
+fileprivate class FakeProfile: UserProfileDisplayable {
+    var id: String = "asdf5465413"
+    
+    var nickname: String = "Mike"
+    
+    var avatarURL: WebImage = WebImage(url: ServiceURLs.base.appendingPathComponent("/me/avatar"), accessToken: nil)
+    
+    var race: Race? = Race(color: .blue, avatar: #imageLiteral(resourceName: "im_userphotodefault_nor"))
 }

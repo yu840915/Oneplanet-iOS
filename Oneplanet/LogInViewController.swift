@@ -226,7 +226,9 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
     private func didSocialLogIn() {
         let op = authOperation!
         authOperation = nil
-        if let token = op.token {
+        if let error = op.error {
+            showAlert(with: error)
+        } else if let token = op.token {
             let session = UserSession(token: token)
             session.updateProfile(op.profile!)
             if let socialAuth = op as? SocialAuthenticationOperationType {
@@ -234,8 +236,6 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
             }
             StoreUserSessionOperation(session: session).start()
             startPreflightCheck(with: session)
-        } else if let error = op.error {
-            showAlert(with: error)
         }
     }
     

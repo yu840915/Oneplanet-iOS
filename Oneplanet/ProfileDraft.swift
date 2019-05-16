@@ -21,7 +21,13 @@ class ProfileDraft {
             }
         }
     }
-    var avatar: ImageAttachment?
+    var avatar: ImageAttachment?  {
+        didSet {
+            if oldValue !== avatar {
+                updateObservers.invokeEach{$0()}
+            }
+        }
+    }
     
     func validate() throws {
         try nicknameValidator.validate(nickname)

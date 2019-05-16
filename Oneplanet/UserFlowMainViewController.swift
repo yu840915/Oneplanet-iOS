@@ -31,8 +31,19 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
                 .forEach{
                     $0.userSession = userSession
             }
+            if !isXgenerationScreen {
+                tabbar.tabBar.backgroundImage = #imageLiteral(resourceName: "im_tabbarplus_nor")
+            }
             contentTabbarController = tabbar
         }
     }
 
+}
+
+extension UIViewController {
+    var isXgenerationScreen: Bool {
+        let insets = UIApplication.shared.keyWindow!.safeAreaInsets
+        let inset = max(insets.top, insets.bottom, insets.left, insets.right)
+        return inset > 0
+    }
 }

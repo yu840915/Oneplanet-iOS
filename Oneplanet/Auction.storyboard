@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="A6j-Aw-7aO">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--BID-->
+        <scene sceneID="Cn8-GM-c8K">
+            <objects>
+                <navigationController id="A6j-Aw-7aO" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="BID" image="ic_bid_nor" selectedImage="ic_bid_sel" id="6q1-Ad-AeQ">
+                        <inset key="imageInsets" minX="0.0" minY="-22" maxX="0.0" maxY="22"/>
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-2"/>
+                    </tabBarItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6it-6A-rGM">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="NqB-cT-YVo" kind="relationship" relationship="rootViewController" id="m1v-9e-k0u"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Ip-k8-cmx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-603" y="110"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="zVQ-m5-dRT">
+            <objects>
+                <viewController id="NqB-cT-YVo" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="roY-cB-Z0n">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="LT3-GS-Wxe"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dy7-JF-4om"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Asi-X0-lel" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="233" y="110"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ic_bid_nor" width="64" height="69"/>
+        <image name="ic_bid_sel" width="64" height="69"/>
+    </resources>
+</document>

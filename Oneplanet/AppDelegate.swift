@@ -113,7 +113,8 @@ class DefaultStyleConfiguration {
                                     for: .normal)
         UITabBarItem.appearance()
             .setTitleTextAttributes([.foregroundColor : UIColor.black, .font: UIFont.systemFont(ofSize: 10, weight: .semibold)],
-                                    for: .normal)
+                                    for: .selected)
+        UITabBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().backIndicatorImage = UIImage(named: "ic_back_nor")
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(named: "ic_back_nor")
     }

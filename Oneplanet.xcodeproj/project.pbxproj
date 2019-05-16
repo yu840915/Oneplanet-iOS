@@ -85,6 +85,10 @@
 		E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */; };
 		E0BAB71F228482D1007E747C /* InputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BAB71E228482D1007E747C /* InputFieldView.swift */; };
 		E0FF797A228C3F6800F61318 /* MyProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FF7979228C3F6800F61318 /* MyProfileTests.swift */; };
+		E0FF797C228D2FC400F61318 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0FF797B228D2FC400F61318 /* Home.storyboard */; };
+		E0FF797E228D38CE00F61318 /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0FF797D228D38CE00F61318 /* Post.storyboard */; };
+		E0FF7980228D398300F61318 /* Auction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0FF797F228D398300F61318 /* Auction.storyboard */; };
+		E0FF7982228D3A3D00F61318 /* Notification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0FF7981228D3A3D00F61318 /* Notification.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,6 +194,10 @@
 		E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryImagePickerViewController.swift; sourceTree = "<group>"; };
 		E0BAB71E228482D1007E747C /* InputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldView.swift; sourceTree = "<group>"; };
 		E0FF7979228C3F6800F61318 /* MyProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTests.swift; sourceTree = "<group>"; };
+		E0FF797B228D2FC400F61318 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		E0FF797D228D38CE00F61318 /* Post.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
+		E0FF797F228D398300F61318 /* Auction.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auction.storyboard; sourceTree = "<group>"; };
+		E0FF7981228D3A3D00F61318 /* Notification.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Notification.storyboard; sourceTree = "<group>"; };
 		E606D7D88F63D6FCB0821922 /* Pods-OneplanetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneplanetTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneplanetTests/Pods-OneplanetTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FD31476F85B0E94B50970A99 /* Pods_OneplanetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneplanetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -438,6 +446,10 @@
 			children = (
 				E0814FAD22864B10002F1C02 /* MainUserFlow.storyboard */,
 				E0814FB022864F79002F1C02 /* UserFlowMainViewController.swift */,
+				E0FF797B228D2FC400F61318 /* Home.storyboard */,
+				E0FF797D228D38CE00F61318 /* Post.storyboard */,
+				E0FF797F228D398300F61318 /* Auction.storyboard */,
+				E0FF7981228D3A3D00F61318 /* Notification.storyboard */,
 				E030E4D5228BC3BD0084D383 /* Me */,
 			);
 			name = "Main User Flow";
@@ -552,11 +564,15 @@
 				E03C32A3226D866200C32FD7 /* Localizable.strings in Resources */,
 				E05BB265226D5D2E00721F20 /* Assets.xcassets in Resources */,
 				E03C32B9226DA44A00C32FD7 /* Onboarding.storyboard in Resources */,
+				E0FF797C228D2FC400F61318 /* Home.storyboard in Resources */,
 				E06F5016227B4E7E0067DAE4 /* PreflightCheck.storyboard in Resources */,
 				E0190F5A226EDD1100C212D5 /* SupportingFlows.storyboard in Resources */,
 				E05BB263226D5D2A00721F20 /* Main.storyboard in Resources */,
 				E06F5000227ABE1C0067DAE4 /* OpenSDK1.8.0_NoPay in Resources */,
+				E0FF7980228D398300F61318 /* Auction.storyboard in Resources */,
 				E030E4D2228AB0B70084D383 /* IDHeaderView.xib in Resources */,
+				E0FF797E228D38CE00F61318 /* Post.storyboard in Resources */,
+				E0FF7982228D3A3D00F61318 /* Notification.storyboard in Resources */,
 				E03C32A6226D866500C32FD7 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

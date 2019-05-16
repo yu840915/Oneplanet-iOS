@@ -55,6 +55,11 @@ class WelcomeMessageViewController: UIViewController, AuthorizationFlowEntryPoin
             vc.imageReferences = [NativeImageReference(image: UIImage(named: "im_first1")!), NativeImageReference(image: UIImage(named: "im_first2")!), NativeImageReference(image: UIImage(named: "im_first3")!)]
             contentViewController = vc
         }
+        if let vc = segue.destination as? AuthorizationFlowEntryPoint {
+            vc.authorizationCompletion = {[weak self] session in
+                self?.authorizationCompletion(session)
+            }
+        }
     }
 
 }

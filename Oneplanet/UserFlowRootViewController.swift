@@ -44,6 +44,7 @@ class UserFlowRootViewController: UIViewController, UserSessionDepending {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if needsPreflightCheck {
+            needsPreflightCheck = false
             performSegue(withIdentifier: SegueID.preflightCheck, sender: nil)
         }
     }

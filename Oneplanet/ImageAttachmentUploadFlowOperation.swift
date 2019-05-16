@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import ModelBlocks
+import ImageIO
 
 class ImageAttachment {
     let localImage: UIImage
@@ -139,12 +140,29 @@ class ProcessImageOperation: Operation {
 
     override func main() {
         guard !isCancelled else { return }
-        guard let data = UIImage.jpegData(attachment.localImage)(compressionQuality: preset.compressionQuality) else {
+        guard let data = UIImage.jpegData(attachment.localImage)(compressionQuality: 1),
+            let resizedImage = resizeImage(from: data),
+            let resizedData = UIImage.jpegData(resizedImage)(compressionQuality: preset.compressionQuality) else {
             error = GenericAppError("Cannot process image")
             return
         }
-        self.data = data
-        metadata = FileMetadata(mimeType: "image/jpeg", size: data.count)
+        self.data = resizedData
+        metadata = FileMetadata(mimeType: "image/jpeg", size: resizedData.count)
+    }
+    
+    private func resizeImage(from dat: Data) -> UIImage? {
+        guard let src = CGImageSourceCreateWithData(dat as CFData, nil) else {
+            return nil
+        }
+        let op : [NSObject:AnyObject] =
+            [kCGImageSourceShouldAllowFloat: true as AnyObject,
+             kCGImageSourceCreateThumbnailWithTransform: true as AnyObject,
+             kCGImageSourceCreateThumbnailFromImageAlways: true as AnyObject,
+             kCGImageSourceThumbnailMaxPixelSize: 256 as AnyObject]
+        guard let cgImg = CGImageSourceCreateThumbnailAtIndex(src, 0, op as CFDictionary) else {
+            return nil
+        }
+        return UIImage(cgImage: cgImg)
     }
 }
 

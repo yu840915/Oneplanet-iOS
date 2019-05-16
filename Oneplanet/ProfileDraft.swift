@@ -216,6 +216,10 @@ class UploadMyAvatarOperation: AlamofireAPIAccessOperation {
                                 method: .put,
                                 headers: header)
     }
+    
+    override func handleClientError(with response: HTTPURLResponse) throws {
+        try super.handleClientError(with: response)
+    }
 }
 
 

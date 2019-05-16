@@ -18,9 +18,18 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpTabbarBackground()
     }
     
-
+    private func setUpTabbarBackground() {
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "im_tabbar_nor"))
+        var frame = imageView.frame
+        frame.size.width = UIScreen.main.bounds.width
+        imageView.frame = frame
+        contentTabbarController.tabBar.addSubview(imageView)
+        contentTabbarController.tabBar.sendSubviewToBack(imageView)
+    }
+    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -31,9 +40,8 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
                 .forEach{
                     $0.userSession = userSession
             }
-            if !isXgenerationScreen {
-                tabbar.tabBar.backgroundImage = #imageLiteral(resourceName: "im_tabbarplus_nor")
-            }
+            tabbar.tabBar.backgroundImage = UIImage()
+            debugPrint(tabbar.tabBar.subviews)
             contentTabbarController = tabbar
         }
     }
@@ -43,7 +51,7 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
 extension UIViewController {
     var isXgenerationScreen: Bool {
         let insets = UIApplication.shared.keyWindow!.safeAreaInsets
-        let inset = max(insets.top, insets.bottom, insets.left, insets.right)
+        let inset = max(insets.bottom, insets.left, insets.right)
         return inset > 0
     }
 }

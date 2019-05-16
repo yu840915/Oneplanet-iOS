@@ -18,6 +18,7 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
     private var idHeader: IDHeaderView!
     var profile: UserProfileDisplayable!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let header = IDHeaderView.fromDefaultNib()

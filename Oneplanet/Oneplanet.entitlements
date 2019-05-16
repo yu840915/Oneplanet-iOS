@@ -6,7 +6,7 @@
 	<string>development</string>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>applinks:oneplanet.page.link</string>
+		<string>applinks:theonecollection.page.link</string>
 	</array>
 </dict>
 </plist>

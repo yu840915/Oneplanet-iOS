@@ -69,7 +69,9 @@ class EmailAuthCredential {
         }
     }
     var code: String? {
-        return nil
+        guard let link = magicLink else { return nil }
+        let comp = URLComponents(url: link, resolvingAgainstBaseURL: false)
+        return comp?.queryItems?.first{$0.name == "code"}?.value
     }
     
     func validate() throws {

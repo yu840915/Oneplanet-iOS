@@ -10,6 +10,7 @@ import UIKit
 
 class UserFlowMainViewController: UIViewController, UserSessionDepending, DefaultInstanceFactory {
     var userSession: UserSession!
+    private var contentTabbarController: UITabBarController!
     
     class func fromDefaultStoryboard() -> UserFlowMainViewController {
         return UIStoryboard(name: "MainUserFlow", bundle: nil).instantiateInitialViewController() as! UserFlowMainViewController
@@ -17,8 +18,6 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
 
@@ -32,6 +31,7 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
                 .forEach{
                     $0.userSession = userSession
             }
+            contentTabbarController = tabbar
         }
     }
 

@@ -18,7 +18,9 @@ class SendEmailLinkOperation: AlamofireAPIAccessOperation {
     
     override func prepareURLRequest() throws -> URLRequest {
         try InputValidators.email.validate(email)
-        return try URLRequest(url: ServiceURLs.base.appendingPathComponent("verify").appendingPathComponent(email), method: .post)
+        var comp = URLComponents(url: ServiceURLs.base.appendingPathComponent("verify/email"), resolvingAgainstBaseURL: false)!
+        comp.queryItems = [URLQueryItem(name: "email", value: email)]
+        return try URLRequest(url: try comp.asURL(), method: .post)
     }
 }
 

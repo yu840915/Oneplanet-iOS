@@ -155,7 +155,7 @@ fileprivate class GetTwitterProfileOperation: SimpleAsynchronousOperation, Faila
             finish()
             return
         }
-        profile = PublicProfile(nickname: user.screenName, avatarURL: URL(string: user.profileImageLargeURL))
+        profile = PublicProfile(nickname: user.name, avatarURL: URL(string: user.profileImageLargeURL))
         success = true
         finish()
     }

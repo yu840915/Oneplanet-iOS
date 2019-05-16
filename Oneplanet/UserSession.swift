@@ -44,7 +44,7 @@ class UserSession {
     }
     
     var authorizationHeader: [String: String] {
-        return ["Authorization": "Bearer \(bearerToken)"]
+        return ["Authorization": bearerToken]
     }
     
     func deactivate() {

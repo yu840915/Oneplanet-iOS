@@ -165,7 +165,7 @@ class UpdateMyAvatarFlowOperaion: SimpleAsynchronousOperation, FailableOperation
     }
 
     private func uploadImageData(_ data: Data, withMetadata metadata: FileMetadata, to destination: UploadDestination) {
-        let op = UploadMyAvatarOperation(destination: destination, imageData: data, imageMetadata: metadata)
+        let op = UploadMyAvatarOperation(destination: destination, imageData: data, imageMetadata: metadata, session: session)
         op.completionBlock = {[weak self] in
             self?.didUpload()
         }
@@ -198,20 +198,23 @@ class UploadMyAvatarOperation: AlamofireAPIAccessOperation {
     let destination: UploadDestination
     let imageData: Data
     let imageMetadata: FileMetadata
+    let session: UserSession
     
-    init(destination: UploadDestination, imageData: Data, imageMetadata: FileMetadata) {
+    init(destination: UploadDestination, imageData: Data, imageMetadata: FileMetadata, session: UserSession) {
         self.destination = destination
         self.imageData = imageData
         self.imageMetadata = imageMetadata
+        self.session = session
     }
     
     override func prepareDataRequest() throws -> DataRequest {
+        let header = session.addingAuthorizationToken(to:
+            ["Content-Type": imageMetadata.mimeType,
+            "Content-Length": String(imageMetadata.size)])
         return Alamofire.upload(imageData,
                                 to: destination.url,
                                 method: .put,
-                                headers: [
-                                    "Content-Type": imageMetadata.mimeType,
-                                    "Content-Length": String(imageMetadata.size)])
+                                headers: header)
     }
 }
 

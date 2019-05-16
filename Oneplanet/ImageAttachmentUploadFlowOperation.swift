@@ -138,13 +138,13 @@ class ProcessImageOperation: Operation {
     }
 
     override func main() {
-        guard isCancelled else { return }
+        guard !isCancelled else { return }
         guard let data = UIImage.jpegData(attachment.localImage)(compressionQuality: preset.compressionQuality) else {
             error = GenericAppError("Cannot process image")
             return
         }
         self.data = data
-        metadata = FileMetadata(mimeType: "image/jpg", size: data.count)
+        metadata = FileMetadata(mimeType: "image/jpeg", size: data.count)
     }
 }
 

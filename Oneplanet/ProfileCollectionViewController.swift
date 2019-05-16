@@ -27,7 +27,6 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: header)
         idHeader = header
         updateSections()
-        profile = FakeProfile()
         updateViewsForProfile()
     }
     
@@ -185,14 +184,4 @@ class EmptyPostListCell: UICollectionViewCell {
         super.awakeFromNib()
         textLabel.text = Localized.emptyMessages.posts
     }
-}
-
-fileprivate class FakeProfile: UserProfileDisplayable {
-    var id: String = "asdf5465413"
-    
-    var nickname: String = "Mike"
-    
-    var avatarURL: WebImageInfo = WebImageInfo(url: ServiceURLs.base.appendingPathComponent("/me/avatar"), accessToken: nil)
-    
-    var race: Race? = Race(color: .blue, avatar: #imageLiteral(resourceName: "im_userphotodefault_nor"))
 }

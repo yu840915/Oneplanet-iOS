@@ -86,14 +86,18 @@ class SettingsTableViewController: UITableViewController, UserSessionDepending {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch sections[indexPath.section].rows[indexPath.row] {
-        case .editProfile, .blockList, .terms, .biddingTerms: break
+        case .editProfile, .blockList: break
+        case .biddingTerms:
+            performSegue(withIdentifier: SegueID.showBiddingTerms, sender: nil)
+        case .terms:
+            performSegue(withIdentifier: SegueID.showTerms, sender: nil)
         case .logOut:
             showLogOutAlert()
         }
     }
     
     private func showLogOutAlert() {
-        let alert = UIAlertController(title: "Log Out?", message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: Localized.warnings.logout, message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: Localized.titles.logOut, style: .default, handler: {[weak self] (_) in
             self?.userSession.deactivate()
         }))
@@ -104,6 +108,16 @@ class SettingsTableViewController: UITableViewController, UserSessionDepending {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let nav = segue.destination as? UINavigationController, let vc = nav.viewControllers.first as? WebViewController {
+            NavigationBarStyle.darkGrey.configure(nav.navigationBar)
+            if segue.identifier == SegueID.showBiddingTerms {
+                vc.request = URLRequest(url: ServiceURLs.biddingTerms)
+                vc.title = ActionRow.biddingTerms.displayName
+            } else {
+                vc.request = URLRequest(url: ServiceURLs.terms)
+                vc.title = ActionRow.terms.displayName
+            }
+        }
     }
 
 }
@@ -112,6 +126,10 @@ extension SettingsTableViewController {
     struct ReuseID {
         static let cell = "cell"
         static let header = "header"
+    }
+    struct SegueID {
+        static let showTerms = "showTerms"
+        static let showBiddingTerms = "showBiddingTerms"
     }
     
     enum ActionRow {

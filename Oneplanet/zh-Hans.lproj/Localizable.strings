@@ -67,3 +67,5 @@
 
 "errtl_cannot_capture_photo" = "无法拍照";
 "errtl_cannot_pick_avatar" = "无法取得大头照";
+
+"warn_logout" = "Log Out?";

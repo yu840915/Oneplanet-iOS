@@ -408,17 +408,18 @@
                     <connections>
                         <outlet property="dismissButtonItem" destination="fLF-E5-5YB" id="lfF-P9-1Pu"/>
                         <outlet property="versionLabel" destination="IrI-2U-KY4" id="ygD-XE-nN3"/>
-                        <segue destination="yVF-T4-QbQ" kind="show" identifier="showWebPage" id="43U-FN-V4U"/>
+                        <segue destination="yVF-T4-QbQ" kind="presentation" identifier="showTerms" id="pgf-ho-OJG"/>
+                        <segue destination="yVF-T4-QbQ" kind="presentation" identifier="showBiddingTerms" id="wvs-a3-efW"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YdN-1x-fCw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2235" y="98"/>
         </scene>
-        <!--Storyboard Reference-->
+        <!--WebViewEntry-->
         <scene sceneID="NoT-uc-OvH">
             <objects>
-                <viewControllerPlaceholder id="yVF-T4-QbQ" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="SupportingFlows" referencedIdentifier="WebViewEntry" id="yVF-T4-QbQ" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pI4-We-yTA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2988" y="98"/>
@@ -461,4 +462,7 @@
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="wvs-a3-efW"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -98,6 +98,9 @@ class LocalizedActivityMessages {//act_
 
 class LocalizedWarnings {//warn_
     fileprivate init() {}
+    var logout: String {
+        return NSLocalizedString("warn_logout", comment: "")
+    }
 }
 
 class LocalizedMessages {//msg_

@@ -67,3 +67,5 @@
 
 "errtl_cannot_capture_photo" = "Cannot Take Photo";
 "errtl_cannot_pick_avatar" = "Cannot Get Profile Image";
+
+"warn_logout" = "Log Out?";

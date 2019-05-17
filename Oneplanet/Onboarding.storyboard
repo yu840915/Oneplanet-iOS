@@ -433,7 +433,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="xvq-4d-izY">
                         <barButtonItem key="leftBarButtonItem" title="Exit" id="Eg2-pH-2uT">
-                            <color key="tintColor" name="alert red"/>
+                            <color key="tintColor" name="default text"/>
                             <connections>
                                 <action selector="exit:" destination="QW0-15-aEk" id="GBQ-OQ-HFG"/>
                             </connections>

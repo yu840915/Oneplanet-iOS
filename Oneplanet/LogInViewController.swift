@@ -70,7 +70,7 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
     
     private func setUpEmailLinkLoginHandler() {
         let loginRouter = URLRouter()
-        loginRouter.add("/") {[weak self] (info) -> Bool in
+        loginRouter.add("/login/email") {[weak self] (info) -> Bool in
             return self?.startEmailLinkLogInIfAllowed(with: info) ?? false
         }
         self.loginRounter = loginRouter
@@ -79,8 +79,7 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
     
     private func startEmailLinkLogInIfAllowed(with info: [String: Any]) -> Bool {
         guard session == nil, authOperation == nil else { return false }
-        guard let link = info["link"] as? String,
-            let url = URL(string: link) else { return false }
+        guard let url = info[URLRouter.Keys.url] as? URL else { return false }
         OperationQueue.main.addOperation {
             self.logIn(withEmailLink: url)
         }

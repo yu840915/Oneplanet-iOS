@@ -91,12 +91,18 @@ class UpdateProfileOperation: SimpleAsynchronousOperation, FailableOperationType
     
     private func finishIfAllDone() {
         guard parallelOperations.isEmpty else {return}
-        if let contentSuccess = updateContentOperation?.success,
-            let avatarSuccess = updateAvatarOperation?.success {
-            success = contentSuccess && avatarSuccess
-        } else {
-            success = false
+        var success = true
+        if let op = updateContentOperation {
+            if op.success == nil || op.success == false {
+                success = false
+            }
         }
+        if let op = updateAvatarOperation {
+            if op.success == nil || op.success == false {
+                success = false
+            }
+        }
+        self.success = success
         error = updateContentOperation?.error ?? updateAvatarOperation?.error
         finish()
     }

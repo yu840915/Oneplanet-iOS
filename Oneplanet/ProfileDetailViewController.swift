@@ -17,6 +17,7 @@ protocol UserProfileDisplayable {
 
 class ProfileDetailViewController: UIViewController, UserSessionDepending, DefaultInstanceFactory {
     var userSession: UserSession!
+    var configuration: DisplayConfiguration = .forGuest
     
     class func fromDefaultStoryboard() -> ProfileDetailViewController {
         return UIStoryboard(name: "Me", bundle: nil).instantiateViewController(withIdentifier: "ProfileDetailViewController") as! ProfileDetailViewController
@@ -57,6 +58,9 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
         if let image = profile.race?.avatar {
             raceImageView.image = image
         }
+        chooseRaceButton.isHidden = !configuration.raceButton
+        actionButton.isHidden = !configuration.actionButton
+        detailLabel.isHidden = !configuration.detailLabel
         //avatar image
     }
     
@@ -64,6 +68,17 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
     }
     
     @IBAction func performAction(_ sender: UIButton) {
+    }
+}
+
+extension ProfileDetailViewController {
+    struct DisplayConfiguration {
+        let raceButton: Bool
+        let actionButton: Bool
+        let detailLabel: Bool
+        static let forMe = DisplayConfiguration(raceButton: true, actionButton: false, detailLabel: true)
+        static let forOther = DisplayConfiguration(raceButton: false, actionButton: true, detailLabel: true)
+        static let forGuest = DisplayConfiguration(raceButton: false, actionButton: false, detailLabel: false)
     }
 }
 

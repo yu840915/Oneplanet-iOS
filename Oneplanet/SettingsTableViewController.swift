@@ -10,13 +10,29 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController, UserSessionDepending {
     
-    let sections: [Section] = [Section(type: .logout, rows: [.logOut])]
+    var sections: [Section] = [Section(type: .logout, rows: [.logOut])]
     var userSession: UserSession!
     @IBOutlet weak var dismissButtonItem: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         localizeTitles()
+        prepareSections()
+    }
+    
+    private func prepareSections() {
+        if userSession.isGuest {
+            sections = [
+                Section(type: .privacyAndSecurity, rows: [.terms, .biddingTerms]),
+                Section(type: .logout, rows: [.logOut])
+            ]
+        } else {
+            sections = [
+                Section(type: .account, rows: [.editProfile]),
+                Section(type: .privacyAndSecurity, rows: [.blockList, .terms, .biddingTerms]),
+                Section(type: .logout, rows: [.logOut])
+            ]
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -25,7 +41,8 @@ class SettingsTableViewController: UITableViewController, UserSessionDepending {
     }
     
     private func localizeTitles() {
-        
+        title = Localized.titles.more
+        dismissButtonItem.title = Localized.titles.cancel
     }
 
     @IBAction func exit(_ sender: UIBarButtonItem) {
@@ -82,11 +99,11 @@ extension SettingsTableViewController {
         case biddingTerms
         var displayName: String {
             switch self {
-            case .logOut: return "Log Out"
-            case .editProfile: return "Edit Profile"
-            case .blockList: return "Blocked Accounts"
-            case .terms: return "Terms"
-            case .biddingTerms: return "Bidding terms"
+            case .logOut: return Localized.titles.logOut
+            case .editProfile: return Localized.phrases.editProfile
+            case .blockList: return Localized.phrases.blockList
+            case .terms: return Localized.titles.tos
+            case .biddingTerms: return Localized.titles.biddingTerms
             }
         }
     }
@@ -95,6 +112,14 @@ extension SettingsTableViewController {
         case account
         case privacyAndSecurity
         case logout
+        
+        var displayName: String {
+            switch self {
+            case .account: return Localized.titles.account
+            case .privacyAndSecurity: return Localized.phrases.privacyAndSecurity
+            case .logout: return Localized.titles.logOut
+            }
+        }
     }
     
     class Section {

@@ -48,7 +48,7 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
         actionButton.setTitle(Localized.phrases.follow, for: .normal)
         actionButton.setTitle(Localized.phrases.following, for: .selected)
         actionButton.setTitle(Localized.phrases.following, for: [.selected, .highlighted])
-        chooseRaceButton.setTitle(Localized.phrases.chooseAlien, for: .normal)
+        chooseRaceButton.setTitle(Localized.phrases.chooseRole, for: .normal)
     }
     
     private func updateViewsForProfile() {

@@ -14,13 +14,17 @@
 "tl_ok" = "OK";
 "tl_all_photos" = "所有照片";
 "tl_login" = "登入";
+"tl_log_out" = "Log Out";
 "tl_title" = "标题";
 "tl_tos" = "条款";
+"tl_bidding_terms" = "Bidding Terms";
 "tl_pp" = "Privacy Policy";
 "tl_next" = "下一步";
 "tl_skip" = "略过";
 "tl_exit" = "出口";
 "tl_back" = "后退";
+"tl_more" = "More";
+"tl_account" = "Account";
 
 "pl_email" = "电子邮件地址";
 "pl_nickname" = "昵称";
@@ -47,7 +51,10 @@
 "ph_copy_id" = "copy id";
 "ph_follow" = "Follow";
 "ph_following" = "Following";
-"ph_choose_alien" = "Choose Alien";
+"ph_choose_role" = "Choose Role";
+"ph_edit_profile" = "Edit Profile";
+"ph_block_list" = "Blocked Account";
+"ph_privacy_and_security" = "Privacy and Security";
 
 "no_posts" = "No Posts Yet";
 

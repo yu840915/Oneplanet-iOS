@@ -6,6 +6,8 @@
   Copyright © 2019 何一品居. All rights reserved.
 */
 
+"iso_code" = "en";
+
 "tl_cancel" = "Cancel";
 "tl_dismiss" = "Dismiss";
 "tl_done" = "Done";

@@ -6,6 +6,8 @@
   Copyright © 2019 何一品居. All rights reserved.
 */
 
+"iso_code" = "zh-hant";
+
 "tl_cancel" = "取消";
 "tl_dismiss" = "關閉";
 "tl_done" = "完成";

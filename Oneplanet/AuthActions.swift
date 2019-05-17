@@ -48,7 +48,7 @@ class EmailLinkLogInOperarion: LogInOperation {
 
     override func prepareDataRequest() throws -> DataRequest {
         try credential.validate()
-        return Alamofire.request(ServiceURLs.base.appendingPathComponent("login/email"), method: .post, parameters: ["email": credential.email, "code": credential.code!], encoding: JSONEncoding(), headers: nil)
+        return Alamofire.request(ServiceURLs.base.appendingPathComponent("login/email"), method: .post, parameters: ["email": credential.email, "code": credential.code!], encoding: JSONEncoding(), headers: Localized.acceptLanguageHeader)
     }
 }
 

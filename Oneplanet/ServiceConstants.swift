@@ -22,6 +22,8 @@ struct ServiceConstants {
 struct ServiceURLs {
     static var base: URL = URL(string: "https://api.oneplanet-official.com")!
     static let appSettings = URL(string:UIApplication.openSettingsURLString)!
+    static let terms = URL(string: "https://www.google.com")!
+    static let biddingTerms = URL(string: "https://www.google.com")!
 }
 
 extension JSONDecoder {

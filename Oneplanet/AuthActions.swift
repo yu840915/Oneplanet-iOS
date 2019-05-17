@@ -48,7 +48,7 @@ class EmailLinkLogInOperarion: LogInOperation {
 
     override func prepareDataRequest() throws -> DataRequest {
         try credential.validate()
-        return Alamofire.request(ServiceURLs.base.appendingPathComponent("login/email"), method: .post, parameters: ["email": credential.email, "code": credential.code!], encoding: JSONEncoding(), headers: nil)
+        return Alamofire.request(ServiceURLs.base.appendingPathComponent("login/email"), method: .post, parameters: ["email": credential.email, "code": credential.code!], encoding: JSONEncoding(), headers: Localized.acceptLanguageHeader)
     }
 }
 
@@ -90,9 +90,11 @@ class EmailAuthCredential {
     }
 }
 
-class GuestLogInOperation: AlamofireAPIAccessOperation, AuthenticationOperationType {
-    private(set) var token: String?
-    private(set) var profile: MyProfile?
+class GuestLogInOperation: Operation, AuthenticationOperationType {
+    let success: Bool? = true
+    let error: Error? = nil
+    let token: String? = ""
+    let profile: MyProfile? = GuestProfile()
 }
 
 protocol AuthenticationOperationType: FailableOperationType {

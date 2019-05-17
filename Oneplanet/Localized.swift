@@ -9,6 +9,8 @@
 import Foundation
 
 class Localized {
+    static let acceptLanguageHeader: [String: String] = ["Accept-Language": languageCode]
+    static let languageCode: String = NSLocalizedString("iso_code", comment: "")
     static let titles = LocalizedTitles()
     static let warnings = LocalizedWarnings()
     static let errors = LocalizedErrors()
@@ -44,11 +46,17 @@ class LocalizedTitles {//tl_
     var logIn: String {
         return NSLocalizedString("tl_login", comment: "")
     }
+    var logOut: String {
+        return NSLocalizedString("tl_log_out", comment: "")
+    }
     var title: String {
         return NSLocalizedString("tl_title", comment: "")
     }
     var tos: String {
         return NSLocalizedString("tl_tos", comment: "")
+    }
+    var biddingTerms: String {
+        return NSLocalizedString("tl_bidding_terms", comment: "")
     }
     var pp: String {
         return NSLocalizedString("tl_pp", comment: "")
@@ -61,6 +69,12 @@ class LocalizedTitles {//tl_
     }
     var back: String {
         return NSLocalizedString("tl_back", comment: "")
+    }
+    var more: String {
+        return NSLocalizedString("tl_more", comment: "")
+    }
+    var account: String {
+        return NSLocalizedString("tl_account", comment: "")
     }
     var me: String {
         return "MY"
@@ -84,6 +98,9 @@ class LocalizedActivityMessages {//act_
 
 class LocalizedWarnings {//warn_
     fileprivate init() {}
+    var logout: String {
+        return NSLocalizedString("warn_logout", comment: "")
+    }
 }
 
 class LocalizedMessages {//msg_
@@ -103,6 +120,9 @@ class LocalizedMessageFormats {//msgf_
     }
     var resendVerificationEmail: String {
         return NSLocalizedString("msgf_resend_verification_email", comment: "")
+    }
+    var version: String {
+        return "Oneplanet v%@"
     }
 }
 class LocalizedPhrase { //ph_
@@ -155,8 +175,17 @@ class LocalizedPhrase { //ph_
     var following: String {
         return NSLocalizedString("ph_following", comment: "")
     }
-    var chooseAlien: String {
-        return NSLocalizedString("ph_choose_alien", comment: "")
+    var chooseRole: String {
+        return NSLocalizedString("ph_choose_role", comment: "")
+    }
+    var editProfile: String {
+        return NSLocalizedString("ph_edit_profile", comment: "")
+    }
+    var blockList: String {
+        return NSLocalizedString("ph_block_list", comment: "")
+    }
+    var privacyAndSecurity: String {
+        return NSLocalizedString("ph_privacy_and_security", comment: "")
     }
 }
 

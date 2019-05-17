@@ -10,6 +10,7 @@ import UIKit
 
 class UserFlowMainViewController: UIViewController, UserSessionDepending, DefaultInstanceFactory {
     var userSession: UserSession!
+    private var contentTabbarController: UITabBarController!
     
     class func fromDefaultStoryboard() -> UserFlowMainViewController {
         return UIStoryboard(name: "MainUserFlow", bundle: nil).instantiateInitialViewController() as! UserFlowMainViewController
@@ -17,11 +18,18 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setUpTabbarBackground()
     }
     
-
+    private func setUpTabbarBackground() {
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "im_tabbar_nor"))
+        var frame = imageView.frame
+        frame.size.width = UIScreen.main.bounds.width
+        imageView.frame = frame
+        contentTabbarController.tabBar.addSubview(imageView)
+        contentTabbarController.tabBar.sendSubviewToBack(imageView)
+    }
+    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -32,7 +40,21 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
                 .forEach{
                     $0.userSession = userSession
             }
+            tabbar.viewControllers?.forEach{
+                $0.additionalSafeAreaInsets = UIEdgeInsets(top: 0, left: 0, bottom: 80, right: 0)
+            }
+            tabbar.tabBar.backgroundImage = UIImage()
+            debugPrint(tabbar.tabBar.subviews)
+            contentTabbarController = tabbar
         }
     }
 
+}
+
+extension UIViewController {
+    var isXgenerationScreen: Bool {
+        let insets = UIApplication.shared.keyWindow!.safeAreaInsets
+        let inset = max(insets.bottom, insets.left, insets.right)
+        return inset > 0
+    }
 }

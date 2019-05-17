@@ -6,19 +6,25 @@
   Copyright © 2019 何一品居. All rights reserved.
 */
 
+"iso_code" = "zh-hant";
+
 "tl_cancel" = "取消";
 "tl_dismiss" = "關閉";
 "tl_done" = "完成";
 "tl_ok" = "OK";
 "tl_all_photos" = "所有照片";
 "tl_login" = "登入";
+"tl_log_out" = "Log Out";
 "tl_title" = "標題";
 "tl_tos" = "條款";
+"tl_bidding_terms" = "Bidding Terms";
 "tl_pp" = "Privacy Policy";
 "tl_next" = "下一步";
 "tl_skip" = "略過";
 "tl_exit" = "離開";
 "tl_back" = "返回";
+"tl_more" = "More";
+"tl_account" = "Account";
 
 "pl_email" = "電子郵件地址";
 "pl_nickname" = "暱稱";
@@ -45,7 +51,10 @@
 "ph_copy_id" = "copy id";
 "ph_follow" = "Follow";
 "ph_following" = "Following";
-"ph_choose_alien" = "Choose Alien";
+"ph_choose_role" = "選擇人物";
+"ph_edit_profile" = "Edit Profile";
+"ph_block_list" = "Blocked Account";
+"ph_privacy_and_security" = "Privacy and Security";
 
 "no_posts" = "No Posts Yet";
 
@@ -58,3 +67,5 @@
 
 "errtl_cannot_capture_photo" = "無法拍照";
 "errtl_cannot_pick_avatar" = "無法取得大頭照";
+
+"warn_logout" = "Log Out?";

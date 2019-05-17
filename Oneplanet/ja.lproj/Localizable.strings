@@ -6,19 +6,25 @@
   Copyright © 2019 何一品居. All rights reserved.
 */
 
+"iso_code" = "ja";
+
 "tl_cancel" = "キャンセル";
 "tl_dismiss" = "閉じる";
 "tl_done" = "完成";
 "tl_ok" = "OK";
 "tl_all_photos" = "すべての写真";
 "tl_login" = "ログイン";
+"tl_log_out" = "Log Out";
 "tl_title" = "タイトル";
 "tl_tos" = "利用規約";
+"tl_bidding_terms" = "Bidding Terms";
 "tl_pp" = "Privacy Policy";
 "tl_next" = "次へ";
 "tl_skip" = "スキップ";
 "tl_exit" = "出る";
 "tl_back" = "戻る";
+"tl_more" = "More";
+"tl_account" = "Account";
 
 "pl_email" = "メールアドレス";
 "pl_nickname" = "ニックネーム";
@@ -45,7 +51,10 @@
 "ph_copy_id" = "idをコピー";
 "ph_follow" = "Follow";
 "ph_following" = "Following";
-"ph_choose_alien" = "Choose Alien";
+"ph_choose_role" = "Choose Role";
+"ph_edit_profile" = "Edit Profile";
+"ph_block_list" = "Blocked Account";
+"ph_privacy_and_security" = "Privacy and Security";
 
 "no_posts" = "No Posts Yet";
 
@@ -58,3 +67,5 @@
 
 "errtl_cannot_capture_photo" = "Cannot Take Photo";
 "errtl_cannot_pick_avatar" = "Cannot Get Profile Image";
+
+"warn_logout" = "Log Out?";

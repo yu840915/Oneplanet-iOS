@@ -11,6 +11,9 @@ import Alamofire
 import ModelBlocks
 
 class UserSession {
+    var isGuest: Bool {
+        return bearerToken.isEmpty
+    }
     let bearerToken: String
     let profileDidUpdate = MulticastCallbackNode<()->()>()
     private(set) var profile: MyProfile? {
@@ -54,17 +57,17 @@ class UserSession {
     }
 }
 
-class MyProfile: Decodable {
+class MyProfile: Decodable, UserProfileDisplayable {
     let id: String
     let nickname: String
-    fileprivate(set) var avatar: WebImageInfo!
-    
+    fileprivate(set) var avatar: WebImageInfo?
+    var race: Race?
     enum CodingKeys: String, CodingKey {
         case id
         case nickname = "username"
     }
     
-    init(id: String, nickname: String, avatar: WebImageInfo) {
+    init(id: String, nickname: String, avatar: WebImageInfo?) {
         self.id = id
         self.nickname = nickname
         self.avatar = avatar
@@ -74,6 +77,16 @@ class MyProfile: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(String.self, forKey: .id)
         nickname = try container.decodeIfPresent(String.self, forKey: .nickname) ?? ""
+    }
+}
+
+class GuestProfile: MyProfile {
+    init() {
+        super.init(id: "", nickname: "Guest", avatar: nil)
+    }
+    
+    required init(from decoder: Decoder) throws {
+        try super.init(from: decoder)
     }
 }
 

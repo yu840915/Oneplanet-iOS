@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Tyu-ui-b3F">
-    <device id="retina6_1" orientation="portrait">
+    <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -16,14 +16,14 @@
             <objects>
                 <viewController id="Tyu-ui-b3F" customClass="UserFlowMainViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rJp-IB-qYG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NOB-3B-s8N">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L0D-It-Rgw">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Soa-Zp-Aww"/>
                                         </constraints>
@@ -32,7 +32,7 @@
                                         </connections>
                                     </containerView>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LqQ-Kw-QYt">
-                                        <rect key="frame" x="0.0" y="40" width="414" height="812"/>
+                                        <rect key="frame" x="0.0" y="40" width="320" height="420"/>
                                         <connections>
                                             <segue destination="LZk-cJ-d3T" kind="embed" id="Of2-hq-azq"/>
                                         </connections>
@@ -54,6 +54,46 @@
             </objects>
             <point key="canvasLocation" x="-510" y="82"/>
         </scene>
+        <!--Home-->
+        <scene sceneID="wYy-1c-AiE">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" id="lQS-XK-fGh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="EkS-0c-eJj"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5DP-5X-MsP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-25" y="588"/>
+        </scene>
+        <!--Post-->
+        <scene sceneID="wPr-gk-lqe">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Post" id="TTY-2G-nDR" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="q9R-vc-8aQ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Qy-g7-VMa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="259" y="588"/>
+        </scene>
+        <!--Auction-->
+        <scene sceneID="EHW-7H-rWq">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Auction" id="ekR-bi-vie" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="F1X-Z2-dDC"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uOF-kB-bU4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="459" y="588"/>
+        </scene>
+        <!--Notification-->
+        <scene sceneID="ucy-de-rFr">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Notification" id="6lX-kw-bau" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="aQW-HU-LJ6"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mhX-Jn-Y0L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="683" y="588"/>
+        </scene>
         <!--Me-->
         <scene sceneID="Z0C-UI-T4O">
             <objects>
@@ -62,19 +102,23 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PGH-8U-DDb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1441" y="588"/>
+            <point key="canvasLocation" x="988" y="588"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="5vw-ik-MwF">
             <objects>
                 <tabBarController id="LZk-cJ-d3T" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kaf-Cl-bY5">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="kaf-Cl-bY5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="2pW-7S-NBI" kind="relationship" relationship="viewControllers" id="G1M-Ne-wab"/>
+                        <segue destination="lQS-XK-fGh" kind="relationship" relationship="viewControllers" id="GaY-xO-D2Z"/>
+                        <segue destination="TTY-2G-nDR" kind="relationship" relationship="viewControllers" id="vDl-w6-rSp"/>
+                        <segue destination="ekR-bi-vie" kind="relationship" relationship="viewControllers" id="aR7-4r-e7B"/>
+                        <segue destination="6lX-kw-bau" kind="relationship" relationship="viewControllers" id="onw-wV-mvj"/>
+                        <segue destination="2pW-7S-NBI" kind="relationship" relationship="viewControllers" id="Bbo-mv-RCu"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2RI-T3-X0c" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -86,7 +130,7 @@
             <objects>
                 <viewController id="uea-Jj-g8R" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aty-eY-lVU">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="grey background"/>
                         <viewLayoutGuide key="safeArea" id="5J8-aA-pND"/>

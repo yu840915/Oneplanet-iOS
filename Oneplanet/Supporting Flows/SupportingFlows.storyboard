@@ -355,7 +355,7 @@
                     <view key="view" contentMode="scaleToFill" id="dRF-NQ-ZjQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="rNw-Yx-3eM"/>
                     </view>
                     <navigationItem key="navigationItem" id="Fmt-lp-qcc">

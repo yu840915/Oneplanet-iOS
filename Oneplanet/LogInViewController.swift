@@ -303,7 +303,9 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
         let op = authOperation!
         authOperation = nil
         if let token = op.token {
-            authorizationCompletion?(UserSession(token: token))
+            let session = UserSession(token: token)
+            session.updateProfile(op.profile!)
+            authorizationCompletion?(session)
         } else if let error = op.error {
             showAlert(with: error)
         }

@@ -11,12 +11,13 @@ import UIKit
 protocol UserProfileDisplayable {
     var id: String {get}
     var nickname: String {get}
-    var avatarURL: WebImageInfo {get}
+    var avatar: WebImageInfo? {get}
     var race: Race? {get}
 }
 
 class ProfileDetailViewController: UIViewController, UserSessionDepending, DefaultInstanceFactory {
     var userSession: UserSession!
+    var configuration: DisplayConfiguration = .forGuest
     
     class func fromDefaultStoryboard() -> ProfileDetailViewController {
         return UIStoryboard(name: "Me", bundle: nil).instantiateViewController(withIdentifier: "ProfileDetailViewController") as! ProfileDetailViewController
@@ -47,7 +48,7 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
         actionButton.setTitle(Localized.phrases.follow, for: .normal)
         actionButton.setTitle(Localized.phrases.following, for: .selected)
         actionButton.setTitle(Localized.phrases.following, for: [.selected, .highlighted])
-        chooseRaceButton.setTitle(Localized.phrases.chooseAlien, for: .normal)
+        chooseRaceButton.setTitle(Localized.phrases.chooseRole, for: .normal)
     }
     
     private func updateViewsForProfile() {
@@ -57,7 +58,10 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
         if let image = profile.race?.avatar {
             raceImageView.image = image
         }
-        //avatar image
+        chooseRaceButton.isHidden = !configuration.raceButton
+        actionButton.isHidden = !configuration.actionButton
+        detailLabel.isHidden = !configuration.detailLabel
+        avatarView.avatar = profile.avatar
     }
     
     @IBAction func startChooseRece(_ sender: UIButton) {
@@ -67,27 +71,13 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
     }
 }
 
-class AvatarView: UIView {
-    @IBOutlet var imageView: UIImageView!
-    var borderColor: UIColor? {
-        didSet {
-            updateBoarderColor()
-        }
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        layer.borderWidth = 2
-        updateBoarderColor()
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        layer.cornerRadius = bounds.width / 2
-        imageView.layer.cornerRadius = imageView.bounds.width / 2
-    }
-    
-    private func updateBoarderColor() {
-        layer.borderColor = borderColor?.cgColor
+extension ProfileDetailViewController {
+    struct DisplayConfiguration {
+        let raceButton: Bool
+        let actionButton: Bool
+        let detailLabel: Bool
+        static let forMe = DisplayConfiguration(raceButton: true, actionButton: false, detailLabel: true)
+        static let forOther = DisplayConfiguration(raceButton: false, actionButton: true, detailLabel: true)
+        static let forGuest = DisplayConfiguration(raceButton: false, actionButton: false, detailLabel: false)
     }
 }

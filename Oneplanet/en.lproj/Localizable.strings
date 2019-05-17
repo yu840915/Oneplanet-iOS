@@ -6,19 +6,25 @@
   Copyright © 2019 何一品居. All rights reserved.
 */
 
+"iso_code" = "en";
+
 "tl_cancel" = "Cancel";
 "tl_dismiss" = "Dismiss";
 "tl_done" = "Done";
 "tl_ok" = "OK";
 "tl_all_photos" = "All Photos";
 "tl_login" = "Log In";
+"tl_log_out" = "Log Out";
 "tl_title" = "Title";
 "tl_tos" = "Terms";
+"tl_bidding_terms" = "Bidding Terms";
 "tl_pp" = "Privacy Policy";
 "tl_next" = "Next";
 "tl_skip" = "Skip";
 "tl_exit" = "Exit";
 "tl_back" = "Back";
+"tl_more" = "More";
+"tl_account" = "Account";
 
 "pl_email" = "Email Address";
 "pl_nickname" = "Nickname";
@@ -45,7 +51,10 @@
 "ph_copy_id" = "copy id";
 "ph_follow" = "Follow";
 "ph_following" = "Following";
-"ph_choose_alien" = "Choose Alien";
+"ph_choose_role" = "Choose Role";
+"ph_edit_profile" = "Edit Profile";
+"ph_block_list" = "Blocked Account";
+"ph_privacy_and_security" = "Privacy and Security";
 
 "no_posts" = "No Posts Yet";
 
@@ -58,3 +67,5 @@
 
 "errtl_cannot_capture_photo" = "Cannot Take Photo";
 "errtl_cannot_pick_avatar" = "Cannot Get Profile Image";
+
+"warn_logout" = "Log Out?";

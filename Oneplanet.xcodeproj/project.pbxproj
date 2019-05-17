@@ -80,11 +80,20 @@
 		E0837EF3227FFFBF00B13BAF /* FacebookLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0837EF2227FFFBF00B13BAF /* FacebookLogin.swift */; };
 		E0837EF5228022C400B13BAF /* TwitterLogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0837EF4228022C400B13BAF /* TwitterLogIn.swift */; };
 		E0837EF722816B0D00B13BAF /* ImageAttachmentUploadFlowOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0837EF622816B0D00B13BAF /* ImageAttachmentUploadFlowOperation.swift */; };
+		E089F70D228E9ECB003E77DF /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089F70C228E9ECB003E77DF /* AvatarView.swift */; };
+		E089F70F228EB16A003E77DF /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E089F70E228EB16A003E77DF /* SectionHeaderView.xib */; };
+		E089F711228EB18F003E77DF /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089F710228EB18F003E77DF /* SectionHeaderView.swift */; };
 		E08C3129227817680013DD0C /* AuthActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08C3128227817680013DD0C /* AuthActions.swift */; };
 		E08C312B227826850013DD0C /* EmailInputValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08C312A227826850013DD0C /* EmailInputValidatorTests.swift */; };
 		E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */; };
 		E0BAB71F228482D1007E747C /* InputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BAB71E228482D1007E747C /* InputFieldView.swift */; };
 		E0FF797A228C3F6800F61318 /* MyProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FF7979228C3F6800F61318 /* MyProfileTests.swift */; };
+		E0FF797C228D2FC400F61318 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0FF797B228D2FC400F61318 /* Home.storyboard */; };
+		E0FF797E228D38CE00F61318 /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0FF797D228D38CE00F61318 /* Post.storyboard */; };
+		E0FF7980228D398300F61318 /* Auction.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0FF797F228D398300F61318 /* Auction.storyboard */; };
+		E0FF7982228D3A3D00F61318 /* Notification.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0FF7981228D3A3D00F61318 /* Notification.storyboard */; };
+		E0FF7984228D48FA00F61318 /* MyProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FF7983228D48FA00F61318 /* MyProfileViewController.swift */; };
+		E0FF7986228D51E800F61318 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FF7985228D51E800F61318 /* SettingsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,11 +194,20 @@
 		E0837EF2227FFFBF00B13BAF /* FacebookLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLogin.swift; sourceTree = "<group>"; };
 		E0837EF4228022C400B13BAF /* TwitterLogIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterLogIn.swift; sourceTree = "<group>"; };
 		E0837EF622816B0D00B13BAF /* ImageAttachmentUploadFlowOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAttachmentUploadFlowOperation.swift; sourceTree = "<group>"; };
+		E089F70C228E9ECB003E77DF /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+		E089F70E228EB16A003E77DF /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
+		E089F710228EB18F003E77DF /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		E08C3128227817680013DD0C /* AuthActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthActions.swift; sourceTree = "<group>"; };
 		E08C312A227826850013DD0C /* EmailInputValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailInputValidatorTests.swift; sourceTree = "<group>"; };
 		E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryImagePickerViewController.swift; sourceTree = "<group>"; };
 		E0BAB71E228482D1007E747C /* InputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldView.swift; sourceTree = "<group>"; };
 		E0FF7979228C3F6800F61318 /* MyProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTests.swift; sourceTree = "<group>"; };
+		E0FF797B228D2FC400F61318 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		E0FF797D228D38CE00F61318 /* Post.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
+		E0FF797F228D398300F61318 /* Auction.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Auction.storyboard; sourceTree = "<group>"; };
+		E0FF7981228D3A3D00F61318 /* Notification.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Notification.storyboard; sourceTree = "<group>"; };
+		E0FF7983228D48FA00F61318 /* MyProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileViewController.swift; sourceTree = "<group>"; };
+		E0FF7985228D51E800F61318 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		E606D7D88F63D6FCB0821922 /* Pods-OneplanetTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneplanetTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneplanetTests/Pods-OneplanetTests.debug.xcconfig"; sourceTree = "<group>"; };
 		FD31476F85B0E94B50970A99 /* Pods_OneplanetTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneplanetTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -246,9 +264,14 @@
 			isa = PBXGroup;
 			children = (
 				E0814FB222865CC2002F1C02 /* Me.storyboard */,
+				E0FF7983228D48FA00F61318 /* MyProfileViewController.swift */,
 				E0814FB622893FAF002F1C02 /* ProfileCollectionViewController.swift */,
 				E030E4CF228A71CB0084D383 /* ProfileDetailViewController.swift */,
+				E089F70C228E9ECB003E77DF /* AvatarView.swift */,
 				E030E4D6228BC3E90084D383 /* User.swift */,
+				E0FF7985228D51E800F61318 /* SettingsTableViewController.swift */,
+				E089F70E228EB16A003E77DF /* SectionHeaderView.xib */,
+				E089F710228EB18F003E77DF /* SectionHeaderView.swift */,
 				E030E4D1228AB0B60084D383 /* IDHeaderView.xib */,
 				E030E4D3228AB1ED0084D383 /* IDHeaderView.swift */,
 			);
@@ -438,6 +461,10 @@
 			children = (
 				E0814FAD22864B10002F1C02 /* MainUserFlow.storyboard */,
 				E0814FB022864F79002F1C02 /* UserFlowMainViewController.swift */,
+				E0FF797B228D2FC400F61318 /* Home.storyboard */,
+				E0FF797D228D38CE00F61318 /* Post.storyboard */,
+				E0FF797F228D398300F61318 /* Auction.storyboard */,
+				E0FF7981228D3A3D00F61318 /* Notification.storyboard */,
 				E030E4D5228BC3BD0084D383 /* Me */,
 			);
 			name = "Main User Flow";
@@ -552,11 +579,16 @@
 				E03C32A3226D866200C32FD7 /* Localizable.strings in Resources */,
 				E05BB265226D5D2E00721F20 /* Assets.xcassets in Resources */,
 				E03C32B9226DA44A00C32FD7 /* Onboarding.storyboard in Resources */,
+				E0FF797C228D2FC400F61318 /* Home.storyboard in Resources */,
 				E06F5016227B4E7E0067DAE4 /* PreflightCheck.storyboard in Resources */,
 				E0190F5A226EDD1100C212D5 /* SupportingFlows.storyboard in Resources */,
 				E05BB263226D5D2A00721F20 /* Main.storyboard in Resources */,
 				E06F5000227ABE1C0067DAE4 /* OpenSDK1.8.0_NoPay in Resources */,
+				E0FF7980228D398300F61318 /* Auction.storyboard in Resources */,
+				E089F70F228EB16A003E77DF /* SectionHeaderView.xib in Resources */,
 				E030E4D2228AB0B70084D383 /* IDHeaderView.xib in Resources */,
+				E0FF797E228D38CE00F61318 /* Post.storyboard in Resources */,
+				E0FF7982228D3A3D00F61318 /* Notification.storyboard in Resources */,
 				E03C32A6226D866500C32FD7 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -623,6 +655,7 @@
 				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
 				"${BUILT_PRODUCTS_DIR}/FacebookShare/FacebookShare.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
@@ -639,6 +672,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookShare.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
@@ -724,12 +758,14 @@
 				E030E4D0228A71CB0084D383 /* ProfileDetailViewController.swift in Sources */,
 				E06589BD22700AEC00C9E4E6 /* CaptureSessionController.swift in Sources */,
 				E0190F4B226DB55400C212D5 /* UIComponentFactories.swift in Sources */,
+				E089F70D228E9ECB003E77DF /* AvatarView.swift in Sources */,
 				E07276E322731334001239C0 /* EmailVerificationViewController.swift in Sources */,
 				E05BB260226D5D2A00721F20 /* RootViewController.swift in Sources */,
 				E06589BB227001F300C9E4E6 /* AskForAuthorizationOperation.swift in Sources */,
 				E03C329A226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift in Sources */,
 				E03C32AE226D8E6800C32FD7 /* SharedFormatters.swift in Sources */,
 				E07276F82276D0DC001239C0 /* RequestUserNotificationAuthorizationOperation.swift in Sources */,
+				E0FF7986228D51E800F61318 /* SettingsTableViewController.swift in Sources */,
 				E06589C12270333100C9E4E6 /* PickImageOperation.swift in Sources */,
 				E06F500F227AFD740067DAE4 /* WeChatLogIn.swift in Sources */,
 				E0190F57226EDBC900C212D5 /* CameraImagePickerViewController.swift in Sources */,
@@ -747,9 +783,11 @@
 				E06F5013227B4E2E0067DAE4 /* PreflightCheckFlowViewController.swift in Sources */,
 				E07276F62276C305001239C0 /* FirebaseMessagingSession.swift in Sources */,
 				E07276E92273633A001239C0 /* CreateProfileViewController.swift in Sources */,
+				E0FF7984228D48FA00F61318 /* MyProfileViewController.swift in Sources */,
 				E03C329E226D772400C32FD7 /* Logger.swift in Sources */,
 				E03C32B3226D925100C32FD7 /* ServiceConstants.swift in Sources */,
 				E06F4FFA22782C8C0067DAE4 /* InputValidators.swift in Sources */,
+				E089F711228EB18F003E77DF /* SectionHeaderView.swift in Sources */,
 				E07276EB2274B515001239C0 /* WebViewController.swift in Sources */,
 				E06589C622705B4F00C9E4E6 /* PhotoGridCollectionViewController.swift in Sources */,
 				E07277012277EE3D001239C0 /* AppConfiguration.swift in Sources */,

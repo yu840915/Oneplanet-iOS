@@ -21,7 +21,7 @@ protocol DefaultViewInstanceFactory: AnyObject {
 class RootViewController: UIViewController {
     private var restoreUserSessionOperation: RestoreUserSessionOperation?
     @IBOutlet weak var containerView: UIView!
-    private var userFlowRootController: UserFlowRootViewController?
+    private weak var userFlowRootController: UserFlowRootViewController?
     private var shouldAddConstraintsForUserFlow = false
     private var sessionEndHandle: Any?
     
@@ -53,13 +53,13 @@ class RootViewController: UIViewController {
     }
     
     private func handleSessionRestoration() {
-        startUserFlow(with: UserSession(token: "123"), needsPreflightCheck: false)
-//        let op = restoreUserSessionOperation!
-//        if let session = op.session {
-//            startUserFlow(with: session, needsPreflightCheck: true)
-//        } else {
-//            startLoginFlow()
-//        }
+//        startUserFlow(with: UserSession(token: "123"), needsPreflightCheck: false)
+        let op = restoreUserSessionOperation!
+        if let session = op.session {
+            startUserFlow(with: session, needsPreflightCheck: true)
+        } else {
+            startLoginFlow()
+        }
     }
     
     private func logOut() {

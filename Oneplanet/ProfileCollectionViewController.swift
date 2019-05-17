@@ -17,7 +17,7 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
     fileprivate var posts: [Any] = []
     private var idHeader: IDHeaderView!
     var profile: UserProfileDisplayable!
-    
+    var configuration: Configuration = .forGuest
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -136,6 +136,14 @@ extension ProfileCollectionViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension ProfileCollectionViewController {
+    struct Configuration {
+        let shouldDisplayAlienButton: Bool
+        let shouldDisplayActionButton: Bool
+        static let forMe = Configuration(shouldDisplayAlienButton: true, shouldDisplayActionButton: false)
+        static let forOther = Configuration(shouldDisplayAlienButton: false, shouldDisplayActionButton: true)
+        static let forGuest = Configuration(shouldDisplayAlienButton: false, shouldDisplayActionButton: false)
+    }
+    
     enum Section: String {
         case detail = "detailCell"
         case posts = "postCell"

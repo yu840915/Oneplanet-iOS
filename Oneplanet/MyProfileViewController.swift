@@ -10,11 +10,13 @@ import UIKit
 
 class MyProfileViewController: UIViewController, UserSessionDepending {
     var userSession: UserSession!
+    var profile: UserProfileDisplayable! {
+        return userSession.profile
+    }
     
     @IBOutlet weak var addPostButton: UIButton!
     private var profileController: ProfileCollectionViewController!
     private var idHeader: IDHeaderView!
-    var profile: UserProfileDisplayable!  = FakeProfile()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,14 +54,4 @@ class MyProfileViewController: UIViewController, UserSessionDepending {
         }
     }
 
-}
-
-fileprivate class FakeProfile: UserProfileDisplayable {
-    var id: String = "asdf5465413"
-    
-    var nickname: String = "Mike"
-    
-    var avatarURL: WebImageInfo = WebImageInfo(url: ServiceURLs.base.appendingPathComponent("/me/avatar"), accessToken: nil)
-    
-    var race: Race? = Race(color: .blue, avatar: #imageLiteral(resourceName: "im_userphotodefault_nor"))
 }

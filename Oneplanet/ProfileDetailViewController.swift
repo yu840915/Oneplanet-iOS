@@ -11,7 +11,7 @@ import UIKit
 protocol UserProfileDisplayable {
     var id: String {get}
     var nickname: String {get}
-    var avatarURL: WebImageInfo {get}
+    var avatar: WebImageInfo? {get}
     var race: Race? {get}
 }
 

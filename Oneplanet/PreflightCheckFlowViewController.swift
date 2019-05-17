@@ -49,6 +49,10 @@ class PreflightCheckFlowViewController: UIViewController, UserSessionDepending {
     }
     
     private func startPreflightCheck() {
+        if userSession.isGuest {
+            didFinishPreflightCheck?()
+            return
+        }
         if let profile = userSession.profile {
             if profile.nickname.isEmpty {
                 startProfileCreation()
@@ -75,6 +79,7 @@ class PreflightCheckFlowViewController: UIViewController, UserSessionDepending {
         let op = getProfileOperation!
         getProfileOperation = nil
         if let profile = op.profile {
+            userSession.updateProfile(profile)
             if profile.nickname.isEmpty {
                 startProfileCreation()
             } else {

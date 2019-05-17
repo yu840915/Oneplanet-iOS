@@ -83,7 +83,13 @@ extension ProfileDetailViewController {
 }
 
 class AvatarView: UIView {
-    @IBOutlet var imageView: UIImageView!
+    @IBOutlet var avatarButton: UIButton!
+    var action: (()->())? {
+        didSet {
+            updateButtonInteraction()
+        }
+    }
+    
     var borderColor: UIColor? {
         didSet {
             updateBoarderColor()
@@ -94,15 +100,24 @@ class AvatarView: UIView {
         super.awakeFromNib()
         layer.borderWidth = 2
         updateBoarderColor()
+        updateButtonInteraction()
+    }
+    
+    private func updateButtonInteraction() {
+        avatarButton.isUserInteractionEnabled = (action != nil)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         layer.cornerRadius = bounds.width / 2
-        imageView.layer.cornerRadius = imageView.bounds.width / 2
+        avatarButton.layer.cornerRadius = avatarButton.bounds.width / 2
     }
     
     private func updateBoarderColor() {
         layer.borderColor = borderColor?.cgColor
+    }
+
+    @IBAction func invokeAction(_ sender: UIButton) {
+        action?()
     }
 }

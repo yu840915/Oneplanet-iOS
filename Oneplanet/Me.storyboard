@@ -56,23 +56,27 @@
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h2u-VE-mx2" userLabel="Avatar View" customClass="AvatarView" customModule="Oneplanet" customModuleProvider="target">
                                                 <rect key="frame" x="12" y="0.0" width="90" height="90"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_userphotodefault_nor" translatesAutoresizingMaskIntoConstraints="NO" id="LfN-jl-paF" userLabel="Avatar Image View">
+                                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CuF-MB-Jsr" userLabel="Avatar Button">
                                                         <rect key="frame" x="5" y="5" width="80" height="80"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="80" id="F4N-h6-5jI"/>
-                                                            <constraint firstAttribute="width" secondItem="LfN-jl-paF" secondAttribute="height" id="io5-Nb-Ape"/>
+                                                            <constraint firstAttribute="width" constant="80" id="HLS-iJ-Yr1"/>
+                                                            <constraint firstAttribute="width" secondItem="CuF-MB-Jsr" secondAttribute="height" id="ZMV-Q2-s1C"/>
                                                         </constraints>
-                                                    </imageView>
+                                                        <state key="normal" backgroundImage="im_userphotodefault_nor"/>
+                                                        <connections>
+                                                            <action selector="invokeAction:" destination="h2u-VE-mx2" eventType="touchUpInside" id="EcP-7u-rYE"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="h2u-VE-mx2" secondAttribute="height" id="0cO-aZ-JF2"/>
-                                                    <constraint firstItem="LfN-jl-paF" firstAttribute="centerY" secondItem="h2u-VE-mx2" secondAttribute="centerY" id="jjd-FT-atK"/>
-                                                    <constraint firstItem="LfN-jl-paF" firstAttribute="centerX" secondItem="h2u-VE-mx2" secondAttribute="centerX" id="whA-MS-Ji7"/>
+                                                    <constraint firstItem="CuF-MB-Jsr" firstAttribute="centerY" secondItem="h2u-VE-mx2" secondAttribute="centerY" id="GVF-6G-Ttc"/>
+                                                    <constraint firstItem="CuF-MB-Jsr" firstAttribute="centerX" secondItem="h2u-VE-mx2" secondAttribute="centerX" id="JBj-Zj-yRi"/>
                                                     <constraint firstAttribute="width" constant="90" id="yiH-72-2Z1"/>
                                                 </constraints>
                                                 <connections>
-                                                    <outlet property="imageView" destination="LfN-jl-paF" id="dp0-8n-r7x"/>
+                                                    <outlet property="avatarButton" destination="CuF-MB-Jsr" id="ayV-Dw-5X8"/>
                                                 </connections>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="rCd-1Y-OcD">

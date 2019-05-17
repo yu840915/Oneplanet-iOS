@@ -61,7 +61,7 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
         chooseRaceButton.isHidden = !configuration.raceButton
         actionButton.isHidden = !configuration.actionButton
         detailLabel.isHidden = !configuration.detailLabel
-        //avatar image
+        avatarView.avatar = profile.avatar
     }
     
     @IBAction func startChooseRece(_ sender: UIButton) {
@@ -79,45 +79,5 @@ extension ProfileDetailViewController {
         static let forMe = DisplayConfiguration(raceButton: true, actionButton: false, detailLabel: true)
         static let forOther = DisplayConfiguration(raceButton: false, actionButton: true, detailLabel: true)
         static let forGuest = DisplayConfiguration(raceButton: false, actionButton: false, detailLabel: false)
-    }
-}
-
-class AvatarView: UIView {
-    @IBOutlet var avatarButton: UIButton!
-    var action: (()->())? {
-        didSet {
-            updateButtonInteraction()
-        }
-    }
-    
-    var borderColor: UIColor? {
-        didSet {
-            updateBoarderColor()
-        }
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        layer.borderWidth = 2
-        updateBoarderColor()
-        updateButtonInteraction()
-    }
-    
-    private func updateButtonInteraction() {
-        avatarButton.isUserInteractionEnabled = (action != nil)
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        layer.cornerRadius = bounds.width / 2
-        avatarButton.layer.cornerRadius = avatarButton.bounds.width / 2
-    }
-    
-    private func updateBoarderColor() {
-        layer.borderColor = borderColor?.cgColor
-    }
-
-    @IBAction func invokeAction(_ sender: UIButton) {
-        action?()
     }
 }

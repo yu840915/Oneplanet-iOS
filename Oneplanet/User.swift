@@ -25,3 +25,9 @@ class WebImageInfo {
         self.accessToken = accessToken
     }
 }
+
+extension WebImageInfo: Equatable {
+    static func ==(lhs: WebImageInfo, rhs: WebImageInfo) -> Bool {
+        return lhs.url == rhs.url && lhs.accessToken == rhs.accessToken
+    }
+}

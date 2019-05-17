@@ -87,6 +87,8 @@
 		E08C312B227826850013DD0C /* EmailInputValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08C312A227826850013DD0C /* EmailInputValidatorTests.swift */; };
 		E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */; };
 		E0BAB71F228482D1007E747C /* InputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BAB71E228482D1007E747C /* InputFieldView.swift */; };
+		E0CB5E11228F0B4A00C0C010 /* TreasuryBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CB5E10228F0B4A00C0C010 /* TreasuryBarViewController.swift */; };
+		E0CB5E15228F0E5F00C0C010 /* DS-DIGIB.TTF in Resources */ = {isa = PBXBuildFile; fileRef = E0CB5E14228F0E5F00C0C010 /* DS-DIGIB.TTF */; };
 		E0FF797A228C3F6800F61318 /* MyProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FF7979228C3F6800F61318 /* MyProfileTests.swift */; };
 		E0FF797C228D2FC400F61318 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0FF797B228D2FC400F61318 /* Home.storyboard */; };
 		E0FF797E228D38CE00F61318 /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0FF797D228D38CE00F61318 /* Post.storyboard */; };
@@ -201,6 +203,8 @@
 		E08C312A227826850013DD0C /* EmailInputValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailInputValidatorTests.swift; sourceTree = "<group>"; };
 		E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryImagePickerViewController.swift; sourceTree = "<group>"; };
 		E0BAB71E228482D1007E747C /* InputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldView.swift; sourceTree = "<group>"; };
+		E0CB5E10228F0B4A00C0C010 /* TreasuryBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreasuryBarViewController.swift; sourceTree = "<group>"; };
+		E0CB5E14228F0E5F00C0C010 /* DS-DIGIB.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DS-DIGIB.TTF"; sourceTree = "<group>"; };
 		E0FF7979228C3F6800F61318 /* MyProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTests.swift; sourceTree = "<group>"; };
 		E0FF797B228D2FC400F61318 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		E0FF797D228D38CE00F61318 /* Post.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
@@ -390,6 +394,7 @@
 			isa = PBXGroup;
 			children = (
 				E06F5001227ABE8A0067DAE4 /* Oneplanet-Bridging-Header.h */,
+				E0CB5E14228F0E5F00C0C010 /* DS-DIGIB.TTF */,
 				E06F4FFF227ABE1B0067DAE4 /* OpenSDK1.8.0_NoPay */,
 				E03C32AB226D872A00C32FD7 /* Localized.swift */,
 				E05BB269226D5D2E00721F20 /* Info.plist */,
@@ -460,6 +465,7 @@
 			isa = PBXGroup;
 			children = (
 				E0814FAD22864B10002F1C02 /* MainUserFlow.storyboard */,
+				E0CB5E10228F0B4A00C0C010 /* TreasuryBarViewController.swift */,
 				E0814FB022864F79002F1C02 /* UserFlowMainViewController.swift */,
 				E0FF797B228D2FC400F61318 /* Home.storyboard */,
 				E0FF797D228D38CE00F61318 /* Post.storyboard */,
@@ -573,6 +579,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E05BB268226D5D2E00721F20 /* LaunchScreen.storyboard in Resources */,
+				E0CB5E15228F0E5F00C0C010 /* DS-DIGIB.TTF in Resources */,
 				E0814FAE22864B10002F1C02 /* MainUserFlow.storyboard in Resources */,
 				E0814FB322865CC2002F1C02 /* Me.storyboard in Resources */,
 				E07276F32276AA85001239C0 /* GoogleService-Info.plist in Resources */,
@@ -780,6 +787,7 @@
 				E07276E1227307F5001239C0 /* LogInViewController.swift in Sources */,
 				E05BB25E226D5D2A00721F20 /* AppDelegate.swift in Sources */,
 				E06F4FFE22789C760067DAE4 /* AppLifeCycleObserver.swift in Sources */,
+				E0CB5E11228F0B4A00C0C010 /* TreasuryBarViewController.swift in Sources */,
 				E06F5013227B4E2E0067DAE4 /* PreflightCheckFlowViewController.swift in Sources */,
 				E07276F62276C305001239C0 /* FirebaseMessagingSession.swift in Sources */,
 				E07276E92273633A001239C0 /* CreateProfileViewController.swift in Sources */,

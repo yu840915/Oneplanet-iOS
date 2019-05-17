@@ -231,7 +231,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="detailCell" id="Qho-WU-19I" customClass="ProfileContainerCell" customModule="Oneplanet" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="detailCell" id="Qho-WU-19I" customClass="ProfileContainerCell" customModule="Oneplanet" customModuleProvider="target">
                                 <rect key="frame" x="39" y="0.0" width="336" height="249"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -239,7 +239,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rTa-np-1ML">
-                                            <rect key="frame" x="0.0" y="0.0" width="336" height="249"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="336" height="185"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
                                     </subviews>
@@ -255,7 +255,7 @@
                                     <outlet property="containerView" destination="rTa-np-1ML" id="RVo-FJ-bAn"/>
                                 </connections>
                             </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="postCell" id="ZbD-BM-7re" customClass="PostThumbnailCell" customModule="Oneplanet" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="postCell" id="ZbD-BM-7re" customClass="PostThumbnailCell" customModule="Oneplanet" customModuleProvider="target">
                                 <rect key="frame" x="132" y="250" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -263,7 +263,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qrw-EF-d1c">
-                                            <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="150" height="86"/>
                                         </imageView>
                                     </subviews>
                                 </view>
@@ -278,7 +278,7 @@
                                     <outlet property="imageView" destination="qrw-EF-d1c" id="rEm-L6-opF"/>
                                 </connections>
                             </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="emptyCell" id="HR0-t0-Ec6" customClass="EmptyPostListCell" customModule="Oneplanet" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="emptyCell" id="HR0-t0-Ec6" customClass="EmptyPostListCell" customModule="Oneplanet" customModuleProvider="target">
                                 <rect key="frame" x="39" y="401" width="336" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -286,16 +286,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ht-M8-fZo">
-                                            <rect key="frame" x="119.33333333333331" y="19.999999999999993" width="97.666666666666686" height="120.33333333333331"/>
+                                            <rect key="frame" x="119.33333333333331" y="-12.333333333333336" width="97.666666666666686" height="120.66666666666669"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="s4x-uw-9U1">
-                                                    <rect key="frame" x="0.0" y="0.0" width="97.666666666666671" height="120.33333333333333"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="97.666666666666671" height="120.66666666666667"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" image="ui_nopic_nor" translatesAutoresizingMaskIntoConstraints="NO" id="pZ5-MO-eLB">
-                                                            <rect key="frame" x="8.6666666666666714" y="0.0" width="80" height="80"/>
+                                                            <rect key="frame" x="8.6666666666666714" y="0.0" width="80" height="80.333333333333329"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="No Posts Yet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qrb-bB-BTh">
-                                                            <rect key="frame" x="0.0" y="100" width="97.666666666666671" height="20.333333333333329"/>
+                                                            <rect key="frame" x="0.0" y="100.33333333333333" width="97.666666666666671" height="20.333333333333329"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" name="default text"/>
                                                             <nil key="highlightedColor"/>
@@ -334,36 +334,54 @@
             </objects>
             <point key="canvasLocation" x="329" y="796"/>
         </scene>
-        <!--Root View Controller-->
+        <!--More-->
         <scene sceneID="6uX-98-iNm">
             <objects>
                 <tableViewController id="7FN-v5-bgi" customClass="SettingsTableViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="44" sectionFooterHeight="28" id="xoJ-W4-cGa">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="44" sectionFooterHeight="28" id="xoJ-W4-cGa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <sections>
-                            <tableViewSection headerTitle="Section-1" id="nEd-vV-EHK">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="SiC-oq-qci">
-                                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SiC-oq-qci" id="8Sc-lv-aFQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                        <color key="backgroundColor" name="black background"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" textLabel="7GV-hC-AAB" style="IBUITableViewCellStyleDefault" id="SiC-oq-qci">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SiC-oq-qci" id="8Sc-lv-aFQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Edit Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7GV-hC-AAB" userLabel="Cell">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                            <color key="textColor" name="default text"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="7FN-v5-bgi" id="SmF-w0-xpa"/>
                             <outlet property="delegate" destination="7FN-v5-bgi" id="LwK-8w-6Dv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="Gy8-tl-yb3">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="fLF-E5-5YB"/>
+                    <navigationItem key="navigationItem" title="More" id="Gy8-tl-yb3">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="fLF-E5-5YB">
+                            <connections>
+                                <action selector="exit:" destination="7FN-v5-bgi" id="FGS-rg-RJt"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" image="ic_contactus_nor" id="msi-Yv-hHu"/>
+                            <barButtonItem title="Item" image="ic_youtube_nor" id="xF0-zh-EEO"/>
+                        </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="dismissButtonItem" destination="fLF-E5-5YB" id="lfF-P9-1Pu"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YdN-1x-fCw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -389,12 +407,17 @@
     <resources>
         <image name="bt_addphoto_nor" width="56" height="57"/>
         <image name="bt_smallgreen_nor" width="29" height="28"/>
+        <image name="ic_contactus_nor" width="40" height="40"/>
         <image name="ic_morelist_nor" width="40" height="40"/>
         <image name="ic_my_nor" width="64" height="49"/>
         <image name="ic_my_sel" width="64" height="49"/>
+        <image name="ic_youtube_nor" width="40" height="40"/>
         <image name="im_bgall" width="609" height="812"/>
         <image name="im_userphotodefault_nor" width="179" height="179"/>
         <image name="ui_nopic_nor" width="80" height="80"/>
+        <namedColor name="black background">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="default text">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

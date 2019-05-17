@@ -94,6 +94,7 @@ class RootViewController: UIViewController {
             assertionFailure("User flow doesn't exist")
             return
         }
+        vc.dismiss(animated: false, completion: nil)
         vc.willMove(toParent: nil)
         vc.view.removeFromSuperview()
         vc.removeFromParent()

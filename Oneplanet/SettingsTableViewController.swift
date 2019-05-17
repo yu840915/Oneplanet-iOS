@@ -10,83 +10,99 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController, UserSessionDepending {
     
+    let sections: [Section] = [Section(type: .logout, rows: [.logOut])]
     var userSession: UserSession!
+    @IBOutlet weak var dismissButtonItem: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        localizeTitles()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NavigationBarStyle.darkGrey.configure(navigationController!.navigationBar)
+    }
+    
+    private func localizeTitles() {
+        
     }
 
+    @IBAction func exit(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return sections.count
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return sections[section].rows.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let row = sections[indexPath.section].rows[indexPath.row]
+        cell.textLabel?.text = row.displayName
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch sections[indexPath.section].rows[indexPath.row] {
+        case .editProfile, .blockList, .terms, .biddingTerms: break
+        case .logOut:
+            showLogOutAlert()
+        }
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    private func showLogOutAlert() {
+        let alert = UIAlertController(title: "Log Out?", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Log Out", style: .default, handler: {[weak self] (_) in
+            self?.userSession.deactivate()
+        }))
+        alert.addAction(UIAlertAction(title: Localized.titles.cancel, style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
-    */
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
 
+}
+
+extension SettingsTableViewController {
+    enum ActionRow {
+        case logOut
+        case editProfile
+        case blockList
+        case terms
+        case biddingTerms
+        var displayName: String {
+            switch self {
+            case .logOut: return "Log Out"
+            case .editProfile: return "Edit Profile"
+            case .blockList: return "Blocked Accounts"
+            case .terms: return "Terms"
+            case .biddingTerms: return "Bidding terms"
+            }
+        }
+    }
+    
+    enum SectionType {
+        case account
+        case privacyAndSecurity
+        case logout
+    }
+    
+    class Section {
+        let type: SectionType
+        let rows: [ActionRow]
+        init(type: SectionType, rows: [ActionRow]) {
+            self.type = type
+            self.rows = rows
+        }
+    }
 }

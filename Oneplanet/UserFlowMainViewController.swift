@@ -40,6 +40,9 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
                 .forEach{
                     $0.userSession = userSession
             }
+            tabbar.viewControllers?.forEach{
+                $0.additionalSafeAreaInsets = UIEdgeInsets(top: 0, left: 0, bottom: 80, right: 0)
+            }
             tabbar.tabBar.backgroundImage = UIImage()
             debugPrint(tabbar.tabBar.subviews)
             contentTabbarController = tabbar

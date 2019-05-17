@@ -124,7 +124,7 @@ fileprivate class SubmitFacebookTokenOperation: LogInOperation {
     }
     
     override func prepareDataRequest() throws -> DataRequest {
-        return Alamofire.request(ServiceURLs.base.appendingPathComponent("login/facebook-app"), method: .post, parameters: ["access_token": fbAccessToken], encoding: JSONEncoding(), headers: nil)
+        return Alamofire.request(ServiceURLs.base.appendingPathComponent("login/facebook-app"), method: .post, parameters: ["access_token": fbAccessToken.authenticationToken], encoding: JSONEncoding(), headers: nil)
     }
 }
 
@@ -144,7 +144,6 @@ fileprivate class GetFacebookProfileOperation: SimpleAsynchronousOperation, Fail
     
     private func handelResponse(_ response: HTTPURLResponse?, result: GraphRequestResult<GraphRequest>) {
         switch result {
-            
         case .success(let res):
             handleResponseDate(res)
         case .failed(let error):

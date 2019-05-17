@@ -11,7 +11,7 @@ import Alamofire
 import ModelBlocks
 
 class UserSession {
-    let token: String
+    let bearerToken: String
     let profileDidUpdate = MulticastCallbackNode<()->()>()
     private(set) var profile: MyProfile? {
         didSet {
@@ -23,28 +23,28 @@ class UserSession {
     let sessionBecomeInactiveObservers = MulticastCallbackNode<()->()>()
     
     init(token: String) {
-        self.token = token
+        self.bearerToken = token
     }
     
     func updateProfile(_ profile: MyProfile) {
-        profile.avatar = WebImageInfo(url: ServiceURLs.base.appendingPathComponent("me/avatar.jpg"), accessToken: token)
+        profile.avatar = WebImageInfo(url: ServiceURLs.base.appendingPathComponent("me/avatar.jpg"), accessToken: bearerToken)
         self.profile = profile
     }
     
     func addingAuthorizationToken(to headers: [String: String]) -> [String: String] {
         var result = headers
-        result["Authorization"] = "Bearer \(token)"
+        result["Authorization"] = bearerToken
         return result
     }
     
     func addingAuthorizationToken(to request: URLRequest) -> URLRequest {
         var result = request
-        result.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        result.addValue(bearerToken, forHTTPHeaderField: "Authorization")
         return result
     }
     
     var authorizationHeader: [String: String] {
-        return ["Authorization": "Bearer \(token)"]
+        return ["Authorization": bearerToken]
     }
     
     func deactivate() {
@@ -68,6 +68,12 @@ class MyProfile: Decodable {
         self.id = id
         self.nickname = nickname
         self.avatar = avatar
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(String.self, forKey: .id)
+        nickname = try container.decodeIfPresent(String.self, forKey: .nickname) ?? ""
     }
 }
 
@@ -114,7 +120,7 @@ class StoreUserSessionOperation: Operation {
     }
     
     override func main() {
-        Preferences.accessToken.value = session.token
+        Preferences.accessToken.value = session.bearerToken
         storeNonFirebaseProfileIfNeeded()
     }
     

@@ -21,7 +21,13 @@ class ProfileDraft {
             }
         }
     }
-    var avatar: ImageAttachment?
+    var avatar: ImageAttachment?  {
+        didSet {
+            if oldValue !== avatar {
+                updateObservers.invokeEach{$0()}
+            }
+        }
+    }
     
     func validate() throws {
         try nicknameValidator.validate(nickname)
@@ -85,12 +91,18 @@ class UpdateProfileOperation: SimpleAsynchronousOperation, FailableOperationType
     
     private func finishIfAllDone() {
         guard parallelOperations.isEmpty else {return}
-        if let contentSuccess = updateContentOperation?.success,
-            let avatarSuccess = updateAvatarOperation?.success {
-            success = contentSuccess && avatarSuccess
-        } else {
-            success = false
+        var success = true
+        if let op = updateContentOperation {
+            if op.success == nil || op.success == false {
+                success = false
+            }
         }
+        if let op = updateAvatarOperation {
+            if op.success == nil || op.success == false {
+                success = false
+            }
+        }
+        self.success = success
         error = updateContentOperation?.error ?? updateAvatarOperation?.error
         finish()
     }
@@ -159,7 +171,7 @@ class UpdateMyAvatarFlowOperaion: SimpleAsynchronousOperation, FailableOperation
     }
 
     private func uploadImageData(_ data: Data, withMetadata metadata: FileMetadata, to destination: UploadDestination) {
-        let op = UploadMyAvatarOperation(destination: destination, imageData: data, imageMetadata: metadata)
+        let op = UploadMyAvatarOperation(destination: destination, imageData: data, imageMetadata: metadata, session: session)
         op.completionBlock = {[weak self] in
             self?.didUpload()
         }
@@ -192,20 +204,27 @@ class UploadMyAvatarOperation: AlamofireAPIAccessOperation {
     let destination: UploadDestination
     let imageData: Data
     let imageMetadata: FileMetadata
+    let session: UserSession
     
-    init(destination: UploadDestination, imageData: Data, imageMetadata: FileMetadata) {
+    init(destination: UploadDestination, imageData: Data, imageMetadata: FileMetadata, session: UserSession) {
         self.destination = destination
         self.imageData = imageData
         self.imageMetadata = imageMetadata
+        self.session = session
     }
     
     override func prepareDataRequest() throws -> DataRequest {
+        let header = session.addingAuthorizationToken(to:
+            ["Content-Type": imageMetadata.mimeType,
+            "Content-Length": String(imageMetadata.size)])
         return Alamofire.upload(imageData,
                                 to: destination.url,
                                 method: .put,
-                                headers: [
-                                    "Content-Type": imageMetadata.mimeType,
-                                    "Content-Length": String(imageMetadata.size)])
+                                headers: header)
+    }
+    
+    override func handleClientError(with response: HTTPURLResponse) throws {
+        try super.handleClientError(with: response)
     }
 }
 

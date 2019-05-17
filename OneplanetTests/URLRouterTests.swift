@@ -198,4 +198,21 @@ class URLRouterTests: XCTestCase {
         
         XCTAssertEqual(url, URL(string: "https://oneplanet.page.link/hello")!)
     }
+    
+    func testMagicLink() {
+        let router = URLRouter()
+        var url: URL?
+        var link: URL?
+        router.add("/") { (params) -> Bool in
+            url = params[URLRouter.Keys.url] as? URL
+            link = URL(string: params["link"] as? String ?? "")
+            return true
+        }
+
+        let magicLink = URL(string: "https://theonecollection.page.link/?link=https://api.oneplanet-official.com/login/email?code%3Dfa7c8b531eae45b0a2fc9ec52ab8865d&isi=1410049209&ibi=tw.com.mores.theonecollection.Oneplanet&cid=3903585605462674524&_fpb=CKwGEPcCGgVlbi1VUw==&_cpt=cpit&_iumenbl=1&_iumchkactval=1&_plt=1508&_uit=1927&_cpb=1")!
+        router.handle(magicLink)
+
+        XCTAssertEqual(url, magicLink)
+        XCTAssertEqual(link?.query, "code=fa7c8b531eae45b0a2fc9ec52ab8865d")
+    }
 }

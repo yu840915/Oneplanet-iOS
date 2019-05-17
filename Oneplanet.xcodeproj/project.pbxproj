@@ -81,6 +81,8 @@
 		E0837EF5228022C400B13BAF /* TwitterLogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0837EF4228022C400B13BAF /* TwitterLogIn.swift */; };
 		E0837EF722816B0D00B13BAF /* ImageAttachmentUploadFlowOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0837EF622816B0D00B13BAF /* ImageAttachmentUploadFlowOperation.swift */; };
 		E089F70D228E9ECB003E77DF /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089F70C228E9ECB003E77DF /* AvatarView.swift */; };
+		E089F70F228EB16A003E77DF /* SectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E089F70E228EB16A003E77DF /* SectionHeaderView.xib */; };
+		E089F711228EB18F003E77DF /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E089F710228EB18F003E77DF /* SectionHeaderView.swift */; };
 		E08C3129227817680013DD0C /* AuthActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08C3128227817680013DD0C /* AuthActions.swift */; };
 		E08C312B227826850013DD0C /* EmailInputValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08C312A227826850013DD0C /* EmailInputValidatorTests.swift */; };
 		E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */; };
@@ -193,6 +195,8 @@
 		E0837EF4228022C400B13BAF /* TwitterLogIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterLogIn.swift; sourceTree = "<group>"; };
 		E0837EF622816B0D00B13BAF /* ImageAttachmentUploadFlowOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAttachmentUploadFlowOperation.swift; sourceTree = "<group>"; };
 		E089F70C228E9ECB003E77DF /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+		E089F70E228EB16A003E77DF /* SectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionHeaderView.xib; sourceTree = "<group>"; };
+		E089F710228EB18F003E77DF /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		E08C3128227817680013DD0C /* AuthActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthActions.swift; sourceTree = "<group>"; };
 		E08C312A227826850013DD0C /* EmailInputValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailInputValidatorTests.swift; sourceTree = "<group>"; };
 		E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryImagePickerViewController.swift; sourceTree = "<group>"; };
@@ -266,6 +270,8 @@
 				E089F70C228E9ECB003E77DF /* AvatarView.swift */,
 				E030E4D6228BC3E90084D383 /* User.swift */,
 				E0FF7985228D51E800F61318 /* SettingsTableViewController.swift */,
+				E089F70E228EB16A003E77DF /* SectionHeaderView.xib */,
+				E089F710228EB18F003E77DF /* SectionHeaderView.swift */,
 				E030E4D1228AB0B60084D383 /* IDHeaderView.xib */,
 				E030E4D3228AB1ED0084D383 /* IDHeaderView.swift */,
 			);
@@ -579,6 +585,7 @@
 				E05BB263226D5D2A00721F20 /* Main.storyboard in Resources */,
 				E06F5000227ABE1C0067DAE4 /* OpenSDK1.8.0_NoPay in Resources */,
 				E0FF7980228D398300F61318 /* Auction.storyboard in Resources */,
+				E089F70F228EB16A003E77DF /* SectionHeaderView.xib in Resources */,
 				E030E4D2228AB0B70084D383 /* IDHeaderView.xib in Resources */,
 				E0FF797E228D38CE00F61318 /* Post.storyboard in Resources */,
 				E0FF7982228D3A3D00F61318 /* Notification.storyboard in Resources */,
@@ -780,6 +787,7 @@
 				E03C329E226D772400C32FD7 /* Logger.swift in Sources */,
 				E03C32B3226D925100C32FD7 /* ServiceConstants.swift in Sources */,
 				E06F4FFA22782C8C0067DAE4 /* InputValidators.swift in Sources */,
+				E089F711228EB18F003E77DF /* SectionHeaderView.swift in Sources */,
 				E07276EB2274B515001239C0 /* WebViewController.swift in Sources */,
 				E06589C622705B4F00C9E4E6 /* PhotoGridCollectionViewController.swift in Sources */,
 				E07277012277EE3D001239C0 /* AppConfiguration.swift in Sources */,

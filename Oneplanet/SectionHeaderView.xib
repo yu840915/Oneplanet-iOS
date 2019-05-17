@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB" customClass="SectionHeaderView" customModule="Oneplanet" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UFG-Vd-s1g" userLabel="Separator">
+                    <rect key="frame" x="12" y="0.0" width="402" height="0.5"/>
+                    <color key="backgroundColor" name="dark grey"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="Z6u-Bi-utU"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16o-7b-B1y" userLabel="Title Label">
+                    <rect key="frame" x="12" y="11.5" width="37" height="17"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                    <color key="textColor" name="default placeholder"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="UFG-Vd-s1g" secondAttribute="trailing" id="321-uH-O1c"/>
+                <constraint firstItem="16o-7b-B1y" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="6H3-QZ-of6"/>
+                <constraint firstItem="UFG-Vd-s1g" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="LEg-MK-Bik"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="16o-7b-B1y" secondAttribute="trailing" constant="12" id="aDH-rm-Ck5"/>
+                <constraint firstItem="16o-7b-B1y" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="vU0-Pk-K8F"/>
+                <constraint firstItem="UFG-Vd-s1g" firstAttribute="leading" secondItem="16o-7b-B1y" secondAttribute="leading" id="zLr-Ba-FXb"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="separator" destination="UFG-Vd-s1g" id="jl3-Yk-t66"/>
+                <outlet property="titleLabel" destination="16o-7b-B1y" id="7n2-GK-TPs"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="dark grey">
+            <color red="0.29019607843137257" green="0.29019607843137257" blue="0.29019607843137257" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="default placeholder">
+            <color red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

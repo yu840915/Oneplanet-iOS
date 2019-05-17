@@ -118,6 +118,9 @@ class LocalizedMessageFormats {//msgf_
     var resendVerificationEmail: String {
         return NSLocalizedString("msgf_resend_verification_email", comment: "")
     }
+    var version: String {
+        return "Oneplanet v%@"
+    }
 }
 class LocalizedPhrase { //ph_
     fileprivate init() {}

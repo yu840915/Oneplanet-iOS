@@ -10,12 +10,14 @@ import UIKit
 
 class SettingsTableViewController: UITableViewController, UserSessionDepending {
     
+    @IBOutlet weak var versionLabel: UILabel!
     var sections: [Section] = [Section(type: .logout, rows: [.logOut])]
     var userSession: UserSession!
     @IBOutlet weak var dismissButtonItem: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.register(SectionHeaderView.defaultNib(), forHeaderFooterViewReuseIdentifier: ReuseID.header)
         localizeTitles()
         prepareSections()
     }
@@ -43,8 +45,13 @@ class SettingsTableViewController: UITableViewController, UserSessionDepending {
     private func localizeTitles() {
         title = Localized.titles.more
         dismissButtonItem.title = Localized.titles.cancel
+        versionLabel.text = String(format: Localized.messageFormats.version, ServiceConstants.appVersionString)
     }
 
+    @IBAction func showEmailComposer(_ sender: Any) {
+        UIApplication.shared.open(URL(string: "message://")!, options: [:], completionHandler: nil)
+    }
+    
     @IBAction func exit(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
@@ -60,10 +67,21 @@ class SettingsTableViewController: UITableViewController, UserSessionDepending {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: ReuseID.cell, for: indexPath)
         let row = sections[indexPath.section].rows[indexPath.row]
         cell.textLabel?.text = row.displayName
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let result = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReuseID.header) as! SectionHeaderView
+        result.titleLabel.text = sections[section].displayName
+        result.separator.isHidden =  section == 0
+        return result
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -76,7 +94,7 @@ class SettingsTableViewController: UITableViewController, UserSessionDepending {
     
     private func showLogOutAlert() {
         let alert = UIAlertController(title: "Log Out?", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Log Out", style: .default, handler: {[weak self] (_) in
+        alert.addAction(UIAlertAction(title: Localized.titles.logOut, style: .default, handler: {[weak self] (_) in
             self?.userSession.deactivate()
         }))
         alert.addAction(UIAlertAction(title: Localized.titles.cancel, style: .cancel, handler: nil))
@@ -91,6 +109,11 @@ class SettingsTableViewController: UITableViewController, UserSessionDepending {
 }
 
 extension SettingsTableViewController {
+    struct ReuseID {
+        static let cell = "cell"
+        static let header = "header"
+    }
+    
     enum ActionRow {
         case logOut
         case editProfile
@@ -129,5 +152,6 @@ extension SettingsTableViewController {
             self.type = type
             self.rows = rows
         }
+        var displayName: String { return type.displayName }
     }
 }

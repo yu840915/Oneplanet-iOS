@@ -31,6 +31,7 @@
 
 "msg_email_verification_instruction" = "电子邮件已发送。请单击电子邮件中的链接完成登录。";
 "msg_add_avatar_prompt" = "添加个人资料照片，以便你的朋友知道这就是你。";
+"msg_open_mail_app_prompt" = "单击此处打开您的电子邮件";
 
 "msgf_accept_tos" = "注册或登录即表示你同意我们的%@";
 "msgf_resend_verification_email" = "你没有收到电子邮件？%@";

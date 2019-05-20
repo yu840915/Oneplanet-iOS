@@ -31,6 +31,7 @@
 
 "msg_email_verification_instruction" = "電子郵件已發送。請單擊電子郵件中的鏈接以完成登入。";
 "msg_add_avatar_prompt" = "添加個人資料照片，以便你的朋友知道這就是你。";
+"msg_open_mail_app_prompt" = "按此處開啟你的電子信箱";
 
 "msgf_accept_tos" = "註冊或登錄即表示你同意我們的%@";
 "msgf_resend_verification_email" = "你沒有收到電子郵件？%@";

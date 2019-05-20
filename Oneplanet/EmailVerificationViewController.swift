@@ -12,6 +12,7 @@ class EmailVerificationViewController: UIViewController, EmailAuthFlowStep {
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var actionTextView: UITextView!
     @IBOutlet weak var exitButtonItem: UIBarButtonItem!
+    @IBOutlet weak var openEmailButton: UIButton!
     
     var emailAuthCredential: EmailAuthCredential!
     var authorizationCompletion: ((UserSession) -> ())!
@@ -24,6 +25,8 @@ class EmailVerificationViewController: UIViewController, EmailAuthFlowStep {
         NavigationBarStyle.translucent.configure(navigationController!.navigationBar)
         navigationController!.navigationBar.barStyle = .blackTranslucent
         exitButtonItem.title = Localized.titles.back
+        openEmailButton.setTitle(Localized.messages.openMailAppPrompt, for: .normal)
+        openEmailButton.titleLabel?.textAlignment = .center
         prepareMessageLabel()
         prepareActionTextView()
         registerEvents()
@@ -93,6 +96,10 @@ class EmailVerificationViewController: UIViewController, EmailAuthFlowStep {
     
     @IBAction func exit(_ sender: UIBarButtonItem) {
         navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func openMailApp(_ sender: UIButton) {
+        UIApplication.shared.open(URL(string: "message://")!, options: [:], completionHandler: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

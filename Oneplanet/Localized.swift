@@ -111,6 +111,9 @@ class LocalizedMessages {//msg_
     var addAvatarPrompt: String {
         return NSLocalizedString("msg_add_avatar_prompt", comment: "")
     }
+    var openMailAppPrompt: String {
+        return NSLocalizedString("msg_open_mail_app_prompt", comment: "")
+    }
 }
 
 class LocalizedMessageFormats {//msgf_

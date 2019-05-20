@@ -31,6 +31,7 @@
 
 "msg_email_verification_instruction" = "The email has been sent. Please click the link in the email to complete the login.";
 "msg_add_avatar_prompt" = "Add a profile photo so your friends know it’s you";
+"msg_open_mail_app_prompt" = "Click here to open your email address";
 
 "msgf_accept_tos" = "By signing up or login, you agree to our %@.";
 "msgf_resend_verification_email" = "You did not receive the email? %@.";

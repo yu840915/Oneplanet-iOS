@@ -74,8 +74,14 @@ class EmailVerificationViewController: UIViewController, EmailAuthFlowStep {
         let op = resendEmailOperation!
         if op.success == true {
             logger.info("Did send verification link")
+            let alert = UIAlertController(title: Localized.titles.mailSent, message: Localized.messages.mailResent, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: Localized.titles.ok, style: .default, handler: nil))
+            present(alert, animated: true, completion: nil)
         } else {
             resendEmailOperation = nil
+            if let error = op.error {
+                showAlert(with: error)
+            }
         }
     }
     

@@ -25,6 +25,7 @@
 "tl_back" = "返回";
 "tl_more" = "More";
 "tl_account" = "Account";
+"tl_mail_sent" = "郵件已寄出";
 
 "pl_email" = "電子郵件地址";
 "pl_nickname" = "暱稱";
@@ -32,6 +33,7 @@
 "msg_email_verification_instruction" = "電子郵件已發送。請單擊電子郵件中的鏈接以完成登入。";
 "msg_add_avatar_prompt" = "添加個人資料照片，以便你的朋友知道這就是你。";
 "msg_open_mail_app_prompt" = "按此處開啟你的電子信箱";
+"msg_mail_resent" = "已重新發送電子郵件";
 
 "msgf_accept_tos" = "註冊或登錄即表示你同意我們的%@";
 "msgf_resend_verification_email" = "你沒有收到電子郵件？%@";

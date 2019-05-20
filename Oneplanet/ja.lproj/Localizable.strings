@@ -25,12 +25,14 @@
 "tl_back" = "戻る";
 "tl_more" = "More";
 "tl_account" = "Account";
+"tl_mail_sent" = "Mail Has Been Sent";
 
 "pl_email" = "メールアドレス";
 "pl_nickname" = "ニックネーム";
 
 "msg_email_verification_instruction" = "電子メールに送信しました。ログインするには、こちたのURLをクリックしてください。";
 "msg_add_avatar_prompt" = "友達があなただとわかるようにプロフィール写真を登録してください。";
+"msg_mail_resent" = "Mail has been resent successfully";
 
 "msgf_accept_tos" = "アカウントを作成することによって、%@に同意することになります。";
 "msgf_resend_verification_email" = "電子メールがみつかりませんか？%@.";

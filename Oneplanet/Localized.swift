@@ -80,6 +80,9 @@ class LocalizedTitles {//tl_
         return "MY"
 //        return NSLocalizedString("tl_me", comment: "")
     }
+    var mailSent: String {
+        return NSLocalizedString("tl_mail_sent", comment: "")
+    }
 }
 
 class LocalizedPlaceholder {//pl_
@@ -113,6 +116,9 @@ class LocalizedMessages {//msg_
     }
     var openMailAppPrompt: String {
         return NSLocalizedString("msg_open_mail_app_prompt", comment: "")
+    }
+    var mailResent: String {
+        return NSLocalizedString("msg_mail_resent", comment: "")
     }
 }
 

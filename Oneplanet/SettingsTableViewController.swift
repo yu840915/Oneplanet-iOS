@@ -114,7 +114,9 @@ class SettingsTableViewController: UITableViewController, UserSessionDepending {
                 vc.request = URLRequest(url: ServiceURLs.biddingTerms)
                 vc.title = ActionRow.biddingTerms.displayName
             } else {
-                vc.request = URLRequest(url: ServiceURLs.terms)
+                var req = URLRequest(url: ServiceURLs.terms)
+                req.addValue(Localized.languageCode, forHTTPHeaderField: Localized.acceptLanguageKey)
+                vc.request = req
                 vc.title = ActionRow.terms.displayName
             }
         }

@@ -9,7 +9,8 @@
 import Foundation
 
 class Localized {
-    static let acceptLanguageHeader: [String: String] = ["Accept-Language": languageCode]
+    static let acceptLanguageHeader: [String: String] = [acceptLanguageKey: languageCode]
+    static let acceptLanguageKey = "Accept-Language"
     static let languageCode: String = NSLocalizedString("iso_code", comment: "")
     static let titles = LocalizedTitles()
     static let warnings = LocalizedWarnings()

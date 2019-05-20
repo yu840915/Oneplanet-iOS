@@ -134,7 +134,7 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
         let attrStr = NSMutableAttributedString(string: text, attributes: [.foregroundColor : ColorPalette.defaultText, .paragraphStyle: paragraphStyle])
-        attrStr.addAttributes([.link : "https://www.google.com"], range: tosRange)
+        attrStr.addAttributes([.link : ServiceURLs.terms], range: tosRange)
         termsTextView.attributedText = attrStr
         termsTextView.linkTextAttributes = [
             .foregroundColor : ColorPalette.defaultText,
@@ -143,7 +143,9 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
     }
     
     fileprivate func showTermsPage(with url: URL) {
-        performSegue(withIdentifier: SegueID.showTerms, sender: URLRequest(url: url))
+        var req = URLRequest(url: url)
+        req.addValue(Localized.languageCode, forHTTPHeaderField: Localized.acceptLanguageKey)
+        performSegue(withIdentifier: SegueID.showTerms, sender: req)
     }
     
     private func updateViewForInputChange() {

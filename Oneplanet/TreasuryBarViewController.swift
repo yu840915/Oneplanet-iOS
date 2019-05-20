@@ -12,6 +12,7 @@ class TreasuryBarViewController: UIViewController {
 
     @IBOutlet var treasuryButtons: [UIButton]!
     @IBOutlet weak var scorebarBackImage: UIImageView!
+    @IBOutlet weak var scoreMaskView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,7 @@ class TreasuryBarViewController: UIViewController {
         scorebarBackImage.layer.shadowRadius = 4
         scorebarBackImage.layer.shadowOffset = .zero
         scorebarBackImage.layer.shadowOpacity = 1.0
+        scoreMaskView.layer.cornerRadius = 5.0
     }
     
 

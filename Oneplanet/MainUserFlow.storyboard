@@ -24,33 +24,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NOB-3B-s8N">
-                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
-                                <subviews>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L0D-It-Rgw">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="Soa-Zp-Aww"/>
-                                        </constraints>
-                                        <connections>
-                                            <segue destination="uea-Jj-g8R" kind="embed" id="Ga5-a3-L8n"/>
-                                        </connections>
-                                    </containerView>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LqQ-Kw-QYt">
-                                        <rect key="frame" x="0.0" y="40" width="320" height="508"/>
-                                        <connections>
-                                            <segue destination="LZk-cJ-d3T" kind="embed" id="Of2-hq-azq"/>
-                                        </connections>
-                                    </containerView>
-                                </subviews>
-                            </stackView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LqQ-Kw-QYt">
+                                <rect key="frame" x="0.0" y="60" width="320" height="508"/>
+                                <connections>
+                                    <segue destination="LZk-cJ-d3T" kind="embed" id="Of2-hq-azq"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L0D-It-Rgw">
+                                <rect key="frame" x="0.0" y="20" width="320" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Soa-Zp-Aww"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="uea-Jj-g8R" kind="embed" id="Ga5-a3-L8n"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" name="grey background"/>
                         <constraints>
-                            <constraint firstItem="NOB-3B-s8N" firstAttribute="width" secondItem="rJp-IB-qYG" secondAttribute="width" id="1xr-V1-h22"/>
-                            <constraint firstItem="NOB-3B-s8N" firstAttribute="centerX" secondItem="rJp-IB-qYG" secondAttribute="centerX" id="4aM-oz-BRH"/>
-                            <constraint firstItem="NOB-3B-s8N" firstAttribute="top" secondItem="AX7-kr-RYD" secondAttribute="top" id="JfX-Ya-gbW"/>
-                            <constraint firstAttribute="bottom" secondItem="NOB-3B-s8N" secondAttribute="bottom" id="qm4-oB-F4o"/>
+                            <constraint firstItem="L0D-It-Rgw" firstAttribute="width" secondItem="rJp-IB-qYG" secondAttribute="width" id="5KJ-Mw-4zN"/>
+                            <constraint firstAttribute="bottom" secondItem="LqQ-Kw-QYt" secondAttribute="bottom" id="JnH-J0-lCH"/>
+                            <constraint firstItem="LqQ-Kw-QYt" firstAttribute="width" secondItem="rJp-IB-qYG" secondAttribute="width" id="OiB-B1-D2A"/>
+                            <constraint firstItem="LqQ-Kw-QYt" firstAttribute="centerX" secondItem="AX7-kr-RYD" secondAttribute="centerX" id="Z7l-Cr-Mw3"/>
+                            <constraint firstItem="L0D-It-Rgw" firstAttribute="centerX" secondItem="AX7-kr-RYD" secondAttribute="centerX" id="fks-ck-Pci"/>
+                            <constraint firstItem="L0D-It-Rgw" firstAttribute="top" secondItem="AX7-kr-RYD" secondAttribute="top" id="jrk-Ec-y6P"/>
+                            <constraint firstItem="LqQ-Kw-QYt" firstAttribute="top" secondItem="L0D-It-Rgw" secondAttribute="bottom" id="vif-j5-kpp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AX7-kr-RYD"/>
                     </view>
@@ -210,6 +208,7 @@
                         <viewLayoutGuide key="safeArea" id="5J8-aA-pND"/>
                     </view>
                     <connections>
+                        <outlet property="scoreMaskView" destination="hz6-xI-wR4" id="Ltg-Sf-5Lc"/>
                         <outlet property="scorebarBackImage" destination="Vez-Nh-4Ua" id="BHF-Ky-GAC"/>
                         <outletCollection property="treasuryButtons" destination="wVJ-lV-SXm" collectionClass="NSMutableArray" id="tO9-ZS-YHq"/>
                         <outletCollection property="treasuryButtons" destination="I92-QH-Ey3" collectionClass="NSMutableArray" id="dJd-DH-O4C"/>

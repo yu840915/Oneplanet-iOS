@@ -11,6 +11,7 @@ import UIKit
 class TreasuryBarViewController: UIViewController {
 
     @IBOutlet var treasuryButtons: [UIButton]!
+    @IBOutlet weak var scorebarBackImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,10 @@ class TreasuryBarViewController: UIViewController {
             button.imageView?.layer.shadowOpacity = 1.0
             button.imageView?.clipsToBounds = false
         }
+        scorebarBackImage.layer.shadowColor = #colorLiteral(red: 0.3725490196, green: 0.8235294118, blue: 0.8078431373, alpha: 1)
+        scorebarBackImage.layer.shadowRadius = 4
+        scorebarBackImage.layer.shadowOffset = .zero
+        scorebarBackImage.layer.shadowOpacity = 1.0
     }
     
 

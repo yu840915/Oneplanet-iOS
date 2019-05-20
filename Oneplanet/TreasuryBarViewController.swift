@@ -32,7 +32,6 @@ class TreasuryBarViewController: UIViewController {
         scoreMaskView.layer.cornerRadius = 5.0
     }
     
-
     /*
     // MARK: - Navigation
 

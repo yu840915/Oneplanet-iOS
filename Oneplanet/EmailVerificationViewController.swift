@@ -92,7 +92,7 @@ class EmailVerificationViewController: UIViewController, EmailAuthFlowStep {
     }
     
     @IBAction func exit(_ sender: UIBarButtonItem) {
-        navigationController?.popToRootViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

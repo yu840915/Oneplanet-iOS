@@ -26,6 +26,12 @@
 "tl_more" = "More";
 "tl_account" = "Account";
 "tl_mail_sent" = "郵件已寄出";
+"tl_user_id" = "User id";
+"tl_email" = "Email";
+"tl_gender" = "Gender";
+"tl_male" = "Male";
+"tl_female" = "Female";
+"tl_private_info" = "Private Information";
 
 "pl_email" = "電子郵件地址";
 "pl_nickname" = "暱稱";
@@ -58,6 +64,7 @@
 "ph_edit_profile" = "Edit Profile";
 "ph_block_list" = "Blocked Account";
 "ph_privacy_and_security" = "Privacy and Security";
+"ph_not_specified" = "Not Specified";
 
 "no_posts" = "No Posts Yet";
 

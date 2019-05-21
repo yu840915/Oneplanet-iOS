@@ -84,6 +84,27 @@ class LocalizedTitles {//tl_
     var mailSent: String {
         return NSLocalizedString("tl_mail_sent", comment: "")
     }
+    var nickname: String {
+        return Localized.placeholder.nickname
+    }
+    var userId: String {
+        return NSLocalizedString("tl_user_id", comment: "")
+    }
+    var email: String {
+        return NSLocalizedString("tl_email", comment: "")
+    }
+    var gender: String {
+        return NSLocalizedString("tl_gender", comment: "")
+    }
+    var male: String {
+        return NSLocalizedString("tl_male", comment: "")
+    }
+    var female: String {
+        return NSLocalizedString("tl_female", comment: "")
+    }
+    var privateInformation: String {
+        return NSLocalizedString("tl_private_info", comment: "")
+    }
 }
 
 class LocalizedPlaceholder {//pl_
@@ -196,6 +217,9 @@ class LocalizedPhrase { //ph_
     }
     var privacyAndSecurity: String {
         return NSLocalizedString("ph_privacy_and_security", comment: "")
+    }
+    var notSpecified: String {
+        return NSLocalizedString("ph_not_specified", comment: "")
     }
 }
 

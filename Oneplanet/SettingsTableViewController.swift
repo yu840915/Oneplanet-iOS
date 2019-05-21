@@ -74,7 +74,7 @@ class SettingsTableViewController: UITableViewController, UserSessionDepending {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        return 50
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -86,7 +86,9 @@ class SettingsTableViewController: UITableViewController, UserSessionDepending {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch sections[indexPath.section].rows[indexPath.row] {
-        case .editProfile, .blockList: break
+        case .editProfile:
+            performSegue(withIdentifier: SegueID.editProfile, sender: nil)
+        case .blockList: break
         case .biddingTerms:
             performSegue(withIdentifier: SegueID.showBiddingTerms, sender: nil)
         case .terms:
@@ -120,6 +122,9 @@ class SettingsTableViewController: UITableViewController, UserSessionDepending {
                 vc.title = ActionRow.terms.displayName
             }
         }
+        if let vc = segue.destination as? UserSessionDepending {
+            vc.userSession = userSession
+        }
     }
 
 }
@@ -132,6 +137,7 @@ extension SettingsTableViewController {
     struct SegueID {
         static let showTerms = "showTerms"
         static let showBiddingTerms = "showBiddingTerms"
+        static let editProfile = "editProfile"
     }
     
     enum ActionRow {

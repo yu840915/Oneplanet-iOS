@@ -62,6 +62,7 @@ class MyProfile: Decodable, UserProfileDisplayable {
     let nickname: String
     fileprivate(set) var avatar: WebImageInfo?
     var race: Race?
+    let gender: Gender = .unknown
     enum CodingKeys: String, CodingKey {
         case id
         case nickname = "username"
@@ -77,6 +78,17 @@ class MyProfile: Decodable, UserProfileDisplayable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(String.self, forKey: .id)
         nickname = try container.decodeIfPresent(String.self, forKey: .nickname) ?? ""
+    }
+}
+
+enum Gender {
+    case unknown, male, female
+    var displayName: String {
+        switch self {
+        case .unknown: return Localized.phrases.notSpecified
+        case .male: return Localized.titles.male
+        case .female: return Localized.titles.female
+        }
     }
 }
 

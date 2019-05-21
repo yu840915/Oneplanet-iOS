@@ -29,6 +29,12 @@ class ProfileEditorTableViewController: UITableViewController, UserSessionDepend
     @IBOutlet weak var userIdField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var genderField: UITextField!
+    @IBOutlet var pickerView: UIPickerView!
+    @IBOutlet var pickerToolBar: UIToolbar!
+    @IBOutlet weak var cancelItem: UIBarButtonItem!
+    @IBOutlet weak var genderTitleItem: UIBarButtonItem!
+    @IBOutlet weak var doneItem: UIBarButtonItem!
+    
     fileprivate var profileDraft: ProfileDraft!
     fileprivate var pickImageOperation: PickImageOperation?
     fileprivate var getAvatarOperation: DownloadImageOperaion?
@@ -46,6 +52,15 @@ class ProfileEditorTableViewController: UITableViewController, UserSessionDepend
                 self?.updateViewsForDraft()
             }
         }
+        
+        UIPickerView.appearance(whenContainedInInstancesOf: [UIView.self]).backgroundColor = .clear
+        genderTitleItem.setTitleTextAttributes([.font : UIFont.systemFont(ofSize: 17)], for: .normal)
+        genderTitleItem.isEnabled = false
+        [cancelItem, doneItem].forEach{
+            $0.setTitleTextAttributes([.font : UIFont.systemFont(ofSize: 17, weight: .semibold)], for: .normal)
+        }
+        genderField.inputView = pickerView
+        genderField.inputAccessoryView = pickerToolBar
         localizeTitles()
         getAvatar()
         updateViewsForSession()
@@ -66,6 +81,9 @@ class ProfileEditorTableViewController: UITableViewController, UserSessionDepend
         privateInfoLabel.text = Localized.titles.privateInformation
         genderLabel.text = Localized.titles.gender
         emailLabel.text = Localized.titles.email
+        cancelItem.title = Localized.titles.cancel
+        genderTitleItem.title = Localized.titles.gender
+        doneItem.title = Localized.titles.done
     }
     
     @IBAction func updateNickname(_ sender: UITextField) {
@@ -83,6 +101,17 @@ class ProfileEditorTableViewController: UITableViewController, UserSessionDepend
 
     @IBAction func tapToEndEditing(_ sender: Any) {
         view.endEditing(false)
+    }
+    
+    @IBAction func cancelGenderPicking(_ sender: UIBarButtonItem) {
+        view.endEditing(false)
+        updateViewsForDraft()
+    }
+    
+    @IBAction func commitPickedGender(_ sender: UIBarButtonItem) {
+        view.endEditing(false)
+        let row = pickerView.selectedRow(inComponent: 0)
+        profileDraft.gender = Gender.options[row]
     }
 }
 
@@ -190,7 +219,12 @@ fileprivate extension ProfileEditorTableViewController {
 
 extension ProfileEditorTableViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        return textField == nicknameField
+        if textField === genderField {
+            if let row = Gender.options.index(of: profileDraft.gender) {
+                pickerView.selectRow(row, inComponent: 0, animated: false)
+            }
+        }
+        return true
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -207,6 +241,7 @@ extension ProfileEditorTableViewController: UITextFieldDelegate {
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard textField == nicknameField else { return false }
         let result = ((textField.text ?? "") as NSString).replacingCharacters(in: range, with: string)
         if result.isEmpty {
             return true
@@ -220,5 +255,23 @@ extension ProfileEditorTableViewController: UITextFieldDelegate {
         } catch _  {
             return false
         }
+    }
+}
+
+extension ProfileEditorTableViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return Gender.options.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        return NSAttributedString(string: Gender.options[row].displayName, attributes: [.foregroundColor : ColorPalette.defaultText])
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        genderField.text = Gender.options[row].displayName
     }
 }

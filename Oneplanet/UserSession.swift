@@ -157,6 +157,7 @@ enum Gender {
         case .female: return Localized.titles.female
         }
     }
+    static var options: [Gender] = [.unknown, .male, .female]
 }
 
 class GuestProfile: MyProfile {

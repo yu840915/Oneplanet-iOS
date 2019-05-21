@@ -690,7 +690,7 @@
                                                     </constraints>
                                                     <color key="textColor" name="default text"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="L0a-wa-f85" id="7lq-Rs-LRQ"/>
                                                     </connections>
@@ -730,21 +730,56 @@
                     </tableView>
                     <connections>
                         <outlet property="avatarView" destination="rvq-Vh-P8k" id="9Qx-kc-ann"/>
+                        <outlet property="cancelItem" destination="c8t-xA-Er1" id="Rhr-4u-y9Y"/>
                         <outlet property="changeAvatarButton" destination="fJV-hP-aQf" id="QTO-zl-HUZ"/>
                         <outlet property="copyIdButton" destination="9Tg-yL-VLf" id="tto-FT-1Ok"/>
+                        <outlet property="doneItem" destination="Ue4-Gv-hzT" id="cxU-qe-i1J"/>
                         <outlet property="emailField" destination="5Pa-GU-tbs" id="yOY-Oy-o7l"/>
                         <outlet property="emailLabel" destination="Vet-2W-pPF" id="rn0-j9-oB2"/>
                         <outlet property="endEditingTap" destination="vZC-Dy-F7i" id="6rf-0J-BiA"/>
                         <outlet property="genderField" destination="kia-gw-OJT" id="Kkr-Yz-vvq"/>
                         <outlet property="genderLabel" destination="ca1-Ia-Jaw" id="ia1-hI-XfH"/>
+                        <outlet property="genderTitleItem" destination="42q-J5-235" id="Nhb-2e-7da"/>
                         <outlet property="nicknameField" destination="ZYL-A6-kaW" id="4de-oe-XzF"/>
                         <outlet property="nicknameLabel" destination="8kr-tW-Cqd" id="g9C-s2-JHp"/>
+                        <outlet property="pickerToolBar" destination="lAy-HO-gLU" id="iuV-VV-dNw"/>
+                        <outlet property="pickerView" destination="jku-ut-uHE" id="Q8U-Hm-KP8"/>
                         <outlet property="privateInfoLabel" destination="mdL-Ge-7f5" id="ghi-UZ-haK"/>
                         <outlet property="userIdField" destination="6k3-cs-EMZ" id="xhI-Vc-OoF"/>
                         <outlet property="userIdLabel" destination="ZvM-wV-olI" id="HHZ-xs-F3C"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hZ7-H4-YmX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pickerView contentMode="scaleToFill" id="jku-ut-uHE">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="216"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" name="dark grey"/>
+                    <connections>
+                        <outlet property="dataSource" destination="L0a-wa-f85" id="l77-9A-hwE"/>
+                        <outlet property="delegate" destination="L0a-wa-f85" id="fDv-et-h9e"/>
+                    </connections>
+                </pickerView>
+                <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="lAy-HO-gLU">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                    <items>
+                        <barButtonItem title="Item" id="c8t-xA-Er1" userLabel="Cancel Item">
+                            <connections>
+                                <action selector="cancelGenderPicking:" destination="L0a-wa-f85" id="YIy-a9-zWg"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="BlB-Sl-yIj"/>
+                        <barButtonItem title="Item" id="42q-J5-235" userLabel="Title Item"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="uQu-Gi-VB1"/>
+                        <barButtonItem title="Item" id="Ue4-Gv-hzT" userLabel="Done Item">
+                            <connections>
+                                <action selector="commitPickedGender:" destination="L0a-wa-f85" id="gc5-As-9SQ"/>
+                            </connections>
+                        </barButtonItem>
+                    </items>
+                    <color key="tintColor" name="default text"/>
+                    <color key="barTintColor" name="dark grey"/>
+                </toolbar>
                 <tapGestureRecognizer id="vZC-Dy-F7i">
                     <connections>
                         <action selector="tapToEndEditing:" destination="L0a-wa-f85" id="tN9-UU-MiM"/>
@@ -794,6 +829,9 @@
         </namedColor>
         <namedColor name="button green">
             <color red="0.37254901960784315" green="0.82352941176470584" blue="0.80784313725490198" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="dark grey">
+            <color red="0.29019607843137257" green="0.29019607843137257" blue="0.29019607843137257" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="default placeholder">
             <color red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

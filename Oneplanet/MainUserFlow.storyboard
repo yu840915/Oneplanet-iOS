@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Tyu-ui-b3F">
-    <device id="retina3_5" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -10,42 +10,45 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="DS-DIGIB.TTF">
+            <string>DS-Digital-Bold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--User Flow Main View Controller-->
         <scene sceneID="VQt-L5-3Tl">
             <objects>
                 <viewController id="Tyu-ui-b3F" customClass="UserFlowMainViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rJp-IB-qYG">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NOB-3B-s8N">
-                                <rect key="frame" x="0.0" y="20" width="320" height="460"/>
-                                <subviews>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L0D-It-Rgw">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="Soa-Zp-Aww"/>
-                                        </constraints>
-                                        <connections>
-                                            <segue destination="uea-Jj-g8R" kind="embed" id="Ga5-a3-L8n"/>
-                                        </connections>
-                                    </containerView>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LqQ-Kw-QYt">
-                                        <rect key="frame" x="0.0" y="40" width="320" height="420"/>
-                                        <connections>
-                                            <segue destination="LZk-cJ-d3T" kind="embed" id="Of2-hq-azq"/>
-                                        </connections>
-                                    </containerView>
-                                </subviews>
-                            </stackView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LqQ-Kw-QYt">
+                                <rect key="frame" x="0.0" y="60" width="320" height="508"/>
+                                <connections>
+                                    <segue destination="LZk-cJ-d3T" kind="embed" id="Of2-hq-azq"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L0D-It-Rgw">
+                                <rect key="frame" x="0.0" y="20" width="320" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Soa-Zp-Aww"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="uea-Jj-g8R" kind="embed" id="Ga5-a3-L8n"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" name="grey background"/>
                         <constraints>
-                            <constraint firstItem="NOB-3B-s8N" firstAttribute="width" secondItem="rJp-IB-qYG" secondAttribute="width" id="1xr-V1-h22"/>
-                            <constraint firstItem="NOB-3B-s8N" firstAttribute="centerX" secondItem="rJp-IB-qYG" secondAttribute="centerX" id="4aM-oz-BRH"/>
-                            <constraint firstItem="NOB-3B-s8N" firstAttribute="top" secondItem="AX7-kr-RYD" secondAttribute="top" id="JfX-Ya-gbW"/>
-                            <constraint firstAttribute="bottom" secondItem="NOB-3B-s8N" secondAttribute="bottom" id="qm4-oB-F4o"/>
+                            <constraint firstItem="L0D-It-Rgw" firstAttribute="width" secondItem="rJp-IB-qYG" secondAttribute="width" id="5KJ-Mw-4zN"/>
+                            <constraint firstAttribute="bottom" secondItem="LqQ-Kw-QYt" secondAttribute="bottom" id="JnH-J0-lCH"/>
+                            <constraint firstItem="LqQ-Kw-QYt" firstAttribute="width" secondItem="rJp-IB-qYG" secondAttribute="width" id="OiB-B1-D2A"/>
+                            <constraint firstItem="LqQ-Kw-QYt" firstAttribute="centerX" secondItem="AX7-kr-RYD" secondAttribute="centerX" id="Z7l-Cr-Mw3"/>
+                            <constraint firstItem="L0D-It-Rgw" firstAttribute="centerX" secondItem="AX7-kr-RYD" secondAttribute="centerX" id="fks-ck-Pci"/>
+                            <constraint firstItem="L0D-It-Rgw" firstAttribute="top" secondItem="AX7-kr-RYD" secondAttribute="top" id="jrk-Ec-y6P"/>
+                            <constraint firstItem="LqQ-Kw-QYt" firstAttribute="top" secondItem="L0D-It-Rgw" secondAttribute="bottom" id="vif-j5-kpp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AX7-kr-RYD"/>
                     </view>
@@ -125,16 +128,92 @@
             </objects>
             <point key="canvasLocation" x="459" y="99"/>
         </scene>
-        <!--View Controller-->
+        <!--Treasury Bar View Controller-->
         <scene sceneID="cdJ-gB-uEX">
             <objects>
-                <viewController id="uea-Jj-g8R" sceneMemberID="viewController">
+                <viewController id="uea-Jj-g8R" customClass="TreasuryBarViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aty-eY-lVU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="07Z-Bl-Hpe">
+                                <rect key="frame" x="12" y="15" width="96" height="10"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="1000" image="ui_scorebg" translatesAutoresizingMaskIntoConstraints="NO" id="Vez-Nh-4Ua">
+                                        <rect key="frame" x="0.0" y="0.0" width="96" height="10"/>
+                                    </imageView>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hz6-xI-wR4">
+                                        <rect key="frame" x="-6" y="0.0" width="96" height="10"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_score" translatesAutoresizingMaskIntoConstraints="NO" id="P9W-hm-Xoj">
+                                                <rect key="frame" x="6" y="0.0" width="96" height="10"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="10" id="CgX-8r-7DF"/>
+                                            <constraint firstAttribute="width" secondItem="P9W-hm-Xoj" secondAttribute="width" id="VCC-Im-rMf"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="P9W-hm-Xoj" firstAttribute="centerX" secondItem="Vez-Nh-4Ua" secondAttribute="centerX" id="1M4-sK-CEd"/>
+                                    <constraint firstItem="hz6-xI-wR4" firstAttribute="trailing" secondItem="Vez-Nh-4Ua" secondAttribute="leading" constant="90" id="25l-pX-HeC"/>
+                                    <constraint firstItem="Vez-Nh-4Ua" firstAttribute="centerX" secondItem="07Z-Bl-Hpe" secondAttribute="centerX" id="G0V-oT-o9s"/>
+                                    <constraint firstItem="hz6-xI-wR4" firstAttribute="centerY" secondItem="Vez-Nh-4Ua" secondAttribute="centerY" id="Ij8-kU-Svx"/>
+                                    <constraint firstItem="P9W-hm-Xoj" firstAttribute="centerY" secondItem="Vez-Nh-4Ua" secondAttribute="centerY" id="JIv-M9-G2T"/>
+                                    <constraint firstItem="Vez-Nh-4Ua" firstAttribute="height" secondItem="07Z-Bl-Hpe" secondAttribute="height" id="MO4-rs-spH"/>
+                                    <constraint firstItem="P9W-hm-Xoj" firstAttribute="top" secondItem="Vez-Nh-4Ua" secondAttribute="top" id="U8z-QR-Xes"/>
+                                    <constraint firstItem="P9W-hm-Xoj" firstAttribute="trailing" secondItem="Vez-Nh-4Ua" secondAttribute="trailing" id="cTO-gR-cLC"/>
+                                    <constraint firstItem="Vez-Nh-4Ua" firstAttribute="width" secondItem="07Z-Bl-Hpe" secondAttribute="width" id="d5S-NG-I65"/>
+                                    <constraint firstItem="Vez-Nh-4Ua" firstAttribute="centerY" secondItem="07Z-Bl-Hpe" secondAttribute="centerY" id="uYA-UR-bCO"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="C9u-a5-KxZ">
+                                <rect key="frame" x="93" y="6" width="215" height="28"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="900" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wVJ-lV-SXm" userLabel="Blue Gem Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="69" height="28"/>
+                                        <fontDescription key="fontDescription" name="DS-Digital-Bold" family="DS-Digital" pointSize="20"/>
+                                        <state key="normal" title="0000" image="ic_gem_nor">
+                                            <color key="titleColor" name="blue gem"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="900" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I92-QH-Ey3" userLabel="Blue Gem Button">
+                                        <rect key="frame" x="73" y="0.0" width="69" height="28"/>
+                                        <fontDescription key="fontDescription" name="DS-Digital-Bold" family="DS-Digital" pointSize="20"/>
+                                        <state key="normal" title="0000" image="ic_coin_nor">
+                                            <color key="titleColor" name="purple coin"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="900" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWD-vp-jYx" userLabel="Blue Gem Button">
+                                        <rect key="frame" x="146" y="0.0" width="69" height="28"/>
+                                        <fontDescription key="fontDescription" name="DS-Digital-Bold" family="DS-Digital" pointSize="20"/>
+                                        <state key="normal" title="0000" image="ic_key_nor">
+                                            <color key="titleColor" name="green key"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <color key="backgroundColor" name="grey background"/>
+                        <constraints>
+                            <constraint firstItem="07Z-Bl-Hpe" firstAttribute="centerY" secondItem="5J8-aA-pND" secondAttribute="centerY" id="Ci4-QP-B7r"/>
+                            <constraint firstItem="07Z-Bl-Hpe" firstAttribute="leading" secondItem="5J8-aA-pND" secondAttribute="leading" constant="12" id="E4A-fz-Lz4"/>
+                            <constraint firstItem="C9u-a5-KxZ" firstAttribute="leading" secondItem="07Z-Bl-Hpe" secondAttribute="trailing" constant="-15" id="Ibd-CZ-bqx"/>
+                            <constraint firstItem="5J8-aA-pND" firstAttribute="trailing" secondItem="C9u-a5-KxZ" secondAttribute="trailing" constant="12" id="mUo-xR-lX6"/>
+                            <constraint firstItem="C9u-a5-KxZ" firstAttribute="centerY" secondItem="5J8-aA-pND" secondAttribute="centerY" id="vhj-Wi-BDu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="5J8-aA-pND"/>
                     </view>
+                    <connections>
+                        <outlet property="scoreMaskView" destination="hz6-xI-wR4" id="Ltg-Sf-5Lc"/>
+                        <outlet property="scorebarBackImage" destination="Vez-Nh-4Ua" id="BHF-Ky-GAC"/>
+                        <outletCollection property="treasuryButtons" destination="wVJ-lV-SXm" collectionClass="NSMutableArray" id="tO9-ZS-YHq"/>
+                        <outletCollection property="treasuryButtons" destination="I92-QH-Ey3" collectionClass="NSMutableArray" id="dJd-DH-O4C"/>
+                        <outletCollection property="treasuryButtons" destination="PWD-vp-jYx" collectionClass="NSMutableArray" id="yWe-AZ-lWY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RlV-kQ-fvF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -142,8 +221,22 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ic_coin_nor" width="28" height="28"/>
+        <image name="ic_gem_nor" width="28" height="28"/>
+        <image name="ic_key_nor" width="28" height="28"/>
+        <image name="ui_score" width="140" height="10"/>
+        <image name="ui_scorebg" width="140" height="10"/>
+        <namedColor name="blue gem">
+            <color red="0.0" green="0.60799998044967651" blue="0.86299997568130493" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="green key">
+            <color red="0.49411764705882355" green="0.82745098039215681" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="grey background">
             <color red="0.098039215686274508" green="0.098039215686274508" blue="0.098039215686274508" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="purple coin">
+            <color red="0.74117647058823533" green="0.062745098039215685" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

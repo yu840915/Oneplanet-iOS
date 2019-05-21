@@ -18,6 +18,7 @@ class SettingsTableViewController: UITableViewController, UserSessionDepending {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(SectionHeaderView.defaultNib(), forHeaderFooterViewReuseIdentifier: ReuseID.header)
+        navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
         localizeTitles()
         prepareSections()
     }
@@ -74,7 +75,7 @@ class SettingsTableViewController: UITableViewController, UserSessionDepending {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        return 50
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -86,7 +87,9 @@ class SettingsTableViewController: UITableViewController, UserSessionDepending {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch sections[indexPath.section].rows[indexPath.row] {
-        case .editProfile, .blockList: break
+        case .editProfile:
+            performSegue(withIdentifier: SegueID.editProfile, sender: nil)
+        case .blockList: break
         case .biddingTerms:
             performSegue(withIdentifier: SegueID.showBiddingTerms, sender: nil)
         case .terms:
@@ -114,9 +117,14 @@ class SettingsTableViewController: UITableViewController, UserSessionDepending {
                 vc.request = URLRequest(url: ServiceURLs.biddingTerms)
                 vc.title = ActionRow.biddingTerms.displayName
             } else {
-                vc.request = URLRequest(url: ServiceURLs.terms)
+                var req = URLRequest(url: ServiceURLs.terms)
+                req.addValue(Localized.languageCode, forHTTPHeaderField: Localized.acceptLanguageKey)
+                vc.request = req
                 vc.title = ActionRow.terms.displayName
             }
+        }
+        if let vc = segue.destination as? UserSessionDepending {
+            vc.userSession = userSession
         }
     }
 
@@ -130,6 +138,7 @@ extension SettingsTableViewController {
     struct SegueID {
         static let showTerms = "showTerms"
         static let showBiddingTerms = "showBiddingTerms"
+        static let editProfile = "editProfile"
     }
     
     enum ActionRow {

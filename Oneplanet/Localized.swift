@@ -9,7 +9,8 @@
 import Foundation
 
 class Localized {
-    static let acceptLanguageHeader: [String: String] = ["Accept-Language": languageCode]
+    static let acceptLanguageHeader: [String: String] = [acceptLanguageKey: languageCode]
+    static let acceptLanguageKey = "Accept-Language"
     static let languageCode: String = NSLocalizedString("iso_code", comment: "")
     static let titles = LocalizedTitles()
     static let warnings = LocalizedWarnings()
@@ -80,6 +81,39 @@ class LocalizedTitles {//tl_
         return "MY"
 //        return NSLocalizedString("tl_me", comment: "")
     }
+    var mailSent: String {
+        return NSLocalizedString("tl_mail_sent", comment: "")
+    }
+    var nickname: String {
+        return Localized.placeholder.nickname
+    }
+    var userId: String {
+        return NSLocalizedString("tl_user_id", comment: "")
+    }
+    var email: String {
+        return NSLocalizedString("tl_email", comment: "")
+    }
+    var gender: String {
+        return NSLocalizedString("tl_gender", comment: "")
+    }
+    var male: String {
+        return NSLocalizedString("tl_male", comment: "")
+    }
+    var female: String {
+        return NSLocalizedString("tl_female", comment: "")
+    }
+    var privateInformation: String {
+        return NSLocalizedString("tl_private_info", comment: "")
+    }
+    var facebook: String {
+        return "Facebook"
+    }
+    var twitter: String {
+        return "Twitter"
+    }
+    var wechat: String {
+        return "WeChat"
+    }
 }
 
 class LocalizedPlaceholder {//pl_
@@ -110,6 +144,12 @@ class LocalizedMessages {//msg_
     }
     var addAvatarPrompt: String {
         return NSLocalizedString("msg_add_avatar_prompt", comment: "")
+    }
+    var openMailAppPrompt: String {
+        return NSLocalizedString("msg_open_mail_app_prompt", comment: "")
+    }
+    var mailResent: String {
+        return NSLocalizedString("msg_mail_resent", comment: "")
     }
 }
 
@@ -186,6 +226,9 @@ class LocalizedPhrase { //ph_
     }
     var privacyAndSecurity: String {
         return NSLocalizedString("ph_privacy_and_security", comment: "")
+    }
+    var notSpecified: String {
+        return NSLocalizedString("ph_not_specified", comment: "")
     }
 }
 

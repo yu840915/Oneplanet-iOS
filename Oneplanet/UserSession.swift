@@ -16,6 +16,7 @@ class UserSession {
     }
     let bearerToken: String
     let profileDidUpdate = MulticastCallbackNode<()->()>()
+    let loginType: LoginType
     private(set) var profile: MyProfile? {
         didSet {
             profileDidUpdate.invokeEach{$0()}
@@ -24,9 +25,30 @@ class UserSession {
     var socialProfile: PublicProfile?
     private(set) var isActive = true
     let sessionBecomeInactiveObservers = MulticastCallbackNode<()->()>()
+    private(set) var updateProfileOperation: UpdateProfileOperation?
     
-    init(token: String) {
+    init(token: String, loginType: LoginType) {
         self.bearerToken = token
+        self.loginType = loginType
+    }
+    
+    func submitProfileChanges(with draft: ProfileDraft) {
+        updateProfileOperation?.cancel()
+        let op = UpdateProfileOperation(draft: draft, session: self)
+        op.completionBlock = {[weak self] in
+            self?.didSubmitProfileChanges()
+        }
+        updateProfileOperation = op
+        op.start()
+    }
+    
+    private func didSubmitProfileChanges() {
+        let op = updateProfileOperation!
+        updateProfileOperation = nil
+        if op.success == true {
+            let draft = op.draft
+            profile = MyProfile(id: profile!.id, nickname: draft.nickname, gender: draft.gender, avatar: profile!.avatar)
+        }
     }
     
     func updateProfile(_ profile: MyProfile) {
@@ -53,7 +75,50 @@ class UserSession {
     func deactivate() {
         guard isActive else { return }
         isActive = false
+        updateProfileOperation?.cancel()
+        updateProfileOperation = nil
         sessionBecomeInactiveObservers.invokeEach{$0()}
+    }
+}
+
+enum LoginType {
+    case email(String), facebook, twitter, wechat, unknown
+    
+    var displayName: String {
+        switch self {
+        case .email(let add): return add
+        case .facebook: return Localized.titles.facebook
+        case .twitter: return Localized.titles.twitter
+        case .wechat: return Localized.titles.wechat
+        case .unknown: return ""
+        }
+    }
+    var email: String? {
+        switch self {
+        case .email(let add): return add
+        default: return nil
+        }
+    }
+    var socialLoginType: String? {
+        switch self {
+        case .facebook: return "facebook"
+        case .twitter: return "twitter"
+        case .wechat: return "wechat"
+        default: return nil
+        }
+    }
+    
+    static func fromEmail(_ emailAdd: String) -> LoginType {
+        return .email(emailAdd)
+    }
+    
+    static func fromType(_ type: String) -> LoginType {
+        switch type {
+        case "facebook": return .facebook
+        case "twitter": return .twitter
+        case "wechat": return .wechat
+        default: return .unknown
+        }
     }
 }
 
@@ -62,22 +127,37 @@ class MyProfile: Decodable, UserProfileDisplayable {
     let nickname: String
     fileprivate(set) var avatar: WebImageInfo?
     var race: Race?
+    let gender: Gender
     enum CodingKeys: String, CodingKey {
         case id
         case nickname = "username"
     }
     
-    init(id: String, nickname: String, avatar: WebImageInfo?) {
+    init(id: String, nickname: String, gender: Gender = .unknown, avatar: WebImageInfo?) {
         self.id = id
         self.nickname = nickname
         self.avatar = avatar
+        self.gender = gender
     }
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(String.self, forKey: .id)
         nickname = try container.decodeIfPresent(String.self, forKey: .nickname) ?? ""
+        gender = .unknown
     }
+}
+
+enum Gender {
+    case unknown, male, female
+    var displayName: String {
+        switch self {
+        case .unknown: return Localized.phrases.notSpecified
+        case .male: return Localized.titles.male
+        case .female: return Localized.titles.female
+        }
+    }
+    static var options: [Gender] = [.unknown, .male, .female]
 }
 
 class GuestProfile: MyProfile {
@@ -114,8 +194,18 @@ class RestoreUserSessionOperation: Operation {
         guard let token = Preferences.accessToken.value else {
             return
         }
-        session = UserSession(token: token)
+        session = UserSession(token: token, loginType: restoreLoginType())
         session?.socialProfile = preparePublicProfileIfExists()
+    }
+    
+    private func restoreLoginType() -> LoginType {
+        if let email = Preferences.loginEmail.value {
+            return .fromEmail(email)
+        }
+        if let type = Preferences.socialLoginType.value {
+            return .fromType(type)
+        }
+        return .unknown
     }
     
     private func preparePublicProfileIfExists() -> PublicProfile? {
@@ -134,10 +224,12 @@ class StoreUserSessionOperation: Operation {
     
     override func main() {
         Preferences.accessToken.value = session.bearerToken
-        storeNonFirebaseProfileIfNeeded()
+        Preferences.loginEmail.value = session.loginType.email
+        Preferences.socialLoginType.value = session.loginType.socialLoginType
+        storePublicProfileIfNeeded()
     }
     
-    private func storeNonFirebaseProfileIfNeeded() {
+    private func storePublicProfileIfNeeded() {
         guard let profile = session.socialProfile else {
             Preferences.profileNickname.value = nil
             Preferences.profileAvatarURL.value = nil

@@ -15,16 +15,19 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
     var userSession: UserSession!
     fileprivate var sections: [Section] = [.detail]
     fileprivate var posts: [Any] = []
-    var profile: UserProfileDisplayable!
+    private var detailController: ProfileDetailViewController?
+    var profile: UserProfileDisplayable! {
+        didSet {
+            if isViewLoaded {
+                detailController?.profile = profile
+            }
+        }
+    }
     var configuration: ProfileDetailViewController.DisplayConfiguration = .forGuest
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateSections()
-        updateViewsForProfile()
-    }
-    
-    private func updateViewsForProfile() {
     }
     
     private func updateSections() {
@@ -88,6 +91,7 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
         addChild(vc)
         cell.setUp(vc)
         vc.didMove(toParent: self)
+        detailController = vc
     }
     
     private func updateViews(inPostCell cell: PostThumbnailCell, at indexPath: IndexPath) {

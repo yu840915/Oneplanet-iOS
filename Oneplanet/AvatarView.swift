@@ -28,6 +28,13 @@ class AvatarView: UIView {
             }
         }
     }
+    var attachment: ImageAttachment? {
+        didSet {
+            if oldValue !== attachment {
+                updateAvatar()
+            }
+        }
+    }
     private var fetchOperation: DownloadImageOperaion?
     
     override func awakeFromNib() {
@@ -53,6 +60,11 @@ class AvatarView: UIView {
     
     private func updateAvatar() {
         setDefaultAvatar()
+        if let attachment = self.attachment {
+            cancelDownload()
+            avatarButton.setBackgroundImage(attachment.localImage, for: .normal)
+            return
+        }
         guard let info = avatar else {
             cancelDownload()
             return

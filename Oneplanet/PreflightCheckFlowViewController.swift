@@ -55,7 +55,8 @@ class PreflightCheckFlowViewController: UIViewController, UserSessionDepending {
         }
         if let profile = userSession.profile {
             if profile.nickname.isEmpty {
-                startProfileCreation()
+                getMyProfile()
+//                startProfileCreation()
             } else {
                 didFinishPreflightCheck?()
             }

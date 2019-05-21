@@ -25,12 +25,21 @@
 "tl_back" = "Back";
 "tl_more" = "More";
 "tl_account" = "Account";
+"tl_mail_sent" = "The email has been sent";
+"tl_user_id" = "User id";
+"tl_email" = "Email";
+"tl_gender" = "Gender";
+"tl_male" = "Male";
+"tl_female" = "Female";
+"tl_private_info" = "Private Information";
 
 "pl_email" = "Email Address";
 "pl_nickname" = "Nickname";
 
 "msg_email_verification_instruction" = "The email has been sent. Please click the link in the email to complete the login.";
 "msg_add_avatar_prompt" = "Add a profile photo so your friends know it’s you";
+"msg_open_mail_app_prompt" = "Click here to open your email address";
+"msg_mail_resent" = "The email has been sent again";
 
 "msgf_accept_tos" = "By signing up or login, you agree to our %@.";
 "msgf_resend_verification_email" = "You did not receive the email? %@.";
@@ -55,6 +64,7 @@
 "ph_edit_profile" = "Edit Profile";
 "ph_block_list" = "Blocked Account";
 "ph_privacy_and_security" = "Privacy and Security";
+"ph_not_specified" = "Not Specified";
 
 "no_posts" = "No Posts Yet";
 

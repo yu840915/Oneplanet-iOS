@@ -105,22 +105,24 @@ class MyProfile: Decodable, UserProfileDisplayable {
     let nickname: String
     fileprivate(set) var avatar: WebImageInfo?
     var race: Race?
-    let gender: Gender = .unknown
+    let gender: Gender
     enum CodingKeys: String, CodingKey {
         case id
         case nickname = "username"
     }
     
-    init(id: String, nickname: String, avatar: WebImageInfo?) {
+    init(id: String, nickname: String, gender: Gender = .unknown, avatar: WebImageInfo?) {
         self.id = id
         self.nickname = nickname
         self.avatar = avatar
+        self.gender = gender
     }
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try container.decode(String.self, forKey: .id)
         nickname = try container.decodeIfPresent(String.self, forKey: .nickname) ?? ""
+        gender = .unknown
     }
 }
 

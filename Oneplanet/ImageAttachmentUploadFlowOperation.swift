@@ -18,6 +18,13 @@ class ImageAttachment {
         localImage = image
         progress = UploadProgress()
     }
+    
+    init(image: UIImage, info: WebImageInfo) {
+        localImage = image
+        progress = UploadProgress()
+        progress.didGenerateDestination(UploadDestination(taskId: "", url: info.url))
+        progress.markAsFinished()
+    }
 }
 
 class ImageAttachmentUploadFlowOperation: SimpleAsynchronousOperation, FailableOperationType {

@@ -421,7 +421,7 @@
         <scene sceneID="0HB-RM-BSd">
             <objects>
                 <tableViewController id="L0a-wa-f85" customClass="ProfileEditorTableViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="sD1-YI-Ahi">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="sD1-YI-Ahi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="black background"/>
@@ -430,7 +430,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="153"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="dsO-Yf-BpN">
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="dsO-Yf-BpN">
                                     <rect key="frame" x="162" y="15.666666666666671" width="90" height="122.00000000000001"/>
                                     <subviews>
                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rvq-Vh-P8k" userLabel="Avatar View" customClass="AvatarView" customModule="Oneplanet" customModuleProvider="target">
@@ -460,7 +460,7 @@
                                             </connections>
                                         </view>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJV-hP-aQf">
-                                            <rect key="frame" x="0.0" y="95" width="90" height="27"/>
+                                            <rect key="frame" x="25" y="95" width="40" height="27"/>
                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                                             <state key="normal" title="Button">
                                                 <color key="titleColor" name="button green"/>
@@ -489,9 +489,9 @@
                             </constraints>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="3Fj-LO-Sfu">
-                            <rect key="frame" x="0.0" y="403" width="414" height="44"/>
+                            <rect key="frame" x="0.0" y="403" width="414" height="1"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <sections>
                             <tableViewSection id="KAx-uV-60y">
@@ -511,6 +511,7 @@
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZYL-A6-kaW">
                                                     <rect key="frame" x="112" y="5" width="286" height="40"/>
+                                                    <color key="tintColor" name="button green"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="hkR-gd-unb"/>
                                                     </constraints>
@@ -682,6 +683,7 @@
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kia-gw-OJT">
                                                     <rect key="frame" x="112" y="5" width="286" height="40"/>
+                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="gQ4-1W-Pfh"/>
                                                     </constraints>

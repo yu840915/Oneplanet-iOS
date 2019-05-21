@@ -18,6 +18,7 @@ class SettingsTableViewController: UITableViewController, UserSessionDepending {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(SectionHeaderView.defaultNib(), forHeaderFooterViewReuseIdentifier: ReuseID.header)
+        navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
         localizeTitles()
         prepareSections()
     }

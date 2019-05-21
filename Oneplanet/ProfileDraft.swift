@@ -21,6 +21,13 @@ class ProfileDraft {
             }
         }
     }
+    var gender: Gender = .unknown {
+        didSet {
+            if oldValue != gender {
+                updateObservers.invokeEach{$0()}
+            }
+        }
+    }
     var avatar: ImageAttachment?  {
         didSet {
             if oldValue !== avatar {
@@ -40,6 +47,13 @@ class ProfileDraft {
         } catch _ {
             return false
         }
+    }
+    
+    init() {}
+    
+    init(profile: MyProfile) {
+        nickname = profile.nickname
+        gender = profile.gender
     }
 }
 

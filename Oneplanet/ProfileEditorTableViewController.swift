@@ -10,7 +10,11 @@ import UIKit
 
 class ProfileEditorTableViewController: UITableViewController, UserSessionDepending {
     
-    var userSession: UserSession!
+    var userSession: UserSession! {
+        didSet {
+            profileDraft = ProfileDraft(profile: profile)
+        }
+    }
     var profile: MyProfile! { return userSession.profile }
     @IBOutlet weak var avatarView: AvatarView!
     @IBOutlet weak var changeAvatarButton: UIButton!
@@ -27,18 +31,29 @@ class ProfileEditorTableViewController: UITableViewController, UserSessionDepend
     @IBOutlet weak var genderField: UITextField!
     fileprivate var profileDraft: ProfileDraft!
     fileprivate var pickImageOperation: PickImageOperation?
+    fileprivate var getAvatarOperation: DownloadImageOperaion?
     
     @IBOutlet var endEditingTap: UITapGestureRecognizer!
+    private var draftDidChangeHandle: Any?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         avatarView.action = {[weak self] in
             self?.showPickerSelectionSheet()
         }
+        draftDidChangeHandle = profileDraft.updateObservers.add {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.updateViewsForDraft()
+            }
+        }
         localizeTitles()
+        getAvatar()
+        updateViewsForSession()
+        updateViewsForDraft()
     }
-    
+
     private func localizeTitles() {
+        title = Localized.phrases.editProfile
         changeAvatarButton.setTitle(Localized.phrases.changeAvatar, for: .normal)
         copyIdButton.setTitle(Localized.phrases.copyID, for: .normal)
         nicknameLabel.text = Localized.titles.nickname
@@ -62,9 +77,37 @@ class ProfileEditorTableViewController: UITableViewController, UserSessionDepend
 }
 
 fileprivate extension ProfileEditorTableViewController {
+    func getAvatar() {
+        guard let avatar = profile.avatar else {return}
+        let op = DownloadImageOperaion(info: avatar)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didGetAvatar()
+            }
+        }
+        getAvatarOperation = op
+        op.start()
+    }
+    
+    func didGetAvatar() {
+        let op = getAvatarOperation!
+        getAvatarOperation = nil
+        if let image = op.image,
+            let avatar = profile.avatar,
+            profileDraft.avatar == nil {
+            profileDraft.avatar = .init(image: image, info: avatar)
+        }
+    }
+    
+    func updateViewsForSession() {
+        userIdField.text = profile.id
+        emailField.text = userSession.loginType.displayName
+    }
+    
     func updateViewsForDraft() {
-        avatarView.avatar = userSession.profile?.avatar
-        
+        avatarView.attachment = profileDraft.avatar
+        nicknameField.text = profileDraft.nickname
+        genderField.text = profileDraft.gender.displayName
     }
 
     func showPickerSelectionSheet() {

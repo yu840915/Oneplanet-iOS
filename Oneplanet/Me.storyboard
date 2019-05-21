@@ -519,6 +519,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="name"/>
                                                     <connections>
+                                                        <action selector="updateNickname:" destination="L0a-wa-f85" eventType="editingChanged" id="gqo-99-OFc"/>
                                                         <outlet property="delegate" destination="L0a-wa-f85" id="LvW-AL-jfI"/>
                                                     </connections>
                                                 </textField>

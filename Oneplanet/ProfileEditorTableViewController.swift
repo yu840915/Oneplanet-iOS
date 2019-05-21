@@ -51,6 +51,11 @@ class ProfileEditorTableViewController: UITableViewController, UserSessionDepend
         updateViewsForSession()
         updateViewsForDraft()
     }
+    
+    deinit {
+        pickImageOperation?.cancel()
+        submitChangesIfNeeded()
+    }
 
     private func localizeTitles() {
         title = Localized.phrases.editProfile
@@ -61,6 +66,11 @@ class ProfileEditorTableViewController: UITableViewController, UserSessionDepend
         privateInfoLabel.text = Localized.titles.privateInformation
         genderLabel.text = Localized.titles.gender
         emailLabel.text = Localized.titles.email
+    }
+    
+    @IBAction func updateNickname(_ sender: UITextField) {
+        guard sender.markedTextRange == nil else { return }
+        profileDraft.nickname = sender.text ?? ""
     }
     
     @IBAction func copyId(_ sender: UIButton) {
@@ -77,6 +87,11 @@ class ProfileEditorTableViewController: UITableViewController, UserSessionDepend
 }
 
 fileprivate extension ProfileEditorTableViewController {
+    func submitChangesIfNeeded() {
+        guard profileDraft.isDirty else { return }
+        userSession.submitProfileChanges(with: profileDraft)
+    }
+    
     func getAvatar() {
         guard let avatar = profile.avatar else {return}
         let op = DownloadImageOperaion(info: avatar)
@@ -95,7 +110,7 @@ fileprivate extension ProfileEditorTableViewController {
         if let image = op.image,
             let avatar = profile.avatar,
             profileDraft.avatar == nil {
-            profileDraft.avatar = .init(image: image, info: avatar)
+            profileDraft.setDefaultAvatarIfAllowed(ImageAttachment(image: image, info: avatar)) 
         }
     }
     
@@ -155,7 +170,6 @@ fileprivate extension ProfileEditorTableViewController {
         pickImageOperation = nil
         if let image = op.image {
             profileDraft.avatar = ImageAttachment(image: image)
-            updateViewsForDraft()
         } else if let error = op.error {
             handlePickImageFailure(with: error)
         }

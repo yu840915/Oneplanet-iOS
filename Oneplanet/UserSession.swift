@@ -25,10 +25,30 @@ class UserSession {
     var socialProfile: PublicProfile?
     private(set) var isActive = true
     let sessionBecomeInactiveObservers = MulticastCallbackNode<()->()>()
+    private(set) var updateProfileOperation: UpdateProfileOperation?
     
     init(token: String, loginType: LoginType) {
         self.bearerToken = token
         self.loginType = loginType
+    }
+    
+    func submitProfileChanges(with draft: ProfileDraft) {
+        updateProfileOperation?.cancel()
+        let op = UpdateProfileOperation(draft: draft, session: self)
+        op.completionBlock = {[weak self] in
+            self?.didSubmitProfileChanges()
+        }
+        updateProfileOperation = op
+        op.start()
+    }
+    
+    private func didSubmitProfileChanges() {
+        let op = updateProfileOperation!
+        updateProfileOperation = nil
+        if op.success == true {
+            let draft = op.draft
+            profile = MyProfile(id: profile!.id, nickname: draft.nickname, gender: draft.gender, avatar: profile!.avatar)
+        }
     }
     
     func updateProfile(_ profile: MyProfile) {
@@ -55,6 +75,8 @@ class UserSession {
     func deactivate() {
         guard isActive else { return }
         isActive = false
+        updateProfileOperation?.cancel()
+        updateProfileOperation = nil
         sessionBecomeInactiveObservers.invokeEach{$0()}
     }
 }

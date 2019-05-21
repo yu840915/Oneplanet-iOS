@@ -17,11 +17,17 @@ class MyProfileViewController: UIViewController, UserSessionDepending {
     @IBOutlet weak var addPostButton: UIButton!
     private var profileController: ProfileCollectionViewController!
     private var idHeader: IDHeaderView?
+    private var profileUpdateHandle: Any?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareIDHeaderIfNeeded()
         setUpAddPostButton()
+        profileUpdateHandle = userSession.profileDidUpdate.add {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.updateViewsForProfile()
+            }
+        }
         updateViewsForProfile()
     }
     
@@ -45,6 +51,7 @@ class MyProfileViewController: UIViewController, UserSessionDepending {
     
     private func updateViewsForProfile() {
         idHeader?.idLabel.text = profile.id
+        profileController.profile = profile
     }
     private func copyID() {
         UIPasteboard.general.string = profile.id

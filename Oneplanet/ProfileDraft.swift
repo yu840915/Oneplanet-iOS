@@ -11,29 +11,41 @@ import ModelBlocks
 import Alamofire
 
 class ProfileDraft {
+    private(set) var isDirty = false
     let updateObservers = MulticastCallbackNode<()->()>()
     let intermediateNicknameValidator = InputLengthValidator(max: 30)
     let nicknameValidator = AndValidator([NonEmptyInputValidator(), InputLengthValidator(max: 30), NicknameInputValidator()])
     var nickname: String = "" {
         didSet {
             if oldValue != nickname {
-                updateObservers.invokeEach{$0()}
+                notifyChange()
             }
         }
     }
     var gender: Gender = .unknown {
         didSet {
             if oldValue != gender {
-                updateObservers.invokeEach{$0()}
+                notifyChange()
             }
         }
     }
     var avatar: ImageAttachment?  {
         didSet {
             if oldValue !== avatar {
-                updateObservers.invokeEach{$0()}
+                notifyChange()
             }
         }
+    }
+    
+    func setDefaultAvatarIfAllowed(_ attachemnt: ImageAttachment) {
+        guard avatar == nil else { return }
+        avatar = attachemnt
+        isDirty = false
+    }
+    
+    private func notifyChange() {
+        isDirty = true
+        updateObservers.invokeEach{$0()}
     }
     
     func validate() throws {

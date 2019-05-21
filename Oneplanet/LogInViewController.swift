@@ -99,10 +99,10 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
     }
     
     private func didLogInWithEmailLink() {
-        let op = authOperation!
+        let op = authOperation as! EmailLinkLogInOperarion
         authOperation = nil
         if let token = op.token {
-            let session = UserSession(token: token)
+            let session = UserSession(token: token, loginType: .fromEmail(op.credential.email))
             session.updateProfile(op.profile!)
             StoreUserSessionOperation(session: session).start()
             if let vc = emailVerificationViewController {
@@ -225,13 +225,13 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
         }
     }
 
-    private func didSocialLogIn() {
+    private func didSocialLogIn(with type: LoginType) {
         let op = authOperation!
         authOperation = nil
         if let error = op.error {
             showAlert(with: error)
         } else if let token = op.token {
-            let session = UserSession(token: token)
+            let session = UserSession(token: token, loginType: type)
             session.updateProfile(op.profile!)
             if let socialAuth = op as? SocialAuthenticationOperationType {
                 session.socialProfile = socialAuth.publicProfile
@@ -258,7 +258,7 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
         let op = FacebookLoginOperation(presenter: self)
         op.completionBlock = {[weak self] in
             OperationQueue.main.addOperation {
-                self?.didSocialLogIn()
+                self?.didSocialLogIn(with: .facebook)
             }
         }
         authOperation = op
@@ -270,7 +270,7 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
         let op = TwitterLogInOperation(presenter: self)
         op.completionBlock = {[weak self] in
             OperationQueue.main.addOperation {
-                self?.didSocialLogIn()
+                self?.didSocialLogIn(with: .twitter)
             }
         }
         authOperation = op
@@ -282,7 +282,7 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
         let op = WeChatLogInOperation(presenter: self)
         op.completionBlock = {[weak self] in
             OperationQueue.main.addOperation {
-                self?.didSocialLogIn()
+                self?.didSocialLogIn(with: .wechat)
             }
         }
         authOperation = op
@@ -305,7 +305,7 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
         let op = authOperation!
         authOperation = nil
         if let token = op.token {
-            let session = UserSession(token: token)
+            let session = UserSession(token: token, loginType: .unknown)
             session.updateProfile(op.profile!)
             authorizationCompletion?(session)
         } else if let error = op.error {

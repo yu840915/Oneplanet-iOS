@@ -105,6 +105,15 @@ class LocalizedTitles {//tl_
     var privateInformation: String {
         return NSLocalizedString("tl_private_info", comment: "")
     }
+    var facebook: String {
+        return "Facebook"
+    }
+    var twitter: String {
+        return "Twitter"
+    }
+    var wechat: String {
+        return "WeChat"
+    }
 }
 
 class LocalizedPlaceholder {//pl_

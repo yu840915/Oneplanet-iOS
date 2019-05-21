@@ -13,6 +13,8 @@ class Preferences {
     static let accessToken = StringPreferencesItem(key: "OPNAccessToken")
     static let profileNickname = StringPreferencesItem(key: "OPNProfileNickname")
     static let profileAvatarURL = URLPreferencesItem(key: "OPNProfileAvatarURL")
+    static let loginEmail = StringPreferencesItem(key: "OPNLoginEmail")
+    static let socialLoginType = StringPreferencesItem(key: "OPNSocialLoginType")
 }
 
 class PreferencesItem<T> {

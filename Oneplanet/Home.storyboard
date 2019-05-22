@@ -30,10 +30,10 @@
             </objects>
             <point key="canvasLocation" x="-603" y="110"/>
         </scene>
-        <!--Collection View Controller-->
+        <!--Hot Collection View Controller-->
         <scene sceneID="LC5-aP-S45">
             <objects>
-                <collectionViewController id="Od8-w1-jw5" sceneMemberID="viewController">
+                <collectionViewController id="Od8-w1-jw5" customClass="HotCollectionViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="6Qr-1O-UQL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

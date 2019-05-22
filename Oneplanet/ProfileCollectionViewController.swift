@@ -39,11 +39,6 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
         }
         sections = result
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        NavigationBarStyle.darkGrey.configure(navigationController!.navigationBar)
-    }
 
     // MARK: - Navigation
 

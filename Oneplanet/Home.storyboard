@@ -59,7 +59,9 @@
                             <outlet property="delegate" destination="Od8-w1-jw5" id="d1p-0L-uBi"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="seF-W8-2bR"/>
+                    <navigationItem key="navigationItem" id="seF-W8-2bR">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="ui_logoblack" id="WzY-04-gec"/>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="55Y-VR-dPf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -69,5 +71,6 @@
     <resources>
         <image name="ic_home_nor" width="64" height="49"/>
         <image name="ic_home_sel" width="64" height="49"/>
+        <image name="ui_logoblack" width="138" height="33"/>
     </resources>
 </document>

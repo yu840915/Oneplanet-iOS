@@ -10,6 +10,8 @@
 		6868F9DB5BA3F9DA5AAF9145 /* Pods_Oneplanet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C23D84EC0F174A064CAA41E1 /* Pods_Oneplanet.framework */; };
 		B4FA7DD93CACAF00C41D6CE9 /* Pods_OneplanetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD31476F85B0E94B50970A99 /* Pods_OneplanetTests.framework */; };
 		E00611F22294F5680032AE30 /* HotCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00611F12294F5680032AE30 /* HotCollectionViewController.swift */; };
+		E00611F42294FFF10032AE30 /* HotNavigationItems.xib in Resources */ = {isa = PBXBuildFile; fileRef = E00611F32294FFF10032AE30 /* HotNavigationItems.xib */; };
+		E00611F6229500FA0032AE30 /* HotNavigationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00611F5229500FA0032AE30 /* HotNavigationItemView.swift */; };
 		E0190F49226DB0E000C212D5 /* WelcomeMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F48226DB0E000C212D5 /* WelcomeMessageViewController.swift */; };
 		E0190F4B226DB55400C212D5 /* UIComponentFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F4A226DB55400C212D5 /* UIComponentFactories.swift */; };
 		E0190F4D226DCCFB00C212D5 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F4C226DCCFB00C212D5 /* UserSession.swift */; };
@@ -116,6 +118,8 @@
 		47881963BA2439BD65729786 /* Pods-Oneplanet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Oneplanet.release.xcconfig"; path = "Pods/Target Support Files/Pods-Oneplanet/Pods-Oneplanet.release.xcconfig"; sourceTree = "<group>"; };
 		C23D84EC0F174A064CAA41E1 /* Pods_Oneplanet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Oneplanet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E00611F12294F5680032AE30 /* HotCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotCollectionViewController.swift; sourceTree = "<group>"; };
+		E00611F32294FFF10032AE30 /* HotNavigationItems.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HotNavigationItems.xib; sourceTree = "<group>"; };
+		E00611F5229500FA0032AE30 /* HotNavigationItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotNavigationItemView.swift; sourceTree = "<group>"; };
 		E0190F48226DB0E000C212D5 /* WelcomeMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeMessageViewController.swift; sourceTree = "<group>"; };
 		E0190F4A226DB55400C212D5 /* UIComponentFactories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponentFactories.swift; sourceTree = "<group>"; };
 		E0190F4C226DCCFB00C212D5 /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
@@ -262,6 +266,8 @@
 			isa = PBXGroup;
 			children = (
 				E0FF797B228D2FC400F61318 /* Home.storyboard */,
+				E00611F32294FFF10032AE30 /* HotNavigationItems.xib */,
+				E00611F5229500FA0032AE30 /* HotNavigationItemView.swift */,
 				E00611F12294F5680032AE30 /* HotCollectionViewController.swift */,
 			);
 			name = Home;
@@ -604,6 +610,7 @@
 				E06F5016227B4E7E0067DAE4 /* PreflightCheck.storyboard in Resources */,
 				E0190F5A226EDD1100C212D5 /* SupportingFlows.storyboard in Resources */,
 				E05BB263226D5D2A00721F20 /* Main.storyboard in Resources */,
+				E00611F42294FFF10032AE30 /* HotNavigationItems.xib in Resources */,
 				E06F5000227ABE1C0067DAE4 /* OpenSDK1.8.0_NoPay in Resources */,
 				E0FF7980228D398300F61318 /* Auction.storyboard in Resources */,
 				E089F70F228EB16A003E77DF /* SectionHeaderView.xib in Resources */,
@@ -802,6 +809,7 @@
 				E0814FB122864F79002F1C02 /* UserFlowMainViewController.swift in Sources */,
 				E07276E1227307F5001239C0 /* LogInViewController.swift in Sources */,
 				E05BB25E226D5D2A00721F20 /* AppDelegate.swift in Sources */,
+				E00611F6229500FA0032AE30 /* HotNavigationItemView.swift in Sources */,
 				E06F4FFE22789C760067DAE4 /* AppLifeCycleObserver.swift in Sources */,
 				E0CB5E11228F0B4A00C0C010 /* TreasuryBarViewController.swift in Sources */,
 				E06F5013227B4E2E0067DAE4 /* PreflightCheckFlowViewController.swift in Sources */,

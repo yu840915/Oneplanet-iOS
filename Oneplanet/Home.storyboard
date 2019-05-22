@@ -14,7 +14,6 @@
             <objects>
                 <navigationController id="T02-aY-ENS" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="HOME" image="ic_home_nor" selectedImage="ic_home_sel" id="fsS-Xh-84X">
-                        <inset key="imageInsets" minX="0.0" minY="-12" maxX="0.0" maxY="12"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-2"/>
                     </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

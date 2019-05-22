@@ -16,7 +16,6 @@
             <objects>
                 <navigationController id="cr6-d0-CvM" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="MY" image="ic_my_nor" selectedImage="ic_my_sel" id="tR2-3E-L62">
-                        <inset key="imageInsets" minX="0.0" minY="-12" maxX="0.0" maxY="12"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-2"/>
                     </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

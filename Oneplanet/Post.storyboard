@@ -14,7 +14,6 @@
             <objects>
                 <navigationController id="2kC-cR-kdU" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="LIFE" image="ic_life_nor" selectedImage="ic_life_sel" id="wUR-8a-eCl">
-                        <inset key="imageInsets" minX="0.0" minY="-12" maxX="0.0" maxY="12"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-2"/>
                     </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

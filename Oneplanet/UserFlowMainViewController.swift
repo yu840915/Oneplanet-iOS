@@ -25,6 +25,7 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
         let imageView = UIImageView(image: #imageLiteral(resourceName: "im_tabbar_nor"))
         var frame = imageView.frame
         frame.size.width = UIScreen.main.bounds.width
+        frame.origin.y = 20
         imageView.frame = frame
         contentTabbarController.tabBar.addSubview(imageView)
         contentTabbarController.tabBar.sendSubviewToBack(imageView)

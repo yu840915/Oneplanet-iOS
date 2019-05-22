@@ -11,7 +11,7 @@ import UIKit
 private let reuseIdentifier = "Cell"
 
 class HotCollectionViewController: UICollectionViewController {
-
+    var needsUpdateTabar = true
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,6 +20,20 @@ class HotCollectionViewController: UICollectionViewController {
             .init(customView: HotNavigationItemView.forEvents()),
             .init(customView: HotNavigationItemView.forNews())
         ]
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        guard needsUpdateTabar else { return }
+        needsUpdateTabar = false
+        let rect = tabBarController!.tabBar.frame
+        tabBarController!.tabBar.backgroundColor = .red
+        tabBarController!.tabBar.frame = CGRect(x: 0, y: rect.origin.y - 20, width: rect.width, height: rect.height + 20)
     }
 
     /*

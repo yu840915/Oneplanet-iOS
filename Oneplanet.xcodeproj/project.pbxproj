@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6868F9DB5BA3F9DA5AAF9145 /* Pods_Oneplanet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C23D84EC0F174A064CAA41E1 /* Pods_Oneplanet.framework */; };
 		B4FA7DD93CACAF00C41D6CE9 /* Pods_OneplanetTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD31476F85B0E94B50970A99 /* Pods_OneplanetTests.framework */; };
+		E003BA382296933F001814F4 /* HotHeaderCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E003BA372296933F001814F4 /* HotHeaderCollectionViewController.swift */; };
 		E00611F22294F5680032AE30 /* HotCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00611F12294F5680032AE30 /* HotCollectionViewController.swift */; };
 		E00611F42294FFF10032AE30 /* HotNavigationItems.xib in Resources */ = {isa = PBXBuildFile; fileRef = E00611F32294FFF10032AE30 /* HotNavigationItems.xib */; };
 		E00611F6229500FA0032AE30 /* HotNavigationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00611F5229500FA0032AE30 /* HotNavigationItemView.swift */; };
@@ -117,6 +118,7 @@
 		220D39E57B4B40157A7689B2 /* Pods-OneplanetTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneplanetTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneplanetTests/Pods-OneplanetTests.release.xcconfig"; sourceTree = "<group>"; };
 		47881963BA2439BD65729786 /* Pods-Oneplanet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Oneplanet.release.xcconfig"; path = "Pods/Target Support Files/Pods-Oneplanet/Pods-Oneplanet.release.xcconfig"; sourceTree = "<group>"; };
 		C23D84EC0F174A064CAA41E1 /* Pods_Oneplanet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Oneplanet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E003BA372296933F001814F4 /* HotHeaderCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotHeaderCollectionViewController.swift; sourceTree = "<group>"; };
 		E00611F12294F5680032AE30 /* HotCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotCollectionViewController.swift; sourceTree = "<group>"; };
 		E00611F32294FFF10032AE30 /* HotNavigationItems.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HotNavigationItems.xib; sourceTree = "<group>"; };
 		E00611F5229500FA0032AE30 /* HotNavigationItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotNavigationItemView.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				E00611F32294FFF10032AE30 /* HotNavigationItems.xib */,
 				E00611F5229500FA0032AE30 /* HotNavigationItemView.swift */,
 				E00611F12294F5680032AE30 /* HotCollectionViewController.swift */,
+				E003BA372296933F001814F4 /* HotHeaderCollectionViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -812,6 +815,7 @@
 				E00611F6229500FA0032AE30 /* HotNavigationItemView.swift in Sources */,
 				E06F4FFE22789C760067DAE4 /* AppLifeCycleObserver.swift in Sources */,
 				E0CB5E11228F0B4A00C0C010 /* TreasuryBarViewController.swift in Sources */,
+				E003BA382296933F001814F4 /* HotHeaderCollectionViewController.swift in Sources */,
 				E06F5013227B4E2E0067DAE4 /* PreflightCheckFlowViewController.swift in Sources */,
 				E07276F62276C305001239C0 /* FirebaseMessagingSession.swift in Sources */,
 				E07276E92273633A001239C0 /* CreateProfileViewController.swift in Sources */,

@@ -118,7 +118,6 @@ extension ProfileCollectionViewController: UICollectionViewDelegateFlowLayout {
             let len = (collectionView.bounds.width - totalGap) / num
             return CGSize(width: len, height: len)
         }
-        
     }
 }
 

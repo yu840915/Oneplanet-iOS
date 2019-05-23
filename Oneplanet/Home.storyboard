@@ -68,21 +68,24 @@
                                 </constraints>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="header" id="dR2-cl-CL1">
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="header" id="dR2-cl-CL1" customClass="PromotionHeader" customModule="Oneplanet" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="166"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AmQ-r9-37k">
-                                    <rect key="frame" x="6" y="6" width="402" height="160"/>
+                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AmQ-r9-37k">
+                                    <rect key="frame" x="6" y="0.0" width="402" height="160"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="AmQ-r9-37k" firstAttribute="top" secondItem="dR2-cl-CL1" secondAttribute="top" constant="6" id="0YT-V9-xzL"/>
+                                <constraint firstItem="AmQ-r9-37k" firstAttribute="top" secondItem="dR2-cl-CL1" secondAttribute="top" id="0YT-V9-xzL"/>
                                 <constraint firstItem="AmQ-r9-37k" firstAttribute="leading" secondItem="dR2-cl-CL1" secondAttribute="leading" constant="6" id="LGh-G5-5BT"/>
                                 <constraint firstItem="AmQ-r9-37k" firstAttribute="centerX" secondItem="dR2-cl-CL1" secondAttribute="centerX" id="d2H-4W-0AA"/>
                                 <constraint firstAttribute="bottom" secondItem="AmQ-r9-37k" secondAttribute="bottom" id="fBV-ad-F3c"/>
                             </constraints>
+                            <connections>
+                                <outlet property="containerView" destination="AmQ-r9-37k" id="pLh-VQ-hgJ"/>
+                            </connections>
                         </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="Od8-w1-jw5" id="Z0A-bd-bga"/>
@@ -100,8 +103,8 @@
         <!--Hot Header Collection View Controller-->
         <scene sceneID="hFp-1m-i6i">
             <objects>
-                <collectionViewController id="GiN-Bj-2pO" customClass="HotHeaderCollectionViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="r8m-DF-V7U">
+                <collectionViewController storyboardIdentifier="HotHeaderCollectionViewController" id="GiN-Bj-2pO" customClass="HotHeaderCollectionViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="r8m-DF-V7U">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -119,7 +122,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="153"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_first1" translatesAutoresizingMaskIntoConstraints="NO" id="dDq-y2-pmi">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dDq-y2-pmi">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="153"/>
                                         </imageView>
                                     </subviews>

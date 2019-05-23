@@ -8,8 +8,11 @@
 
 import UIKit
 
-class HotCollectionViewController: UICollectionViewController {
+class HotCollectionViewController: UICollectionViewController, UserSessionDepending {
+    
+    var userSession: UserSession!
     var needsUpdateTabar = true
+    private var headerController: HotHeaderCollectionViewController?
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItems = [
@@ -17,7 +20,7 @@ class HotCollectionViewController: UICollectionViewController {
             .init(customView: HotNavigationItemView.forEvents()),
             .init(customView: HotNavigationItemView.forNews())
         ]
-        
+        (collectionViewLayout as! UICollectionViewFlowLayout).sectionHeadersPinToVisibleBounds = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,9 +58,21 @@ class HotCollectionViewController: UICollectionViewController {
         if kind == UICollectionView.elementKindSectionHeader {
             let header =
              collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ReuseID.header, for: indexPath) as! PromotionHeader
+            if header.contentViewController == nil {
+                prepareContentViewController(for: header)
+            }
             return header
         }
         return UICollectionReusableView()
+    }
+
+    private func prepareContentViewController(for header: PromotionHeader) {
+        let vc = HotHeaderCollectionViewController.fromDefaultStoryboard()
+        vc.userSession = userSession
+        addChild(vc)
+        header.setUp(vc)
+        vc.didMove(toParent: self)
+        headerController = vc
     }
 
     // MARK: UICollectionViewDelegate
@@ -91,7 +106,32 @@ extension HotCollectionViewController {
 }
 
 class PromotionHeader: UICollectionReusableView {
+    @IBOutlet weak var containerView: UIView!
     
+    private(set) weak var contentViewController: HotHeaderCollectionViewController?
+    private var shouldAddConstraintsForContent = false
+    
+    func setUp(_ controller: HotHeaderCollectionViewController) {
+        guard contentViewController == nil else {
+            return
+        }
+        contentViewController = controller
+        containerView.addSubview(controller.view)
+        shouldAddConstraintsForContent = true
+        setNeedsUpdateConstraints()
+    }
+    
+    override func updateConstraints() {
+        if shouldAddConstraintsForContent,
+            let content = contentViewController?.view {
+            content.translatesAutoresizingMaskIntoConstraints = false
+            let views = ["content": content]
+            containerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|[content]|", options: [], metrics: nil, views: views))
+            containerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[content]|", options: [], metrics: nil, views: views))
+            shouldAddConstraintsForContent = false
+        }
+        super.updateConstraints()
+    }
 }
 
 class HotItemCell: UICollectionViewCell {

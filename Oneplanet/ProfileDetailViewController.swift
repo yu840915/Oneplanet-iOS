@@ -17,7 +17,13 @@ protocol UserProfileDisplayable {
 
 class ProfileDetailViewController: UIViewController, UserSessionDepending, DefaultInstanceFactory {
     var userSession: UserSession!
-    var configuration: DisplayConfiguration = .forGuest
+    var configuration: DisplayConfiguration = .forGuest {
+        didSet {
+            if isViewLoaded {
+                updateViewsForProfile()
+            }
+        }
+    }
     
     class func fromDefaultStoryboard() -> ProfileDetailViewController {
         return UIStoryboard(name: "Me", bundle: nil).instantiateViewController(withIdentifier: "ProfileDetailViewController") as! ProfileDetailViewController

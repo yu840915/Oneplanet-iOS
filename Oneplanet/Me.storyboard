@@ -40,7 +40,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AbR-QZ-7uF">
-                                <rect key="frame" x="0.0" y="36" width="414" height="458"/>
+                                <rect key="frame" x="0.0" y="36" width="414" height="465"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="2JO-F5-u2j">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
@@ -105,7 +105,7 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jse-9r-dtX">
-                                        <rect key="frame" x="0.0" y="90" width="414" height="368"/>
+                                        <rect key="frame" x="0.0" y="90" width="414" height="375"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HlD-an-H7a" userLabel="Choose Race Button">
                                                 <rect key="frame" x="166" y="0.0" width="82" height="28"/>
@@ -129,17 +129,17 @@
                                                     <action selector="performAction:" destination="Pj9-NT-Zwc" eventType="touchUpInside" id="wFx-Yb-frd"/>
                                                 </connections>
                                             </button>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_userphotodefault_nor" translatesAutoresizingMaskIntoConstraints="NO" id="jAJ-tK-o1l" userLabel="Race Image View">
-                                                <rect key="frame" x="117.66666666666669" y="173" width="179" height="179"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_alien_none0" translatesAutoresizingMaskIntoConstraints="NO" id="jAJ-tK-o1l" userLabel="Race Image View">
+                                                <rect key="frame" x="19.666666666666657" y="0.0" width="375" height="375"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="368" id="8Ba-xQ-Yg3"/>
+                                            <constraint firstAttribute="height" constant="375" id="8Ba-xQ-Yg3"/>
                                             <constraint firstItem="IhM-tx-4f6" firstAttribute="top" secondItem="Jse-9r-dtX" secondAttribute="top" constant="10" id="S46-hh-X3y"/>
                                             <constraint firstItem="HlD-an-H7a" firstAttribute="centerX" secondItem="Jse-9r-dtX" secondAttribute="centerX" id="V8P-Z0-fvw"/>
                                             <constraint firstItem="jAJ-tK-o1l" firstAttribute="centerX" secondItem="Jse-9r-dtX" secondAttribute="centerX" id="hKP-TE-eUX"/>
-                                            <constraint firstAttribute="bottom" secondItem="jAJ-tK-o1l" secondAttribute="bottom" constant="16" id="kOM-4w-51u"/>
+                                            <constraint firstAttribute="bottom" secondItem="jAJ-tK-o1l" secondAttribute="bottom" id="kOM-4w-51u"/>
                                             <constraint firstItem="HlD-an-H7a" firstAttribute="top" secondItem="Jse-9r-dtX" secondAttribute="top" id="tJQ-on-Wdb"/>
                                         </constraints>
                                     </view>
@@ -820,6 +820,7 @@
         <image name="ic_my_nor" width="64" height="49"/>
         <image name="ic_my_sel" width="64" height="49"/>
         <image name="ic_youtube_nor" width="40" height="40"/>
+        <image name="im_alien_none0" width="375" height="375"/>
         <image name="im_bgall" width="609" height="812"/>
         <image name="im_userphotodefault_nor" width="179" height="179"/>
         <image name="ui_nopic_nor" width="80" height="80"/>

@@ -25,6 +25,7 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
         let imageView = UIImageView(image: #imageLiteral(resourceName: "im_tabbar_nor"))
         var frame = imageView.frame
         frame.size.width = UIScreen.main.bounds.width
+        frame.origin.y = 20
         imageView.frame = frame
         contentTabbarController.tabBar.addSubview(imageView)
         contentTabbarController.tabBar.sendSubviewToBack(imageView)
@@ -36,15 +37,19 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
         if let tabbar = segue.destination as? UITabBarController {
             tabbar.viewControllers?
                 .compactMap{$0 as? UINavigationController}
-                .compactMap{$0.viewControllers.first as? UserSessionDepending}
+                .compactMap{
+                    $0.viewControllers.first as? UserSessionDepending
+                }
                 .forEach{
                     $0.userSession = userSession
             }
             tabbar.viewControllers?.forEach{
+                if let nav = $0 as? UINavigationController {
+                    NavigationBarStyle.darkGrey.configure(nav.navigationBar)
+                }
                 $0.additionalSafeAreaInsets = UIEdgeInsets(top: 0, left: 0, bottom: 80, right: 0)
             }
             tabbar.tabBar.backgroundImage = UIImage()
-            debugPrint(tabbar.tabBar.subviews)
             contentTabbarController = tabbar
         }
     }

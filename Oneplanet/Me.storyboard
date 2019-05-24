@@ -16,7 +16,6 @@
             <objects>
                 <navigationController id="cr6-d0-CvM" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="MY" image="ic_my_nor" selectedImage="ic_my_sel" id="tR2-3E-L62">
-                        <inset key="imageInsets" minX="0.0" minY="-12" maxX="0.0" maxY="12"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-2"/>
                     </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -509,7 +508,7 @@
                                                     <color key="textColor" name="default text"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZYL-A6-kaW">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ZYL-A6-kaW">
                                                     <rect key="frame" x="112" y="5" width="286" height="40"/>
                                                     <color key="tintColor" name="button green"/>
                                                     <constraints>
@@ -570,7 +569,7 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Tg-yL-VLf" userLabel="Copy Button">
-                                                    <rect key="frame" x="353" y="11.333333333333336" width="45" height="27"/>
+                                                    <rect key="frame" x="353" y="11.666666666666664" width="45" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                                                     <state key="normal" title="Copy id">
                                                         <color key="titleColor" name="button green"/>

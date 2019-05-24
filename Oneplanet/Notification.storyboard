@@ -14,7 +14,6 @@
             <objects>
                 <navigationController id="omY-to-dGY" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="NOTICE" image="ic_notice_nor" selectedImage="ic_notice_sel" id="RSh-zQ-3gY">
-                        <inset key="imageInsets" minX="0.0" minY="-12" maxX="0.0" maxY="12"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-2"/>
                     </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

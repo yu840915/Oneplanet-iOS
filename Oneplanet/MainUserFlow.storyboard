@@ -24,6 +24,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_bgall" translatesAutoresizingMaskIntoConstraints="NO" id="Ciq-Nc-dnN">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="onq-cf-cVl">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                <color key="backgroundColor" name="grey background"/>
+                            </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LqQ-Kw-QYt">
                                 <rect key="frame" x="0.0" y="60" width="320" height="508"/>
                                 <connections>
@@ -43,12 +50,20 @@
                         <color key="backgroundColor" name="grey background"/>
                         <constraints>
                             <constraint firstItem="L0D-It-Rgw" firstAttribute="width" secondItem="rJp-IB-qYG" secondAttribute="width" id="5KJ-Mw-4zN"/>
+                            <constraint firstItem="onq-cf-cVl" firstAttribute="top" secondItem="rJp-IB-qYG" secondAttribute="top" id="5Ou-qQ-pby"/>
                             <constraint firstAttribute="bottom" secondItem="LqQ-Kw-QYt" secondAttribute="bottom" id="JnH-J0-lCH"/>
+                            <constraint firstItem="Ciq-Nc-dnN" firstAttribute="centerX" secondItem="rJp-IB-qYG" secondAttribute="centerX" id="OLi-GU-WNn"/>
                             <constraint firstItem="LqQ-Kw-QYt" firstAttribute="width" secondItem="rJp-IB-qYG" secondAttribute="width" id="OiB-B1-D2A"/>
                             <constraint firstItem="LqQ-Kw-QYt" firstAttribute="centerX" secondItem="AX7-kr-RYD" secondAttribute="centerX" id="Z7l-Cr-Mw3"/>
+                            <constraint firstItem="onq-cf-cVl" firstAttribute="centerX" secondItem="rJp-IB-qYG" secondAttribute="centerX" id="bQ8-fE-ALB"/>
                             <constraint firstItem="L0D-It-Rgw" firstAttribute="centerX" secondItem="AX7-kr-RYD" secondAttribute="centerX" id="fks-ck-Pci"/>
+                            <constraint firstItem="onq-cf-cVl" firstAttribute="bottom" secondItem="L0D-It-Rgw" secondAttribute="bottom" id="gnS-cU-DcF"/>
+                            <constraint firstItem="Ciq-Nc-dnN" firstAttribute="height" secondItem="rJp-IB-qYG" secondAttribute="height" id="iaM-NE-dGa"/>
                             <constraint firstItem="L0D-It-Rgw" firstAttribute="top" secondItem="AX7-kr-RYD" secondAttribute="top" id="jrk-Ec-y6P"/>
+                            <constraint firstItem="onq-cf-cVl" firstAttribute="width" secondItem="rJp-IB-qYG" secondAttribute="width" id="lxl-cL-LbV"/>
+                            <constraint firstItem="Ciq-Nc-dnN" firstAttribute="width" secondItem="rJp-IB-qYG" secondAttribute="width" id="sxA-Eb-LbO"/>
                             <constraint firstItem="LqQ-Kw-QYt" firstAttribute="top" secondItem="L0D-It-Rgw" secondAttribute="bottom" id="vif-j5-kpp"/>
+                            <constraint firstItem="Ciq-Nc-dnN" firstAttribute="centerY" secondItem="rJp-IB-qYG" secondAttribute="centerY" id="xXL-kj-Ms9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AX7-kr-RYD"/>
                     </view>
@@ -224,6 +239,7 @@
         <image name="ic_coin_nor" width="28" height="28"/>
         <image name="ic_gem_nor" width="28" height="28"/>
         <image name="ic_key_nor" width="28" height="28"/>
+        <image name="im_bgall" width="609" height="812"/>
         <image name="ui_score" width="140" height="10"/>
         <image name="ui_scorebg" width="140" height="10"/>
         <namedColor name="blue gem">

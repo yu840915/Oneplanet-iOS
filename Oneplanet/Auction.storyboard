@@ -15,7 +15,7 @@
             <objects>
                 <navigationController id="A6j-Aw-7aO" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="BID" image="ic_bid_nor" selectedImage="ic_bid_sel" id="6q1-Ad-AeQ">
-                        <inset key="imageInsets" minX="0.0" minY="-22" maxX="0.0" maxY="22"/>
+                        <inset key="imageInsets" minX="0.0" minY="-10" maxX="0.0" maxY="10"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-2"/>
                     </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>

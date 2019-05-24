@@ -64,7 +64,6 @@ class WelcomeMessageContentCollectionViewController: UICollectionViewController 
         } else {
             collectionView.scrollToItem(at: IndexPath(row: next, section: 0), at: .centeredHorizontally, animated: true)
         }
-
     }
 
     // MARK: UICollectionViewDataSource

@@ -13,6 +13,7 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
     var userSession: UserSession!
     var needsUpdateTabar = true
     private var headerController: HotHeaderCollectionViewController?
+    private var hidingSignalProducer: TabbarHidingSignalProducer?
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItems = [
@@ -27,14 +28,62 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
         super.viewWillAppear(animated)
     }
     
+    var tabbarHeight: CGFloat {
+        if let h = tabBarController?.tabBar.frame.height {
+            return h + 20
+        }
+        return 150
+    }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let producer = TabbarHidingSignalProducer(scrollView: collectionView, halfHidingInterval: tabbarHeight)
+        producer.hidingFactorDidChange = {[weak self] in
+            self?.moveTabbar()
+        }
+        producer.animateFactorChange = {[weak self] in
+            self?.animateTabbar()
+        }
+        hidingSignalProducer = producer
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        hidingSignalProducer = nil
+        tabBarController?.tabBar.transform = .identity
+    }
+    
+    private func moveTabbar() {
+        guard let producer = hidingSignalProducer,
+            let tabbar = tabBarController?.tabBar else {
+            return
+        }
+        tabbar.transform = .init(translationX: 0, y: tabbarHeight * producer.hidingFactor)
+    }
+    
+    private func animateTabbar() {
+        guard let producer = hidingSignalProducer,
+            let tabbar = tabBarController?.tabBar else {
+                return
+        }
+        UIView.animate(withDuration: 0.15) {
+            tabbar.transform = .init(translationX: 0, y: self.tabbarHeight * producer.hidingFactor)
+        }
+    }
+    
+    var expectedTabbarHeight: CGFloat = 0
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        if expectedTabbarHeight > 0 {
+            var rect = tabBarController!.tabBar.frame
+            rect.size.height = expectedTabbarHeight
+            tabBarController!.tabBar.frame = rect
+        }
         guard needsUpdateTabar else { return }
         needsUpdateTabar = false
         let rect = tabBarController!.tabBar.frame
-        tabBarController!.tabBar.backgroundColor = .red
-        tabBarController!.tabBar.frame = CGRect(x: 0, y: rect.origin.y - 20, width: rect.width, height: rect.height + 20)
+        expectedTabbarHeight = rect.height + 20
+        tabBarController!.tabBar.frame = CGRect(x: 0, y: rect.origin.y - 20, width: rect.width, height: expectedTabbarHeight)
     }
 
     // MARK: - Navigation
@@ -136,4 +185,112 @@ class PromotionHeader: UICollectionReusableView {
 
 class HotItemCell: UICollectionViewCell {
     
+}
+
+class TabbarHidingSignalProducer {
+    let scrollView: UIScrollView
+    let halfHidingInterval: CGFloat
+    private(set) var hidingFactor: CGFloat = 0
+    var hidingFactorDidChange: (()->())?
+    var animateFactorChange: (()->())?
+    private var eventHandles: [Any]?
+    private var startingOffset: InitialCondition?
+    private weak var inertiaTimer: Timer?
+    private var isDragging: Bool {
+        didSet {
+            if oldValue != isDragging {
+                if isDragging {
+                    handleStartDragging()
+                } else {
+                    handleEndDragging()
+                }
+            }
+        }
+    }
+    private var draggingWatcher: UpdateClock!
+    
+    init(scrollView: UIScrollView, halfHidingInterval: CGFloat) {
+        self.scrollView = scrollView
+        self.halfHidingInterval = halfHidingInterval
+        isDragging = scrollView.isDragging
+        draggingWatcher = UpdateClock(preferredFrameRate: 30, onTick: {[weak self] in
+            self?.updateDragging()
+        })
+        setUpEventHandles()
+    }
+    
+    private func setUpEventHandles() {
+        var handles: [Any] = []
+        handles.append(scrollView.observe(\.contentOffset) {[weak self] (scrollView, change) in
+            self?.handleDidScroll(change: change)
+        })
+        eventHandles = handles
+    }
+    
+    private func updateDragging() {
+        isDragging = scrollView.isDragging
+    }
+    
+    private func handleDidScroll(change: NSKeyValueObservedChange<CGPoint>) {
+        if scrollView.contentOffset.y < 60 {
+            updateFactorIfDifferent(0, animated: true)
+            return
+        }
+        guard scrollView.isDragging || inertiaTimer != nil else { return }
+        if let condition = startingOffset {
+            var relD = (scrollView.contentOffset.y - condition.offset.y) / halfHidingInterval
+            if condition.factor > 0 {
+               relD = condition.factor + relD
+            }
+            updateFactorIfDifferent(max(0, min(1, relD)), animated: false)
+        } else {
+            startingOffset = InitialCondition(offset: scrollView.contentOffset, factor: hidingFactor)
+        }
+    }
+    
+    private func updateFactorIfDifferent(_ factor: CGFloat, animated: Bool) {
+        guard hidingFactor != factor else { return }
+        hidingFactor = factor
+        if animated {
+            let handler = animateFactorChange ?? hidingFactorDidChange
+            handler?()
+        } else {
+            hidingFactorDidChange?()
+        }
+    }
+    
+    private func handleStartDragging() {
+        inertiaTimer?.invalidate()
+        inertiaTimer = nil
+    }
+    
+    private func handleEndDragging() {
+        guard hidingFactor != 0 && hidingFactor != 1 else {
+            startingOffset = nil
+            return
+        }
+        inertiaTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) {[weak self] (_) in
+            self?.snapHiddingFactor()
+        }
+    }
+    
+    private func snapHiddingFactor() {
+        guard let condition = startingOffset else { return }
+        inertiaTimer = nil
+        startingOffset = nil
+        var factor: CGFloat = 0
+        if condition.factor > 0 {
+            factor = ((condition.offset.y - scrollView.contentOffset.y) > halfHidingInterval / 2) ? 0 : 1
+        } else {
+            factor = ((scrollView.contentOffset.y - condition.offset.y) > halfHidingInterval / 2) ? 1 : 0
+        }
+        updateFactorIfDifferent(factor, animated: true)
+    }
+}
+
+extension TabbarHidingSignalProducer {
+    struct InitialCondition {
+        let offset: CGPoint
+        let factor: CGFloat
+    }
 }

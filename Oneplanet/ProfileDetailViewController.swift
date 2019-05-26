@@ -71,6 +71,7 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
     }
     
     @IBAction func startChooseRece(_ sender: UIButton) {
+        performSegue(withIdentifier: SegueID.showCharacterPicker, sender: nil)
     }
     
     @IBAction func performAction(_ sender: UIButton) {
@@ -78,6 +79,10 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
 }
 
 extension ProfileDetailViewController {
+    struct SegueID {
+        static let showCharacterPicker = "showCharacterPicker"
+    }
+    
     struct DisplayConfiguration {
         let raceButton: Bool
         let actionButton: Bool

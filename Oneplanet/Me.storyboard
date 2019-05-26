@@ -284,11 +284,11 @@
                                                             <segue destination="Acc-1Y-fHT" kind="embed" id="vgY-2B-58r"/>
                                                         </connections>
                                                     </containerView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fmB-9d-ntY">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fmB-9d-ntY" userLabel="Left Button">
                                                         <rect key="frame" x="0.0" y="172.5" width="46" height="30"/>
                                                         <state key="normal" title="Button"/>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3XN-v3-2VN">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3XN-v3-2VN" userLabel="Right Button">
                                                         <rect key="frame" x="329" y="172.5" width="46" height="30"/>
                                                         <state key="normal" title="Button"/>
                                                     </button>
@@ -388,6 +388,16 @@
                         <viewLayoutGuide key="safeArea" id="KSJ-UU-xgR"/>
                     </view>
                     <navigationItem key="navigationItem" id="TgC-z3-1Ig"/>
+                    <connections>
+                        <outlet property="colorPromptLabel" destination="hm4-nN-TDg" id="P4b-lh-xSs"/>
+                        <outlet property="doneButton" destination="Wl4-AH-cRX" id="oLi-8c-L37"/>
+                        <outlet property="errorLabel" destination="8W0-cU-59E" id="7xA-BL-3RB"/>
+                        <outlet property="errorView" destination="HuJ-D8-ruT" id="tVG-7E-Yma"/>
+                        <outlet property="leftButton" destination="fmB-9d-ntY" id="MVN-fs-cOV"/>
+                        <outlet property="nameFieldView" destination="KLd-jO-axf" id="JRf-Xv-i2h"/>
+                        <outlet property="nicknameRuleLabel" destination="VcG-ky-H8P" id="5gT-xq-2Ma"/>
+                        <outlet property="rightButton" destination="3XN-v3-2VN" id="uyP-Kv-8Sh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="opt-jP-L50" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

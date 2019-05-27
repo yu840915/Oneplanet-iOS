@@ -175,9 +175,10 @@
         <scene sceneID="Jck-oh-3d7">
             <objects>
                 <navigationController id="rl1-of-p30" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7HB-LV-ghk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="7HB-LV-ghk">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="default text"/>
                     </navigationBar>
                     <connections>
                         <segue destination="h5S-hA-Szz" kind="relationship" relationship="rootViewController" id="oBQ-a1-k3c"/>
@@ -282,18 +283,24 @@
                                                 <rect key="frame" x="0.0" y="68.5" width="375" height="375"/>
                                                 <subviews>
                                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YyZ-ja-64V">
-                                                        <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                                                        <rect key="frame" x="-94" y="0.0" width="563" height="375"/>
                                                         <connections>
                                                             <segue destination="Acc-1Y-fHT" kind="embed" id="vgY-2B-58r"/>
                                                         </connections>
                                                     </containerView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fmB-9d-ntY" userLabel="Left Button">
-                                                        <rect key="frame" x="0.0" y="172.5" width="46" height="30"/>
-                                                        <state key="normal" title="Button"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fmB-9d-ntY" userLabel="Left Button">
+                                                        <rect key="frame" x="0.0" y="153" width="40" height="69"/>
+                                                        <state key="normal" image="ic_left_nor"/>
+                                                        <connections>
+                                                            <action selector="pickPrevious:" destination="h5S-hA-Szz" eventType="touchUpInside" id="MNn-HL-euo"/>
+                                                        </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3XN-v3-2VN" userLabel="Right Button">
-                                                        <rect key="frame" x="329" y="172.5" width="46" height="30"/>
-                                                        <state key="normal" title="Button"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3XN-v3-2VN" userLabel="Right Button">
+                                                        <rect key="frame" x="335" y="152.5" width="40" height="70"/>
+                                                        <state key="normal" image="ic_right_nor"/>
+                                                        <connections>
+                                                            <action selector="pickNext:" destination="h5S-hA-Szz" eventType="touchUpInside" id="cTS-7O-2ZY"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -305,7 +312,7 @@
                                                     <constraint firstItem="YyZ-ja-64V" firstAttribute="centerX" secondItem="pDn-uS-a2a" secondAttribute="centerX" id="T4H-20-msn"/>
                                                     <constraint firstItem="fmB-9d-ntY" firstAttribute="leading" secondItem="pDn-uS-a2a" secondAttribute="leading" id="bN8-Gt-CRA"/>
                                                     <constraint firstItem="fmB-9d-ntY" firstAttribute="centerY" secondItem="pDn-uS-a2a" secondAttribute="centerY" id="cVj-JE-2WG"/>
-                                                    <constraint firstItem="YyZ-ja-64V" firstAttribute="width" secondItem="pDn-uS-a2a" secondAttribute="width" id="gCY-67-lja"/>
+                                                    <constraint firstItem="YyZ-ja-64V" firstAttribute="width" secondItem="pDn-uS-a2a" secondAttribute="width" multiplier="1.5" id="gCY-67-lja"/>
                                                     <constraint firstAttribute="trailing" secondItem="3XN-v3-2VN" secondAttribute="trailing" id="uxP-Ey-s06"/>
                                                 </constraints>
                                             </view>
@@ -496,7 +503,7 @@
             <objects>
                 <collectionViewController id="Acc-1Y-fHT" customClass="AlienPickerCollectionViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="tCD-rZ-xje">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
+                        <rect key="frame" x="0.0" y="0.0" width="563" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="BUV-hi-T8S">
@@ -538,7 +545,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mra-Pi-yvD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2403" y="2453"/>
+            <point key="canvasLocation" x="2534" y="2929"/>
         </scene>
         <!--My Profile View Controller-->
         <scene sceneID="4I6-i2-z16">
@@ -1187,9 +1194,11 @@
         <image name="bt_biggreen_nor" width="41" height="41"/>
         <image name="bt_smallgreen_nor" width="29" height="28"/>
         <image name="ic_contactus_nor" width="40" height="40"/>
+        <image name="ic_left_nor" width="40" height="69"/>
         <image name="ic_morelist_nor" width="40" height="40"/>
         <image name="ic_my_nor" width="64" height="49"/>
         <image name="ic_my_sel" width="64" height="49"/>
+        <image name="ic_right_nor" width="40" height="70"/>
         <image name="ic_youtube_nor" width="40" height="40"/>
         <image name="im_alien_a0" width="375" height="375"/>
         <image name="im_alien_none0" width="375" height="375"/>

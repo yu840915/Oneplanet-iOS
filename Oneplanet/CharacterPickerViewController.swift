@@ -42,7 +42,6 @@ class CharacterPickerViewController: UIViewController, UserSessionDepending {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController!.navigationBar.barStyle = .black
         NavigationBarStyle.translucent.configure(navigationController!.navigationBar)
     }
 
@@ -50,6 +49,7 @@ class CharacterPickerViewController: UIViewController, UserSessionDepending {
         nameFieldView.textField.attributedPlaceholder = NSAttributedString(string: Localized.placeholder.nickname, attributes: [NSAttributedString.Key.foregroundColor : ColorPalette.defaultPlaceholder])
         nicknameRuleLabel.text = Localized.phrases.nicknameRule
         doneButton.setTitle(Localized.titles.ok, for: .normal)
+        closeButtonItem.title = Localized.titles.cancel
     }
     
     private func updateAlienOptions(withColor color: CharacterColor) {
@@ -70,6 +70,14 @@ class CharacterPickerViewController: UIViewController, UserSessionDepending {
         if let color = colorPicker.selectedColor {
             draft.character = CharacterOptions.shared.characterOptions(for: color)[alienPicker.selectedIndex]
         }
+    }
+    
+    @IBAction func pickPrevious(_ sender: UIButton) {
+        alienPicker.scrollToPrevious()
+    }
+    
+    @IBAction func pickNext(_ sender: UIButton) {
+        alienPicker.scrollToNext()
     }
     
     // MARK: - Navigation

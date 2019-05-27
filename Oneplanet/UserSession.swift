@@ -126,7 +126,7 @@ class MyProfile: Decodable, UserProfileDisplayable {
     let id: String
     let nickname: String
     fileprivate(set) var avatar: WebImageInfo?
-    var race: Race?
+    var race: Character?
     let gender: Gender
     enum CodingKeys: String, CodingKey {
         case id

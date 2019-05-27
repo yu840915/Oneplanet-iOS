@@ -12,14 +12,23 @@ private let reuseIdentifier = "cell"
 
 class ColorPickerCollectionViewController: UICollectionViewController {
     
-    var colors: [UIColor] = []
+    var colors: [CharacterColor] = []
+    var selectedColor: CharacterColor?
+    var didChangeSelection: ((CharacterColor)->())?
     override func viewDidLoad() {
         super.viewDidLoad()
-        colors = [.red, .yellow, .blue, .green, .brown, .gray, .black]
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        selectItemIfNeeded()
+    }
+    
+    private func selectItemIfNeeded() {
+        if let selection = selectedColor,
+            let idx = colors.index(of: selection) {
+            collectionView.selectItem(at: IndexPath(row: idx, section: 0), animated: false, scrollPosition: .centeredVertically)
+        }
     }
 
     // MARK: UICollectionViewDataSource
@@ -30,7 +39,7 @@ class ColorPickerCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ColorCell
-        cell.colorView.backgroundColor = colors[indexPath.row]
+        cell.colorView.backgroundColor = colors[indexPath.row].color
         return cell
     }
 
@@ -42,6 +51,12 @@ class ColorPickerCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return true
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let color = colors[indexPath.row]
+        selectedColor = color
+        didChangeSelection?(color)
     }
 }
 

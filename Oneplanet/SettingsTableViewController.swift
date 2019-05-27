@@ -40,7 +40,7 @@ class SettingsTableViewController: UITableViewController, UserSessionDepending {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NavigationBarStyle.darkGrey.configure(navigationController!.navigationBar)
+        NavigationBarStyle.darkGray.configure(navigationController!.navigationBar)
     }
     
     private func localizeTitles() {
@@ -112,7 +112,7 @@ class SettingsTableViewController: UITableViewController, UserSessionDepending {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let nav = segue.destination as? UINavigationController, let vc = nav.viewControllers.first as? WebViewController {
-            NavigationBarStyle.darkGrey.configure(nav.navigationBar)
+            NavigationBarStyle.darkGray.configure(nav.navigationBar)
             if segue.identifier == SegueID.showBiddingTerms {
                 vc.request = URLRequest(url: ServiceURLs.biddingTerms)
                 vc.title = ActionRow.biddingTerms.displayName

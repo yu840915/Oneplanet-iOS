@@ -12,7 +12,7 @@ protocol UserProfileDisplayable {
     var id: String {get}
     var nickname: String {get}
     var avatar: WebImageInfo? {get}
-    var race: Race? {get}
+    var race: Character? {get}
 }
 
 class ProfileDetailViewController: UIViewController, UserSessionDepending, DefaultInstanceFactory {
@@ -59,7 +59,7 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
     
     private func updateViewsForProfile() {
         guard let profile = self.profile else { return }
-        avatarView.borderColor = profile.race?.color
+        avatarView.borderColor = profile.race?.color.color
         nicknameLabel.text = profile.nickname
         if let image = profile.race?.avatar {
             raceImageView.image = image
@@ -75,6 +75,14 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
     }
     
     @IBAction func performAction(_ sender: UIButton) {
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let nav = segue.destination as? UINavigationController,
+            let vc = nav.viewControllers.first as? CharacterPickerViewController {
+            vc.userSession = userSession
+            vc.draft = ProfileDraft(profile: userSession.profile!)
+        }
     }
 }
 

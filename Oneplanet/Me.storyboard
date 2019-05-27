@@ -231,6 +231,9 @@
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                                                        <connections>
+                                                                            <outlet property="delegate" destination="h5S-hA-Szz" id="Wsc-rn-qvz"/>
+                                                                        </connections>
                                                                     </textField>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -333,7 +336,7 @@
                                                             <constraint firstItem="H7m-fv-dcj" firstAttribute="centerX" secondItem="ClJ-Rn-S9g" secondAttribute="centerX" id="6Of-Zx-YDH"/>
                                                             <constraint firstItem="H7m-fv-dcj" firstAttribute="centerY" secondItem="ClJ-Rn-S9g" secondAttribute="centerY" id="Aiu-zo-Hmi"/>
                                                             <constraint firstItem="H7m-fv-dcj" firstAttribute="height" secondItem="ClJ-Rn-S9g" secondAttribute="height" id="HEY-lg-KAD"/>
-                                                            <constraint firstItem="H7m-fv-dcj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ClJ-Rn-S9g" secondAttribute="leading" constant="36" id="uAJ-0j-u2q"/>
+                                                            <constraint firstItem="H7m-fv-dcj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ClJ-Rn-S9g" secondAttribute="leading" id="uAJ-0j-u2q"/>
                                                             <constraint firstAttribute="height" constant="44" id="wQ4-Mf-NIs"/>
                                                         </constraints>
                                                     </view>
@@ -350,6 +353,9 @@
                                                         <state key="normal" title="Next" backgroundImage="bt_biggreen_nor">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="submit:" destination="h5S-hA-Szz" eventType="touchUpInside" id="hhD-vW-GuB"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -374,6 +380,7 @@
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="26B-Zb-EO5" firstAttribute="centerX" secondItem="NM4-E0-Xer" secondAttribute="centerX" id="COs-CD-CbS"/>
                             <constraint firstItem="26B-Zb-EO5" firstAttribute="width" secondItem="NM4-E0-Xer" secondAttribute="width" id="CzR-jN-KTn"/>
@@ -386,11 +393,23 @@
                             <constraint firstItem="OCy-D7-tGT" firstAttribute="centerY" secondItem="NM4-E0-Xer" secondAttribute="centerY" id="zQq-UE-XWR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KSJ-UU-xgR"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="oOg-XB-xAR" appends="YES" id="75M-0j-fAY"/>
+                        </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="TgC-z3-1Ig"/>
+                    <navigationItem key="navigationItem" id="TgC-z3-1Ig">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="DaP-1C-g21">
+                            <connections>
+                                <action selector="close:" destination="h5S-hA-Szz" id="BGs-Cz-Flc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
+                        <outlet property="closeButtonItem" destination="DaP-1C-g21" id="5sT-v3-Btp"/>
+                        <outlet property="colorPickerWidth" destination="xAG-iN-3eJ" id="ufN-CV-3hG"/>
                         <outlet property="colorPromptLabel" destination="hm4-nN-TDg" id="P4b-lh-xSs"/>
                         <outlet property="doneButton" destination="Wl4-AH-cRX" id="oLi-8c-L37"/>
+                        <outlet property="endEditingTap" destination="oOg-XB-xAR" id="d9Y-ru-0kS"/>
                         <outlet property="errorLabel" destination="8W0-cU-59E" id="7xA-BL-3RB"/>
                         <outlet property="errorView" destination="HuJ-D8-ruT" id="tVG-7E-Yma"/>
                         <outlet property="leftButton" destination="fmB-9d-ntY" id="MVN-fs-cOV"/>
@@ -400,6 +419,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="opt-jP-L50" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer enabled="NO" id="oOg-XB-xAR">
+                    <connections>
+                        <action selector="tapToEndEditing:" destination="h5S-hA-Szz" id="gju-sk-BYZ"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1516" y="2409"/>
         </scene>

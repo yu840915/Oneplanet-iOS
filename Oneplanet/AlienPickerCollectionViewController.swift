@@ -12,6 +12,13 @@ private let reuseIdentifier = "cell"
 
 class AlienPickerCollectionViewController: UICollectionViewController {
     
+    var characters: [Character] = [] {
+        didSet {
+            if isViewLoaded {
+                collectionView.reloadData()
+            }
+        }
+    }
     var selectedIndexDidChange: (()->())?
     private(set) var selectedIndex: Int = 0 {
         didSet {
@@ -38,11 +45,12 @@ class AlienPickerCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return characters.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! AlienCell
+        cell.imageView.image = characters[indexPath.row].avatar
         return cell
     }
     

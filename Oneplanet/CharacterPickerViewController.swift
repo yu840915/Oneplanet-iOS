@@ -66,7 +66,12 @@ class CharacterPickerViewController: UIViewController, UserSessionDepending {
     }
     
     private func updateAlienOptions(withColor color: CharacterColor) {
-        alienPicker.characters = CharacterOptions.shared.characterOptions(for: color)
+        let characters = CharacterOptions.shared.characterOptions(for: color)
+        alienPicker.characters = characters
+        if let character = draft.character,
+            let idx = characters.index(of: character) {
+            alienPicker.preselectedIndex = idx
+        }
     }
 
     @IBAction func close(_ sender: Any) {

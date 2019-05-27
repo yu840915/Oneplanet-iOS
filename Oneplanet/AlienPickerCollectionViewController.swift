@@ -21,6 +21,7 @@ class AlienPickerCollectionViewController: UICollectionViewController {
         }
     }
     var selectedIndexDidChange: (()->())?
+    var preselectedIndex: Int = 0
     private(set) var selectedIndex: Int = 0 {
         didSet {
             if oldValue != selectedIndex {
@@ -53,7 +54,7 @@ class AlienPickerCollectionViewController: UICollectionViewController {
         let doneSizeAdjustment = !characters.isEmpty
         if shouldScrollToBeginning && doneSizeAdjustment {
             shouldScrollToBeginning = false
-            collectionView.scrollToItem(at: IndexPath(row: 0, section: 1), at: .centeredHorizontally, animated: false)
+            collectionView.scrollToItem(at: IndexPath(row: preselectedIndex, section: 1), at: .centeredHorizontally, animated: false)
         }
     }
     

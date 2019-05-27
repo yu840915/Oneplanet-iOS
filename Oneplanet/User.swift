@@ -19,6 +19,12 @@ class Character {
     }
 }
 
+extension Character: Equatable {
+    static func ==(lhs: Character, rhs: Character) -> Bool {
+        return lhs.race == rhs.race && lhs.color == rhs.color
+    }
+}
+
 enum Race: String {
     case a
     case b

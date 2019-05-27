@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ModelBlocks
 
 class CharacterPickerViewController: UIViewController, UserSessionDepending {
     var userSession: UserSession!
@@ -26,6 +27,11 @@ class CharacterPickerViewController: UIViewController, UserSessionDepending {
     
     private var alienPicker: AlienPickerCollectionViewController!
     private var colorPicker: ColorPickerCollectionViewController!
+    private var updateProfileOperation: UpdateProfileOperation? {
+        didSet {
+            updateViewForRunningOperation()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,12 +46,19 @@ class CharacterPickerViewController: UIViewController, UserSessionDepending {
         doneButton.isEnabled = !draft.nickname.isEmpty
     }
 
+    private func updateViewForRunningOperation() {
+        let allowsAction = updateProfileOperation == nil
+        [doneButton, leftButton, rightButton].forEach{$0?.isEnabled = allowsAction}
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         NavigationBarStyle.translucent.configure(navigationController!.navigationBar)
     }
 
     private func localizeTitles() {
+        title = Localized.phrases.chooseRole
+        colorPromptLabel.text = Localized.phrases.chooseColor
         nameFieldView.textField.attributedPlaceholder = NSAttributedString(string: Localized.placeholder.nickname, attributes: [NSAttributedString.Key.foregroundColor : ColorPalette.defaultPlaceholder])
         nicknameRuleLabel.text = Localized.phrases.nicknameRule
         doneButton.setTitle(Localized.titles.ok, for: .normal)
@@ -70,7 +83,68 @@ class CharacterPickerViewController: UIViewController, UserSessionDepending {
         if let color = colorPicker.selectedColor {
             draft.character = CharacterOptions.shared.characterOptions(for: color)[alienPicker.selectedIndex]
         }
+        showConfirmAlert()
     }
+    
+    private func showConfirmAlert() {
+        let alert = UIAlertController(title: Localized.warningTitles.characterSelection, message: Localized.warnings.characterSelection, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Localized.titles.ok, style: .default, handler: { (_) in
+            
+        }))
+        alert.addAction(UIAlertAction(title: Localized.titles.cancel, style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    private func submitProfile() {
+        guard updateProfileOperation == nil else {
+            return
+        }
+        let op = UpdateProfileOperation(draft: draft, session: userSession)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didSubmitProfile()
+            }
+        }
+        updateProfileOperation = op
+        op.start()
+    }
+    
+    private func didSubmitProfile() {
+        let op = updateProfileOperation!
+        updateProfileOperation = nil
+        resetErrorDisplay()
+        if op.success == true {
+            userSession.updateProfile(userSession.profile!.updating(with: draft))
+            dismiss(animated: true, completion: nil)
+        }
+        if let error = op.error {
+            showAlert(with: error)
+        }
+    }
+    
+    private func resetErrorDisplay() {
+        nameFieldView.isRejecting = false
+        errorLabel.text = nil
+        errorView.isHidden = true
+    }
+    
+    private func showAlert(with error: Error) {
+        if error is InputError {
+            showInputError(with: error.localizedDescription)
+        } else {
+            resetErrorDisplay()
+            let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: Localized.titles.dismiss, style: .cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    private func showInputError(with message: String) {
+        nameFieldView.isRejecting = true
+        errorView.isHidden = false
+        errorLabel.text = message
+    }
+
     
     @IBAction func pickPrevious(_ sender: UIButton) {
         alienPicker.scrollToPrevious()

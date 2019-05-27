@@ -210,10 +210,7 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
         updateProfileOperation = nil
         resetErrorDisplay()
         if op.success == true {
-            userSession.updateProfile(
-                MyProfile(id: userSession.profile!.id,
-                          nickname: op.draft.nickname,
-                          avatar: userSession.profile!.avatar))
+            userSession.updateProfile(userSession.profile!.updating(with: op.draft))
             didCreateProfile?()
         }
         if let error = op.error {

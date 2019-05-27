@@ -12,7 +12,7 @@ protocol UserProfileDisplayable {
     var id: String {get}
     var nickname: String {get}
     var avatar: WebImageInfo? {get}
-    var race: Character? {get}
+    var character: Character? {get}
 }
 
 class ProfileDetailViewController: UIViewController, UserSessionDepending, DefaultInstanceFactory {
@@ -59,9 +59,9 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
     
     private func updateViewsForProfile() {
         guard let profile = self.profile else { return }
-        avatarView.borderColor = profile.race?.color.color
+        avatarView.borderColor = profile.character?.color.color
         nicknameLabel.text = profile.nickname
-        if let image = profile.race?.avatar {
+        if let image = profile.character?.avatar {
             raceImageView.image = image
         }
         chooseRaceButton.isHidden = !configuration.raceButton

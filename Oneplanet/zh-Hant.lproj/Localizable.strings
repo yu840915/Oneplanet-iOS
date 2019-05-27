@@ -61,6 +61,7 @@
 "ph_follow" = "Follow";
 "ph_following" = "Following";
 "ph_choose_role" = "選擇人物";
+"ph_choose_color" = "Choose Color";
 "ph_edit_profile" = "Edit Profile";
 "ph_block_list" = "Blocked Account";
 "ph_privacy_and_security" = "Privacy and Security";
@@ -79,3 +80,6 @@
 "errtl_cannot_pick_avatar" = "無法取得大頭照";
 
 "warn_logout" = "Log Out?";
+"warn_character_selection" = "Can't change the group after selection, continue？";
+
+"warntl_character_selection" = "Determined choice？";

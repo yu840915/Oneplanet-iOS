@@ -36,6 +36,7 @@ class ProfileDraft {
             }
         }
     }
+    var character: Character?
     
     func setDefaultAvatarIfAllowed(_ attachemnt: ImageAttachment) {
         guard avatar == nil else { return }

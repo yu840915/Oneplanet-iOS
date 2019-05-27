@@ -45,7 +45,7 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
             }
             tabbar.viewControllers?.forEach{
                 if let nav = $0 as? UINavigationController {
-                    NavigationBarStyle.darkGrey.configure(nav.navigationBar)
+                    NavigationBarStyle.darkGray.configure(nav.navigationBar)
                 }
                 $0.additionalSafeAreaInsets = UIEdgeInsets(top: 0, left: 0, bottom: 80, right: 0)
             }

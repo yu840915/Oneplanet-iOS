@@ -12,12 +12,18 @@ protocol UserProfileDisplayable {
     var id: String {get}
     var nickname: String {get}
     var avatar: WebImageInfo? {get}
-    var race: Race? {get}
+    var character: Character? {get}
 }
 
 class ProfileDetailViewController: UIViewController, UserSessionDepending, DefaultInstanceFactory {
     var userSession: UserSession!
-    var configuration: DisplayConfiguration = .forGuest
+    var configuration: DisplayConfiguration = .forGuest {
+        didSet {
+            if isViewLoaded {
+                updateViewsForProfile()
+            }
+        }
+    }
     
     class func fromDefaultStoryboard() -> ProfileDetailViewController {
         return UIStoryboard(name: "Me", bundle: nil).instantiateViewController(withIdentifier: "ProfileDetailViewController") as! ProfileDetailViewController
@@ -53,9 +59,9 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
     
     private func updateViewsForProfile() {
         guard let profile = self.profile else { return }
-        avatarView.borderColor = profile.race?.color
+        avatarView.borderColor = profile.character?.color.color
         nicknameLabel.text = profile.nickname
-        if let image = profile.race?.avatar {
+        if let image = profile.character?.avatar {
             raceImageView.image = image
         }
         chooseRaceButton.isHidden = !configuration.raceButton
@@ -65,13 +71,26 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
     }
     
     @IBAction func startChooseRece(_ sender: UIButton) {
+        performSegue(withIdentifier: SegueID.showCharacterPicker, sender: nil)
     }
     
     @IBAction func performAction(_ sender: UIButton) {
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let nav = segue.destination as? UINavigationController,
+            let vc = nav.viewControllers.first as? CharacterPickerViewController {
+            vc.userSession = userSession
+            vc.draft = ProfileDraft(profile: userSession.profile!)
+        }
+    }
 }
 
 extension ProfileDetailViewController {
+    struct SegueID {
+        static let showCharacterPicker = "showCharacterPicker"
+    }
+    
     struct DisplayConfiguration {
         let raceButton: Bool
         let actionButton: Bool

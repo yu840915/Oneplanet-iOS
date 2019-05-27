@@ -14,6 +14,7 @@ class Localized {
     static let languageCode: String = NSLocalizedString("iso_code", comment: "")
     static let titles = LocalizedTitles()
     static let warnings = LocalizedWarnings()
+    static let warningTitles = LocalizedWarningTitles()
     static let errors = LocalizedErrors()
     static let errorTitles = LocalizedErrorsTitles()
     static let messages = LocalizedMessages()
@@ -135,6 +136,15 @@ class LocalizedWarnings {//warn_
     var logout: String {
         return NSLocalizedString("warn_logout", comment: "")
     }
+    var characterSelection: String {
+        return NSLocalizedString("warn_character_selection", comment: "")
+    }
+}
+
+class LocalizedWarningTitles {//warntl_
+    var characterSelection: String {
+        return NSLocalizedString("warntl_character_selection", comment: "")
+    }
 }
 
 class LocalizedMessages {//msg_
@@ -217,6 +227,9 @@ class LocalizedPhrase { //ph_
     }
     var chooseRole: String {
         return NSLocalizedString("ph_choose_role", comment: "")
+    }
+    var chooseColor: String {
+        return NSLocalizedString("ph_choose_color", comment: "")
     }
     var editProfile: String {
         return NSLocalizedString("ph_edit_profile", comment: "")

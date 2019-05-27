@@ -335,7 +335,7 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
         }
         if let nav = segue.destination as? UINavigationController,
             let vc = nav.viewControllers.first as? WebViewController {
-            NavigationBarStyle.darkGrey.configure(nav.navigationBar)
+            NavigationBarStyle.darkGray.configure(nav.navigationBar)
             vc.request = sender as? URLRequest
             vc.title = Localized.titles.tos
         }

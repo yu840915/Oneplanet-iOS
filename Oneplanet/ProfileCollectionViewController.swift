@@ -78,6 +78,7 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
             prepareContentViewController(for: cell)
         }
         cell.contentViewController?.profile = profile
+        cell.contentViewController?.configuration = configuration
     }
     
     private func prepareContentViewController(for cell: ProfileContainerCell) {
@@ -109,7 +110,7 @@ extension ProfileCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch sections[indexPath.section] {
         case .detail:
-            return CGSize(width: collectionView.bounds.width, height: 475)
+            return CGSize(width: collectionView.bounds.width, height: 485)
         case .emptyView:
             return CGSize(width: collectionView.bounds.width, height: 160)
         case .posts:

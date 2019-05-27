@@ -11,7 +11,7 @@ import UIKit
 class NavigationBarStyle {
     static let translucent = TranslucentNavigationBarStyle()
     static let black = BlackNavigationBarStyle()
-    static let darkGrey = DarkGreyNavigationBarStyle()
+    static let darkGray = DarkGrayNavigationBarStyle()
     fileprivate init() {}
     func configure(_ bar: UINavigationBar) {
     }
@@ -35,9 +35,9 @@ class BlackNavigationBarStyle: NavigationBarStyle {
     }
 }
 
-class DarkGreyNavigationBarStyle: NavigationBarStyle {
+class DarkGrayNavigationBarStyle: NavigationBarStyle {
     override func configure(_ bar: UINavigationBar) {
-        bar.barTintColor = ColorPalette.greyBar
+        bar.barTintColor = ColorPalette.grayBar
         bar.barStyle = .black
         bar.isTranslucent = false
         bar.tintColor = ColorPalette.defaultText

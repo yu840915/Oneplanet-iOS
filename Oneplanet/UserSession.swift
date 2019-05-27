@@ -126,7 +126,7 @@ class MyProfile: Decodable, UserProfileDisplayable {
     let id: String
     let nickname: String
     fileprivate(set) var avatar: WebImageInfo?
-    var race: Race?
+    var character: Character?
     let gender: Gender
     enum CodingKeys: String, CodingKey {
         case id
@@ -145,6 +145,14 @@ class MyProfile: Decodable, UserProfileDisplayable {
         id = try container.decode(String.self, forKey: .id)
         nickname = try container.decodeIfPresent(String.self, forKey: .nickname) ?? ""
         gender = .unknown
+    }
+    
+    func updating(with draft: ProfileDraft) -> MyProfile {
+        let profile = MyProfile(id: id,
+                                nickname: draft.nickname,
+                                avatar: avatar)
+        profile.character = draft.character
+        return profile
     }
 }
 

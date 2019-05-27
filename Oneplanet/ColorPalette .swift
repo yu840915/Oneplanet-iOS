@@ -17,5 +17,5 @@ struct ColorPalette {
     static let blueGem = UIColor(named: "blue gem")!
     static let greenKey = UIColor(named: "green key")!
     static let purpleCoin = UIColor(named: "purple coin")!
-    static let greyBar = #colorLiteral(red: 0.09803921569, green: 0.09803921569, blue: 0.09803921569, alpha: 1)
+    static let grayBar = #colorLiteral(red: 0.09803921569, green: 0.09803921569, blue: 0.09803921569, alpha: 1)
 }

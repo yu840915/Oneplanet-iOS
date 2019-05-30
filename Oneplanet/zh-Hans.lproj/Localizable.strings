@@ -68,6 +68,7 @@
 "ph_not_specified" = "Not Specified";
 
 "no_posts" = "No Posts Yet";
+"no_promo_popups" = "No Promotion Pop-ups Yet";
 
 "err_no_camera_access" = "启用摄像头访问";
 "err_no_library_access" = "启用图库访问";

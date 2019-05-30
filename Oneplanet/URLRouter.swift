@@ -33,6 +33,13 @@ class URLRouter {
         return router.routeURL(url)
     }
     
+    func canHandle(_ url: URL) -> Bool {
+        if overridingRouters.reversed().contains(where: { return $0.canHandle(url) }) {
+            return true
+        }
+        return router.canRouteURL(url)
+    }
+    
     func addOverridingRouter(_ router: URLRouter) {
         if router === self || overridingRouters.contains(where: { $0 === router }) {
             return

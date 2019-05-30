@@ -95,6 +95,7 @@
 		E08C312B227826850013DD0C /* EmailInputValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08C312A227826850013DD0C /* EmailInputValidatorTests.swift */; };
 		E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */; };
 		E0BAB71F228482D1007E747C /* InputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BAB71E228482D1007E747C /* InputFieldView.swift */; };
+		E0BDCCEA229FA044006A9D20 /* PromotionPageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BDCCE9229FA044006A9D20 /* PromotionPageList.swift */; };
 		E0CB5E11228F0B4A00C0C010 /* TreasuryBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CB5E10228F0B4A00C0C010 /* TreasuryBarViewController.swift */; };
 		E0CB5E15228F0E5F00C0C010 /* DS-DIGIB.TTF in Resources */ = {isa = PBXBuildFile; fileRef = E0CB5E14228F0E5F00C0C010 /* DS-DIGIB.TTF */; };
 		E0D7DCDB229CE65C00B40D76 /* PromoPopUpFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D7DCDA229CE65C00B40D76 /* PromoPopUpFlowViewController.swift */; };
@@ -221,6 +222,7 @@
 		E08C312A227826850013DD0C /* EmailInputValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailInputValidatorTests.swift; sourceTree = "<group>"; };
 		E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryImagePickerViewController.swift; sourceTree = "<group>"; };
 		E0BAB71E228482D1007E747C /* InputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldView.swift; sourceTree = "<group>"; };
+		E0BDCCE9229FA044006A9D20 /* PromotionPageList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionPageList.swift; sourceTree = "<group>"; };
 		E0CB5E10228F0B4A00C0C010 /* TreasuryBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreasuryBarViewController.swift; sourceTree = "<group>"; };
 		E0CB5E14228F0E5F00C0C010 /* DS-DIGIB.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DS-DIGIB.TTF"; sourceTree = "<group>"; };
 		E0D7DCDA229CE65C00B40D76 /* PromoPopUpFlowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoPopUpFlowViewController.swift; sourceTree = "<group>"; };
@@ -504,6 +506,7 @@
 				E0CB5E10228F0B4A00C0C010 /* TreasuryBarViewController.swift */,
 				E0D7DCDA229CE65C00B40D76 /* PromoPopUpFlowViewController.swift */,
 				E0D7DCDC229CE82300B40D76 /* PromoPopUpViewController.swift */,
+				E0BDCCE9229FA044006A9D20 /* PromotionPageList.swift */,
 				E0814FB022864F79002F1C02 /* UserFlowMainViewController.swift */,
 				E00611F02294F4ED0032AE30 /* Home */,
 				E0FF797D228D38CE00F61318 /* Post.storyboard */,
@@ -805,6 +808,7 @@
 				E030E4D0228A71CB0084D383 /* ProfileDetailViewController.swift in Sources */,
 				E06589BD22700AEC00C9E4E6 /* CaptureSessionController.swift in Sources */,
 				E0190F4B226DB55400C212D5 /* UIComponentFactories.swift in Sources */,
+				E0BDCCEA229FA044006A9D20 /* PromotionPageList.swift in Sources */,
 				E089F70D228E9ECB003E77DF /* AvatarView.swift in Sources */,
 				E07276E322731334001239C0 /* EmailVerificationViewController.swift in Sources */,
 				E05BB260226D5D2A00721F20 /* RootViewController.swift in Sources */,

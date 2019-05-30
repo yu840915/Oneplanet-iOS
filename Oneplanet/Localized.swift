@@ -249,6 +249,9 @@ class EmptyMessages {//no_
     var posts: String {
         return NSLocalizedString("no_posts", comment: "")
     }
+    var promoPopups: String {
+        return NSLocalizedString("no_promo_popups", comment: "")
+    }
 }
 
 class LocalizedErrorsTitles {//errtl_

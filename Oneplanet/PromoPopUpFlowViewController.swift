@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import ModelBlocks
+
+let promoPopUpSupressionRequests = ReferenceTracker()
 
 class PromoPopUpFlowViewController: UIViewController, UserSessionDepending, DefaultInstanceFactory {
     var userSession: UserSession!
     var promoPageList: PromotionPageList?
+    var supressionReq: Any!
     class func fromDefaultStoryboard() -> PromoPopUpFlowViewController {
         return UIStoryboard(name: "MainUserFlow", bundle: nil).instantiateViewController(withIdentifier: "PromoPopUpFlowViewController") as! PromoPopUpFlowViewController
     }
@@ -35,6 +39,7 @@ class PromoPopUpFlowViewController: UIViewController, UserSessionDepending, Defa
         } else {
             getPromotionPageList()
         }
+        supressionReq = promoPopUpSupressionRequests.add()
     }
     
     override func viewDidAppear(_ animated: Bool) {

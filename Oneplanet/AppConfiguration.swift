@@ -14,6 +14,8 @@ let appConfiguration: AppConfiguration = AppConfiguration()
 
 class AppConfiguration {
     let didUpdateObservers = MulticastCallbackNode<()->()>()
+    let promoPopUpCoolDownInterval: TimeInterval = 30 * .minute
+    
     private let source: RemoteConfig
     fileprivate init() {
         source = RemoteConfig.remoteConfig()
@@ -64,4 +66,11 @@ class AppConfigurationStringItem: AppConfigurationItem<String> {
     override var value: String? {
         return configValue.stringValue
     }
+}
+
+extension TimeInterval {
+    static let second: TimeInterval = 1
+    static let minute = 60 * second
+    static let hour = 60 * minute
+    static let day = 24 * hour
 }

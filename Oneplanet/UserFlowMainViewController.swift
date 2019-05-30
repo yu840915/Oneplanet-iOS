@@ -11,7 +11,12 @@ import UIKit
 class UserFlowMainViewController: UIViewController, UserSessionDepending, DefaultInstanceFactory {
     var userSession: UserSession!
     private var contentTabbarController: UITabBarController!
-    
+    fileprivate var getPageListOperaion: GetPromotionPageListOperation?
+    fileprivate var appearanceAction: (()->())?
+    fileprivate var hasViewBeenVisible = false
+    private var appBecomeActiveHandle: Any?
+
+
     class func fromDefaultStoryboard() -> UserFlowMainViewController {
         return UIStoryboard(name: "MainUserFlow", bundle: nil).instantiateInitialViewController() as! UserFlowMainViewController
     }
@@ -19,6 +24,12 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpTabbarBackground()
+        getPromoPopupIfNeeded()
+        appBecomeActiveHandle = AppLifeCycleObserver.didBecomeActive.observers.add {[weak self] (_) in
+            OperationQueue.main.addOperation {
+                self?.getPromoPopupIfNeeded()
+            }
+        }
     }
     
     private func setUpTabbarBackground() {
@@ -29,6 +40,13 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
         imageView.frame = frame
         contentTabbarController.tabBar.addSubview(imageView)
         contentTabbarController.tabBar.sendSubviewToBack(imageView)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        hasViewBeenVisible = true
+        appearanceAction?()
+        appearanceAction = nil
     }
     
     // MARK: - Navigation
@@ -54,6 +72,46 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
         }
     }
 
+}
+
+fileprivate extension UserFlowMainViewController {
+    func getPromoPopupIfNeeded() {
+//        if let lastDate = Preferences.lastPromoPopUpShowUpDate.value,
+//            Date().timeIntervalSince(lastDate) < appConfiguration.promoPopUpCoolDownInterval {
+//            return
+//        }
+        guard promoPopUpSupressionRequests.isEmpty else { return }
+        guard getPageListOperaion == nil else { return }
+        let op = GetPromotionPageListOperation()
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didGetPromoPopup()
+            }
+        }
+        getPageListOperaion = op
+        op.start()
+    }
+    
+    func didGetPromoPopup() {
+        let op = getPageListOperaion!
+        getPageListOperaion = nil
+        guard let list = op.list, !list.pages.isEmpty else { return }
+//        Preferences.lastPromoPopUpShowUpDate.value = Date()
+        showPromoPagesIfVisible(with: list)
+    }
+    
+    func showPromoPagesIfVisible(with list: PromotionPageList) {
+        guard hasViewBeenVisible else {
+            appearanceAction = {[weak self] in
+                self?.showPromoPagesIfVisible(with: list)
+            }
+            return
+        }
+        let vc = PromoPopUpFlowViewController.fromDefaultStoryboard()
+        vc.promoPageList = list
+        vc.userSession = userSession
+        present(vc, animated: true, completion: nil)
+    }
 }
 
 extension UIViewController {

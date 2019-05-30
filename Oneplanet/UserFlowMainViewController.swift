@@ -110,7 +110,7 @@ fileprivate extension UserFlowMainViewController {
         let vc = PromoPopUpFlowViewController.fromDefaultStoryboard()
         vc.promoPageList = list
         vc.userSession = userSession
-        present(vc, animated: true, completion: nil)
+        FrontViewControllerFinder.findFront()?.present(vc, animated: true, completion: nil)
     }
 }
 
@@ -119,5 +119,21 @@ extension UIViewController {
         let insets = UIApplication.shared.keyWindow!.safeAreaInsets
         let inset = max(insets.bottom, insets.left, insets.right)
         return inset > 0
+    }
+}
+
+class FrontViewControllerFinder: NSObject {
+    class func findFront() -> UIViewController? {
+        return findRoot()?.frontPresentedController
+    }
+    
+    class func findRoot() -> UIViewController? {
+        return (UIApplication.shared.delegate as? AppDelegate)?.window?.rootViewController
+    }
+}
+
+extension UIViewController {
+    var frontPresentedController: UIViewController {
+        return presentedViewController?.frontPresentedController ?? self
     }
 }

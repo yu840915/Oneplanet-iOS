@@ -21,7 +21,11 @@ class AlienPickerCollectionViewController: UICollectionViewController {
         }
     }
     var selectedIndexDidChange: (()->())?
-    var preselectedIndex: Int = 0
+    var preselectedIndex: Int = 0 {
+        didSet {
+            shouldScrollToPreselectIndex = true
+        }
+    }
     private(set) var selectedIndex: Int = 0 {
         didSet {
             if oldValue != selectedIndex {
@@ -30,7 +34,8 @@ class AlienPickerCollectionViewController: UICollectionViewController {
         }
     }
     var sections: [Section] = []
-    var shouldScrollToBeginning = false
+    var shouldScrollToPreselectIndex = true
+    private var lastScrollTime = Date()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,21 +50,20 @@ class AlienPickerCollectionViewController: UICollectionViewController {
             sections = [.body]
         } else {
             sections = [.headPadding, .body, .endPadding]
-            shouldScrollToBeginning = true
         }
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         let doneSizeAdjustment = !characters.isEmpty
-        if shouldScrollToBeginning && doneSizeAdjustment {
-            shouldScrollToBeginning = false
+        if shouldScrollToPreselectIndex && doneSizeAdjustment {
+            shouldScrollToPreselectIndex = false
             collectionView.scrollToItem(at: IndexPath(row: preselectedIndex, section: 1), at: .centeredHorizontally, animated: false)
         }
     }
     
     func scrollToNext() {
-        guard collectionView.indexPathsForVisibleItems.count == 3 else { return }
+        guard lastScrollTime.timeIntervalSinceNow < -0.1 else { return }
         let nextRow = selectedIndex.advanced(by: 1)
         let isAtEnd = characters.count == nextRow
         let next = isAtEnd ? IndexPath(row: 0, section: 2) : IndexPath(row: nextRow, section: 1)
@@ -67,7 +71,7 @@ class AlienPickerCollectionViewController: UICollectionViewController {
     }
     
     func scrollToPrevious() {
-        guard collectionView.indexPathsForVisibleItems.count == 3 else { return }
+        guard lastScrollTime.timeIntervalSinceNow < -0.1 else { return }
         let previousRow = selectedIndex.advanced(by: -1)
         let isAtBegin = characters.count == previousRow
         let next = isAtBegin ? IndexPath(row: 1, section: 0) : IndexPath(row: previousRow, section: 1)
@@ -101,6 +105,7 @@ class AlienPickerCollectionViewController: UICollectionViewController {
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        lastScrollTime = Date()
         let width = scrollView.frame.width / 3
         let idx = Int(((scrollView.contentOffset.x) / width).rounded(.toNearestOrAwayFromZero)) - 1
         if idx == -1 {
@@ -125,7 +130,16 @@ class AlienPickerCollectionViewController: UICollectionViewController {
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let width = scrollView.frame.width / 3
         let endIdx = ((scrollView.contentOffset.x + targetContentOffset.pointee.x) / (2 * width)).rounded(.toNearestOrAwayFromZero)
-        targetContentOffset.pointee.x = endIdx * width
+        if Int(endIdx) == selectedIndex {
+            targetContentOffset.pointee.x = scrollView.contentOffset.x
+            var offset = scrollView.contentOffset
+            offset.x = endIdx * width
+            OperationQueue.main.addOperation {
+                scrollView.setContentOffset(offset, animated: true)
+            }
+        } else {
+            targetContentOffset.pointee.x = endIdx * width
+        }
     }
 
     // MARK: UICollectionViewDelegate

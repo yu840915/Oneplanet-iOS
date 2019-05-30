@@ -190,7 +190,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mpr-2s-WNJ">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6NP-UI-6VG" userLabel="Go Button">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6NP-UI-6VG" userLabel="Go Button">
                                 <rect key="frame" x="36" y="763" width="342" height="41"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                 <state key="normal" title="Go" backgroundImage="bt_biggreen_nor">
@@ -208,7 +208,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6NP-UI-6VG" firstAttribute="leading" secondItem="ZWq-0E-2fz" secondAttribute="leading" constant="36" id="3Xy-Wq-Mds"/>
                             <constraint firstItem="WgS-bc-toc" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ZWq-0E-2fz" secondAttribute="top" id="7rI-L6-Obs"/>

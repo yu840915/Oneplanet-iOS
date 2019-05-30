@@ -43,6 +43,8 @@ class PromoPopUpViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let nav = segue.destination as? UINavigationController,
             let vc = nav.viewControllers.first as? WebViewController {
+            NavigationBarStyle.darkGray.configure(nav.navigationBar)
+            vc.exitTitle = Localized.titles.done
             vc.request = URLRequest(url: sender as! URL)
         }
     }

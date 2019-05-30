@@ -12,6 +12,7 @@ import WebKit
 class WebViewController: UIViewController {
     var webView: WKWebView!
     private var shouldAddConstraintsForWebView = false
+    var exitTitle = Localized.titles.cancel
     var request: URLRequest? {
         didSet {
             if isViewLoaded && oldValue != request {
@@ -23,7 +24,7 @@ class WebViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        exitButtonItem.title = Localized.titles.cancel
+        exitButtonItem.title = exitTitle
         setUpWebView()
         startRequest()
     }

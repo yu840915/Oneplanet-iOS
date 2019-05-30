@@ -8,10 +8,13 @@
 
 import UIKit
 
-class PromoPopUpFlowViewController: UIViewController, UserSessionDepending {
+class PromoPopUpFlowViewController: UIViewController, UserSessionDepending, DefaultInstanceFactory {
     var userSession: UserSession!
     var promoPageList: PromotionPageList?
-
+    class func fromDefaultStoryboard() -> PromoPopUpFlowViewController {
+        return UIStoryboard(name: "MainUserFlow", bundle: nil).instantiateViewController(withIdentifier: "PromoPopUpFlowViewController") as! PromoPopUpFlowViewController
+    }
+    
     @IBOutlet weak var processingContainerView: UIView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var errorView: UIStackView!
@@ -107,7 +110,7 @@ fileprivate extension PromoPopUpFlowViewController {
             retryButton.isHidden = true
             errorLabel.text = Localized.emptyMessages.promoPopups
         } else {
-            processingContainerView.isHidden = false
+            processingContainerView.isHidden = true
             if isViewVisible {
                 popAndShowPromotionPage()
             } else {

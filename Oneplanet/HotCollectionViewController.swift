@@ -17,12 +17,22 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
     var expectedTabbarFrame: CGRect = .zero
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItems = [
-            .init(customView: HotNavigationItemView.forAlien()),
-            .init(customView: HotNavigationItemView.forEvents()),
-            .init(customView: HotNavigationItemView.forNews())
-        ]
+        setUpNavigationItems()
         (collectionViewLayout as! UICollectionViewFlowLayout).sectionHeadersPinToVisibleBounds = true
+    }
+    
+    private func setUpNavigationItems() {
+        let alien = HotNavigationItemView.forAlien()
+        let events = HotNavigationItemView.forEvents()
+        let news = HotNavigationItemView.forNews()
+        news.action = {[weak self] in
+            self?.showPromoPopUp()
+        }
+        navigationItem.rightBarButtonItems = [
+            .init(customView: alien),
+            .init(customView: events),
+            .init(customView: news)
+        ]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -77,10 +87,17 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
             tabBarController!.tabBar.frame = expectedTabbarFrame
         }
     }
-
+    
+    private func showPromoPopUp() {
+        performSegue(withIdentifier: SegueID.showPromoPopup, sender: nil)
+    }
+    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? UserSessionDepending {
+            vc.userSession = userSession
+        }
     }
 
     // MARK: UICollectionViewDataSource
@@ -143,6 +160,9 @@ extension HotCollectionViewController {
     struct ReuseID {
         static let cell = "cell"
         static let header = "header"
+    }
+    struct SegueID {
+        static let showPromoPopup = "showPromoPopup"
     }
 }
 

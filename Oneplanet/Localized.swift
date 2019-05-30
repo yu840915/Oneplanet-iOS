@@ -115,6 +115,9 @@ class LocalizedTitles {//tl_
     var wechat: String {
         return "WeChat"
     }
+    var go: String {
+        return NSLocalizedString("tl_go", comment: "")
+    }
 }
 
 class LocalizedPlaceholder {//pl_

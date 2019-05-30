@@ -229,6 +229,7 @@
                     </view>
                     <connections>
                         <outlet property="goButton" destination="6NP-UI-6VG" id="nwt-DF-vBM"/>
+                        <outlet property="imageView" destination="mpr-2s-WNJ" id="pZ8-5G-qNW"/>
                         <segue destination="Mho-Im-iu9" kind="presentation" identifier="showWebView" id="7Pt-9H-3ho"/>
                     </connections>
                 </viewController>

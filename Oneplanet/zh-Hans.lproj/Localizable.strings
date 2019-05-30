@@ -32,6 +32,7 @@
 "tl_male" = "Male";
 "tl_female" = "Female";
 "tl_private_info" = "Private Information";
+"tl_go" = "Go";
 
 "pl_email" = "电子邮件地址";
 "pl_nickname" = "昵称";

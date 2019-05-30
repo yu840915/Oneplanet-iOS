@@ -7,17 +7,25 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PromoPopUpViewController: UIViewController {
 
     @IBOutlet weak var goButton: UIButton!
+    @IBOutlet weak var imageView: UIImageView!
     var page: PromotionPage!
     var dismissAction: (()->())?
     var linkHandler: ((URL)->(Bool))?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        goButton.setTitle(Localized.titles.go, for: .normal)
+        updateViewsForPage()
+    }
+    
+    private func updateViewsForPage() {
+        goButton.isHidden = (page.link == nil)
+        imageView.kf.setImage(with: page.poster.url)
     }
     
     @IBAction func goToLink(_ sender: UIButton) {

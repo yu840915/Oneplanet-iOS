@@ -96,10 +96,21 @@
                     <navigationItem key="navigationItem" id="seF-W8-2bR">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="ui_logoblack" id="WzY-04-gec"/>
                     </navigationItem>
+                    <connections>
+                        <segue destination="mmk-1D-Rbb" kind="presentation" identifier="showPromoPopup" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="7dV-ci-XKD"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="55Y-VR-dPf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="228.98550724637684" y="109.82142857142857"/>
+        </scene>
+        <!--PromoPopUpFlowViewController-->
+        <scene sceneID="YaV-1j-2FZ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MainUserFlow" referencedIdentifier="PromoPopUpFlowViewController" id="mmk-1D-Rbb" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bi7-ma-hlp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1128" y="110"/>
         </scene>
         <!--Hot Header Collection View Controller-->
         <scene sceneID="hFp-1m-i6i">

@@ -28,7 +28,8 @@ class HotNavigationItemView: UIView {
     }
     
     @IBOutlet weak var titleLabel: UILabel!
+    var action: (()->())?
     @IBAction func invokeAction(_ sender: UIButton) {
-        
+        action?()
     }
 }

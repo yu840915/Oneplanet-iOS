@@ -15,6 +15,7 @@ class Preferences {
     static let profileAvatarURL = URLPreferencesItem(key: "OPNProfileAvatarURL")
     static let loginEmail = StringPreferencesItem(key: "OPNLoginEmail")
     static let socialLoginType = StringPreferencesItem(key: "OPNSocialLoginType")
+    static let lastPromoPopUpShowUpDate = DatePreferencesItem(key: "OPNLastPromoShowUpDate")
 }
 
 class PreferencesItem<T> {
@@ -66,6 +67,24 @@ class URLPreferencesItem: PreferencesItem<URL> {
         }
         get {
             return UserDefaults.standard.url(forKey: key)
+        }
+    }
+}
+
+class DatePreferencesItem: PreferencesItem<Date> {
+    override var value: Date? {
+        set {
+            if let ts = newValue?.timeIntervalSince1970 {
+                UserDefaults.standard.set(ts, forKey: key)
+            } else {
+                UserDefaults.standard.removeObject(forKey: key)
+            }
+        }
+        get {
+            if hasValue {
+                return Date(timeIntervalSince1970: UserDefaults.standard.double(forKey: key))
+            }
+            return nil
         }
     }
 }

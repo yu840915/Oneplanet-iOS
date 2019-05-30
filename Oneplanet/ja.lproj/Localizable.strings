@@ -32,6 +32,7 @@
 "tl_male" = "Male";
 "tl_female" = "Female";
 "tl_private_info" = "Private Information";
+"tl_go" = "Go";
 
 "pl_email" = "メールアドレス";
 "pl_nickname" = "ニックネーム";
@@ -68,6 +69,7 @@
 "ph_not_specified" = "Not Specified";
 
 "no_posts" = "No Posts Yet";
+"no_promo_popups" = "No Promotion Pop-ups Yet";
 
 "err_no_camera_access" = "カメラへのリクセルを求めています";
 "err_no_library_access" = "写真をライブラリに追加しようとしています";

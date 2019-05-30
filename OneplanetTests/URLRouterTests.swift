@@ -32,6 +32,19 @@ class URLRouterTests: XCTestCase {
         XCTAssertEqual(count, 1)
     }
     
+    func testQeuryCanHandle() {
+        let router = URLRouter()
+        var count = 0
+        router.add("/hello") { (params) -> Bool in
+            count += 1
+            return true
+        }
+        
+        XCTAssertTrue(router.canHandle(URL(string: "https://oneplanet.page.link/hello")!))
+        XCTAssertFalse(router.canHandle(URL(string: "https://oneplanet.page.link/foo")!))
+        XCTAssertEqual(count, 0)
+    }
+    
     func testRemoveHandler() {
         let router = URLRouter()
         var count = 0
@@ -82,6 +95,28 @@ class URLRouterTests: XCTestCase {
 
         XCTAssertEqual(count1, 0)
         XCTAssertEqual(count2, 1)
+    }
+    
+    func testQeuryCanHandleWithOverridingRouter() {
+        let parent = URLRouter()
+        var count1 = 0
+        parent.add("/hello") { (params) -> Bool in
+            count1 += 1
+            return true
+        }
+        let child = URLRouter()
+        var count2 = 0
+        child.add("/foo") { (params) -> Bool in
+            count2 += 1
+            return true
+        }
+        
+        parent.addOverridingRouter(child)
+        XCTAssertTrue(parent.canHandle(URL(string: "https://oneplanet.page.link/hello")!))
+        XCTAssertTrue(parent.canHandle(URL(string: "https://oneplanet.page.link/foo")!))
+        XCTAssertFalse(parent.canHandle(URL(string: "https://oneplanet.page.link/bar")!))
+        XCTAssertEqual(count1, 0)
+        XCTAssertEqual(count2, 0)
     }
     
     func testLaterOverrideEarlierRouter() {

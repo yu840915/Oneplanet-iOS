@@ -115,6 +115,9 @@ class LocalizedTitles {//tl_
     var wechat: String {
         return "WeChat"
     }
+    var go: String {
+        return NSLocalizedString("tl_go", comment: "")
+    }
 }
 
 class LocalizedPlaceholder {//pl_
@@ -248,6 +251,9 @@ class LocalizedPhrase { //ph_
 class EmptyMessages {//no_
     var posts: String {
         return NSLocalizedString("no_posts", comment: "")
+    }
+    var promoPopups: String {
+        return NSLocalizedString("no_promo_popups", comment: "")
     }
 }
 

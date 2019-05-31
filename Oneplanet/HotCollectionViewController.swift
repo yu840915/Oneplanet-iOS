@@ -89,7 +89,11 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
     }
     
     private func showPromoPopUp() {
-        performSegue(withIdentifier: SegueID.showPromoPopup, sender: nil)
+        let op = FeatureAccessCheckOperation(userSession: userSession)
+        op.start()
+        if op.isAccessible {
+            performSegue(withIdentifier: SegueID.showPromoPopup, sender: nil)
+        }
     }
     
     // MARK: - Navigation

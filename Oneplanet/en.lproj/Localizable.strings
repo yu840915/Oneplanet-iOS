@@ -41,6 +41,7 @@
 "msg_add_avatar_prompt" = "Add a profile photo so your friends know it’s you";
 "msg_open_mail_app_prompt" = "Click here to open your email address";
 "msg_mail_resent" = "The email has been sent again";
+"msg_join_prompt" = "Go to sign up now for more features";
 
 "msgf_accept_tos" = "By signing up or login, you agree to our %@.";
 "msgf_resend_verification_email" = "You did not receive the email? %@.";
@@ -68,6 +69,7 @@
 "ph_block_list" = "Blocked Account";
 "ph_privacy_and_security" = "Privacy and Security";
 "ph_not_specified" = "Not Specified";
+"ph_join_prompt" = "Join now？";
 
 "no_posts" = "No Posts Yet";
 "no_promo_popups" = "No Promotion Pop-ups Yet";

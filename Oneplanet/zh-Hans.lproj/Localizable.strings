@@ -41,6 +41,7 @@
 "msg_add_avatar_prompt" = "添加个人资料照片，以便你的朋友知道这就是你。";
 "msg_open_mail_app_prompt" = "单击此处打开您的电子邮件";
 "msg_mail_resent" = "已重新发送电子邮件";
+"msg_join_prompt" = "Go to sign up now for more features";
 
 "msgf_accept_tos" = "注册或登录即表示你同意我们的%@";
 "msgf_resend_verification_email" = "你没有收到电子邮件？%@";
@@ -68,6 +69,7 @@
 "ph_block_list" = "Blocked Account";
 "ph_privacy_and_security" = "Privacy and Security";
 "ph_not_specified" = "Not Specified";
+"ph_join_prompt" = "Join now？";
 
 "no_posts" = "No Posts Yet";
 "no_promo_popups" = "No Promotion Pop-ups Yet";

@@ -52,6 +52,7 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let tabbar = segue.destination as? UITabBarController {
+            tabbar.delegate = self
             tabbar.viewControllers?
                 .compactMap{$0 as? UINavigationController}
                 .compactMap{
@@ -75,10 +76,11 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
 
 fileprivate extension UserFlowMainViewController {
     func getPromoPopupIfNeeded() {
-//        if let lastDate = Preferences.lastPromoPopUpShowUpDate.value,
-//            Date().timeIntervalSince(lastDate) < appConfiguration.promoPopUpCoolDownInterval {
-//            return
-//        }
+        guard !userSession.isGuest else { return }
+        if let lastDate = Preferences.lastPromoPopUpShowUpDate.value,
+            Date().timeIntervalSince(lastDate) < appConfiguration.promoPopUpCoolDownInterval {
+            return
+        }
         guard promoPopUpSupressionRequests.isEmpty else { return }
         guard getPageListOperaion == nil else { return }
         let op = GetPromotionPageListOperation()
@@ -95,7 +97,7 @@ fileprivate extension UserFlowMainViewController {
         let op = getPageListOperaion!
         getPageListOperaion = nil
         guard let list = op.list, !list.pages.isEmpty else { return }
-//        Preferences.lastPromoPopUpShowUpDate.value = Date()
+        Preferences.lastPromoPopUpShowUpDate.value = Date()
         showPromoPagesIfVisible(with: list)
     }
     
@@ -111,6 +113,25 @@ fileprivate extension UserFlowMainViewController {
         vc.userSession = userSession
         FrontViewControllerFinder.findFront()?.present(vc, animated: true, completion: nil)
     }
+}
+
+extension UserFlowMainViewController: UITabBarControllerDelegate {
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        guard let idx = tabBarController.viewControllers?.index(of: viewController) else { return false }
+        switch TabFeature.list[idx] {
+        case .hot, .bid:
+            return true
+        case .life, .notice, .my:
+            let op = FeatureAccessCheckOperation(userSession: userSession)
+            op.start()
+            return op.isAccessible
+        }
+    }
+}
+
+enum TabFeature {
+    case hot, life, my, notice, bid
+    static let list: [TabFeature] = [.hot, .life, .bid, .notice, .my]
 }
 
 extension UIViewController {

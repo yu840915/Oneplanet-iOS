@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 import Alamofire
 import ModelBlocks
 
@@ -254,5 +255,29 @@ class LogOutOperation: Operation {
         Preferences.profileAvatarURL.value = nil
         Preferences.profileNickname.value = nil
         FacebookLoginOperation.logOutIfNeeded()
+    }
+}
+
+class FeatureAccessCheckOperation: Operation {
+    let userSession: UserSession
+    private(set) var isAccessible = false
+    init(userSession: UserSession) {
+        self.userSession = userSession
+    }
+    
+    override func main() {
+        isAccessible = !userSession.isGuest
+        if !userSession.isGuest {
+            return
+        }
+        guard let presenter = FrontViewControllerFinder.findFront() else {
+            return
+        }
+        let alert = UIAlertController(title: Localized.phrases.joinPrompt, message: Localized.messages.joinPrompt, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Localized.titles.ok, style: .default, handler: {[userSession] (_) in
+            userSession.deactivate()
+        }))
+        alert.addAction(UIAlertAction(title: Localized.titles.cancel, style: .cancel, handler: nil))
+        presenter.present(alert, animated: true, completion: nil)
     }
 }

@@ -40,10 +40,13 @@
 "msg_email_verification_instruction" = "電子メールに送信しました。ログインするには、こちたのURLをクリックしてください。";
 "msg_add_avatar_prompt" = "友達があなただとわかるようにプロフィール写真を登録してください。";
 "msg_mail_resent" = "メールを再送しました";
+"msg_open_mail_app_prompt" = "メールはこちらをクリック";
+"msg_join_prompt" = "Go to sign up now for more features";
 
 "msgf_accept_tos" = "アカウントを作成することによって、%@に同意することになります。";
 "msgf_resend_verification_email" = "電子メールがみつかりませんか？%@.";
-"msg_open_mail_app_prompt" = "メールはこちらをクリック";
+"msgf_did_copy_my_id" = "My Oneplanet id [%@] Copied.";
+
 
 "ph_guest_login" = "ゲスト登録";
 "ph_email_login" = "またはメールアドレスでログイン";
@@ -67,6 +70,7 @@
 "ph_block_list" = "Blocked Account";
 "ph_privacy_and_security" = "Privacy and Security";
 "ph_not_specified" = "Not Specified";
+"ph_join_prompt" = "Join now？";
 
 "no_posts" = "No Posts Yet";
 "no_promo_popups" = "No Promotion Pop-ups Yet";

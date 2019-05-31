@@ -164,6 +164,9 @@ class LocalizedMessages {//msg_
     var mailResent: String {
         return NSLocalizedString("msg_mail_resent", comment: "")
     }
+    var joinPrompt: String {
+        return NSLocalizedString("msg_join_prompt", comment: "")
+    }
 }
 
 class LocalizedMessageFormats {//msgf_
@@ -177,7 +180,11 @@ class LocalizedMessageFormats {//msgf_
     var version: String {
         return "Oneplanet v%@"
     }
+    var didCopyMyId: String {
+        return NSLocalizedString("msgf_did_copy_my_id", comment: "")
+    }
 }
+
 class LocalizedPhrase { //ph_
     fileprivate init() {}
     var geustLogin: String {
@@ -245,6 +252,9 @@ class LocalizedPhrase { //ph_
     }
     var notSpecified: String {
         return NSLocalizedString("ph_not_specified", comment: "")
+    }
+    var joinPrompt: String {
+        return NSLocalizedString("ph_join_prompt", comment: "")
     }
 }
 

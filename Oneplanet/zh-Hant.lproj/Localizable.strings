@@ -41,9 +41,11 @@
 "msg_add_avatar_prompt" = "添加個人資料照片，以便你的朋友知道這就是你。";
 "msg_open_mail_app_prompt" = "按此處開啟你的電子信箱";
 "msg_mail_resent" = "已重新發送電子郵件";
+"msg_join_prompt" = "Go to sign up now for more features";
 
 "msgf_accept_tos" = "註冊或登錄即表示你同意我們的%@";
 "msgf_resend_verification_email" = "你沒有收到電子郵件？%@";
+"msgf_did_copy_my_id" = "My Oneplanet id [%@] Copied.";
 
 "ph_guest_login" = "訪客進入";
 "ph_email_login" = "或使用電子郵件登入";
@@ -67,6 +69,7 @@
 "ph_block_list" = "Blocked Account";
 "ph_privacy_and_security" = "Privacy and Security";
 "ph_not_specified" = "Not Specified";
+"ph_join_prompt" = "Join now？";
 
 "no_posts" = "No Posts Yet";
 "no_promo_popups" = "No Promotion Pop-ups Yet";

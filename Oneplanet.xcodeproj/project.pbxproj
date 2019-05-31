@@ -94,6 +94,9 @@
 		E08C3129227817680013DD0C /* AuthActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08C3128227817680013DD0C /* AuthActions.swift */; };
 		E08C312B227826850013DD0C /* EmailInputValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08C312A227826850013DD0C /* EmailInputValidatorTests.swift */; };
 		E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */; };
+		E0B57DE122A0FA48006AEADB /* DefaultStyleConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B57DE022A0FA48006AEADB /* DefaultStyleConfiguration.swift */; };
+		E0B57DE322A0FAA3006AEADB /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B57DE222A0FAA3006AEADB /* Toast.swift */; };
+		E0B57DE722A0FE77006AEADB /* Toast.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0B57DE622A0FE77006AEADB /* Toast.xib */; };
 		E0BAB71F228482D1007E747C /* InputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BAB71E228482D1007E747C /* InputFieldView.swift */; };
 		E0BDCCEA229FA044006A9D20 /* PromotionPageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BDCCE9229FA044006A9D20 /* PromotionPageList.swift */; };
 		E0BDCCEC229FD3CE006A9D20 /* SwiftMessages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0BDCCEB229FD3CE006A9D20 /* SwiftMessages.framework */; };
@@ -222,6 +225,9 @@
 		E08C3128227817680013DD0C /* AuthActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthActions.swift; sourceTree = "<group>"; };
 		E08C312A227826850013DD0C /* EmailInputValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailInputValidatorTests.swift; sourceTree = "<group>"; };
 		E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryImagePickerViewController.swift; sourceTree = "<group>"; };
+		E0B57DE022A0FA48006AEADB /* DefaultStyleConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStyleConfiguration.swift; sourceTree = "<group>"; };
+		E0B57DE222A0FAA3006AEADB /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		E0B57DE622A0FE77006AEADB /* Toast.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Toast.xib; sourceTree = "<group>"; };
 		E0BAB71E228482D1007E747C /* InputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldView.swift; sourceTree = "<group>"; };
 		E0BDCCE9229FA044006A9D20 /* PromotionPageList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionPageList.swift; sourceTree = "<group>"; };
 		E0BDCCEB229FD3CE006A9D20 /* SwiftMessages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftMessages.framework; path = Carthage/Build/iOS/SwiftMessages.framework; sourceTree = SOURCE_ROOT; };
@@ -296,6 +302,8 @@
 			children = (
 				E0190F59226EDD1100C212D5 /* SupportingFlows.storyboard */,
 				E07276EA2274B515001239C0 /* WebViewController.swift */,
+				E0B57DE222A0FAA3006AEADB /* Toast.swift */,
+				E0B57DE622A0FE77006AEADB /* Toast.xib */,
 				E06589C42270536A00C9E4E6 /* Image Picking */,
 			);
 			path = "Supporting Flows";
@@ -383,6 +391,7 @@
 			children = (
 				E06261C6226D63E700A96F55 /* Oneplanet.entitlements */,
 				E05BB25D226D5D2A00721F20 /* AppDelegate.swift */,
+				E0B57DE022A0FA48006AEADB /* DefaultStyleConfiguration.swift */,
 				E03C329D226D772400C32FD7 /* Logger.swift */,
 				E03C3299226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift */,
 				E07276FB22773F54001239C0 /* Server Push Message */,
@@ -635,6 +644,7 @@
 				E06F5016227B4E7E0067DAE4 /* PreflightCheck.storyboard in Resources */,
 				E0190F5A226EDD1100C212D5 /* SupportingFlows.storyboard in Resources */,
 				E05BB263226D5D2A00721F20 /* Main.storyboard in Resources */,
+				E0B57DE722A0FE77006AEADB /* Toast.xib in Resources */,
 				E00611F42294FFF10032AE30 /* HotNavigationItems.xib in Resources */,
 				E06F5000227ABE1C0067DAE4 /* OpenSDK1.8.0_NoPay in Resources */,
 				E0FF7980228D398300F61318 /* Auction.storyboard in Resources */,
@@ -814,6 +824,7 @@
 				E06589BD22700AEC00C9E4E6 /* CaptureSessionController.swift in Sources */,
 				E0190F4B226DB55400C212D5 /* UIComponentFactories.swift in Sources */,
 				E0BDCCEA229FA044006A9D20 /* PromotionPageList.swift in Sources */,
+				E0B57DE322A0FAA3006AEADB /* Toast.swift in Sources */,
 				E089F70D228E9ECB003E77DF /* AvatarView.swift in Sources */,
 				E07276E322731334001239C0 /* EmailVerificationViewController.swift in Sources */,
 				E05BB260226D5D2A00721F20 /* RootViewController.swift in Sources */,
@@ -827,6 +838,7 @@
 				E06F500F227AFD740067DAE4 /* WeChatLogIn.swift in Sources */,
 				E0190F57226EDBC900C212D5 /* CameraImagePickerViewController.swift in Sources */,
 				E08C3129227817680013DD0C /* AuthActions.swift in Sources */,
+				E0B57DE122A0FA48006AEADB /* DefaultStyleConfiguration.swift in Sources */,
 				E00611F22294F5680032AE30 /* HotCollectionViewController.swift in Sources */,
 				E03C32B0226D8E8F00C32FD7 /* NavigationBarStyle.swift in Sources */,
 				E030E4D7228BC3E90084D383 /* User.swift in Sources */,

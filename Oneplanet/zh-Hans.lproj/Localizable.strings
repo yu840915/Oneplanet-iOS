@@ -44,6 +44,7 @@
 
 "msgf_accept_tos" = "注册或登录即表示你同意我们的%@";
 "msgf_resend_verification_email" = "你没有收到电子邮件？%@";
+"msgf_did_copy_my_id" = "My Oneplanet id [%@] Copied.";
 
 "ph_guest_login" = "访客进入";
 "ph_email_login" = "或通过电子邮件登录";

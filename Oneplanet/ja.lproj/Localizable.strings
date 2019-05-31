@@ -43,6 +43,8 @@
 
 "msgf_accept_tos" = "アカウントを作成することによって、%@に同意することになります。";
 "msgf_resend_verification_email" = "電子メールがみつかりませんか？%@.";
+"msgf_did_copy_my_id" = "My Oneplanet id [%@] Copied.";
+
 "msg_open_mail_app_prompt" = "メールはこちらをクリック";
 
 "ph_guest_login" = "ゲスト登録";

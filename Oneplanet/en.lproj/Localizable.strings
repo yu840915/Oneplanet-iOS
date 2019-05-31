@@ -44,6 +44,7 @@
 
 "msgf_accept_tos" = "By signing up or login, you agree to our %@.";
 "msgf_resend_verification_email" = "You did not receive the email? %@.";
+"msgf_did_copy_my_id" = "My Oneplanet id [%@] Copied.";
 
 "ph_guest_login" = "Guest";
 "ph_email_login" = "Or Login With Email";

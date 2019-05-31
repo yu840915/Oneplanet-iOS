@@ -177,6 +177,9 @@ class LocalizedMessageFormats {//msgf_
     var version: String {
         return "Oneplanet v%@"
     }
+    var didCopyMyId: String {
+        return NSLocalizedString("msgf_did_copy_my_id", comment: "")
+    }
 }
 class LocalizedPhrase { //ph_
     fileprivate init() {}

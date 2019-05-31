@@ -16,7 +16,6 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
     fileprivate var hasViewBeenVisible = false
     private var appBecomeActiveHandle: Any?
 
-
     class func fromDefaultStoryboard() -> UserFlowMainViewController {
         return UIStoryboard(name: "MainUserFlow", bundle: nil).instantiateInitialViewController() as! UserFlowMainViewController
     }

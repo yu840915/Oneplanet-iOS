@@ -2,3 +2,4 @@ github "yu840915/ModelBlocks"
 github "SwiftyBeaver/SwiftyBeaver" "1.7.0"
 github "bahlo/SwiftGif" ~> 1.7.0
 github "joeldev/JLRoutes" ~> 2.1
+github "SwiftKickMobile/SwiftMessages" "7.0.0"

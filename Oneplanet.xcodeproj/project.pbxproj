@@ -96,6 +96,7 @@
 		E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */; };
 		E0BAB71F228482D1007E747C /* InputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BAB71E228482D1007E747C /* InputFieldView.swift */; };
 		E0BDCCEA229FA044006A9D20 /* PromotionPageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BDCCE9229FA044006A9D20 /* PromotionPageList.swift */; };
+		E0BDCCEC229FD3CE006A9D20 /* SwiftMessages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0BDCCEB229FD3CE006A9D20 /* SwiftMessages.framework */; };
 		E0CB5E11228F0B4A00C0C010 /* TreasuryBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CB5E10228F0B4A00C0C010 /* TreasuryBarViewController.swift */; };
 		E0CB5E15228F0E5F00C0C010 /* DS-DIGIB.TTF in Resources */ = {isa = PBXBuildFile; fileRef = E0CB5E14228F0E5F00C0C010 /* DS-DIGIB.TTF */; };
 		E0D7DCDB229CE65C00B40D76 /* PromoPopUpFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D7DCDA229CE65C00B40D76 /* PromoPopUpFlowViewController.swift */; };
@@ -223,6 +224,7 @@
 		E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryImagePickerViewController.swift; sourceTree = "<group>"; };
 		E0BAB71E228482D1007E747C /* InputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldView.swift; sourceTree = "<group>"; };
 		E0BDCCE9229FA044006A9D20 /* PromotionPageList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionPageList.swift; sourceTree = "<group>"; };
+		E0BDCCEB229FD3CE006A9D20 /* SwiftMessages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftMessages.framework; path = Carthage/Build/iOS/SwiftMessages.framework; sourceTree = SOURCE_ROOT; };
 		E0CB5E10228F0B4A00C0C010 /* TreasuryBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreasuryBarViewController.swift; sourceTree = "<group>"; };
 		E0CB5E14228F0E5F00C0C010 /* DS-DIGIB.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DS-DIGIB.TTF"; sourceTree = "<group>"; };
 		E0D7DCDA229CE65C00B40D76 /* PromoPopUpFlowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoPopUpFlowViewController.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				E06261CE226D6F2200A96F55 /* ModelBlocks.framework in Frameworks */,
 				E03C32B7226DA39700C32FD7 /* SwiftGif.framework in Frameworks */,
 				E03C329C226D75F400C32FD7 /* SwiftyBeaver.framework in Frameworks */,
+				E0BDCCEC229FD3CE006A9D20 /* SwiftMessages.framework in Frameworks */,
 				E06261C8226D640D00A96F55 /* StoreKit.framework in Frameworks */,
 				E06F5009227AFC770067DAE4 /* libWeChatSDK.a in Frameworks */,
 				6868F9DB5BA3F9DA5AAF9145 /* Pods_Oneplanet.framework in Frameworks */,
@@ -446,6 +449,7 @@
 		E06261CC226D6EF900A96F55 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E0BDCCEB229FD3CE006A9D20 /* SwiftMessages.framework */,
 				E07276F922773EC6001239C0 /* JLRoutes.framework */,
 				E03C32B6226DA39700C32FD7 /* SwiftGif.framework */,
 				E03C329B226D75F400C32FD7 /* SwiftyBeaver.framework */,
@@ -742,6 +746,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyBeaver.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftGif.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/JLRoutes.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftMessages.framework",
 			);
 			name = "Copy Carthage Dependencies";
 			outputPaths = (

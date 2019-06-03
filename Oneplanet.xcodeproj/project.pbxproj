@@ -324,9 +324,6 @@
 				E089F710228EB18F003E77DF /* SectionHeaderView.swift */,
 				E030E4D1228AB0B60084D383 /* IDHeaderView.xib */,
 				E030E4D3228AB1ED0084D383 /* IDHeaderView.swift */,
-				E02842AE229A31AE007212D7 /* CharacterPickerViewController.swift */,
-				E02842B0229A32C2007212D7 /* ColorPickerCollectionViewController.swift */,
-				E02842B2229A3399007212D7 /* AlienPickerCollectionViewController.swift */,
 			);
 			name = Me;
 			sourceTree = "<group>";
@@ -499,6 +496,9 @@
 				E06F5015227B4E7E0067DAE4 /* PreflightCheck.storyboard */,
 				E06F5012227B4E2E0067DAE4 /* PreflightCheckFlowViewController.swift */,
 				E07276E82273633A001239C0 /* CreateProfileViewController.swift */,
+				E02842AE229A31AE007212D7 /* CharacterPickerViewController.swift */,
+				E02842B0229A32C2007212D7 /* ColorPickerCollectionViewController.swift */,
+				E02842B2229A3399007212D7 /* AlienPickerCollectionViewController.swift */,
 			);
 			name = "Preflight Check";
 			sourceTree = "<group>";

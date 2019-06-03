@@ -29,7 +29,7 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
     @IBOutlet weak var errorLabel: UILabel!
     
     private var pickImageOperation: PickImageOperation?
-    var profileDraft: ProfileDraft = ProfileDraft()
+    var profileDraft: ProfileDraft!
     private var updateHandle: Any?
     private var downloadImageOperaion: DownloadImageOperaion?
     private var updateProfileOperation: UpdateProfileOperation? {
@@ -40,7 +40,7 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.hidesBackButton = true
+        navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
         avatarButton.layer.cornerRadius = 40.0
         avatarButton.layer.borderColor = UIColor.white.cgColor
         updateHandle = profileDraft.updateObservers.add {[weak self] in
@@ -211,7 +211,7 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
         resetErrorDisplay()
         if op.success == true {
             userSession.updateProfile(userSession.profile!.updating(with: op.draft))
-            didCreateProfile?()
+            performSegue(withIdentifier: SegueID.selectCharacter, sender: nil)
         }
         if let error = op.error {
             showAlert(with: error)
@@ -247,9 +247,21 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
     @IBAction func startImagePickingFlow(_ sender: UIButton) {
         showPickerSelectionSheet()
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? CharacterPickerViewController {
+            vc.userSession = userSession
+            vc.draft = profileDraft
+            vc.didCreateProfile = {[weak self] in
+                self?.didCreateProfile?()
+            }
+            vc.navigationItem.hidesBackButton = true
+        }
+    }
 }
 
 extension CreateProfileViewController: UITextFieldDelegate {
+
     func textFieldDidBeginEditing(_ textField: UITextField) {
         endEditingTap.isEnabled = true
     }
@@ -277,5 +289,11 @@ extension CreateProfileViewController: UITextFieldDelegate {
         } catch _  {
             return false
         }
+    }
+}
+
+extension CreateProfileViewController {
+    struct SegueID {
+        static let selectCharacter = "selectCharacter"
     }
 }

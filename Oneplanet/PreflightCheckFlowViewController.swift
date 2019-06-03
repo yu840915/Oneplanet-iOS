@@ -82,7 +82,9 @@ class PreflightCheckFlowViewController: UIViewController, UserSessionDepending {
         if let profile = op.profile {
             userSession.updateProfile(profile)
             if profile.nickname.isEmpty {
-                startProfileCreation()
+                startProfileCreation(with: profile)
+            } else if profile.character == nil {
+                startSelectCharacter(with: profile)
             } else {
                 didFinishPreflightCheck?()
             }
@@ -91,8 +93,12 @@ class PreflightCheckFlowViewController: UIViewController, UserSessionDepending {
         }
     }
     
-    private func startProfileCreation() {
-        performSegue(withIdentifier: SegueID.createProfile, sender: userSession)
+    private func startProfileCreation(with profile: MyProfile) {
+        performSegue(withIdentifier: SegueID.createProfile, sender: profile)
+    }
+    
+    private func startSelectCharacter(with profile: MyProfile) {
+        performSegue(withIdentifier: SegueID.selectCharacter, sender: profile)
     }
     
     private func notifyFailure(with error: Error?) {
@@ -107,18 +113,28 @@ class PreflightCheckFlowViewController: UIViewController, UserSessionDepending {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? CreateProfileViewController {
+        if let vc = segue.destination as? UserSessionDepending {
             vc.userSession = userSession
+        }
+        if let vc = segue.destination as? CreateProfileViewController {
+            vc.profileDraft = ProfileDraft(profile: (sender as! MyProfile))
             vc.didCreateProfile = {[weak self] in
                 self?.didFinishPreflightCheck?()
             }
-
         }
+        if let vc = segue.destination as? CharacterPickerViewController {
+            vc.draft = ProfileDraft(profile: (sender as! MyProfile))
+            vc.didCreateProfile = {[weak self] in
+                self?.didFinishPreflightCheck?()
+            }
+        }
+        segue.destination.navigationItem.hidesBackButton = true
     }
 }
 
 extension PreflightCheckFlowViewController {
     struct SegueID {
         static let createProfile = "createProfile"
+        static let selectCharacter = "selectCharacter"
     }
 }

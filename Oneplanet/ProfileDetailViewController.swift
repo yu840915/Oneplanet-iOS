@@ -29,7 +29,6 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
         return UIStoryboard(name: "Me", bundle: nil).instantiateViewController(withIdentifier: "ProfileDetailViewController") as! ProfileDetailViewController
     }
     
-    @IBOutlet weak var chooseRaceButton: UIButton!
     @IBOutlet weak var avatarView: AvatarView!
     @IBOutlet weak var nicknameLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
@@ -54,7 +53,6 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
         actionButton.setTitle(Localized.phrases.follow, for: .normal)
         actionButton.setTitle(Localized.phrases.following, for: .selected)
         actionButton.setTitle(Localized.phrases.following, for: [.selected, .highlighted])
-        chooseRaceButton.setTitle(Localized.phrases.chooseRole, for: .normal)
     }
     
     private func updateViewsForProfile() {
@@ -64,14 +62,9 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
         if let image = profile.character?.avatar {
             raceImageView.image = image
         }
-        chooseRaceButton.isHidden = !configuration.raceButton
         actionButton.isHidden = !configuration.actionButton
         detailLabel.isHidden = !configuration.detailLabel
         avatarView.avatar = profile.avatar
-    }
-    
-    @IBAction func startChooseRece(_ sender: UIButton) {
-        performSegue(withIdentifier: SegueID.showCharacterPicker, sender: nil)
     }
     
     @IBAction func performAction(_ sender: UIButton) {
@@ -88,15 +81,13 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
 
 extension ProfileDetailViewController {
     struct SegueID {
-        static let showCharacterPicker = "showCharacterPicker"
     }
     
     struct DisplayConfiguration {
-        let raceButton: Bool
         let actionButton: Bool
         let detailLabel: Bool
-        static let forMe = DisplayConfiguration(raceButton: true, actionButton: false, detailLabel: true)
-        static let forOther = DisplayConfiguration(raceButton: false, actionButton: true, detailLabel: true)
-        static let forGuest = DisplayConfiguration(raceButton: false, actionButton: false, detailLabel: false)
+        static let forMe = DisplayConfiguration(actionButton: false, detailLabel: true)
+        static let forOther = DisplayConfiguration(actionButton: true, detailLabel: true)
+        static let forGuest = DisplayConfiguration(actionButton: false, detailLabel: false)
     }
 }

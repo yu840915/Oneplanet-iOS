@@ -19,11 +19,13 @@ class TreasuryBarViewController: UIViewController {
     @IBOutlet weak var purpleGemIcon: UIImageView!
     @IBOutlet weak var greenGemIcon: UIImageView!
     
+    @IBOutlet weak var scorebarContainer: UIView!
     @IBOutlet weak var scorebarButton: UIButton!
     @IBOutlet var treasuryButtons: [UIButton]!
     @IBOutlet weak var scorebarBackImage: UIImageView!
     @IBOutlet weak var scoreMaskView: UIView!
     private var levelUpAnimation: LevelUpAnimationOperation?
+    private var blueGemLevelUpAnimation: BlueGemLevelUpAnimation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,12 +46,15 @@ class TreasuryBarViewController: UIViewController {
     }
     
     private func animateLevelUp(for view: UIView) {
-        let op = LevelUpAnimationOperation(view: view)
+        let op = LevelUpAnimationOperation(icon: view)
         levelUpAnimation = op
         op.start()
     }
     @IBAction func animatePurpleGen(_ sender: UIButton) {
-        animateLevelUp(for: blueGemIcon)
+        let op = BlueGemLevelUpAnimation(icon: blueGemIcon, endProgress: 0.3, containerView: scorebarContainer, scorebarLengthConstraint: visibleScorebarWidth)
+        blueGemLevelUpAnimation = op
+        op.start()
+//        animateLevelUp(for: blueGemIcon)
     }
     
     /*
@@ -65,19 +70,75 @@ class TreasuryBarViewController: UIViewController {
 }
 
 class LevelUpAnimationOperation: SimpleAsynchronousOperation {
-    let view: UIView
-    init(view: UIView) {
-        self.view = view
+    let icon: UIView
+    init(icon: UIView) {
+        self.icon = icon
     }
     
     override func main() {
-        view.alpha = 1.0
+        icon.alpha = 1.0
         UIView.animate(withDuration: 1.0, animations: {
-            self.view.transform = CGAffineTransform(scaleX: 30, y: 30).translatedBy(x: 0, y: 1)
-            self.view.alpha = 0
+            self.icon.transform = CGAffineTransform(scaleX: 30, y: 30).translatedBy(x: 0, y: 1)
+            self.icon.alpha = 0
         }) { (_) in
-            self.view.transform = .identity
-            self.view.alpha = 0.0
+            self.icon.transform = .identity
+            self.icon.alpha = 0.0
+            self.finish()
+        }
+    }
+}
+
+class BlueGemLevelUpAnimation: SimpleAsynchronousOperation {
+    let icon: UIView
+    let endProgress: CGFloat
+    let containerView: UIView
+    let scorebarLengthConstraint: NSLayoutConstraint
+    private var levelUpAnimation: LevelUpAnimationOperation?
+    private let fullDuration: TimeInterval = 4
+    
+    init(icon: UIView, endProgress: CGFloat, containerView: UIView, scorebarLengthConstraint: NSLayoutConstraint) {
+        self.icon = icon
+        self.endProgress = endProgress
+        self.containerView = containerView
+        self.scorebarLengthConstraint = scorebarLengthConstraint
+    }
+    
+    override func main() {
+        animateBarFull()
+    }
+    
+    private func animateBarFull() {
+        let ratio: TimeInterval = 1 - TimeInterval(scorebarLengthConstraint.constant / containerView.frame.width)
+        scorebarLengthConstraint.constant = containerView.frame.width
+        UIView.animate(withDuration: ratio * fullDuration, animations: {
+            self.containerView.layoutIfNeeded()
+        }) {[weak self] (_) in
+            OperationQueue.main.addOperation {
+                self?.animateLevelUp()
+            }
+        }
+    }
+    
+    private func animateLevelUp() {
+        let op = LevelUpAnimationOperation(icon: icon)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.animateToEndProgress()
+            }
+        }
+        levelUpAnimation = op
+        op.start()
+    }
+    
+    private func animateToEndProgress() {
+        scorebarLengthConstraint.constant = 0
+        containerView.setNeedsLayout()
+        containerView.layoutIfNeeded()
+        scorebarLengthConstraint.constant = endProgress * containerView.frame.width
+        UIView.animate(withDuration: TimeInterval(endProgress) * fullDuration, animations: {
+            self.containerView.layoutIfNeeded()
+        }) {[weak self] (_) in
+            self?.finish()
         }
     }
 }

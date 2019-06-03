@@ -408,6 +408,7 @@
                         <outlet property="scoreMaskView" destination="hz6-xI-wR4" id="Ltg-Sf-5Lc"/>
                         <outlet property="scorebarBackImage" destination="Vez-Nh-4Ua" id="BHF-Ky-GAC"/>
                         <outlet property="scorebarButton" destination="Q7h-aM-GRU" id="6oK-ik-DN2"/>
+                        <outlet property="scorebarContainer" destination="07Z-Bl-Hpe" id="WNb-og-ag4"/>
                         <outlet property="visibleScorebarWidth" destination="25l-pX-HeC" id="IlC-e1-ZhZ"/>
                         <outletCollection property="treasuryButtons" destination="wVJ-lV-SXm" collectionClass="NSMutableArray" id="tO9-ZS-YHq"/>
                         <outletCollection property="treasuryButtons" destination="I92-QH-Ey3" collectionClass="NSMutableArray" id="dJd-DH-O4C"/>

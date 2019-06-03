@@ -93,6 +93,7 @@ class ProfileEditorTableViewController: UITableViewController, UserSessionDepend
     
     @IBAction func copyId(_ sender: UIButton) {
         UIPasteboard.general.string = profile.id
+        Toast.show(with: String(format: Localized.messageFormats.didCopyMyId, profile.id))
     }
     
     @IBAction func startImagePickingFlow(_ sender: UIButton) {

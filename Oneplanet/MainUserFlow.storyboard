@@ -315,10 +315,10 @@
                                         <state key="normal" backgroundImage="ui_scorebg"/>
                                     </button>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hz6-xI-wR4">
-                                        <rect key="frame" x="-100" y="0.0" width="190" height="10"/>
+                                        <rect key="frame" x="-70" y="0.0" width="190" height="10"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_score" translatesAutoresizingMaskIntoConstraints="NO" id="P9W-hm-Xoj">
-                                                <rect key="frame" x="100" y="0.0" width="190" height="10"/>
+                                                <rect key="frame" x="70" y="0.0" width="190" height="10"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -331,7 +331,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="P9W-hm-Xoj" firstAttribute="centerX" secondItem="Vez-Nh-4Ua" secondAttribute="centerX" id="1M4-sK-CEd"/>
-                                    <constraint firstItem="hz6-xI-wR4" firstAttribute="trailing" secondItem="Vez-Nh-4Ua" secondAttribute="leading" constant="90" id="25l-pX-HeC"/>
+                                    <constraint firstItem="hz6-xI-wR4" firstAttribute="trailing" secondItem="Vez-Nh-4Ua" secondAttribute="leading" constant="120" id="25l-pX-HeC"/>
                                     <constraint firstItem="Q7h-aM-GRU" firstAttribute="height" secondItem="07Z-Bl-Hpe" secondAttribute="height" id="9Ve-tY-caX"/>
                                     <constraint firstItem="Vez-Nh-4Ua" firstAttribute="centerX" secondItem="07Z-Bl-Hpe" secondAttribute="centerX" id="G0V-oT-o9s"/>
                                     <constraint firstItem="hz6-xI-wR4" firstAttribute="centerY" secondItem="Vez-Nh-4Ua" secondAttribute="centerY" id="Ij8-kU-Svx"/>
@@ -408,6 +408,7 @@
                         <outlet property="scoreMaskView" destination="hz6-xI-wR4" id="Ltg-Sf-5Lc"/>
                         <outlet property="scorebarBackImage" destination="Vez-Nh-4Ua" id="BHF-Ky-GAC"/>
                         <outlet property="scorebarButton" destination="Q7h-aM-GRU" id="6oK-ik-DN2"/>
+                        <outlet property="visibleScorebarWidth" destination="25l-pX-HeC" id="IlC-e1-ZhZ"/>
                         <outletCollection property="treasuryButtons" destination="wVJ-lV-SXm" collectionClass="NSMutableArray" id="tO9-ZS-YHq"/>
                         <outletCollection property="treasuryButtons" destination="I92-QH-Ey3" collectionClass="NSMutableArray" id="dJd-DH-O4C"/>
                         <outletCollection property="treasuryButtons" destination="PWD-vp-jYx" collectionClass="NSMutableArray" id="yWe-AZ-lWY"/>

@@ -7,9 +7,14 @@
 //
 
 import UIKit
+import ModelBlocks
 
 class TreasuryBarViewController: UIViewController {
-
+    
+    var maxVisibleScorebarWidth: CGFloat {
+        return scoreMaskView.bounds.width
+    }
+    @IBOutlet weak var visibleScorebarWidth: NSLayoutConstraint!
     @IBOutlet weak var blueGemIcon: UIImageView!
     @IBOutlet weak var purpleGemIcon: UIImageView!
     @IBOutlet weak var greenGemIcon: UIImageView!
@@ -18,6 +23,7 @@ class TreasuryBarViewController: UIViewController {
     @IBOutlet var treasuryButtons: [UIButton]!
     @IBOutlet weak var scorebarBackImage: UIImageView!
     @IBOutlet weak var scoreMaskView: UIView!
+    private var levelUpAnimation: LevelUpAnimationOperation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,18 +43,13 @@ class TreasuryBarViewController: UIViewController {
         scoreMaskView.layer.cornerRadius = 5.0
     }
     
-    private func animateLevelUp(for view: UIView, delay: TimeInterval = 0.0) {
-        view.alpha = 1.0
-        UIView.animate(withDuration: 1.0, delay: delay, options: [.curveLinear], animations: {
-            view.transform = CGAffineTransform(scaleX: 30, y: 30).translatedBy(x: 0, y: 1)
-            view.alpha = 0
-        }) { (_) in
-            view.transform = .identity
-            view.alpha = 0.0
-        }
+    private func animateLevelUp(for view: UIView) {
+        let op = LevelUpAnimationOperation(view: view)
+        levelUpAnimation = op
+        op.start()
     }
     @IBAction func animatePurpleGen(_ sender: UIButton) {
-        animateLevelUp(for: purpleGemIcon, delay: 0.0)
+        animateLevelUp(for: blueGemIcon)
     }
     
     /*
@@ -61,4 +62,22 @@ class TreasuryBarViewController: UIViewController {
     }
     */
 
+}
+
+class LevelUpAnimationOperation: SimpleAsynchronousOperation {
+    let view: UIView
+    init(view: UIView) {
+        self.view = view
+    }
+    
+    override func main() {
+        view.alpha = 1.0
+        UIView.animate(withDuration: 1.0, animations: {
+            self.view.transform = CGAffineTransform(scaleX: 30, y: 30).translatedBy(x: 0, y: 1)
+            self.view.alpha = 0
+        }) { (_) in
+            self.view.transform = .identity
+            self.view.alpha = 0.0
+        }
+    }
 }

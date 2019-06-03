@@ -25,7 +25,7 @@ class TreasuryBarViewController: UIViewController {
     @IBOutlet weak var scorebarBackImage: UIImageView!
     @IBOutlet weak var scoreMaskView: UIView!
     private var levelUpAnimation: LevelUpAnimationOperation?
-    private var blueGemLevelUpAnimation: BlueGemLevelUpAnimation?
+    private var blueGemLevelUpAnimation: Any?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +51,7 @@ class TreasuryBarViewController: UIViewController {
         op.start()
     }
     @IBAction func animatePurpleGen(_ sender: UIButton) {
-        let op = BlueGemLevelUpAnimation(icon: blueGemIcon, endProgress: 0.3, containerView: scorebarContainer, scorebarLengthConstraint: visibleScorebarWidth)
+        let op = ScoreBarAnimation(endProgress: 0.9, containerView: scorebarContainer, scorebarLengthConstraint: visibleScorebarWidth)
         blueGemLevelUpAnimation = op
         op.start()
 //        animateLevelUp(for: blueGemIcon)
@@ -88,6 +88,30 @@ class LevelUpAnimationOperation: SimpleAsynchronousOperation {
     }
 }
 
+class ScoreBarAnimation: SimpleAsynchronousOperation {
+    let endProgress: CGFloat
+    let containerView: UIView
+    let scorebarLengthConstraint: NSLayoutConstraint
+    private let fullDuration: TimeInterval = 4
+
+    init(endProgress: CGFloat, containerView: UIView, scorebarLengthConstraint: NSLayoutConstraint) {
+        self.endProgress = endProgress
+        self.containerView = containerView
+        self.scorebarLengthConstraint = scorebarLengthConstraint
+    }
+    
+    override func main() {
+        guard !isCancelled else { return }
+        let ratio: TimeInterval = TimeInterval(endProgress - scorebarLengthConstraint.constant / containerView.frame.width)
+        scorebarLengthConstraint.constant = endProgress * containerView.frame.width
+        UIView.animate(withDuration: ratio * fullDuration, delay: 0, options: [.curveLinear], animations: {
+            self.containerView.layoutIfNeeded()
+        }) {[weak self] (_) in
+            self?.finish()
+        }
+    }
+}
+
 class BlueGemLevelUpAnimation: SimpleAsynchronousOperation {
     let icon: UIView
     let endProgress: CGFloat
@@ -108,9 +132,10 @@ class BlueGemLevelUpAnimation: SimpleAsynchronousOperation {
     }
     
     private func animateBarFull() {
+        guard !isCancelled else { return }
         let ratio: TimeInterval = 1 - TimeInterval(scorebarLengthConstraint.constant / containerView.frame.width)
         scorebarLengthConstraint.constant = containerView.frame.width
-        UIView.animate(withDuration: ratio * fullDuration, animations: {
+        UIView.animate(withDuration: ratio * fullDuration, delay: 0, options: [.curveLinear], animations: {
             self.containerView.layoutIfNeeded()
         }) {[weak self] (_) in
             OperationQueue.main.addOperation {
@@ -120,6 +145,7 @@ class BlueGemLevelUpAnimation: SimpleAsynchronousOperation {
     }
     
     private func animateLevelUp() {
+        guard !isCancelled else { return }
         let op = LevelUpAnimationOperation(icon: icon)
         op.completionBlock = {[weak self] in
             OperationQueue.main.addOperation {
@@ -131,11 +157,12 @@ class BlueGemLevelUpAnimation: SimpleAsynchronousOperation {
     }
     
     private func animateToEndProgress() {
+        guard !isCancelled else { return }
         scorebarLengthConstraint.constant = 0
         containerView.setNeedsLayout()
         containerView.layoutIfNeeded()
         scorebarLengthConstraint.constant = endProgress * containerView.frame.width
-        UIView.animate(withDuration: TimeInterval(endProgress) * fullDuration, animations: {
+        UIView.animate(withDuration: TimeInterval(endProgress) * fullDuration, delay: 0, options: [.curveLinear], animations: {
             self.containerView.layoutIfNeeded()
         }) {[weak self] (_) in
             self?.finish()

@@ -310,6 +310,10 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="1000" image="ui_scorebg" translatesAutoresizingMaskIntoConstraints="NO" id="Vez-Nh-4Ua">
                                         <rect key="frame" x="0.0" y="0.0" width="190" height="10"/>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q7h-aM-GRU" userLabel="Scorebar Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="190" height="10"/>
+                                        <state key="normal" backgroundImage="ui_scorebg"/>
+                                    </button>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hz6-xI-wR4">
                                         <rect key="frame" x="-100" y="0.0" width="190" height="10"/>
                                         <subviews>
@@ -328,14 +332,18 @@
                                 <constraints>
                                     <constraint firstItem="P9W-hm-Xoj" firstAttribute="centerX" secondItem="Vez-Nh-4Ua" secondAttribute="centerX" id="1M4-sK-CEd"/>
                                     <constraint firstItem="hz6-xI-wR4" firstAttribute="trailing" secondItem="Vez-Nh-4Ua" secondAttribute="leading" constant="90" id="25l-pX-HeC"/>
+                                    <constraint firstItem="Q7h-aM-GRU" firstAttribute="height" secondItem="07Z-Bl-Hpe" secondAttribute="height" id="9Ve-tY-caX"/>
                                     <constraint firstItem="Vez-Nh-4Ua" firstAttribute="centerX" secondItem="07Z-Bl-Hpe" secondAttribute="centerX" id="G0V-oT-o9s"/>
                                     <constraint firstItem="hz6-xI-wR4" firstAttribute="centerY" secondItem="Vez-Nh-4Ua" secondAttribute="centerY" id="Ij8-kU-Svx"/>
                                     <constraint firstItem="P9W-hm-Xoj" firstAttribute="centerY" secondItem="Vez-Nh-4Ua" secondAttribute="centerY" id="JIv-M9-G2T"/>
+                                    <constraint firstItem="Q7h-aM-GRU" firstAttribute="width" secondItem="07Z-Bl-Hpe" secondAttribute="width" id="Job-00-4aw"/>
                                     <constraint firstItem="Vez-Nh-4Ua" firstAttribute="height" secondItem="07Z-Bl-Hpe" secondAttribute="height" id="MO4-rs-spH"/>
+                                    <constraint firstItem="Q7h-aM-GRU" firstAttribute="centerX" secondItem="07Z-Bl-Hpe" secondAttribute="centerX" id="QTM-Vw-3ZH"/>
                                     <constraint firstItem="P9W-hm-Xoj" firstAttribute="top" secondItem="Vez-Nh-4Ua" secondAttribute="top" id="U8z-QR-Xes"/>
                                     <constraint firstItem="P9W-hm-Xoj" firstAttribute="trailing" secondItem="Vez-Nh-4Ua" secondAttribute="trailing" id="cTO-gR-cLC"/>
                                     <constraint firstItem="Vez-Nh-4Ua" firstAttribute="width" secondItem="07Z-Bl-Hpe" secondAttribute="width" id="d5S-NG-I65"/>
                                     <constraint firstItem="Vez-Nh-4Ua" firstAttribute="centerY" secondItem="07Z-Bl-Hpe" secondAttribute="centerY" id="uYA-UR-bCO"/>
+                                    <constraint firstItem="Q7h-aM-GRU" firstAttribute="centerY" secondItem="07Z-Bl-Hpe" secondAttribute="centerY" id="uxJ-S9-gso"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="C9u-a5-KxZ">
@@ -348,14 +356,17 @@
                                             <color key="titleColor" name="blue gem"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="900" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I92-QH-Ey3" userLabel="Blue Gem Button">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="900" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I92-QH-Ey3" userLabel="Purple Gem Button">
                                         <rect key="frame" x="73" y="0.0" width="69" height="28"/>
                                         <fontDescription key="fontDescription" name="DS-Digital-Bold" family="DS-Digital" pointSize="20"/>
                                         <state key="normal" title="0000" image="ic_coin_nor">
                                             <color key="titleColor" name="purple coin"/>
                                         </state>
+                                        <connections>
+                                            <action selector="animatePurpleGen:" destination="uea-Jj-g8R" eventType="touchUpInside" id="1tw-pM-0a7"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="900" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWD-vp-jYx" userLabel="Blue Gem Button">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="900" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWD-vp-jYx" userLabel="Greeen Gem Button">
                                         <rect key="frame" x="146" y="0.0" width="69" height="28"/>
                                         <fontDescription key="fontDescription" name="DS-Digital-Bold" family="DS-Digital" pointSize="20"/>
                                         <state key="normal" title="0000" image="ic_key_nor">
@@ -364,20 +375,39 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_gem_nor" translatesAutoresizingMaskIntoConstraints="NO" id="4KU-1Q-gV5" userLabel="Blue Gem Icon">
+                                <rect key="frame" x="187" y="11" width="28" height="28"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_coin_nor" translatesAutoresizingMaskIntoConstraints="NO" id="LTp-Ww-PTN" userLabel="Purpul Gem Icon">
+                                <rect key="frame" x="260" y="11" width="28" height="28"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_key_nor" translatesAutoresizingMaskIntoConstraints="NO" id="yhx-EA-UYd" userLabel="Green Gem Icon">
+                                <rect key="frame" x="333" y="11" width="28" height="28"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" name="grey background"/>
                         <constraints>
                             <constraint firstItem="07Z-Bl-Hpe" firstAttribute="centerY" secondItem="5J8-aA-pND" secondAttribute="centerY" id="Ci4-QP-B7r"/>
                             <constraint firstItem="07Z-Bl-Hpe" firstAttribute="leading" secondItem="5J8-aA-pND" secondAttribute="leading" constant="12" id="E4A-fz-Lz4"/>
+                            <constraint firstItem="yhx-EA-UYd" firstAttribute="centerY" secondItem="PWD-vp-jYx" secondAttribute="centerY" id="GHw-12-P6p"/>
                             <constraint firstItem="C9u-a5-KxZ" firstAttribute="leading" secondItem="07Z-Bl-Hpe" secondAttribute="trailing" constant="-15" id="Ibd-CZ-bqx"/>
+                            <constraint firstItem="LTp-Ww-PTN" firstAttribute="leading" secondItem="I92-QH-Ey3" secondAttribute="leading" id="QiF-de-wMs"/>
+                            <constraint firstItem="4KU-1Q-gV5" firstAttribute="leading" secondItem="wVJ-lV-SXm" secondAttribute="leading" id="RZI-wG-mgi"/>
+                            <constraint firstItem="yhx-EA-UYd" firstAttribute="leading" secondItem="PWD-vp-jYx" secondAttribute="leading" id="ilI-Vg-FIh"/>
                             <constraint firstItem="5J8-aA-pND" firstAttribute="trailing" secondItem="C9u-a5-KxZ" secondAttribute="trailing" constant="12" id="mUo-xR-lX6"/>
+                            <constraint firstItem="4KU-1Q-gV5" firstAttribute="centerY" secondItem="wVJ-lV-SXm" secondAttribute="centerY" id="nbr-Vu-3hz"/>
+                            <constraint firstItem="LTp-Ww-PTN" firstAttribute="centerY" secondItem="I92-QH-Ey3" secondAttribute="centerY" id="uT1-ZT-Qir"/>
                             <constraint firstItem="C9u-a5-KxZ" firstAttribute="centerY" secondItem="5J8-aA-pND" secondAttribute="centerY" id="vhj-Wi-BDu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5J8-aA-pND"/>
                     </view>
                     <connections>
+                        <outlet property="blueGemIcon" destination="4KU-1Q-gV5" id="ebI-0y-pID"/>
+                        <outlet property="greenGemIcon" destination="yhx-EA-UYd" id="kVJ-G8-zAc"/>
+                        <outlet property="purpleGemIcon" destination="LTp-Ww-PTN" id="BLC-W3-osG"/>
                         <outlet property="scoreMaskView" destination="hz6-xI-wR4" id="Ltg-Sf-5Lc"/>
                         <outlet property="scorebarBackImage" destination="Vez-Nh-4Ua" id="BHF-Ky-GAC"/>
+                        <outlet property="scorebarButton" destination="Q7h-aM-GRU" id="6oK-ik-DN2"/>
                         <outletCollection property="treasuryButtons" destination="wVJ-lV-SXm" collectionClass="NSMutableArray" id="tO9-ZS-YHq"/>
                         <outletCollection property="treasuryButtons" destination="I92-QH-Ey3" collectionClass="NSMutableArray" id="dJd-DH-O4C"/>
                         <outletCollection property="treasuryButtons" destination="PWD-vp-jYx" collectionClass="NSMutableArray" id="yWe-AZ-lWY"/>

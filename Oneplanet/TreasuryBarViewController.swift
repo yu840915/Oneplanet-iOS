@@ -25,8 +25,9 @@ class TreasuryBarViewController: UIViewController, UserSessionDepending {
     @IBOutlet var treasuryButtons: [UIButton]!
     @IBOutlet weak var scorebarBackImage: UIImageView!
     @IBOutlet weak var scoreMaskView: UIView!
-    private var levelUpAnimation: LevelUpAnimationOperation?
-    private var blueGemLevelUpAnimation: Any?
+    private var greenGemLevelUpAnimation: LevelUpAnimationOperation?
+    private var purpleGemLevelUpAnimation: LevelUpAnimationOperation?
+    private var blueGemLevelUpAnimation: BlueGemLevelUpAnimation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,13 +46,6 @@ class TreasuryBarViewController: UIViewController, UserSessionDepending {
         scorebarButton.layer.shadowOpacity = 1.0
         scoreMaskView.layer.cornerRadius = 5.0
     }
-    
-    private func animateLevelUp(for view: UIView) {
-        let op = LevelUpAnimationOperation(icon: view)
-        levelUpAnimation = op
-        op.start()
-    }
-    
 
     // MARK: - Navigation
 
@@ -74,14 +68,13 @@ fileprivate extension TreasuryBarViewController {
         case "showBlueGemPopUP":
             let op = BlueGemLevelUpAnimation(icon: blueGemIcon, endProgress: 0.3, containerView: scorebarContainer, scorebarLengthConstraint: visibleScorebarWidth)
             blueGemLevelUpAnimation = op
-
             op.start()
         case "showPurpleGemPopUP":
-            levelUpAnimation = LevelUpAnimationOperation(icon: purpleGemIcon)
-            levelUpAnimation?.start()
+            purpleGemLevelUpAnimation = LevelUpAnimationOperation(icon: purpleGemIcon)
+            purpleGemLevelUpAnimation?.start()
         case "showGreenGemPopUP":
-            levelUpAnimation = LevelUpAnimationOperation(icon: greenGemIcon)
-            levelUpAnimation?.start()
+            greenGemLevelUpAnimation = LevelUpAnimationOperation(icon: greenGemIcon)
+            greenGemLevelUpAnimation?.start()
         default: break
         }
     }

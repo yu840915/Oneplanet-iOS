@@ -39,8 +39,8 @@ struct DeepLinks {
     static var hotTab: URL {
         return ServiceURLs.base.appendingPathComponent("tab/hot")
     }
-    static var liveTab: URL {
-        return ServiceURLs.base.appendingPathComponent("tab/live")
+    static var lifeTab: URL {
+        return ServiceURLs.base.appendingPathComponent("tab/life")
     }
     static var bidTab: URL {
         return ServiceURLs.base.appendingPathComponent("tab/bid")

@@ -16,9 +16,14 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
     fileprivate var appearanceAction: (()->())?
     fileprivate var hasViewBeenVisible = false
     private var appBecomeActiveHandle: Any?
+    private var userActionRounter: URLRouter!
 
     class func fromDefaultStoryboard() -> UserFlowMainViewController {
         return UIStoryboard(name: "MainUserFlow", bundle: nil).instantiateInitialViewController() as! UserFlowMainViewController
+    }
+    
+    deinit {
+        router.removeOverridingRouter(userActionRounter)
     }
     
     override func viewDidLoad() {
@@ -30,6 +35,7 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
                 self?.getPromoPopupIfNeeded()
             }
         }
+        prepareRouter()
     }
     
     private func setUpTabbarBackground() {
@@ -47,6 +53,7 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
         hasViewBeenVisible = true
         appearanceAction?()
         appearanceAction = nil
+        router.resume()
     }
     
     // MARK: - Navigation
@@ -76,6 +83,45 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
         }
     }
 
+}
+
+fileprivate extension UserFlowMainViewController {
+    func prepareRouter() {
+        let actionRouter = URLRouter()
+        actionRouter.add(DeepLinks.lifeTab.path) {[weak self] (info) -> Bool in
+            OperationQueue.main.addOperation {
+                return self?.switchToTab(.life)
+            }
+            return true
+        }
+        actionRouter.add(DeepLinks.noticeTab.path) {[weak self] (info) -> Bool in
+            OperationQueue.main.addOperation {
+                return self?.switchToTab(.notice)
+            }
+            return true
+        }
+        self.userActionRounter = actionRouter
+        router.addOverridingRouter(actionRouter)
+    }
+    
+    func switchToTab(_ tab: TabFeature) {
+        guard checkAccess(forTab: tab),
+            let idx = TabFeature.list.index(of: tab) else {
+                return
+        }
+        contentTabbarController.selectedViewController = contentTabbarController.viewControllers![idx]
+    }
+
+    func checkAccess(forTab tab: TabFeature) -> Bool {
+        switch tab {
+        case .hot, .bid:
+            return true
+        case .life, .notice, .my:
+            let op = FeatureAccessCheckOperation(userSession: userSession)
+            op.start()
+            return op.isAccessible
+        }
+    }
 }
 
 fileprivate extension UserFlowMainViewController {
@@ -122,14 +168,7 @@ fileprivate extension UserFlowMainViewController {
 extension UserFlowMainViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         guard let idx = tabBarController.viewControllers?.index(of: viewController) else { return false }
-        switch TabFeature.list[idx] {
-        case .hot, .bid:
-            return true
-        case .life, .notice, .my:
-            let op = FeatureAccessCheckOperation(userSession: userSession)
-            op.start()
-            return op.isAccessible
-        }
+        return checkAccess(forTab: TabFeature.list[idx])
     }
 }
 

@@ -28,7 +28,10 @@ class TreasuryBarViewController: UIViewController, UserSessionDepending {
     private var greenGemLevelUpAnimation: LevelUpAnimationOperation?
     private var purpleGemLevelUpAnimation: LevelUpAnimationOperation?
     private var blueGemLevelUpAnimation: BlueGemLevelUpAnimation?
-    private var userActionRounter: URLRouter!
+    private var scoreAnimation: ScoreBarAnimation?
+    fileprivate var userActionRounter: URLRouter!
+    fileprivate var animationPlan: AnimationPlan?
+    private(set) var scoreProgress: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,9 +59,7 @@ class TreasuryBarViewController: UIViewController, UserSessionDepending {
     // MARK: - Navigation
 
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-//        return checkAccess()
-        showLevelUpAnimation(forSegueID: identifier)
-        return true
+        return checkAccess()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -88,22 +89,22 @@ fileprivate extension TreasuryBarViewController {
             return true
         }
         
-        self.userActionRounter = actionRouter
+        userActionRounter = actionRouter
         router.addOverridingRouter(actionRouter)
     }
     
     func showBlueGemPopUp() {
-//        guard checkAccess() else { return }
+        guard checkAccess() else { return }
         showPopUpController(BlueGemPopUpViewController.entryPoint())
     }
     
     func showGreenGemPopUp() {
-//        guard checkAccess() else { return }
+        guard checkAccess() else { return }
         showPopUpController(GreenGemPopUpViewController.entryPoint())
     }
     
     func showPurpleGemPopUp() {
-//        guard checkAccess() else { return }
+        guard checkAccess() else { return }
         showPopUpController(PurpleGemStoreViewController.entryPoint())
     }
 
@@ -120,23 +121,55 @@ fileprivate extension TreasuryBarViewController {
 }
 
 fileprivate extension TreasuryBarViewController {
-    func showLevelUpAnimation(forSegueID segueID: String) {
-        switch segueID {
-        case "showBlueGemPopUP":
-            let op = BlueGemLevelUpAnimation(icon: blueGemIcon, endProgress: 0.3, containerView: scorebarContainer, scorebarLengthConstraint: visibleScorebarWidth)
-            blueGemLevelUpAnimation = op
-            op.start()
-        case "showPurpleGemPopUP":
-            purpleGemLevelUpAnimation = LevelUpAnimationOperation(icon: purpleGemIcon)
-            purpleGemLevelUpAnimation?.start()
-        case "showGreenGemPopUP":
-            greenGemLevelUpAnimation = LevelUpAnimationOperation(icon: greenGemIcon)
-            greenGemLevelUpAnimation?.start()
-        default: break
+    struct AnimationPlan {
+        var blueGem = false
+        var scoreBar = false
+        var purpleGem = false
+        var greenGem = false
+        
+        var shouldAnimate: Bool {
+            return scoreBar || blueGem || purpleGem || greenGem
         }
     }
-    
-    
+}
+
+fileprivate extension TreasuryBarViewController {
+    func animateUpdateIfNeeded() {
+        guard let plan = animationPlan else { return }
+        animationPlan = nil
+        if plan.blueGem {
+            let op = BlueGemLevelUpAnimation(icon: blueGemIcon, endProgress: scoreProgress, containerView: scorebarContainer, scorebarLengthConstraint: visibleScorebarWidth)
+            op.completionBlock = {[weak self] in
+                self?.blueGemLevelUpAnimation = nil
+            }
+            blueGemLevelUpAnimation = op
+            op.start()
+        } else if plan.scoreBar {
+            let op = ScoreBarAnimation(endProgress: scoreProgress, containerView: scorebarContainer, scorebarLengthConstraint: visibleScorebarWidth)
+            op.completionBlock = {[weak self] in
+                self?.scoreAnimation = nil
+            }
+            scoreAnimation = op
+            op.start()
+        }
+        if plan.greenGem {
+            let op = LevelUpAnimationOperation(icon: greenGemIcon)
+            op.completionBlock = {[weak self] in
+                self?.greenGemLevelUpAnimation = nil
+            }
+            greenGemLevelUpAnimation = op
+            op.start()
+
+        }
+        if plan.purpleGem {
+            let op =  LevelUpAnimationOperation(icon: purpleGemIcon)
+            op.completionBlock = {[weak self] in
+                self?.purpleGemLevelUpAnimation = nil
+            }
+            purpleGemLevelUpAnimation = op
+            op.start()
+        }
+    }
 }
 
 class LevelUpAnimationOperation: SimpleAsynchronousOperation {

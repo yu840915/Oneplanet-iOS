@@ -314,7 +314,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="190" height="10"/>
                                         <state key="normal" backgroundImage="ui_scorebg"/>
                                         <connections>
-                                            <segue destination="2Sp-TV-Ej7" kind="presentation" id="sT0-2b-7Uh"/>
+                                            <segue destination="2Sp-TV-Ej7" kind="presentation" identifier="showBlueGemPopUP" id="sT0-2b-7Uh"/>
                                         </connections>
                                     </button>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hz6-xI-wR4">
@@ -359,7 +359,7 @@
                                             <color key="titleColor" name="blue gem"/>
                                         </state>
                                         <connections>
-                                            <segue destination="2Sp-TV-Ej7" kind="presentation" id="Vig-IT-DEU"/>
+                                            <segue destination="2Sp-TV-Ej7" kind="presentation" identifier="showBlueGemPopUP" id="Vig-IT-DEU"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="900" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I92-QH-Ey3" userLabel="Purple Gem Button">
@@ -369,7 +369,7 @@
                                             <color key="titleColor" name="purple coin"/>
                                         </state>
                                         <connections>
-                                            <segue destination="IJt-xM-ud5" kind="presentation" id="W4h-UX-Ans"/>
+                                            <segue destination="IJt-xM-ud5" kind="presentation" identifier="showPurpleGemPopUP" id="W4h-UX-Ans"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="900" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWD-vp-jYx" userLabel="Greeen Gem Button">
@@ -379,7 +379,7 @@
                                             <color key="titleColor" name="green key"/>
                                         </state>
                                         <connections>
-                                            <segue destination="UiL-yh-RcR" kind="presentation" id="Z5C-Ha-6i7"/>
+                                            <segue destination="UiL-yh-RcR" kind="presentation" identifier="showGreenGemPopUP" id="Z5C-Ha-6i7"/>
                                         </connections>
                                     </button>
                                 </subviews>

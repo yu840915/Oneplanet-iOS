@@ -11,6 +11,7 @@ import UIKit
 class UserFlowMainViewController: UIViewController, UserSessionDepending, DefaultInstanceFactory {
     var userSession: UserSession!
     private var contentTabbarController: UITabBarController!
+    private var treasuryBarController: TreasuryBarViewController!
     fileprivate var getPageListOperaion: GetPromotionPageListOperation?
     fileprivate var appearanceAction: (()->())?
     fileprivate var hasViewBeenVisible = false
@@ -69,6 +70,9 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
             }
             tabbar.tabBar.backgroundImage = UIImage()
             contentTabbarController = tabbar
+        } else if let vc = segue.destination as? TreasuryBarViewController {
+            vc.userSession = userSession
+            treasuryBarController = vc
         }
     }
 

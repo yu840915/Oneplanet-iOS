@@ -9,8 +9,9 @@
 import UIKit
 import ModelBlocks
 
-class TreasuryBarViewController: UIViewController {
+class TreasuryBarViewController: UIViewController, UserSessionDepending {
     
+    var userSession: UserSession!
     var maxVisibleScorebarWidth: CGFloat {
         return scoreMaskView.bounds.width
     }
@@ -54,9 +55,36 @@ class TreasuryBarViewController: UIViewController {
 
     // MARK: - Navigation
 
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        let op = FeatureAccessCheckOperation(userSession: userSession)
+        op.start()
+        return op.isAccessible
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
     }
+}
+
+fileprivate extension TreasuryBarViewController {
+    func showLevelUpAnimation(forSegueID segueID: String) {
+        switch segueID {
+        case "showBlueGemPopUP":
+            let op = BlueGemLevelUpAnimation(icon: blueGemIcon, endProgress: 0.3, containerView: scorebarContainer, scorebarLengthConstraint: visibleScorebarWidth)
+            blueGemLevelUpAnimation = op
+
+            op.start()
+        case "showPurpleGemPopUP":
+            levelUpAnimation = LevelUpAnimationOperation(icon: purpleGemIcon)
+            levelUpAnimation?.start()
+        case "showGreenGemPopUP":
+            levelUpAnimation = LevelUpAnimationOperation(icon: greenGemIcon)
+            levelUpAnimation?.start()
+        default: break
+        }
+    }
+    
+    
 }
 
 class LevelUpAnimationOperation: SimpleAsynchronousOperation {

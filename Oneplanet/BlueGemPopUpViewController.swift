@@ -9,7 +9,10 @@
 import UIKit
 
 class BlueGemPopUpViewController: UIViewController {
-
+    
+    class func entryPoint() -> PopUpContainerViewController {
+        return UIStoryboard(name: "MainUserFlow", bundle: nil).instantiateViewController(withIdentifier: "BlueGemPopUpEntry") as! PopUpContainerViewController
+    }
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usageLabel: UILabel!
     @IBOutlet weak var bulletTextView1: UITextView!

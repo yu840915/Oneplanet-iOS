@@ -443,7 +443,7 @@
         <!--Pop Up Container View Controller-->
         <scene sceneID="lte-S3-ai8">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="2Sp-TV-Ej7" customClass="PopUpContainerViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BlueGemPopUpEntry" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="2Sp-TV-Ej7" customClass="PopUpContainerViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="d0y-dn-Udl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -657,7 +657,7 @@
         <!--Pop Up Container View Controller-->
         <scene sceneID="2Fj-If-dd8">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="UiL-yh-RcR" customClass="PopUpContainerViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GreenGemPopUpEntry" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="UiL-yh-RcR" customClass="PopUpContainerViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9Me-QU-RNQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -906,7 +906,7 @@
         <!--Pop Up Container View Controller-->
         <scene sceneID="ixM-8e-CPN">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="IJt-xM-ud5" customClass="PopUpContainerViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PurpleGemPopUpEntry" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="IJt-xM-ud5" customClass="PopUpContainerViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y6h-Ye-NwE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

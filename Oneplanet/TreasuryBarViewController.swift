@@ -28,6 +28,7 @@ class TreasuryBarViewController: UIViewController, UserSessionDepending {
     private var greenGemLevelUpAnimation: LevelUpAnimationOperation?
     private var purpleGemLevelUpAnimation: LevelUpAnimationOperation?
     private var blueGemLevelUpAnimation: BlueGemLevelUpAnimation?
+    private var userActionRounter: URLRouter!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,20 +46,76 @@ class TreasuryBarViewController: UIViewController, UserSessionDepending {
         scorebarButton.layer.shadowOffset = .zero
         scorebarButton.layer.shadowOpacity = 1.0
         scoreMaskView.layer.cornerRadius = 5.0
+        prepareRouter()
     }
 
+    deinit {
+        router.removeOverridingRouter(userActionRounter)
+    }
+    
     // MARK: - Navigation
 
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-//        let op = FeatureAccessCheckOperation(userSession: userSession)
-//        op.start()
-//        return op.isAccessible
+//        return checkAccess()
         showLevelUpAnimation(forSegueID: identifier)
         return true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+    }
+}
+
+fileprivate extension TreasuryBarViewController {
+    func prepareRouter() {
+        let actionRouter = URLRouter()
+        actionRouter.add(DeepLinks.blueGemPopUp.path) {[weak self] (info) -> Bool in
+            OperationQueue.main.addOperation {
+                self?.showBlueGemPopUp()
+            }
+            return true
+        }
+        actionRouter.add(DeepLinks.purpleGemPopUp.path) {[weak self] (info) -> Bool in
+            OperationQueue.main.addOperation {
+                self?.showPurpleGemPopUp()
+            }
+            return true
+        }
+        actionRouter.add(DeepLinks.greenGemPopUp.path) {[weak self] (info) -> Bool in
+            OperationQueue.main.addOperation {
+                self?.showGreenGemPopUp()
+            }
+            return true
+        }
+        
+        self.userActionRounter = actionRouter
+        router.addOverridingRouter(actionRouter)
+    }
+    
+    func showBlueGemPopUp() {
+//        guard checkAccess() else { return }
+        showPopUpController(BlueGemPopUpViewController.entryPoint())
+    }
+    
+    func showGreenGemPopUp() {
+//        guard checkAccess() else { return }
+        showPopUpController(GreenGemPopUpViewController.entryPoint())
+    }
+    
+    func showPurpleGemPopUp() {
+//        guard checkAccess() else { return }
+        showPopUpController(PurpleGemStoreViewController.entryPoint())
+    }
+
+    func showPopUpController(_ controller: PopUpContainerViewController) {
+        let presenter = FrontViewControllerFinder.findFront() ?? self
+        presenter.present(controller, animated: true, completion: nil)
+    }
+    
+    func checkAccess() -> Bool {
+        let op = FeatureAccessCheckOperation(userSession: userSession)
+        op.start()
+        return op.isAccessible
     }
 }
 

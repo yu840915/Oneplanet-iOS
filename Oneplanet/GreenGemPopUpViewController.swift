@@ -23,8 +23,38 @@ class GreenGemPopUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        localizeTitles()
+    }
+    
+    private func localizeTitles() {
+        nameLabel.text = Localized.titles.greenGem
+        usageLabel.text = Localized.gemStonePopUp.greenGemUsage
+        bulletTextView1.text = Localized.gemStonePopUp.greenGemBullet1
+        bulletTextView2.text = Localized.gemStonePopUp.greenGemBullet2
+        bulletTextView3.text = Localized.gemStonePopUp.greenGemBullet3
+        bulletTextView5.text = Localized.gemStonePopUp.greenGemBullet5
+        prepareGoButton()
+        prepareActionBullet()
+    }
+    
+    private func prepareGoButton() {
+        let text = String(format: Localized.gemStonePopUp.greenGemAction, Localized.feature.notice)
+        let range = (text as NSString).range(of: Localized.feature.notice)
+        let attrStr = NSMutableAttributedString(string: text, attributes: [.font:  UIFont.systemFont(ofSize: 14), .foregroundColor: ColorPalette.defaultText])
+        attrStr.addAttributes([.font: UIFont.systemFont(ofSize: 14, weight: .semibold)], range: range)
+        goButton.setAttributedTitle(attrStr, for: .normal)
+    }
+    
+    private func prepareActionBullet() {
+        let text = String(format: Localized.gemStonePopUp.greenGemBullet4, Localized.feature.events)
+        let linkRange = (text as NSString).range(of: Localized.feature.events)
+        let attrStr = NSMutableAttributedString(string: text, attributes: [.font:  UIFont.systemFont(ofSize: 12)])
+        attrStr.addAttributes([.link : DeepLinks.modalEventsPage, .font: UIFont.systemFont(ofSize: 12, weight: .semibold)], range: linkRange)
+        bulletTextView4.delegate = self
+        bulletTextView4.attributedText = attrStr
+        bulletTextView4.linkTextAttributes = [
+            .foregroundColor : ColorPalette.buttonGreen,
+            .font: UIFont.systemFont(ofSize: 12, weight: .semibold)]
     }
     
     @IBAction func exit(_ sender: Any) {
@@ -32,6 +62,19 @@ class GreenGemPopUpViewController: UIViewController {
     }
     
     @IBAction func invokeGoAction(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: {
+            router.handle(DeepLinks.noticeTab)
+        })
     }
-    
+}
+
+extension GreenGemPopUpViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        OperationQueue.main.addOperation {
+            self.dismiss(animated: true, completion: {
+                router.handle(URL)
+            })
+        }
+        return false
+    }
 }

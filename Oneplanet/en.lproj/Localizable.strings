@@ -8,6 +8,10 @@
 
 "iso_code" = "en";
 
+"fx_news" = "News";
+"fx_events" = "Events";
+"fx_alien" = "Alien";
+
 "tl_cancel" = "Cancel";
 "tl_dismiss" = "Dismiss";
 "tl_done" = "Done";

@@ -8,6 +8,10 @@
 
 "iso_code" = "ja";
 
+"fx_news" = "News";
+"fx_events" = "Events";
+"fx_alien" = "Alien";
+
 "tl_cancel" = "キャンセル";
 "tl_dismiss" = "閉じる";
 "tl_done" = "完成";

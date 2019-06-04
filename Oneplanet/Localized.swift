@@ -9,7 +9,7 @@
 import Foundation
 
 class Localized {
-    static let mainTab = MainTab()
+    static let feature = Feature()
     static let acceptLanguageHeader: [String: String] = [acceptLanguageKey: languageCode]
     static let acceptLanguageKey = "Accept-Language"
     static let languageCode: String = NSLocalizedString("iso_code", comment: "")
@@ -131,13 +131,12 @@ class LocalizedTitles {//tl_
     }
 }
 
-class MainTab {
+class Feature {//fx_
     var hot: String {
-        return "hot"
+        return "HOT"
     }
     var me: String {
         return "MY"
-        //        return NSLocalizedString("tl_me", comment: "")
     }
     var life: String {
         return "LIFE"
@@ -147,6 +146,15 @@ class MainTab {
     }
     var notice: String {
         return "NOTICE"
+    }
+    var news: String {
+        return NSLocalizedString("fx_news", comment: "")
+    }
+    var events: String {
+        return NSLocalizedString("fx_events", comment: "")
+    }
+    var alien: String {
+        return NSLocalizedString("fx_alien", comment: "")
     }
 }
 

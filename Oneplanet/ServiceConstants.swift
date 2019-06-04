@@ -51,7 +51,9 @@ struct DeepLinks {
     static var meTab: URL {
         return ServiceURLs.base.appendingPathComponent("tab/me")
     }
-
+    static var modalEventsPage: URL {
+        return ServiceURLs.base.appendingPathComponent("modal/events")
+    }
 }
 
 extension JSONDecoder {

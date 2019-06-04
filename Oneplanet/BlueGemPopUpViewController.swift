@@ -32,8 +32,8 @@ class BlueGemPopUpViewController: UIViewController {
     }
     
     private func prepareGoButton() {
-        let text = String(format: Localized.gemStonePopUp.blueGemAction, Localized.mainTab.life)
-        let range = (text as NSString).range(of: Localized.mainTab.life)
+        let text = String(format: Localized.gemStonePopUp.blueGemAction, Localized.feature.life)
+        let range = (text as NSString).range(of: Localized.feature.life)
         let attrStr = NSMutableAttributedString(string: text, attributes: [.font:  UIFont.systemFont(ofSize: 14), .foregroundColor: ColorPalette.defaultText])
         attrStr.addAttributes([.font: UIFont.systemFont(ofSize: 14, weight: .semibold)], range: range)
         goButton.setAttributedTitle(attrStr, for: .normal)

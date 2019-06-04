@@ -8,6 +8,10 @@
 
 "iso_code" = "zh-hans";
 
+"fx_news" = "News";
+"fx_events" = "Events";
+"fx_alien" = "Alien";
+
 "tl_cancel" = "取消";
 "tl_dismiss" = "关闭";
 "tl_done" = "完成";

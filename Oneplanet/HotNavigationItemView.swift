@@ -14,13 +14,19 @@ class HotNavigationItemView: UIView {
     }
     
     class func forNews() -> HotNavigationItemView {
-        return defaultNib().instantiate(withOwner: nil, options: nil)[0] as! HotNavigationItemView
+        let view = defaultNib().instantiate(withOwner: nil, options: nil)[0] as! HotNavigationItemView
+        view.titleLabel.text = Localized.feature.news
+        return view
     }
     class func forEvents()  -> HotNavigationItemView {
-        return defaultNib().instantiate(withOwner: nil, options: nil)[1] as! HotNavigationItemView
+        let view = defaultNib().instantiate(withOwner: nil, options: nil)[1] as! HotNavigationItemView
+        view.titleLabel.text = Localized.feature.events
+        return view
     }
     class func forAlien() -> HotNavigationItemView {
-        return defaultNib().instantiate(withOwner: nil, options: nil)[2] as! HotNavigationItemView
+        let view = defaultNib().instantiate(withOwner: nil, options: nil)[2] as! HotNavigationItemView
+        view.titleLabel.text = Localized.feature.alien
+        return view
     }
     
     override var intrinsicContentSize: CGSize {

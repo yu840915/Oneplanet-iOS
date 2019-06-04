@@ -314,7 +314,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="178" height="10"/>
                                         <state key="normal" backgroundImage="ui_scorebg"/>
                                         <connections>
-                                            <segue destination="UiL-yh-RcR" kind="presentation" id="jcl-sd-2c4"/>
+                                            <segue destination="2Sp-TV-Ej7" kind="presentation" id="sT0-2b-7Uh"/>
                                         </connections>
                                     </button>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hz6-xI-wR4">
@@ -937,6 +937,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jcl-sd-2c4"/>
+        <segue reference="Vig-IT-DEU"/>
     </inferredMetricsTieBreakers>
 </document>

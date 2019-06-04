@@ -88,6 +88,7 @@
 		E081590B22A61AA3007C9776 /* PopUpContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E081590A22A61AA3007C9776 /* PopUpContainerViewController.swift */; };
 		E081590D22A63616007C9776 /* BlueGemPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E081590C22A63616007C9776 /* BlueGemPopUpViewController.swift */; };
 		E081590F22A63628007C9776 /* GreenGemPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E081590E22A63628007C9776 /* GreenGemPopUpViewController.swift */; };
+		E081591122A65276007C9776 /* PurpleGemStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E081591022A65276007C9776 /* PurpleGemStoreViewController.swift */; };
 		E0837EF3227FFFBF00B13BAF /* FacebookLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0837EF2227FFFBF00B13BAF /* FacebookLogin.swift */; };
 		E0837EF5228022C400B13BAF /* TwitterLogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0837EF4228022C400B13BAF /* TwitterLogIn.swift */; };
 		E0837EF722816B0D00B13BAF /* ImageAttachmentUploadFlowOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0837EF622816B0D00B13BAF /* ImageAttachmentUploadFlowOperation.swift */; };
@@ -222,6 +223,7 @@
 		E081590A22A61AA3007C9776 /* PopUpContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpContainerViewController.swift; sourceTree = "<group>"; };
 		E081590C22A63616007C9776 /* BlueGemPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueGemPopUpViewController.swift; sourceTree = "<group>"; };
 		E081590E22A63628007C9776 /* GreenGemPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenGemPopUpViewController.swift; sourceTree = "<group>"; };
+		E081591022A65276007C9776 /* PurpleGemStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurpleGemStoreViewController.swift; sourceTree = "<group>"; };
 		E0837EF2227FFFBF00B13BAF /* FacebookLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLogin.swift; sourceTree = "<group>"; };
 		E0837EF4228022C400B13BAF /* TwitterLogIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterLogIn.swift; sourceTree = "<group>"; };
 		E0837EF622816B0D00B13BAF /* ImageAttachmentUploadFlowOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAttachmentUploadFlowOperation.swift; sourceTree = "<group>"; };
@@ -526,6 +528,7 @@
 				E0CB5E10228F0B4A00C0C010 /* TreasuryBarViewController.swift */,
 				E081590C22A63616007C9776 /* BlueGemPopUpViewController.swift */,
 				E081590E22A63628007C9776 /* GreenGemPopUpViewController.swift */,
+				E081591022A65276007C9776 /* PurpleGemStoreViewController.swift */,
 				E0D7DCDA229CE65C00B40D76 /* PromoPopUpFlowViewController.swift */,
 				E0D7DCDC229CE82300B40D76 /* PromoPopUpViewController.swift */,
 				E0BDCCE9229FA044006A9D20 /* PromotionPageList.swift */,
@@ -826,6 +829,7 @@
 				E0837EF3227FFFBF00B13BAF /* FacebookLogin.swift in Sources */,
 				E06589BF22701B9F00C9E4E6 /* CapturePhotoOperation.swift in Sources */,
 				E0BAB71F228482D1007E747C /* InputFieldView.swift in Sources */,
+				E081591122A65276007C9776 /* PurpleGemStoreViewController.swift in Sources */,
 				E0190F53226DD62200C212D5 /* UserProgressChecklist.swift in Sources */,
 				E06589C32270362300C9E4E6 /* GenericAppError.swift in Sources */,
 				E06589C8227060EC00C9E4E6 /* PhotoList.swift in Sources */,

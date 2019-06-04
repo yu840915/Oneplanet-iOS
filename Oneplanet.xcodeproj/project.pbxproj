@@ -85,6 +85,10 @@
 		E0814FB322865CC2002F1C02 /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0814FB222865CC2002F1C02 /* Me.storyboard */; };
 		E0814FB522873103002F1C02 /* RoughNumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0814FB422873103002F1C02 /* RoughNumberFormatterTests.swift */; };
 		E0814FB722893FB0002F1C02 /* ProfileCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0814FB622893FAF002F1C02 /* ProfileCollectionViewController.swift */; };
+		E081590B22A61AA3007C9776 /* PopUpContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E081590A22A61AA3007C9776 /* PopUpContainerViewController.swift */; };
+		E081590D22A63616007C9776 /* BlueGemPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E081590C22A63616007C9776 /* BlueGemPopUpViewController.swift */; };
+		E081590F22A63628007C9776 /* GreenGemPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E081590E22A63628007C9776 /* GreenGemPopUpViewController.swift */; };
+		E081591122A65276007C9776 /* PurpleGemStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E081591022A65276007C9776 /* PurpleGemStoreViewController.swift */; };
 		E0837EF3227FFFBF00B13BAF /* FacebookLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0837EF2227FFFBF00B13BAF /* FacebookLogin.swift */; };
 		E0837EF5228022C400B13BAF /* TwitterLogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0837EF4228022C400B13BAF /* TwitterLogIn.swift */; };
 		E0837EF722816B0D00B13BAF /* ImageAttachmentUploadFlowOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0837EF622816B0D00B13BAF /* ImageAttachmentUploadFlowOperation.swift */; };
@@ -216,6 +220,10 @@
 		E0814FB222865CC2002F1C02 /* Me.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
 		E0814FB422873103002F1C02 /* RoughNumberFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoughNumberFormatterTests.swift; sourceTree = "<group>"; };
 		E0814FB622893FAF002F1C02 /* ProfileCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewController.swift; sourceTree = "<group>"; };
+		E081590A22A61AA3007C9776 /* PopUpContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpContainerViewController.swift; sourceTree = "<group>"; };
+		E081590C22A63616007C9776 /* BlueGemPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueGemPopUpViewController.swift; sourceTree = "<group>"; };
+		E081590E22A63628007C9776 /* GreenGemPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenGemPopUpViewController.swift; sourceTree = "<group>"; };
+		E081591022A65276007C9776 /* PurpleGemStoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurpleGemStoreViewController.swift; sourceTree = "<group>"; };
 		E0837EF2227FFFBF00B13BAF /* FacebookLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookLogin.swift; sourceTree = "<group>"; };
 		E0837EF4228022C400B13BAF /* TwitterLogIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterLogIn.swift; sourceTree = "<group>"; };
 		E0837EF622816B0D00B13BAF /* ImageAttachmentUploadFlowOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAttachmentUploadFlowOperation.swift; sourceTree = "<group>"; };
@@ -302,6 +310,7 @@
 			children = (
 				E0190F59226EDD1100C212D5 /* SupportingFlows.storyboard */,
 				E07276EA2274B515001239C0 /* WebViewController.swift */,
+				E081590A22A61AA3007C9776 /* PopUpContainerViewController.swift */,
 				E0B57DE222A0FAA3006AEADB /* Toast.swift */,
 				E0B57DE622A0FE77006AEADB /* Toast.xib */,
 				E06589C42270536A00C9E4E6 /* Image Picking */,
@@ -517,6 +526,9 @@
 			children = (
 				E0814FAD22864B10002F1C02 /* MainUserFlow.storyboard */,
 				E0CB5E10228F0B4A00C0C010 /* TreasuryBarViewController.swift */,
+				E081590C22A63616007C9776 /* BlueGemPopUpViewController.swift */,
+				E081590E22A63628007C9776 /* GreenGemPopUpViewController.swift */,
+				E081591022A65276007C9776 /* PurpleGemStoreViewController.swift */,
 				E0D7DCDA229CE65C00B40D76 /* PromoPopUpFlowViewController.swift */,
 				E0D7DCDC229CE82300B40D76 /* PromoPopUpViewController.swift */,
 				E0BDCCE9229FA044006A9D20 /* PromotionPageList.swift */,
@@ -811,11 +823,13 @@
 				E0837EF5228022C400B13BAF /* TwitterLogIn.swift in Sources */,
 				E07276FD2277424E001239C0 /* URLRouter.swift in Sources */,
 				E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */,
+				E081590D22A63616007C9776 /* BlueGemPopUpViewController.swift in Sources */,
 				E03C32AC226D872A00C32FD7 /* Localized.swift in Sources */,
 				E03C32B5226D969500C32FD7 /* ColorPalette .swift in Sources */,
 				E0837EF3227FFFBF00B13BAF /* FacebookLogin.swift in Sources */,
 				E06589BF22701B9F00C9E4E6 /* CapturePhotoOperation.swift in Sources */,
 				E0BAB71F228482D1007E747C /* InputFieldView.swift in Sources */,
+				E081591122A65276007C9776 /* PurpleGemStoreViewController.swift in Sources */,
 				E0190F53226DD62200C212D5 /* UserProgressChecklist.swift in Sources */,
 				E06589C32270362300C9E4E6 /* GenericAppError.swift in Sources */,
 				E06589C8227060EC00C9E4E6 /* PhotoList.swift in Sources */,
@@ -856,6 +870,7 @@
 				E0CB5E11228F0B4A00C0C010 /* TreasuryBarViewController.swift in Sources */,
 				E003BA382296933F001814F4 /* HotHeaderCollectionViewController.swift in Sources */,
 				E06F5013227B4E2E0067DAE4 /* PreflightCheckFlowViewController.swift in Sources */,
+				E081590B22A61AA3007C9776 /* PopUpContainerViewController.swift in Sources */,
 				E07276F62276C305001239C0 /* FirebaseMessagingSession.swift in Sources */,
 				E07276E92273633A001239C0 /* CreateProfileViewController.swift in Sources */,
 				E02842B3229A3399007212D7 /* AlienPickerCollectionViewController.swift in Sources */,
@@ -863,6 +878,7 @@
 				E02842AF229A31AF007212D7 /* CharacterPickerViewController.swift in Sources */,
 				E03C329E226D772400C32FD7 /* Logger.swift in Sources */,
 				E03C32B3226D925100C32FD7 /* ServiceConstants.swift in Sources */,
+				E081590F22A63628007C9776 /* GreenGemPopUpViewController.swift in Sources */,
 				E06F4FFA22782C8C0067DAE4 /* InputValidators.swift in Sources */,
 				E089F711228EB18F003E77DF /* SectionHeaderView.swift in Sources */,
 				E07276EB2274B515001239C0 /* WebViewController.swift in Sources */,

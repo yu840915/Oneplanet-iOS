@@ -26,6 +26,36 @@ struct ServiceURLs {
     static let biddingTerms = URL(string: "https://www.google.com")!
 }
 
+struct DeepLinks {
+    static var blueGemPopUp: URL {
+        return ServiceURLs.base.appendingPathComponent("popup/blue-gem")
+    }
+    static var purpleGemPopUp: URL {
+        return ServiceURLs.base.appendingPathComponent("popup/purple-gem")
+    }
+    static var greenGemPopUp: URL {
+        return ServiceURLs.base.appendingPathComponent("popup/green-gem")
+    }
+    static var hotTab: URL {
+        return ServiceURLs.base.appendingPathComponent("tab/hot")
+    }
+    static var lifeTab: URL {
+        return ServiceURLs.base.appendingPathComponent("tab/life")
+    }
+    static var bidTab: URL {
+        return ServiceURLs.base.appendingPathComponent("tab/bid")
+    }
+    static var noticeTab: URL {
+        return ServiceURLs.base.appendingPathComponent("tab/notice")
+    }
+    static var meTab: URL {
+        return ServiceURLs.base.appendingPathComponent("tab/me")
+    }
+    static var modalEventsPage: URL {
+        return ServiceURLs.base.appendingPathComponent("modal/events")
+    }
+}
+
 extension JSONDecoder {
     static let `default` = JSONDecoder()
 }

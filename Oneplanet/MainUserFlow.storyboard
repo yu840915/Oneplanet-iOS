@@ -310,11 +310,18 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="1000" image="ui_scorebg" translatesAutoresizingMaskIntoConstraints="NO" id="Vez-Nh-4Ua">
                                         <rect key="frame" x="0.0" y="0.0" width="190" height="10"/>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q7h-aM-GRU" userLabel="Scorebar Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="190" height="10"/>
+                                        <state key="normal" backgroundImage="ui_scorebg"/>
+                                        <connections>
+                                            <segue destination="2Sp-TV-Ej7" kind="presentation" identifier="showBlueGemPopUP" id="sT0-2b-7Uh"/>
+                                        </connections>
+                                    </button>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hz6-xI-wR4">
-                                        <rect key="frame" x="-100" y="0.0" width="190" height="10"/>
+                                        <rect key="frame" x="-190" y="0.0" width="190" height="10"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_score" translatesAutoresizingMaskIntoConstraints="NO" id="P9W-hm-Xoj">
-                                                <rect key="frame" x="100" y="0.0" width="190" height="10"/>
+                                                <rect key="frame" x="190" y="0.0" width="190" height="10"/>
                                             </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -327,15 +334,19 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="P9W-hm-Xoj" firstAttribute="centerX" secondItem="Vez-Nh-4Ua" secondAttribute="centerX" id="1M4-sK-CEd"/>
-                                    <constraint firstItem="hz6-xI-wR4" firstAttribute="trailing" secondItem="Vez-Nh-4Ua" secondAttribute="leading" constant="90" id="25l-pX-HeC"/>
+                                    <constraint firstItem="hz6-xI-wR4" firstAttribute="trailing" secondItem="Vez-Nh-4Ua" secondAttribute="leading" id="25l-pX-HeC"/>
+                                    <constraint firstItem="Q7h-aM-GRU" firstAttribute="height" secondItem="07Z-Bl-Hpe" secondAttribute="height" id="9Ve-tY-caX"/>
                                     <constraint firstItem="Vez-Nh-4Ua" firstAttribute="centerX" secondItem="07Z-Bl-Hpe" secondAttribute="centerX" id="G0V-oT-o9s"/>
                                     <constraint firstItem="hz6-xI-wR4" firstAttribute="centerY" secondItem="Vez-Nh-4Ua" secondAttribute="centerY" id="Ij8-kU-Svx"/>
                                     <constraint firstItem="P9W-hm-Xoj" firstAttribute="centerY" secondItem="Vez-Nh-4Ua" secondAttribute="centerY" id="JIv-M9-G2T"/>
+                                    <constraint firstItem="Q7h-aM-GRU" firstAttribute="width" secondItem="07Z-Bl-Hpe" secondAttribute="width" id="Job-00-4aw"/>
                                     <constraint firstItem="Vez-Nh-4Ua" firstAttribute="height" secondItem="07Z-Bl-Hpe" secondAttribute="height" id="MO4-rs-spH"/>
+                                    <constraint firstItem="Q7h-aM-GRU" firstAttribute="centerX" secondItem="07Z-Bl-Hpe" secondAttribute="centerX" id="QTM-Vw-3ZH"/>
                                     <constraint firstItem="P9W-hm-Xoj" firstAttribute="top" secondItem="Vez-Nh-4Ua" secondAttribute="top" id="U8z-QR-Xes"/>
                                     <constraint firstItem="P9W-hm-Xoj" firstAttribute="trailing" secondItem="Vez-Nh-4Ua" secondAttribute="trailing" id="cTO-gR-cLC"/>
                                     <constraint firstItem="Vez-Nh-4Ua" firstAttribute="width" secondItem="07Z-Bl-Hpe" secondAttribute="width" id="d5S-NG-I65"/>
                                     <constraint firstItem="Vez-Nh-4Ua" firstAttribute="centerY" secondItem="07Z-Bl-Hpe" secondAttribute="centerY" id="uYA-UR-bCO"/>
+                                    <constraint firstItem="Q7h-aM-GRU" firstAttribute="centerY" secondItem="07Z-Bl-Hpe" secondAttribute="centerY" id="uxJ-S9-gso"/>
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="C9u-a5-KxZ">
@@ -347,37 +358,79 @@
                                         <state key="normal" title="0000" image="ic_gem_nor">
                                             <color key="titleColor" name="blue gem"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="2Sp-TV-Ej7" kind="presentation" identifier="showBlueGemPopUP" id="Vig-IT-DEU"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="900" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I92-QH-Ey3" userLabel="Blue Gem Button">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="900" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I92-QH-Ey3" userLabel="Purple Gem Button">
                                         <rect key="frame" x="73" y="0.0" width="69" height="28"/>
                                         <fontDescription key="fontDescription" name="DS-Digital-Bold" family="DS-Digital" pointSize="20"/>
                                         <state key="normal" title="0000" image="ic_coin_nor">
                                             <color key="titleColor" name="purple coin"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="IJt-xM-ud5" kind="presentation" identifier="showPurpleGemPopUP" id="W4h-UX-Ans"/>
+                                        </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="900" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWD-vp-jYx" userLabel="Blue Gem Button">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="900" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWD-vp-jYx" userLabel="Greeen Gem Button">
                                         <rect key="frame" x="146" y="0.0" width="69" height="28"/>
                                         <fontDescription key="fontDescription" name="DS-Digital-Bold" family="DS-Digital" pointSize="20"/>
                                         <state key="normal" title="0000" image="ic_key_nor">
                                             <color key="titleColor" name="green key"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="UiL-yh-RcR" kind="presentation" identifier="showGreenGemPopUP" id="Z5C-Ha-6i7"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_gem80_nor" translatesAutoresizingMaskIntoConstraints="NO" id="4KU-1Q-gV5" userLabel="Blue Gem Icon">
+                                <rect key="frame" x="187" y="11" width="28" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="28" id="GCb-cA-016"/>
+                                    <constraint firstAttribute="width" secondItem="4KU-1Q-gV5" secondAttribute="height" multiplier="1:1" id="rXF-Tx-xcm"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_coin80_nor" translatesAutoresizingMaskIntoConstraints="NO" id="LTp-Ww-PTN" userLabel="Purpul Gem Icon">
+                                <rect key="frame" x="260" y="11" width="28" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="28" id="ZeF-gX-ech"/>
+                                    <constraint firstAttribute="width" secondItem="LTp-Ww-PTN" secondAttribute="height" multiplier="1:1" id="z5i-is-6Of"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_key80_nor" translatesAutoresizingMaskIntoConstraints="NO" id="yhx-EA-UYd" userLabel="Green Gem Icon">
+                                <rect key="frame" x="333" y="11" width="28" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="yhx-EA-UYd" secondAttribute="height" multiplier="1:1" id="1MJ-T6-UQz"/>
+                                    <constraint firstAttribute="width" constant="28" id="vpV-lg-Kq0"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" name="grey background"/>
                         <constraints>
                             <constraint firstItem="07Z-Bl-Hpe" firstAttribute="centerY" secondItem="5J8-aA-pND" secondAttribute="centerY" id="Ci4-QP-B7r"/>
                             <constraint firstItem="07Z-Bl-Hpe" firstAttribute="leading" secondItem="5J8-aA-pND" secondAttribute="leading" constant="12" id="E4A-fz-Lz4"/>
+                            <constraint firstItem="yhx-EA-UYd" firstAttribute="centerY" secondItem="PWD-vp-jYx" secondAttribute="centerY" id="GHw-12-P6p"/>
                             <constraint firstItem="C9u-a5-KxZ" firstAttribute="leading" secondItem="07Z-Bl-Hpe" secondAttribute="trailing" constant="-15" id="Ibd-CZ-bqx"/>
+                            <constraint firstItem="LTp-Ww-PTN" firstAttribute="leading" secondItem="I92-QH-Ey3" secondAttribute="leading" id="QiF-de-wMs"/>
+                            <constraint firstItem="4KU-1Q-gV5" firstAttribute="leading" secondItem="wVJ-lV-SXm" secondAttribute="leading" id="RZI-wG-mgi"/>
+                            <constraint firstItem="yhx-EA-UYd" firstAttribute="leading" secondItem="PWD-vp-jYx" secondAttribute="leading" id="ilI-Vg-FIh"/>
                             <constraint firstItem="5J8-aA-pND" firstAttribute="trailing" secondItem="C9u-a5-KxZ" secondAttribute="trailing" constant="12" id="mUo-xR-lX6"/>
+                            <constraint firstItem="4KU-1Q-gV5" firstAttribute="centerY" secondItem="wVJ-lV-SXm" secondAttribute="centerY" id="nbr-Vu-3hz"/>
+                            <constraint firstItem="LTp-Ww-PTN" firstAttribute="centerY" secondItem="I92-QH-Ey3" secondAttribute="centerY" id="uT1-ZT-Qir"/>
                             <constraint firstItem="C9u-a5-KxZ" firstAttribute="centerY" secondItem="5J8-aA-pND" secondAttribute="centerY" id="vhj-Wi-BDu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5J8-aA-pND"/>
                     </view>
                     <connections>
+                        <outlet property="blueGemIcon" destination="4KU-1Q-gV5" id="ebI-0y-pID"/>
+                        <outlet property="greenGemIcon" destination="yhx-EA-UYd" id="kVJ-G8-zAc"/>
+                        <outlet property="purpleGemIcon" destination="LTp-Ww-PTN" id="BLC-W3-osG"/>
                         <outlet property="scoreMaskView" destination="hz6-xI-wR4" id="Ltg-Sf-5Lc"/>
                         <outlet property="scorebarBackImage" destination="Vez-Nh-4Ua" id="BHF-Ky-GAC"/>
+                        <outlet property="scorebarButton" destination="Q7h-aM-GRU" id="6oK-ik-DN2"/>
+                        <outlet property="scorebarContainer" destination="07Z-Bl-Hpe" id="WNb-og-ag4"/>
+                        <outlet property="visibleScorebarWidth" destination="25l-pX-HeC" id="IlC-e1-ZhZ"/>
                         <outletCollection property="treasuryButtons" destination="wVJ-lV-SXm" collectionClass="NSMutableArray" id="tO9-ZS-YHq"/>
                         <outletCollection property="treasuryButtons" destination="I92-QH-Ey3" collectionClass="NSMutableArray" id="dJd-DH-O4C"/>
                         <outletCollection property="treasuryButtons" destination="PWD-vp-jYx" collectionClass="NSMutableArray" id="yWe-AZ-lWY"/>
@@ -385,14 +438,672 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RlV-kQ-fvF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="368" y="-546"/>
+            <point key="canvasLocation" x="458" y="-822"/>
+        </scene>
+        <!--Pop Up Container View Controller-->
+        <scene sceneID="lte-S3-ai8">
+            <objects>
+                <viewController storyboardIdentifier="BlueGemPopUpEntry" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="2Sp-TV-Ej7" customClass="PopUpContainerViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="d0y-dn-Udl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5oT-qE-CEq">
+                                <rect key="frame" x="20" y="111" width="374" height="600"/>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HOR-W0-Olq">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="600"/>
+                                        <connections>
+                                            <segue destination="6Sb-3S-EDd" kind="embed" id="pwJ-j4-4ia"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="HOR-W0-Olq" firstAttribute="width" secondItem="5oT-qE-CEq" secondAttribute="width" id="6hQ-ix-7br"/>
+                                    <constraint firstItem="HOR-W0-Olq" firstAttribute="height" secondItem="5oT-qE-CEq" secondAttribute="height" id="Ive-Kx-vUy"/>
+                                    <constraint firstItem="HOR-W0-Olq" firstAttribute="centerX" secondItem="5oT-qE-CEq" secondAttribute="centerX" id="Jf8-Pq-QC4"/>
+                                    <constraint firstItem="HOR-W0-Olq" firstAttribute="centerY" secondItem="5oT-qE-CEq" secondAttribute="centerY" id="RzS-Ag-E0j"/>
+                                    <constraint firstAttribute="height" constant="600" placeholder="YES" id="nmU-mW-GBV"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" name="translucent dark background"/>
+                        <constraints>
+                            <constraint firstItem="5oT-qE-CEq" firstAttribute="centerX" secondItem="3B7-yJ-jYT" secondAttribute="centerX" id="dcl-jn-DHP"/>
+                            <constraint firstItem="5oT-qE-CEq" firstAttribute="leading" secondItem="3B7-yJ-jYT" secondAttribute="leading" constant="20" id="l1C-EQ-Yig"/>
+                            <constraint firstItem="5oT-qE-CEq" firstAttribute="top" relation="greaterThanOrEqual" secondItem="3B7-yJ-jYT" secondAttribute="top" constant="40" id="nmh-RP-h5k"/>
+                            <constraint firstItem="5oT-qE-CEq" firstAttribute="centerY" secondItem="3B7-yJ-jYT" secondAttribute="centerY" id="rPO-PV-kWz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3B7-yJ-jYT"/>
+                    </view>
+                    <size key="freeformSize" width="414" height="812"/>
+                    <connections>
+                        <outlet property="contentContainer" destination="5oT-qE-CEq" id="j6L-LR-eFu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kDV-OO-C9g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1200" y="-546"/>
+        </scene>
+        <!--Blue Gem Pop Up View Controller-->
+        <scene sceneID="dMW-eG-00h">
+            <objects>
+                <viewController id="6Sb-3S-EDd" customClass="BlueGemPopUpViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Z4w-ZV-ZcT">
+                        <rect key="frame" x="0.0" y="0.0" width="374" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="lao-9I-xep">
+                                <rect key="frame" x="10" y="20" width="354" height="560"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aOs-af-HLl">
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="100.5"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="1000" image="ic_gem80_nor" translatesAutoresizingMaskIntoConstraints="NO" id="vLE-W3-OlI">
+                                                <rect key="frame" x="137" y="0.0" width="80" height="80"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="競標寶" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IzD-jl-Ca8" userLabel="Gem Name Label">
+                                                <rect key="frame" x="151" y="80" width="52" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Z12-La-M0t">
+                                        <rect key="frame" x="0.0" y="110.5" width="354" height="372.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用途：解鎖商品、投標商品。" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c62-JA-Bfh" userLabel="Main Description Label">
+                                                <rect key="frame" x="0.0" y="0.0" width="354" height="14.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="T4v-y2-Aqo" userLabel="Bullet Stack View">
+                                                <rect key="frame" x="0.0" y="14.5" width="354" height="268"/>
+                                                <subviews>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="• " textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXJ-xE-xGh" userLabel="Content Text View">
+                                                        <rect key="frame" x="0.0" y="0.0" width="19" height="30.5"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="獲得方式一：上傳照片後，畫面左上角的經驗會增加，滿格即獲得一顆 競標寶。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="k67-Vc-MgR" userLabel="Content Text View">
+                                                        <rect key="frame" x="19" y="0.0" width="335" height="45"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="6Sb-3S-EDd" id="wxz-pf-Ohh"/>
+                                                        </connections>
+                                                    </textView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="nE2-ey-rOs" userLabel="Bullet Stack View">
+                                                <rect key="frame" x="0.0" y="282.5" width="354" height="45"/>
+                                                <subviews>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="• " textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vpY-B3-dcy" userLabel="Content Text View">
+                                                        <rect key="frame" x="0.0" y="0.0" width="19" height="30.5"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="獲得方式一：上傳照片後，畫面左上角的經驗會增加，滿格即獲得一顆 競標寶。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8BN-jV-t9g" userLabel="Content Text View">
+                                                        <rect key="frame" x="19" y="0.0" width="335" height="45"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="6Sb-3S-EDd" id="klN-lp-DXp"/>
+                                                        </connections>
+                                                    </textView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="MuY-7Q-wKL" userLabel="Bullet Stack View">
+                                                <rect key="frame" x="0.0" y="327.5" width="354" height="45"/>
+                                                <subviews>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="• " textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vMj-NB-ZQY" userLabel="Content Text View">
+                                                        <rect key="frame" x="0.0" y="0.0" width="19" height="30.5"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="獲得方式一：上傳照片後，畫面左上角的經驗會增加，滿格即獲得一顆 競標寶。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iIP-RY-Da5" userLabel="Content Text View">
+                                                        <rect key="frame" x="19" y="0.0" width="335" height="45"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        <connections>
+                                                            <outlet property="delegate" destination="6Sb-3S-EDd" id="uXv-T8-m2k"/>
+                                                        </connections>
+                                                    </textView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5MC-5K-rcG" userLabel="Padding">
+                                        <rect key="frame" x="0.0" y="493" width="354" height="16"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="rma-fz-GsA"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FBn-g6-Xpx">
+                                        <rect key="frame" x="0.0" y="519" width="354" height="41"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rzf-4O-tGP" userLabel="Padding">
+                                                <rect key="frame" x="0.0" y="0.0" width="10" height="41"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="10" id="Aa1-ul-vqc"/>
+                                                </constraints>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="THe-1B-f1k" userLabel="Go Button">
+                                                <rect key="frame" x="10" y="0.0" width="334" height="41"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                <state key="normal" title="Go" backgroundImage="bt_biggreen_nor">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="goToLink:" destination="tft-0J-hOU" eventType="touchUpInside" id="Joo-9E-p2M"/>
+                                                    <action selector="invokeGoAction:" destination="6Sb-3S-EDd" eventType="touchUpInside" id="rOK-Cl-jrb"/>
+                                                </connections>
+                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3vd-dI-Voe" userLabel="Padding">
+                                                <rect key="frame" x="344" y="0.0" width="10" height="41"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="10" id="c1x-je-aAD"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8SM-LN-Utl">
+                                <rect key="frame" x="0.0" y="10" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="6Wb-J5-Zay"/>
+                                    <constraint firstAttribute="width" secondItem="8SM-LN-Utl" secondAttribute="height" id="gf3-Ea-v9M"/>
+                                </constraints>
+                                <state key="normal" image="ic_cancelblack_nor"/>
+                                <connections>
+                                    <action selector="exit:" destination="6Sb-3S-EDd" eventType="touchUpInside" id="1vO-V3-NKh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="lao-9I-xep" firstAttribute="leading" secondItem="Z4w-ZV-ZcT" secondAttribute="leading" constant="10" id="41h-lS-yMC"/>
+                            <constraint firstItem="lao-9I-xep" firstAttribute="centerY" secondItem="Z4w-ZV-ZcT" secondAttribute="centerY" id="KRb-b1-h5W"/>
+                            <constraint firstItem="8SM-LN-Utl" firstAttribute="top" secondItem="Z4w-ZV-ZcT" secondAttribute="top" constant="10" id="YK0-1h-DoJ"/>
+                            <constraint firstItem="8SM-LN-Utl" firstAttribute="leading" secondItem="Z4w-ZV-ZcT" secondAttribute="leading" id="feD-oT-AXe"/>
+                            <constraint firstItem="lao-9I-xep" firstAttribute="top" secondItem="Z4w-ZV-ZcT" secondAttribute="top" constant="20" id="oiT-Ah-N7E"/>
+                            <constraint firstItem="lao-9I-xep" firstAttribute="centerX" secondItem="Z4w-ZV-ZcT" secondAttribute="centerX" id="qq5-oh-YwW"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bulletTextView1" destination="k67-Vc-MgR" id="try-UU-GGk"/>
+                        <outlet property="bulletTextView2" destination="8BN-jV-t9g" id="ebJ-7c-XoB"/>
+                        <outlet property="bulletTextView3" destination="iIP-RY-Da5" id="az0-cC-bks"/>
+                        <outlet property="goButton" destination="THe-1B-f1k" id="4bd-9v-hOa"/>
+                        <outlet property="nameLabel" destination="IzD-jl-Ca8" id="fRl-T4-7PT"/>
+                        <outlet property="usageLabel" destination="c62-JA-Bfh" id="FNo-2N-zoH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eUH-AI-hPi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2362" y="-546"/>
+        </scene>
+        <!--Pop Up Container View Controller-->
+        <scene sceneID="2Fj-If-dd8">
+            <objects>
+                <viewController storyboardIdentifier="GreenGemPopUpEntry" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="UiL-yh-RcR" customClass="PopUpContainerViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9Me-QU-RNQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pbd-el-sfT">
+                                <rect key="frame" x="20" y="111" width="374" height="600"/>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hZ1-9U-ydE">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="600"/>
+                                        <connections>
+                                            <segue destination="d7T-xH-BAr" kind="embed" id="DlQ-RA-w15"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="hZ1-9U-ydE" firstAttribute="centerY" secondItem="Pbd-el-sfT" secondAttribute="centerY" id="202-XW-H2Z"/>
+                                    <constraint firstItem="hZ1-9U-ydE" firstAttribute="width" secondItem="Pbd-el-sfT" secondAttribute="width" id="5PF-NI-rfa"/>
+                                    <constraint firstItem="hZ1-9U-ydE" firstAttribute="height" secondItem="Pbd-el-sfT" secondAttribute="height" id="9Dd-Iu-No0"/>
+                                    <constraint firstAttribute="height" constant="600" placeholder="YES" id="QaW-5T-pBM"/>
+                                    <constraint firstItem="hZ1-9U-ydE" firstAttribute="centerX" secondItem="Pbd-el-sfT" secondAttribute="centerX" id="mfT-cV-jpN"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" name="translucent dark background"/>
+                        <constraints>
+                            <constraint firstItem="Pbd-el-sfT" firstAttribute="leading" secondItem="kXa-OY-wCh" secondAttribute="leading" constant="20" id="9Lf-DZ-8BN"/>
+                            <constraint firstItem="Pbd-el-sfT" firstAttribute="centerX" secondItem="kXa-OY-wCh" secondAttribute="centerX" id="iYV-KP-gXk"/>
+                            <constraint firstItem="Pbd-el-sfT" firstAttribute="top" relation="greaterThanOrEqual" secondItem="kXa-OY-wCh" secondAttribute="top" constant="40" id="z1M-FN-AIa"/>
+                            <constraint firstItem="Pbd-el-sfT" firstAttribute="centerY" secondItem="kXa-OY-wCh" secondAttribute="centerY" id="zU4-rO-hRy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="kXa-OY-wCh"/>
+                    </view>
+                    <size key="freeformSize" width="414" height="812"/>
+                    <connections>
+                        <outlet property="contentContainer" destination="Pbd-el-sfT" id="MNI-n3-RQG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mQr-Ld-5ht" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1199" y="-1183"/>
+        </scene>
+        <!--Green Gem Pop Up View Controller-->
+        <scene sceneID="wjA-QY-Tdz">
+            <objects>
+                <viewController id="d7T-xH-BAr" customClass="GreenGemPopUpViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9C4-a8-nBu">
+                        <rect key="frame" x="0.0" y="0.0" width="374" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mRJ-8S-gFw">
+                                <rect key="frame" x="10" y="20" width="354" height="560"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pb0-Lj-znK">
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="100.5"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="1000" image="ic_key80_nor" translatesAutoresizingMaskIntoConstraints="NO" id="sVk-Ei-PqK">
+                                                <rect key="frame" x="137" y="0.0" width="80" height="80"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="競標寶" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XCy-56-v7q" userLabel="Gem Name Label">
+                                                <rect key="frame" x="151" y="80" width="52" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ay8-V3-fke">
+                                        <rect key="frame" x="0.0" y="110.5" width="354" height="372.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用途：解鎖商品、投標商品。" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mXq-bM-EM4" userLabel="Main Description Label">
+                                                <rect key="frame" x="0.0" y="0.0" width="354" height="14.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="btM-tr-egd" userLabel="Padding">
+                                                <rect key="frame" x="0.0" y="14.5" width="354" height="4"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="4" id="N0a-zM-uAd"/>
+                                                </constraints>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="2hS-dq-wTT" userLabel="Bullet Stack View">
+                                                <rect key="frame" x="0.0" y="18.5" width="354" height="174"/>
+                                                <subviews>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="• " textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rla-NS-b09" userLabel="Content Text View">
+                                                        <rect key="frame" x="0.0" y="0.0" width="19" height="30.5"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="獲得方式一：上傳照片後，畫面左上角的經驗會增加，滿格即獲得一顆 競標寶。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mec-I7-hYq" userLabel="Content Text View">
+                                                        <rect key="frame" x="19" y="0.0" width="335" height="45"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="tki-Fh-r7H" userLabel="Bullet Stack View">
+                                                <rect key="frame" x="0.0" y="192.5" width="354" height="45"/>
+                                                <subviews>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="• " textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAY-LW-1de" userLabel="Content Text View">
+                                                        <rect key="frame" x="0.0" y="0.0" width="19" height="30.5"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="獲得方式一：上傳照片後，畫面左上角的經驗會增加，滿格即獲得一顆 競標寶。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="k6M-8d-51X" userLabel="Content Text View">
+                                                        <rect key="frame" x="19" y="0.0" width="335" height="45"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="RaJ-ON-h23" userLabel="Bullet Stack View">
+                                                <rect key="frame" x="0.0" y="237.5" width="354" height="45"/>
+                                                <subviews>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="• " textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVS-3B-PxX" userLabel="Content Text View">
+                                                        <rect key="frame" x="0.0" y="0.0" width="19" height="30.5"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="獲得方式一：上傳照片後，畫面左上角的經驗會增加，滿格即獲得一顆 競標寶。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="CoW-aO-OaP" userLabel="Content Text View">
+                                                        <rect key="frame" x="19" y="0.0" width="335" height="45"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="RtV-cI-WlR" userLabel="Bullet Stack View">
+                                                <rect key="frame" x="0.0" y="282.5" width="354" height="45"/>
+                                                <subviews>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="• " textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gRw-C4-9P3" userLabel="Content Text View">
+                                                        <rect key="frame" x="0.0" y="0.0" width="19" height="30.5"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="獲得方式一：上傳照片後，畫面左上角的經驗會增加，滿格即獲得一顆 競標寶。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nn2-no-svl" userLabel="Content Text View">
+                                                        <rect key="frame" x="19" y="0.0" width="335" height="45"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="rFw-tg-HPe" userLabel="Bullet Stack View">
+                                                <rect key="frame" x="0.0" y="327.5" width="354" height="45"/>
+                                                <subviews>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="• " textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hf8-a6-Cow" userLabel="Content Text View">
+                                                        <rect key="frame" x="0.0" y="0.0" width="19" height="30.5"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="獲得方式一：上傳照片後，畫面左上角的經驗會增加，滿格即獲得一顆 競標寶。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="o3j-2c-arL" userLabel="Content Text View">
+                                                        <rect key="frame" x="19" y="0.0" width="335" height="45"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KBe-NO-JP0" userLabel="Padding">
+                                        <rect key="frame" x="0.0" y="493" width="354" height="16"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="idU-IC-xcs"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bnj-rz-yQ7">
+                                        <rect key="frame" x="0.0" y="519" width="354" height="41"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QzI-MS-hfJ" userLabel="Padding">
+                                                <rect key="frame" x="0.0" y="0.0" width="10" height="41"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="10" id="MN3-Gf-IIk"/>
+                                                </constraints>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gnj-Ba-KGC" userLabel="Go Button">
+                                                <rect key="frame" x="10" y="0.0" width="334" height="41"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                <state key="normal" title="Go" backgroundImage="bt_biggreen_nor">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="goToLink:" destination="tft-0J-hOU" eventType="touchUpInside" id="P0Q-u0-bUf"/>
+                                                    <action selector="invokeGoAction:" destination="d7T-xH-BAr" eventType="touchUpInside" id="WAu-8O-pnZ"/>
+                                                </connections>
+                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VSz-Bn-QXs" userLabel="Padding">
+                                                <rect key="frame" x="344" y="0.0" width="10" height="41"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="10" id="0Bs-2U-ERf"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="piZ-DL-Z5q">
+                                <rect key="frame" x="0.0" y="10" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="9Ne-yf-7bm"/>
+                                    <constraint firstAttribute="width" secondItem="piZ-DL-Z5q" secondAttribute="height" id="aaA-cC-leQ"/>
+                                </constraints>
+                                <state key="normal" image="ic_cancelblack_nor"/>
+                                <connections>
+                                    <action selector="exit:" destination="d7T-xH-BAr" eventType="touchUpInside" id="HQK-iI-j4k"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mRJ-8S-gFw" firstAttribute="top" secondItem="9C4-a8-nBu" secondAttribute="top" constant="20" id="2Le-SP-IUc"/>
+                            <constraint firstItem="mRJ-8S-gFw" firstAttribute="leading" secondItem="9C4-a8-nBu" secondAttribute="leading" constant="10" id="YHa-lc-YQI"/>
+                            <constraint firstItem="piZ-DL-Z5q" firstAttribute="leading" secondItem="9C4-a8-nBu" secondAttribute="leading" id="aAR-ZO-QdR"/>
+                            <constraint firstItem="mRJ-8S-gFw" firstAttribute="centerY" secondItem="9C4-a8-nBu" secondAttribute="centerY" id="ash-Hc-kcf"/>
+                            <constraint firstItem="piZ-DL-Z5q" firstAttribute="top" secondItem="9C4-a8-nBu" secondAttribute="top" constant="10" id="e2k-q0-atd"/>
+                            <constraint firstItem="mRJ-8S-gFw" firstAttribute="centerX" secondItem="9C4-a8-nBu" secondAttribute="centerX" id="oaL-Fm-Adp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="X26-Fp-ggJ"/>
+                    </view>
+                    <connections>
+                        <outlet property="bulletTextView1" destination="mec-I7-hYq" id="OIQ-az-3Sy"/>
+                        <outlet property="bulletTextView2" destination="k6M-8d-51X" id="oYu-RC-0qW"/>
+                        <outlet property="bulletTextView3" destination="CoW-aO-OaP" id="sfb-fg-dQo"/>
+                        <outlet property="bulletTextView4" destination="nn2-no-svl" id="PgH-nM-wN6"/>
+                        <outlet property="bulletTextView5" destination="o3j-2c-arL" id="LFO-Fh-piB"/>
+                        <outlet property="goButton" destination="gnj-Ba-KGC" id="eds-al-IVr"/>
+                        <outlet property="nameLabel" destination="XCy-56-v7q" id="qgw-a2-sKK"/>
+                        <outlet property="usageLabel" destination="mXq-bM-EM4" id="ozd-Jz-f3b"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="htU-NH-wXy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2361" y="-1183"/>
+        </scene>
+        <!--Pop Up Container View Controller-->
+        <scene sceneID="ixM-8e-CPN">
+            <objects>
+                <viewController storyboardIdentifier="PurpleGemPopUpEntry" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="IJt-xM-ud5" customClass="PopUpContainerViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Y6h-Ye-NwE">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="epk-Po-wno">
+                                <rect key="frame" x="20" y="111" width="374" height="600"/>
+                                <subviews>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H1H-IN-udL">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="600"/>
+                                        <connections>
+                                            <segue destination="6dv-ju-KI7" kind="embed" id="b2P-C8-vkk"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="H1H-IN-udL" firstAttribute="centerY" secondItem="epk-Po-wno" secondAttribute="centerY" id="3VD-6Q-nNc"/>
+                                    <constraint firstItem="H1H-IN-udL" firstAttribute="width" secondItem="epk-Po-wno" secondAttribute="width" id="6lp-Mc-roh"/>
+                                    <constraint firstAttribute="height" constant="600" placeholder="YES" id="H0O-gC-vpW"/>
+                                    <constraint firstItem="H1H-IN-udL" firstAttribute="height" secondItem="epk-Po-wno" secondAttribute="height" id="mOa-g9-Cqh"/>
+                                    <constraint firstItem="H1H-IN-udL" firstAttribute="centerX" secondItem="epk-Po-wno" secondAttribute="centerX" id="vJ1-ah-Wse"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" name="translucent dark background"/>
+                        <constraints>
+                            <constraint firstItem="epk-Po-wno" firstAttribute="centerY" secondItem="0kp-mP-AII" secondAttribute="centerY" id="2sF-FX-DDi"/>
+                            <constraint firstItem="epk-Po-wno" firstAttribute="centerX" secondItem="0kp-mP-AII" secondAttribute="centerX" id="OqU-gp-BA9"/>
+                            <constraint firstItem="epk-Po-wno" firstAttribute="top" relation="greaterThanOrEqual" secondItem="0kp-mP-AII" secondAttribute="top" constant="40" id="eQD-MW-5KM"/>
+                            <constraint firstItem="epk-Po-wno" firstAttribute="leading" secondItem="0kp-mP-AII" secondAttribute="leading" constant="20" id="oSN-V3-pEd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="0kp-mP-AII"/>
+                    </view>
+                    <size key="freeformSize" width="414" height="812"/>
+                    <connections>
+                        <outlet property="contentContainer" destination="epk-Po-wno" id="Cti-2u-LLN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QEg-Pr-z6Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1199" y="98"/>
+        </scene>
+        <!--Purple Gem Store View Controller-->
+        <scene sceneID="Et1-Xd-Pir">
+            <objects>
+                <viewController id="6dv-ju-KI7" customClass="PurpleGemStoreViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mfW-Zb-Hqv">
+                        <rect key="frame" x="0.0" y="0.0" width="374" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Gfq-A7-Y98">
+                                <rect key="frame" x="10" y="20" width="354" height="560"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="nGW-IS-V8A">
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="100.5"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="1000" image="ic_coin80_nor" translatesAutoresizingMaskIntoConstraints="NO" id="3M6-Df-bgv">
+                                                <rect key="frame" x="137" y="0.0" width="80" height="80"/>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="競標寶" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNZ-Gz-fzp" userLabel="Gem Name Label">
+                                                <rect key="frame" x="151" y="80" width="52" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0M9-Hv-alm">
+                                        <rect key="frame" x="0.0" y="110.5" width="354" height="285.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用途：解鎖商品、投標商品。" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnr-rd-RO7" userLabel="Main Description Label">
+                                                <rect key="frame" x="0.0" y="0.0" width="354" height="14.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Myx-R5-Nfo" userLabel="Bullet Stack View">
+                                                <rect key="frame" x="0.0" y="14.5" width="354" height="226"/>
+                                                <subviews>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="• " textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79z-b8-HLy" userLabel="Content Text View">
+                                                        <rect key="frame" x="0.0" y="0.0" width="19" height="30.5"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="獲得方式一：上傳照片後，畫面左上角的經驗會增加，滿格即獲得一顆 競標寶。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="msQ-MT-IES" userLabel="Content Text View">
+                                                        <rect key="frame" x="19" y="0.0" width="335" height="45"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="ARA-Do-mgd" userLabel="Bullet Stack View">
+                                                <rect key="frame" x="0.0" y="240.5" width="354" height="45"/>
+                                                <subviews>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="• " textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCW-uH-8ae" userLabel="Content Text View">
+                                                        <rect key="frame" x="0.0" y="0.0" width="19" height="30.5"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="獲得方式一：上傳照片後，畫面左上角的經驗會增加，滿格即獲得一顆 競標寶。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SQS-rT-DSI" userLabel="Content Text View">
+                                                        <rect key="frame" x="19" y="0.0" width="335" height="45"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MaY-6C-i8z">
+                                        <rect key="frame" x="0.0" y="406" width="354" height="128"/>
+                                        <connections>
+                                            <segue destination="SxR-8v-trh" kind="embed" id="dCg-6p-Vn2"/>
+                                        </connections>
+                                    </containerView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qND-oT-2uZ" userLabel="Padding">
+                                        <rect key="frame" x="0.0" y="544" width="354" height="16"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="oUe-CY-Oyp"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GjN-5J-xI8">
+                                <rect key="frame" x="0.0" y="10" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="8hc-nB-RQA"/>
+                                    <constraint firstAttribute="width" secondItem="GjN-5J-xI8" secondAttribute="height" id="FUu-G0-amR"/>
+                                </constraints>
+                                <state key="normal" image="ic_cancelblack_nor"/>
+                                <connections>
+                                    <action selector="exit:" destination="6dv-ju-KI7" eventType="touchUpInside" id="wrd-Pn-wgh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Gfq-A7-Y98" firstAttribute="leading" secondItem="mfW-Zb-Hqv" secondAttribute="leading" constant="10" id="1Jq-YE-SBE"/>
+                            <constraint firstItem="GjN-5J-xI8" firstAttribute="top" secondItem="mfW-Zb-Hqv" secondAttribute="top" constant="10" id="94t-Aa-tLD"/>
+                            <constraint firstItem="GjN-5J-xI8" firstAttribute="leading" secondItem="mfW-Zb-Hqv" secondAttribute="leading" id="IWw-uR-HWw"/>
+                            <constraint firstItem="Gfq-A7-Y98" firstAttribute="centerY" secondItem="mfW-Zb-Hqv" secondAttribute="centerY" id="JSB-1d-H0G"/>
+                            <constraint firstItem="Gfq-A7-Y98" firstAttribute="top" secondItem="mfW-Zb-Hqv" secondAttribute="top" constant="20" id="c4T-fX-yiL"/>
+                            <constraint firstItem="Gfq-A7-Y98" firstAttribute="centerX" secondItem="mfW-Zb-Hqv" secondAttribute="centerX" id="vSW-BU-aCN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Fy0-0I-w7o"/>
+                    </view>
+                    <connections>
+                        <outlet property="bulletTextView1" destination="msQ-MT-IES" id="JsX-eK-Tuh"/>
+                        <outlet property="bulletTextView2" destination="SQS-rT-DSI" id="L1A-tE-8Za"/>
+                        <outlet property="nameLabel" destination="tNZ-Gz-fzp" id="G1Q-Ig-RCX"/>
+                        <outlet property="usageLabel" destination="bnr-rd-RO7" id="TgJ-d4-6Zb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Ih-63-BLc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2361" y="98"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="msz-nY-rjh">
+            <objects>
+                <tableViewController id="SxR-8v-trh" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Gbp-PT-GYm">
+                        <rect key="frame" x="0.0" y="0.0" width="354" height="128"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="2yT-kB-avO">
+                                <rect key="frame" x="0.0" y="28" width="354" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2yT-kB-avO" id="1t9-fc-9HL">
+                                    <rect key="frame" x="0.0" y="0.0" width="354" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="SxR-8v-trh" id="zjM-Sl-sBI"/>
+                            <outlet property="delegate" destination="SxR-8v-trh" id="3pP-ug-iNW"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MvA-Z4-3lL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3101" y="412"/>
         </scene>
     </scenes>
     <resources>
         <image name="bt_biggreen_nor" width="41" height="41"/>
         <image name="ic_addcancel_nor" width="44" height="44"/>
+        <image name="ic_cancelblack_nor" width="17" height="16"/>
+        <image name="ic_coin80_nor" width="80" height="80"/>
         <image name="ic_coin_nor" width="28" height="28"/>
+        <image name="ic_gem80_nor" width="80" height="80"/>
         <image name="ic_gem_nor" width="28" height="28"/>
+        <image name="ic_key80_nor" width="80" height="80"/>
         <image name="ic_key_nor" width="28" height="28"/>
         <image name="im_bgall" width="609" height="812"/>
         <image name="ui_score" width="140" height="10"/>
@@ -419,4 +1130,7 @@
             <color red="0.0" green="0.0" blue="0.0" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Vig-IT-DEU"/>
+    </inferredMetricsTieBreakers>
 </document>

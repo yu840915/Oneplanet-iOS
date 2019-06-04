@@ -56,9 +56,11 @@ class TreasuryBarViewController: UIViewController, UserSessionDepending {
     // MARK: - Navigation
 
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        let op = FeatureAccessCheckOperation(userSession: userSession)
-        op.start()
-        return op.isAccessible
+//        let op = FeatureAccessCheckOperation(userSession: userSession)
+//        op.start()
+//        return op.isAccessible
+        showLevelUpAnimation(forSegueID: identifier)
+        return true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

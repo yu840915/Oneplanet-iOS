@@ -33,6 +33,9 @@
 "tl_female" = "Female";
 "tl_private_info" = "Private Information";
 "tl_go" = "Go";
+"tl_blue_gem" = "競標寶";
+"tl_purple_gem" = "紅金寶";
+"tl_green_gem" = "解鎖寶";
 
 "pl_email" = "电子邮件地址";
 "pl_nickname" = "昵称";
@@ -88,3 +91,23 @@
 "warn_character_selection" = "Can't change the group after selection, continue？";
 
 "warntl_character_selection" = "Determined choice？";
+
+"pop_blue_gem_usage" = "用途：解鎖商品、投標商品。";
+"pop_green_gem_usage" = "用途：解鎖商品、高效率投標商品。";
+"pop_purple_gem_usage" = "用途：解鎖商品。";
+
+"pop_blue_gem_action" = "Go to %@ to upload photos";
+"pop_green_gem_action" = "Go to view the %@";
+
+"pop_blue_gem_bullet1" = "獲得方式一：上傳照片後，畫面左上角的經驗值會增加，滿格即獲得一顆 競標寶。";
+"pop_blue_gem_bullet2" = "使用一顆 競標寶 + %@，可解鎖商品或投標一次。";
+"pop_blue_gem_bullet3" = "將 競標寶 升級成 %@，有助於競標時的效率，並減少信用卡或電信商的支付問題。";
+
+"pop_green_gem_bullet1" = "獲得方式一：玩遊戲。";
+"pop_green_gem_bullet2" = "獲得方式二：Supreme.AI (官方) 喜歡你的相片。";
+"pop_green_gem_bullet3" = "獲得方式三：該週排行榜冠軍族群的用戶。";
+"pop_green_gem_bullet4" = "獲得方式四：不定期舉辦 %@，請密切關注！";
+"pop_green_gem_bullet5" = "使用一顆 解鎖寶 即可解鎖一項商品。";
+
+"pop_purple_gem_bullet1" = "紅金寶是 %@ 的升級版，有助於競標時的效率，並減少信用卡或電信商的支付問題。";
+"pop_purple_gem_bullet2" = "使用 紅金寶 可解鎖商品或投標一次。";

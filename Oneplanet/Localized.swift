@@ -9,6 +9,7 @@
 import Foundation
 
 class Localized {
+    static let mainTab = MainTab()
     static let acceptLanguageHeader: [String: String] = [acceptLanguageKey: languageCode]
     static let acceptLanguageKey = "Accept-Language"
     static let languageCode: String = NSLocalizedString("iso_code", comment: "")
@@ -23,10 +24,20 @@ class Localized {
     static let activity = LocalizedActivityMessages()
     static let placeholder = LocalizedPlaceholder()
     static let emptyMessages = EmptyMessages()
+    static let gemStonePopUp = GemStonePopUp()
 }
 
 class LocalizedTitles {//tl_
     fileprivate init() {}
+    var blueGem: String {
+        return NSLocalizedString("tl_blue_gem", comment: "")
+    }
+    var greenGem: String {
+        return NSLocalizedString("tl_green_gem", comment: "")
+    }
+    var purpleGem: String {
+        return NSLocalizedString("tl_purple_gem", comment: "")
+    }
     var cancel: String {
         return NSLocalizedString("tl_cancel", comment: "")
     }
@@ -117,6 +128,25 @@ class LocalizedTitles {//tl_
     }
     var go: String {
         return NSLocalizedString("tl_go", comment: "")
+    }
+}
+
+class MainTab {
+    var hot: String {
+        return "hot"
+    }
+    var me: String {
+        return "MY"
+        //        return NSLocalizedString("tl_me", comment: "")
+    }
+    var life: String {
+        return "LIFE"
+    }
+    var bid: String {
+        return "BID"
+    }
+    var notice: String {
+        return "NOTICE"
     }
 }
 
@@ -296,5 +326,53 @@ class LocalizedErrors {//err_
     }
     var invalidNickname: String {
         return NSLocalizedString("err_invalid_nickname", comment: "")
+    }
+}
+
+class GemStonePopUp { //pop
+    var blueGemUsage: String {
+        return NSLocalizedString("pop_blue_gem_usage", comment: "")
+    }
+    var greenGemUsage: String {
+        return NSLocalizedString("pop_green_gem_usage", comment: "")
+    }
+    var purpleGemUsage: String {
+        return NSLocalizedString("pop_purple_gem_usage", comment: "")
+    }
+    var blueGemAction: String {
+        return NSLocalizedString("pop_blue_gem_action", comment: "")
+    }
+    var greenGemAction: String {
+        return NSLocalizedString("pop_green_gem_action", comment: "")
+    }
+    var blueGemBullet1: String {
+        return NSLocalizedString("pop_blue_gem_bullet1", comment: "")
+    }
+    var blueGemBullet2: String {
+        return NSLocalizedString("pop_blue_gem_bullet2", comment: "")
+    }
+    var blueGemBullet3: String {
+        return NSLocalizedString("pop_blue_gem_bullet3", comment: "")
+    }
+    var greenGemBullet1: String {
+        return NSLocalizedString("pop_green_gem_bullet1", comment: "")
+    }
+    var greenGemBullet2: String {
+        return NSLocalizedString("pop_green_gem_bullet2", comment: "")
+    }
+    var greenGemBullet3: String {
+        return NSLocalizedString("pop_green_gem_bullet3", comment: "")
+    }
+    var greenGemBullet4: String {
+        return NSLocalizedString("pop_green_gem_bullet4", comment: "")
+    }
+    var greenGemBullet5: String {
+        return NSLocalizedString("pop_green_gem_bullet5", comment: "")
+    }
+    var purpleGemBullet1: String {
+        return NSLocalizedString("pop_purple_gem_bullet1", comment: "")
+    }
+    var purpleGemBullet2: String {
+        return NSLocalizedString("pop_purple_gem_bullet2", comment: "")
     }
 }

@@ -110,7 +110,7 @@ extension ProfileCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch sections[indexPath.section] {
         case .detail:
-            return CGSize(width: collectionView.bounds.width, height: 485)
+            return CGSize(width: collectionView.bounds.width, height: (90 + collectionView.frame.width))
         case .emptyView:
             return CGSize(width: collectionView.bounds.width, height: 160)
         case .posts:

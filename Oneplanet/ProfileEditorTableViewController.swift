@@ -151,6 +151,7 @@ fileprivate extension ProfileEditorTableViewController {
     
     func updateViewsForDraft() {
         avatarView.attachment = profileDraft.avatar
+        avatarView.backgrondImage = profile.character?.race.frameImage
         nicknameField.text = profileDraft.nickname
         genderField.text = profileDraft.gender.displayName
     }

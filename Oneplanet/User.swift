@@ -26,14 +26,15 @@ extension Character: Equatable {
 }
 
 enum Race: String {
-    case a
-    case b
-    case c
-    var color: UIColor {
+    case one
+    case two
+    case three
+    
+    var frameImage: UIImage {
         switch self {
-        case .a: return #colorLiteral(red: 0.6274509804, green: 1, blue: 0.3568627451, alpha: 1)
-        case .b: return #colorLiteral(red: 1, green: 0.4235294118, blue: 0.6823529412, alpha: 1)
-        case .c: return #colorLiteral(red: 0.3568627451, green: 0.6549019608, blue: 1, alpha: 1)
+        case .one: return #imageLiteral(resourceName: "im_alien1_bg")
+        case .two: return #imageLiteral(resourceName: "im_alien2_bg")
+        case .three: return #imageLiteral(resourceName: "im_alien3_bg")
         }
     }
 }
@@ -61,10 +62,19 @@ enum CharacterColor: String {
 class CharacterOptions {
     static let shared = CharacterOptions()
     private init() {}
-    let colors: [CharacterColor] = [.green, .pink, .malibu, .purple, .lightGray, .darkGray]
+    let colors: [CharacterColor] = [.green, .pink]
     func characterOptions(for color: CharacterColor) -> [Character] {
-        return [Character(race: .a, color: color, avatar: #imageLiteral(resourceName: "im_alien_c0")), Character(race: .b, color: color, avatar: #imageLiteral(resourceName: "im_alien_b0")), Character(race: .c, color: color, avatar: #imageLiteral(resourceName: "im_alien_a0"))]
+        switch color {
+        case .green:
+            return [Character(race: .one, color: color, avatar: #imageLiteral(resourceName: "im_alien1_green")), Character(race: .two, color: color, avatar: #imageLiteral(resourceName: "im_alien2_green")), Character(race: .three, color: color, avatar: #imageLiteral(resourceName: "im_alien3_green"))]
+        case .pink:
+            return [Character(race: .one, color: color, avatar: #imageLiteral(resourceName: "im_alien1_pink")), Character(race: .two, color: color, avatar: #imageLiteral(resourceName: "im_alien2_pink")), Character(race: .three, color: color, avatar: #imageLiteral(resourceName: "im_alien3_pink"))]
+        default:
+            return [Character(race: .one, color: color, avatar: #imageLiteral(resourceName: "im_alien1_green")), Character(race: .two, color: color, avatar: #imageLiteral(resourceName: "im_alien2_green")), Character(race: .three, color: color, avatar: #imageLiteral(resourceName: "im_alien3_green"))]
+
+        }
     }
+    
 }
 
 class WebImageInfo {

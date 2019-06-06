@@ -74,3 +74,9 @@ class MyProfileViewController: UIViewController, UserSessionDepending {
     }
 
 }
+
+extension MyProfileViewController: ScrollToTopHandler {
+    func setWantsScrollToTop() {
+        profileController.collectionView.setContentOffset(.zero, animated: true)
+    }
+}

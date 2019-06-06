@@ -94,7 +94,11 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="seF-W8-2bR">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="ui_logoblack" id="WzY-04-gec"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="ui_logoblack" id="WzY-04-gec">
+                            <connections>
+                                <action selector="scrollToTop:" destination="Od8-w1-jw5" id="FIq-mI-irR"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="mmk-1D-Rbb" kind="presentation" identifier="showPromoPopup" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="7dV-ci-XKD"/>

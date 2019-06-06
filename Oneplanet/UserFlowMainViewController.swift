@@ -170,7 +170,18 @@ fileprivate extension UserFlowMainViewController {
 extension UserFlowMainViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         guard let idx = tabBarController.viewControllers?.index(of: viewController) else { return false }
+        setScrollToTopIfNeeded(tabBarController, viewController: viewController)
         return checkAccess(forTab: TabFeature.list[idx])
+    }
+    
+    private func setScrollToTopIfNeeded(_ tabBarController: UITabBarController, viewController: UIViewController) {
+        guard tabBarController.selectedViewController == viewController else {
+            return
+        }
+        if let nav = viewController as? UINavigationController,
+            let handler = nav.topViewController as? ScrollToTopHandler {
+            handler.setWantsScrollToTop()
+        }
     }
 }
 
@@ -201,4 +212,8 @@ extension UIViewController {
     var frontPresentedController: UIViewController {
         return presentedViewController?.frontPresentedController ?? self
     }
+}
+
+protocol ScrollToTopHandler: AnyObject {
+    func setWantsScrollToTop()
 }

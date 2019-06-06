@@ -18,7 +18,6 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationItems()
-        (collectionViewLayout as! UICollectionViewFlowLayout).sectionHeadersPinToVisibleBounds = true
     }
     
     private func setUpNavigationItems() {
@@ -96,6 +95,10 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
         }
     }
     
+    @IBAction func scrollToTop(_ sender: Any) {
+        setWantsScrollToTop()
+    }
+    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -158,6 +161,12 @@ extension HotCollectionViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: len, height: len)
     }
 
+}
+
+extension HotCollectionViewController: ScrollToTopHandler {
+    func setWantsScrollToTop() {
+        collectionView.setContentOffset(.zero, animated: true)
+    }
 }
 
 extension HotCollectionViewController {

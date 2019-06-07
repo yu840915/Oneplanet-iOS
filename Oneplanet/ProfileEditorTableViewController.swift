@@ -159,7 +159,7 @@ fileprivate extension ProfileEditorTableViewController {
     func showPickerSelectionSheet() {
         let sheet = UIAlertController(title: Localized.phrases.changeAvatar, message: nil, preferredStyle: .actionSheet)
         if profileDraft.avatar != nil {
-            sheet.addAction(UIAlertAction(title: Localized.phrases.removeAvatar, style: .destructive, handler: {[weak self] (_) in
+            sheet.addAction(UIAlertAction(title: Localized.titles.delete, style: .destructive, handler: {[weak self] (_) in
                 self?.deleteAvatar()
             }))
         }

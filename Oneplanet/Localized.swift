@@ -128,6 +128,9 @@ class LocalizedTitles {//tl_
     var go: String {
         return NSLocalizedString("tl_go", comment: "")
     }
+    var delete: String {
+        return NSLocalizedString("tl_delete", comment: "")
+    }
 }
 
 class Feature {//fx_
@@ -203,6 +206,9 @@ class LocalizedMessages {//msg_
     }
     var joinPrompt: String {
         return NSLocalizedString("msg_join_prompt", comment: "")
+    }
+    var alienDescription: String {
+        return NSLocalizedString("msg_alien_description", comment: "")
     }
 }
 

@@ -46,6 +46,7 @@
 "tl_blue_gem" = "競標寶";
 "tl_purple_gem" = "紅金寶";
 "tl_green_gem" = "解鎖寶";
+"tl_delete" = "刪除";
 
 "pl_email" = "電子郵件地址";
 "pl_nickname" = "暱稱";
@@ -55,6 +56,7 @@
 "msg_open_mail_app_prompt" = "按此處開啟你的電子信箱";
 "msg_mail_resent" = "已重新發送電子郵件";
 "msg_join_prompt" = "立即前往註冊享用更多功能";
+"msg_alien_description" = "你所選擇的外星人會出現在你的個人頁面";
 
 "msgf_accept_tos" = "註冊或登錄即表示你同意我們的%@";
 "msgf_resend_verification_email" = "你沒有收到電子郵件？%@";
@@ -76,7 +78,7 @@
 "ph_copy_id" = "複製 ID";
 "ph_follow" = "Follow";
 "ph_following" = "Following";
-"ph_choose_role" = "選擇人物";
+"ph_choose_role" = "選擇外星人種類";
 "ph_choose_color" = "選擇顏色";
 "ph_edit_profile" = "編輯個人資料";
 "ph_block_list" = "被封鎖的帳號";

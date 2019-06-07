@@ -30,16 +30,8 @@ class BlueGemPopUpViewController: UIViewController {
         usageLabel.text = Localized.gemStonePopUp.blueGemUsage
         bulletTextView1.text = Localized.gemStonePopUp.blueGemBullet1
         bulletTextView2.text = String(format: Localized.gemStonePopUp.blueGemBullet2, "$1.99")
-        prepareGoButton()
+        goButton.setTitle(Localized.gemStonePopUp.blueGemAction, for: .normal)
         prepareActionBullet()
-    }
-    
-    private func prepareGoButton() {
-        let text = String(format: Localized.gemStonePopUp.blueGemAction, Localized.feature.life)
-        let range = (text as NSString).range(of: Localized.feature.life)
-        let attrStr = NSMutableAttributedString(string: text, attributes: [.font:  UIFont.systemFont(ofSize: 14), .foregroundColor: ColorPalette.defaultText])
-        attrStr.addAttributes([.font: UIFont.systemFont(ofSize: 14, weight: .semibold)], range: range)
-        goButton.setAttributedTitle(attrStr, for: .normal)
     }
     
     private func prepareActionBullet() {

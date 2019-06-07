@@ -59,6 +59,9 @@ class LocalizedTitles {//tl_
     var logIn: String {
         return NSLocalizedString("tl_login", comment: "")
     }
+    var logins: String {
+        return NSLocalizedString("tl_logins", comment: "")
+    }
     var logOut: String {
         return NSLocalizedString("tl_log_out", comment: "")
     }
@@ -88,10 +91,6 @@ class LocalizedTitles {//tl_
     }
     var account: String {
         return NSLocalizedString("tl_account", comment: "")
-    }
-    var me: String {
-        return "MY"
-//        return NSLocalizedString("tl_me", comment: "")
     }
     var mailSent: String {
         return NSLocalizedString("tl_mail_sent", comment: "")
@@ -133,19 +132,19 @@ class LocalizedTitles {//tl_
 
 class Feature {//fx_
     var hot: String {
-        return "HOT"
+        return NSLocalizedString("fx_hot", comment: "")
     }
     var me: String {
-        return "MY"
+        return NSLocalizedString("fx_my", comment: "")
     }
     var life: String {
-        return "LIFE"
+        return NSLocalizedString("fx_life", comment: "")
     }
     var bid: String {
-        return "BID"
+        return NSLocalizedString("fx_bid", comment: "")
     }
     var notice: String {
-        return "NOTICE"
+        return NSLocalizedString("fx_notice", comment: "")
     }
     var news: String {
         return NSLocalizedString("fx_news", comment: "")

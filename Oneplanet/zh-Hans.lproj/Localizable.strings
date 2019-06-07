@@ -8,9 +8,14 @@
 
 "iso_code" = "zh-hans";
 
-"fx_news" = "News";
-"fx_events" = "Events";
-"fx_alien" = "Alien";
+"fx_hot" = "家";
+"fx_my" = "我的";
+"fx_life" = "动态";
+"fx_bid" = "投标";
+"fx_notice" = "通知";
+"fx_news" = "新聞";
+"fx_events" = "事件";
+"fx_alien" = "排名";
 
 "tl_cancel" = "取消";
 "tl_dismiss" = "关闭";
@@ -18,6 +23,7 @@
 "tl_ok" = "OK";
 "tl_all_photos" = "所有照片";
 "tl_login" = "登入";
+"tl_logins" = "Logins";
 "tl_log_out" = "Log Out";
 "tl_title" = "标题";
 "tl_tos" = "条款";
@@ -30,7 +36,7 @@
 "tl_more" = "More";
 "tl_account" = "Account";
 "tl_mail_sent" = "邮件已发送";
-"tl_user_id" = "User id";
+"tl_user_id" = "User ID";
 "tl_email" = "Email";
 "tl_gender" = "Gender";
 "tl_male" = "Male";
@@ -100,7 +106,7 @@
 "pop_green_gem_usage" = "用途：解鎖商品、高效率投標商品。";
 "pop_purple_gem_usage" = "用途：解鎖商品。";
 
-"pop_blue_gem_action" = "Go to %@ to upload photos";
+"pop_blue_gem_action" = "Go to upload photos";
 "pop_green_gem_action" = "Go to view the %@";
 
 "pop_blue_gem_bullet1" = "獲得方式一：上傳照片後，畫面左上角的經驗值會增加，滿格即獲得一顆 競標寶。";

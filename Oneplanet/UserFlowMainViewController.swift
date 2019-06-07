@@ -69,7 +69,15 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
                 .forEach{
                     $0.userSession = userSession
             }
+            var titles = [
+                Localized.feature.hot,
+                Localized.feature.life,
+                Localized.feature.bid,
+                Localized.feature.notice,
+                Localized.feature.me
+            ]
             tabbar.viewControllers?.forEach{
+                $0.tabBarItem.title = titles.removeFirst()
                 if let nav = $0 as? UINavigationController {
                     NavigationBarStyle.darkGray.configure(nav.navigationBar)
                 }

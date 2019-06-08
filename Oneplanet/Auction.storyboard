@@ -31,21 +31,125 @@
             </objects>
             <point key="canvasLocation" x="-603" y="110"/>
         </scene>
-        <!--View Controller-->
+        <!--Auction Main View Controller-->
         <scene sceneID="zVQ-m5-dRT">
             <objects>
-                <viewController id="NqB-cT-YVo" sceneMemberID="viewController">
+                <viewController id="NqB-cT-YVo" customClass="AuctionMainViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="roY-cB-Z0n">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9P0-wO-VqV">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9P0-wO-VqV" firstAttribute="leading" secondItem="LT3-GS-Wxe" secondAttribute="leading" id="sYO-Vd-3aX"/>
+                            <constraint firstItem="9P0-wO-VqV" firstAttribute="top" secondItem="LT3-GS-Wxe" secondAttribute="top" id="sYT-D0-0pe"/>
+                            <constraint firstItem="LT3-GS-Wxe" firstAttribute="trailing" secondItem="9P0-wO-VqV" secondAttribute="trailing" id="scr-FQ-dwO"/>
+                            <constraint firstItem="LT3-GS-Wxe" firstAttribute="bottom" secondItem="9P0-wO-VqV" secondAttribute="bottom" id="w5f-Tb-qao"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="LT3-GS-Wxe"/>
                     </view>
-                    <navigationItem key="navigationItem" id="dy7-JF-4om"/>
+                    <navigationItem key="navigationItem" id="dy7-JF-4om">
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="6ri-00-1Xd" customClass="ButtonBarContainer" customModule="Oneplanet" customModuleProvider="target">
+                            <rect key="frame" x="207" y="22" width="0.0" height="0.0"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HO2-cd-UgF" customClass="ButtonBarView" customModule="XLPagerTabStrip">
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IPD-Yf-iDg">
+                                        <size key="itemSize" width="50" height="50"/>
+                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </collectionViewFlowLayout>
+                                    <cells>
+                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="J1N-o9-AG3">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                <autoresizingMask key="autoresizingMask"/>
+                                            </view>
+                                        </collectionViewCell>
+                                    </cells>
+                                </collectionView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="HO2-cd-UgF" firstAttribute="centerY" secondItem="6ri-00-1Xd" secondAttribute="centerY" id="2Rk-J1-jST"/>
+                                <constraint firstItem="HO2-cd-UgF" firstAttribute="height" secondItem="6ri-00-1Xd" secondAttribute="height" id="JC8-i0-cZ9"/>
+                                <constraint firstItem="HO2-cd-UgF" firstAttribute="centerX" secondItem="6ri-00-1Xd" secondAttribute="centerX" id="kLf-5f-7qV"/>
+                                <constraint firstItem="HO2-cd-UgF" firstAttribute="width" secondItem="6ri-00-1Xd" secondAttribute="width" id="kl6-9H-EXm"/>
+                            </constraints>
+                        </view>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="buttonBarContainer" destination="6ri-00-1Xd" id="2W4-fP-WIZ"/>
+                        <outlet property="buttonBarView" destination="HO2-cd-UgF" id="4WY-hx-pmT"/>
+                        <outlet property="containerView" destination="9P0-wO-VqV" id="M3m-QS-waD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Asi-X0-lel" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="233" y="110"/>
+        </scene>
+        <!--Product List Table View Controller-->
+        <scene sceneID="cEu-ET-sXM">
+            <objects>
+                <tableViewController storyboardIdentifier="ProductListTableViewController" id="GKE-yx-ygO" customClass="ProductListTableViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="uDC-7I-sRj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Pvf-Xe-VIh">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Pvf-Xe-VIh" id="Vrd-5h-xiF">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="GKE-yx-ygO" id="kSt-0b-AR5"/>
+                            <outlet property="delegate" destination="GKE-yx-ygO" id="QRA-4F-jXa"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C8m-K6-lSQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1180" y="505"/>
+        </scene>
+        <!--Bidding Live Table View Controller-->
+        <scene sceneID="BBg-d4-3jX">
+            <objects>
+                <tableViewController storyboardIdentifier="BiddingLiveTableViewController" id="N0x-I6-uS2" customClass="BiddingLiveTableViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="f6q-yO-UwC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="A9n-ZS-IXs">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A9n-ZS-IXs" id="Zif-HZ-oP8">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="N0x-I6-uS2" id="5Vx-g2-pSt"/>
+                            <outlet property="delegate" destination="N0x-I6-uS2" id="05I-Y0-Qdv"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MgV-qn-nUW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1187" y="1174"/>
         </scene>
     </scenes>
     <resources>

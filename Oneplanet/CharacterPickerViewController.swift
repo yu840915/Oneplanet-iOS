@@ -48,6 +48,7 @@ class CharacterPickerViewController: UIViewController, UserSessionDepending {
 
     private func localizeTitles() {
         title = Localized.phrases.chooseRole
+        alienDescriptionLabel.text = Localized.messages.alienDescription
         colorPromptLabel.text = Localized.phrases.chooseColor
         doneButton.setTitle(Localized.titles.ok, for: .normal)
     }

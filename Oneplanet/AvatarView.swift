@@ -11,14 +11,19 @@ import Kingfisher
 
 class AvatarView: UIView {
     @IBOutlet var avatarButton: UIButton!
+    @IBOutlet var backgroundImageView: UIImageView!
+    
     var action: (()->())? {
         didSet {
             updateButtonInteraction()
         }
     }
-    var borderColor: UIColor? {
-        didSet {
-            updateBoarderColor()
+    var backgrondImage: UIImage? {
+        get {
+            return backgroundImageView.image
+        }
+        set {
+            backgroundImageView.image = newValue
         }
     }
     var avatar: WebImageInfo? {
@@ -40,7 +45,6 @@ class AvatarView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         layer.borderWidth = 2
-        updateBoarderColor()
         updateButtonInteraction()
     }
     
@@ -50,9 +54,6 @@ class AvatarView: UIView {
         avatarButton.layer.cornerRadius = avatarButton.bounds.width / 2
     }
     
-    private func updateBoarderColor() {
-        layer.borderColor = borderColor?.cgColor
-    }
     
     private func updateButtonInteraction() {
         avatarButton.isUserInteractionEnabled = (action != nil)

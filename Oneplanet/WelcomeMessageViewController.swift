@@ -35,8 +35,8 @@ class WelcomeMessageViewController: UIViewController, AuthorizationFlowEntryPoin
     
     private func showSkipIfNeeded() {
         let shouldShow = (contentViewController.imageReferences.count - 1) == contentViewController.currentIndex
-        if !skipButton.isEnabled {
-            skipButton.isEnabled = shouldShow
+        if skipButton.isHidden {
+            skipButton.isHidden = !shouldShow
         }
     }
     

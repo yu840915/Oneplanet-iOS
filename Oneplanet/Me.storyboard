@@ -55,6 +55,9 @@
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h2u-VE-mx2" userLabel="Avatar View" customClass="AvatarView" customModule="Oneplanet" customModuleProvider="target">
                                                 <rect key="frame" x="12" y="0.0" width="90" height="90"/>
                                                 <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ov2-Id-9KJ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                                    </imageView>
                                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CuF-MB-Jsr" userLabel="Avatar Button">
                                                         <rect key="frame" x="5" y="5" width="80" height="80"/>
                                                         <constraints>
@@ -70,12 +73,17 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="h2u-VE-mx2" secondAttribute="height" id="0cO-aZ-JF2"/>
+                                                    <constraint firstItem="Ov2-Id-9KJ" firstAttribute="height" secondItem="h2u-VE-mx2" secondAttribute="height" id="4Hb-BQ-R9j"/>
                                                     <constraint firstItem="CuF-MB-Jsr" firstAttribute="centerY" secondItem="h2u-VE-mx2" secondAttribute="centerY" id="GVF-6G-Ttc"/>
+                                                    <constraint firstItem="Ov2-Id-9KJ" firstAttribute="width" secondItem="h2u-VE-mx2" secondAttribute="width" id="HwN-Rx-CaG"/>
                                                     <constraint firstItem="CuF-MB-Jsr" firstAttribute="centerX" secondItem="h2u-VE-mx2" secondAttribute="centerX" id="JBj-Zj-yRi"/>
+                                                    <constraint firstItem="Ov2-Id-9KJ" firstAttribute="centerY" secondItem="h2u-VE-mx2" secondAttribute="centerY" id="We7-uQ-Udw"/>
+                                                    <constraint firstItem="Ov2-Id-9KJ" firstAttribute="centerX" secondItem="h2u-VE-mx2" secondAttribute="centerX" id="tCh-KD-LY0"/>
                                                     <constraint firstAttribute="width" constant="90" id="yiH-72-2Z1"/>
                                                 </constraints>
                                                 <connections>
                                                     <outlet property="avatarButton" destination="CuF-MB-Jsr" id="ayV-Dw-5X8"/>
+                                                    <outlet property="backgroundImageView" destination="Ov2-Id-9KJ" id="Cfx-r5-juP"/>
                                                 </connections>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="rCd-1Y-OcD">
@@ -124,10 +132,11 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="375" id="8Ba-xQ-Yg3"/>
+                                            <constraint firstItem="jAJ-tK-o1l" firstAttribute="top" secondItem="Jse-9r-dtX" secondAttribute="top" id="Pr0-it-gZk"/>
                                             <constraint firstItem="IhM-tx-4f6" firstAttribute="top" secondItem="Jse-9r-dtX" secondAttribute="top" constant="10" id="S46-hh-X3y"/>
                                             <constraint firstItem="jAJ-tK-o1l" firstAttribute="centerX" secondItem="Jse-9r-dtX" secondAttribute="centerX" id="hKP-TE-eUX"/>
                                             <constraint firstAttribute="bottom" secondItem="jAJ-tK-o1l" secondAttribute="bottom" id="kOM-4w-51u"/>
+                                            <constraint firstAttribute="width" secondItem="Jse-9r-dtX" secondAttribute="height" multiplier="1:1" id="o9M-Py-x8i"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -146,7 +155,7 @@
                     </view>
                     <connections>
                         <outlet property="actionButton" destination="IhM-tx-4f6" id="wXf-FB-the"/>
-                        <outlet property="avatarView" destination="h2u-VE-mx2" id="rYJ-vj-bdT"/>
+                        <outlet property="avatarView" destination="h2u-VE-mx2" id="dYD-Vx-w9I"/>
                         <outlet property="detailLabel" destination="RQK-c3-Ii2" id="3Xh-qd-PFs"/>
                         <outlet property="nicknameLabel" destination="4KM-4F-k2p" id="Bhn-cd-bCf"/>
                         <outlet property="raceImageView" destination="jAJ-tK-o1l" id="iuX-V3-XNb"/>
@@ -418,30 +427,38 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="dsO-Yf-BpN">
                                     <rect key="frame" x="142.5" y="15.5" width="90" height="122"/>
                                     <subviews>
-                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rvq-Vh-P8k" userLabel="Avatar View" customClass="AvatarView" customModule="Oneplanet" customModuleProvider="target">
+                                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CQM-7m-vJt" userLabel="Avatar View" customClass="AvatarView" customModule="Oneplanet" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                             <subviews>
-                                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Okr-YK-VUb" userLabel="Avatar Button">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fk0-Jt-3yi">
+                                                    <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                                </imageView>
+                                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vc7-11-H1O" userLabel="Avatar Button">
                                                     <rect key="frame" x="5" y="5" width="80" height="80"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="80" id="2TH-ZM-s5w"/>
-                                                        <constraint firstAttribute="width" secondItem="Okr-YK-VUb" secondAttribute="height" id="LgU-Ua-eRO"/>
+                                                        <constraint firstAttribute="width" constant="80" id="qWg-Lo-oi9"/>
+                                                        <constraint firstAttribute="width" secondItem="Vc7-11-H1O" secondAttribute="height" id="tOI-HG-YVY"/>
                                                     </constraints>
                                                     <state key="normal" backgroundImage="im_userphotodefault_nor"/>
                                                     <connections>
-                                                        <action selector="invokeAction:" destination="rvq-Vh-P8k" eventType="touchUpInside" id="yIL-1n-4Im"/>
+                                                        <action selector="invokeAction:" destination="CQM-7m-vJt" eventType="touchUpInside" id="aPK-0V-x8F"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="90" id="I7Y-74-HSB"/>
-                                                <constraint firstAttribute="width" secondItem="rvq-Vh-P8k" secondAttribute="height" id="VUQ-0Y-1N4"/>
-                                                <constraint firstItem="Okr-YK-VUb" firstAttribute="centerX" secondItem="rvq-Vh-P8k" secondAttribute="centerX" id="jEa-9d-q5E"/>
-                                                <constraint firstItem="Okr-YK-VUb" firstAttribute="centerY" secondItem="rvq-Vh-P8k" secondAttribute="centerY" id="nw9-2I-IZv"/>
+                                                <constraint firstItem="Fk0-Jt-3yi" firstAttribute="width" secondItem="CQM-7m-vJt" secondAttribute="width" id="2Xn-nG-ha4"/>
+                                                <constraint firstAttribute="width" constant="90" id="F4S-9C-fe3"/>
+                                                <constraint firstItem="Fk0-Jt-3yi" firstAttribute="centerY" secondItem="CQM-7m-vJt" secondAttribute="centerY" id="Knu-ju-rQS"/>
+                                                <constraint firstItem="Vc7-11-H1O" firstAttribute="centerX" secondItem="CQM-7m-vJt" secondAttribute="centerX" id="QZP-8A-nfX"/>
+                                                <constraint firstItem="Vc7-11-H1O" firstAttribute="centerY" secondItem="CQM-7m-vJt" secondAttribute="centerY" id="alG-Ee-Iom"/>
+                                                <constraint firstAttribute="width" secondItem="CQM-7m-vJt" secondAttribute="height" id="dLd-VJ-3XN"/>
+                                                <constraint firstItem="Fk0-Jt-3yi" firstAttribute="centerX" secondItem="CQM-7m-vJt" secondAttribute="centerX" id="sXB-ex-skA"/>
+                                                <constraint firstItem="Fk0-Jt-3yi" firstAttribute="height" secondItem="CQM-7m-vJt" secondAttribute="height" id="ymE-4k-M9Z"/>
                                             </constraints>
                                             <connections>
-                                                <outlet property="avatarButton" destination="Okr-YK-VUb" id="nS5-33-cDZ"/>
+                                                <outlet property="avatarButton" destination="Vc7-11-H1O" id="Lk3-tH-SGb"/>
+                                                <outlet property="backgroundImageView" destination="Fk0-Jt-3yi" id="lgQ-YX-cbe"/>
                                             </connections>
                                         </view>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJV-hP-aQf">
@@ -455,6 +472,9 @@
                                             </connections>
                                         </button>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="CQM-7m-vJt" firstAttribute="width" secondItem="CQM-7m-vJt" secondAttribute="height" id="Si5-z9-SK0"/>
+                                    </constraints>
                                 </stackView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gjw-nS-02W" userLabel="Separator">
                                     <rect key="frame" x="0.0" y="152.5" width="375" height="0.5"/>
@@ -714,7 +734,7 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="avatarView" destination="rvq-Vh-P8k" id="9Qx-kc-ann"/>
+                        <outlet property="avatarView" destination="CQM-7m-vJt" id="2es-b9-B0s"/>
                         <outlet property="cancelItem" destination="c8t-xA-Er1" id="Rhr-4u-y9Y"/>
                         <outlet property="changeAvatarButton" destination="fJV-hP-aQf" id="QTO-zl-HUZ"/>
                         <outlet property="copyIdButton" destination="9Tg-yL-VLf" id="tto-FT-1Ok"/>

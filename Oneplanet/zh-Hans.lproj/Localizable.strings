@@ -8,9 +8,14 @@
 
 "iso_code" = "zh-hans";
 
-"fx_news" = "News";
-"fx_events" = "Events";
-"fx_alien" = "Alien";
+"fx_hot" = "家";
+"fx_my" = "我的";
+"fx_life" = "动态";
+"fx_bid" = "投标";
+"fx_notice" = "通知";
+"fx_news" = "新聞";
+"fx_events" = "事件";
+"fx_alien" = "排名";
 
 "tl_cancel" = "取消";
 "tl_dismiss" = "关闭";
@@ -18,28 +23,30 @@
 "tl_ok" = "OK";
 "tl_all_photos" = "所有照片";
 "tl_login" = "登入";
-"tl_log_out" = "Log Out";
+"tl_logins" = "登入";
+"tl_log_out" = "注销";
 "tl_title" = "标题";
-"tl_tos" = "条款";
-"tl_bidding_terms" = "Bidding Terms";
+"tl_tos" = "使用条款";
+"tl_bidding_terms" = "竞标条款";
 "tl_pp" = "Privacy Policy";
 "tl_next" = "下一步";
 "tl_skip" = "略过";
 "tl_exit" = "出口";
 "tl_back" = "后退";
-"tl_more" = "More";
-"tl_account" = "Account";
+"tl_more" = "更多";
+"tl_account" = "账号";
 "tl_mail_sent" = "邮件已发送";
-"tl_user_id" = "User id";
+"tl_user_id" = "User ID";
 "tl_email" = "Email";
-"tl_gender" = "Gender";
-"tl_male" = "Male";
-"tl_female" = "Female";
-"tl_private_info" = "Private Information";
+"tl_gender" = "性别";
+"tl_male" = "男";
+"tl_female" = "女";
+"tl_private_info" = "私人信息";
 "tl_go" = "Go";
 "tl_blue_gem" = "競標寶";
 "tl_purple_gem" = "紅金寶";
 "tl_green_gem" = "解鎖寶";
+"tl_delete" = "删除";
 
 "pl_email" = "电子邮件地址";
 "pl_nickname" = "昵称";
@@ -48,11 +55,12 @@
 "msg_add_avatar_prompt" = "添加个人资料照片，以便你的朋友知道这就是你。";
 "msg_open_mail_app_prompt" = "单击此处打开您的电子邮件";
 "msg_mail_resent" = "已重新发送电子邮件";
-"msg_join_prompt" = "Go to sign up now for more features";
+"msg_join_prompt" = "立即前往注册享用更多功能";
+"msg_alien_description" = "你所選擇的外星人會出現在你的個人頁面";
 
 "msgf_accept_tos" = "注册或登录即表示你同意我们的%@";
 "msgf_resend_verification_email" = "你没有收到电子邮件？%@";
-"msgf_did_copy_my_id" = "My Oneplanet id [%@] Copied.";
+"msgf_did_copy_my_id" = "我的 Oneplanet ID [%@] 已复制。";
 
 "ph_guest_login" = "访客进入";
 "ph_email_login" = "或通过电子邮件登录";
@@ -67,18 +75,18 @@
 "ph_remove_avatar" = "删除当前照片";
 "ph_try_again" = "再试一次";
 "ph_nickname_rule" = "昵称上限 30 字元，不得包含标点符号或表情符号";
-"ph_copy_id" = "copy id";
+"ph_copy_id" = "复制 ID";
 "ph_follow" = "Follow";
 "ph_following" = "Following";
 "ph_choose_role" = "Choose Role";
 "ph_choose_color" = "Choose Color";
-"ph_edit_profile" = "Edit Profile";
-"ph_block_list" = "Blocked Account";
-"ph_privacy_and_security" = "Privacy and Security";
-"ph_not_specified" = "Not Specified";
-"ph_join_prompt" = "Join now？";
+"ph_edit_profile" = "编辑个人资料";
+"ph_block_list" = "被黑名单的账号";
+"ph_privacy_and_security" = "隐私和安全";
+"ph_not_specified" = "不显示";
+"ph_join_prompt" = "前往注册";
 
-"no_posts" = "No Posts Yet";
+"no_posts" = "还没有贴子";
 "no_promo_popups" = "No Promotion Pop-ups Yet";
 
 "err_no_camera_access" = "启用摄像头访问";
@@ -91,7 +99,7 @@
 "errtl_cannot_capture_photo" = "无法拍照";
 "errtl_cannot_pick_avatar" = "无法取得大头照";
 
-"warn_logout" = "Log Out?";
+"warn_logout" = "退出？";
 "warn_character_selection" = "Can't change the group after selection, continue？";
 
 "warntl_character_selection" = "Determined choice？";
@@ -100,8 +108,8 @@
 "pop_green_gem_usage" = "用途：解鎖商品、高效率投標商品。";
 "pop_purple_gem_usage" = "用途：解鎖商品。";
 
-"pop_blue_gem_action" = "Go to %@ to upload photos";
-"pop_green_gem_action" = "Go to view the %@";
+"pop_blue_gem_action" = "Go to upload photos";
+"pop_green_gem_action" = "前往%@查看";
 
 "pop_blue_gem_bullet1" = "獲得方式一：上傳照片後，畫面左上角的經驗值會增加，滿格即獲得一顆 競標寶。";
 "pop_blue_gem_bullet2" = "使用一顆 競標寶 + %@，可解鎖商品或投標一次。";

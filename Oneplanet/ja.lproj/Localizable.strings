@@ -8,9 +8,14 @@
 
 "iso_code" = "ja";
 
-"fx_news" = "News";
-"fx_events" = "Events";
-"fx_alien" = "Alien";
+"fx_hot" = "ホーム";
+"fx_my" = "マイページ";
+"fx_life" = "タイムライン";
+"fx_bid" = "オークション";
+"fx_notice" = "通知";
+"fx_news" = "お知らせ";
+"fx_events" = "イベント";
+"fx_alien" = "ランキング";
 
 "tl_cancel" = "キャンセル";
 "tl_dismiss" = "閉じる";
@@ -18,41 +23,44 @@
 "tl_ok" = "OK";
 "tl_all_photos" = "すべての写真";
 "tl_login" = "ログイン";
-"tl_log_out" = "Log Out";
+"tl_logins" = "ログイン";
+"tl_log_out" = "ログアウト";
 "tl_title" = "タイトル";
 "tl_tos" = "利用規約";
-"tl_bidding_terms" = "Bidding Terms";
+"tl_bidding_terms" = "オークション規約";
 "tl_pp" = "Privacy Policy";
 "tl_next" = "次へ";
 "tl_skip" = "スキップ";
 "tl_exit" = "出る";
 "tl_back" = "戻る";
-"tl_more" = "More";
-"tl_account" = "Account";
+"tl_more" = "もっと";
+"tl_account" = "アカウント";
 "tl_mail_sent" = "メールを送りました";
-"tl_user_id" = "User id";
-"tl_email" = "Email";
-"tl_gender" = "Gender";
-"tl_male" = "Male";
-"tl_female" = "Female";
-"tl_private_info" = "Private Information";
+"tl_user_id" = "User ID";
+"tl_email" = "メール";
+"tl_gender" = "性別";
+"tl_male" = "男性";
+"tl_female" = "女性";
+"tl_private_info" = "個人情報";
 "tl_go" = "Go";
 "tl_blue_gem" = "競標寶";
 "tl_purple_gem" = "紅金寶";
 "tl_green_gem" = "解鎖寶";
+"tl_delete" = "削除";
 
 "pl_email" = "メールアドレス";
 "pl_nickname" = "ニックネーム";
 
 "msg_email_verification_instruction" = "電子メールに送信しました。ログインするには、こちたのURLをクリックしてください。";
-"msg_add_avatar_prompt" = "友達があなただとわかるようにプロフィール写真を登録してください。";
+"msg_add_avatar_prompt" = "友達があなただとわかるようにプロフィール写真を登録してください";
 "msg_mail_resent" = "メールを再送しました";
 "msg_open_mail_app_prompt" = "メールはこちらをクリック";
-"msg_join_prompt" = "Go to sign up now for more features";
+"msg_join_prompt" = "新規登録をしてアプリの機能を楽しめます";
+"msg_alien_description" = "選んだエリアンがマイページに表示されます";
 
-"msgf_accept_tos" = "アカウントを作成することによって、%@に同意することになります。";
-"msgf_resend_verification_email" = "電子メールがみつかりませんか？%@.";
-"msgf_did_copy_my_id" = "My Oneplanet id [%@] Copied.";
+"msgf_accept_tos" = "アカウントを作成することによって、%@に同意することになります";
+"msgf_resend_verification_email" = "電子メールがみつかりませんか？%@";
+"msgf_did_copy_my_id" = "自分の Oneplanet ID [%@] をコビー";
 
 
 "ph_guest_login" = "ゲスト登録";
@@ -68,18 +76,18 @@
 "ph_remove_avatar" = "現在の写真を削除";
 "ph_try_again" = "もう一度実行";
 "ph_nickname_rule" = "ニックネームは30字以内で、特殊記号や絵文字は使えません";
-"ph_copy_id" = "idをコピー";
+"ph_copy_id" = "ID をコピー";
 "ph_follow" = "Follow";
 "ph_following" = "Following";
-"ph_choose_role" = "Choose Role";
-"ph_choose_color" = "Choose Color";
-"ph_edit_profile" = "Edit Profile";
-"ph_block_list" = "Blocked Account";
-"ph_privacy_and_security" = "Privacy and Security";
-"ph_not_specified" = "Not Specified";
-"ph_join_prompt" = "Join now？";
+"ph_choose_role" = "エリアンの選択";
+"ph_choose_color" = "色を選んでください";
+"ph_edit_profile" = "プロフィールを編集";
+"ph_block_list" = "ブロックしたアカウント";
+"ph_privacy_and_security" = "プライバシーとセキュリティ";
+"ph_not_specified" = "表示しません";
+"ph_join_prompt" = "新規登録はこちら";
 
-"no_posts" = "No Posts Yet";
+"no_posts" = "投稿がありません";
 "no_promo_popups" = "No Promotion Pop-ups Yet";
 
 "err_no_camera_access" = "カメラへのリクセルを求めています";
@@ -92,17 +100,17 @@
 "errtl_cannot_capture_photo" = "Cannot Take Photo";
 "errtl_cannot_pick_avatar" = "Cannot Get Profile Image";
 
-"warn_logout" = "Log Out?";
-"warn_character_selection" = "Can't change the group after selection, continue？";
+"warn_logout" = "ログアウト？";
+"warn_character_selection" = "エリアンの種類と色を一度選んだら変更ができません。よろしいですか？";
 
-"warntl_character_selection" = "Determined choice？";
+"warntl_character_selection" = "選択しました。よろしいですか？";
 
 "pop_blue_gem_usage" = "用途：解鎖商品、投標商品。";
 "pop_green_gem_usage" = "用途：解鎖商品、高效率投標商品。";
 "pop_purple_gem_usage" = "用途：解鎖商品。";
 
-"pop_blue_gem_action" = "Go to %@ to upload photos";
-"pop_green_gem_action" = "Go to view the %@";
+"pop_blue_gem_action" = "今すぐ写真をアップロードします";
+"pop_green_gem_action" = "%@へ";
 
 "pop_blue_gem_bullet1" = "獲得方式一：上傳照片後，畫面左上角的經驗值會增加，滿格即獲得一顆 競標寶。";
 "pop_blue_gem_bullet2" = "使用一顆 競標寶 + %@，可解鎖商品或投標一次。";

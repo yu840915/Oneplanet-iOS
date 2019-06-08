@@ -8,9 +8,14 @@
 
 "iso_code" = "en";
 
+"fx_hot" = "HOME";
+"fx_my" = "MY";
+"fx_life" = "LIFE";
+"fx_bid" = "BID";
+"fx_notice" = "NOTICE";
 "fx_news" = "News";
 "fx_events" = "Events";
-"fx_alien" = "Alien";
+"fx_alien" = "Ranking";
 
 "tl_cancel" = "Cancel";
 "tl_dismiss" = "Dismiss";
@@ -18,6 +23,7 @@
 "tl_ok" = "OK";
 "tl_all_photos" = "All Photos";
 "tl_login" = "Log In";
+"tl_logins" = "Logins";
 "tl_log_out" = "Log Out";
 "tl_title" = "Title";
 "tl_tos" = "Terms";
@@ -30,7 +36,7 @@
 "tl_more" = "More";
 "tl_account" = "Account";
 "tl_mail_sent" = "The email has been sent";
-"tl_user_id" = "User id";
+"tl_user_id" = "User ID";
 "tl_email" = "Email";
 "tl_gender" = "Gender";
 "tl_male" = "Male";
@@ -40,6 +46,7 @@
 "tl_blue_gem" = "競標寶";
 "tl_purple_gem" = "紅金寶";
 "tl_green_gem" = "解鎖寶";
+"tl_delete" = "Delete";
 
 "pl_email" = "Email Address";
 "pl_nickname" = "Nickname";
@@ -49,10 +56,11 @@
 "msg_open_mail_app_prompt" = "Click here to open your email address";
 "msg_mail_resent" = "The email has been sent again";
 "msg_join_prompt" = "Go to sign up now for more features";
+"msg_alien_description" = "你所選擇的外星人會出現在你的個人頁面";
 
 "msgf_accept_tos" = "By signing up or login, you agree to our %@.";
 "msgf_resend_verification_email" = "You did not receive the email? %@.";
-"msgf_did_copy_my_id" = "My Oneplanet id [%@] Copied.";
+"msgf_did_copy_my_id" = "My Oneplanet ID [%@] Copied.";
 
 "ph_guest_login" = "Guest";
 "ph_email_login" = "Or Login With Email";
@@ -67,7 +75,7 @@
 "ph_remove_avatar" = "Remove Current Photo";
 "ph_try_again" = "Try Again";
 "ph_nickname_rule" = "Nickname cap 30 characters, can't use punctuation or emoji";
-"ph_copy_id" = "copy id";
+"ph_copy_id" = "copy ID";
 "ph_follow" = "Follow";
 "ph_following" = "Following";
 "ph_choose_role" = "Choose Role";
@@ -100,7 +108,7 @@
 "pop_green_gem_usage" = "用途：解鎖商品、高效率投標商品。";
 "pop_purple_gem_usage" = "用途：解鎖商品。";
 
-"pop_blue_gem_action" = "Go to %@ to upload photos";
+"pop_blue_gem_action" = "Go to upload photos";
 "pop_green_gem_action" = "Go to view the %@";
 
 "pop_blue_gem_bullet1" = "獲得方式一：上傳照片後，畫面左上角的經驗值會增加，滿格即獲得一顆 競標寶。";

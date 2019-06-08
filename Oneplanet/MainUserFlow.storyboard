@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Tyu-ui-b3F">
-    <device id="retina6_1" orientation="portrait">
+    <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -104,7 +104,7 @@
                                 <rect key="frame" x="0.0" y="85" width="414" height="736"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="UyR-bK-t7c">
-                                        <rect key="frame" x="188.5" y="165.5" width="37" height="37"/>
+                                        <rect key="frame" x="188.66666666666666" y="165.66666666666666" width="37" height="37"/>
                                     </activityIndicatorView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aY6-Oh-hBC" userLabel="Close Button">
                                         <rect key="frame" x="20" y="0.0" width="44" height="44"/>
@@ -115,16 +115,16 @@
                                         </connections>
                                     </button>
                                     <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="iJX-fz-rEb" userLabel="Error View">
-                                        <rect key="frame" x="160" y="149" width="94" height="70.5"/>
+                                        <rect key="frame" x="160" y="149" width="94" height="70.333333333333314"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Error occurs" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bn2-s0-rEW" userLabel="Error Label">
-                                                <rect key="frame" x="0.0" y="0.0" width="94" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="94" height="20.333333333333332"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" name="default text"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JJa-jk-GE7" userLabel="Retry Button">
-                                                <rect key="frame" x="0.0" y="40.5" width="94" height="30"/>
+                                                <rect key="frame" x="0.0" y="40.333333333333314" width="94" height="30"/>
                                                 <state key="normal" title="Try Again">
                                                     <color key="titleColor" name="button green"/>
                                                 </state>
@@ -384,7 +384,7 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_gem80_nor" translatesAutoresizingMaskIntoConstraints="NO" id="4KU-1Q-gV5" userLabel="Blue Gem Icon">
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_gem80_nor" translatesAutoresizingMaskIntoConstraints="NO" id="4KU-1Q-gV5" userLabel="Blue Gem Icon">
                                 <rect key="frame" x="187" y="11" width="28" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="28" id="GCb-cA-016"/>
@@ -498,37 +498,37 @@
                                 <rect key="frame" x="10" y="20" width="354" height="560"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="aOs-af-HLl">
-                                        <rect key="frame" x="0.0" y="0.0" width="354" height="100.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="100.33333333333333"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="1000" image="ic_gem80_nor" translatesAutoresizingMaskIntoConstraints="NO" id="vLE-W3-OlI">
                                                 <rect key="frame" x="137" y="0.0" width="80" height="80"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="競標寶" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IzD-jl-Ca8" userLabel="Gem Name Label">
-                                                <rect key="frame" x="151" y="80" width="52" height="20.5"/>
+                                                <rect key="frame" x="151" y="80" width="52" height="20.333333333333329"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Z12-La-M0t">
-                                        <rect key="frame" x="0.0" y="110.5" width="354" height="372.5"/>
+                                        <rect key="frame" x="0.0" y="110.33333333333334" width="354" height="372.66666666666663"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用途：解鎖商品、投標商品。" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c62-JA-Bfh" userLabel="Main Description Label">
-                                                <rect key="frame" x="0.0" y="0.0" width="354" height="14.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="354" height="14.333333333333334"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="T4v-y2-Aqo" userLabel="Bullet Stack View">
-                                                <rect key="frame" x="0.0" y="14.5" width="354" height="268"/>
+                                                <rect key="frame" x="0.0" y="14.333333333333314" width="354" height="269"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="• " textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iXJ-xE-xGh" userLabel="Content Text View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="19" height="30.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="19" height="30.333333333333332"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="獲得方式一：上傳照片後，畫面左上角的經驗會增加，滿格即獲得一顆 競標寶。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="k67-Vc-MgR" userLabel="Content Text View">
-                                                        <rect key="frame" x="19" y="0.0" width="335" height="45"/>
+                                                        <rect key="frame" x="19" y="0.0" width="335" height="44.666666666666664"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -539,16 +539,16 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="nE2-ey-rOs" userLabel="Bullet Stack View">
-                                                <rect key="frame" x="0.0" y="282.5" width="354" height="45"/>
+                                                <rect key="frame" x="0.0" y="283.33333333333337" width="354" height="44.666666666666686"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="• " textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vpY-B3-dcy" userLabel="Content Text View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="19" height="30.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="19" height="30.333333333333332"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="獲得方式一：上傳照片後，畫面左上角的經驗會增加，滿格即獲得一顆 競標寶。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8BN-jV-t9g" userLabel="Content Text View">
-                                                        <rect key="frame" x="19" y="0.0" width="335" height="45"/>
+                                                        <rect key="frame" x="19" y="0.0" width="335" height="44.666666666666664"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -559,16 +559,16 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="MuY-7Q-wKL" userLabel="Bullet Stack View">
-                                                <rect key="frame" x="0.0" y="327.5" width="354" height="45"/>
+                                                <rect key="frame" x="0.0" y="328" width="354" height="44.666666666666686"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="• " textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vMj-NB-ZQY" userLabel="Content Text View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="19" height="30.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="19" height="30.333333333333332"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="獲得方式一：上傳照片後，畫面左上角的經驗會增加，滿格即獲得一顆 競標寶。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iIP-RY-Da5" userLabel="Content Text View">
-                                                        <rect key="frame" x="19" y="0.0" width="335" height="45"/>
+                                                        <rect key="frame" x="19" y="0.0" width="335" height="44.666666666666664"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -640,6 +640,7 @@
                             <constraint firstItem="lao-9I-xep" firstAttribute="top" secondItem="Z4w-ZV-ZcT" secondAttribute="top" constant="20" id="oiT-Ah-N7E"/>
                             <constraint firstItem="lao-9I-xep" firstAttribute="centerX" secondItem="Z4w-ZV-ZcT" secondAttribute="centerX" id="qq5-oh-YwW"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="CsC-JA-NPb"/>
                     </view>
                     <connections>
                         <outlet property="bulletTextView1" destination="k67-Vc-MgR" id="try-UU-GGk"/>
@@ -712,44 +713,44 @@
                                 <rect key="frame" x="10" y="20" width="354" height="560"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pb0-Lj-znK">
-                                        <rect key="frame" x="0.0" y="0.0" width="354" height="100.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="100.33333333333333"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="1000" image="ic_key80_nor" translatesAutoresizingMaskIntoConstraints="NO" id="sVk-Ei-PqK">
                                                 <rect key="frame" x="137" y="0.0" width="80" height="80"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="競標寶" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XCy-56-v7q" userLabel="Gem Name Label">
-                                                <rect key="frame" x="151" y="80" width="52" height="20.5"/>
+                                                <rect key="frame" x="151" y="80" width="52" height="20.333333333333329"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ay8-V3-fke">
-                                        <rect key="frame" x="0.0" y="110.5" width="354" height="372.5"/>
+                                        <rect key="frame" x="0.0" y="110.33333333333334" width="354" height="372.66666666666663"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用途：解鎖商品、投標商品。" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mXq-bM-EM4" userLabel="Main Description Label">
-                                                <rect key="frame" x="0.0" y="0.0" width="354" height="14.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="354" height="14.333333333333334"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="btM-tr-egd" userLabel="Padding">
-                                                <rect key="frame" x="0.0" y="14.5" width="354" height="4"/>
+                                                <rect key="frame" x="0.0" y="14.333333333333314" width="354" height="4"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="4" id="N0a-zM-uAd"/>
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="2hS-dq-wTT" userLabel="Bullet Stack View">
-                                                <rect key="frame" x="0.0" y="18.5" width="354" height="174"/>
+                                                <rect key="frame" x="0.0" y="18.333333333333314" width="354" height="175.66666666666666"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="• " textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rla-NS-b09" userLabel="Content Text View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="19" height="30.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="19" height="30.333333333333332"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="獲得方式一：上傳照片後，畫面左上角的經驗會增加，滿格即獲得一顆 競標寶。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mec-I7-hYq" userLabel="Content Text View">
-                                                        <rect key="frame" x="19" y="0.0" width="335" height="45"/>
+                                                        <rect key="frame" x="19" y="0.0" width="335" height="44.666666666666664"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -757,16 +758,16 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="tki-Fh-r7H" userLabel="Bullet Stack View">
-                                                <rect key="frame" x="0.0" y="192.5" width="354" height="45"/>
+                                                <rect key="frame" x="0.0" y="193.99999999999997" width="354" height="44.666666666666657"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="• " textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZAY-LW-1de" userLabel="Content Text View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="19" height="30.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="19" height="30.333333333333332"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="獲得方式一：上傳照片後，畫面左上角的經驗會增加，滿格即獲得一顆 競標寶。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="k6M-8d-51X" userLabel="Content Text View">
-                                                        <rect key="frame" x="19" y="0.0" width="335" height="45"/>
+                                                        <rect key="frame" x="19" y="0.0" width="335" height="44.666666666666664"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -774,16 +775,16 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="RaJ-ON-h23" userLabel="Bullet Stack View">
-                                                <rect key="frame" x="0.0" y="237.5" width="354" height="45"/>
+                                                <rect key="frame" x="0.0" y="238.66666666666666" width="354" height="44.666666666666657"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="• " textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVS-3B-PxX" userLabel="Content Text View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="19" height="30.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="19" height="30.333333333333332"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="獲得方式一：上傳照片後，畫面左上角的經驗會增加，滿格即獲得一顆 競標寶。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="CoW-aO-OaP" userLabel="Content Text View">
-                                                        <rect key="frame" x="19" y="0.0" width="335" height="45"/>
+                                                        <rect key="frame" x="19" y="0.0" width="335" height="44.666666666666664"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -791,16 +792,16 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="RtV-cI-WlR" userLabel="Bullet Stack View">
-                                                <rect key="frame" x="0.0" y="282.5" width="354" height="45"/>
+                                                <rect key="frame" x="0.0" y="283.33333333333337" width="354" height="44.666666666666686"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="• " textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gRw-C4-9P3" userLabel="Content Text View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="19" height="30.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="19" height="30.333333333333332"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="獲得方式一：上傳照片後，畫面左上角的經驗會增加，滿格即獲得一顆 競標寶。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="nn2-no-svl" userLabel="Content Text View">
-                                                        <rect key="frame" x="19" y="0.0" width="335" height="45"/>
+                                                        <rect key="frame" x="19" y="0.0" width="335" height="44.666666666666664"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -808,16 +809,16 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="rFw-tg-HPe" userLabel="Bullet Stack View">
-                                                <rect key="frame" x="0.0" y="327.5" width="354" height="45"/>
+                                                <rect key="frame" x="0.0" y="328" width="354" height="44.666666666666686"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="• " textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hf8-a6-Cow" userLabel="Content Text View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="19" height="30.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="19" height="30.333333333333332"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="獲得方式一：上傳照片後，畫面左上角的經驗會增加，滿格即獲得一顆 競標寶。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="o3j-2c-arL" userLabel="Content Text View">
-                                                        <rect key="frame" x="19" y="0.0" width="335" height="45"/>
+                                                        <rect key="frame" x="19" y="0.0" width="335" height="44.666666666666664"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -961,37 +962,37 @@
                                 <rect key="frame" x="10" y="20" width="354" height="560"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="nGW-IS-V8A">
-                                        <rect key="frame" x="0.0" y="0.0" width="354" height="100.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="354" height="100.33333333333333"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="1000" image="ic_coin80_nor" translatesAutoresizingMaskIntoConstraints="NO" id="3M6-Df-bgv">
                                                 <rect key="frame" x="137" y="0.0" width="80" height="80"/>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="競標寶" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNZ-Gz-fzp" userLabel="Gem Name Label">
-                                                <rect key="frame" x="151" y="80" width="52" height="20.5"/>
+                                                <rect key="frame" x="151" y="80" width="52" height="20.333333333333329"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0M9-Hv-alm">
-                                        <rect key="frame" x="0.0" y="110.5" width="354" height="285.5"/>
+                                        <rect key="frame" x="0.0" y="110.33333333333334" width="354" height="285.66666666666663"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="用途：解鎖商品、投標商品。" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnr-rd-RO7" userLabel="Main Description Label">
-                                                <rect key="frame" x="0.0" y="0.0" width="354" height="14.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="354" height="14.333333333333334"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Myx-R5-Nfo" userLabel="Bullet Stack View">
-                                                <rect key="frame" x="0.0" y="14.5" width="354" height="226"/>
+                                                <rect key="frame" x="0.0" y="14.333333333333314" width="354" height="226.66666666666666"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="• " textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="79z-b8-HLy" userLabel="Content Text View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="19" height="30.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="19" height="30.333333333333332"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="獲得方式一：上傳照片後，畫面左上角的經驗會增加，滿格即獲得一顆 競標寶。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="msQ-MT-IES" userLabel="Content Text View">
-                                                        <rect key="frame" x="19" y="0.0" width="335" height="45"/>
+                                                        <rect key="frame" x="19" y="0.0" width="335" height="44.666666666666664"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -999,16 +1000,16 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="ARA-Do-mgd" userLabel="Bullet Stack View">
-                                                <rect key="frame" x="0.0" y="240.5" width="354" height="45"/>
+                                                <rect key="frame" x="0.0" y="240.99999999999997" width="354" height="44.666666666666657"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="• " textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCW-uH-8ae" userLabel="Content Text View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="19" height="30.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="19" height="30.333333333333332"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="獲得方式一：上傳照片後，畫面左上角的經驗會增加，滿格即獲得一顆 競標寶。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SQS-rT-DSI" userLabel="Content Text View">
-                                                        <rect key="frame" x="19" y="0.0" width="335" height="45"/>
+                                                        <rect key="frame" x="19" y="0.0" width="335" height="44.666666666666664"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1079,7 +1080,7 @@
                                 <rect key="frame" x="0.0" y="28" width="354" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2yT-kB-avO" id="1t9-fc-9HL">
-                                    <rect key="frame" x="0.0" y="0.0" width="354" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="354" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>

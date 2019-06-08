@@ -57,7 +57,7 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
     
     private func updateViewsForProfile() {
         guard let profile = self.profile else { return }
-        avatarView.borderColor = profile.character?.color.color
+        avatarView.backgrondImage = profile.character?.race.frameImage
         nicknameLabel.text = profile.nickname
         if let image = profile.character?.avatar {
             raceImageView.image = image

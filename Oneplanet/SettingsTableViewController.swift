@@ -167,7 +167,7 @@ extension SettingsTableViewController {
             switch self {
             case .account: return Localized.titles.account
             case .privacyAndSecurity: return Localized.phrases.privacyAndSecurity
-            case .logout: return Localized.titles.logOut
+            case .logout: return Localized.titles.logins
             }
         }
     }

@@ -39,16 +39,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9P0-wO-VqV">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                            </scrollView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_bgall" translatesAutoresizingMaskIntoConstraints="NO" id="jmU-Sf-Qdh">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BON-JU-Edv">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l2H-kb-b9K">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="xJ2-lU-fQJ"/>
+                                        </constraints>
+                                    </view>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9P0-wO-VqV">
+                                        <rect key="frame" x="0.0" y="80" width="414" height="728"/>
+                                    </scrollView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="9P0-wO-VqV" firstAttribute="leading" secondItem="LT3-GS-Wxe" secondAttribute="leading" id="sYO-Vd-3aX"/>
-                            <constraint firstItem="9P0-wO-VqV" firstAttribute="top" secondItem="LT3-GS-Wxe" secondAttribute="top" id="sYT-D0-0pe"/>
-                            <constraint firstItem="LT3-GS-Wxe" firstAttribute="trailing" secondItem="9P0-wO-VqV" secondAttribute="trailing" id="scr-FQ-dwO"/>
-                            <constraint firstItem="LT3-GS-Wxe" firstAttribute="bottom" secondItem="9P0-wO-VqV" secondAttribute="bottom" id="w5f-Tb-qao"/>
+                            <constraint firstItem="jmU-Sf-Qdh" firstAttribute="width" secondItem="roY-cB-Z0n" secondAttribute="width" id="1hO-ur-yY4"/>
+                            <constraint firstItem="jmU-Sf-Qdh" firstAttribute="centerY" secondItem="roY-cB-Z0n" secondAttribute="centerY" id="H9K-gU-z56"/>
+                            <constraint firstItem="jmU-Sf-Qdh" firstAttribute="centerX" secondItem="roY-cB-Z0n" secondAttribute="centerX" id="KFZ-pX-RV8"/>
+                            <constraint firstItem="jmU-Sf-Qdh" firstAttribute="height" secondItem="roY-cB-Z0n" secondAttribute="height" id="Nvb-fn-bkU"/>
+                            <constraint firstItem="BON-JU-Edv" firstAttribute="top" secondItem="LT3-GS-Wxe" secondAttribute="top" id="jDg-D1-O69"/>
+                            <constraint firstItem="BON-JU-Edv" firstAttribute="centerX" secondItem="LT3-GS-Wxe" secondAttribute="centerX" id="kqb-aP-69c"/>
+                            <constraint firstAttribute="bottom" secondItem="BON-JU-Edv" secondAttribute="bottom" id="rlK-1N-z9R"/>
+                            <constraint firstItem="BON-JU-Edv" firstAttribute="width" secondItem="roY-cB-Z0n" secondAttribute="width" id="xCm-Zr-hbR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LT3-GS-Wxe"/>
                     </view>
@@ -59,7 +78,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HO2-cd-UgF" customClass="ButtonBarView" customModule="XLPagerTabStrip">
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="IPD-Yf-iDg">
                                         <size key="itemSize" width="50" height="50"/>
                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -76,7 +95,7 @@
                                     </cells>
                                 </collectionView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="HO2-cd-UgF" firstAttribute="centerY" secondItem="6ri-00-1Xd" secondAttribute="centerY" id="2Rk-J1-jST"/>
                                 <constraint firstItem="HO2-cd-UgF" firstAttribute="height" secondItem="6ri-00-1Xd" secondAttribute="height" id="JC8-i0-cZ9"/>
@@ -155,5 +174,6 @@
     <resources>
         <image name="ic_bid_nor" width="64" height="69"/>
         <image name="ic_bid_sel" width="64" height="69"/>
+        <image name="im_bgall" width="609" height="812"/>
     </resources>
 </document>

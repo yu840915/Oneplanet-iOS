@@ -47,6 +47,8 @@
 "tl_purple_gem" = "紅金寶";
 "tl_green_gem" = "解鎖寶";
 "tl_delete" = "Delete";
+"tl_unlock" = "Unlock";
+"tl_unlocked" = "Unlocked";
 
 "pl_email" = "Email Address";
 "pl_nickname" = "Nickname";

@@ -131,6 +131,12 @@ class LocalizedTitles {//tl_
     var delete: String {
         return NSLocalizedString("tl_delete", comment: "")
     }
+    var unlock: String {
+        return NSLocalizedString("tl_unlock", comment: "")
+    }
+    var unlocked: String {
+        return NSLocalizedString("tl_unlocked", comment: "")
+    }
 }
 
 class Feature {//fx_

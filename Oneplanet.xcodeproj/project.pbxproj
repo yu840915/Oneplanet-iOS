@@ -112,6 +112,8 @@
 		E0BDCCEC229FD3CE006A9D20 /* SwiftMessages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0BDCCEB229FD3CE006A9D20 /* SwiftMessages.framework */; };
 		E0CB5E11228F0B4A00C0C010 /* TreasuryBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CB5E10228F0B4A00C0C010 /* TreasuryBarViewController.swift */; };
 		E0CB5E15228F0E5F00C0C010 /* DS-DIGIB.TTF in Resources */ = {isa = PBXBuildFile; fileRef = E0CB5E14228F0E5F00C0C010 /* DS-DIGIB.TTF */; };
+		E0D1BBD922ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D1BBD822ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift */; };
+		E0D1BBDB22ACEE9500951F19 /* TimeIntervalComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D1BBDA22ACEE9400951F19 /* TimeIntervalComponents.swift */; };
 		E0D7DCDB229CE65C00B40D76 /* PromoPopUpFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D7DCDA229CE65C00B40D76 /* PromoPopUpFlowViewController.swift */; };
 		E0D7DCDD229CE82300B40D76 /* PromoPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D7DCDC229CE82300B40D76 /* PromoPopUpViewController.swift */; };
 		E0FF797A228C3F6800F61318 /* MyProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FF7979228C3F6800F61318 /* MyProfileTests.swift */; };
@@ -253,6 +255,8 @@
 		E0BDCCEB229FD3CE006A9D20 /* SwiftMessages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftMessages.framework; path = Carthage/Build/iOS/SwiftMessages.framework; sourceTree = SOURCE_ROOT; };
 		E0CB5E10228F0B4A00C0C010 /* TreasuryBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreasuryBarViewController.swift; sourceTree = "<group>"; };
 		E0CB5E14228F0E5F00C0C010 /* DS-DIGIB.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DS-DIGIB.TTF"; sourceTree = "<group>"; };
+		E0D1BBD822ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalComponentExtractorTests.swift; sourceTree = "<group>"; };
+		E0D1BBDA22ACEE9400951F19 /* TimeIntervalComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalComponents.swift; sourceTree = "<group>"; };
 		E0D7DCDA229CE65C00B40D76 /* PromoPopUpFlowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoPopUpFlowViewController.swift; sourceTree = "<group>"; };
 		E0D7DCDC229CE82300B40D76 /* PromoPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoPopUpViewController.swift; sourceTree = "<group>"; };
 		E0FF7979228C3F6800F61318 /* MyProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTests.swift; sourceTree = "<group>"; };
@@ -357,6 +361,7 @@
 				E032844C22ABB1F5001F02E8 /* BadgeView.xib */,
 				E032844E22ABB2FE001F02E8 /* BadgeView.swift */,
 				E032844422AB6A50001F02E8 /* AuctionMainViewController.swift */,
+				E0D1BBDA22ACEE9400951F19 /* TimeIntervalComponents.swift */,
 				E032844822AB7286001F02E8 /* ProductListTableViewController.swift */,
 				E032844A22AB7A90001F02E8 /* BiddingLiveTableViewController.swift */,
 			);
@@ -455,6 +460,7 @@
 				E06F4FFB22782E7D0067DAE4 /* EmailAuthCredentialTests.swift */,
 				E0814FB422873103002F1C02 /* RoughNumberFormatterTests.swift */,
 				E0FF7979228C3F6800F61318 /* MyProfileTests.swift */,
+				E0D1BBD822ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift */,
 				E05BB274226D5D2F00721F20 /* Info.plist */,
 			);
 			path = OneplanetTests;
@@ -865,6 +871,7 @@
 				E0190F55226EC82500C212D5 /* UserFlowRootViewController.swift in Sources */,
 				E030E4D0228A71CB0084D383 /* ProfileDetailViewController.swift in Sources */,
 				E06589BD22700AEC00C9E4E6 /* CaptureSessionController.swift in Sources */,
+				E0D1BBDB22ACEE9500951F19 /* TimeIntervalComponents.swift in Sources */,
 				E0190F4B226DB55400C212D5 /* UIComponentFactories.swift in Sources */,
 				E0BDCCEA229FA044006A9D20 /* PromotionPageList.swift in Sources */,
 				E0B57DE322A0FAA3006AEADB /* Toast.swift in Sources */,
@@ -929,6 +936,7 @@
 			files = (
 				E07276FF227743D7001239C0 /* URLRouterTests.swift in Sources */,
 				E0814FB522873103002F1C02 /* RoughNumberFormatterTests.swift in Sources */,
+				E0D1BBD922ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift in Sources */,
 				E0FF797A228C3F6800F61318 /* MyProfileTests.swift in Sources */,
 				E05BB273226D5D2F00721F20 /* OneplanetTests.swift in Sources */,
 				E08C312B227826850013DD0C /* EmailInputValidatorTests.swift in Sources */,

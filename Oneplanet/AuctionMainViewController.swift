@@ -91,3 +91,4 @@ class PagerStyleConfigurer {
         static let highlighted = Style(titleColor: ColorPalette.defaultText, font: .systemFont(ofSize: 12, weight: .semibold))
     }
 }
+

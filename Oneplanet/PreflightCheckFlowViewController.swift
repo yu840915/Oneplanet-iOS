@@ -54,14 +54,19 @@ class PreflightCheckFlowViewController: UIViewController, UserSessionDepending {
             return
         }
         if let profile = userSession.profile {
-            if profile.nickname.isEmpty {
-                getMyProfile()
-//                startProfileCreation()
-            } else {
-                didFinishPreflightCheck?()
-            }
+            nextStep(with: profile)
         } else {
             getMyProfile()
+        }
+    }
+    
+    private func nextStep(with profile: MyProfile) {
+        if profile.nickname.isEmpty {
+            startProfileCreation(with: profile)
+        } else if profile.character == nil {
+            startSelectCharacter(with: profile)
+        } else {
+            didFinishPreflightCheck?()
         }
     }
     
@@ -81,13 +86,7 @@ class PreflightCheckFlowViewController: UIViewController, UserSessionDepending {
         getProfileOperation = nil
         if let profile = op.profile {
             userSession.updateProfile(profile)
-            if profile.nickname.isEmpty {
-                startProfileCreation(with: profile)
-            } else if profile.character == nil {
-                startSelectCharacter(with: profile)
-            } else {
-                didFinishPreflightCheck?()
-            }
+            nextStep(with: profile)
         } else {
             notifyFailure(with: op.error)
         }

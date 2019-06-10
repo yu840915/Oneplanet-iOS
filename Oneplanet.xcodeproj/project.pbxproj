@@ -13,6 +13,7 @@
 		E00611F22294F5680032AE30 /* HotCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00611F12294F5680032AE30 /* HotCollectionViewController.swift */; };
 		E00611F42294FFF10032AE30 /* HotNavigationItems.xib in Resources */ = {isa = PBXBuildFile; fileRef = E00611F32294FFF10032AE30 /* HotNavigationItems.xib */; };
 		E00611F6229500FA0032AE30 /* HotNavigationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00611F5229500FA0032AE30 /* HotNavigationItemView.swift */; };
+		E006BAC622AE250D00D7D118 /* DS-DIGIT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = E006BAC522AE250D00D7D118 /* DS-DIGIT.TTF */; };
 		E0190F49226DB0E000C212D5 /* WelcomeMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F48226DB0E000C212D5 /* WelcomeMessageViewController.swift */; };
 		E0190F4B226DB55400C212D5 /* UIComponentFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F4A226DB55400C212D5 /* UIComponentFactories.swift */; };
 		E0190F4D226DCCFB00C212D5 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F4C226DCCFB00C212D5 /* UserSession.swift */; };
@@ -32,7 +33,7 @@
 		E032844522AB6A50001F02E8 /* AuctionMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E032844422AB6A50001F02E8 /* AuctionMainViewController.swift */; };
 		E032844722AB6F66001F02E8 /* XLPagerTabStrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E032844622AB6F66001F02E8 /* XLPagerTabStrip.framework */; };
 		E032844922AB7286001F02E8 /* ProductListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E032844822AB7286001F02E8 /* ProductListTableViewController.swift */; };
-		E032844B22AB7A90001F02E8 /* BiddingLiveTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E032844A22AB7A90001F02E8 /* BiddingLiveTableViewController.swift */; };
+		E032844B22AB7A90001F02E8 /* BiddingProcessTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E032844A22AB7A90001F02E8 /* BiddingProcessTableViewController.swift */; };
 		E032844D22ABB1F5001F02E8 /* BadgeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E032844C22ABB1F5001F02E8 /* BadgeView.xib */; };
 		E032844F22ABB2FE001F02E8 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E032844E22ABB2FE001F02E8 /* BadgeView.swift */; };
 		E03C329A226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03C3299226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift */; };
@@ -144,6 +145,7 @@
 		E00611F12294F5680032AE30 /* HotCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotCollectionViewController.swift; sourceTree = "<group>"; };
 		E00611F32294FFF10032AE30 /* HotNavigationItems.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HotNavigationItems.xib; sourceTree = "<group>"; };
 		E00611F5229500FA0032AE30 /* HotNavigationItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotNavigationItemView.swift; sourceTree = "<group>"; };
+		E006BAC522AE250D00D7D118 /* DS-DIGIT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DS-DIGIT.TTF"; sourceTree = "<group>"; };
 		E0190F48226DB0E000C212D5 /* WelcomeMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeMessageViewController.swift; sourceTree = "<group>"; };
 		E0190F4A226DB55400C212D5 /* UIComponentFactories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponentFactories.swift; sourceTree = "<group>"; };
 		E0190F4C226DCCFB00C212D5 /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
@@ -163,7 +165,7 @@
 		E032844422AB6A50001F02E8 /* AuctionMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionMainViewController.swift; sourceTree = "<group>"; };
 		E032844622AB6F66001F02E8 /* XLPagerTabStrip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XLPagerTabStrip.framework; path = Carthage/Build/iOS/XLPagerTabStrip.framework; sourceTree = SOURCE_ROOT; };
 		E032844822AB7286001F02E8 /* ProductListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListTableViewController.swift; sourceTree = "<group>"; };
-		E032844A22AB7A90001F02E8 /* BiddingLiveTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiddingLiveTableViewController.swift; sourceTree = "<group>"; };
+		E032844A22AB7A90001F02E8 /* BiddingProcessTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiddingProcessTableViewController.swift; sourceTree = "<group>"; };
 		E032844C22ABB1F5001F02E8 /* BadgeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BadgeView.xib; sourceTree = "<group>"; };
 		E032844E22ABB2FE001F02E8 /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		E03C3299226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireAPIAccessOperation.swift; sourceTree = "<group>"; };
@@ -363,7 +365,7 @@
 				E032844422AB6A50001F02E8 /* AuctionMainViewController.swift */,
 				E0D1BBDA22ACEE9400951F19 /* TimeIntervalComponents.swift */,
 				E032844822AB7286001F02E8 /* ProductListTableViewController.swift */,
-				E032844A22AB7A90001F02E8 /* BiddingLiveTableViewController.swift */,
+				E032844A22AB7A90001F02E8 /* BiddingProcessTableViewController.swift */,
 			);
 			name = Auction;
 			sourceTree = "<group>";
@@ -483,6 +485,7 @@
 			children = (
 				E06F5001227ABE8A0067DAE4 /* Oneplanet-Bridging-Header.h */,
 				E0CB5E14228F0E5F00C0C010 /* DS-DIGIB.TTF */,
+				E006BAC522AE250D00D7D118 /* DS-DIGIT.TTF */,
 				E06F4FFF227ABE1B0067DAE4 /* OpenSDK1.8.0_NoPay */,
 				E03C32AB226D872A00C32FD7 /* Localized.swift */,
 				E05BB269226D5D2E00721F20 /* Info.plist */,
@@ -677,6 +680,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E006BAC622AE250D00D7D118 /* DS-DIGIT.TTF in Resources */,
 				E05BB268226D5D2E00721F20 /* LaunchScreen.storyboard in Resources */,
 				E0CB5E15228F0E5F00C0C010 /* DS-DIGIB.TTF in Resources */,
 				E032844D22ABB1F5001F02E8 /* BadgeView.xib in Resources */,
@@ -917,7 +921,7 @@
 				E03C329E226D772400C32FD7 /* Logger.swift in Sources */,
 				E03C32B3226D925100C32FD7 /* ServiceConstants.swift in Sources */,
 				E081590F22A63628007C9776 /* GreenGemPopUpViewController.swift in Sources */,
-				E032844B22AB7A90001F02E8 /* BiddingLiveTableViewController.swift in Sources */,
+				E032844B22AB7A90001F02E8 /* BiddingProcessTableViewController.swift in Sources */,
 				E06F4FFA22782C8C0067DAE4 /* InputValidators.swift in Sources */,
 				E089F711228EB18F003E77DF /* SectionHeaderView.swift in Sources */,
 				E07276EB2274B515001239C0 /* WebViewController.swift in Sources */,

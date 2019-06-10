@@ -52,7 +52,7 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController {
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        return [ProductListTableViewController.fromDefaultStoryboard(), BiddingLiveTableViewController.fromDefaultStoryboard()]
+        return [ProductListTableViewController.fromDefaultStoryboard(), BiddingProcessTableViewController.fromDefaultStoryboard()]
     }
 
     // MARK: - Navigation

@@ -67,6 +67,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>DS-DIGIB.TTF</string>
+		<string>DS-DIGIT.TTF</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

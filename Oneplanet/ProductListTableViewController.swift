@@ -98,3 +98,8 @@ extension ProductOverviewCell {
         static let forUnlocked = LockAppearance(title: Localized.titles.unlocked, color: ColorPalette.lockGreen)
     }
 }
+
+class BiddingProductCell: UITableViewCell {
+    @IBOutlet weak var previewImageView: UIImageView!
+
+}

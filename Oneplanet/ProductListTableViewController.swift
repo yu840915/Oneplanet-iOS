@@ -11,18 +11,22 @@ import XLPagerTabStrip
 
 class ProductListTableViewController: UITableViewController, DefaultInstanceFactory {
     
+    @IBOutlet weak var countDownView: CountDownClockView!
+    private var refreshClock: UpdateClock!
+    
     class func fromDefaultStoryboard() -> ProductListTableViewController {
         return UIStoryboard(name: "Auction", bundle: nil).instantiateViewController(withIdentifier: "ProductListTableViewController") as! ProductListTableViewController
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        refreshClock = UpdateClock(preferredFrameRate: 15, onTick: {[weak self] in
+            self?.refreshDynamicViews()
+        })
+    }
+    
+    private func refreshDynamicViews() {
+        countDownView.tick()
     }
 
     // MARK: - Table view data source
@@ -102,4 +106,40 @@ extension ProductOverviewCell {
 class BiddingProductCell: UITableViewCell {
     @IBOutlet weak var previewImageView: UIImageView!
 
+}
+
+class CountDownClockView: UIView {
+    @IBOutlet weak var dayValueLabel: UILabel!
+    @IBOutlet weak var hourValueLabel: UILabel!
+    @IBOutlet weak var minuteValueLabel: UILabel!
+    @IBOutlet weak var secondValueLabel: UILabel!
+    
+    var deadline = Date(timeIntervalSinceNow: 1 * .minute + 1)
+    private var attributes: [NSAttributedString.Key: Any] = [:]
+    let extractor: TimeIntervalComponentExtractor = {
+        let sec = TimeIntervalComponentExtractor(unitInterval: .second, next: nil)
+        let min = TimeIntervalComponentExtractor(unitInterval: .minute, next: sec)
+        let hour = TimeIntervalComponentExtractor(unitInterval: .hour, next: min)
+        return TimeIntervalComponentExtractor(unitInterval: .day, next: hour)
+    }()
+    let formatter: NumberFormatter = {
+        let result = NumberFormatter()
+        result.numberStyle = .decimal
+        result.minimumIntegerDigits = 2
+        result.maximumFractionDigits = 0
+        return result
+    }()
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        attributes = [.kern: 4.67]
+    }
+    
+    func tick() {
+        let comps = TimeIntervalComponents(extractor.extract(from: deadline.timeIntervalSinceNow))
+        dayValueLabel.attributedText = NSAttributedString(string: formatter.string(for: comps.days) ?? "00", attributes: attributes)
+        hourValueLabel.attributedText = NSAttributedString(string: formatter.string(for: comps.hours) ?? "00", attributes: attributes)
+        minuteValueLabel.attributedText = NSAttributedString(string: formatter.string(for: comps.minutes) ?? "00", attributes: attributes)
+        secondValueLabel.attributedText = NSAttributedString(string: formatter.string(for: comps.seconds) ?? "00", attributes: attributes)
+    }
 }

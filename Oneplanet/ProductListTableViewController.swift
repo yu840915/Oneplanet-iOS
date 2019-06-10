@@ -105,7 +105,35 @@ extension ProductOverviewCell {
 
 class BiddingProductCell: UITableViewCell {
     @IBOutlet weak var previewImageView: UIImageView!
+    @IBOutlet weak var countdownLabel: UILabel!
+    @IBOutlet weak var runningIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var bidButton: UIButton!
+    
+    @IBOutlet weak var hundredLabel: UILabel!
+    @IBOutlet weak var tensLabel: UILabel!
+    @IBOutlet weak var digitLabel: UILabel!
+    private let countdownTimeAttribute: [NSAttributedString.Key: Any] = [.kern: 3.5]
+    var deadline = Date() {
+        didSet {
+            tick()
+        }
+    }
+    let extractor: TimeIntervalComponentExtractor = {
+        let sec = TimeIntervalComponentExtractor(unitInterval: .second, next: nil)
+        return TimeIntervalComponentExtractor(unitInterval: .minute, next: sec)
+    }()
 
+    let formatter: NumberFormatter = SharedNumberFormatters.clockComponent
+
+    func tick() {
+        let i = deadline.timeIntervalSinceNow
+        let comps = TimeIntervalComponents(extractor.extract(from: i))
+        let min = formatter.string(for: comps.minutes) ?? "00"
+        let sec = formatter.string(for: comps.seconds) ?? "00"
+        var attr = countdownTimeAttribute
+        attr[.foregroundColor] =  i < .minute ? ColorPalette.lockRed : ColorPalette.lockGreen
+        countdownLabel.attributedText = NSAttributedString(string: min + ":" + sec, attributes: countdownTimeAttribute)
+    }
 }
 
 class CountDownClockView: UIView {
@@ -114,25 +142,22 @@ class CountDownClockView: UIView {
     @IBOutlet weak var minuteValueLabel: UILabel!
     @IBOutlet weak var secondValueLabel: UILabel!
     
-    var deadline = Date(timeIntervalSinceNow: 1 * .minute + 1)
-    private var attributes: [NSAttributedString.Key: Any] = [:]
+    var deadline = Date() {
+        didSet {
+            tick()
+        }
+    }
+    private let attributes: [NSAttributedString.Key: Any] = [.kern: 4.67]
     let extractor: TimeIntervalComponentExtractor = {
         let sec = TimeIntervalComponentExtractor(unitInterval: .second, next: nil)
         let min = TimeIntervalComponentExtractor(unitInterval: .minute, next: sec)
         let hour = TimeIntervalComponentExtractor(unitInterval: .hour, next: min)
         return TimeIntervalComponentExtractor(unitInterval: .day, next: hour)
     }()
-    let formatter: NumberFormatter = {
-        let result = NumberFormatter()
-        result.numberStyle = .decimal
-        result.minimumIntegerDigits = 2
-        result.maximumFractionDigits = 0
-        return result
-    }()
+    let formatter: NumberFormatter = SharedNumberFormatters.clockComponent
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        attributes = [.kern: 4.67]
     }
     
     func tick() {

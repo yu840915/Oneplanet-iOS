@@ -436,17 +436,42 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tgj-da-2TG">
                                                             <rect key="frame" x="270" y="0.0" width="50" height="55.5"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zfw-7n-PSp">
-                                                                    <rect key="frame" x="0.0" y="19.5" width="50" height="17"/>
-                                                                    <fontDescription key="fontDescription" name="DS-Digital-BoldItalic" family="DS-Digital" pointSize="17"/>
+                                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="vsX-eB-LJM">
+                                                                    <rect key="frame" x="6.5" y="9.5" width="37" height="37"/>
+                                                                    <color key="color" name="default placeholder"/>
+                                                                </activityIndicatorView>
+                                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zfw-7n-PSp" userLabel="Countdown Label">
+                                                                    <rect key="frame" x="0.0" y="19" width="50" height="18"/>
+                                                                    <fontDescription key="fontDescription" name="DS-Digital-BoldItalic" family="DS-Digital" pointSize="18"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zab-2B-r2s">
+                                                                    <rect key="frame" x="6.5" y="19" width="37" height="18"/>
+                                                                    <subviews>
+                                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WIN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0m-7T-DfP" userLabel="Win Label">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="18"/>
+                                                                            <fontDescription key="fontDescription" name="DS-Digital-BoldItalic" family="DS-Digital" pointSize="18"/>
+                                                                            <color key="textColor" name="lock green"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOSE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kwi-2u-U8Z" userLabel="Lose Label">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="37" height="18"/>
+                                                                            <fontDescription key="fontDescription" name="DS-Digital-BoldItalic" family="DS-Digital" pointSize="18"/>
+                                                                            <color key="textColor" name="lock red"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                </stackView>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
+                                                                <constraint firstItem="vsX-eB-LJM" firstAttribute="centerX" secondItem="tgj-da-2TG" secondAttribute="centerX" id="BUr-o7-cD4"/>
+                                                                <constraint firstItem="Zab-2B-r2s" firstAttribute="centerX" secondItem="tgj-da-2TG" secondAttribute="centerX" id="ByE-rj-Wd6"/>
                                                                 <constraint firstItem="Zfw-7n-PSp" firstAttribute="width" secondItem="tgj-da-2TG" secondAttribute="width" id="QEf-Oc-h2G"/>
+                                                                <constraint firstItem="vsX-eB-LJM" firstAttribute="centerY" secondItem="tgj-da-2TG" secondAttribute="centerY" id="Qi7-Fl-GOT"/>
                                                                 <constraint firstItem="Zfw-7n-PSp" firstAttribute="centerY" secondItem="tgj-da-2TG" secondAttribute="centerY" id="Tm5-Co-Idg"/>
+                                                                <constraint firstItem="Zab-2B-r2s" firstAttribute="centerY" secondItem="tgj-da-2TG" secondAttribute="centerY" id="Y2K-nS-hxj"/>
                                                                 <constraint firstItem="Zfw-7n-PSp" firstAttribute="centerX" secondItem="tgj-da-2TG" secondAttribute="centerX" id="cMu-6a-w8F"/>
                                                             </constraints>
                                                         </view>
@@ -478,6 +503,15 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="bidButton" destination="HCI-9F-GnE" id="9kt-4n-g4C"/>
+                                    <outlet property="countdownLabel" destination="Zfw-7n-PSp" id="8dJ-6x-eA0"/>
+                                    <outlet property="digitLabel" destination="0B3-rb-Fks" id="QEj-KK-skq"/>
+                                    <outlet property="hundredLabel" destination="uYP-qT-2ca" id="1Dc-DV-zpN"/>
+                                    <outlet property="previewImageView" destination="FdA-4z-yTa" id="0BD-Rc-o2S"/>
+                                    <outlet property="runningIndicator" destination="vsX-eB-LJM" id="5bp-Es-td6"/>
+                                    <outlet property="tensLabel" destination="NpE-Kd-97a" id="k6s-4G-j87"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -531,8 +565,14 @@
         <image name="ic_lockon_nor" width="40" height="40"/>
         <image name="im_bgall" width="609" height="812"/>
         <image name="ui_timebg" width="180" height="48"/>
+        <namedColor name="default placeholder">
+            <color red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="default text">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="lock green">
+            <color red="0.49411764705882355" green="0.82745098039215681" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="lock red">
             <color red="0.86274509803921573" green="0.15686274509803921" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

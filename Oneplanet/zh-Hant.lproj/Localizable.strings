@@ -59,10 +59,12 @@
 "msg_mail_resent" = "已重新發送電子郵件";
 "msg_join_prompt" = "立即前往註冊享用更多功能";
 "msg_alien_description" = "你所選擇的外星人會出現在你的個人頁面";
+"msg_ongoing_bidding" = "Other commodities are still bidding, please wait for the bidding to end.";
 
 "msgf_accept_tos" = "註冊或登錄即表示你同意我們的%@";
 "msgf_resend_verification_email" = "你沒有收到電子郵件？%@";
 "msgf_did_copy_my_id" = "我的 Oneplanet ID [%@] 已複製。";
+"msgf_winner_notice" = "The winner must check if the %@ is filled in to ensure that the goods can be delivered.";
 
 "ph_guest_login" = "訪客進入";
 "ph_email_login" = "或使用電子郵件登入";
@@ -109,6 +111,9 @@
 "warn_character_selection" = "外星人種類及顏色確定後不可更換，確定選擇？";
 
 "warntl_character_selection" = "確定選擇？";
+
+"act_bigging" = "Bidding...";
+"act_bigging_ended" = "End of Bidding!";
 
 "pop_blue_gem_usage" = "用途：解鎖商品、投標商品。";
 "pop_green_gem_usage" = "用途：解鎖商品、高效率投標商品。";

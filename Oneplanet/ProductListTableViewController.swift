@@ -11,6 +11,9 @@ import XLPagerTabStrip
 
 class ProductListTableViewController: UITableViewController, DefaultInstanceFactory {
     
+    var sections: [Section] = [.runningBiddingIndicator, .biddingEndedIndicator, .productList, .bidList]
+
+    @IBOutlet weak var countdownDescriptionLabel: UILabel!
     @IBOutlet weak var countDownView: CountDownClockView!
     private var refreshClock: UpdateClock!
     
@@ -31,30 +34,67 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
 
     // MARK: - Table view data source
 
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        switch sections[section] {
+        case .biddingEndedIndicator, .runningBiddingIndicator:
+            return 1
+        case .productList:
+            return 10
+        case .bidList:
+            return 10
+        }
+
     }
 
-    /*
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch sections[indexPath.section] {
+        case .productList, .bidList:
+            return 66
+        case .biddingEndedIndicator, .runningBiddingIndicator:
+            return UITableView.automaticDimension
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let section = sections[indexPath.section]
+        let cell = tableView.dequeueReusableCell(withIdentifier: section.reuseID, for: indexPath)
         return cell
     }
-    */
 
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
+
+}
+
+extension ProductListTableViewController {
+    enum Section {
+        case productList
+        case bidList
+        case runningBiddingIndicator
+        case biddingEndedIndicator
+        var reuseID: String {
+            switch self {
+            case .productList: return ReuseID.productOverviewCell
+            case .bidList: return ReuseID.biddingItemCell
+            case .runningBiddingIndicator: return ReuseID.runningBiddingCell
+            case .biddingEndedIndicator: return ReuseID.biddingEndCell
+            }
+        }
+    }
+    
+    struct ReuseID {
+        static let runningBiddingCell = "runningBiddingCell"
+        static let biddingEndCell = "biddingEndCell"
+        static let biddingItemCell = "biddingItemCell"
+        static let productOverviewCell = "productOverviewCell"
+    }
 
 }
 
@@ -104,14 +144,16 @@ extension ProductOverviewCell {
 }
 
 class BiddingProductCell: UITableViewCell {
+    @IBOutlet weak var avatarContainer: UIView!
+    @IBOutlet weak var avatarView: AvatarView!
     @IBOutlet weak var previewImageView: UIImageView!
     @IBOutlet weak var countdownLabel: UILabel!
     @IBOutlet weak var runningIndicator: UIActivityIndicatorView!
     @IBOutlet weak var bidButton: UIButton!
-    
     @IBOutlet weak var hundredLabel: UILabel!
     @IBOutlet weak var tensLabel: UILabel!
     @IBOutlet weak var digitLabel: UILabel!
+    
     private let countdownTimeAttribute: [NSAttributedString.Key: Any] = [.kern: 3.5]
     var deadline = Date() {
         didSet {
@@ -166,5 +208,47 @@ class CountDownClockView: UIView {
         hourValueLabel.attributedText = NSAttributedString(string: formatter.string(for: comps.hours) ?? "00", attributes: attributes)
         minuteValueLabel.attributedText = NSAttributedString(string: formatter.string(for: comps.minutes) ?? "00", attributes: attributes)
         secondValueLabel.attributedText = NSAttributedString(string: formatter.string(for: comps.seconds) ?? "00", attributes: attributes)
+    }
+}
+
+class BiddingStateIndicationCell: UITableViewCell {
+    @IBOutlet weak var stateLabel: UILabel!
+    @IBOutlet weak var descriptionTextView: UITextView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        descriptionTextView.linkTextAttributes = [
+            .foregroundColor : ColorPalette.buttonGreen,
+            .font: UIFont.systemFont(ofSize: 12, weight: .semibold)]
+    }
+    
+    fileprivate func prepareWinnerNotice() -> NSAttributedString {
+        let text = String(format: Localized.messageFormats.winnerNotice, Localized.phrases.shippingInfo)
+        let linkRange = (text as NSString).range(of: Localized.phrases.shippingInfo)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        let attrStr = NSMutableAttributedString(string: text, attributes: [.foregroundColor : ColorPalette.defaultText, .paragraphStyle: paragraphStyle])
+        attrStr.addAttributes([.link : DeepLinks.shippingInfo], range: linkRange)
+        return attrStr
+    }
+}
+
+class RunningBiddingIndicationCell: BiddingStateIndicationCell {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        stateLabel.text = Localized.activity.bidding
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        let attrStr = NSMutableAttributedString(string: Localized.messages.ongoingBidding + "\n", attributes: [.foregroundColor : ColorPalette.defaultText, .paragraphStyle: paragraphStyle])
+        attrStr.append(prepareWinnerNotice())
+        descriptionTextView.attributedText = attrStr
+    }
+}
+
+class BiddingEndIndicationCell: BiddingStateIndicationCell {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        stateLabel.text = Localized.activity.biddingEnded
+        descriptionTextView.attributedText = prepareWinnerNotice()
     }
 }

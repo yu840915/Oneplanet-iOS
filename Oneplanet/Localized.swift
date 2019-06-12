@@ -178,6 +178,12 @@ class LocalizedPlaceholder {//pl_
 
 class LocalizedActivityMessages {//act_
     fileprivate init() {}
+    var bidding: String {
+        return NSLocalizedString("act_bigging", comment: "")
+    }
+    var biddingEnded: String {
+        return NSLocalizedString("act_bigging_ended", comment: "")
+    }
 }
 
 class LocalizedWarnings {//warn_
@@ -216,6 +222,9 @@ class LocalizedMessages {//msg_
     var alienDescription: String {
         return NSLocalizedString("msg_alien_description", comment: "")
     }
+    var ongoingBidding: String {
+        return NSLocalizedString("msg_ongoing_bidding", comment: "")
+    }
 }
 
 class LocalizedMessageFormats {//msgf_
@@ -231,6 +240,9 @@ class LocalizedMessageFormats {//msgf_
     }
     var didCopyMyId: String {
         return NSLocalizedString("msgf_did_copy_my_id", comment: "")
+    }
+    var winnerNotice: String {
+        return NSLocalizedString("msgf_winner_notice", comment: "")
     }
 }
 

@@ -59,11 +59,12 @@
 "msg_open_mail_app_prompt" = "メールはこちらをクリック";
 "msg_join_prompt" = "新規登録をしてアプリの機能を楽しめます";
 "msg_alien_description" = "選んだエリアンがマイページに表示されます";
+"msg_ongoing_bidding" = "Other commodities are still bidding, please wait for the bidding to end.";
 
 "msgf_accept_tos" = "アカウントを作成することによって、%@に同意することになります";
 "msgf_resend_verification_email" = "電子メールがみつかりませんか？%@";
 "msgf_did_copy_my_id" = "自分の Oneplanet ID [%@] をコビー";
-
+"msgf_winner_notice" = "The winner must check if the %@ is filled in to ensure that the goods can be delivered.";
 
 "ph_guest_login" = "ゲスト登録";
 "ph_email_login" = "またはメールアドレスでログイン";
@@ -110,6 +111,9 @@
 "warn_character_selection" = "エリアンの種類と色を一度選んだら変更ができません。よろしいですか？";
 
 "warntl_character_selection" = "選択しました。よろしいですか？";
+
+"act_bigging" = "Bidding...";
+"act_bigging_ended" = "End of Bidding!";
 
 "pop_blue_gem_usage" = "用途：解鎖商品、投標商品。";
 "pop_green_gem_usage" = "用途：解鎖商品、高效率投標商品。";

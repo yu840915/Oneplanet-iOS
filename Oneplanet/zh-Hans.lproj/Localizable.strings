@@ -59,10 +59,12 @@
 "msg_mail_resent" = "已重新发送电子邮件";
 "msg_join_prompt" = "立即前往注册享用更多功能";
 "msg_alien_description" = "你所選擇的外星人會出現在你的個人頁面";
+"msg_ongoing_bidding" = "Other commodities are still bidding, please wait for the bidding to end.";
 
 "msgf_accept_tos" = "注册或登录即表示你同意我们的%@";
 "msgf_resend_verification_email" = "你没有收到电子邮件？%@";
 "msgf_did_copy_my_id" = "我的 Oneplanet ID [%@] 已复制。";
+"msgf_winner_notice" = "The winner must check if the %@ is filled in to ensure that the goods can be delivered.";
 
 "ph_guest_login" = "访客进入";
 "ph_email_login" = "或通过电子邮件登录";
@@ -109,6 +111,9 @@
 "warn_character_selection" = "Can't change the group after selection, continue？";
 
 "warntl_character_selection" = "Determined choice？";
+
+"act_bigging" = "Bidding...";
+"act_bigging_ended" = "End of Bidding!";
 
 "pop_blue_gem_usage" = "用途：解鎖商品、投標商品。";
 "pop_green_gem_usage" = "用途：解鎖商品、高效率投標商品。";

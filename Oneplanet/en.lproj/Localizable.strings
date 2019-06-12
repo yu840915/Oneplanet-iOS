@@ -87,6 +87,10 @@
 "ph_privacy_and_security" = "Privacy and Security";
 "ph_not_specified" = "Not Specified";
 "ph_join_prompt" = "Join now？";
+"ph_shipping_info" = "Shipping Info";
+"ph_create_shipping_info" = "Add Shipping Info";
+"ph_edit_shipping_info" = "Edit Shipping Info";
+"ph_view_shipping_status" = "View details";
 
 "no_posts" = "No Posts Yet";
 "no_promo_popups" = "No Promotion Pop-ups Yet";

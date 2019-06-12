@@ -536,7 +536,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="black background"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="AYN-Uo-dr1">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="shippingInfoPromptCell" id="AYN-Uo-dr1" customClass="ShippingInfoPromptCell" customModule="Oneplanet" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="61"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AYN-Uo-dr1" id="uFq-0m-WpL">
@@ -559,6 +559,9 @@
                                                     <state key="normal" title="Add Address" backgroundImage="bt_smallgreen_nor">
                                                         <color key="titleColor" name="default text"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="invokeAction:" destination="AYN-Uo-dr1" eventType="touchUpInside" id="bCt-pI-zjk"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </stackView>
@@ -581,8 +584,12 @@
                                     <constraint firstAttribute="bottom" secondItem="Wig-zO-Wwh" secondAttribute="bottom" id="Q4k-Tn-7bl"/>
                                     <constraint firstItem="Wig-zO-Wwh" firstAttribute="width" secondItem="AYN-Uo-dr1" secondAttribute="width" id="zPe-UE-KrD"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="actionButton" destination="pWQ-Mg-RQS" id="mF8-eV-jHd"/>
+                                    <outlet property="titleLabel" destination="3sE-eR-Eg1" id="E52-zY-cEK"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="rwj-4u-nDC">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="shippingInfoCell" rowHeight="100" id="rwj-4u-nDC" customClass="ShippingInfoCell" customModule="Oneplanet" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="89" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rwj-4u-nDC" id="lwk-Mp-vgl">
@@ -605,6 +612,9 @@
                                                     <state key="normal" title="Edit Address" backgroundImage="bt_smallwiregray_nor">
                                                         <color key="titleColor" name="default placeholder"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="invokeAction:" destination="rwj-4u-nDC" eventType="touchUpInside" id="JMY-iK-sa7"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </stackView>
@@ -637,8 +647,13 @@
                                     <constraint firstAttribute="bottom" secondItem="HSO-Dk-Xkb" secondAttribute="bottom" id="HTB-c3-uR3"/>
                                     <constraint firstItem="HSO-Dk-Xkb" firstAttribute="centerX" secondItem="rwj-4u-nDC" secondAttribute="centerX" id="QB0-Zr-5iM"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="actionButton" destination="ZZP-ZP-wPf" id="fNc-ru-sJQ"/>
+                                    <outlet property="addressLabel" destination="XPA-IC-ODi" id="2MY-0i-YfV"/>
+                                    <outlet property="titleLabel" destination="oEI-JG-dgK" id="ucx-sp-Ncc"/>
+                                </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="A9n-ZS-IXs" customClass="BidResultCell" customModule="Oneplanet" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="biddingItemResultCell" id="A9n-ZS-IXs" customClass="BidResultCell" customModule="Oneplanet" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="189" width="414" height="61"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A9n-ZS-IXs" id="Zif-HZ-oP8">
@@ -708,6 +723,9 @@
                                                                     <state key="normal" title="Check shipping">
                                                                         <color key="titleColor" name="button green"/>
                                                                     </state>
+                                                                    <connections>
+                                                                        <action selector="invokeDetailAction:" destination="A9n-ZS-IXs" eventType="touchUpInside" id="Znv-Va-cSG"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                         </stackView>

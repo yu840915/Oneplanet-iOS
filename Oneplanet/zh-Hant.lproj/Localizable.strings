@@ -87,6 +87,10 @@
 "ph_privacy_and_security" = "隱私和安全";
 "ph_not_specified" = "不顯示";
 "ph_join_prompt" = "前往註冊";
+"ph_shipping_info" = "收件資訊";
+"ph_create_shipping_info" = "填寫收件資訊";
+"ph_edit_shipping_info" = "變更收件資訊";
+"ph_view_shipping_status" = "查看出貨狀況";
 
 "no_posts" = "還沒有貼文";
 "no_promo_popups" = "No Promotion Pop-ups Yet";

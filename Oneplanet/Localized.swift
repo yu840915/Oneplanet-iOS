@@ -305,6 +305,18 @@ class LocalizedPhrase { //ph_
     var joinPrompt: String {
         return NSLocalizedString("ph_join_prompt", comment: "")
     }
+    var shippingInfo: String {
+        return NSLocalizedString("ph_shipping_info", comment: "")
+    }
+    var createShippingInfo: String {
+        return NSLocalizedString("ph_create_shipping_info", comment: "")
+    }
+    var editShippingInfo: String {
+        return NSLocalizedString("ph_edit_shipping_info", comment: "")
+    }
+    var viewShippingStatus: String {
+        return NSLocalizedString("ph_view_shipping_status", comment: "")
+    }
 }
 
 class EmptyMessages {//no_

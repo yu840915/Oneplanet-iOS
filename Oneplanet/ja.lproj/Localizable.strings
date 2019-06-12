@@ -88,6 +88,10 @@
 "ph_privacy_and_security" = "プライバシーとセキュリティ";
 "ph_not_specified" = "表示しません";
 "ph_join_prompt" = "新規登録はこちら";
+"ph_shipping_info" = "Shipping Info";
+"ph_create_shipping_info" = "Add Shipping Info";
+"ph_edit_shipping_info" = "Edit Shipping Info";
+"ph_view_shipping_status" = "View details";
 
 "no_posts" = "投稿がありません";
 "no_promo_popups" = "No Promotion Pop-ups Yet";

@@ -184,6 +184,9 @@ class LocalizedActivityMessages {//act_
     var biddingEnded: String {
         return NSLocalizedString("act_bigging_ended", comment: "")
     }
+    var countdown: String {
+        return NSLocalizedString("act_countdown", comment: "")
+    }
 }
 
 class LocalizedWarnings {//warn_
@@ -328,6 +331,12 @@ class LocalizedPhrase { //ph_
     }
     var viewShippingStatus: String {
         return NSLocalizedString("ph_view_shipping_status", comment: "")
+    }
+    var commodities: String {
+        return NSLocalizedString("ph_commodities", comment: "")
+    }
+    var biddingProcess: String {
+        return NSLocalizedString("ph_bidding_process", comment: "")
     }
 }
 

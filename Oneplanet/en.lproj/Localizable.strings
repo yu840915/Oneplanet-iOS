@@ -93,6 +93,8 @@
 "ph_create_shipping_info" = "Add Shipping Info";
 "ph_edit_shipping_info" = "Edit Shipping Info";
 "ph_view_shipping_status" = "View details";
+"ph_commodities" = "Commodities";
+"ph_bidding_process" = "Bidding process";
 
 "no_posts" = "No Posts Yet";
 "no_promo_popups" = "No Promotion Pop-ups Yet";
@@ -114,6 +116,7 @@
 
 "act_bigging" = "Bidding...";
 "act_bigging_ended" = "End of Bidding!";
+"act_countdown" = "COUNTDOWN TO BIDDING…";
 
 "pop_blue_gem_usage" = "用途：解鎖商品、投標商品。";
 "pop_green_gem_usage" = "用途：解鎖商品、高效率投標商品。";

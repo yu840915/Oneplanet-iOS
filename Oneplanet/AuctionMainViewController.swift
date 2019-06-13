@@ -13,6 +13,7 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController {
 
     @IBOutlet weak var buttonBarContainer: UIView!
     private var shouldAddBadgeViews = true
+    private var productListBadge: BadgeView!
     private var biddingProcessBadge: BadgeView!
     
     override func awakeFromNib() {
@@ -33,14 +34,21 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController {
     }
     
     private func setUpBadgeViewIfNeeded() {
-        guard biddingProcessBadge == nil else { return }
+        if biddingProcessBadge == nil {
+            biddingProcessBadge = prepareBadge(for: buttonBarView.visibleCells.first as! ButtonBarViewCell)
+        }
+        if productListBadge == nil {
+            productListBadge = prepareBadge(for: buttonBarView.visibleCells.last as! ButtonBarViewCell)
+        }
+    }
+    
+    private func prepareBadge(for cell: ButtonBarViewCell) -> BadgeView {
         let badge = BadgeView.fromDefaultNib()
-        let cell = buttonBarView.visibleCells.first as! ButtonBarViewCell
         cell.addSubview(badge)
         let label = cell.label!
         cell.addConstraint(NSLayoutConstraint(item: label, attribute: .right, relatedBy: .equal, toItem: badge, attribute: .centerX, multiplier: 1, constant: -5))
         cell.addConstraint(NSLayoutConstraint(item: label, attribute: .top, relatedBy: .equal, toItem: badge, attribute: .centerY, multiplier: 1, constant: 2))
-        biddingProcessBadge = badge
+        return badge
     }
     
     private func updateButtonBarCell(oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) {

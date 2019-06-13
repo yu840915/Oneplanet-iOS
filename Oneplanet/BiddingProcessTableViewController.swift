@@ -84,7 +84,7 @@ extension BiddingProcessTableViewController {
 
 extension BiddingProcessTableViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "Bidding Process")
+        return IndicatorInfo(title: Localized.phrases.biddingProcess)
     }
 }
 

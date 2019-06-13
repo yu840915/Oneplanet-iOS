@@ -26,10 +26,15 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         refreshClock = UpdateClock(preferredFrameRate: 15, onTick: {[weak self] in
             self?.refreshDynamicViews()
         })
+        countdownDescriptionLabel.text = Localized.activity.countdown
     }
     
     private func refreshDynamicViews() {
         countDownView.tick()
+    }
+    
+    fileprivate func showShippingInfoEditor() {
+        
     }
 
     // MARK: - Table view data source
@@ -98,9 +103,18 @@ extension ProductListTableViewController {
 
 }
 
+extension ProductListTableViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        OperationQueue.main.addOperation {
+            self.showShippingInfoEditor()
+        }
+        return false
+    }
+}
+
 extension ProductListTableViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "Commodities")
+        return IndicatorInfo(title: Localized.phrases.commodities)
     }
 }
 

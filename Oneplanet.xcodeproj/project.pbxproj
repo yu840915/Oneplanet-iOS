@@ -105,6 +105,9 @@
 		E08C3129227817680013DD0C /* AuthActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08C3128227817680013DD0C /* AuthActions.swift */; };
 		E08C312B227826850013DD0C /* EmailInputValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08C312A227826850013DD0C /* EmailInputValidatorTests.swift */; };
 		E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */; };
+		E0A4617222B234D500D26720 /* ProductListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0A4617122B234D500D26720 /* ProductListHeader.xib */; };
+		E0A4617422B234F600D26720 /* BiddingListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0A4617322B234F600D26720 /* BiddingListHeader.xib */; };
+		E0A4617622B2351100D26720 /* BiddingProcessHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0A4617522B2351100D26720 /* BiddingProcessHeader.xib */; };
 		E0B57DE122A0FA48006AEADB /* DefaultStyleConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B57DE022A0FA48006AEADB /* DefaultStyleConfiguration.swift */; };
 		E0B57DE322A0FAA3006AEADB /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B57DE222A0FAA3006AEADB /* Toast.swift */; };
 		E0B57DE722A0FE77006AEADB /* Toast.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0B57DE622A0FE77006AEADB /* Toast.xib */; };
@@ -249,6 +252,9 @@
 		E08C3128227817680013DD0C /* AuthActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthActions.swift; sourceTree = "<group>"; };
 		E08C312A227826850013DD0C /* EmailInputValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailInputValidatorTests.swift; sourceTree = "<group>"; };
 		E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryImagePickerViewController.swift; sourceTree = "<group>"; };
+		E0A4617122B234D500D26720 /* ProductListHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductListHeader.xib; sourceTree = "<group>"; };
+		E0A4617322B234F600D26720 /* BiddingListHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BiddingListHeader.xib; sourceTree = "<group>"; };
+		E0A4617522B2351100D26720 /* BiddingProcessHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BiddingProcessHeader.xib; sourceTree = "<group>"; };
 		E0B57DE022A0FA48006AEADB /* DefaultStyleConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStyleConfiguration.swift; sourceTree = "<group>"; };
 		E0B57DE222A0FAA3006AEADB /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		E0B57DE622A0FE77006AEADB /* Toast.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Toast.xib; sourceTree = "<group>"; };
@@ -360,6 +366,9 @@
 			isa = PBXGroup;
 			children = (
 				E0FF797F228D398300F61318 /* Auction.storyboard */,
+				E0A4617122B234D500D26720 /* ProductListHeader.xib */,
+				E0A4617322B234F600D26720 /* BiddingListHeader.xib */,
+				E0A4617522B2351100D26720 /* BiddingProcessHeader.xib */,
 				E032844C22ABB1F5001F02E8 /* BadgeView.xib */,
 				E032844E22ABB2FE001F02E8 /* BadgeView.swift */,
 				E032844422AB6A50001F02E8 /* AuctionMainViewController.swift */,
@@ -684,6 +693,7 @@
 				E05BB268226D5D2E00721F20 /* LaunchScreen.storyboard in Resources */,
 				E0CB5E15228F0E5F00C0C010 /* DS-DIGIB.TTF in Resources */,
 				E032844D22ABB1F5001F02E8 /* BadgeView.xib in Resources */,
+				E0A4617622B2351100D26720 /* BiddingProcessHeader.xib in Resources */,
 				E0814FAE22864B10002F1C02 /* MainUserFlow.storyboard in Resources */,
 				E0814FB322865CC2002F1C02 /* Me.storyboard in Resources */,
 				E07276F32276AA85001239C0 /* GoogleService-Info.plist in Resources */,
@@ -694,12 +704,14 @@
 				E06F5016227B4E7E0067DAE4 /* PreflightCheck.storyboard in Resources */,
 				E0190F5A226EDD1100C212D5 /* SupportingFlows.storyboard in Resources */,
 				E05BB263226D5D2A00721F20 /* Main.storyboard in Resources */,
+				E0A4617422B234F600D26720 /* BiddingListHeader.xib in Resources */,
 				E0B57DE722A0FE77006AEADB /* Toast.xib in Resources */,
 				E00611F42294FFF10032AE30 /* HotNavigationItems.xib in Resources */,
 				E06F5000227ABE1C0067DAE4 /* OpenSDK1.8.0_NoPay in Resources */,
 				E0FF7980228D398300F61318 /* Auction.storyboard in Resources */,
 				E089F70F228EB16A003E77DF /* SectionHeaderView.xib in Resources */,
 				E030E4D2228AB0B70084D383 /* IDHeaderView.xib in Resources */,
+				E0A4617222B234D500D26720 /* ProductListHeader.xib in Resources */,
 				E0FF797E228D38CE00F61318 /* Post.storyboard in Resources */,
 				E0FF7982228D3A3D00F61318 /* Notification.storyboard in Resources */,
 				E03C32A6226D866500C32FD7 /* InfoPlist.strings in Resources */,

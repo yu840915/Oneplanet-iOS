@@ -137,6 +137,9 @@ class LocalizedTitles {//tl_
     var unlocked: String {
         return NSLocalizedString("tl_unlocked", comment: "")
     }
+    var bid: String {
+        return NSLocalizedString("tl_bid", comment: "")
+    }
 }
 
 class Feature {//fx_
@@ -337,6 +340,24 @@ class LocalizedPhrase { //ph_
     }
     var biddingProcess: String {
         return NSLocalizedString("ph_bidding_process", comment: "")
+    }
+    var bidCount: String {
+        return NSLocalizedString("ph_bid_count", comment: "")
+    }
+    var countdown: String {
+        return NSLocalizedString("ph_countdown", comment: "")
+    }
+    var bidLeader: String {
+        return NSLocalizedString("ph_bid_leader", comment: "")
+    }
+    var productName: String {
+        return NSLocalizedString("ph_product_name", comment: "")
+    }
+    var bidOutcome: String {
+        return NSLocalizedString("ph_bid_outcome", comment: "")
+    }
+    var bidProduct: String {
+        return NSLocalizedString("ph_bid_product", comment: "")
     }
 }
 

@@ -45,11 +45,7 @@ class LibraryImagePickerViewController: UIViewController, DefaultInstanceFactory
     private func updateHeader() {
         let title = Localized.titles.allPhotos
         let attrTitle = NSMutableAttributedString(string: title + " ", attributes: [.foregroundColor : UIColor.white, .font: UIFont.systemFont(ofSize: 17, weight: .semibold)])
-//        let arrow = NSTextAttachment()
-//        let img = #imageLiteral(resourceName: "ic_filterdown_nor")
-//        arrow.image = img
-//        arrow.bounds = CGRect(origin: CGPoint(x: 0, y: 2), size: CGSize(width: img.size.width, height: img.size.height))
-//        attrTitle.append(NSAttributedString(attachment: arrow))
+//        attrTitle.append(NSAttributedString(attachment: TextAttachmentFactory.shared.arrowDown()))
         headerButton.setAttributedTitle(attrTitle, for: .normal)
         headerButton.isUserInteractionEnabled = false
     }

@@ -108,6 +108,9 @@
 		E0A4617222B234D500D26720 /* ProductListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0A4617122B234D500D26720 /* ProductListHeader.xib */; };
 		E0A4617422B234F600D26720 /* BiddingListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0A4617322B234F600D26720 /* BiddingListHeader.xib */; };
 		E0A4617622B2351100D26720 /* BiddingProcessHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0A4617522B2351100D26720 /* BiddingProcessHeader.xib */; };
+		E0A4617822B28B3000D26720 /* ProductListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A4617722B28B2F00D26720 /* ProductListHeader.swift */; };
+		E0A4617A22B2984A00D26720 /* BiddingListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A4617922B2984A00D26720 /* BiddingListHeader.swift */; };
+		E0A4617C22B2A9D300D26720 /* BiddingProcessHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A4617B22B2A9D300D26720 /* BiddingProcessHeader.swift */; };
 		E0B57DE122A0FA48006AEADB /* DefaultStyleConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B57DE022A0FA48006AEADB /* DefaultStyleConfiguration.swift */; };
 		E0B57DE322A0FAA3006AEADB /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B57DE222A0FAA3006AEADB /* Toast.swift */; };
 		E0B57DE722A0FE77006AEADB /* Toast.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0B57DE622A0FE77006AEADB /* Toast.xib */; };
@@ -255,6 +258,9 @@
 		E0A4617122B234D500D26720 /* ProductListHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductListHeader.xib; sourceTree = "<group>"; };
 		E0A4617322B234F600D26720 /* BiddingListHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BiddingListHeader.xib; sourceTree = "<group>"; };
 		E0A4617522B2351100D26720 /* BiddingProcessHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BiddingProcessHeader.xib; sourceTree = "<group>"; };
+		E0A4617722B28B2F00D26720 /* ProductListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListHeader.swift; sourceTree = "<group>"; };
+		E0A4617922B2984A00D26720 /* BiddingListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiddingListHeader.swift; sourceTree = "<group>"; };
+		E0A4617B22B2A9D300D26720 /* BiddingProcessHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiddingProcessHeader.swift; sourceTree = "<group>"; };
 		E0B57DE022A0FA48006AEADB /* DefaultStyleConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStyleConfiguration.swift; sourceTree = "<group>"; };
 		E0B57DE222A0FAA3006AEADB /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		E0B57DE622A0FE77006AEADB /* Toast.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Toast.xib; sourceTree = "<group>"; };
@@ -367,8 +373,11 @@
 			children = (
 				E0FF797F228D398300F61318 /* Auction.storyboard */,
 				E0A4617122B234D500D26720 /* ProductListHeader.xib */,
+				E0A4617722B28B2F00D26720 /* ProductListHeader.swift */,
 				E0A4617322B234F600D26720 /* BiddingListHeader.xib */,
+				E0A4617922B2984A00D26720 /* BiddingListHeader.swift */,
 				E0A4617522B2351100D26720 /* BiddingProcessHeader.xib */,
+				E0A4617B22B2A9D300D26720 /* BiddingProcessHeader.swift */,
 				E032844C22ABB1F5001F02E8 /* BadgeView.xib */,
 				E032844E22ABB2FE001F02E8 /* BadgeView.swift */,
 				E032844422AB6A50001F02E8 /* AuctionMainViewController.swift */,
@@ -872,6 +881,7 @@
 				E06F5011227B34880067DAE4 /* ProfileDraft.swift in Sources */,
 				E030E4D4228AB1ED0084D383 /* IDHeaderView.swift in Sources */,
 				E0837EF5228022C400B13BAF /* TwitterLogIn.swift in Sources */,
+				E0A4617A22B2984A00D26720 /* BiddingListHeader.swift in Sources */,
 				E07276FD2277424E001239C0 /* URLRouter.swift in Sources */,
 				E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */,
 				E081590D22A63616007C9776 /* BlueGemPopUpViewController.swift in Sources */,
@@ -908,12 +918,14 @@
 				E00611F22294F5680032AE30 /* HotCollectionViewController.swift in Sources */,
 				E03C32B0226D8E8F00C32FD7 /* NavigationBarStyle.swift in Sources */,
 				E030E4D7228BC3E90084D383 /* User.swift in Sources */,
+				E0A4617822B28B3000D26720 /* ProductListHeader.swift in Sources */,
 				E0190F4F226DD06B00C212D5 /* Preferences.swift in Sources */,
 				E0814FB722893FB0002F1C02 /* ProfileCollectionViewController.swift in Sources */,
 				E0837EF722816B0D00B13BAF /* ImageAttachmentUploadFlowOperation.swift in Sources */,
 				E02842B1229A32C2007212D7 /* ColorPickerCollectionViewController.swift in Sources */,
 				E06589CA2270C1A500C9E4E6 /* UpdateClock.swift in Sources */,
 				E0814FB122864F79002F1C02 /* UserFlowMainViewController.swift in Sources */,
+				E0A4617C22B2A9D300D26720 /* BiddingProcessHeader.swift in Sources */,
 				E07276E1227307F5001239C0 /* LogInViewController.swift in Sources */,
 				E0D7DCDD229CE82300B40D76 /* PromoPopUpViewController.swift in Sources */,
 				E05BB25E226D5D2A00721F20 /* AppDelegate.swift in Sources */,

@@ -16,3 +16,16 @@ class BarButtonItemFactory {
         return UIBarButtonItem(title: nil, style: .plain, target: nil, action: nil)
     }
 }
+
+class TextAttachmentFactory {
+    private init(){}
+    static let shared = TextAttachmentFactory()
+    
+    func arrowDown() -> NSTextAttachment {
+        let arrow = NSTextAttachment()
+        let img = #imageLiteral(resourceName: "ic_filterdown_nor")
+        arrow.image = img
+        arrow.bounds = CGRect(origin: CGPoint(x: 0, y: 2), size: CGSize(width: img.size.width, height: img.size.height))
+        return arrow
+    }
+}

@@ -18,6 +18,7 @@ class BiddingProcessTableViewController: UITableViewController, DefaultInstanceF
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.register(BiddingProcessHeader.defaultNib(), forHeaderFooterViewReuseIdentifier: ReuseID.biddingItemHeader)
     }
 
     // MARK: - Table view data source
@@ -50,6 +51,44 @@ class BiddingProcessTableViewController: UITableViewController, DefaultInstanceF
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch sections[section] {
+        case .shippingInfo, .shippingInfoPrompt:
+            return 0
+        case .items:
+            return BiddingProcessHeader.height()
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch sections[section] {
+        case .shippingInfo, .shippingInfoPrompt:
+            return nil
+        case .items:
+            return tableView.dequeueReusableHeaderFooterView(withIdentifier: ReuseID.biddingItemHeader)
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        switch sections[section] {
+        case .shippingInfo, .shippingInfoPrompt:
+            return 10
+        case .items:
+            return 0
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        switch sections[section] {
+        case .shippingInfo, .shippingInfoPrompt:
+            let view = UIView()
+            return view
+        case .items:
+            return nil
+        }
+
+    }
+
     private func showShippingInfoEditor() {
         
     }
@@ -79,6 +118,7 @@ extension BiddingProcessTableViewController {
         static let shippingInfoPromptCell = "shippingInfoPromptCell"
         static let shippingInfoCell = "shippingInfoCell"
         static let biddingItemResultCell = "biddingItemResultCell"
+        static let biddingItemHeader = "biddingItemHeader"
     }
 }
 

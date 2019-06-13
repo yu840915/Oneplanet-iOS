@@ -49,6 +49,7 @@
 "tl_delete" = "削除";
 "tl_unlock" = "Unlock";
 "tl_unlocked" = "Unlocked";
+"tl_bid" = "Bid";
 
 "pl_email" = "メールアドレス";
 "pl_nickname" = "ニックネーム";
@@ -95,6 +96,12 @@
 "ph_view_shipping_status" = "View details";
 "ph_commodities" = "Commodities";
 "ph_bidding_process" = "Bidding process";
+"ph_bid_count" = "Your bids";
+"ph_countdown" = "Countdown";
+"ph_bid_leader" = "Leading";
+"ph_product_name" = "Product name";
+"ph_bid_outcome" = "Outcome";
+"ph_bid_product" = "Commodity";
 
 "no_posts" = "投稿がありません";
 "no_promo_popups" = "No Promotion Pop-ups Yet";

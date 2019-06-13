@@ -23,6 +23,8 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.register(ProductListHeader.defaultNib(), forHeaderFooterViewReuseIdentifier: ReuseID.productListHeader)
+        tableView.register(BiddingListHeader.defaultNib(), forHeaderFooterViewReuseIdentifier: ReuseID.biddingListHeader)
         refreshClock = UpdateClock(preferredFrameRate: 15, onTick: {[weak self] in
             self?.refreshDynamicViews()
         })
@@ -33,10 +35,6 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         countDownView.tick()
     }
     
-    fileprivate func showShippingInfoEditor() {
-        
-    }
-
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -52,9 +50,8 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         case .bidList:
             return 10
         }
-
     }
-
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch sections[indexPath.section] {
         case .productList, .bidList:
@@ -70,6 +67,33 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        switch sections[section] {
+        case .biddingEndedIndicator, .runningBiddingIndicator:
+            return 0
+        case .productList:
+            return ProductListHeader.height()
+        case .bidList:
+            return BiddingListHeader.height()
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        switch sections[section] {
+        case .biddingEndedIndicator, .runningBiddingIndicator:
+            return nil
+        case .productList:
+            let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReuseID.productListHeader) as! ProductListHeader
+            view.title = "All"
+            view.showFilterAction = {[weak self] in
+                self?.showFilterPicker()
+            }
+            return view
+        case .bidList:
+            return tableView.dequeueReusableHeaderFooterView(withIdentifier: ReuseID.biddingListHeader)
+        }
+
+    }
 
     // MARK: - Navigation
 
@@ -78,6 +102,15 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
 
 }
 
+fileprivate extension ProductListTableViewController {
+    func showShippingInfoEditor() {
+        
+    }
+    
+    func showFilterPicker() {
+        
+    }
+}
 extension ProductListTableViewController {
     enum Section {
         case productList
@@ -99,6 +132,8 @@ extension ProductListTableViewController {
         static let biddingEndCell = "biddingEndCell"
         static let biddingItemCell = "biddingItemCell"
         static let productOverviewCell = "productOverviewCell"
+        static let productListHeader = "productListHeader"
+        static let biddingListHeader = "biddingListHeader"
     }
 
 }

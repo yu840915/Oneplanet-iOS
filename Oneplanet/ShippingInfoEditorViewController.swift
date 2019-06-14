@@ -140,3 +140,102 @@ class ShippingInfoInputFieldDelegate: NSObject, UITextFieldDelegate {
         }
     }
 }
+
+class ShippingInfoDraft {
+    let updateObservers = MulticastCallbackNode<()->()>()
+    var email: String = "" {
+        didSet {
+            if oldValue != email {
+                notifyChange()
+            }
+        }
+    }
+    var firstName: String = "" {
+        didSet {
+            if oldValue != firstName {
+                notifyChange()
+            }
+        }
+    }
+    var lastName: String = "" {
+        didSet {
+            if oldValue != lastName {
+                notifyChange()
+            }
+        }
+    }
+    var address1: String = "" {
+        didSet {
+            if oldValue != address1 {
+                notifyChange()
+            }
+        }
+    }
+    var address2: String = "" {
+        didSet {
+            if oldValue != address2 {
+                notifyChange()
+            }
+        }
+    }
+    var city: String = "" {
+        didSet {
+            if oldValue != city {
+                notifyChange()
+            }
+        }
+    }
+    var region: String = "" {
+        didSet {
+            if oldValue != region {
+                notifyChange()
+            }
+        }
+    }
+    var postalCode: String = "" {
+        didSet {
+            if oldValue != postalCode {
+                notifyChange()
+            }
+        }
+    }
+    var country: String = "" {
+        didSet {
+            if oldValue != country {
+                notifyChange()
+            }
+        }
+    }
+    var phoneNumber: String = "" {
+        didSet {
+            if oldValue != phoneNumber {
+                notifyChange()
+            }
+        }
+    }
+    
+    private func notifyChange() {
+        updateObservers.invokeEach{$0()}
+    }
+
+}
+
+extension ShippingInfoDraft {
+    enum InputType {
+        case email, firstName, lastName, address1, address2, city, region, postalCode, country, phoneNumber
+    }
+}
+
+class ShippingInfoInputError: NSError {
+    let source: ShippingInfoDraft.InputType
+    let inputError: InputError
+    init(source: ShippingInfoDraft.InputType, inputError: InputError) {
+        self.source = source
+        self.inputError = inputError
+        super.init(domain: inputError.domain, code: inputError.code, userInfo: inputError.userInfo)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}

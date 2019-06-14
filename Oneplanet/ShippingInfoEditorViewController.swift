@@ -22,6 +22,7 @@ class ShippingInfoEditorViewController: UIViewController {
     @IBOutlet weak var postalCodeFieldBlock: InputFieldBlockView!
     @IBOutlet weak var countryFieldBlock: InputFieldBlockView!
     @IBOutlet weak var phonenumberFieldBlock: InputFieldBlockView!
+    @IBOutlet weak var submitButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +31,25 @@ class ShippingInfoEditorViewController: UIViewController {
     
     private func localizeTitles() {
         title = Localized.phrases.shippingInfo
+        submitButton.setTitle(Localized.titles.ok, for: .normal)
+        emailFieldBlock.title = Localized.shippingInfoTerms.email
+        firstNameFieldBlock.title = Localized.shippingInfoTerms.firstName
+        lastNameFieldBlock.title = Localized.shippingInfoTerms.lastName
+        address1FieldBlock.title = Localized.shippingInfoTerms.address1
+        address2FieldBlock.title = Localized.shippingInfoTerms.address2
+        cityFieldBlock.title = Localized.shippingInfoTerms.city
+        regionFieldBlock.title = Localized.shippingInfoTerms.region
+        postalCodeFieldBlock.title = Localized.shippingInfoTerms.postalCode
+        countryFieldBlock.title = Localized.shippingInfoTerms.country
+        phonenumberFieldBlock.title = Localized.shippingInfoTerms.phoneNumber
+        [firstNameFieldBlock, firstNameFieldBlock, lastNameFieldBlock, address1FieldBlock, cityFieldBlock, regionFieldBlock, postalCodeFieldBlock, countryFieldBlock].forEach {
+            $0?.fieldView.textField.attributedPlaceholder = NSAttributedString(string: Localized.titles.requiredInput, attributes: [.foregroundColor : ColorPalette.defaultPlaceholder])
+        }
     }
 
+    @IBAction func checkAndSubmitForm(_ sender: UIButton) {
+    }
+    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -44,10 +62,25 @@ class InputFieldBlockView: UIStackView {
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var errorView: UIView!
     @IBOutlet weak var fieldView: InputFieldView!
+    
+    var inputDidChange: ((UITextField)->())?
     var inputFieldDelegate: UITextFieldDelegate? {
         didSet {
             fieldView.textField.delegate = inputFieldDelegate
         }
+    }
+    var title: String? {
+        set {
+            titleLabel.text = newValue
+        }
+        get {
+            return titleLabel.text
+        }
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        fieldView.textField.addTarget(self, action: #selector(notifyInputChange(_:)), for: .editingChanged)
     }
     
     func showInputError(with message: String) {
@@ -60,5 +93,10 @@ class InputFieldBlockView: UIStackView {
         fieldView.isRejecting = false
         errorLabel.text = nil
         errorView.isHidden = true
+    }
+    
+    @IBAction func notifyInputChange(_ sender: UITextField) {
+        guard sender.markedTextRange == nil else { return }
+        inputDidChange?(sender)
     }
 }

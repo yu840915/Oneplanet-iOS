@@ -50,6 +50,7 @@
 "tl_unlock" = "Unlock";
 "tl_unlocked" = "Unlocked";
 "tl_bid" = "Bid";
+"tl_required_input" = "Required";
 
 "pl_email" = "电子邮件地址";
 "pl_nickname" = "昵称";
@@ -144,3 +145,13 @@
 
 "pop_purple_gem_bullet1" = "紅金寶是 %@ 的升級版，有助於競標時的效率，並減少信用卡或電信商的支付問題。";
 "pop_purple_gem_bullet2" = "使用 紅金寶 可解鎖商品或投標一次。";
+
+"ship_first_name" = "First Name";
+"ship_last_name" = "Last Name";
+"ship_address1" = "Address line 1";
+"ship_address2" = "Address line 2";
+"ship_city" = "City";
+"ship_region" = "Region";
+"ship_postal_code" = "Postal Code";
+"ship_country" = "Country";
+"ship_phoneNumber" = "Phone number (For delivery purpose only)";

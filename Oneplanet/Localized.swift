@@ -25,6 +25,7 @@ class Localized {
     static let placeholder = LocalizedPlaceholder()
     static let emptyMessages = EmptyMessages()
     static let gemStonePopUp = GemStonePopUp()
+    static let shippingInfoTerms = LocalizedShippingInfoTerms()
 }
 
 class LocalizedTitles {//tl_
@@ -450,5 +451,38 @@ class GemStonePopUp { //pop
     }
     var purpleGemBullet2: String {
         return NSLocalizedString("pop_purple_gem_bullet2", comment: "")
+    }
+}
+
+class LocalizedShippingInfoTerms {//ship_
+    var email: String {
+        return Localized.titles.email
+    }
+    var firstName: String {
+        return NSLocalizedString("ship_first_name", comment: "")
+    }
+    var lastName: String {
+        return NSLocalizedString("ship_last_name", comment: "")
+    }
+    var address1: String {
+        return NSLocalizedString("ship_address1", comment: "")
+    }
+    var address2: String {
+        return NSLocalizedString("ship_address2", comment: "")
+    }
+    var city: String {
+        return NSLocalizedString("ship_city", comment: "")
+    }
+    var region: String {
+        return NSLocalizedString("ship_region", comment: "")
+    }
+    var postalCode: String {
+        return NSLocalizedString("ship_postal_code", comment: "")
+    }
+    var country: String {
+        return NSLocalizedString("ship_country", comment: "")
+    }
+    var phoneNumber: String {
+        return NSLocalizedString("ship_phoneNumber", comment: "")
     }
 }

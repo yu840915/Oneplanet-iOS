@@ -123,7 +123,7 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
     
     private func localizeTitles() {
         emailLoginLabel.text = Localized.phrases.emailLogin
-        emailFieldView.textField.attributedPlaceholder = NSAttributedString(string: Localized.placeholder.email, attributes: [NSAttributedString.Key.foregroundColor : ColorPalette.defaultPlaceholder])
+        emailFieldView.textField.attributedPlaceholder = NSAttributedString(string: Localized.placeholder.email, attributes: [.foregroundColor : ColorPalette.defaultPlaceholder])
         nextButton.setTitle(Localized.titles.logIn, for: .normal)
         guestLoginButton.setTitle(Localized.phrases.geustLogin, for: .normal)
     }

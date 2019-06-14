@@ -81,7 +81,7 @@ class CreateProfileViewController: UIViewController, UserSessionDepending {
     }
     
     private func localizeTitles() {
-        nameFieldView.textField.attributedPlaceholder = NSAttributedString(string: Localized.placeholder.nickname, attributes: [NSAttributedString.Key.foregroundColor : ColorPalette.defaultPlaceholder])
+        nameFieldView.textField.attributedPlaceholder = NSAttributedString(string: Localized.placeholder.nickname, attributes: [.foregroundColor : ColorPalette.defaultPlaceholder])
         greetingLabel.text = Localized.phrases.newUserGreeting
         addAvatarButton.setTitle(Localized.phrases.addAvatar, for: .normal)
         addAvatarPromptLabel.text = Localized.messages.addAvatarPrompt

@@ -1768,6 +1768,9 @@ The winner must check if the Receipt information is filled in to ensure that the
                                                         <state key="normal" title="OK" backgroundImage="bt_biggreen_nor">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="checkAndSubmitForm:" destination="6es-4k-H2x" eventType="touchUpInside" id="BzR-fA-Qvi"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -1812,6 +1815,7 @@ The winner must check if the Receipt information is filled in to ensure that the
                         <outlet property="phonenumberFieldBlock" destination="cEo-U0-Yga" id="1Xi-zm-d1u"/>
                         <outlet property="postalCodeFieldBlock" destination="s2z-P6-Yzu" id="tTn-1C-xpI"/>
                         <outlet property="regionFieldBlock" destination="Yi1-Tw-sEV" id="yDG-SS-rt8"/>
+                        <outlet property="submitButton" destination="T35-mZ-F9n" id="Wma-8O-ajR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Drw-a3-wPe" userLabel="First Responder" sceneMemberID="firstResponder"/>

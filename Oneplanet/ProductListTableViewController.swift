@@ -187,8 +187,8 @@ extension ProductOverviewCell {
             self.title = title
             self.color = color
         }
-        static let forLocked = LockAppearance(title: Localized.titles.unlock, color: ColorPalette.lockRed)
-        static let forUnlocked = LockAppearance(title: Localized.titles.unlocked, color: ColorPalette.lockGreen)
+        static let forLocked = LockAppearance(title: Localized.titles.unlock, color: ColorPalette.bidRed)
+        static let forUnlocked = LockAppearance(title: Localized.titles.unlocked, color: ColorPalette.bidGreen)
     }
 }
 
@@ -222,7 +222,7 @@ class BiddingProductCell: UITableViewCell {
         let min = formatter.string(for: comps.minutes) ?? "00"
         let sec = formatter.string(for: comps.seconds) ?? "00"
         var attr = countdownTimeAttribute
-        attr[.foregroundColor] =  i < .minute ? ColorPalette.lockRed : ColorPalette.lockGreen
+        attr[.foregroundColor] =  i < .minute ? ColorPalette.bidRed : ColorPalette.bidGreen
         countdownLabel.attributedText = NSAttributedString(string: min + ":" + sec, attributes: countdownTimeAttribute)
     }
 }

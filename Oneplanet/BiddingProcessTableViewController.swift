@@ -8,6 +8,7 @@
 
 import UIKit
 import XLPagerTabStrip
+import Kingfisher
 
 class BiddingProcessTableViewController: UITableViewController, DefaultInstanceFactory {
 
@@ -48,7 +49,25 @@ class BiddingProcessTableViewController: UITableViewController, DefaultInstanceF
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = sections[indexPath.section]
         let cell = tableView.dequeueReusableCell(withIdentifier: section.reuseID, for: indexPath)
+        switch section {
+        case .shippingInfo, .shippingInfoPrompt:
+            prepareShippingInfoCell(cell as! ShippingInfoCell)
+        case .items:
+            prepareItemCell(cell as! BidOutcomeCell, at: indexPath)
+        }
         return cell
+    }
+    
+    private func prepareShippingInfoCell(_ cell: ShippingInfoCell) {
+        cell.action = {[weak self] in
+            self?.showShippingInfoEditor()
+        }
+    }
+    
+    private func prepareItemCell(_ cell: BidOutcomeCell, at indexPath: IndexPath) {
+        cell.detailAction = {[weak self] in
+            self?.showShippingStatusDetail()
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -89,15 +108,20 @@ class BiddingProcessTableViewController: UITableViewController, DefaultInstanceF
 
     }
 
-    private func showShippingInfoEditor() {
-        
-    }
 
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     }
 
+}
+
+fileprivate extension BiddingProcessTableViewController {
+    func showShippingInfoEditor() {
+    }
+    
+    func showShippingStatusDetail() {
+    }
 }
 
 extension BiddingProcessTableViewController {
@@ -128,7 +152,14 @@ extension BiddingProcessTableViewController: IndicatorInfoProvider {
     }
 }
 
-class BidResultCell: UITableViewCell {
+protocol BidOutcomeOverviewDisplayable: AnyObject {
+    var hasWon: Bool {get}
+    var productThumnail: WebImageInfo? {get}
+    var productName: String {get}
+    var localizedShippingState: String? {get}
+}
+
+class BidOutcomeCell: UITableViewCell {
     var detailAction: (()->())?
     @IBOutlet weak var outcomIndicator: UIView!
     @IBOutlet weak var previewImageView: UIImageView!
@@ -144,10 +175,25 @@ class BidResultCell: UITableViewCell {
     @IBAction func invokeDetailAction(_ sender: Any) {
         detailAction?()
     }
+    
+    func updateViews(with ds: BidOutcomeOverviewDisplayable) {
+        previewImageView.kf.setImage(with: ds.productThumnail?.url)
+        titleLabel.text = ds.productName
+        outcomIndicator.backgroundColor = ds.hasWon ? ColorPalette.bidGreen : ColorPalette.bidRed
+        if let state = ds.localizedShippingState {
+            stateLabel.text = state
+        } else {
+            stateLabel.text = ds.hasWon ? "Miss" : "Preparing"
+        }
+    }
 }
 
-class ShippingInfoPromptCell: UITableViewCell {
+
+class ShippingInfoCell: UITableViewCell {
     var action: (()->())?
+}
+
+class EmptyShippingInfoCell: ShippingInfoCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var actionButton: UIButton!
     
@@ -162,8 +208,7 @@ class ShippingInfoPromptCell: UITableViewCell {
     }
 }
 
-class ShippingInfoCell: UITableViewCell {
-    var action: (()->())?
+class ConfiguredShippingInfoCell: ShippingInfoCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var addressLabel: UILabel!

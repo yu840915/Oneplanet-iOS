@@ -7,11 +7,11 @@
 //
 
 import UIKit
+import ModelBlocks
 
 class ShippingInfoEditorViewController: UIViewController {
 
     @IBOutlet weak var countryCodeField: UITextField!
-    
     @IBOutlet weak var emailFieldBlock: InputFieldBlockView!
     @IBOutlet weak var firstNameFieldBlock: InputFieldBlockView!
     @IBOutlet weak var lastNameFieldBlock: InputFieldBlockView!
@@ -98,5 +98,45 @@ class InputFieldBlockView: UIStackView {
     @IBAction func notifyInputChange(_ sender: UITextField) {
         guard sender.markedTextRange == nil else { return }
         inputDidChange?(sender)
+    }
+}
+
+class ShippingInfoInputFieldDelegate: NSObject, UITextFieldDelegate {
+    var nextInputBlock: InputFieldBlockView?
+    var tapToEndEditingRequestTracker: ReferenceTracker?
+    var didEndEditing: ((UITextField)->())?
+    private var tapToEndEditingRequest: Any?
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        tapToEndEditingRequest = tapToEndEditingRequestTracker?.add()
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        tapToEndEditingRequest = nil
+        didEndEditing?(textField)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let next = nextInputBlock {
+            next.fieldView.textField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        return false
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let result = ((textField.text ?? "") as NSString).replacingCharacters(in: range, with: string)
+        if result.isEmpty {
+            return true
+        }
+        do {
+            if result.isEmpty {
+                return true
+            }
+            return true
+        } catch _  {
+            return false
+        }
     }
 }

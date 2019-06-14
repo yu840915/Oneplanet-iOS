@@ -112,7 +112,7 @@
         <scene sceneID="cEu-ET-sXM">
             <objects>
                 <tableViewController storyboardIdentifier="ProductListTableViewController" id="GKE-yx-ygO" customClass="ProductListTableViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="66" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="uDC-7I-sRj">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="66" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" id="uDC-7I-sRj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -245,13 +245,13 @@
                             </constraints>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="8jm-9f-xuW">
-                            <rect key="frame" x="0.0" y="536" width="414" height="1"/>
+                            <rect key="frame" x="0.0" y="564.5" width="414" height="1"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="productOverviewCell" id="Pvf-Xe-VIh" customClass="ProductOverviewCell" customModule="Oneplanet" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="98" width="414" height="66"/>
+                                <rect key="frame" x="0.0" y="125.5" width="414" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Pvf-Xe-VIh" id="Vrd-5h-xiF">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="66"/>
@@ -345,7 +345,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="biddingItemCell" id="igu-hV-zLQ" customClass="BiddingProductCell" customModule="Oneplanet" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="164" width="414" height="66"/>
+                                <rect key="frame" x="0.0" y="191.5" width="414" height="66"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="igu-hV-zLQ" id="kgZ-Vw-77D">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="66"/>
@@ -547,10 +547,18 @@
                                                         <constraint firstItem="FdA-4z-yTa" firstAttribute="height" secondItem="F28-7I-9LS" secondAttribute="height" id="aSr-eL-nss"/>
                                                     </constraints>
                                                 </stackView>
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y8G-GU-5Ef" userLabel="Cover View">
+                                                    <rect key="frame" x="0.0" y="0.0" width="394" height="60"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstItem="y8G-GU-5Ef" firstAttribute="width" secondItem="l7q-OV-9t5" secondAttribute="width" id="2YC-fb-iAt"/>
+                                                <constraint firstItem="y8G-GU-5Ef" firstAttribute="centerX" secondItem="l7q-OV-9t5" secondAttribute="centerX" id="Bf1-9B-pmL"/>
                                                 <constraint firstItem="F28-7I-9LS" firstAttribute="top" secondItem="l7q-OV-9t5" secondAttribute="top" constant="2" id="XmV-wV-ZZL"/>
+                                                <constraint firstItem="y8G-GU-5Ef" firstAttribute="height" secondItem="l7q-OV-9t5" secondAttribute="height" id="eTS-hl-0rS"/>
+                                                <constraint firstItem="y8G-GU-5Ef" firstAttribute="centerY" secondItem="l7q-OV-9t5" secondAttribute="centerY" id="fZx-UK-fcL"/>
                                                 <constraint firstItem="F28-7I-9LS" firstAttribute="centerY" secondItem="l7q-OV-9t5" secondAttribute="centerY" id="hWs-zt-lR5"/>
                                                 <constraint firstItem="F28-7I-9LS" firstAttribute="centerX" secondItem="l7q-OV-9t5" secondAttribute="centerX" id="oq3-RD-gPz"/>
                                                 <constraint firstItem="F28-7I-9LS" firstAttribute="leading" secondItem="l7q-OV-9t5" secondAttribute="leading" constant="2" id="qV8-Dt-TO8"/>
@@ -570,6 +578,7 @@
                                     <outlet property="avatarView" destination="d32-hI-8d7" id="BeZ-dd-pPI"/>
                                     <outlet property="bidButton" destination="HCI-9F-GnE" id="9kt-4n-g4C"/>
                                     <outlet property="countdownLabel" destination="Zfw-7n-PSp" id="8dJ-6x-eA0"/>
+                                    <outlet property="coverView" destination="y8G-GU-5Ef" id="Xu8-WO-1Nh"/>
                                     <outlet property="digitLabel" destination="0B3-rb-Fks" id="QEj-KK-skq"/>
                                     <outlet property="hundredLabel" destination="uYP-qT-2ca" id="1Dc-DV-zpN"/>
                                     <outlet property="previewImageView" destination="FdA-4z-yTa" id="0BD-Rc-o2S"/>
@@ -578,7 +587,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="runningBiddingCell" rowHeight="153" id="6zq-wK-xn3" customClass="RunningBiddingIndicationCell" customModule="Oneplanet" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="230" width="414" height="153"/>
+                                <rect key="frame" x="0.0" y="257.5" width="414" height="153"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6zq-wK-xn3" id="k7N-Ct-wQE">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="153"/>
@@ -631,7 +640,7 @@ The winner must check if the Receipt information is filled in to ensure that the
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="biddingEndCell" rowHeight="153" id="Rrl-FM-dAy" customClass="BiddingEndIndicationCell" customModule="Oneplanet" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="383" width="414" height="153"/>
+                                <rect key="frame" x="0.0" y="410.5" width="414" height="153"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Rrl-FM-dAy" id="xpH-Lc-0Oz">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="153"/>
@@ -702,13 +711,18 @@ The winner must check if the Receipt information is filled in to ensure that the
         <scene sceneID="BBg-d4-3jX">
             <objects>
                 <tableViewController storyboardIdentifier="BiddingLiveTableViewController" id="N0x-I6-uS2" customClass="BiddingProcessTableViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="61" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="10" id="f6q-yO-UwC">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="61" estimatedRowHeight="-1" sectionHeaderHeight="1" sectionFooterHeight="1" id="f6q-yO-UwC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="black background"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="h8I-VO-zdb">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="shippingInfoPromptCell" id="AYN-Uo-dr1" customClass="EmptyShippingInfoCell" customModule="Oneplanet" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="61"/>
+                                <rect key="frame" x="0.0" y="55.5" width="414" height="61"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AYN-Uo-dr1" id="uFq-0m-WpL">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="61"/>
@@ -761,7 +775,7 @@ The winner must check if the Receipt information is filled in to ensure that the
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="shippingInfoCell" rowHeight="100" id="rwj-4u-nDC" customClass="ConfiguredShippingInfoCell" customModule="Oneplanet" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="89" width="414" height="100"/>
+                                <rect key="frame" x="0.0" y="116.5" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rwj-4u-nDC" id="lwk-Mp-vgl">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
@@ -825,7 +839,7 @@ The winner must check if the Receipt information is filled in to ensure that the
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="biddingItemResultCell" id="A9n-ZS-IXs" customClass="BidOutcomeCell" customModule="Oneplanet" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="189" width="414" height="61"/>
+                                <rect key="frame" x="0.0" y="216.5" width="414" height="61"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A9n-ZS-IXs" id="Zif-HZ-oP8">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="61"/>

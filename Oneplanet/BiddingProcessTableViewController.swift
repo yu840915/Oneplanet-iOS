@@ -73,7 +73,7 @@ class BiddingProcessTableViewController: UITableViewController, DefaultInstanceF
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch sections[section] {
         case .shippingInfo, .shippingInfoPrompt:
-            return 0
+            return 0.1
         case .items:
             return BiddingProcessHeader.height()
         }

@@ -202,6 +202,7 @@ class BiddingProductCell: UITableViewCell {
     @IBOutlet weak var hundredLabel: UILabel!
     @IBOutlet weak var tensLabel: UILabel!
     @IBOutlet weak var digitLabel: UILabel!
+    @IBOutlet weak var coverView: UIView!
     
     private let countdownTimeAttribute: [NSAttributedString.Key: Any] = [.kern: 3.5]
     var deadline = Date() {

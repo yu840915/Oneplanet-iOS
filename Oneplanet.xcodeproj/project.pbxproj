@@ -111,6 +111,7 @@
 		E0A4617822B28B3000D26720 /* ProductListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A4617722B28B2F00D26720 /* ProductListHeader.swift */; };
 		E0A4617A22B2984A00D26720 /* BiddingListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A4617922B2984A00D26720 /* BiddingListHeader.swift */; };
 		E0A4617C22B2A9D300D26720 /* BiddingProcessHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A4617B22B2A9D300D26720 /* BiddingProcessHeader.swift */; };
+		E0A4618222B3D93700D26720 /* ShippingInfoEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A4618122B3D93700D26720 /* ShippingInfoEditorViewController.swift */; };
 		E0B57DE122A0FA48006AEADB /* DefaultStyleConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B57DE022A0FA48006AEADB /* DefaultStyleConfiguration.swift */; };
 		E0B57DE322A0FAA3006AEADB /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B57DE222A0FAA3006AEADB /* Toast.swift */; };
 		E0B57DE722A0FE77006AEADB /* Toast.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0B57DE622A0FE77006AEADB /* Toast.xib */; };
@@ -261,6 +262,7 @@
 		E0A4617722B28B2F00D26720 /* ProductListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListHeader.swift; sourceTree = "<group>"; };
 		E0A4617922B2984A00D26720 /* BiddingListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiddingListHeader.swift; sourceTree = "<group>"; };
 		E0A4617B22B2A9D300D26720 /* BiddingProcessHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiddingProcessHeader.swift; sourceTree = "<group>"; };
+		E0A4618122B3D93700D26720 /* ShippingInfoEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingInfoEditorViewController.swift; sourceTree = "<group>"; };
 		E0B57DE022A0FA48006AEADB /* DefaultStyleConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStyleConfiguration.swift; sourceTree = "<group>"; };
 		E0B57DE222A0FAA3006AEADB /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		E0B57DE622A0FE77006AEADB /* Toast.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Toast.xib; sourceTree = "<group>"; };
@@ -383,6 +385,7 @@
 				E032844422AB6A50001F02E8 /* AuctionMainViewController.swift */,
 				E0D1BBDA22ACEE9400951F19 /* TimeIntervalComponents.swift */,
 				E032844822AB7286001F02E8 /* ProductListTableViewController.swift */,
+				E0A4618122B3D93700D26720 /* ShippingInfoEditorViewController.swift */,
 				E032844A22AB7A90001F02E8 /* BiddingProcessTableViewController.swift */,
 			);
 			name = Auction;
@@ -947,6 +950,7 @@
 				E081590F22A63628007C9776 /* GreenGemPopUpViewController.swift in Sources */,
 				E032844B22AB7A90001F02E8 /* BiddingProcessTableViewController.swift in Sources */,
 				E06F4FFA22782C8C0067DAE4 /* InputValidators.swift in Sources */,
+				E0A4618222B3D93700D26720 /* ShippingInfoEditorViewController.swift in Sources */,
 				E089F711228EB18F003E77DF /* SectionHeaderView.swift in Sources */,
 				E07276EB2274B515001239C0 /* WebViewController.swift in Sources */,
 				E06589C622705B4F00C9E4E6 /* PhotoGridCollectionViewController.swift in Sources */,

@@ -140,6 +140,9 @@ class LocalizedTitles {//tl_
     var bid: String {
         return NSLocalizedString("tl_bid", comment: "")
     }
+    var requiredInput: String {
+        return NSLocalizedString("tl_required_input", comment: "")
+    }
 }
 
 class Feature {//fx_

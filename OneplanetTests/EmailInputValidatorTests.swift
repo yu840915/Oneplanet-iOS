@@ -195,4 +195,19 @@ class InputValidatorTests: XCTestCase {
         XCTAssertNoThrow(try validator.validate("Søfiå Åmy"))
         XCTAssertNoThrow(try validator.validate("Wang-a-ming"))
     }
-}
+
+    func testThrowsIfNonRomanAddress() {
+        let validator = RomanAddressValidator()
+        
+        XCTAssertThrowsError(try validator.validate("한글"))
+        XCTAssertThrowsError(try validator.validate("王小明"))
+        XCTAssertThrowsError(try validator.validate("Хангы́ль"))
+        XCTAssertThrowsError(try validator.validate("ハン"))
+        XCTAssertThrowsError(try validator.validate("@llen"))
+    }
+    
+    func testNotThrowsIfRomanAddress() {
+        let validator = RomanAddressValidator()
+        
+        XCTAssertNoThrow(try validator.validate("Rm. a, 3F.-11, No. 6-5, Aly. 12, Ln. 2, Guanghua 3rd Ln., Datun Rd., Beitou Dist., Taipei City 112, Taiwan (R.O.C.)"))
+    }}

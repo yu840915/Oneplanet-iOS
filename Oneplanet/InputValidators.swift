@@ -161,5 +161,21 @@ class RomanNameValidator: TextInputValidator {
         }
         throw InputError(localizedDescription: Localized.errors.nonDigitInput)
     }
+}
 
+class RomanAddressValidator: TextInputValidator {
+    private let predicate: NSPredicate
+    
+    override init() {
+        let regex = "[A-Za-zÀ-ÖØ-öø-ÿ0-9 \\(\\),.-]+"
+        predicate = NSPredicate(format:"SELF MATCHES %@", regex)
+        super.init()
+    }
+    
+    override func validate(_ input: String) throws {
+        if predicate.evaluate(with: input) {
+            return
+        }
+        throw InputError(localizedDescription: Localized.errors.nonDigitInput)
+    }
 }

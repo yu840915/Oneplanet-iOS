@@ -120,3 +120,46 @@ class NicknameInputValidator: TextInputValidator {
         }
     }
 }
+
+class EmptyInputValidator: TextInputValidator {
+    override func validate(_ input: String) throws {
+        if !input.isEmpty {
+            throw InputError(localizedDescription: "Non-zero input")
+        }
+    }
+}
+
+class DigitInputValidator: TextInputValidator {
+    private let predicate: NSPredicate
+    
+    override init() {
+        let regex = "[0-9]+"
+        predicate = NSPredicate(format:"SELF MATCHES %@", regex)
+        super.init()
+    }
+    
+    override func validate(_ input: String) throws {
+        if predicate.evaluate(with: input) {
+            return
+        }
+        throw InputError(localizedDescription: Localized.errors.nonDigitInput)
+    }
+}
+
+class RomanNameValidator: TextInputValidator {
+    private let predicate: NSPredicate
+    
+    override init() {
+        let regex = "[A-Za-zÀ-ÖØ-öø-ÿ ,.-]+"
+        predicate = NSPredicate(format:"SELF MATCHES %@", regex)
+        super.init()
+    }
+    
+    override func validate(_ input: String) throws {
+        if predicate.evaluate(with: input) {
+            return
+        }
+        throw InputError(localizedDescription: Localized.errors.nonDigitInput)
+    }
+
+}

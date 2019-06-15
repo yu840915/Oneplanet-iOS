@@ -111,6 +111,7 @@
 "err_no_library_access" = "启用图库访问";
 "err_invalid_email" = "请输入有效电子邮件。";
 "err_non_alphanumerics" = "Only letters and digits are allowed";
+"err_non_digit_input" = "Only digits are allowed";
 "err_account_not_exist" = "你输入的电子邮件似乎不属于某个帐号。请检查电子邮件，然后再试一次。";
 "err_invalid_nickname" = "你的昵称不符合规定。";
 

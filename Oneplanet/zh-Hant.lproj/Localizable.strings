@@ -111,6 +111,7 @@
 "err_no_library_access" = "啟用圖庫存取權限";
 "err_invalid_email" = "請輸入有效電子郵件";
 "err_non_alphanumerics" = "Only letters and digits are allowed";
+"err_non_digit_input" = "Only digits are allowed";
 "err_account_not_exist" = "你輸入的電子郵件似乎不屬於某個帳號。請檢查電子郵件，然後再試一次。";
 "err_invalid_nickname" = "你的暱稱不符合規定。";
 

@@ -398,6 +398,9 @@ class LocalizedErrors {//err_
     var nonAlphanumericalCharacter: String {
         return NSLocalizedString("err_non_alphanumerics", comment: "")
     }
+    var nonDigitInput: String {
+        return NSLocalizedString("err_non_digit_input", comment: "")
+    }
     var accountDoesnotExist: String {
         return NSLocalizedString("err_account_not_exist", comment: "")
     }

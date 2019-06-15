@@ -111,6 +111,7 @@
 "err_no_library_access" = "写真をライブラリに追加しようとしています";
 "err_invalid_email" = "有効なメールアドレスを入力してください";
 "err_non_alphanumerics" = "Only letters and digits are allowed";
+"err_non_digit_input" = "Only digits are allowed";
 "err_account_not_exist" = "有効なメールアドレスではないようです。";
 "err_invalid_nickname" = "命名規則に準拠していません";
 

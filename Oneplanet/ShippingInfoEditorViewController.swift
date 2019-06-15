@@ -213,6 +213,9 @@ class ShippingInfoDraft {
             }
         }
     }
+//    func validatorPair(for endpoint: Endpoint) -> ValidatorPair {
+//        InputValidators
+//    }
     
     private func notifyChange() {
         updateObservers.invokeEach{$0()}
@@ -221,16 +224,42 @@ class ShippingInfoDraft {
 }
 
 extension ShippingInfoDraft {
-    enum InputType {
+    class ValidatorPair {
+        let intermediate: TextInputValidator
+        let final: TextInputValidator
+        init(intermediate: TextInputValidator, final: TextInputValidator) {
+            self.intermediate = intermediate
+            self.final = final
+        }
+    }
+    
+    class InputValidatorWrapper: TextInputValidator {
+        let endpoint: Endpoint
+        let validator: TextInputValidator
+        init(validator: TextInputValidator, endpoint: Endpoint) {
+            self.endpoint = endpoint
+            self.validator = validator
+        }
+        
+        override func validate(_ input: String) throws {
+            do {
+                try validator.validate(input)
+            } catch let error as InputError {
+                throw ShippingInfoInputError(endpoint: endpoint, inputError: error)
+            }
+        }
+    }
+    
+    enum Endpoint: String {
         case email, firstName, lastName, address1, address2, city, region, postalCode, country, phoneNumber
     }
 }
 
 class ShippingInfoInputError: NSError {
-    let source: ShippingInfoDraft.InputType
+    let endpoint: ShippingInfoDraft.Endpoint
     let inputError: InputError
-    init(source: ShippingInfoDraft.InputType, inputError: InputError) {
-        self.source = source
+    init(endpoint: ShippingInfoDraft.Endpoint, inputError: InputError) {
+        self.endpoint = endpoint
         self.inputError = inputError
         super.init(domain: inputError.domain, code: inputError.code, userInfo: inputError.userInfo)
     }

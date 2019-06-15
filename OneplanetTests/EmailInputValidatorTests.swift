@@ -140,4 +140,59 @@ class InputValidatorTests: XCTestCase {
         XCTAssertNoThrow(try validator.validate("Хангы́ль чосонгы́ль "))
         XCTAssertNoThrow(try validator.validate("abc中文"))
     }
+    
+    func testThrowsIfNonEmpty() {
+        let validator = EmptyInputValidator()
+
+        XCTAssertThrowsError(try validator.validate(" "))
+        XCTAssertThrowsError(try validator.validate("1"))
+        XCTAssertThrowsError(try validator.validate("a"))
+        XCTAssertThrowsError(try validator.validate("\t"))
+    }
+
+    func testNotThrowsIfEmpty() {
+        let validator = EmptyInputValidator()
+        
+        XCTAssertNoThrow(try validator.validate(""))
+    }
+    
+    func testThrowsIfHasNondigit() {
+        let validator = DigitInputValidator()
+        
+        XCTAssertThrowsError(try validator.validate(" "))
+        XCTAssertThrowsError(try validator.validate("1a"))
+        XCTAssertThrowsError(try validator.validate("a"))
+        XCTAssertThrowsError(try validator.validate("\t1"))
+        XCTAssertThrowsError(try validator.validate("1 2 3"))
+    }
+
+    func testNotThrowsIfDigit() {
+        let validator = DigitInputValidator()
+        
+        XCTAssertNoThrow(try validator.validate("1234567890"))
+    }
+    
+    func testThrowsIfNonRomanName() {
+        let validator = RomanNameValidator()
+        
+        XCTAssertThrowsError(try validator.validate("한글"))
+        XCTAssertThrowsError(try validator.validate("王小明"))
+        XCTAssertThrowsError(try validator.validate("Хангы́ль"))
+        XCTAssertThrowsError(try validator.validate("ハン"))
+        XCTAssertThrowsError(try validator.validate("@llen"))
+        XCTAssertThrowsError(try validator.validate("123"))
+    }
+    
+    func testNotThrowsIfRomanName() {
+        let validator = RomanNameValidator()
+        
+        XCTAssertNoThrow(try validator.validate("Lee"))
+        XCTAssertNoThrow(try validator.validate("Lee "))
+        XCTAssertNoThrow(try validator.validate("Peter Alex"))
+        XCTAssertNoThrow(try validator.validate("Jr. Peter"))
+        XCTAssertNoThrow(try validator.validate("Wang, Peter"))
+        XCTAssertNoThrow(try validator.validate("Señora Lisa"))
+        XCTAssertNoThrow(try validator.validate("Søfiå Åmy"))
+        XCTAssertNoThrow(try validator.validate("Wang-a-ming"))
+    }
 }

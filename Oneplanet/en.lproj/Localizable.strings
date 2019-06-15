@@ -111,6 +111,7 @@
 "err_no_library_access" = "Enable Library Access";
 "err_invalid_email" = "Please enter a valid email";
 "err_non_alphanumerics" = "Only letters and digits are allowed";
+"err_non_digit_input" = "Only digits are allowed";
 "err_account_not_exist" = "The email you entered does not appear to belong to an account.\n Please check your email and try again";
 "err_invalid_nickname" = "Your nickname is in the wrong format";
 

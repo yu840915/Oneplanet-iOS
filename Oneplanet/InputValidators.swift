@@ -11,8 +11,12 @@ import ModelBlocks
 
 class InputValidators {
     static let email = EmailInputValidator()
+    static let emailCharacters = EmailCharacterValidator()
     static let alphanumerics = AlphanumericInputValidator()
+    static let digits = DigitInputValidator()
+    static let romanName = RomanNameValidator()
     static let password = AndValidator([InputLengthValidator(min: 6, max: 12), alphanumerics])
+    static let romanAddress = RomanAddressValidator()
     static let intermediatePassword = AndValidator([InputLengthValidator(max: 12), alphanumerics])
 }
 
@@ -21,6 +25,23 @@ class EmailInputValidator: TextInputValidator {
     
     override init() {
         let regex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        predicate = NSPredicate(format:"SELF MATCHES %@", regex)
+        super.init()
+    }
+    
+    override func validate(_ input: String) throws {
+        if predicate.evaluate(with: input) {
+            return
+        }
+        throw InputError(localizedDescription: Localized.errors.invalidEmail)
+    }
+}
+
+class EmailCharacterValidator: TextInputValidator {
+    private let predicate: NSPredicate
+    
+    override init() {
+        let regex = "[A-Z0-9a-z._%+@-]+"
         predicate = NSPredicate(format:"SELF MATCHES %@", regex)
         super.init()
     }

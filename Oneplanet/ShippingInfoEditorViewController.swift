@@ -105,6 +105,7 @@ class ShippingInfoInputFieldDelegate: NSObject, UITextFieldDelegate {
     var nextInputBlock: InputFieldBlockView?
     var tapToEndEditingRequestTracker: ReferenceTracker?
     var didEndEditing: ((UITextField)->())?
+    var inputValidator: TextInputValidator?
     private var tapToEndEditingRequest: Any?
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -134,137 +135,10 @@ class ShippingInfoInputFieldDelegate: NSObject, UITextFieldDelegate {
             if result.isEmpty {
                 return true
             }
+            try inputValidator?.validate(result)
             return true
         } catch _  {
             return false
         }
-    }
-}
-
-class ShippingInfoDraft {
-    let updateObservers = MulticastCallbackNode<()->()>()
-    var email: String = "" {
-        didSet {
-            if oldValue != email {
-                notifyChange()
-            }
-        }
-    }
-    var firstName: String = "" {
-        didSet {
-            if oldValue != firstName {
-                notifyChange()
-            }
-        }
-    }
-    var lastName: String = "" {
-        didSet {
-            if oldValue != lastName {
-                notifyChange()
-            }
-        }
-    }
-    var address1: String = "" {
-        didSet {
-            if oldValue != address1 {
-                notifyChange()
-            }
-        }
-    }
-    var address2: String = "" {
-        didSet {
-            if oldValue != address2 {
-                notifyChange()
-            }
-        }
-    }
-    var city: String = "" {
-        didSet {
-            if oldValue != city {
-                notifyChange()
-            }
-        }
-    }
-    var region: String = "" {
-        didSet {
-            if oldValue != region {
-                notifyChange()
-            }
-        }
-    }
-    var postalCode: String = "" {
-        didSet {
-            if oldValue != postalCode {
-                notifyChange()
-            }
-        }
-    }
-    var country: String = "" {
-        didSet {
-            if oldValue != country {
-                notifyChange()
-            }
-        }
-    }
-    var phoneNumber: String = "" {
-        didSet {
-            if oldValue != phoneNumber {
-                notifyChange()
-            }
-        }
-    }
-//    func validatorPair(for endpoint: Endpoint) -> ValidatorPair {
-//        InputValidators
-//    }
-    
-    private func notifyChange() {
-        updateObservers.invokeEach{$0()}
-    }
-
-}
-
-extension ShippingInfoDraft {
-    class ValidatorPair {
-        let intermediate: TextInputValidator
-        let final: TextInputValidator
-        init(intermediate: TextInputValidator, final: TextInputValidator) {
-            self.intermediate = intermediate
-            self.final = final
-        }
-    }
-    
-    class InputValidatorWrapper: TextInputValidator {
-        let endpoint: Endpoint
-        let validator: TextInputValidator
-        init(validator: TextInputValidator, endpoint: Endpoint) {
-            self.endpoint = endpoint
-            self.validator = validator
-        }
-        
-        override func validate(_ input: String) throws {
-            do {
-                try validator.validate(input)
-            } catch let error as InputError {
-                throw ShippingInfoInputError(endpoint: endpoint, inputError: error)
-            }
-        }
-    }
-    
-    enum Endpoint: String {
-        case email, firstName, lastName, address1, address2, city, region, postalCode, country, phoneNumber
-    }
-}
-
-class ShippingInfoInputError: NSError {
-    let endpoint: ShippingInfoDraft.Endpoint
-    let inputError: InputError
-    init(endpoint: ShippingInfoDraft.Endpoint, inputError: InputError) {
-        self.endpoint = endpoint
-        self.inputError = inputError
-        super.init(domain: inputError.domain, code: inputError.code, userInfo: inputError.userInfo)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

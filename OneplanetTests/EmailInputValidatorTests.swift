@@ -36,6 +36,27 @@ class InputValidatorTests: XCTestCase {
         XCTAssertNoThrow(try validator.validate("abc_def@oneplanet.com"))
     }
     
+    func testThrowsIfHasNonEmailCharacters() {
+        let validator = EmailCharacterValidator()
+        
+        XCTAssertThrowsError(try validator.validate("abc><@aa"))
+        XCTAssertThrowsError(try validator.validate("a a@123"))
+        XCTAssertThrowsError(try validator.validate("中文"))
+        XCTAssertThrowsError(try validator.validate("https://www.apple.com"))
+    }
+    
+    func testNotThrowIfOnlyEmailCharacters() {
+        let validator = EmailCharacterValidator()
+        
+        XCTAssertNoThrow(try validator.validate("abc@bb.cc"))
+        XCTAssertNoThrow(try validator.validate("abc+1@gmail.com"))
+        XCTAssertNoThrow(try validator.validate("abc_def@oneplanet.com"))
+        XCTAssertNoThrow(try validator.validate("abc"))
+        XCTAssertNoThrow(try validator.validate("abc_def@@@-.oneplanet."))
+    }
+
+
+    
     func testThrowsIfNonAlphanumerics() {
         let validator = AlphanumericInputValidator()
 
@@ -210,4 +231,5 @@ class InputValidatorTests: XCTestCase {
         let validator = RomanAddressValidator()
         
         XCTAssertNoThrow(try validator.validate("Rm. a, 3F.-11, No. 6-5, Aly. 12, Ln. 2, Guanghua 3rd Ln., Datun Rd., Beitou Dist., Taipei City 112, Taiwan (R.O.C.)"))
-    }}
+    }
+}

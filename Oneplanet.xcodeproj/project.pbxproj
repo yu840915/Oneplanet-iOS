@@ -112,6 +112,7 @@
 		E0A4617A22B2984A00D26720 /* BiddingListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A4617922B2984A00D26720 /* BiddingListHeader.swift */; };
 		E0A4617C22B2A9D300D26720 /* BiddingProcessHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A4617B22B2A9D300D26720 /* BiddingProcessHeader.swift */; };
 		E0A4618222B3D93700D26720 /* ShippingInfoEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A4618122B3D93700D26720 /* ShippingInfoEditorViewController.swift */; };
+		E0A4618422B5405700D26720 /* ShippingInfoDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A4618322B5405700D26720 /* ShippingInfoDraft.swift */; };
 		E0B57DE122A0FA48006AEADB /* DefaultStyleConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B57DE022A0FA48006AEADB /* DefaultStyleConfiguration.swift */; };
 		E0B57DE322A0FAA3006AEADB /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B57DE222A0FAA3006AEADB /* Toast.swift */; };
 		E0B57DE722A0FE77006AEADB /* Toast.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0B57DE622A0FE77006AEADB /* Toast.xib */; };
@@ -263,6 +264,7 @@
 		E0A4617922B2984A00D26720 /* BiddingListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiddingListHeader.swift; sourceTree = "<group>"; };
 		E0A4617B22B2A9D300D26720 /* BiddingProcessHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiddingProcessHeader.swift; sourceTree = "<group>"; };
 		E0A4618122B3D93700D26720 /* ShippingInfoEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingInfoEditorViewController.swift; sourceTree = "<group>"; };
+		E0A4618322B5405700D26720 /* ShippingInfoDraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingInfoDraft.swift; sourceTree = "<group>"; };
 		E0B57DE022A0FA48006AEADB /* DefaultStyleConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStyleConfiguration.swift; sourceTree = "<group>"; };
 		E0B57DE222A0FAA3006AEADB /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		E0B57DE622A0FE77006AEADB /* Toast.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Toast.xib; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 				E0D1BBDA22ACEE9400951F19 /* TimeIntervalComponents.swift */,
 				E032844822AB7286001F02E8 /* ProductListTableViewController.swift */,
 				E0A4618122B3D93700D26720 /* ShippingInfoEditorViewController.swift */,
+				E0A4618322B5405700D26720 /* ShippingInfoDraft.swift */,
 				E032844A22AB7A90001F02E8 /* BiddingProcessTableViewController.swift */,
 			);
 			name = Auction;
@@ -929,6 +932,7 @@
 				E06589CA2270C1A500C9E4E6 /* UpdateClock.swift in Sources */,
 				E0814FB122864F79002F1C02 /* UserFlowMainViewController.swift in Sources */,
 				E0A4617C22B2A9D300D26720 /* BiddingProcessHeader.swift in Sources */,
+				E0A4618422B5405700D26720 /* ShippingInfoDraft.swift in Sources */,
 				E07276E1227307F5001239C0 /* LogInViewController.swift in Sources */,
 				E0D7DCDD229CE82300B40D76 /* PromoPopUpViewController.swift in Sources */,
 				E05BB25E226D5D2A00721F20 /* AppDelegate.swift in Sources */,

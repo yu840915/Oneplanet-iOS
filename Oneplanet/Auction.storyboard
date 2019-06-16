@@ -701,7 +701,7 @@ The winner must check if the Receipt information is filled in to ensure that the
                     <connections>
                         <outlet property="countDownView" destination="f1Q-vV-ogN" id="B5p-fF-fLi"/>
                         <outlet property="countdownDescriptionLabel" destination="FVm-Rb-9Px" id="zIR-Y2-j6J"/>
-                        <segue destination="K1B-0s-WCJ" kind="presentation" id="8pF-Y6-fub"/>
+                        <segue destination="K1B-0s-WCJ" kind="presentation" identifier="showShippingInfoEditor" id="8pF-Y6-fub"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C8m-K6-lSQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -967,7 +967,7 @@ The winner must check if the Receipt information is filled in to ensure that the
                         </connections>
                     </tableView>
                     <connections>
-                        <segue destination="K1B-0s-WCJ" kind="presentation" id="Scs-0i-F1U"/>
+                        <segue destination="K1B-0s-WCJ" kind="presentation" identifier="showShippingInfoEditor" id="Scs-0i-F1U"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MgV-qn-nUW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1776,12 +1776,16 @@ The winner must check if the Receipt information is filled in to ensure that the
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="aM1-Vl-fPa" secondAttribute="trailing" constant="16" id="1wh-Cl-WzV"/>
                                             <constraint firstItem="aM1-Vl-fPa" firstAttribute="leading" secondItem="IE1-Es-L9e" secondAttribute="leading" constant="16" id="9hi-MS-0cO"/>
                                             <constraint firstItem="aM1-Vl-fPa" firstAttribute="top" secondItem="IE1-Es-L9e" secondAttribute="top" constant="10" id="aYo-Sq-EZw"/>
                                             <constraint firstAttribute="bottom" secondItem="aM1-Vl-fPa" secondAttribute="bottom" constant="10" id="nqJ-vc-8vK"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="YrU-SD-8r8" appends="YES" id="qaW-Vt-Oka"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -1802,7 +1806,9 @@ The winner must check if the Receipt information is filled in to ensure that the
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dOE-jI-hZp"/>
                     </view>
-                    <navigationItem key="navigationItem" id="p4C-pJ-eUQ"/>
+                    <navigationItem key="navigationItem" id="p4C-pJ-eUQ">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="1Od-2f-oRt"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="address1FieldBlock" destination="rJx-E2-TjH" id="yd0-Td-sMo"/>
                         <outlet property="address2FieldBlock" destination="Mfz-Dq-tXy" id="c4Z-S8-7iV"/>
@@ -1810,6 +1816,8 @@ The winner must check if the Receipt information is filled in to ensure that the
                         <outlet property="countryCodeField" destination="Ns3-YP-dcS" id="p5t-WU-oO8"/>
                         <outlet property="countryFieldBlock" destination="FUY-H2-4qi" id="ytL-Wr-C4e"/>
                         <outlet property="emailFieldBlock" destination="72u-J7-Wue" id="E4Q-gT-7oU"/>
+                        <outlet property="endEditingTap" destination="YrU-SD-8r8" id="kXs-cJ-Toa"/>
+                        <outlet property="exitButtonItem" destination="1Od-2f-oRt" id="DWq-rj-7xV"/>
                         <outlet property="firstNameFieldBlock" destination="Flo-hP-MuO" id="KGs-r5-xuP"/>
                         <outlet property="lastNameFieldBlock" destination="dQ3-KH-Pvu" id="VWE-Qj-W1O"/>
                         <outlet property="phonenumberFieldBlock" destination="cEo-U0-Yga" id="1Xi-zm-d1u"/>
@@ -1819,6 +1827,11 @@ The winner must check if the Receipt information is filled in to ensure that the
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Drw-a3-wPe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer enabled="NO" id="YrU-SD-8r8">
+                    <connections>
+                        <action selector="tapToEndEditing:" destination="6es-4k-H2x" id="8vN-hn-Oy4"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3232" y="96"/>
         </scene>

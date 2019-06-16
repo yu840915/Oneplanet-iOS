@@ -87,17 +87,18 @@ class ShippingInfoDraft {
     }
     
     private var validatorPairs: [Field: ValidatorPair] = {
+        let namePair = ValidatorPair(intermediate: InputValidators.romanName, final: InputValidators.romanName)
         let result: [Field: ValidatorPair] = [
-            .email: ValidatorPair(intermediate: InputValidators.emailCharacters, final: InputValidators.email, field: .email),
-            .firstName: ValidatorPair(intermediate: OrValidator([InputValidators.romanName, EmptyInputValidator()]), final: InputValidators.romanName, field: .firstName),
-            .lastName: ValidatorPair(intermediate: OrValidator([InputValidators.romanName, EmptyInputValidator()]), final: InputValidators.romanName, field: .lastName),
-            .city: ValidatorPair(intermediate: OrValidator([InputValidators.romanName, EmptyInputValidator()]), final: InputValidators.romanName, field: .city),
-            .country: ValidatorPair(intermediate: OrValidator([InputValidators.romanName, EmptyInputValidator()]), final: InputValidators.romanName, field: .country),
-            .region: ValidatorPair(intermediate: OrValidator([InputValidators.romanName, EmptyInputValidator()]), final: InputValidators.romanName, field: .region),
-            .postalCode: ValidatorPair(intermediate: InputValidators.digits, final: InputValidators.digits, field: .postalCode),
-            .address1: ValidatorPair(intermediate: OrValidator([InputValidators.romanAddress, EmptyInputValidator()]), final: InputValidators.romanAddress, field: .address1),
-            .address2: ValidatorPair(intermediate: OrValidator([InputValidators.romanAddress, EmptyInputValidator()]), final: OrValidator([InputValidators.romanAddress, EmptyInputValidator()]), field: .address2)
-            //phone
+            .email: namePair,
+            .firstName: namePair,
+            .lastName: namePair,
+            .city: namePair,
+            .country: namePair,
+            .region: namePair,
+            .postalCode: ValidatorPair(intermediate: InputValidators.digits, final: InputValidators.digits),
+            .address1: ValidatorPair(intermediate: OrValidator([InputValidators.romanAddress, EmptyInputValidator()]), final: InputValidators.romanAddress),
+            .address2: ValidatorPair(intermediate: OrValidator([InputValidators.romanAddress, EmptyInputValidator()]), final: OrValidator([InputValidators.romanAddress, EmptyInputValidator()])),
+            .phoneNumber: ValidatorPair(intermediate: InputValidators.digits, final: InputValidators.digits)
         ]
         return result
     }()
@@ -113,30 +114,11 @@ class ShippingInfoDraft {
     }
     
     private func validate(_ field: Field, with validator: TextInputValidator) throws {
-        let input: String
-        switch field {
-        case .email:
-            input = email
-        case .address1:
-            input = address1
-        case .address2:
-            input = address2
-        case .city:
-            input = city
-        case .country:
-            input = country
-        case .firstName:
-            input = firstName
-        case .lastName:
-            input = lastName
-        case .phoneNumber:
-            input = phoneNumber
-        case .region:
-            input = region
-        case .postalCode:
-            input = postalCode
+        do {
+            try validator.validate(self[field])
+        } catch let error as InputError {
+            throw ShippingInfoInputError(field: field, inputError: error)
         }
-        try validator.validate(input)
     }
     
     var isValid: Bool {
@@ -147,36 +129,57 @@ class ShippingInfoDraft {
             return false
         }
     }
-
+    
+    var hasEmptyRequiredField: Bool {
+        return requiredFields.map{self[$0]}.first{$0.isEmpty} != nil
+    }
+    
+    let requiredFields: [Field] = [.email, .firstName, .lastName, .address1, .city, .region, .postalCode, .phoneNumber, .country]
+    
+    subscript(idx: Field) -> String {
+        get {
+            switch idx {
+            case .email: return email
+            case .address1: return address1
+            case .address2: return address2
+            case .city: return city
+            case .country: return country
+            case .firstName: return firstName
+            case .lastName: return lastName
+            case .phoneNumber: return phoneNumber
+            case .region: return region
+            case .postalCode: return postalCode
+            }
+        }
+        set {
+            switch idx {
+            case .email: email = newValue
+            case .address1: address1 = newValue
+            case .address2: address2 = newValue
+            case .city: city = newValue
+            case .country: country = newValue
+            case .firstName: firstName = newValue
+            case .lastName: lastName = newValue
+            case .phoneNumber: phoneNumber = newValue
+            case .region: region = newValue
+            case .postalCode: postalCode = newValue
+            }
+        }
+    }
+    
+    
 }
 
 extension ShippingInfoDraft {
     class ValidatorPair {
         let intermediate: TextInputValidator
         let final: TextInputValidator
-        init(intermediate: TextInputValidator, final: TextInputValidator, field: Field) {
+        init(intermediate: TextInputValidator, final: TextInputValidator) {
             self.intermediate = intermediate
-            self.final = InputValidatorWrapper(validator: final, field: field)
+            self.final = final
         }
     }
-    
-    class InputValidatorWrapper: TextInputValidator {
-        let field: Field
-        let validator: TextInputValidator
-        init(validator: TextInputValidator, field: Field) {
-            self.field = field
-            self.validator = validator
-        }
-        
-        override func validate(_ input: String) throws {
-            do {
-                try validator.validate(input)
-            } catch let error as InputError {
-                throw ShippingInfoInputError(field: field, inputError: error)
-            }
-        }
-    }
-    
+
     enum Field: String {
         case email, firstName, lastName, address1, address2, city, region, postalCode, country, phoneNumber
     }

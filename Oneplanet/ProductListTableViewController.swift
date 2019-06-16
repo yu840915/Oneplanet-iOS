@@ -64,7 +64,19 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = sections[indexPath.section]
         let cell = tableView.dequeueReusableCell(withIdentifier: section.reuseID, for: indexPath)
+        switch section {
+        case .biddingEndedIndicator, .runningBiddingIndicator:
+            configureBiddingStateIndicationCell(cell as! BiddingStateIndicationCell)
+        case .bidList:
+            break
+        case .productList:
+            break
+        }
         return cell
+    }
+    
+    private func configureBiddingStateIndicationCell(_ cell: BiddingStateIndicationCell) {
+        cell.descriptionTextView.delegate = self
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -104,7 +116,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
 
 fileprivate extension ProductListTableViewController {
     func showShippingInfoEditor() {
-        
+        performSegue(withIdentifier: SegueID.showShippingInfoEditor, sender: nil)
     }
     
     func showFilterPicker() {
@@ -135,7 +147,10 @@ extension ProductListTableViewController {
         static let productListHeader = "productListHeader"
         static let biddingListHeader = "biddingListHeader"
     }
-
+    
+    struct SegueID {
+        static let showShippingInfoEditor = "showShippingInfoEditor"
+    }
 }
 
 extension ProductListTableViewController: UITextViewDelegate {

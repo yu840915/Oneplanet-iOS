@@ -118,6 +118,7 @@ class BiddingProcessTableViewController: UITableViewController, DefaultInstanceF
 
 fileprivate extension BiddingProcessTableViewController {
     func showShippingInfoEditor() {
+        performSegue(withIdentifier: SegueID.showShippingInfoEditor, sender: nil)
     }
     
     func showShippingStatusDetail() {
@@ -143,6 +144,10 @@ extension BiddingProcessTableViewController {
         static let shippingInfoCell = "shippingInfoCell"
         static let biddingItemResultCell = "biddingItemResultCell"
         static let biddingItemHeader = "biddingItemHeader"
+    }
+
+    struct SegueID {
+        static let showShippingInfoEditor = "showShippingInfoEditor"
     }
 }
 

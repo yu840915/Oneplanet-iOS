@@ -113,6 +113,7 @@
 		E0A4617C22B2A9D300D26720 /* BiddingProcessHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A4617B22B2A9D300D26720 /* BiddingProcessHeader.swift */; };
 		E0A4618222B3D93700D26720 /* ShippingInfoEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A4618122B3D93700D26720 /* ShippingInfoEditorViewController.swift */; };
 		E0A4618422B5405700D26720 /* ShippingInfoDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A4618322B5405700D26720 /* ShippingInfoDraft.swift */; };
+		E0A4618622B6284500D26720 /* KeyboardAppearanceObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A4618522B6284500D26720 /* KeyboardAppearanceObserver.swift */; };
 		E0B57DE122A0FA48006AEADB /* DefaultStyleConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B57DE022A0FA48006AEADB /* DefaultStyleConfiguration.swift */; };
 		E0B57DE322A0FAA3006AEADB /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B57DE222A0FAA3006AEADB /* Toast.swift */; };
 		E0B57DE722A0FE77006AEADB /* Toast.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0B57DE622A0FE77006AEADB /* Toast.xib */; };
@@ -265,6 +266,7 @@
 		E0A4617B22B2A9D300D26720 /* BiddingProcessHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiddingProcessHeader.swift; sourceTree = "<group>"; };
 		E0A4618122B3D93700D26720 /* ShippingInfoEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingInfoEditorViewController.swift; sourceTree = "<group>"; };
 		E0A4618322B5405700D26720 /* ShippingInfoDraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingInfoDraft.swift; sourceTree = "<group>"; };
+		E0A4618522B6284500D26720 /* KeyboardAppearanceObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAppearanceObserver.swift; sourceTree = "<group>"; };
 		E0B57DE022A0FA48006AEADB /* DefaultStyleConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStyleConfiguration.swift; sourceTree = "<group>"; };
 		E0B57DE222A0FAA3006AEADB /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		E0B57DE622A0FE77006AEADB /* Toast.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Toast.xib; sourceTree = "<group>"; };
@@ -555,6 +557,7 @@
 				E06F4FF922782C8C0067DAE4 /* InputValidators.swift */,
 				E06589C92270C1A500C9E4E6 /* UpdateClock.swift */,
 				E06F4FFD22789C760067DAE4 /* AppLifeCycleObserver.swift */,
+				E0A4618522B6284500D26720 /* KeyboardAppearanceObserver.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -945,6 +948,7 @@
 				E081590B22A61AA3007C9776 /* PopUpContainerViewController.swift in Sources */,
 				E07276F62276C305001239C0 /* FirebaseMessagingSession.swift in Sources */,
 				E07276E92273633A001239C0 /* CreateProfileViewController.swift in Sources */,
+				E0A4618622B6284500D26720 /* KeyboardAppearanceObserver.swift in Sources */,
 				E02842B3229A3399007212D7 /* AlienPickerCollectionViewController.swift in Sources */,
 				E0FF7984228D48FA00F61318 /* MyProfileViewController.swift in Sources */,
 				E02842AF229A31AF007212D7 /* CharacterPickerViewController.swift in Sources */,

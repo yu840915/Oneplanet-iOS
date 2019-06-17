@@ -258,41 +258,41 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jq4-ZX-0hE">
-                                            <rect key="frame" x="10" y="3" width="394" height="59.5"/>
+                                            <rect key="frame" x="10" y="3" width="394" height="60"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="CdV-uI-hYT">
-                                                    <rect key="frame" x="2" y="2" width="390" height="55.5"/>
+                                                    <rect key="frame" x="2" y="2" width="390" height="56"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j0D-0h-2uy">
-                                                            <rect key="frame" x="0.0" y="0.0" width="55.5" height="55.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="56" height="56"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="j0D-0h-2uy" secondAttribute="height" id="IPc-BZ-qSR"/>
                                                             </constraints>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="G2q-3z-sIU">
-                                                            <rect key="frame" x="65.5" y="0.0" width="263.5" height="55.5"/>
+                                                            <rect key="frame" x="66" y="0.0" width="263" height="56"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cui-IC-yWy" userLabel="Padding">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="263.5" height="8"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="263" height="8"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="8" id="16R-Jh-lvI"/>
                                                                     </constraints>
                                                                 </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uf8-xS-jFW" userLabel="Title Label">
-                                                                    <rect key="frame" x="0.0" y="8" width="263.5" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="8" width="263" height="17"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wZ0-kS-BjA" userLabel="Padding">
-                                                                    <rect key="frame" x="0.0" y="25" width="263.5" height="30.5"/>
+                                                                    <rect key="frame" x="0.0" y="25" width="263" height="31"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </view>
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sXq-PC-cGe">
-                                                            <rect key="frame" x="339" y="0.0" width="40" height="55.5"/>
+                                                            <rect key="frame" x="339" y="0.0" width="40" height="56"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nUg-8I-Sdp" userLabel="Lock Button">
                                                                     <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -300,7 +300,7 @@
                                                                     <state key="disabled" image="ic_lockon_nor"/>
                                                                 </button>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6GH-Dy-bwX" userLabel="Lock Label">
-                                                                    <rect key="frame" x="0.0" y="40" width="40" height="15.5"/>
+                                                                    <rect key="frame" x="0.0" y="40" width="40" height="16"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
                                                                     <color key="textColor" name="lock red"/>
                                                                     <nil key="highlightedColor"/>
@@ -308,7 +308,7 @@
                                                             </subviews>
                                                         </stackView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Ye-Y6-h25">
-                                                            <rect key="frame" x="389" y="0.0" width="1" height="55.5"/>
+                                                            <rect key="frame" x="389" y="0.0" width="1" height="56"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="1" id="RYx-VT-0PG"/>
@@ -594,10 +594,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P08-rU-g9F">
-                                            <rect key="frame" x="40" y="10" width="334" height="132.5"/>
+                                            <rect key="frame" x="40" y="10" width="334" height="133"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Bf6-5r-qQv">
-                                                    <rect key="frame" x="0.0" y="0.0" width="334" height="132.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="334" height="133"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Bidding..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vgW-Mm-hWG" userLabel="Title Label">
                                                             <rect key="frame" x="0.0" y="0.0" width="334" height="29"/>
@@ -606,7 +606,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="FC6-v3-wEb" userLabel="Description Text View">
-                                                            <rect key="frame" x="0.0" y="44" width="334" height="88.5"/>
+                                                            <rect key="frame" x="0.0" y="44" width="334" height="89"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <string key="text">Other commodities are still bidding, please wait for the bidding to end.
 The winner must check if the Receipt information is filled in to ensure that the goods can be delivered.</string>
@@ -647,10 +647,10 @@ The winner must check if the Receipt information is filled in to ensure that the
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K4s-r3-aYD">
-                                            <rect key="frame" x="40" y="10" width="334" height="132.5"/>
+                                            <rect key="frame" x="40" y="10" width="334" height="133"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Ku9-jH-4vd">
-                                                    <rect key="frame" x="0.0" y="0.0" width="334" height="132.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="334" height="133"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Bidding..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LRc-Ur-EJ6" userLabel="Title Label">
                                                             <rect key="frame" x="0.0" y="0.0" width="334" height="29"/>
@@ -659,7 +659,7 @@ The winner must check if the Receipt information is filled in to ensure that the
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="IEI-o0-KTU" userLabel="Description Text View">
-                                                            <rect key="frame" x="0.0" y="44" width="334" height="88.5"/>
+                                                            <rect key="frame" x="0.0" y="44" width="334" height="89"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <string key="text">Other commodities are still bidding, please wait for the bidding to end.
 The winner must check if the Receipt information is filled in to ensure that the goods can be delivered.</string>
@@ -1807,7 +1807,11 @@ The winner must check if the Receipt information is filled in to ensure that the
                         <viewLayoutGuide key="safeArea" id="dOE-jI-hZp"/>
                     </view>
                     <navigationItem key="navigationItem" id="p4C-pJ-eUQ">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="1Od-2f-oRt"/>
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="1Od-2f-oRt">
+                            <connections>
+                                <action selector="exit:" destination="6es-4k-H2x" id="wgP-il-KLf"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="address1FieldBlock" destination="rJx-E2-TjH" id="yd0-Td-sMo"/>

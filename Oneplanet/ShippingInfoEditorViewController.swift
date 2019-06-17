@@ -43,7 +43,8 @@ class ShippingInfoEditorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let builder = PhoneNumberBuilder(countryCode: nil)
+        debugPrint(builder.countries)
         tapToEndEditingRequestTracker = ReferenceTracker()
         endEditingTapRequestHandle = tapToEndEditingRequestTracker.isEmptyDidChangeObservers.add {[weak self] (_) in
             self?.updateEndEditingTap()
@@ -89,6 +90,10 @@ class ShippingInfoEditorViewController: UIViewController {
     
     @IBAction func tapToEndEditing(_ sender: UITapGestureRecognizer) {
         view.endEditing(false)
+    }
+    
+    @IBAction func exit(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Navigation

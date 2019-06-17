@@ -115,6 +115,7 @@
 		E0A4618422B5405700D26720 /* ShippingInfoDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A4618322B5405700D26720 /* ShippingInfoDraft.swift */; };
 		E0A4618622B6284500D26720 /* KeyboardAppearanceObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A4618522B6284500D26720 /* KeyboardAppearanceObserver.swift */; };
 		E0A4618822B6328400D26720 /* PhoneNumberKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0A4618722B6328300D26720 /* PhoneNumberKit.framework */; };
+		E0A4618A22B6347800D26720 /* PhoneNumberBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A4618922B6347800D26720 /* PhoneNumberBuilder.swift */; };
 		E0B57DE122A0FA48006AEADB /* DefaultStyleConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B57DE022A0FA48006AEADB /* DefaultStyleConfiguration.swift */; };
 		E0B57DE322A0FAA3006AEADB /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B57DE222A0FAA3006AEADB /* Toast.swift */; };
 		E0B57DE722A0FE77006AEADB /* Toast.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0B57DE622A0FE77006AEADB /* Toast.xib */; };
@@ -269,6 +270,7 @@
 		E0A4618322B5405700D26720 /* ShippingInfoDraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingInfoDraft.swift; sourceTree = "<group>"; };
 		E0A4618522B6284500D26720 /* KeyboardAppearanceObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAppearanceObserver.swift; sourceTree = "<group>"; };
 		E0A4618722B6328300D26720 /* PhoneNumberKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhoneNumberKit.framework; path = Carthage/Build/iOS/PhoneNumberKit.framework; sourceTree = SOURCE_ROOT; };
+		E0A4618922B6347800D26720 /* PhoneNumberBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberBuilder.swift; sourceTree = "<group>"; };
 		E0B57DE022A0FA48006AEADB /* DefaultStyleConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStyleConfiguration.swift; sourceTree = "<group>"; };
 		E0B57DE222A0FAA3006AEADB /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		E0B57DE622A0FE77006AEADB /* Toast.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Toast.xib; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 				E032844822AB7286001F02E8 /* ProductListTableViewController.swift */,
 				E0A4618122B3D93700D26720 /* ShippingInfoEditorViewController.swift */,
 				E0A4618322B5405700D26720 /* ShippingInfoDraft.swift */,
+				E0A4618922B6347800D26720 /* PhoneNumberBuilder.swift */,
 				E032844A22AB7A90001F02E8 /* BiddingProcessTableViewController.swift */,
 			);
 			name = Auction;
@@ -968,6 +971,7 @@
 				E07276EB2274B515001239C0 /* WebViewController.swift in Sources */,
 				E06589C622705B4F00C9E4E6 /* PhotoGridCollectionViewController.swift in Sources */,
 				E07277012277EE3D001239C0 /* AppConfiguration.swift in Sources */,
+				E0A4618A22B6347800D26720 /* PhoneNumberBuilder.swift in Sources */,
 				E032844522AB6A50001F02E8 /* AuctionMainViewController.swift in Sources */,
 				E0190F4D226DCCFB00C212D5 /* UserSession.swift in Sources */,
 				E0190F49226DB0E000C212D5 /* WelcomeMessageViewController.swift in Sources */,

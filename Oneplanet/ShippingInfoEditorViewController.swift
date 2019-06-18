@@ -42,6 +42,7 @@ class ShippingInfoEditorViewController: UIViewController {
         .country: .phoneNumber]
     var draft: ShippingInfoDraft!
     private var endEditingTapRequestHandle: Any?
+    private var draftUpdateHandle: Any?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -156,6 +157,16 @@ fileprivate extension ShippingInfoEditorViewController {
         }
         updateFieldsForCountry()
         countryFieldBlock.inputFieldDelegate = delegate
+        draftUpdateHandle = draft.updateObservers.add {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.updateSubmitButtonForDraft()
+            }
+        }
+        updateSubmitButtonForDraft()
+    }
+    
+    func updateSubmitButtonForDraft() {
+        submitButton.isEnabled = !draft.hasEmptyRequiredField
     }
     
     func handelSelectedCountry(from item: CountryCodePickerItem) {

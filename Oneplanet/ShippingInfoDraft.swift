@@ -67,20 +67,23 @@ class ShippingInfoDraft {
             }
         }
     }
-    var country: String = "" {
+    var country: CountryCode? {
         didSet {
             if oldValue != country {
                 notifyChange()
             }
         }
     }
-    var phoneNumber: String = "" {
-        didSet {
-            if oldValue != phoneNumber {
-                notifyChange()
-            }
+    var phoneNumber: String {
+        set {
+            phoneNumberBuilder.nationalNumber = newValue
+            notifyChange()
+        }
+        get {
+            return phoneNumberBuilder.nationalNumber
         }
     }
+    private(set) var phoneNumberBuilder: PhoneNumberBuilder!
     
     func validatorPair(for field: Field) -> ValidatorPair {
         return validatorPairs[field]!
@@ -102,6 +105,12 @@ class ShippingInfoDraft {
         ]
         return result
     }()
+    
+    init() {
+        let builder = PhoneNumberBuilder(countryCode: nil)
+        phoneNumberBuilder = builder
+        country = builder.countryCode
+    }
     
     private func notifyChange() {
         updateObservers.invokeEach{$0()}
@@ -143,7 +152,7 @@ class ShippingInfoDraft {
             case .address1: return address1
             case .address2: return address2
             case .city: return city
-            case .country: return country
+            case .country: return country?.displayName() ?? ""
             case .firstName: return firstName
             case .lastName: return lastName
             case .phoneNumber: return phoneNumber
@@ -157,7 +166,7 @@ class ShippingInfoDraft {
             case .address1: address1 = newValue
             case .address2: address2 = newValue
             case .city: city = newValue
-            case .country: country = newValue
+            case .country: break
             case .firstName: firstName = newValue
             case .lastName: lastName = newValue
             case .phoneNumber: phoneNumber = newValue

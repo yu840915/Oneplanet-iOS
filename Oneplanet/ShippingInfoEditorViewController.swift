@@ -21,10 +21,12 @@ class ShippingInfoEditorViewController: UIViewController {
     @IBOutlet weak var cityFieldBlock: InputFieldBlockView!
     @IBOutlet weak var regionFieldBlock: InputFieldBlockView!
     @IBOutlet weak var postalCodeFieldBlock: InputFieldBlockView!
+    @IBOutlet var numberInputToolbar: UIToolbar!
     @IBOutlet weak var countryFieldBlock: InputFieldBlockView!
     @IBOutlet weak var phonenumberFieldBlock: InputFieldBlockView!
     @IBOutlet weak var submitButton: UIButton!
     @IBOutlet var endEditingTap: UITapGestureRecognizer!
+    @IBOutlet weak var doneButtonItem: UIBarButtonItem!
     
     private var keyboardObserver: KeyboardAppearanceObserver?
     private var tapToEndEditingRequestTracker: ReferenceTracker!
@@ -96,9 +98,21 @@ class ShippingInfoEditorViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func dismissNumberPad(_ sender: UIBarButtonItem) {
+        view.endEditing(false)
+    }
+    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let nav = segue.destination as? UINavigationController,
+            let vc = nav.viewControllers.first as? PickerTableViewController {
+            vc.title = Localized.shippingInfoTerms.country
+            vc.options = draft.phoneNumberBuilder.countries.map{CountryCodePickerItem(countryCode: $0)}
+            if let country = draft.country {
+                vc.selection = CountryCodePickerItem(countryCode: country)
+            }
+        }
     }
 }
 
@@ -121,6 +135,7 @@ fileprivate extension ShippingInfoEditorViewController {
         postalCodeFieldBlock.title = Localized.shippingInfoTerms.postalCode
         countryFieldBlock.title = Localized.shippingInfoTerms.country
         phonenumberFieldBlock.title = Localized.shippingInfoTerms.phoneNumber
+        doneButtonItem.title = Localized.titles.done
     }
     
     func prepareForDraft() {
@@ -130,6 +145,11 @@ fileprivate extension ShippingInfoEditorViewController {
         draft.requiredFields.compactMap{fieldMap[$0]}.forEach{
             $0.placeholder = Localized.titles.requiredInput
         }
+        let delegate = CountryInputFieldDelegate()
+        delegate.showCountryPickerAction = {[weak self] in
+            self?.performSegue(withIdentifier: SegueID.showCountryPicker, sender: nil)
+        }
+        countryFieldBlock.inputFieldDelegate = delegate
     }
     
     func prepareFieldBlock(for field: ShippingInfoDraft.Field) {
@@ -156,103 +176,8 @@ fileprivate extension ShippingInfoEditorViewController {
     }
 }
 
-class InputFieldBlockView: UIStackView {
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var errorLabel: UILabel!
-    @IBOutlet weak var errorView: UIView!
-    @IBOutlet weak var fieldView: InputFieldView!
-    
-    var placeholder: String = "" {
-        didSet {
-            if oldValue != placeholder {
-                preparePlaceholder()
-            }
-        }
-    }
-    var inputDidChange: ((UITextField)->())?
-    var inputFieldDelegate: UITextFieldDelegate? {
-        didSet {
-            fieldView.textField.delegate = inputFieldDelegate
-        }
-    }
-    var title: String? {
-        set {
-            titleLabel.text = newValue
-        }
-        get {
-            return titleLabel.text
-        }
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        fieldView.textField.addTarget(self, action: #selector(notifyInputChange(_:)), for: .editingChanged)
-    }
-    
-    func showInputError(with message: String) {
-        fieldView.isRejecting = true
-        errorView.isHidden = false
-        errorLabel.text = message
-    }
-
-    func resetErrorDisplay() {
-        fieldView.isRejecting = false
-        errorLabel.text = nil
-        errorView.isHidden = true
-    }
-    
-    private func preparePlaceholder() {
-        guard !placeholder.isEmpty else {
-            fieldView.textField.attributedPlaceholder = nil
-            return
-        }
-        fieldView.textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [.foregroundColor : ColorPalette.defaultPlaceholder])
-    }
-    
-    @IBAction func notifyInputChange(_ sender: UITextField) {
-        guard sender.markedTextRange == nil else { return }
-        inputDidChange?(sender)
-    }
-}
-
-class ShippingInfoInputFieldDelegate: NSObject, UITextFieldDelegate {
-    var nextInputBlock: InputFieldBlockView?
-    var tapToEndEditingRequestTracker: ReferenceTracker?
-    var didEndEditing: ((UITextField)->())?
-    var inputValidator: TextInputValidator?
-    private var tapToEndEditingRequest: Any?
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        tapToEndEditingRequest = tapToEndEditingRequestTracker?.add()
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        tapToEndEditingRequest = nil
-        didEndEditing?(textField)
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let next = nextInputBlock {
-            next.fieldView.textField.becomeFirstResponder()
-        } else {
-            textField.resignFirstResponder()
-        }
-        return false
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let result = ((textField.text ?? "") as NSString).replacingCharacters(in: range, with: string)
-        if result.isEmpty {
-            return true
-        }
-        do {
-            if result.isEmpty {
-                return true
-            }
-            try inputValidator?.validate(result)
-            return true
-        } catch _  {
-            return false
-        }
+extension ShippingInfoEditorViewController {
+    struct SegueID {
+        static let showCountryPicker = "showCountryPicker"
     }
 }

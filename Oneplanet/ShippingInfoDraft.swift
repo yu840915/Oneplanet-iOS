@@ -219,6 +219,7 @@ class PhoneNumberValidator: TextInputValidator {
         do {
             _ = try phoneNumberBuilder.phoneNumberKit.parse(phoneNumberBuilder.countryCode.cellPhoneContryCode + input)
         } catch let error {
+            logger.debug("Input error: \(error)")
             throw InputError(localizedDescription: Localized.errors.invalidPhoneNumber)
         }
     }

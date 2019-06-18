@@ -92,7 +92,7 @@ class ShippingInfoDraft {
     private var validatorPairs: [Field: ValidatorPair] = {
         let namePair = ValidatorPair(intermediate: InputValidators.romanName, final: InputValidators.romanName)
         let result: [Field: ValidatorPair] = [
-            .email: namePair,
+            .email: ValidatorPair(intermediate: InputValidators.emailCharacters, final: InputValidators.email),
             .firstName: namePair,
             .lastName: namePair,
             .city: namePair,

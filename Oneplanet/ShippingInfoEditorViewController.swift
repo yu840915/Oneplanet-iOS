@@ -63,6 +63,8 @@ class ShippingInfoEditorViewController: UIViewController {
             .country: countryFieldBlock,
             .phoneNumber: phonenumberFieldBlock
         ]
+        postalCodeFieldBlock.fieldView.textField.inputAccessoryView = numberInputToolbar
+        phonenumberFieldBlock.fieldView.textField.inputAccessoryView = numberInputToolbar
         localizeTitles()
         prepareForDraft()
     }
@@ -109,6 +111,9 @@ class ShippingInfoEditorViewController: UIViewController {
             let vc = nav.viewControllers.first as? PickerTableViewController {
             vc.title = Localized.shippingInfoTerms.country
             vc.options = draft.phoneNumberBuilder.countries.map{CountryCodePickerItem(countryCode: $0)}
+            vc.didSelectItem = {[weak self] item in
+                self?.handelSelectedCountry(from: item as! CountryCodePickerItem)
+            }
             if let country = draft.country {
                 vc.selection = CountryCodePickerItem(countryCode: country)
             }
@@ -149,7 +154,23 @@ fileprivate extension ShippingInfoEditorViewController {
         delegate.showCountryPickerAction = {[weak self] in
             self?.performSegue(withIdentifier: SegueID.showCountryPicker, sender: nil)
         }
+        updateFieldsForCountry()
         countryFieldBlock.inputFieldDelegate = delegate
+    }
+    
+    func handelSelectedCountry(from item: CountryCodePickerItem) {
+        draft.country = item.countryCode
+        updateFieldsForCountry()
+    }
+    
+    func updateFieldsForCountry() {
+        if let country = draft.country {
+            countryFieldBlock.fieldView.textField.text = country.displayName()
+            countryCodeField.text = country.cellPhoneContryCode
+        } else {
+            countryFieldBlock.fieldView.textField.text = nil
+            countryCodeField.text = nil
+        }
     }
     
     func prepareFieldBlock(for field: ShippingInfoDraft.Field) {

@@ -42,7 +42,7 @@ class PickerTableViewController: UITableViewController {
         super.viewDidLayoutSubviews()
         preselectIfNeeded()
     }
-        
+    
     @IBAction func exit(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
@@ -99,6 +99,7 @@ private extension PickerTableViewController {
     func commitSelection() {
         if let sel = selection {
             didSelectItem?(sel)
+            dismiss(animated: true, completion: nil)
         }
     }
 }

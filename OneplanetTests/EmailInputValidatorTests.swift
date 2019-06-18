@@ -232,4 +232,40 @@ class InputValidatorTests: XCTestCase {
         
         XCTAssertNoThrow(try validator.validate("Rm. a, 3F.-11, No. 6-5, Aly. 12, Ln. 2, Guanghua 3rd Ln., Datun Rd., Beitou Dist., Taipei City 112, Taiwan (R.O.C.)"))
     }
+    
+    func testThrowsIfNonPhoneNumberCharacters() {
+        let validator = PhoneNumberCharacterValidator()
+        
+        XCTAssertThrowsError(try validator.validate("123a"))
+        XCTAssertThrowsError(try validator.validate("123 123"))
+    }
+
+    func testNotThrowsIfPhoneNumberCharacters() {
+        let validator = PhoneNumberCharacterValidator()
+        
+        XCTAssertNoThrow(try validator.validate("123#123"))
+        XCTAssertNoThrow(try validator.validate("*+#"))
+        XCTAssertNoThrow(try validator.validate("*+#12345"))
+    }
+    
+    func testThrowsIfNonTaiwanPhoneNumber() {
+        let validator = PhoneNumberValidator()
+        let builder = PhoneNumberBuilder(countryCode: nil)
+        builder.countryCode = builder.countries.first{$0.isoCountryCode == "TW"}!
+        validator.phoneNumberBuilder = builder
+        
+        XCTAssertThrowsError(try validator.validate("12345678"))
+        XCTAssertThrowsError(try validator.validate("3353"))
+    }
+    
+    func testNotThrowsIfTaiwanPhoneNumber() {
+        let validator = PhoneNumberValidator()
+        let builder = PhoneNumberBuilder(countryCode: nil)
+        builder.countryCode = builder.countries.first{$0.isoCountryCode == "TW"}!
+        validator.phoneNumberBuilder = builder
+
+        XCTAssertNoThrow(try validator.validate("0912345678"))
+        XCTAssertNoThrow(try validator.validate("0800235123"))
+        XCTAssertNoThrow(try validator.validate("0222351234#123"))
+    }
 }

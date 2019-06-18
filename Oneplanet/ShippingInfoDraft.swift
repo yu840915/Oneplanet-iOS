@@ -8,6 +8,7 @@
 
 import Foundation
 import ModelBlocks
+import Alamofire
 
 class ShippingInfoDraft {
     let updateObservers = MulticastCallbackNode<()->()>()
@@ -101,7 +102,7 @@ class ShippingInfoDraft {
             .postalCode: ValidatorPair(intermediate: InputValidators.digits, final: InputValidators.digits),
             .address1: ValidatorPair(intermediate: OrValidator([InputValidators.romanAddress, EmptyInputValidator()]), final: InputValidators.romanAddress),
             .address2: ValidatorPair(intermediate: OrValidator([InputValidators.romanAddress, EmptyInputValidator()]), final: OrValidator([InputValidators.romanAddress, EmptyInputValidator()])),
-            .phoneNumber: ValidatorPair(intermediate: InputValidators.digits, final: InputValidators.digits)
+            .phoneNumber: ValidatorPair(intermediate: InputValidators.phoneNumberCharacter, final: PhoneNumberValidator())
         ]
         return result
     }()
@@ -110,6 +111,8 @@ class ShippingInfoDraft {
         let builder = PhoneNumberBuilder(countryCode: nil)
         phoneNumberBuilder = builder
         country = builder.countryCode
+        let validator = validatorPairs[.phoneNumber]!.final as! PhoneNumberValidator
+        validator.phoneNumberBuilder = builder
     }
     
     private func notifyChange() {
@@ -117,15 +120,16 @@ class ShippingInfoDraft {
     }
     
     func validate() throws {
-        try validatorPairs.forEach { field, pair in
-            try validate(field, with: pair.final)
+        let checkOrder: [Field] = [.email, .firstName, .lastName, .address1, .address2, .city, .region, .postalCode, .country, .phoneNumber]
+        try checkOrder.forEach { field in
+            try validate(field, with: validatorPairs[field]!.final)
         }
     }
     
     private func validate(_ field: Field, with validator: TextInputValidator) throws {
         do {
             try validator.validate(self[field])
-        } catch let error as InputError {
+        } catch let error as NSError {
             throw ShippingInfoInputError(field: field, inputError: error)
         }
     }
@@ -196,8 +200,8 @@ extension ShippingInfoDraft {
 
 class ShippingInfoInputError: NSError {
     let field: ShippingInfoDraft.Field
-    let inputError: InputError
-    init(field: ShippingInfoDraft.Field, inputError: InputError) {
+    let inputError: NSError
+    init(field: ShippingInfoDraft.Field, inputError: NSError) {
         self.field = field
         self.inputError = inputError
         super.init(domain: inputError.domain, code: inputError.code, userInfo: inputError.userInfo)
@@ -205,5 +209,31 @@ class ShippingInfoInputError: NSError {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+class PhoneNumberValidator: TextInputValidator {
+    var phoneNumberBuilder: PhoneNumberBuilder!
+    
+    override func validate(_ input: String) throws {
+        do {
+            _ = try phoneNumberBuilder.phoneNumberKit.parse(phoneNumberBuilder.countryCode.cellPhoneContryCode + input)
+        } catch let error {
+            throw InputError(localizedDescription: Localized.errors.invalidPhoneNumber)
+        }
+    }
+}
+
+class SubmitShippingInfoOperation: AlamofireAPIAccessOperation {
+    let draft: ShippingInfoDraft
+    let session: UserSession
+    init(draft: ShippingInfoDraft, session: UserSession) {
+        self.draft = draft
+        self.session = session
+    }
+    
+    override func prepareDataRequest() throws -> DataRequest {
+        try draft.validate()
+        return Alamofire.request(ServiceURLs.base.appendingPathComponent("me/shipping"), method: .put, parameters: [:], encoding: JSONEncoding.default, headers: session.authorizationHeader)
     }
 }

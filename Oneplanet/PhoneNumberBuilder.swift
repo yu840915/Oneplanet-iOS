@@ -38,11 +38,10 @@ class PhoneNumberBuilder {
         }
     }
     
-//    private func validate(_ number: PhoneNumber) -> Bool {
-//        
+//    func validate() -> Bool {
 //        return phoneNumberKit.isValidNumber(number)
 //    }
-//    
+//
 //    func asFormattedString() -> String? {
 //        guard let number = parse(), validate(number), let national = number.nationalNumber else {
 //            return nil

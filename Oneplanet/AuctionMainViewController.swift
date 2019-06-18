@@ -9,8 +9,9 @@
 import UIKit
 import XLPagerTabStrip
 
-class AuctionMainViewController: ButtonBarPagerTabStripViewController {
-
+class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessionDepending {
+    
+    var userSession: UserSession!
     @IBOutlet weak var buttonBarContainer: UIView!
     private var shouldAddBadgeViews = true
     private var productListBadge: BadgeView!
@@ -60,7 +61,11 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController {
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        return [ProductListTableViewController.fromDefaultStoryboard(), BiddingProcessTableViewController.fromDefaultStoryboard()]
+        let controllers = [ProductListTableViewController.fromDefaultStoryboard(), BiddingProcessTableViewController.fromDefaultStoryboard()]
+        controllers
+            .compactMap{$0 as? UserSessionDepending}
+            .forEach{$0.userSession = userSession}
+        return controllers
     }
 
     // MARK: - Navigation

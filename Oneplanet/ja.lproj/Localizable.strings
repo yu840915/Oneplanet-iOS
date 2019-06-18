@@ -62,6 +62,7 @@
 "msg_join_prompt" = "新規登録をしてアプリの機能を楽しめます";
 "msg_alien_description" = "選んだエリアンがマイページに表示されます";
 "msg_ongoing_bidding" = "Other commodities are still bidding, please wait for the bidding to end.";
+"msg_successful_shipping_info_submission" = "The winning commodity will be sent to this address. If the address changes, please remember to update this page";
 
 "msgf_accept_tos" = "アカウントを作成することによって、%@に同意することになります";
 "msgf_resend_verification_email" = "電子メールがみつかりませんか？%@";
@@ -103,6 +104,8 @@
 "ph_product_name" = "Product name";
 "ph_bid_outcome" = "Outcome";
 "ph_bid_product" = "Commodity";
+"ph_successful_shipping_info_submission" = "Filled in successfully";
+"errtl_generic_failure" = "Failed";
 
 "no_posts" = "投稿がありません";
 "no_promo_popups" = "No Promotion Pop-ups Yet";
@@ -114,6 +117,7 @@
 "err_non_digit_input" = "Only digits are allowed";
 "err_account_not_exist" = "有効なメールアドレスではないようです。";
 "err_invalid_nickname" = "命名規則に準拠していません";
+"err_invalid_phone_number" = "Please input valid phone number";
 
 "errtl_cannot_capture_photo" = "Cannot Take Photo";
 "errtl_cannot_pick_avatar" = "Cannot Get Profile Image";

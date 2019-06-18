@@ -235,6 +235,9 @@ class LocalizedMessages {//msg_
     var ongoingBidding: String {
         return NSLocalizedString("msg_ongoing_bidding", comment: "")
     }
+    var successfulShippingInfoSubmission: String {
+        return NSLocalizedString("msg_successful_shipping_info_submission", comment: "")
+    }
 }
 
 class LocalizedMessageFormats {//msgf_
@@ -363,6 +366,9 @@ class LocalizedPhrase { //ph_
     var bidProduct: String {
         return NSLocalizedString("ph_bid_product", comment: "")
     }
+    var successfulShippingInfoSubmission: String {
+        return NSLocalizedString("ph_successful_shipping_info_submission", comment: "")
+    }
 }
 
 class EmptyMessages {//no_
@@ -376,6 +382,10 @@ class EmptyMessages {//no_
 
 class LocalizedErrorsTitles {//errtl_
     fileprivate init() {}
+    var genericFailure: String {
+        return NSLocalizedString("errtl_generic_failure", comment: "")
+    }
+
     var cannotCapturePhoto: String {
         return NSLocalizedString("errtl_cannot_capture_photo", comment: "")
     }
@@ -406,6 +416,9 @@ class LocalizedErrors {//err_
     }
     var invalidNickname: String {
         return NSLocalizedString("err_invalid_nickname", comment: "")
+    }
+    var invalidPhoneNumber: String {
+        return NSLocalizedString("err_invalid_phone_number", comment: "")
     }
 }
 

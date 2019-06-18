@@ -18,6 +18,7 @@ class InputValidators {
     static let password = AndValidator([InputLengthValidator(min: 6, max: 12), alphanumerics])
     static let romanAddress = RomanAddressValidator()
     static let intermediatePassword = AndValidator([InputLengthValidator(max: 12), alphanumerics])
+    static let phoneNumberCharacter = PhoneNumberCharacterValidator()
 }
 
 class EmailInputValidator: TextInputValidator {
@@ -199,4 +200,22 @@ class RomanAddressValidator: TextInputValidator {
         }
         throw InputError(localizedDescription: Localized.errors.nonDigitInput)
     }
+}
+
+class PhoneNumberCharacterValidator: TextInputValidator {
+    private let predicate: NSPredicate
+    
+    override init() {
+        let regex = "[0-9\\+*#]+"
+        predicate = NSPredicate(format:"SELF MATCHES %@", regex)
+        super.init()
+    }
+    
+    override func validate(_ input: String) throws {
+        if predicate.evaluate(with: input) {
+            return
+        }
+        throw InputError(localizedDescription: Localized.errors.nonDigitInput)
+    }
+
 }

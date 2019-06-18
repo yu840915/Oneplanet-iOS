@@ -10,8 +10,9 @@ import UIKit
 import XLPagerTabStrip
 import Kingfisher
 
-class BiddingProcessTableViewController: UITableViewController, DefaultInstanceFactory {
-
+class BiddingProcessTableViewController: UITableViewController, DefaultInstanceFactory, UserSessionDepending {
+    
+    var userSession: UserSession!
     var sections: [Section] = [.shippingInfoPrompt, .items]
     class func fromDefaultStoryboard() -> BiddingProcessTableViewController {
         return UIStoryboard(name: "Auction", bundle: nil).instantiateViewController(withIdentifier: "BiddingLiveTableViewController") as! BiddingProcessTableViewController
@@ -112,6 +113,10 @@ class BiddingProcessTableViewController: UITableViewController, DefaultInstanceF
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let nav = segue.destination as? UINavigationController,
+            let vc = nav.viewControllers.first as? ShippingInfoEditorViewController {
+            vc.userSession = userSession
+        }
     }
 
 }

@@ -9,8 +9,9 @@
 import UIKit
 import XLPagerTabStrip
 
-class ProductListTableViewController: UITableViewController, DefaultInstanceFactory {
+class ProductListTableViewController: UITableViewController, DefaultInstanceFactory, UserSessionDepending {
     
+    var userSession: UserSession!
     var sections: [Section] = [.runningBiddingIndicator, .biddingEndedIndicator, .productList, .bidList]
 
     @IBOutlet weak var countdownDescriptionLabel: UILabel!
@@ -110,6 +111,10 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let nav = segue.destination as? UINavigationController,
+            let vc = nav.viewControllers.first as? ShippingInfoEditorViewController {
+            vc.userSession = userSession
+        }
     }
 
 }

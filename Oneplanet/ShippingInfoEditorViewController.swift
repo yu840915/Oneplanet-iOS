@@ -9,8 +9,9 @@
 import UIKit
 import ModelBlocks
 
-class ShippingInfoEditorViewController: UIViewController {
-
+class ShippingInfoEditorViewController: UIViewController, UserSessionDepending {
+    
+    var userSession: UserSession!
     @IBOutlet weak var exitButtonItem: UIBarButtonItem!
     @IBOutlet weak var countryCodeField: UITextField!
     @IBOutlet weak var emailFieldBlock: InputFieldBlockView!
@@ -43,6 +44,11 @@ class ShippingInfoEditorViewController: UIViewController {
     var draft: ShippingInfoDraft!
     private var endEditingTapRequestHandle: Any?
     private var draftUpdateHandle: Any?
+    private var submitOperation: SubmitShippingInfoOperation? {
+        didSet {
+            updateSubmitButton()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,6 +97,17 @@ class ShippingInfoEditorViewController: UIViewController {
     }
 
     @IBAction func checkAndSubmitForm(_ sender: UIButton) {
+        guard submitOperation == nil else {
+            return
+        }
+        let op = SubmitShippingInfoOperation(draft: draft, session: userSession)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didSubmitShippingInfo()
+            }
+        }
+        submitOperation = op
+        op.start()
     }
     
     @IBAction func tapToEndEditing(_ sender: UITapGestureRecognizer) {
@@ -159,14 +176,14 @@ fileprivate extension ShippingInfoEditorViewController {
         countryFieldBlock.inputFieldDelegate = delegate
         draftUpdateHandle = draft.updateObservers.add {[weak self] in
             OperationQueue.main.addOperation {
-                self?.updateSubmitButtonForDraft()
+                self?.updateSubmitButton()
             }
         }
-        updateSubmitButtonForDraft()
+        updateSubmitButton()
     }
     
-    func updateSubmitButtonForDraft() {
-        submitButton.isEnabled = !draft.hasEmptyRequiredField
+    func updateSubmitButton() {
+        submitButton.isEnabled = !draft.hasEmptyRequiredField && (submitOperation == nil)
     }
     
     func handelSelectedCountry(from item: CountryCodePickerItem) {
@@ -205,6 +222,34 @@ fileprivate extension ShippingInfoEditorViewController {
     func handleKeyboardChange(_ change: KeyboardChangeInfo) {
         let isAppearing = view.bounds.intersects(change.endRect)
         additionalSafeAreaInsets.bottom = isAppearing ? change.endRect.height : 0
+    }
+    
+    func didSubmitShippingInfo() {
+        let op = submitOperation!
+        submitOperation = nil
+        fieldMap.forEach{$0.value.resetErrorDisplay()}
+        if let error = op.error {
+            handleSubmissionError(error)
+        } else {
+            showSuccessMessageAndDismiss()
+        }
+    }
+    
+    func showSuccessMessageAndDismiss() {
+        let alert = UIAlertController(title: Localized.phrases.successfulShippingInfoSubmission, message: Localized.messages.successfulShippingInfoSubmission, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Localized.titles.ok, style: .default, handler: { (_) in
+            self.dismiss(animated: true, completion: nil)
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func handleSubmissionError(_ error: Error) {
+        let alert = UIAlertController(title: Localized.errorTitles.genericFailure, message: error.localizedDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Localized.phrases.tryAgain, style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+        if let err = error as? ShippingInfoInputError {
+            fieldMap[err.field]?.showInputError(with: err.localizedDescription)
+        }
     }
 }
 

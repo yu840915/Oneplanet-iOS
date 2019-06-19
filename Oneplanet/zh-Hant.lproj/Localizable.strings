@@ -63,6 +63,7 @@
 "msg_alien_description" = "你所選擇的外星人會出現在你的個人頁面";
 "msg_ongoing_bidding" = "Other commodities are still bidding, please wait for the bidding to end.";
 "msg_successful_shipping_info_submission" = "The winning commodity will be sent to this address. If the address changes, please remember to update this page";
+"msg_bidding_terms_acceptence" = "Ticking means that you have agreed to the bidding terms";
 
 "msgf_accept_tos" = "註冊或登錄即表示你同意我們的%@";
 "msgf_resend_verification_email" = "你沒有收到電子郵件？%@";

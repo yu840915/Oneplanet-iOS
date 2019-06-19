@@ -23,6 +23,7 @@
 		E0190F55226EC82500C212D5 /* UserFlowRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F54226EC82500C212D5 /* UserFlowRootViewController.swift */; };
 		E0190F57226EDBC900C212D5 /* CameraImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F56226EDBC900C212D5 /* CameraImagePickerViewController.swift */; };
 		E0190F5A226EDD1100C212D5 /* SupportingFlows.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0190F59226EDD1100C212D5 /* SupportingFlows.storyboard */; };
+		E021105322BA1AFA007DE085 /* BiddingTermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E021105222BA1AFA007DE085 /* BiddingTermsViewController.swift */; };
 		E02842AF229A31AF007212D7 /* CharacterPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02842AE229A31AE007212D7 /* CharacterPickerViewController.swift */; };
 		E02842B1229A32C2007212D7 /* ColorPickerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02842B0229A32C2007212D7 /* ColorPickerCollectionViewController.swift */; };
 		E02842B3229A3399007212D7 /* AlienPickerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02842B2229A3399007212D7 /* AlienPickerCollectionViewController.swift */; };
@@ -173,6 +174,7 @@
 		E0190F54226EC82500C212D5 /* UserFlowRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFlowRootViewController.swift; sourceTree = "<group>"; };
 		E0190F56226EDBC900C212D5 /* CameraImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraImagePickerViewController.swift; sourceTree = "<group>"; };
 		E0190F59226EDD1100C212D5 /* SupportingFlows.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SupportingFlows.storyboard; sourceTree = "<group>"; };
+		E021105222BA1AFA007DE085 /* BiddingTermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiddingTermsViewController.swift; sourceTree = "<group>"; };
 		E02842AE229A31AE007212D7 /* CharacterPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterPickerViewController.swift; sourceTree = "<group>"; };
 		E02842B0229A32C2007212D7 /* ColorPickerCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerCollectionViewController.swift; sourceTree = "<group>"; };
 		E02842B2229A3399007212D7 /* AlienPickerCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlienPickerCollectionViewController.swift; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 				E081590A22A61AA3007C9776 /* PopUpContainerViewController.swift */,
 				E0B57DE222A0FAA3006AEADB /* Toast.swift */,
 				E0B57DE622A0FE77006AEADB /* Toast.xib */,
+				E021105222BA1AFA007DE085 /* BiddingTermsViewController.swift */,
 				E06589C42270536A00C9E4E6 /* Image Picking */,
 			);
 			path = "Supporting Flows";
@@ -985,6 +988,7 @@
 				E0A4618622B6284500D26720 /* KeyboardAppearanceObserver.swift in Sources */,
 				E02842B3229A3399007212D7 /* AlienPickerCollectionViewController.swift in Sources */,
 				E0FF7984228D48FA00F61318 /* MyProfileViewController.swift in Sources */,
+				E021105322BA1AFA007DE085 /* BiddingTermsViewController.swift in Sources */,
 				E02842AF229A31AF007212D7 /* CharacterPickerViewController.swift in Sources */,
 				E032844922AB7286001F02E8 /* ProductListTableViewController.swift in Sources */,
 				E03C329E226D772400C32FD7 /* Logger.swift in Sources */,

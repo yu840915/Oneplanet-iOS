@@ -16,6 +16,7 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
     private var shouldAddBadgeViews = true
     private var productListBadge: BadgeView!
     private var biddingProcessBadge: BadgeView!
+    private var biddingFeatureCheckOperation: BiddingFeatureAccessCheckOperation?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,32 +33,7 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setUpBadgeViewIfNeeded()
-    }
-    
-    private func setUpBadgeViewIfNeeded() {
-        if biddingProcessBadge == nil {
-            biddingProcessBadge = prepareBadge(for: buttonBarView.visibleCells.first as! ButtonBarViewCell)
-        }
-        if productListBadge == nil {
-            productListBadge = prepareBadge(for: buttonBarView.visibleCells.last as! ButtonBarViewCell)
-        }
-    }
-    
-    private func prepareBadge(for cell: ButtonBarViewCell) -> BadgeView {
-        let badge = BadgeView.fromDefaultNib()
-        cell.addSubview(badge)
-        let label = cell.label!
-        cell.addConstraint(NSLayoutConstraint(item: label, attribute: .right, relatedBy: .equal, toItem: badge, attribute: .centerX, multiplier: 1, constant: -5))
-        cell.addConstraint(NSLayoutConstraint(item: label, attribute: .top, relatedBy: .equal, toItem: badge, attribute: .centerY, multiplier: 1, constant: 2))
-        return badge
-    }
-    
-    private func updateButtonBarCell(oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) {
-        guard changeCurrentIndex else { return }
-        oldCell?.label.textColor = PagerStyleConfigurer.Style.normal.titleColor
-        oldCell?.label.font = PagerStyleConfigurer.Style.normal.font
-        newCell?.label.textColor = PagerStyleConfigurer.Style.highlighted.titleColor
-        newCell?.label.font = PagerStyleConfigurer.Style.highlighted.font
+        checkBiddingFeatureOnEntryIfNeeded()
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
@@ -73,6 +49,44 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     }
 
+}
+
+private extension AuctionMainViewController {
+    func checkBiddingFeatureOnEntryIfNeeded() {
+        guard biddingFeatureCheckOperation == nil
+            && !userSession.isGuest else {
+            return
+        }
+        let op = BiddingFeatureAccessCheckOperation(userSession: userSession)
+        biddingFeatureCheckOperation = op
+        op.start()
+    }
+    
+    func setUpBadgeViewIfNeeded() {
+        if biddingProcessBadge == nil {
+            biddingProcessBadge = prepareBadge(for: buttonBarView.visibleCells.first as! ButtonBarViewCell)
+        }
+        if productListBadge == nil {
+            productListBadge = prepareBadge(for: buttonBarView.visibleCells.last as! ButtonBarViewCell)
+        }
+    }
+    
+    func prepareBadge(for cell: ButtonBarViewCell) -> BadgeView {
+        let badge = BadgeView.fromDefaultNib()
+        cell.addSubview(badge)
+        let label = cell.label!
+        cell.addConstraint(NSLayoutConstraint(item: label, attribute: .right, relatedBy: .equal, toItem: badge, attribute: .centerX, multiplier: 1, constant: -5))
+        cell.addConstraint(NSLayoutConstraint(item: label, attribute: .top, relatedBy: .equal, toItem: badge, attribute: .centerY, multiplier: 1, constant: 2))
+        return badge
+    }
+    
+    func updateButtonBarCell(oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) {
+        guard changeCurrentIndex else { return }
+        oldCell?.label.textColor = PagerStyleConfigurer.Style.normal.titleColor
+        oldCell?.label.font = PagerStyleConfigurer.Style.normal.font
+        newCell?.label.textColor = PagerStyleConfigurer.Style.highlighted.titleColor
+        newCell?.label.font = PagerStyleConfigurer.Style.highlighted.font
+    }
 }
 
 class ButtonBarContainer: UIView {

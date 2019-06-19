@@ -238,6 +238,9 @@ class LocalizedMessages {//msg_
     var successfulShippingInfoSubmission: String {
         return NSLocalizedString("msg_successful_shipping_info_submission", comment: "")
     }
+    var biddingTermsAcceptence: String {
+        return NSLocalizedString("msg_bidding_terms_acceptence", comment: "")
+    }
 }
 
 class LocalizedMessageFormats {//msgf_

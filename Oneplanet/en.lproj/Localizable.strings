@@ -63,6 +63,7 @@
 "msg_alien_description" = "The aliens you choose will be on your own page";
 "msg_ongoing_bidding" = "Other commodities are still bidding, please wait for the bidding to end.";
 "msg_successful_shipping_info_submission" = "The winning commodity will be sent to this address. If the address changes, please remember to update this page";
+"msg_bidding_terms_acceptence" = "Ticking means that you have agreed to the bidding terms";
 
 "msgf_accept_tos" = "By signing up or login, you agree to our %@.";
 "msgf_resend_verification_email" = "You did not receive the email? %@.";

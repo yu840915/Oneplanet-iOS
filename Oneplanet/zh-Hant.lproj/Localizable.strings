@@ -109,6 +109,8 @@
 
 "no_posts" = "還沒有貼文";
 "no_promo_popups" = "No Promotion Pop-ups Yet";
+"no_unlocked_lots_title" = "你沒有參加這次競標";
+"no_unlocked_lots_message" = "請把握下次競標！48H 內會公布下一期競標品！";
 
 "err_no_camera_access" = "啟用相機權限";
 "err_no_library_access" = "啟用圖庫存取權限";

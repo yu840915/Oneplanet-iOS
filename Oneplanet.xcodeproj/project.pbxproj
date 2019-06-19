@@ -133,6 +133,8 @@
 		E0DCD05322B7EB67008D9C63 /* PickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DCD05222B7EB67008D9C63 /* PickerTableViewController.swift */; };
 		E0DCD05522B8B620008D9C63 /* ShippingInfoEditorHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DCD05422B8B620008D9C63 /* ShippingInfoEditorHelpers.swift */; };
 		E0DCD05722B9CC3D008D9C63 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DCD05622B9CC3D008D9C63 /* ProductDetailViewController.swift */; };
+		E0DCD05922B9D828008D9C63 /* EmptyLotListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0DCD05822B9D827008D9C63 /* EmptyLotListView.xib */; };
+		E0DCD05B22B9D960008D9C63 /* EmptyLotListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DCD05A22B9D960008D9C63 /* EmptyLotListView.swift */; };
 		E0FF797A228C3F6800F61318 /* MyProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FF7979228C3F6800F61318 /* MyProfileTests.swift */; };
 		E0FF797C228D2FC400F61318 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0FF797B228D2FC400F61318 /* Home.storyboard */; };
 		E0FF797E228D38CE00F61318 /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0FF797D228D38CE00F61318 /* Post.storyboard */; };
@@ -293,6 +295,8 @@
 		E0DCD05222B7EB67008D9C63 /* PickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTableViewController.swift; sourceTree = "<group>"; };
 		E0DCD05422B8B620008D9C63 /* ShippingInfoEditorHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingInfoEditorHelpers.swift; sourceTree = "<group>"; };
 		E0DCD05622B9CC3D008D9C63 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
+		E0DCD05822B9D827008D9C63 /* EmptyLotListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyLotListView.xib; sourceTree = "<group>"; };
+		E0DCD05A22B9D960008D9C63 /* EmptyLotListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyLotListView.swift; sourceTree = "<group>"; };
 		E0FF7979228C3F6800F61318 /* MyProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTests.swift; sourceTree = "<group>"; };
 		E0FF797B228D2FC400F61318 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		E0FF797D228D38CE00F61318 /* Post.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
@@ -404,6 +408,8 @@
 				E0A4617B22B2A9D300D26720 /* BiddingProcessHeader.swift */,
 				E032844C22ABB1F5001F02E8 /* BadgeView.xib */,
 				E032844E22ABB2FE001F02E8 /* BadgeView.swift */,
+				E0DCD05822B9D827008D9C63 /* EmptyLotListView.xib */,
+				E0DCD05A22B9D960008D9C63 /* EmptyLotListView.swift */,
 				E032844422AB6A50001F02E8 /* AuctionMainViewController.swift */,
 				E0D1BBDA22ACEE9400951F19 /* TimeIntervalComponents.swift */,
 				E032844822AB7286001F02E8 /* ProductListTableViewController.swift */,
@@ -747,6 +753,7 @@
 				E05BB263226D5D2A00721F20 /* Main.storyboard in Resources */,
 				E0A4617422B234F600D26720 /* BiddingListHeader.xib in Resources */,
 				E0B57DE722A0FE77006AEADB /* Toast.xib in Resources */,
+				E0DCD05922B9D828008D9C63 /* EmptyLotListView.xib in Resources */,
 				E00611F42294FFF10032AE30 /* HotNavigationItems.xib in Resources */,
 				E06F5000227ABE1C0067DAE4 /* OpenSDK1.8.0_NoPay in Resources */,
 				E0FF7980228D398300F61318 /* Auction.storyboard in Resources */,
@@ -951,6 +958,7 @@
 				E08C3129227817680013DD0C /* AuthActions.swift in Sources */,
 				E0B57DE122A0FA48006AEADB /* DefaultStyleConfiguration.swift in Sources */,
 				E00611F22294F5680032AE30 /* HotCollectionViewController.swift in Sources */,
+				E0DCD05B22B9D960008D9C63 /* EmptyLotListView.swift in Sources */,
 				E03C32B0226D8E8F00C32FD7 /* NavigationBarStyle.swift in Sources */,
 				E030E4D7228BC3E90084D383 /* User.swift in Sources */,
 				E0A4617822B28B3000D26720 /* ProductListHeader.swift in Sources */,

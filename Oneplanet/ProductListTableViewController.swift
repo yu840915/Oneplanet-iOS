@@ -119,7 +119,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
 
 }
 
-fileprivate extension ProductListTableViewController {
+private extension ProductListTableViewController {
     func showShippingInfoEditor() {
         performSegue(withIdentifier: SegueID.showShippingInfoEditor, sender: nil)
     }
@@ -128,6 +128,14 @@ fileprivate extension ProductListTableViewController {
         
     }
 }
+
+private extension ProductListTableViewController {
+    func setUpEmptyViewForEmptyRunningBidList() {
+        let view = EmptyLotListView.fromDefaultNib()
+        tableView.tableFooterView = view
+    }
+}
+
 extension ProductListTableViewController {
     enum Section {
         case productList

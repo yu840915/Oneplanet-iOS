@@ -378,6 +378,12 @@ class EmptyMessages {//no_
     var promoPopups: String {
         return NSLocalizedString("no_promo_popups", comment: "")
     }
+    var unlockedLotsTitle: String {
+        return NSLocalizedString("no_unlocked_lots_title", comment: "")
+    }
+    var unlockedLotsMessage: String {
+        return NSLocalizedString("no_unlocked_lots_message", comment: "")
+    }
 }
 
 class LocalizedErrorsTitles {//errtl_

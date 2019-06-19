@@ -363,8 +363,8 @@ class LocalizedPhrase { //ph_
     var bidOutcome: String {
         return NSLocalizedString("ph_bid_outcome", comment: "")
     }
-    var bidProduct: String {
-        return NSLocalizedString("ph_bid_product", comment: "")
+    var bidLot: String {
+        return NSLocalizedString("ph_bid_lot", comment: "")
     }
     var successfulShippingInfoSubmission: String {
         return NSLocalizedString("ph_successful_shipping_info_submission", comment: "")

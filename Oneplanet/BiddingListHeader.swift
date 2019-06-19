@@ -25,7 +25,7 @@ class BiddingListHeader: UITableViewHeaderFooterView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        productLabel.text = Localized.phrases.bidProduct
+        productLabel.text = Localized.phrases.bidLot
         bidCountLabel.text = Localized.phrases.bidCount
         leaderLabel.text = Localized.phrases.bidLeader
         countdownLabel.text = Localized.phrases.countdown

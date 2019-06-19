@@ -103,7 +103,7 @@
 "ph_bid_leader" = "Leading";
 "ph_product_name" = "競標品名稱";
 "ph_bid_outcome" = "競標結果";
-"ph_bid_product" = "Commodity";
+"ph_bid_lot" = "Commodity";
 "ph_successful_shipping_info_submission" = "Filled in successfully";
 "errtl_generic_failure" = "Failed";
 

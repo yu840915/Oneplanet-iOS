@@ -199,17 +199,15 @@ class ProductOverviewCell: UITableViewCell {
     }
 }
 
-extension ProductOverviewCell {
-    class LockAppearance {
-        let title: String
-        let color: UIColor
-        init(title: String, color: UIColor) {
-            self.title = title
-            self.color = color
-        }
-        static let forLocked = LockAppearance(title: Localized.titles.unlock, color: ColorPalette.bidRed)
-        static let forUnlocked = LockAppearance(title: Localized.titles.unlocked, color: ColorPalette.bidGreen)
+class LockAppearance {
+    let title: String
+    let color: UIColor
+    init(title: String, color: UIColor) {
+        self.title = title
+        self.color = color
     }
+    static let forLocked = LockAppearance(title: Localized.titles.unlock, color: ColorPalette.bidRed)
+    static let forUnlocked = LockAppearance(title: Localized.titles.unlocked, color: ColorPalette.bidGreen)
 }
 
 class BiddingProductCell: UITableViewCell {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ProductDetailViewController: UIViewController, UserSessionDepending {
 
@@ -17,10 +18,17 @@ class ProductDetailViewController: UIViewController, UserSessionDepending {
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailTextView: UITextView!
+    @IBOutlet weak var galleryCollectionView: UICollectionView!
+    private var previews: [WebImageInfo] = [] {
+        didSet {
+            updateViewsForPreviews()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         localizeTitles()
+        updateViewsForPreviews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,6 +46,34 @@ class ProductDetailViewController: UIViewController, UserSessionDepending {
 
 }
 
+extension ProductDetailViewController {
+    func updateViewsForPreviews() {
+        pageControl.isHidden = previews.count < 2
+        pageControl.numberOfPages = previews.count
+        galleryCollectionView.reloadData()
+    }
+}
+
+extension ProductDetailViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return previews.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath) as! ImageGalleryPageCell
+        cell.updateViews(with: previews[indexPath.row])
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: view.frame.width)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        pageControl.currentPage = Int((scrollView.contentOffset.x / scrollView.frame.width).rounded(.toNearestOrAwayFromZero))
+    }
+}
+
 private extension ProductDetailViewController {
     func localizeTitles() {
         title = Localized.phrases.bidLot
@@ -52,4 +88,12 @@ private extension ProductDetailViewController {
         lockButton.isEnabled = isLocked
     }
 
+}
+
+class ImageGalleryPageCell: UICollectionViewCell {
+    @IBOutlet weak var imageView: UIImageView!
+    
+    func updateViews(with imageInfo: WebImageInfo) {
+        imageView.kf.setImage(with: imageInfo.url)
+    }
 }

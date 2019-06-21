@@ -17,6 +17,18 @@ class BarButtonItemFactory {
     }
 }
 
+class CommonViewFactory {
+    private init(){}
+    static let shared = CommonViewFactory()
+    
+    func makeSelectionBackground() -> UIView {
+        let view = UIView()
+        view.backgroundColor = .init(white: 1.0, alpha: 0.2)
+        return view
+    }
+
+}
+
 class TextAttachmentFactory {
     private init(){}
     static let shared = TextAttachmentFactory()

@@ -26,6 +26,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         super.viewDidLoad()
         tableView.register(ProductListHeader.defaultNib(), forHeaderFooterViewReuseIdentifier: ReuseID.productListHeader)
         tableView.register(BiddingListHeader.defaultNib(), forHeaderFooterViewReuseIdentifier: ReuseID.biddingListHeader)
+        navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
         refreshClock = UpdateClock(preferredFrameRate: 15, onTick: {[weak self] in
             self?.refreshDynamicViews()
         })
@@ -105,7 +106,20 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         case .bidList:
             return tableView.dequeueReusableHeaderFooterView(withIdentifier: ReuseID.biddingListHeader)
         }
+    }
 
+    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return sections[indexPath.section].isSelectable
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch sections[indexPath.section] {
+        case .productList:
+            performSegue(withIdentifier: SegueID.showProductDetail, sender: nil) //TODO: product
+        case .bidList:
+            performSegue(withIdentifier: SegueID.showProductDetail, sender: nil) //TODO: product
+        default: break
+        }
     }
 
     // MARK: - Navigation
@@ -150,6 +164,12 @@ extension ProductListTableViewController {
             case .biddingEndedIndicator: return ReuseID.biddingEndCell
             }
         }
+        var isSelectable: Bool {
+            switch self {
+            case .productList, .bidList: return true
+            case .runningBiddingIndicator, .biddingEndedIndicator: return false
+            }
+        }
     }
     
     struct ReuseID {
@@ -163,6 +183,7 @@ extension ProductListTableViewController {
     
     struct SegueID {
         static let showShippingInfoEditor = "showShippingInfoEditor"
+        static let showProductDetail = "showProductDetail"
     }
 }
 
@@ -182,6 +203,7 @@ extension ProductListTableViewController: IndicatorInfoProvider {
 }
 
 class ProductOverviewCell: UITableViewCell {
+    @IBOutlet weak var contentBackgroundView: UIView!
     @IBOutlet weak var previewImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var lockButton: UIButton!
@@ -193,10 +215,20 @@ class ProductOverviewCell: UITableViewCell {
             }
         }
     }
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        contentBackgroundView.backgroundColor = .white
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        contentBackgroundView.backgroundColor = .white
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         updateViewsForLockState()
+        selectedBackgroundView = CommonViewFactory.shared.makeSelectionBackground()
     }
     
     private func updateViewsForLockState() {
@@ -219,6 +251,8 @@ class LockAppearance {
 }
 
 class BiddingProductCell: UITableViewCell {
+    @IBOutlet weak var contentBackgroundView: UIView!
+
     @IBOutlet weak var avatarContainer: UIView!
     @IBOutlet weak var avatarView: AvatarView!
     @IBOutlet weak var previewImageView: UIImageView!
@@ -242,7 +276,22 @@ class BiddingProductCell: UITableViewCell {
     }()
 
     let formatter: NumberFormatter = SharedNumberFormatters.clockComponent
+    
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        contentBackgroundView.backgroundColor = .white
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        contentBackgroundView.backgroundColor = .white
+    }
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        selectedBackgroundView = CommonViewFactory.shared.makeSelectionBackground()
+    }
+    
     func tick() {
         let i = deadline.timeIntervalSinceNow
         let comps = TimeIntervalComponents(extractor.extract(from: i))

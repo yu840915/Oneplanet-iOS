@@ -28,6 +28,7 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
         changeCurrentIndexProgressive = {[weak self] (oldCell, newCell, progressPercentage, changeCurrentIndex, animated) in
             self?.updateButtonBarCell(oldCell: oldCell, newCell: newCell, progressPercentage: progressPercentage, changeCurrentIndex: changeCurrentIndex, animated: animated)
         }
+        navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -118,4 +119,3 @@ class PagerStyleConfigurer {
         static let highlighted = Style(titleColor: ColorPalette.defaultText, font: .systemFont(ofSize: 12, weight: .semibold))
     }
 }
-

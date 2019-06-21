@@ -21,6 +21,7 @@ class BiddingProcessTableViewController: UITableViewController, DefaultInstanceF
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(BiddingProcessHeader.defaultNib(), forHeaderFooterViewReuseIdentifier: ReuseID.biddingItemHeader)
+        navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
     }
 
     // MARK: - Table view data source
@@ -106,9 +107,19 @@ class BiddingProcessTableViewController: UITableViewController, DefaultInstanceF
         case .items:
             return nil
         }
-
     }
-
+    
+    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return sections[indexPath.section] == .items
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch sections[indexPath.section] {
+        case .items:
+            performSegue(withIdentifier: SegueID.showProductDetail, sender: nil) //TODO: product
+        default: break
+        }
+    }
 
     // MARK: - Navigation
 
@@ -153,6 +164,7 @@ extension BiddingProcessTableViewController {
 
     struct SegueID {
         static let showShippingInfoEditor = "showShippingInfoEditor"
+        static let showProductDetail = "showProductDetail"
     }
 }
 

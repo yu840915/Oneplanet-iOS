@@ -338,6 +338,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
+                                    <outlet property="contentBackgroundView" destination="Jq4-ZX-0hE" id="jkW-s7-hxF"/>
                                     <outlet property="lockButton" destination="nUg-8I-Sdp" id="q9z-yg-XEl"/>
                                     <outlet property="lockLabel" destination="6GH-Dy-bwX" id="2dM-LK-pW5"/>
                                     <outlet property="previewImageView" destination="j0D-0h-2uy" id="qOn-3P-Nw4"/>
@@ -577,6 +578,7 @@
                                     <outlet property="avatarContainer" destination="L1U-rM-8Nz" id="yB9-gz-hlg"/>
                                     <outlet property="avatarView" destination="d32-hI-8d7" id="BeZ-dd-pPI"/>
                                     <outlet property="bidButton" destination="HCI-9F-GnE" id="9kt-4n-g4C"/>
+                                    <outlet property="contentBackgroundView" destination="l7q-OV-9t5" id="CYD-yL-kMn"/>
                                     <outlet property="countdownLabel" destination="Zfw-7n-PSp" id="8dJ-6x-eA0"/>
                                     <outlet property="coverView" destination="y8G-GU-5Ef" id="Xu8-WO-1Nh"/>
                                     <outlet property="digitLabel" destination="0B3-rb-Fks" id="QEj-KK-skq"/>
@@ -731,16 +733,16 @@ The winner must check if the Receipt information is filled in to ensure that the
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Lqo-vl-dr0">
-                                            <rect key="frame" x="26" y="12" width="219.5" height="17"/>
+                                            <rect key="frame" x="26" y="12" width="219.5" height="28"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shipping Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3sE-eR-Eg1" userLabel="Shipping Label">
-                                                    <rect key="frame" x="0.0" y="0.0" width="113.5" height="17"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="113.5" height="28"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" name="default text"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pWQ-Mg-RQS" userLabel="Address Button">
-                                                    <rect key="frame" x="119.5" y="0.0" width="100" height="17"/>
+                                                    <rect key="frame" x="119.5" y="0.0" width="100" height="28"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                                                     <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="12" maxY="0.0"/>
                                                     <state key="normal" title="Add Address" backgroundImage="bt_smallgreen_nor">
@@ -784,16 +786,16 @@ The winner must check if the Receipt information is filled in to ensure that the
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="dPX-8T-nXa">
-                                            <rect key="frame" x="26" y="12" width="218.5" height="17"/>
+                                            <rect key="frame" x="26" y="12" width="218.5" height="28"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shipping Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oEI-JG-dgK" userLabel="Shipping Label">
-                                                    <rect key="frame" x="0.0" y="0.0" width="113.5" height="17"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="113.5" height="28"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" name="default text"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZZP-ZP-wPf" userLabel="Address Button">
-                                                    <rect key="frame" x="119.5" y="0.0" width="99" height="17"/>
+                                                    <rect key="frame" x="119.5" y="0.0" width="99" height="28"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                                                     <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="12" maxY="0.0"/>
                                                     <state key="normal" title="Edit Address" backgroundImage="bt_smallwiregray_nor">
@@ -806,7 +808,7 @@ The winner must check if the Receipt information is filled in to ensure that the
                                             </subviews>
                                         </stackView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPA-IC-ODi">
-                                            <rect key="frame" x="26" y="35" width="362" height="45"/>
+                                            <rect key="frame" x="26" y="46" width="362" height="34"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" name="default placeholder"/>
                                             <nil key="highlightedColor"/>
@@ -840,7 +842,7 @@ The winner must check if the Receipt information is filled in to ensure that the
                                     <outlet property="titleLabel" destination="oEI-JG-dgK" id="ucx-sp-Ncc"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="biddingItemResultCell" id="A9n-ZS-IXs" customClass="BidOutcomeCell" customModule="Oneplanet" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="biddingItemResultCell" id="A9n-ZS-IXs" customClass="BidOutcomeCell" customModule="Oneplanet" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="216.5" width="414" height="61"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A9n-ZS-IXs" id="Zif-HZ-oP8">
@@ -969,6 +971,7 @@ The winner must check if the Receipt information is filled in to ensure that the
                     </tableView>
                     <connections>
                         <segue destination="K1B-0s-WCJ" kind="presentation" identifier="showShippingInfoEditor" id="Scs-0i-F1U"/>
+                        <segue destination="Kvw-Xq-bR5" kind="show" identifier="showProductDetail" id="kIk-ce-MVu"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MgV-qn-nUW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1019,7 +1022,7 @@ The winner must check if the Receipt information is filled in to ensure that the
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZXb-JW-AKT">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oxS-Zv-zib">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="543.5"/>
@@ -1029,9 +1032,53 @@ The winner must check if the Receipt information is filled in to ensure that the
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AaL-2y-QrK" userLabel="Preview Container View">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <subviews>
+                                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9mQ-1R-MJt">
+                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="MKZ-Q9-3xF">
+                                                                    <size key="itemSize" width="413" height="411"/>
+                                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                                </collectionViewFlowLayout>
+                                                                <cells>
+                                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellID" id="tdE-vm-Sn0" customClass="ImageGalleryPageCell" customModule="Oneplanet" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="1.5" width="413" height="411"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="413" height="411"/>
+                                                                            <autoresizingMask key="autoresizingMask"/>
+                                                                            <subviews>
+                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="X8H-Si-5Qw">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="413" height="411"/>
+                                                                                </imageView>
+                                                                            </subviews>
+                                                                        </view>
+                                                                        <constraints>
+                                                                            <constraint firstItem="X8H-Si-5Qw" firstAttribute="height" secondItem="tdE-vm-Sn0" secondAttribute="height" id="7Ms-UZ-S8h"/>
+                                                                            <constraint firstItem="X8H-Si-5Qw" firstAttribute="width" secondItem="tdE-vm-Sn0" secondAttribute="width" id="Y1q-Pa-Xzn"/>
+                                                                            <constraint firstItem="X8H-Si-5Qw" firstAttribute="centerX" secondItem="tdE-vm-Sn0" secondAttribute="centerX" id="mOy-2g-7uG"/>
+                                                                            <constraint firstItem="X8H-Si-5Qw" firstAttribute="centerY" secondItem="tdE-vm-Sn0" secondAttribute="centerY" id="z3k-ma-En9"/>
+                                                                        </constraints>
+                                                                        <connections>
+                                                                            <outlet property="imageView" destination="X8H-Si-5Qw" id="RL5-oj-Zak"/>
+                                                                        </connections>
+                                                                    </collectionViewCell>
+                                                                </cells>
+                                                                <connections>
+                                                                    <outlet property="dataSource" destination="Kvw-Xq-bR5" id="XvS-pr-HNV"/>
+                                                                    <outlet property="delegate" destination="Kvw-Xq-bR5" id="obU-hF-MhS"/>
+                                                                </connections>
+                                                            </collectionView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
+                                                            <constraint firstItem="9mQ-1R-MJt" firstAttribute="height" secondItem="AaL-2y-QrK" secondAttribute="height" id="CwJ-p2-Mp7"/>
                                                             <constraint firstAttribute="width" secondItem="AaL-2y-QrK" secondAttribute="height" id="Fdf-aZ-Bgh"/>
+                                                            <constraint firstItem="9mQ-1R-MJt" firstAttribute="width" secondItem="AaL-2y-QrK" secondAttribute="width" id="HqD-NQ-NAu"/>
+                                                            <constraint firstItem="9mQ-1R-MJt" firstAttribute="centerX" secondItem="AaL-2y-QrK" secondAttribute="centerX" id="LQ1-QX-LLY"/>
+                                                            <constraint firstItem="9mQ-1R-MJt" firstAttribute="centerY" secondItem="AaL-2y-QrK" secondAttribute="centerY" id="Tum-qj-ear"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7cT-au-rbZ">
@@ -1121,6 +1168,7 @@ The winner must check if the Receipt information is filled in to ensure that the
                     <navigationItem key="navigationItem" id="apN-VH-OMd"/>
                     <connections>
                         <outlet property="detailTextView" destination="gvk-tN-Wxe" id="Nkc-Zq-Tuc"/>
+                        <outlet property="galleryCollectionView" destination="9mQ-1R-MJt" id="kUU-JZ-ghA"/>
                         <outlet property="lockButton" destination="Low-rR-min" id="YRP-R9-j7g"/>
                         <outlet property="lockLabel" destination="nHQ-w0-Ye0" id="6RG-ZY-SHh"/>
                         <outlet property="lockView" destination="5QL-eJ-FCI" id="pE0-cV-5rp"/>
@@ -1130,7 +1178,7 @@ The winner must check if the Receipt information is filled in to ensure that the
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="APu-Y2-dQn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3232" y="-721"/>
+            <point key="canvasLocation" x="3231.884057971015" y="-721.20535714285711"/>
         </scene>
         <!--Shipping Info Editor View Controller-->
         <scene sceneID="4i4-8k-jma">
@@ -2052,7 +2100,7 @@ The winner must check if the Receipt information is filled in to ensure that the
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Jan-oh-NbX"/>
-        <segue reference="8pF-Y6-fub"/>
+        <segue reference="kIk-ce-MVu"/>
+        <segue reference="Scs-0i-F1U"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -16,6 +16,7 @@ target 'Oneplanet' do
   pod 'FacebookShare', '~> 0.5.0'
   pod 'TwitterKit', '~> 3.4.2'
   pod 'Kingfisher', '~> 5.5.0'
+  pod 'PusherSwift', '~> 7.0'
 
   target 'OneplanetTests' do
     inherit! :search_paths

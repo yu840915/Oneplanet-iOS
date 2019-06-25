@@ -129,6 +129,7 @@
 		E0D1BBDB22ACEE9500951F19 /* TimeIntervalComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D1BBDA22ACEE9400951F19 /* TimeIntervalComponents.swift */; };
 		E0D7DCDB229CE65C00B40D76 /* PromoPopUpFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D7DCDA229CE65C00B40D76 /* PromoPopUpFlowViewController.swift */; };
 		E0D7DCDD229CE82300B40D76 /* PromoPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D7DCDC229CE82300B40D76 /* PromoPopUpViewController.swift */; };
+		E0DA389722C0744E00EC4170 /* Unlock.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0DA389622C0744E00EC4170 /* Unlock.storyboard */; };
 		E0DCD04F22B7E77D008D9C63 /* PickerConfirmButtonFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0DCD04E22B7E77D008D9C63 /* PickerConfirmButtonFooter.xib */; };
 		E0DCD05122B7E86B008D9C63 /* PickerConfirmButtonFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DCD05022B7E86B008D9C63 /* PickerConfirmButtonFooter.swift */; };
 		E0DCD05322B7EB67008D9C63 /* PickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DCD05222B7EB67008D9C63 /* PickerTableViewController.swift */; };
@@ -292,6 +293,7 @@
 		E0D1BBDA22ACEE9400951F19 /* TimeIntervalComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalComponents.swift; sourceTree = "<group>"; };
 		E0D7DCDA229CE65C00B40D76 /* PromoPopUpFlowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoPopUpFlowViewController.swift; sourceTree = "<group>"; };
 		E0D7DCDC229CE82300B40D76 /* PromoPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoPopUpViewController.swift; sourceTree = "<group>"; };
+		E0DA389622C0744E00EC4170 /* Unlock.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Unlock.storyboard; sourceTree = "<group>"; };
 		E0DCD04E22B7E77D008D9C63 /* PickerConfirmButtonFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerConfirmButtonFooter.xib; sourceTree = "<group>"; };
 		E0DCD05022B7E86B008D9C63 /* PickerConfirmButtonFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerConfirmButtonFooter.swift; sourceTree = "<group>"; };
 		E0DCD05222B7EB67008D9C63 /* PickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTableViewController.swift; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 				E0A4618322B5405700D26720 /* ShippingInfoDraft.swift */,
 				E0A4618922B6347800D26720 /* PhoneNumberBuilder.swift */,
 				E032844A22AB7A90001F02E8 /* BiddingProcessTableViewController.swift */,
+				E0DA389622C0744E00EC4170 /* Unlock.storyboard */,
 			);
 			name = Auction;
 			sourceTree = "<group>";
@@ -757,6 +760,7 @@
 				E0A4617422B234F600D26720 /* BiddingListHeader.xib in Resources */,
 				E0B57DE722A0FE77006AEADB /* Toast.xib in Resources */,
 				E0DCD05922B9D828008D9C63 /* EmptyLotListView.xib in Resources */,
+				E0DA389722C0744E00EC4170 /* Unlock.storyboard in Resources */,
 				E00611F42294FFF10032AE30 /* HotNavigationItems.xib in Resources */,
 				E06F5000227ABE1C0067DAE4 /* OpenSDK1.8.0_NoPay in Resources */,
 				E0FF7980228D398300F61318 /* Auction.storyboard in Resources */,

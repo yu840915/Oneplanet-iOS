@@ -130,6 +130,9 @@
 		E0D7DCDB229CE65C00B40D76 /* PromoPopUpFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D7DCDA229CE65C00B40D76 /* PromoPopUpFlowViewController.swift */; };
 		E0D7DCDD229CE82300B40D76 /* PromoPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D7DCDC229CE82300B40D76 /* PromoPopUpViewController.swift */; };
 		E0DA389722C0744E00EC4170 /* Unlock.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0DA389622C0744E00EC4170 /* Unlock.storyboard */; };
+		E0DA389E22C2824500EC4170 /* GemActionPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DA389D22C2824500EC4170 /* GemActionPopUpViewController.swift */; };
+		E0DA38A022C282EC00EC4170 /* GemPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DA389F22C282EC00EC4170 /* GemPickerTableViewController.swift */; };
+		E0DA38A222C31E3800EC4170 /* GemActionPopUpConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DA38A122C31E3700EC4170 /* GemActionPopUpConfigurations.swift */; };
 		E0DCD04F22B7E77D008D9C63 /* PickerConfirmButtonFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0DCD04E22B7E77D008D9C63 /* PickerConfirmButtonFooter.xib */; };
 		E0DCD05122B7E86B008D9C63 /* PickerConfirmButtonFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DCD05022B7E86B008D9C63 /* PickerConfirmButtonFooter.swift */; };
 		E0DCD05322B7EB67008D9C63 /* PickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DCD05222B7EB67008D9C63 /* PickerTableViewController.swift */; };
@@ -294,6 +297,9 @@
 		E0D7DCDA229CE65C00B40D76 /* PromoPopUpFlowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoPopUpFlowViewController.swift; sourceTree = "<group>"; };
 		E0D7DCDC229CE82300B40D76 /* PromoPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoPopUpViewController.swift; sourceTree = "<group>"; };
 		E0DA389622C0744E00EC4170 /* Unlock.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Unlock.storyboard; sourceTree = "<group>"; };
+		E0DA389D22C2824500EC4170 /* GemActionPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemActionPopUpViewController.swift; sourceTree = "<group>"; };
+		E0DA389F22C282EC00EC4170 /* GemPickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemPickerTableViewController.swift; sourceTree = "<group>"; };
+		E0DA38A122C31E3700EC4170 /* GemActionPopUpConfigurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemActionPopUpConfigurations.swift; sourceTree = "<group>"; };
 		E0DCD04E22B7E77D008D9C63 /* PickerConfirmButtonFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerConfirmButtonFooter.xib; sourceTree = "<group>"; };
 		E0DCD05022B7E86B008D9C63 /* PickerConfirmButtonFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerConfirmButtonFooter.swift; sourceTree = "<group>"; };
 		E0DCD05222B7EB67008D9C63 /* PickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTableViewController.swift; sourceTree = "<group>"; };
@@ -424,7 +430,7 @@
 				E0A4618322B5405700D26720 /* ShippingInfoDraft.swift */,
 				E0A4618922B6347800D26720 /* PhoneNumberBuilder.swift */,
 				E032844A22AB7A90001F02E8 /* BiddingProcessTableViewController.swift */,
-				E0DA389622C0744E00EC4170 /* Unlock.storyboard */,
+				E0DA389C22C27FC600EC4170 /* Unlock and Bid */,
 			);
 			name = Auction;
 			sourceTree = "<group>";
@@ -637,6 +643,17 @@
 				E030E4D5228BC3BD0084D383 /* Me */,
 			);
 			name = "Main User Flow";
+			sourceTree = "<group>";
+		};
+		E0DA389C22C27FC600EC4170 /* Unlock and Bid */ = {
+			isa = PBXGroup;
+			children = (
+				E0DA389622C0744E00EC4170 /* Unlock.storyboard */,
+				E0DA389D22C2824500EC4170 /* GemActionPopUpViewController.swift */,
+				E0DA38A122C31E3700EC4170 /* GemActionPopUpConfigurations.swift */,
+				E0DA389F22C282EC00EC4170 /* GemPickerTableViewController.swift */,
+			);
+			name = "Unlock and Bid";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -948,6 +965,7 @@
 				E081591122A65276007C9776 /* PurpleGemStoreViewController.swift in Sources */,
 				E0DCD05522B8B620008D9C63 /* ShippingInfoEditorHelpers.swift in Sources */,
 				E0190F53226DD62200C212D5 /* UserProgressChecklist.swift in Sources */,
+				E0DA389E22C2824500EC4170 /* GemActionPopUpViewController.swift in Sources */,
 				E06589C32270362300C9E4E6 /* GenericAppError.swift in Sources */,
 				E06589C8227060EC00C9E4E6 /* PhotoList.swift in Sources */,
 				E0190F55226EC82500C212D5 /* UserFlowRootViewController.swift in Sources */,
@@ -964,6 +982,7 @@
 				E06589BB227001F300C9E4E6 /* AskForAuthorizationOperation.swift in Sources */,
 				E03C329A226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift in Sources */,
 				E03C32AE226D8E6800C32FD7 /* SharedFormatters.swift in Sources */,
+				E0DA38A222C31E3800EC4170 /* GemActionPopUpConfigurations.swift in Sources */,
 				E07276F82276D0DC001239C0 /* RequestUserNotificationAuthorizationOperation.swift in Sources */,
 				E0FF7986228D51E800F61318 /* SettingsTableViewController.swift in Sources */,
 				E06589C12270333100C9E4E6 /* PickImageOperation.swift in Sources */,
@@ -988,6 +1007,7 @@
 				E07276E1227307F5001239C0 /* LogInViewController.swift in Sources */,
 				E0D7DCDD229CE82300B40D76 /* PromoPopUpViewController.swift in Sources */,
 				E05BB25E226D5D2A00721F20 /* AppDelegate.swift in Sources */,
+				E0DA38A022C282EC00EC4170 /* GemPickerTableViewController.swift in Sources */,
 				E00611F6229500FA0032AE30 /* HotNavigationItemView.swift in Sources */,
 				E06F4FFE22789C760067DAE4 /* AppLifeCycleObserver.swift in Sources */,
 				E032844F22ABB2FE001F02E8 /* BadgeView.swift in Sources */,

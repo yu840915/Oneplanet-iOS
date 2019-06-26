@@ -69,6 +69,18 @@
 "msgf_resend_verification_email" = "You did not receive the email? %@.";
 "msgf_did_copy_my_id" = "My Oneplanet ID [%@] Copied.";
 "msgf_winner_notice" = "The winner must check if the %@ is filled in to ensure that the goods can be delivered.";
+"msgf_unlock_lot" = "Unlock %@?";
+"msgf_did_unlock_lot" = "Unlocked %@!";
+"msgf_unlock_option_prompt" = "Choose %@ or %@ to unlock";
+"msgf_unlock_with_gem_iap" = "Unlock with %@ + %@?";
+"msgf_unlock_with_gem" = "Unlock with %@?";
+"msgf_insufficient_gem" = "Insufficient %@";
+"msgf_bid_prompt" = "Bid %@ once";
+"msgf_bid_with_gem_iap" = "Bid once with %@ + %@ service charge?";
+"msgf_bid_with_gem" = "Use %@ to bid once?";
+"msgf_insufficient_gem_unlock_des" = "解鎖一次需要使用一顆 %@ + %@。";
+"msgf_insufficient_gem_bid_des" = "投標一次需要使用一顆 %@ + %@。";
+"msgf_earn_blue_gem_instruction" = "拍照上傳照片就能獲得 %@，趕緊去拍照！";
 
 "ph_guest_login" = "Guest";
 "ph_email_login" = "Or Login With Email";

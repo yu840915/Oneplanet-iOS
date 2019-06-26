@@ -260,6 +260,42 @@ class LocalizedMessageFormats {//msgf_
     var winnerNotice: String {
         return NSLocalizedString("msgf_winner_notice", comment: "")
     }
+    var unlockLot: String {
+        return NSLocalizedString("msgf_unlock_lot", comment: "")
+    }
+    var didUnlockLot: String {
+        return NSLocalizedString("msgf_did_unlock_lot", comment: "")
+    }
+    var unlockOptionPrompt: String {
+        return NSLocalizedString("msgf_unlock_option_prompt", comment: "")
+    }
+    var unlockWithGemAndIAP: String {
+        return NSLocalizedString("msgf_unlock_with_gem_iap", comment: "")
+    }
+    var unlockWithGem: String {
+        return NSLocalizedString("msgf_unlock_with_gem", comment: "")
+    }
+    var insufficientGem: String {
+        return NSLocalizedString("msgf_insufficient_gem", comment: "")
+    }
+    var bidPrompt: String {
+        return NSLocalizedString("msgf_bid_prompt", comment: "")
+    }
+    var bidWithGemAndIAP: String {
+        return NSLocalizedString("msgf_bid_with_gem_iap", comment: "")
+    }
+    var bidWithGem: String {
+        return NSLocalizedString("msgf_bid_with_gem", comment: "")
+    }
+    var insufficientGemToUnlockDescription: String {
+        return NSLocalizedString("msgf_insufficient_gem_unlock_des", comment: "")
+    }
+    var insufficientGemToBidDescription: String {
+        return NSLocalizedString("msgf_insufficient_gem_bid_des", comment: "")
+    }
+    var earnBlueGemInstruction: String {
+        return NSLocalizedString("msgf_earn_blue_gem_instruction", comment: "")
+    }
 }
 
 class LocalizedPhrase { //ph_

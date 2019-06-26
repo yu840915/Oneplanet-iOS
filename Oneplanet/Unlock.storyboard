@@ -94,10 +94,10 @@
             </objects>
             <point key="canvasLocation" x="71" y="861"/>
         </scene>
-        <!--View Controller-->
+        <!--Gem Action Pop Up View Controller-->
         <scene sceneID="YhT-Dn-Q28">
             <objects>
-                <viewController id="I1G-w4-e9K" sceneMemberID="viewController">
+                <viewController id="I1G-w4-e9K" customClass="GemActionPopUpViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wy2-c1-NPI">
                         <rect key="frame" x="0.0" y="0.0" width="374" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -129,22 +129,25 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="1cS-ll-nFz">
                                         <rect key="frame" x="0.0" y="176" width="374" height="295"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPw-Aj-yVw" userLabel="Title Label">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPw-Aj-yVw" userLabel="Title Label">
                                                 <rect key="frame" x="166" y="0.0" width="42" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BeA-BQ-5Po" userLabel="Description Label">
-                                                <rect key="frame" x="171.5" y="26.5" width="31" height="268.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Subtitle" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="p83-k3-Aay" userLabel="Subtitle Text View">
+                                                <rect key="frame" x="15" y="26.5" width="344" height="268.5"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="I1G-w4-e9K" id="T73-9Z-qmb"/>
+                                                </connections>
+                                            </textView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="LPw-Aj-yVw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1cS-ll-nFz" secondAttribute="leading" constant="20" id="edV-19-6vG"/>
-                                            <constraint firstItem="BeA-BQ-5Po" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1cS-ll-nFz" secondAttribute="leading" constant="20" id="jSt-li-x4V"/>
+                                            <constraint firstItem="p83-k3-Aay" firstAttribute="leading" secondItem="1cS-ll-nFz" secondAttribute="leading" constant="15" id="i2x-ga-hsy"/>
                                         </constraints>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RL2-gb-k6s">
@@ -167,7 +170,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CXT-rE-SKr" userLabel="Cancel Button">
                                                 <rect key="frame" x="20" y="47" width="334" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                                                <state key="normal" title="Cancel" backgroundImage="bt_bigwiregray_nor">
+                                                <state key="normal" title="Cancel" backgroundImage="bt_bigwireblack_nor">
                                                     <color key="titleColor" name="dark gray"/>
                                                 </state>
                                             </button>
@@ -195,6 +198,13 @@
                             <constraint firstItem="SOK-Yz-uIr" firstAttribute="centerY" secondItem="wy2-c1-NPI" secondAttribute="centerY" id="uxY-da-IND"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="actionButton" destination="esp-dt-JLq" id="wFP-sq-GOt"/>
+                        <outlet property="cancelButton" destination="CXT-rE-SKr" id="91n-re-cMD"/>
+                        <outlet property="iconImageView" destination="6z7-IB-Anm" id="a9C-GF-wbt"/>
+                        <outlet property="subtitleTextView" destination="p83-k3-Aay" id="gMw-we-5Zs"/>
+                        <outlet property="titleLabel" destination="LPw-Aj-yVw" id="ChP-r2-B05"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ffk-if-Xay" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -246,10 +256,10 @@
             </objects>
             <point key="canvasLocation" x="68" y="1520"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Gem Picker Table View Controller-->
         <scene sceneID="TJm-MY-c66">
             <objects>
-                <tableViewController id="ZGW-a8-xwM" sceneMemberID="viewController">
+                <tableViewController id="ZGW-a8-xwM" customClass="GemPickerTableViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2UC-rX-5hg">
                         <rect key="frame" x="0.0" y="0.0" width="374" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -312,6 +322,9 @@
                                     <state key="normal" title="Cancel" backgroundImage="bt_bigwiregray_nor">
                                         <color key="titleColor" name="dark gray"/>
                                     </state>
+                                    <connections>
+                                        <action selector="cancel:" destination="ZGW-a8-xwM" eventType="touchUpInside" id="S8k-hr-gQN"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -391,6 +404,13 @@
                             <outlet property="delegate" destination="ZGW-a8-xwM" id="Nbc-vl-6ey"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="blueGemLabel" destination="Htc-jt-9vZ" id="gcI-Ob-X3A"/>
+                        <outlet property="cancelButton" destination="DDe-eN-f16" id="FfP-Fd-4ZT"/>
+                        <outlet property="purpleGemLabel" destination="9Yd-XK-0HP" id="xHe-Ff-ynZ"/>
+                        <outlet property="subtitleLabel" destination="1Fg-Pv-YGB" id="7sy-sP-1a4"/>
+                        <outlet property="titleLabel" destination="jqI-s8-M6a" id="zjQ-w9-8q9"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FpA-eZ-q4C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -399,6 +419,7 @@
     </scenes>
     <resources>
         <image name="bt_biggreen_nor" width="41" height="41"/>
+        <image name="bt_bigwireblack_nor" width="41" height="41"/>
         <image name="bt_bigwiregray_nor" width="41" height="41"/>
         <image name="ic_coin_nor" width="28" height="28"/>
         <image name="ic_gem_nor" width="28" height="28"/>

@@ -166,6 +166,10 @@ class InsufficientBlueGemToUnlockPopUpConfiguration: GemActionPopUpConfiguration
         result.addAttributes([.link : DeepLinks.blueGemPopUp], range: range)
         return result
     }
+    
+    override var actionTitle: String {
+        return Localized.gemStonePopUp.blueGemAction
+    }
 }
 
 class InsufficientBlueGemToBidPopUpConfiguration: GemActionPopUpConfiguration {
@@ -200,5 +204,47 @@ class InsufficientBlueGemToBidPopUpConfiguration: GemActionPopUpConfiguration {
         let result = NSMutableAttributedString(string: text, attributes: subtitleAttributes)
         result.addAttributes([.link : DeepLinks.blueGemPopUp], range: range)
         return result
+    }
+    override var actionTitle: String {
+        return Localized.gemStonePopUp.blueGemAction
+    }
+}
+
+class LotBeingBidPopUpConfiguration: UnlockPopUpConfiguration {
+    override var attributedTitle: NSAttributedString {
+        return NSAttributedString(string: Localized.messages.lotBeingBid, attributes: titleAttributes)
+    }
+    override var attributedSubtitle: NSAttributedString {
+        return NSAttributedString(string: Localized.messages.lotBeingBidDescription, attributes: subtitleAttributes)
+    }
+    override var actionTitle: String {
+        return Localized.phrases.goToBiddingPage
+    }
+    override var shouldShowCancel: Bool {
+        return false
+    }
+}
+
+class LotClosedPopUpConfiguration: UnlockPopUpConfiguration {
+    override var attributedTitle: NSAttributedString {
+        return NSAttributedString(string: Localized.messages.lotClosed, attributes: titleAttributes)
+    }
+    override var attributedSubtitle: NSAttributedString {
+        return NSAttributedString(string: Localized.messages.lotClosedDescription, attributes: subtitleAttributes)
+    }
+    override var shouldShowCancel: Bool {
+        return false
+    }
+}
+
+class BidTooLateConfiguration: UnlockPopUpConfiguration {
+    override var attributedTitle: NSAttributedString {
+        return NSAttributedString(string: Localized.messages.bidPaymentTooLate, attributes: titleAttributes)
+    }
+    override var attributedSubtitle: NSAttributedString {
+        return NSAttributedString(string: String(format: Localized.messageFormats.receivedGem, Localized.titles.greenGem), attributes: subtitleAttributes)
+    }
+    override var shouldShowCancel: Bool {
+        return false
     }
 }

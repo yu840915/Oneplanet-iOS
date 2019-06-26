@@ -64,6 +64,13 @@
 "msg_ongoing_bidding" = "Other commodities are still bidding, please wait for the bidding to end.";
 "msg_successful_shipping_info_submission" = "The winning commodity will be sent to this address. If the address changes, please remember to update this page";
 "msg_bidding_terms_acceptence" = "Ticking means that you have agreed to the bidding terms";
+"msg_unlock_succeeded" = "Unlock Successfully";
+"msg_bid_succeeded" = "Successfully qualified for CommodityName bidding";
+"msg_lot_being_bid" = "This commodity is being bid";
+"msg_lot_being_bid_des" = "This commodity is currently being bidding. Please go to the bidding page to bid or watch the game";
+"msg_lot_closed" = "The commodity has been closed";
+"msg_lot_closed_des" = "This commodity has been closed, please wait for the new one to be announced soon.";
+"msg_bid_payment_too_late" = "Payment is successful but exceeding the biding time limit";
 
 "msgf_accept_tos" = "By signing up or login, you agree to our %@.";
 "msgf_resend_verification_email" = "You did not receive the email? %@.";
@@ -81,6 +88,9 @@
 "msgf_insufficient_gem_unlock_des" = "解鎖一次需要使用一顆 %@ + %@。";
 "msgf_insufficient_gem_bid_des" = "投標一次需要使用一顆 %@ + %@。";
 "msgf_earn_blue_gem_instruction" = "拍照上傳照片就能獲得 %@，趕緊去拍照！";
+"msgf_received_gem" = "Getting a $@";
+"msgf_unlock_succeeded" = "Unlocked %@!";
+"msgf_bid_succeeded" = "Successfully qualified for %@ bidding";
 
 "ph_guest_login" = "Guest";
 "ph_email_login" = "Or Login With Email";
@@ -118,7 +128,7 @@
 "ph_bid_outcome" = "Outcome";
 "ph_bid_lot" = "Commodity";
 "ph_successful_shipping_info_submission" = "Filled in successfully";
-"errtl_generic_failure" = "Failed";
+"ph_goto_bidding" = "Go bidding page";
 
 "no_posts" = "No Posts Yet";
 "no_promo_popups" = "No Promotion Pop-ups Yet";
@@ -136,6 +146,7 @@
 
 "errtl_cannot_capture_photo" = "Cannot Take Photo";
 "errtl_cannot_pick_avatar" = "Cannot Get Profile Image";
+"errtl_generic_failure" = "Failed";
 
 "warn_logout" = "Log Out?";
 "warn_character_selection" = "Can't change the group after selection, continue？";

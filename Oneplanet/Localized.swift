@@ -241,6 +241,27 @@ class LocalizedMessages {//msg_
     var biddingTermsAcceptence: String {
         return NSLocalizedString("msg_bidding_terms_acceptence", comment: "")
     }
+    var unlockSucceeded: String {
+        return NSLocalizedString("msg_unlock_succeeded", comment: "")
+    }
+    var bidSucceeded: String {
+        return NSLocalizedString("msg_bid_succeeded", comment: "")
+    }
+    var lotBeingBid: String {
+        return NSLocalizedString("msg_lot_being_bid", comment: "")
+    }
+    var lotBeingBidDescription: String {
+        return NSLocalizedString("msg_lot_being_bid_des", comment: "")
+    }
+    var lotClosed: String {
+        return NSLocalizedString("msg_lot_closed", comment: "")
+    }
+    var lotClosedDescription: String {
+        return NSLocalizedString("msg_lot_closed_des", comment: "")
+    }
+    var bidPaymentTooLate: String {
+        return NSLocalizedString("msg_bid_payment_too_late", comment: "")
+    }
 }
 
 class LocalizedMessageFormats {//msgf_
@@ -295,6 +316,15 @@ class LocalizedMessageFormats {//msgf_
     }
     var earnBlueGemInstruction: String {
         return NSLocalizedString("msgf_earn_blue_gem_instruction", comment: "")
+    }
+    var receivedGem: String {
+        return NSLocalizedString("msgf_received_gem", comment: "")
+    }
+    var unlockSucceeded: String {
+        return NSLocalizedString("msgf_unlock_succeeded", comment: "")
+    }
+    var bidSucceeded: String {
+        return NSLocalizedString("msgf_bid_succeeded", comment: "")
     }
 }
 
@@ -407,6 +437,9 @@ class LocalizedPhrase { //ph_
     }
     var successfulShippingInfoSubmission: String {
         return NSLocalizedString("ph_successful_shipping_info_submission", comment: "")
+    }
+    var goToBiddingPage: String {
+        return NSLocalizedString("ph_goto_bidding", comment: "")
     }
 }
 

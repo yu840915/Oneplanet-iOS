@@ -133,6 +133,7 @@
 		E0DA389E22C2824500EC4170 /* GemActionPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DA389D22C2824500EC4170 /* GemActionPopUpViewController.swift */; };
 		E0DA38A022C282EC00EC4170 /* GemPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DA389F22C282EC00EC4170 /* GemPickerTableViewController.swift */; };
 		E0DA38A222C31E3800EC4170 /* GemActionPopUpConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DA38A122C31E3700EC4170 /* GemActionPopUpConfigurations.swift */; };
+		E0DA38A622C48BC400EC4170 /* UnlockFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DA38A522C48BC400EC4170 /* UnlockFlowViewController.swift */; };
 		E0DCD04F22B7E77D008D9C63 /* PickerConfirmButtonFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0DCD04E22B7E77D008D9C63 /* PickerConfirmButtonFooter.xib */; };
 		E0DCD05122B7E86B008D9C63 /* PickerConfirmButtonFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DCD05022B7E86B008D9C63 /* PickerConfirmButtonFooter.swift */; };
 		E0DCD05322B7EB67008D9C63 /* PickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DCD05222B7EB67008D9C63 /* PickerTableViewController.swift */; };
@@ -300,6 +301,7 @@
 		E0DA389D22C2824500EC4170 /* GemActionPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemActionPopUpViewController.swift; sourceTree = "<group>"; };
 		E0DA389F22C282EC00EC4170 /* GemPickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemPickerTableViewController.swift; sourceTree = "<group>"; };
 		E0DA38A122C31E3700EC4170 /* GemActionPopUpConfigurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemActionPopUpConfigurations.swift; sourceTree = "<group>"; };
+		E0DA38A522C48BC400EC4170 /* UnlockFlowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockFlowViewController.swift; sourceTree = "<group>"; };
 		E0DCD04E22B7E77D008D9C63 /* PickerConfirmButtonFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerConfirmButtonFooter.xib; sourceTree = "<group>"; };
 		E0DCD05022B7E86B008D9C63 /* PickerConfirmButtonFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerConfirmButtonFooter.swift; sourceTree = "<group>"; };
 		E0DCD05222B7EB67008D9C63 /* PickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTableViewController.swift; sourceTree = "<group>"; };
@@ -650,6 +652,7 @@
 			children = (
 				E0DA389622C0744E00EC4170 /* Unlock.storyboard */,
 				E0DA389D22C2824500EC4170 /* GemActionPopUpViewController.swift */,
+				E0DA38A522C48BC400EC4170 /* UnlockFlowViewController.swift */,
 				E0DA38A122C31E3700EC4170 /* GemActionPopUpConfigurations.swift */,
 				E0DA389F22C282EC00EC4170 /* GemPickerTableViewController.swift */,
 			);
@@ -973,6 +976,7 @@
 				E06589BD22700AEC00C9E4E6 /* CaptureSessionController.swift in Sources */,
 				E0D1BBDB22ACEE9500951F19 /* TimeIntervalComponents.swift in Sources */,
 				E0190F4B226DB55400C212D5 /* UIComponentFactories.swift in Sources */,
+				E0DA38A622C48BC400EC4170 /* UnlockFlowViewController.swift in Sources */,
 				E0BDCCEA229FA044006A9D20 /* PromotionPageList.swift in Sources */,
 				E0B57DE322A0FAA3006AEADB /* Toast.swift in Sources */,
 				E089F70D228E9ECB003E77DF /* AvatarView.swift in Sources */,

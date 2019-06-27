@@ -42,7 +42,7 @@ enum Race: String {
 enum CharacterColor: String {
     case green
     case pink
-    case malibu
+    case blue
     case purple
     case lightGray
     case darkGray
@@ -51,7 +51,7 @@ enum CharacterColor: String {
         switch self {
         case .green: return #colorLiteral(red: 0.6274509804, green: 1, blue: 0.3568627451, alpha: 1)
         case .pink: return #colorLiteral(red: 1, green: 0.4235294118, blue: 0.6823529412, alpha: 1)
-        case .malibu: return #colorLiteral(red: 0.3568627451, green: 0.6549019608, blue: 1, alpha: 1)
+        case .blue: return #colorLiteral(red: 0.1725490196, green: 0.7176470588, blue: 0.9333333333, alpha: 1)
         case .purple: return #colorLiteral(red: 0.6941176471, green: 0.3450980392, blue: 1, alpha: 1)
         case .lightGray: return #colorLiteral(red: 0.7647058824, green: 0.7647058824, blue: 0.7647058824, alpha: 1)
         case .darkGray: return #colorLiteral(red: 0.3098039216, green: 0.3098039216, blue: 0.3098039216, alpha: 1)
@@ -62,13 +62,15 @@ enum CharacterColor: String {
 class CharacterOptions {
     static let shared = CharacterOptions()
     private init() {}
-    let colors: [CharacterColor] = [.green, .pink]
+    let colors: [CharacterColor] = [.green, .pink, .blue]
     func characterOptions(for color: CharacterColor) -> [Character] {
         switch color {
         case .green:
             return [Character(race: .one, color: color, avatar: #imageLiteral(resourceName: "im_alien1_green")), Character(race: .two, color: color, avatar: #imageLiteral(resourceName: "im_alien2_green")), Character(race: .three, color: color, avatar: #imageLiteral(resourceName: "im_alien3_green"))]
         case .pink:
             return [Character(race: .one, color: color, avatar: #imageLiteral(resourceName: "im_alien1_pink")), Character(race: .two, color: color, avatar: #imageLiteral(resourceName: "im_alien2_pink")), Character(race: .three, color: color, avatar: #imageLiteral(resourceName: "im_alien3_pink"))]
+        case .blue:
+            return [Character(race: .one, color: color, avatar: #imageLiteral(resourceName: "im_alien1_blue")), Character(race: .two, color: color, avatar: #imageLiteral(resourceName: "im_alien2_blue")), Character(race: .three, color: color, avatar: #imageLiteral(resourceName: "im_alien3_blue"))]
         default:
             return [Character(race: .one, color: color, avatar: #imageLiteral(resourceName: "im_alien1_green")), Character(race: .two, color: color, avatar: #imageLiteral(resourceName: "im_alien2_green")), Character(race: .three, color: color, avatar: #imageLiteral(resourceName: "im_alien3_green"))]
 

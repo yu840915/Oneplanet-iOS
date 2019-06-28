@@ -266,9 +266,6 @@ class FeatureAccessCheckOperation: Operation {
     }
     
     override func main() {
-        isAccessible = true
-        return
-            
         isAccessible = !userSession.isGuest
         if !userSession.isGuest {
             return

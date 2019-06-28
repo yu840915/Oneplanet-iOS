@@ -38,6 +38,14 @@ class GemActionPopUpViewController: UIViewController {
         }
     }
     
+    @IBAction func invokeAction(_ sender: UIButton) {
+        mainAction?()
+    }
+    
+    
+    @IBAction func invokeCancelAction(_ sender: UIButton) {
+        cancelAction?()
+    }
 }
 
 extension GemActionPopUpViewController: UITextViewDelegate {

@@ -19,6 +19,7 @@ class ProductDetailViewController: UIViewController, UserSessionDepending {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailTextView: UITextView!
     @IBOutlet weak var galleryCollectionView: UICollectionView!
+    private var featureCheck: BiddingFeatureAccessCheckOperation?
     private var previews: [WebImageInfo] = [] {
         didSet {
             updateViewsForPreviews()
@@ -39,18 +40,38 @@ class ProductDetailViewController: UIViewController, UserSessionDepending {
         }
     }
     
+    @IBAction func unlockIfAllowed(_ sender: UIButton) {
+        guard featureCheck == nil else { return }
+        let op = BiddingFeatureAccessCheckOperation(userSession: userSession)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.handleCheckResultAndUnlockIfAllowed()
+            }
+        }
+        featureCheck = op
+        op.start()
+    }
+    
+    func handleCheckResultAndUnlockIfAllowed() {
+        let op = featureCheck!
+        featureCheck = nil
+        guard op.isAccessible else { return }
+        performSegue(withIdentifier: SegueID.enterUnlockFlow, sender: nil)
+    }
+
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? UserSessionDepending {
+            vc.userSession = userSession
+        }
     }
 
 }
 
 extension ProductDetailViewController {
-    func updateViewsForPreviews() {
-        pageControl.isHidden = previews.count < 2
-        pageControl.numberOfPages = previews.count
-        galleryCollectionView.reloadData()
+    struct SegueID {
+        static let enterUnlockFlow = "enterUnlockFlow"
     }
 }
 
@@ -75,6 +96,12 @@ extension ProductDetailViewController: UICollectionViewDataSource, UICollectionV
 }
 
 private extension ProductDetailViewController {
+    func updateViewsForPreviews() {
+        pageControl.isHidden = previews.count < 2
+        pageControl.numberOfPages = previews.count
+        galleryCollectionView.reloadData()
+    }
+    
     func localizeTitles() {
         title = Localized.phrases.bidLot
         updateViewsForLockState()

@@ -88,7 +88,7 @@
 "msgf_insufficient_gem_unlock_des" = "解鎖一次需要使用一顆 %@ + %@。";
 "msgf_insufficient_gem_bid_des" = "投標一次需要使用一顆 %@ + %@。";
 "msgf_earn_blue_gem_instruction" = "拍照上傳照片就能獲得 %@，趕緊去拍照！";
-"msgf_received_gem" = "Getting a $@";
+"msgf_received_gem" = "Getting a %@";
 "msgf_unlock_succeeded" = "Unlocked %@!";
 "msgf_bid_succeeded" = "Successfully qualified for %@ bidding";
 

@@ -9,15 +9,15 @@
 import UIKit
 
 class GemActionPopUpConfiguration {
-    let titleAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: ColorPalette.defaultText, .font: UIFont.systemFont(ofSize: 17)]
+    let titleAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.black, .font: UIFont.systemFont(ofSize: 17)]
     let subtitleAttributes: [NSAttributedString.Key: Any] = {
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
-        return [.foregroundColor: ColorPalette.defaultText,
-                .font: UIFont.systemFont(ofSize: 17),
+        return [.foregroundColor: UIColor.black,
+                .font: UIFont.systemFont(ofSize: 12),
                 NSAttributedString.Key.paragraphStyle: paragraphStyle]
     }()
-    let boldTitleAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: ColorPalette.defaultText, .font: UIFont.systemFont(ofSize: 17, weight: .semibold)]
+    let boldTitleAttributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor.black, .font: UIFont.systemFont(ofSize: 17, weight: .semibold)]
     var icon: UIImage {
         return #imageLiteral(resourceName: "ic_key80_nor")
     }
@@ -44,7 +44,7 @@ class UnlockPopUpConfiguration: GemActionPopUpConfiguration {
         self.productName = productName
     }
     override var attributedTitle: NSAttributedString {
-        let text = String(format: Localized.messageFormats.unlockWithGem, productName)
+        let text = String(format: Localized.messageFormats.unlockLot, productName)
         let range = (text as NSString).range(of: productName)
         let result = NSMutableAttributedString(string: text, attributes: titleAttributes)
         result.addAttributes(boldTitleAttributes, range: range)
@@ -237,7 +237,7 @@ class LotClosedPopUpConfiguration: UnlockPopUpConfiguration {
     }
 }
 
-class BidTooLateConfiguration: UnlockPopUpConfiguration {
+class BidTooLateConfiguration: GemActionPopUpConfiguration {
     override var attributedTitle: NSAttributedString {
         return NSAttributedString(string: Localized.messages.bidPaymentTooLate, attributes: titleAttributes)
     }

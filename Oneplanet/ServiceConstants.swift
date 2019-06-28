@@ -57,6 +57,9 @@ struct DeepLinks {
     static var shippingInfo: URL {
         return ServiceURLs.base.appendingPathComponent("modal/shipping-info")
     }
+    static var postEditor: URL {
+        return ServiceURLs.base.appendingPathComponent("modal/post-editor")
+    }
 }
 
 extension JSONDecoder {

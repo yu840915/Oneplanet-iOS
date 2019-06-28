@@ -23,6 +23,15 @@ class GemPickerTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         localizeTitles()
+        view.addConstraint(NSLayoutConstraint(item: view, attribute: .height, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 1))
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if view.frame.height < tableView.contentSize.height {
+            view.addConstraint(NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: tableView.contentSize.height))
+            view.superview!.setNeedsLayout()
+        }
     }
     
     private func localizeTitles() {
@@ -34,11 +43,11 @@ class GemPickerTableViewController: UITableViewController {
     }
     
     private func prepareAttributedTitle() {
-        let text = String(format: Localized.messageFormats.unlockWithGem, productName)
+        let text = String(format: Localized.messageFormats.unlockLot, productName)
         let range = (text as NSString).range(of: productName)
-        let result = NSMutableAttributedString(string: text, attributes: [.foregroundColor: ColorPalette.defaultText, .font: UIFont.systemFont(ofSize: 17)])
+        let result = NSMutableAttributedString(string: text, attributes: [.foregroundColor: UIColor.black, .font: UIFont.systemFont(ofSize: 17)])
         result.addAttributes([
-            .foregroundColor: ColorPalette.defaultText,
+            .foregroundColor: UIColor.black,
             .font: UIFont.systemFont(ofSize: 17, weight: .semibold)],
                              range: range)
         titleLabel.attributedText = result

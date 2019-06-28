@@ -17,6 +17,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
     @IBOutlet weak var countdownDescriptionLabel: UILabel!
     @IBOutlet weak var countDownView: CountDownClockView!
     private var refreshClock: UpdateClock!
+    private var featureCheck: BiddingFeatureAccessCheckOperation?
     
     class func fromDefaultStoryboard() -> ProductListTableViewController {
         return UIStoryboard(name: "Auction", bundle: nil).instantiateViewController(withIdentifier: "ProductListTableViewController") as! ProductListTableViewController
@@ -70,15 +71,31 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         case .biddingEndedIndicator, .runningBiddingIndicator:
             configureBiddingStateIndicationCell(cell as! BiddingStateIndicationCell)
         case .bidList:
-            break
+            configureBiddingCell(cell as! BiddingProductCell, at: indexPath)
         case .productList:
-            break
+            configureProductCell(cell as! ProductOverviewCell, at: indexPath)
         }
         return cell
     }
     
     private func configureBiddingStateIndicationCell(_ cell: BiddingStateIndicationCell) {
         cell.descriptionTextView.delegate = self
+    }
+    
+    private func configureProductCell(_ cell: ProductOverviewCell, at indexPath: IndexPath) {
+        cell.unlockAction = {[weak self] in
+            self?.checkAccessAndRunIfAllowed {
+                self?.unlockProductIfAllowed(at: indexPath)
+            }
+        }
+    }
+    
+    private func configureBiddingCell(_ cell: BiddingProductCell, at indexPath: IndexPath) {
+        cell.bidAction = {[weak self] in
+            self?.checkAccessAndRunIfAllowed {
+                self?.bidProductIfAllowed(at: indexPath)
+            }
+        }
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -125,6 +142,9 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? UserSessionDepending {
+            vc.userSession = userSession
+        }
         if let nav = segue.destination as? UINavigationController,
             let vc = nav.viewControllers.first as? ShippingInfoEditorViewController {
             vc.userSession = userSession
@@ -140,6 +160,33 @@ private extension ProductListTableViewController {
     
     func showFilterPicker() {
         
+    }
+    
+    func checkAccessAndRunIfAllowed(_ completion: @escaping (()->())) {
+        guard featureCheck == nil else { return }
+        let op = BiddingFeatureAccessCheckOperation(userSession: userSession)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.handleCheckResultAndRunIfAllowed(completion)
+            }
+        }
+        featureCheck = op
+        op.start()
+    }
+    
+    func handleCheckResultAndRunIfAllowed(_ completion: @escaping (()->())) {
+        let op = featureCheck!
+        featureCheck = nil
+        guard op.isAccessible else { return }
+        completion()
+    }
+    
+    func unlockProductIfAllowed(at indexPath: IndexPath) {
+        performSegue(withIdentifier: SegueID.enterUnlockFlow, sender: nil)
+    }
+    
+    func bidProductIfAllowed(at indexPath: IndexPath) {
+        performSegue(withIdentifier: SegueID.enterBidFlow, sender: nil)
     }
 }
 
@@ -184,6 +231,8 @@ extension ProductListTableViewController {
     struct SegueID {
         static let showShippingInfoEditor = "showShippingInfoEditor"
         static let showProductDetail = "showProductDetail"
+        static let enterBidFlow = "enterBidFlow"
+        static let enterUnlockFlow = "enterUnlockFlow"
     }
 }
 
@@ -215,6 +264,7 @@ class ProductOverviewCell: UITableViewCell {
             }
         }
     }
+    var unlockAction: (()->())?
     override func setHighlighted(_ highlighted: Bool, animated: Bool) {
         super.setHighlighted(highlighted, animated: animated)
         contentBackgroundView.backgroundColor = .white
@@ -237,6 +287,11 @@ class ProductOverviewCell: UITableViewCell {
         titleLabel.textColor = appearance.color
         lockButton.isEnabled = isLocked
     }
+    
+    @IBAction func invokeUnlockAction(_ sender: UIButton) {
+        unlockAction?()
+    }
+    
 }
 
 class LockAppearance {
@@ -263,6 +318,7 @@ class BiddingProductCell: UITableViewCell {
     @IBOutlet weak var tensLabel: UILabel!
     @IBOutlet weak var digitLabel: UILabel!
     @IBOutlet weak var coverView: UIView!
+    var bidAction: (()->())?
     
     private let countdownTimeAttribute: [NSAttributedString.Key: Any] = [.kern: 3.5]
     var deadline = Date() {
@@ -300,6 +356,11 @@ class BiddingProductCell: UITableViewCell {
         var attr = countdownTimeAttribute
         attr[.foregroundColor] =  i < .minute ? ColorPalette.bidRed : ColorPalette.bidGreen
         countdownLabel.attributedText = NSAttributedString(string: min + ":" + sec, attributes: countdownTimeAttribute)
+    }
+    
+    
+    @IBAction func invokeBidAction(_ sender: UIButton) {
+        bidAction?()
     }
 }
 

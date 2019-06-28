@@ -106,6 +106,7 @@
 		E08C3129227817680013DD0C /* AuthActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08C3128227817680013DD0C /* AuthActions.swift */; };
 		E08C312B227826850013DD0C /* EmailInputValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08C312A227826850013DD0C /* EmailInputValidatorTests.swift */; };
 		E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */; };
+		E091994622C616C3000AF381 /* BidFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E091994522C616C3000AF381 /* BidFlowViewController.swift */; };
 		E0A4617222B234D500D26720 /* ProductListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0A4617122B234D500D26720 /* ProductListHeader.xib */; };
 		E0A4617422B234F600D26720 /* BiddingListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0A4617322B234F600D26720 /* BiddingListHeader.xib */; };
 		E0A4617622B2351100D26720 /* BiddingProcessHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0A4617522B2351100D26720 /* BiddingProcessHeader.xib */; };
@@ -274,6 +275,7 @@
 		E08C3128227817680013DD0C /* AuthActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthActions.swift; sourceTree = "<group>"; };
 		E08C312A227826850013DD0C /* EmailInputValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailInputValidatorTests.swift; sourceTree = "<group>"; };
 		E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryImagePickerViewController.swift; sourceTree = "<group>"; };
+		E091994522C616C3000AF381 /* BidFlowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidFlowViewController.swift; sourceTree = "<group>"; };
 		E0A4617122B234D500D26720 /* ProductListHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductListHeader.xib; sourceTree = "<group>"; };
 		E0A4617322B234F600D26720 /* BiddingListHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BiddingListHeader.xib; sourceTree = "<group>"; };
 		E0A4617522B2351100D26720 /* BiddingProcessHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BiddingProcessHeader.xib; sourceTree = "<group>"; };
@@ -653,6 +655,7 @@
 				E0DA389622C0744E00EC4170 /* Unlock.storyboard */,
 				E0DA389D22C2824500EC4170 /* GemActionPopUpViewController.swift */,
 				E0DA38A522C48BC400EC4170 /* UnlockFlowViewController.swift */,
+				E091994522C616C3000AF381 /* BidFlowViewController.swift */,
 				E0DA38A122C31E3700EC4170 /* GemActionPopUpConfigurations.swift */,
 				E0DA389F22C282EC00EC4170 /* GemPickerTableViewController.swift */,
 			);
@@ -1031,6 +1034,7 @@
 				E03C32B3226D925100C32FD7 /* ServiceConstants.swift in Sources */,
 				E081590F22A63628007C9776 /* GreenGemPopUpViewController.swift in Sources */,
 				E032844B22AB7A90001F02E8 /* BiddingProcessTableViewController.swift in Sources */,
+				E091994622C616C3000AF381 /* BidFlowViewController.swift in Sources */,
 				E0DCD05722B9CC3D008D9C63 /* ProductDetailViewController.swift in Sources */,
 				E06F4FFA22782C8C0067DAE4 /* InputValidators.swift in Sources */,
 				E0A4618222B3D93700D26720 /* ShippingInfoEditorViewController.swift in Sources */,

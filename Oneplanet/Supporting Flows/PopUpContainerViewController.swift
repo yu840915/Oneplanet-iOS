@@ -14,6 +14,7 @@ class PopUpContainerViewController: UIViewController {
     var contentViewControllerSetUpBlock: ((UIViewController)->())?
     var shouldAddConstraintToContentView = false
     var shouldAddConstraintToDismissView = false
+    var isDismissTapOn = true
     @IBOutlet weak var contentContainer: UIView!
     private var dismissTap: UITapGestureRecognizer!
     private var dismissView: UIView!
@@ -24,6 +25,7 @@ class PopUpContainerViewController: UIViewController {
         shouldAddConstraintToContentView = true
         setUpDismissTap()
         updateViewConstraints()
+        dismissTap.isEnabled = isDismissTapOn
     }
     
     private func setUpDismissTap() {
@@ -45,7 +47,9 @@ class PopUpContainerViewController: UIViewController {
     }
     
     @IBAction func exit(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        if isDismissTapOn {
+            dismiss(animated: true, completion: nil)
+        }
     }
     
     override func updateViewConstraints() {

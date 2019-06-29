@@ -13,6 +13,7 @@
 		E00611F22294F5680032AE30 /* HotCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00611F12294F5680032AE30 /* HotCollectionViewController.swift */; };
 		E00611F42294FFF10032AE30 /* HotNavigationItems.xib in Resources */ = {isa = PBXBuildFile; fileRef = E00611F32294FFF10032AE30 /* HotNavigationItems.xib */; };
 		E00611F6229500FA0032AE30 /* HotNavigationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00611F5229500FA0032AE30 /* HotNavigationItemView.swift */; };
+		E006BAC622AE250D00D7D118 /* DS-DIGIT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = E006BAC522AE250D00D7D118 /* DS-DIGIT.TTF */; };
 		E0190F49226DB0E000C212D5 /* WelcomeMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F48226DB0E000C212D5 /* WelcomeMessageViewController.swift */; };
 		E0190F4B226DB55400C212D5 /* UIComponentFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F4A226DB55400C212D5 /* UIComponentFactories.swift */; };
 		E0190F4D226DCCFB00C212D5 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F4C226DCCFB00C212D5 /* UserSession.swift */; };
@@ -22,6 +23,7 @@
 		E0190F55226EC82500C212D5 /* UserFlowRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F54226EC82500C212D5 /* UserFlowRootViewController.swift */; };
 		E0190F57226EDBC900C212D5 /* CameraImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F56226EDBC900C212D5 /* CameraImagePickerViewController.swift */; };
 		E0190F5A226EDD1100C212D5 /* SupportingFlows.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0190F59226EDD1100C212D5 /* SupportingFlows.storyboard */; };
+		E021105322BA1AFA007DE085 /* BiddingTermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E021105222BA1AFA007DE085 /* BiddingTermsViewController.swift */; };
 		E02842AF229A31AF007212D7 /* CharacterPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02842AE229A31AE007212D7 /* CharacterPickerViewController.swift */; };
 		E02842B1229A32C2007212D7 /* ColorPickerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02842B0229A32C2007212D7 /* ColorPickerCollectionViewController.swift */; };
 		E02842B3229A3399007212D7 /* AlienPickerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02842B2229A3399007212D7 /* AlienPickerCollectionViewController.swift */; };
@@ -29,6 +31,12 @@
 		E030E4D2228AB0B70084D383 /* IDHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E030E4D1228AB0B60084D383 /* IDHeaderView.xib */; };
 		E030E4D4228AB1ED0084D383 /* IDHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030E4D3228AB1ED0084D383 /* IDHeaderView.swift */; };
 		E030E4D7228BC3E90084D383 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030E4D6228BC3E90084D383 /* User.swift */; };
+		E032844522AB6A50001F02E8 /* AuctionMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E032844422AB6A50001F02E8 /* AuctionMainViewController.swift */; };
+		E032844722AB6F66001F02E8 /* XLPagerTabStrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E032844622AB6F66001F02E8 /* XLPagerTabStrip.framework */; };
+		E032844922AB7286001F02E8 /* ProductListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E032844822AB7286001F02E8 /* ProductListTableViewController.swift */; };
+		E032844B22AB7A90001F02E8 /* BiddingProcessTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E032844A22AB7A90001F02E8 /* BiddingProcessTableViewController.swift */; };
+		E032844D22ABB1F5001F02E8 /* BadgeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E032844C22ABB1F5001F02E8 /* BadgeView.xib */; };
+		E032844F22ABB2FE001F02E8 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E032844E22ABB2FE001F02E8 /* BadgeView.swift */; };
 		E03C329A226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03C3299226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift */; };
 		E03C329C226D75F400C32FD7 /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E03C329B226D75F400C32FD7 /* SwiftyBeaver.framework */; };
 		E03C329E226D772400C32FD7 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03C329D226D772400C32FD7 /* Logger.swift */; };
@@ -98,6 +106,18 @@
 		E08C3129227817680013DD0C /* AuthActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08C3128227817680013DD0C /* AuthActions.swift */; };
 		E08C312B227826850013DD0C /* EmailInputValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08C312A227826850013DD0C /* EmailInputValidatorTests.swift */; };
 		E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */; };
+		E091994622C616C3000AF381 /* BidFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E091994522C616C3000AF381 /* BidFlowViewController.swift */; };
+		E0A4617222B234D500D26720 /* ProductListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0A4617122B234D500D26720 /* ProductListHeader.xib */; };
+		E0A4617422B234F600D26720 /* BiddingListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0A4617322B234F600D26720 /* BiddingListHeader.xib */; };
+		E0A4617622B2351100D26720 /* BiddingProcessHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0A4617522B2351100D26720 /* BiddingProcessHeader.xib */; };
+		E0A4617822B28B3000D26720 /* ProductListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A4617722B28B2F00D26720 /* ProductListHeader.swift */; };
+		E0A4617A22B2984A00D26720 /* BiddingListHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A4617922B2984A00D26720 /* BiddingListHeader.swift */; };
+		E0A4617C22B2A9D300D26720 /* BiddingProcessHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A4617B22B2A9D300D26720 /* BiddingProcessHeader.swift */; };
+		E0A4618222B3D93700D26720 /* ShippingInfoEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A4618122B3D93700D26720 /* ShippingInfoEditorViewController.swift */; };
+		E0A4618422B5405700D26720 /* ShippingInfoDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A4618322B5405700D26720 /* ShippingInfoDraft.swift */; };
+		E0A4618622B6284500D26720 /* KeyboardAppearanceObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A4618522B6284500D26720 /* KeyboardAppearanceObserver.swift */; };
+		E0A4618822B6328400D26720 /* PhoneNumberKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0A4618722B6328300D26720 /* PhoneNumberKit.framework */; };
+		E0A4618A22B6347800D26720 /* PhoneNumberBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A4618922B6347800D26720 /* PhoneNumberBuilder.swift */; };
 		E0B57DE122A0FA48006AEADB /* DefaultStyleConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B57DE022A0FA48006AEADB /* DefaultStyleConfiguration.swift */; };
 		E0B57DE322A0FAA3006AEADB /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B57DE222A0FAA3006AEADB /* Toast.swift */; };
 		E0B57DE722A0FE77006AEADB /* Toast.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0B57DE622A0FE77006AEADB /* Toast.xib */; };
@@ -106,8 +126,22 @@
 		E0BDCCEC229FD3CE006A9D20 /* SwiftMessages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0BDCCEB229FD3CE006A9D20 /* SwiftMessages.framework */; };
 		E0CB5E11228F0B4A00C0C010 /* TreasuryBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CB5E10228F0B4A00C0C010 /* TreasuryBarViewController.swift */; };
 		E0CB5E15228F0E5F00C0C010 /* DS-DIGIB.TTF in Resources */ = {isa = PBXBuildFile; fileRef = E0CB5E14228F0E5F00C0C010 /* DS-DIGIB.TTF */; };
+		E0D1BBD922ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D1BBD822ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift */; };
+		E0D1BBDB22ACEE9500951F19 /* TimeIntervalComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D1BBDA22ACEE9400951F19 /* TimeIntervalComponents.swift */; };
 		E0D7DCDB229CE65C00B40D76 /* PromoPopUpFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D7DCDA229CE65C00B40D76 /* PromoPopUpFlowViewController.swift */; };
 		E0D7DCDD229CE82300B40D76 /* PromoPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D7DCDC229CE82300B40D76 /* PromoPopUpViewController.swift */; };
+		E0DA389722C0744E00EC4170 /* Unlock.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0DA389622C0744E00EC4170 /* Unlock.storyboard */; };
+		E0DA389E22C2824500EC4170 /* GemActionPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DA389D22C2824500EC4170 /* GemActionPopUpViewController.swift */; };
+		E0DA38A022C282EC00EC4170 /* GemPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DA389F22C282EC00EC4170 /* GemPickerTableViewController.swift */; };
+		E0DA38A222C31E3800EC4170 /* GemActionPopUpConfigurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DA38A122C31E3700EC4170 /* GemActionPopUpConfigurations.swift */; };
+		E0DA38A622C48BC400EC4170 /* UnlockFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DA38A522C48BC400EC4170 /* UnlockFlowViewController.swift */; };
+		E0DCD04F22B7E77D008D9C63 /* PickerConfirmButtonFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0DCD04E22B7E77D008D9C63 /* PickerConfirmButtonFooter.xib */; };
+		E0DCD05122B7E86B008D9C63 /* PickerConfirmButtonFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DCD05022B7E86B008D9C63 /* PickerConfirmButtonFooter.swift */; };
+		E0DCD05322B7EB67008D9C63 /* PickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DCD05222B7EB67008D9C63 /* PickerTableViewController.swift */; };
+		E0DCD05522B8B620008D9C63 /* ShippingInfoEditorHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DCD05422B8B620008D9C63 /* ShippingInfoEditorHelpers.swift */; };
+		E0DCD05722B9CC3D008D9C63 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DCD05622B9CC3D008D9C63 /* ProductDetailViewController.swift */; };
+		E0DCD05922B9D828008D9C63 /* EmptyLotListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0DCD05822B9D827008D9C63 /* EmptyLotListView.xib */; };
+		E0DCD05B22B9D960008D9C63 /* EmptyLotListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DCD05A22B9D960008D9C63 /* EmptyLotListView.swift */; };
 		E0FF797A228C3F6800F61318 /* MyProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FF7979228C3F6800F61318 /* MyProfileTests.swift */; };
 		E0FF797C228D2FC400F61318 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0FF797B228D2FC400F61318 /* Home.storyboard */; };
 		E0FF797E228D38CE00F61318 /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0FF797D228D38CE00F61318 /* Post.storyboard */; };
@@ -136,6 +170,7 @@
 		E00611F12294F5680032AE30 /* HotCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotCollectionViewController.swift; sourceTree = "<group>"; };
 		E00611F32294FFF10032AE30 /* HotNavigationItems.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HotNavigationItems.xib; sourceTree = "<group>"; };
 		E00611F5229500FA0032AE30 /* HotNavigationItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotNavigationItemView.swift; sourceTree = "<group>"; };
+		E006BAC522AE250D00D7D118 /* DS-DIGIT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DS-DIGIT.TTF"; sourceTree = "<group>"; };
 		E0190F48226DB0E000C212D5 /* WelcomeMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeMessageViewController.swift; sourceTree = "<group>"; };
 		E0190F4A226DB55400C212D5 /* UIComponentFactories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponentFactories.swift; sourceTree = "<group>"; };
 		E0190F4C226DCCFB00C212D5 /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
@@ -145,6 +180,7 @@
 		E0190F54226EC82500C212D5 /* UserFlowRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFlowRootViewController.swift; sourceTree = "<group>"; };
 		E0190F56226EDBC900C212D5 /* CameraImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraImagePickerViewController.swift; sourceTree = "<group>"; };
 		E0190F59226EDD1100C212D5 /* SupportingFlows.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SupportingFlows.storyboard; sourceTree = "<group>"; };
+		E021105222BA1AFA007DE085 /* BiddingTermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiddingTermsViewController.swift; sourceTree = "<group>"; };
 		E02842AE229A31AE007212D7 /* CharacterPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterPickerViewController.swift; sourceTree = "<group>"; };
 		E02842B0229A32C2007212D7 /* ColorPickerCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerCollectionViewController.swift; sourceTree = "<group>"; };
 		E02842B2229A3399007212D7 /* AlienPickerCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlienPickerCollectionViewController.swift; sourceTree = "<group>"; };
@@ -152,6 +188,12 @@
 		E030E4D1228AB0B60084D383 /* IDHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IDHeaderView.xib; sourceTree = "<group>"; };
 		E030E4D3228AB1ED0084D383 /* IDHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDHeaderView.swift; sourceTree = "<group>"; };
 		E030E4D6228BC3E90084D383 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E032844422AB6A50001F02E8 /* AuctionMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionMainViewController.swift; sourceTree = "<group>"; };
+		E032844622AB6F66001F02E8 /* XLPagerTabStrip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XLPagerTabStrip.framework; path = Carthage/Build/iOS/XLPagerTabStrip.framework; sourceTree = SOURCE_ROOT; };
+		E032844822AB7286001F02E8 /* ProductListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListTableViewController.swift; sourceTree = "<group>"; };
+		E032844A22AB7A90001F02E8 /* BiddingProcessTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiddingProcessTableViewController.swift; sourceTree = "<group>"; };
+		E032844C22ABB1F5001F02E8 /* BadgeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BadgeView.xib; sourceTree = "<group>"; };
+		E032844E22ABB2FE001F02E8 /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		E03C3299226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireAPIAccessOperation.swift; sourceTree = "<group>"; };
 		E03C329B226D75F400C32FD7 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/iOS/SwiftyBeaver.framework; sourceTree = SOURCE_ROOT; };
 		E03C329D226D772400C32FD7 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -233,6 +275,18 @@
 		E08C3128227817680013DD0C /* AuthActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthActions.swift; sourceTree = "<group>"; };
 		E08C312A227826850013DD0C /* EmailInputValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailInputValidatorTests.swift; sourceTree = "<group>"; };
 		E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryImagePickerViewController.swift; sourceTree = "<group>"; };
+		E091994522C616C3000AF381 /* BidFlowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidFlowViewController.swift; sourceTree = "<group>"; };
+		E0A4617122B234D500D26720 /* ProductListHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductListHeader.xib; sourceTree = "<group>"; };
+		E0A4617322B234F600D26720 /* BiddingListHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BiddingListHeader.xib; sourceTree = "<group>"; };
+		E0A4617522B2351100D26720 /* BiddingProcessHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BiddingProcessHeader.xib; sourceTree = "<group>"; };
+		E0A4617722B28B2F00D26720 /* ProductListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListHeader.swift; sourceTree = "<group>"; };
+		E0A4617922B2984A00D26720 /* BiddingListHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiddingListHeader.swift; sourceTree = "<group>"; };
+		E0A4617B22B2A9D300D26720 /* BiddingProcessHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiddingProcessHeader.swift; sourceTree = "<group>"; };
+		E0A4618122B3D93700D26720 /* ShippingInfoEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingInfoEditorViewController.swift; sourceTree = "<group>"; };
+		E0A4618322B5405700D26720 /* ShippingInfoDraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingInfoDraft.swift; sourceTree = "<group>"; };
+		E0A4618522B6284500D26720 /* KeyboardAppearanceObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAppearanceObserver.swift; sourceTree = "<group>"; };
+		E0A4618722B6328300D26720 /* PhoneNumberKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhoneNumberKit.framework; path = Carthage/Build/iOS/PhoneNumberKit.framework; sourceTree = SOURCE_ROOT; };
+		E0A4618922B6347800D26720 /* PhoneNumberBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberBuilder.swift; sourceTree = "<group>"; };
 		E0B57DE022A0FA48006AEADB /* DefaultStyleConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStyleConfiguration.swift; sourceTree = "<group>"; };
 		E0B57DE222A0FAA3006AEADB /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		E0B57DE622A0FE77006AEADB /* Toast.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Toast.xib; sourceTree = "<group>"; };
@@ -241,8 +295,22 @@
 		E0BDCCEB229FD3CE006A9D20 /* SwiftMessages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftMessages.framework; path = Carthage/Build/iOS/SwiftMessages.framework; sourceTree = SOURCE_ROOT; };
 		E0CB5E10228F0B4A00C0C010 /* TreasuryBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreasuryBarViewController.swift; sourceTree = "<group>"; };
 		E0CB5E14228F0E5F00C0C010 /* DS-DIGIB.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DS-DIGIB.TTF"; sourceTree = "<group>"; };
+		E0D1BBD822ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalComponentExtractorTests.swift; sourceTree = "<group>"; };
+		E0D1BBDA22ACEE9400951F19 /* TimeIntervalComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalComponents.swift; sourceTree = "<group>"; };
 		E0D7DCDA229CE65C00B40D76 /* PromoPopUpFlowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoPopUpFlowViewController.swift; sourceTree = "<group>"; };
 		E0D7DCDC229CE82300B40D76 /* PromoPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoPopUpViewController.swift; sourceTree = "<group>"; };
+		E0DA389622C0744E00EC4170 /* Unlock.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Unlock.storyboard; sourceTree = "<group>"; };
+		E0DA389D22C2824500EC4170 /* GemActionPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemActionPopUpViewController.swift; sourceTree = "<group>"; };
+		E0DA389F22C282EC00EC4170 /* GemPickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemPickerTableViewController.swift; sourceTree = "<group>"; };
+		E0DA38A122C31E3700EC4170 /* GemActionPopUpConfigurations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemActionPopUpConfigurations.swift; sourceTree = "<group>"; };
+		E0DA38A522C48BC400EC4170 /* UnlockFlowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockFlowViewController.swift; sourceTree = "<group>"; };
+		E0DCD04E22B7E77D008D9C63 /* PickerConfirmButtonFooter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerConfirmButtonFooter.xib; sourceTree = "<group>"; };
+		E0DCD05022B7E86B008D9C63 /* PickerConfirmButtonFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerConfirmButtonFooter.swift; sourceTree = "<group>"; };
+		E0DCD05222B7EB67008D9C63 /* PickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTableViewController.swift; sourceTree = "<group>"; };
+		E0DCD05422B8B620008D9C63 /* ShippingInfoEditorHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingInfoEditorHelpers.swift; sourceTree = "<group>"; };
+		E0DCD05622B9CC3D008D9C63 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
+		E0DCD05822B9D827008D9C63 /* EmptyLotListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyLotListView.xib; sourceTree = "<group>"; };
+		E0DCD05A22B9D960008D9C63 /* EmptyLotListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyLotListView.swift; sourceTree = "<group>"; };
 		E0FF7979228C3F6800F61318 /* MyProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTests.swift; sourceTree = "<group>"; };
 		E0FF797B228D2FC400F61318 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		E0FF797D228D38CE00F61318 /* Post.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
@@ -266,7 +334,9 @@
 				E03C329C226D75F400C32FD7 /* SwiftyBeaver.framework in Frameworks */,
 				E0BDCCEC229FD3CE006A9D20 /* SwiftMessages.framework in Frameworks */,
 				E06261C8226D640D00A96F55 /* StoreKit.framework in Frameworks */,
+				E032844722AB6F66001F02E8 /* XLPagerTabStrip.framework in Frameworks */,
 				E06F5009227AFC770067DAE4 /* libWeChatSDK.a in Frameworks */,
+				E0A4618822B6328400D26720 /* PhoneNumberKit.framework in Frameworks */,
 				6868F9DB5BA3F9DA5AAF9145 /* Pods_Oneplanet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -309,10 +379,14 @@
 			isa = PBXGroup;
 			children = (
 				E0190F59226EDD1100C212D5 /* SupportingFlows.storyboard */,
+				E0DCD05222B7EB67008D9C63 /* PickerTableViewController.swift */,
+				E0DCD05022B7E86B008D9C63 /* PickerConfirmButtonFooter.swift */,
+				E0DCD04E22B7E77D008D9C63 /* PickerConfirmButtonFooter.xib */,
 				E07276EA2274B515001239C0 /* WebViewController.swift */,
 				E081590A22A61AA3007C9776 /* PopUpContainerViewController.swift */,
 				E0B57DE222A0FAA3006AEADB /* Toast.swift */,
 				E0B57DE622A0FE77006AEADB /* Toast.xib */,
+				E021105222BA1AFA007DE085 /* BiddingTermsViewController.swift */,
 				E06589C42270536A00C9E4E6 /* Image Picking */,
 			);
 			path = "Supporting Flows";
@@ -335,6 +409,34 @@
 				E030E4D3228AB1ED0084D383 /* IDHeaderView.swift */,
 			);
 			name = Me;
+			sourceTree = "<group>";
+		};
+		E032844322AB6A0E001F02E8 /* Auction */ = {
+			isa = PBXGroup;
+			children = (
+				E0FF797F228D398300F61318 /* Auction.storyboard */,
+				E0A4617122B234D500D26720 /* ProductListHeader.xib */,
+				E0A4617722B28B2F00D26720 /* ProductListHeader.swift */,
+				E0A4617322B234F600D26720 /* BiddingListHeader.xib */,
+				E0A4617922B2984A00D26720 /* BiddingListHeader.swift */,
+				E0A4617522B2351100D26720 /* BiddingProcessHeader.xib */,
+				E0A4617B22B2A9D300D26720 /* BiddingProcessHeader.swift */,
+				E032844C22ABB1F5001F02E8 /* BadgeView.xib */,
+				E032844E22ABB2FE001F02E8 /* BadgeView.swift */,
+				E0DCD05822B9D827008D9C63 /* EmptyLotListView.xib */,
+				E0DCD05A22B9D960008D9C63 /* EmptyLotListView.swift */,
+				E032844422AB6A50001F02E8 /* AuctionMainViewController.swift */,
+				E0D1BBDA22ACEE9400951F19 /* TimeIntervalComponents.swift */,
+				E032844822AB7286001F02E8 /* ProductListTableViewController.swift */,
+				E0DCD05622B9CC3D008D9C63 /* ProductDetailViewController.swift */,
+				E0A4618122B3D93700D26720 /* ShippingInfoEditorViewController.swift */,
+				E0DCD05422B8B620008D9C63 /* ShippingInfoEditorHelpers.swift */,
+				E0A4618322B5405700D26720 /* ShippingInfoDraft.swift */,
+				E0A4618922B6347800D26720 /* PhoneNumberBuilder.swift */,
+				E032844A22AB7A90001F02E8 /* BiddingProcessTableViewController.swift */,
+				E0DA389C22C27FC600EC4170 /* Unlock and Bid */,
+			);
+			name = Auction;
 			sourceTree = "<group>";
 		};
 		E03C32B1226D902F00C32FD7 /* Shared Configurations */ = {
@@ -429,6 +531,7 @@
 				E06F4FFB22782E7D0067DAE4 /* EmailAuthCredentialTests.swift */,
 				E0814FB422873103002F1C02 /* RoughNumberFormatterTests.swift */,
 				E0FF7979228C3F6800F61318 /* MyProfileTests.swift */,
+				E0D1BBD822ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift */,
 				E05BB274226D5D2F00721F20 /* Info.plist */,
 			);
 			path = OneplanetTests;
@@ -451,6 +554,7 @@
 			children = (
 				E06F5001227ABE8A0067DAE4 /* Oneplanet-Bridging-Header.h */,
 				E0CB5E14228F0E5F00C0C010 /* DS-DIGIB.TTF */,
+				E006BAC522AE250D00D7D118 /* DS-DIGIT.TTF */,
 				E06F4FFF227ABE1B0067DAE4 /* OpenSDK1.8.0_NoPay */,
 				E03C32AB226D872A00C32FD7 /* Localized.swift */,
 				E05BB269226D5D2E00721F20 /* Info.plist */,
@@ -464,6 +568,8 @@
 		E06261CC226D6EF900A96F55 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E0A4618722B6328300D26720 /* PhoneNumberKit.framework */,
+				E032844622AB6F66001F02E8 /* XLPagerTabStrip.framework */,
 				E0BDCCEB229FD3CE006A9D20 /* SwiftMessages.framework */,
 				E07276F922773EC6001239C0 /* JLRoutes.framework */,
 				E03C32B6226DA39700C32FD7 /* SwiftGif.framework */,
@@ -495,6 +601,7 @@
 				E06F4FF922782C8C0067DAE4 /* InputValidators.swift */,
 				E06589C92270C1A500C9E4E6 /* UpdateClock.swift */,
 				E06F4FFD22789C760067DAE4 /* AppLifeCycleObserver.swift */,
+				E0A4618522B6284500D26720 /* KeyboardAppearanceObserver.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -535,11 +642,24 @@
 				E0814FB022864F79002F1C02 /* UserFlowMainViewController.swift */,
 				E00611F02294F4ED0032AE30 /* Home */,
 				E0FF797D228D38CE00F61318 /* Post.storyboard */,
-				E0FF797F228D398300F61318 /* Auction.storyboard */,
+				E032844322AB6A0E001F02E8 /* Auction */,
 				E0FF7981228D3A3D00F61318 /* Notification.storyboard */,
 				E030E4D5228BC3BD0084D383 /* Me */,
 			);
 			name = "Main User Flow";
+			sourceTree = "<group>";
+		};
+		E0DA389C22C27FC600EC4170 /* Unlock and Bid */ = {
+			isa = PBXGroup;
+			children = (
+				E0DA389622C0744E00EC4170 /* Unlock.storyboard */,
+				E0DA389D22C2824500EC4170 /* GemActionPopUpViewController.swift */,
+				E0DA38A522C48BC400EC4170 /* UnlockFlowViewController.swift */,
+				E091994522C616C3000AF381 /* BidFlowViewController.swift */,
+				E0DA38A122C31E3700EC4170 /* GemActionPopUpConfigurations.swift */,
+				E0DA389F22C282EC00EC4170 /* GemPickerTableViewController.swift */,
+			);
+			name = "Unlock and Bid";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -644,24 +764,32 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E006BAC622AE250D00D7D118 /* DS-DIGIT.TTF in Resources */,
 				E05BB268226D5D2E00721F20 /* LaunchScreen.storyboard in Resources */,
 				E0CB5E15228F0E5F00C0C010 /* DS-DIGIB.TTF in Resources */,
+				E032844D22ABB1F5001F02E8 /* BadgeView.xib in Resources */,
+				E0A4617622B2351100D26720 /* BiddingProcessHeader.xib in Resources */,
 				E0814FAE22864B10002F1C02 /* MainUserFlow.storyboard in Resources */,
 				E0814FB322865CC2002F1C02 /* Me.storyboard in Resources */,
 				E07276F32276AA85001239C0 /* GoogleService-Info.plist in Resources */,
 				E03C32A3226D866200C32FD7 /* Localizable.strings in Resources */,
 				E05BB265226D5D2E00721F20 /* Assets.xcassets in Resources */,
+				E0DCD04F22B7E77D008D9C63 /* PickerConfirmButtonFooter.xib in Resources */,
 				E03C32B9226DA44A00C32FD7 /* Onboarding.storyboard in Resources */,
 				E0FF797C228D2FC400F61318 /* Home.storyboard in Resources */,
 				E06F5016227B4E7E0067DAE4 /* PreflightCheck.storyboard in Resources */,
 				E0190F5A226EDD1100C212D5 /* SupportingFlows.storyboard in Resources */,
 				E05BB263226D5D2A00721F20 /* Main.storyboard in Resources */,
+				E0A4617422B234F600D26720 /* BiddingListHeader.xib in Resources */,
 				E0B57DE722A0FE77006AEADB /* Toast.xib in Resources */,
+				E0DCD05922B9D828008D9C63 /* EmptyLotListView.xib in Resources */,
+				E0DA389722C0744E00EC4170 /* Unlock.storyboard in Resources */,
 				E00611F42294FFF10032AE30 /* HotNavigationItems.xib in Resources */,
 				E06F5000227ABE1C0067DAE4 /* OpenSDK1.8.0_NoPay in Resources */,
 				E0FF7980228D398300F61318 /* Auction.storyboard in Resources */,
 				E089F70F228EB16A003E77DF /* SectionHeaderView.xib in Resources */,
 				E030E4D2228AB0B70084D383 /* IDHeaderView.xib in Resources */,
+				E0A4617222B234D500D26720 /* ProductListHeader.xib in Resources */,
 				E0FF797E228D38CE00F61318 /* Post.storyboard in Resources */,
 				E0FF7982228D3A3D00F61318 /* Notification.storyboard in Resources */,
 				E03C32A6226D866500C32FD7 /* InfoPlist.strings in Resources */,
@@ -723,6 +851,7 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Oneplanet/Pods-Oneplanet-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
@@ -732,6 +861,9 @@
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/PusherSwift/PusherSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -740,6 +872,7 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
@@ -749,6 +882,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PusherSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -769,6 +905,8 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftGif.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/JLRoutes.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftMessages.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/XLPagerTabStrip.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/PhoneNumberKit.framework",
 			);
 			name = "Copy Carthage Dependencies";
 			outputPaths = (
@@ -821,6 +959,7 @@
 				E06F5011227B34880067DAE4 /* ProfileDraft.swift in Sources */,
 				E030E4D4228AB1ED0084D383 /* IDHeaderView.swift in Sources */,
 				E0837EF5228022C400B13BAF /* TwitterLogIn.swift in Sources */,
+				E0A4617A22B2984A00D26720 /* BiddingListHeader.swift in Sources */,
 				E07276FD2277424E001239C0 /* URLRouter.swift in Sources */,
 				E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */,
 				E081590D22A63616007C9776 /* BlueGemPopUpViewController.swift in Sources */,
@@ -830,13 +969,17 @@
 				E06589BF22701B9F00C9E4E6 /* CapturePhotoOperation.swift in Sources */,
 				E0BAB71F228482D1007E747C /* InputFieldView.swift in Sources */,
 				E081591122A65276007C9776 /* PurpleGemStoreViewController.swift in Sources */,
+				E0DCD05522B8B620008D9C63 /* ShippingInfoEditorHelpers.swift in Sources */,
 				E0190F53226DD62200C212D5 /* UserProgressChecklist.swift in Sources */,
+				E0DA389E22C2824500EC4170 /* GemActionPopUpViewController.swift in Sources */,
 				E06589C32270362300C9E4E6 /* GenericAppError.swift in Sources */,
 				E06589C8227060EC00C9E4E6 /* PhotoList.swift in Sources */,
 				E0190F55226EC82500C212D5 /* UserFlowRootViewController.swift in Sources */,
 				E030E4D0228A71CB0084D383 /* ProfileDetailViewController.swift in Sources */,
 				E06589BD22700AEC00C9E4E6 /* CaptureSessionController.swift in Sources */,
+				E0D1BBDB22ACEE9500951F19 /* TimeIntervalComponents.swift in Sources */,
 				E0190F4B226DB55400C212D5 /* UIComponentFactories.swift in Sources */,
+				E0DA38A622C48BC400EC4170 /* UnlockFlowViewController.swift in Sources */,
 				E0BDCCEA229FA044006A9D20 /* PromotionPageList.swift in Sources */,
 				E0B57DE322A0FAA3006AEADB /* Toast.swift in Sources */,
 				E089F70D228E9ECB003E77DF /* AvatarView.swift in Sources */,
@@ -846,45 +989,63 @@
 				E06589BB227001F300C9E4E6 /* AskForAuthorizationOperation.swift in Sources */,
 				E03C329A226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift in Sources */,
 				E03C32AE226D8E6800C32FD7 /* SharedFormatters.swift in Sources */,
+				E0DA38A222C31E3800EC4170 /* GemActionPopUpConfigurations.swift in Sources */,
 				E07276F82276D0DC001239C0 /* RequestUserNotificationAuthorizationOperation.swift in Sources */,
 				E0FF7986228D51E800F61318 /* SettingsTableViewController.swift in Sources */,
 				E06589C12270333100C9E4E6 /* PickImageOperation.swift in Sources */,
 				E06F500F227AFD740067DAE4 /* WeChatLogIn.swift in Sources */,
+				E0DCD05322B7EB67008D9C63 /* PickerTableViewController.swift in Sources */,
 				E0190F57226EDBC900C212D5 /* CameraImagePickerViewController.swift in Sources */,
 				E08C3129227817680013DD0C /* AuthActions.swift in Sources */,
 				E0B57DE122A0FA48006AEADB /* DefaultStyleConfiguration.swift in Sources */,
 				E00611F22294F5680032AE30 /* HotCollectionViewController.swift in Sources */,
+				E0DCD05B22B9D960008D9C63 /* EmptyLotListView.swift in Sources */,
 				E03C32B0226D8E8F00C32FD7 /* NavigationBarStyle.swift in Sources */,
 				E030E4D7228BC3E90084D383 /* User.swift in Sources */,
+				E0A4617822B28B3000D26720 /* ProductListHeader.swift in Sources */,
 				E0190F4F226DD06B00C212D5 /* Preferences.swift in Sources */,
 				E0814FB722893FB0002F1C02 /* ProfileCollectionViewController.swift in Sources */,
 				E0837EF722816B0D00B13BAF /* ImageAttachmentUploadFlowOperation.swift in Sources */,
 				E02842B1229A32C2007212D7 /* ColorPickerCollectionViewController.swift in Sources */,
 				E06589CA2270C1A500C9E4E6 /* UpdateClock.swift in Sources */,
 				E0814FB122864F79002F1C02 /* UserFlowMainViewController.swift in Sources */,
+				E0A4617C22B2A9D300D26720 /* BiddingProcessHeader.swift in Sources */,
+				E0A4618422B5405700D26720 /* ShippingInfoDraft.swift in Sources */,
 				E07276E1227307F5001239C0 /* LogInViewController.swift in Sources */,
 				E0D7DCDD229CE82300B40D76 /* PromoPopUpViewController.swift in Sources */,
 				E05BB25E226D5D2A00721F20 /* AppDelegate.swift in Sources */,
+				E0DA38A022C282EC00EC4170 /* GemPickerTableViewController.swift in Sources */,
 				E00611F6229500FA0032AE30 /* HotNavigationItemView.swift in Sources */,
 				E06F4FFE22789C760067DAE4 /* AppLifeCycleObserver.swift in Sources */,
+				E032844F22ABB2FE001F02E8 /* BadgeView.swift in Sources */,
 				E0CB5E11228F0B4A00C0C010 /* TreasuryBarViewController.swift in Sources */,
 				E003BA382296933F001814F4 /* HotHeaderCollectionViewController.swift in Sources */,
 				E06F5013227B4E2E0067DAE4 /* PreflightCheckFlowViewController.swift in Sources */,
 				E081590B22A61AA3007C9776 /* PopUpContainerViewController.swift in Sources */,
 				E07276F62276C305001239C0 /* FirebaseMessagingSession.swift in Sources */,
 				E07276E92273633A001239C0 /* CreateProfileViewController.swift in Sources */,
+				E0A4618622B6284500D26720 /* KeyboardAppearanceObserver.swift in Sources */,
 				E02842B3229A3399007212D7 /* AlienPickerCollectionViewController.swift in Sources */,
 				E0FF7984228D48FA00F61318 /* MyProfileViewController.swift in Sources */,
+				E021105322BA1AFA007DE085 /* BiddingTermsViewController.swift in Sources */,
 				E02842AF229A31AF007212D7 /* CharacterPickerViewController.swift in Sources */,
+				E032844922AB7286001F02E8 /* ProductListTableViewController.swift in Sources */,
 				E03C329E226D772400C32FD7 /* Logger.swift in Sources */,
 				E03C32B3226D925100C32FD7 /* ServiceConstants.swift in Sources */,
 				E081590F22A63628007C9776 /* GreenGemPopUpViewController.swift in Sources */,
+				E032844B22AB7A90001F02E8 /* BiddingProcessTableViewController.swift in Sources */,
+				E091994622C616C3000AF381 /* BidFlowViewController.swift in Sources */,
+				E0DCD05722B9CC3D008D9C63 /* ProductDetailViewController.swift in Sources */,
 				E06F4FFA22782C8C0067DAE4 /* InputValidators.swift in Sources */,
+				E0A4618222B3D93700D26720 /* ShippingInfoEditorViewController.swift in Sources */,
 				E089F711228EB18F003E77DF /* SectionHeaderView.swift in Sources */,
 				E07276EB2274B515001239C0 /* WebViewController.swift in Sources */,
 				E06589C622705B4F00C9E4E6 /* PhotoGridCollectionViewController.swift in Sources */,
 				E07277012277EE3D001239C0 /* AppConfiguration.swift in Sources */,
+				E0A4618A22B6347800D26720 /* PhoneNumberBuilder.swift in Sources */,
+				E032844522AB6A50001F02E8 /* AuctionMainViewController.swift in Sources */,
 				E0190F4D226DCCFB00C212D5 /* UserSession.swift in Sources */,
+				E0DCD05122B7E86B008D9C63 /* PickerConfirmButtonFooter.swift in Sources */,
 				E0190F49226DB0E000C212D5 /* WelcomeMessageViewController.swift in Sources */,
 				E06589CD2271ADFD00C9E4E6 /* WelcomeMessageContentCollectionViewController.swift in Sources */,
 			);
@@ -896,6 +1057,7 @@
 			files = (
 				E07276FF227743D7001239C0 /* URLRouterTests.swift in Sources */,
 				E0814FB522873103002F1C02 /* RoughNumberFormatterTests.swift in Sources */,
+				E0D1BBD922ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift in Sources */,
 				E0FF797A228C3F6800F61318 /* MyProfileTests.swift in Sources */,
 				E05BB273226D5D2F00721F20 /* OneplanetTests.swift in Sources */,
 				E08C312B227826850013DD0C /* EmailInputValidatorTests.swift in Sources */,

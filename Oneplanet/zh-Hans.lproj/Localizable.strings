@@ -47,6 +47,10 @@
 "tl_purple_gem" = "紅金寶";
 "tl_green_gem" = "解鎖寶";
 "tl_delete" = "删除";
+"tl_unlock" = "Unlock";
+"tl_unlocked" = "Unlocked";
+"tl_bid" = "Bid";
+"tl_required_input" = "Required";
 
 "pl_email" = "电子邮件地址";
 "pl_nickname" = "昵称";
@@ -57,10 +61,36 @@
 "msg_mail_resent" = "已重新发送电子邮件";
 "msg_join_prompt" = "立即前往注册享用更多功能";
 "msg_alien_description" = "你所選擇的外星人會出現在你的個人頁面";
+"msg_ongoing_bidding" = "Other commodities are still bidding, please wait for the bidding to end.";
+"msg_successful_shipping_info_submission" = "The winning commodity will be sent to this address. If the address changes, please remember to update this page";
+"msg_bidding_terms_acceptence" = "Ticking means that you have agreed to the bidding terms";
+"msg_unlock_succeeded" = "Unlock Successfully";
+"msg_bid_succeeded" = "Successfully qualified for CommodityName bidding";
+"msg_lot_being_bid" = "This commodity is being bid";
+"msg_lot_being_bid_des" = "This commodity is currently being bidding. Please go to the bidding page to bid or watch the game";
+"msg_lot_closed" = "The commodity has been closed";
+"msg_lot_closed_des" = "This commodity has been closed, please wait for the new one to be announced soon.";
+"msg_bid_payment_too_late" = "Payment is successful but exceeding the biding time limit";
 
 "msgf_accept_tos" = "注册或登录即表示你同意我们的%@";
 "msgf_resend_verification_email" = "你没有收到电子邮件？%@";
 "msgf_did_copy_my_id" = "我的 Oneplanet ID [%@] 已复制。";
+"msgf_winner_notice" = "The winner must check if the %@ is filled in to ensure that the goods can be delivered.";
+"msgf_unlock_lot" = "Unlock %@?";
+"msgf_did_unlock_lot" = "Unlocked %@!";
+"msgf_unlock_option_prompt" = "Choose %@ or %@ to unlock";
+"msgf_unlock_with_gem_iap" = "Unlock with %@ + %@?";
+"msgf_unlock_with_gem" = "Unlock with %@?";
+"msgf_insufficient_gem" = "Insufficient %@";
+"msgf_bid_prompt" = "Bid %@ once";
+"msgf_bid_with_gem_iap" = "Bid once with %@ + %@ service charge?";
+"msgf_bid_with_gem" = "Use %@ to bid once?";
+"msgf_insufficient_gem_unlock_des" = "解鎖一次需要使用一顆 %@ + %@。";
+"msgf_insufficient_gem_bid_des" = "投標一次需要使用一顆 %@ + %@。";
+"msgf_earn_blue_gem_instruction" = "拍照上傳照片就能獲得 %@，趕緊去拍照！";
+"msgf_received_gem" = "Getting a %@";
+"msgf_unlock_succeeded" = "Unlocked %@!";
+"msgf_bid_succeeded" = "Successfully qualified for %@ bidding";
 
 "ph_guest_login" = "访客进入";
 "ph_email_login" = "或通过电子邮件登录";
@@ -85,24 +115,47 @@
 "ph_privacy_and_security" = "隐私和安全";
 "ph_not_specified" = "不显示";
 "ph_join_prompt" = "前往注册";
+"ph_shipping_info" = "Shipping Info";
+"ph_create_shipping_info" = "Add Shipping Info";
+"ph_edit_shipping_info" = "Edit Shipping Info";
+"ph_view_shipping_status" = "View details";
+"ph_commodities" = "Commodities";
+"ph_bidding_process" = "Bidding process";
+"ph_bid_count" = "Your bids";
+"ph_countdown" = "Countdown";
+"ph_bid_leader" = "Leading";
+"ph_product_name" = "Product name";
+"ph_bid_outcome" = "Outcome";
+"ph_bid_lot" = "Commodity";
+"ph_successful_shipping_info_submission" = "Filled in successfully";
+"ph_goto_bidding" = "Go bidding page";
 
 "no_posts" = "还没有贴子";
 "no_promo_popups" = "No Promotion Pop-ups Yet";
+"no_unlocked_lots_title" = "你沒有參加這次競標";
+"no_unlocked_lots_message" = "請把握下次競標！48H 內會公布下一期競標品！";
 
 "err_no_camera_access" = "启用摄像头访问";
 "err_no_library_access" = "启用图库访问";
 "err_invalid_email" = "请输入有效电子邮件。";
 "err_non_alphanumerics" = "Only letters and digits are allowed";
+"err_non_digit_input" = "Only digits are allowed";
 "err_account_not_exist" = "你输入的电子邮件似乎不属于某个帐号。请检查电子邮件，然后再试一次。";
 "err_invalid_nickname" = "你的昵称不符合规定。";
+"err_invalid_phone_number" = "Please input valid phone number";
 
 "errtl_cannot_capture_photo" = "无法拍照";
 "errtl_cannot_pick_avatar" = "无法取得大头照";
+"errtl_generic_failure" = "Failed";
 
 "warn_logout" = "退出？";
 "warn_character_selection" = "Can't change the group after selection, continue？";
 
 "warntl_character_selection" = "Determined choice？";
+
+"act_bigging" = "Bidding...";
+"act_bigging_ended" = "End of Bidding!";
+"act_countdown" = "COUNTDOWN TO BIDDING…";
 
 "pop_blue_gem_usage" = "用途：解鎖商品、投標商品。";
 "pop_green_gem_usage" = "用途：解鎖商品、高效率投標商品。";
@@ -123,3 +176,13 @@
 
 "pop_purple_gem_bullet1" = "紅金寶是 %@ 的升級版，有助於競標時的效率，並減少信用卡或電信商的支付問題。";
 "pop_purple_gem_bullet2" = "使用 紅金寶 可解鎖商品或投標一次。";
+
+"ship_first_name" = "First Name";
+"ship_last_name" = "Last Name";
+"ship_address1" = "Address line 1";
+"ship_address2" = "Address line 2";
+"ship_city" = "City";
+"ship_region" = "Region";
+"ship_postal_code" = "Postal Code";
+"ship_country" = "Country";
+"ship_phoneNumber" = "Phone number (For delivery purpose only)";

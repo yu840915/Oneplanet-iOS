@@ -18,6 +18,14 @@ struct SharedNumberFormatters {
         value.roundingMode = .up
         return value
     }()
+    static let clockComponent: NumberFormatter = {
+        let result = NumberFormatter()
+        result.numberStyle = .decimal
+        result.minimumIntegerDigits = 2
+        result.maximumFractionDigits = 0
+        return result
+    }()
+
 }
 
 class RoughNumberFormatter: Formatter {

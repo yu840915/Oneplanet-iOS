@@ -8,6 +8,7 @@ PODS:
   - Bolts/Tasks (1.9.0)
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
+  - CryptoSwift (0.15.0)
   - Fabric (1.9.0)
   - FacebookCore (0.5.0):
     - Bolts (~> 1.9)
@@ -111,6 +112,12 @@ PODS:
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
   - Protobuf (3.6.1)
+  - PusherSwift (7.0.0):
+    - CryptoSwift (~> 0.9)
+    - ReachabilitySwift (= 4.3.0)
+    - Starscream (~> 3.0.5)
+  - ReachabilitySwift (4.3.0)
+  - Starscream (3.0.6)
   - TwitterCore (3.2.0)
   - TwitterKit (3.4.2):
     - TwitterCore (>= 3.2.0)
@@ -126,6 +133,7 @@ DEPENDENCIES:
   - Firebase/Messaging
   - Firebase/RemoteConfig
   - Kingfisher (~> 5.5.0)
+  - PusherSwift (~> 7.0)
   - TwitterKit (~> 3.4.2)
 
 SPEC REPOS:
@@ -133,6 +141,7 @@ SPEC REPOS:
     - Alamofire
     - Bolts
     - Crashlytics
+    - CryptoSwift
     - Fabric
     - FacebookCore
     - FacebookLogin
@@ -154,6 +163,9 @@ SPEC REPOS:
     - Kingfisher
     - nanopb
     - Protobuf
+    - PusherSwift
+    - ReachabilitySwift
+    - Starscream
     - TwitterCore
     - TwitterKit
 
@@ -161,6 +173,7 @@ SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
+  CryptoSwift: 769f58a9e89f64e8796c2e59ce5f002dc81a2438
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
   FacebookCore: 74288d0add931d361b1596beae787ab72c438249
   FacebookLogin: ebcf34714a1cb9f0759d9f071cfb01ed500996cf
@@ -182,9 +195,12 @@ SPEC CHECKSUMS:
   Kingfisher: 6fe5e67a90fd335e49b0f5c075ff55ac5ebedd94
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
+  PusherSwift: d15d6290be0b0b57fd9ac80b03661a6ba24623ec
+  ReachabilitySwift: 408477d1b6ed9779dba301953171e017c31241f3
+  Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
   TwitterCore: 8cbc9ad34d91c63a0035ea05bfbfc0d7ca72a28c
   TwitterKit: 5e4f41d70b9abdb41df5467f52d7aa2c0fd26ebb
 
-PODFILE CHECKSUM: 57ca61f8acabb2d57b76fce5be0f6d6296408620
+PODFILE CHECKSUM: df5c75b46aa62925de88b1d220212dc5ec9a81bd
 
 COCOAPODS: 1.5.3

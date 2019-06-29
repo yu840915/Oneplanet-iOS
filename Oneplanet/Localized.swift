@@ -25,6 +25,7 @@ class Localized {
     static let placeholder = LocalizedPlaceholder()
     static let emptyMessages = EmptyMessages()
     static let gemStonePopUp = GemStonePopUp()
+    static let shippingInfoTerms = LocalizedShippingInfoTerms()
 }
 
 class LocalizedTitles {//tl_
@@ -131,6 +132,18 @@ class LocalizedTitles {//tl_
     var delete: String {
         return NSLocalizedString("tl_delete", comment: "")
     }
+    var unlock: String {
+        return NSLocalizedString("tl_unlock", comment: "")
+    }
+    var unlocked: String {
+        return NSLocalizedString("tl_unlocked", comment: "")
+    }
+    var bid: String {
+        return NSLocalizedString("tl_bid", comment: "")
+    }
+    var requiredInput: String {
+        return NSLocalizedString("tl_required_input", comment: "")
+    }
 }
 
 class Feature {//fx_
@@ -172,6 +185,15 @@ class LocalizedPlaceholder {//pl_
 
 class LocalizedActivityMessages {//act_
     fileprivate init() {}
+    var bidding: String {
+        return NSLocalizedString("act_bigging", comment: "")
+    }
+    var biddingEnded: String {
+        return NSLocalizedString("act_bigging_ended", comment: "")
+    }
+    var countdown: String {
+        return NSLocalizedString("act_countdown", comment: "")
+    }
 }
 
 class LocalizedWarnings {//warn_
@@ -210,6 +232,36 @@ class LocalizedMessages {//msg_
     var alienDescription: String {
         return NSLocalizedString("msg_alien_description", comment: "")
     }
+    var ongoingBidding: String {
+        return NSLocalizedString("msg_ongoing_bidding", comment: "")
+    }
+    var successfulShippingInfoSubmission: String {
+        return NSLocalizedString("msg_successful_shipping_info_submission", comment: "")
+    }
+    var biddingTermsAcceptence: String {
+        return NSLocalizedString("msg_bidding_terms_acceptence", comment: "")
+    }
+    var unlockSucceeded: String {
+        return NSLocalizedString("msg_unlock_succeeded", comment: "")
+    }
+    var bidSucceeded: String {
+        return NSLocalizedString("msg_bid_succeeded", comment: "")
+    }
+    var lotBeingBid: String {
+        return NSLocalizedString("msg_lot_being_bid", comment: "")
+    }
+    var lotBeingBidDescription: String {
+        return NSLocalizedString("msg_lot_being_bid_des", comment: "")
+    }
+    var lotClosed: String {
+        return NSLocalizedString("msg_lot_closed", comment: "")
+    }
+    var lotClosedDescription: String {
+        return NSLocalizedString("msg_lot_closed_des", comment: "")
+    }
+    var bidPaymentTooLate: String {
+        return NSLocalizedString("msg_bid_payment_too_late", comment: "")
+    }
 }
 
 class LocalizedMessageFormats {//msgf_
@@ -225,6 +277,54 @@ class LocalizedMessageFormats {//msgf_
     }
     var didCopyMyId: String {
         return NSLocalizedString("msgf_did_copy_my_id", comment: "")
+    }
+    var winnerNotice: String {
+        return NSLocalizedString("msgf_winner_notice", comment: "")
+    }
+    var unlockLot: String {
+        return NSLocalizedString("msgf_unlock_lot", comment: "")
+    }
+    var didUnlockLot: String {
+        return NSLocalizedString("msgf_did_unlock_lot", comment: "")
+    }
+    var unlockOptionPrompt: String {
+        return NSLocalizedString("msgf_unlock_option_prompt", comment: "")
+    }
+    var unlockWithGemAndIAP: String {
+        return NSLocalizedString("msgf_unlock_with_gem_iap", comment: "")
+    }
+    var unlockWithGem: String {
+        return NSLocalizedString("msgf_unlock_with_gem", comment: "")
+    }
+    var insufficientGem: String {
+        return NSLocalizedString("msgf_insufficient_gem", comment: "")
+    }
+    var bidPrompt: String {
+        return NSLocalizedString("msgf_bid_prompt", comment: "")
+    }
+    var bidWithGemAndIAP: String {
+        return NSLocalizedString("msgf_bid_with_gem_iap", comment: "")
+    }
+    var bidWithGem: String {
+        return NSLocalizedString("msgf_bid_with_gem", comment: "")
+    }
+    var insufficientGemToUnlockDescription: String {
+        return NSLocalizedString("msgf_insufficient_gem_unlock_des", comment: "")
+    }
+    var insufficientGemToBidDescription: String {
+        return NSLocalizedString("msgf_insufficient_gem_bid_des", comment: "")
+    }
+    var earnBlueGemInstruction: String {
+        return NSLocalizedString("msgf_earn_blue_gem_instruction", comment: "")
+    }
+    var receivedGem: String {
+        return NSLocalizedString("msgf_received_gem", comment: "")
+    }
+    var unlockSucceeded: String {
+        return NSLocalizedString("msgf_unlock_succeeded", comment: "")
+    }
+    var bidSucceeded: String {
+        return NSLocalizedString("msgf_bid_succeeded", comment: "")
     }
 }
 
@@ -299,6 +399,48 @@ class LocalizedPhrase { //ph_
     var joinPrompt: String {
         return NSLocalizedString("ph_join_prompt", comment: "")
     }
+    var shippingInfo: String {
+        return NSLocalizedString("ph_shipping_info", comment: "")
+    }
+    var createShippingInfo: String {
+        return NSLocalizedString("ph_create_shipping_info", comment: "")
+    }
+    var editShippingInfo: String {
+        return NSLocalizedString("ph_edit_shipping_info", comment: "")
+    }
+    var viewShippingStatus: String {
+        return NSLocalizedString("ph_view_shipping_status", comment: "")
+    }
+    var commodities: String {
+        return NSLocalizedString("ph_commodities", comment: "")
+    }
+    var biddingProcess: String {
+        return NSLocalizedString("ph_bidding_process", comment: "")
+    }
+    var bidCount: String {
+        return NSLocalizedString("ph_bid_count", comment: "")
+    }
+    var countdown: String {
+        return NSLocalizedString("ph_countdown", comment: "")
+    }
+    var bidLeader: String {
+        return NSLocalizedString("ph_bid_leader", comment: "")
+    }
+    var productName: String {
+        return NSLocalizedString("ph_product_name", comment: "")
+    }
+    var bidOutcome: String {
+        return NSLocalizedString("ph_bid_outcome", comment: "")
+    }
+    var bidLot: String {
+        return NSLocalizedString("ph_bid_lot", comment: "")
+    }
+    var successfulShippingInfoSubmission: String {
+        return NSLocalizedString("ph_successful_shipping_info_submission", comment: "")
+    }
+    var goToBiddingPage: String {
+        return NSLocalizedString("ph_goto_bidding", comment: "")
+    }
 }
 
 class EmptyMessages {//no_
@@ -308,10 +450,20 @@ class EmptyMessages {//no_
     var promoPopups: String {
         return NSLocalizedString("no_promo_popups", comment: "")
     }
+    var unlockedLotsTitle: String {
+        return NSLocalizedString("no_unlocked_lots_title", comment: "")
+    }
+    var unlockedLotsMessage: String {
+        return NSLocalizedString("no_unlocked_lots_message", comment: "")
+    }
 }
 
 class LocalizedErrorsTitles {//errtl_
     fileprivate init() {}
+    var genericFailure: String {
+        return NSLocalizedString("errtl_generic_failure", comment: "")
+    }
+
     var cannotCapturePhoto: String {
         return NSLocalizedString("errtl_cannot_capture_photo", comment: "")
     }
@@ -334,11 +486,17 @@ class LocalizedErrors {//err_
     var nonAlphanumericalCharacter: String {
         return NSLocalizedString("err_non_alphanumerics", comment: "")
     }
+    var nonDigitInput: String {
+        return NSLocalizedString("err_non_digit_input", comment: "")
+    }
     var accountDoesnotExist: String {
         return NSLocalizedString("err_account_not_exist", comment: "")
     }
     var invalidNickname: String {
         return NSLocalizedString("err_invalid_nickname", comment: "")
+    }
+    var invalidPhoneNumber: String {
+        return NSLocalizedString("err_invalid_phone_number", comment: "")
     }
 }
 
@@ -387,5 +545,38 @@ class GemStonePopUp { //pop
     }
     var purpleGemBullet2: String {
         return NSLocalizedString("pop_purple_gem_bullet2", comment: "")
+    }
+}
+
+class LocalizedShippingInfoTerms {//ship_
+    var email: String {
+        return Localized.titles.email
+    }
+    var firstName: String {
+        return NSLocalizedString("ship_first_name", comment: "")
+    }
+    var lastName: String {
+        return NSLocalizedString("ship_last_name", comment: "")
+    }
+    var address1: String {
+        return NSLocalizedString("ship_address1", comment: "")
+    }
+    var address2: String {
+        return NSLocalizedString("ship_address2", comment: "")
+    }
+    var city: String {
+        return NSLocalizedString("ship_city", comment: "")
+    }
+    var region: String {
+        return NSLocalizedString("ship_region", comment: "")
+    }
+    var postalCode: String {
+        return NSLocalizedString("ship_postal_code", comment: "")
+    }
+    var country: String {
+        return NSLocalizedString("ship_country", comment: "")
+    }
+    var phoneNumber: String {
+        return NSLocalizedString("ship_phoneNumber", comment: "")
     }
 }

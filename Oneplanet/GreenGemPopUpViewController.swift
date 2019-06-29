@@ -34,8 +34,7 @@ class GreenGemPopUpViewController: UIViewController {
         usageLabel.text = Localized.gemStonePopUp.greenGemUsage
         bulletTextView1.text = Localized.gemStonePopUp.greenGemBullet1
         bulletTextView2.text = Localized.gemStonePopUp.greenGemBullet2
-        bulletTextView3.text = Localized.gemStonePopUp.greenGemBullet3
-        bulletTextView5.text = Localized.gemStonePopUp.greenGemBullet5
+        bulletTextView4.text = Localized.gemStonePopUp.greenGemBullet4
         prepareGoButton()
         prepareActionBullet()
     }
@@ -49,13 +48,13 @@ class GreenGemPopUpViewController: UIViewController {
     }
     
     private func prepareActionBullet() {
-        let text = String(format: Localized.gemStonePopUp.greenGemBullet4, Localized.feature.events)
+        let text = String(format: Localized.gemStonePopUp.greenGemBullet3, Localized.feature.events)
         let linkRange = (text as NSString).range(of: Localized.feature.events)
         let attrStr = NSMutableAttributedString(string: text, attributes: [.font:  UIFont.systemFont(ofSize: 12)])
         attrStr.addAttributes([.link : DeepLinks.modalEventsPage, .font: UIFont.systemFont(ofSize: 12, weight: .semibold)], range: linkRange)
-        bulletTextView4.delegate = self
-        bulletTextView4.attributedText = attrStr
-        bulletTextView4.linkTextAttributes = [
+        bulletTextView3.delegate = self
+        bulletTextView3.attributedText = attrStr
+        bulletTextView3.linkTextAttributes = [
             .foregroundColor : ColorPalette.buttonGreen,
             .font: UIFont.systemFont(ofSize: 12, weight: .semibold)]
     }

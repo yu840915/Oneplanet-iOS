@@ -34,6 +34,7 @@ class CharacterPickerViewController: UIViewController, UserSessionDepending {
         localizeTitles()
         colorPickerWidth.constant = CGFloat(CharacterOptions.shared.colors.count * 44)
         updateAlienOptions(withColor: colorPicker.selectedColor!)
+        setUpPreselection()
     }
 
     private func updateViewForRunningOperation() {
@@ -54,8 +55,11 @@ class CharacterPickerViewController: UIViewController, UserSessionDepending {
     }
     
     private func updateAlienOptions(withColor color: CharacterColor) {
-        let characters = CharacterOptions.shared.characterOptions(for: color)
-        alienPicker.characters = characters
+        alienPicker.characters = CharacterOptions.shared.characterOptions(for: color)
+    }
+    
+    private func setUpPreselection() {
+        let characters = CharacterOptions.shared.characterOptions(for: colorPicker.selectedColor!)
         if let character = draft.character,
             let idx = characters.index(of: character) {
             alienPicker.preselectedIndex = idx

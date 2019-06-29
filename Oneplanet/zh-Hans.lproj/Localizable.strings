@@ -37,15 +37,15 @@
 "tl_account" = "账号";
 "tl_mail_sent" = "邮件已发送";
 "tl_user_id" = "User ID";
-"tl_email" = "Email";
+"tl_email" = "电子邮件";
 "tl_gender" = "性别";
 "tl_male" = "男";
 "tl_female" = "女";
 "tl_private_info" = "私人信息";
 "tl_go" = "Go";
-"tl_blue_gem" = "競標寶";
-"tl_purple_gem" = "紅金寶";
-"tl_green_gem" = "解鎖寶";
+"tl_blue_gem" = "竞标宝";
+"tl_purple_gem" = "红金宝";
+"tl_green_gem" = "解锁宝";
 "tl_delete" = "删除";
 "tl_unlock" = "Unlock";
 "tl_unlocked" = "Unlocked";
@@ -60,7 +60,7 @@
 "msg_open_mail_app_prompt" = "单击此处打开您的电子邮件";
 "msg_mail_resent" = "已重新发送电子邮件";
 "msg_join_prompt" = "立即前往注册享用更多功能";
-"msg_alien_description" = "你所選擇的外星人會出現在你的個人頁面";
+"msg_alien_description" = "你所选择的外星人会出现在你的个人页面";
 "msg_ongoing_bidding" = "Other commodities are still bidding, please wait for the bidding to end.";
 "msg_successful_shipping_info_submission" = "The winning commodity will be sent to this address. If the address changes, please remember to update this page";
 "msg_bidding_terms_acceptence" = "Ticking means that you have agreed to the bidding terms";
@@ -108,8 +108,8 @@
 "ph_copy_id" = "复制 ID";
 "ph_follow" = "Follow";
 "ph_following" = "Following";
-"ph_choose_role" = "Choose Role";
-"ph_choose_color" = "Choose Color";
+"ph_choose_role" = "选择外星人种类";
+"ph_choose_color" = "选择颜色";
 "ph_edit_profile" = "编辑个人资料";
 "ph_block_list" = "被黑名单的账号";
 "ph_privacy_and_security" = "隐私和安全";
@@ -157,25 +157,24 @@
 "act_bigging_ended" = "End of Bidding!";
 "act_countdown" = "COUNTDOWN TO BIDDING…";
 
-"pop_blue_gem_usage" = "用途：解鎖商品、投標商品。";
-"pop_green_gem_usage" = "用途：解鎖商品、高效率投標商品。";
-"pop_purple_gem_usage" = "用途：解鎖商品。";
+"pop_blue_gem_usage" = "用途：解锁商品、投标商品。";
+"pop_green_gem_usage" = "用途：解锁商品、高效率投标商品。";
+"pop_purple_gem_usage" = "用途：解锁商品。";
 
-"pop_blue_gem_action" = "Go to upload photos";
+"pop_blue_gem_action" = "立即前往 上传照片";
 "pop_green_gem_action" = "前往%@查看";
 
-"pop_blue_gem_bullet1" = "獲得方式一：上傳照片後，畫面左上角的經驗值會增加，滿格即獲得一顆 競標寶。";
-"pop_blue_gem_bullet2" = "使用一顆 競標寶 + %@，可解鎖商品或投標一次。";
-"pop_blue_gem_bullet3" = "將 競標寶 升級成 %@，有助於競標時的效率，並減少信用卡或電信商的支付問題。";
+"pop_blue_gem_bullet1" = "获得方式一：上传照片后，画面左上角的经验值会增加，满格即获得一颗竞标宝。";
+"pop_blue_gem_bullet2" = "使用一颗竞标宝+ %@，可解锁商品或投标一次。";
+"pop_blue_gem_bullet3" = "将竞标宝升级成%@，有助于竞标时的效率，并减少信用卡或电信商的支付问题。";
 
-"pop_green_gem_bullet1" = "獲得方式一：玩遊戲。";
-"pop_green_gem_bullet2" = "獲得方式二：Supreme.AI (官方) 喜歡你的相片。";
-"pop_green_gem_bullet3" = "獲得方式三：該週排行榜冠軍族群的用戶。";
-"pop_green_gem_bullet4" = "獲得方式四：不定期舉辦 %@，請密切關注！";
-"pop_green_gem_bullet5" = "使用一顆 解鎖寶 即可解鎖一項商品。";
+"pop_green_gem_bullet1" = "获得方式ㄧ：Supreme.AI（官方）喜欢你的相片。";
+"pop_green_gem_bullet2" = "获得方式二：该周排行榜冠军族群的用户。";
+"pop_green_gem_bullet3" = "获得方式三：不定期举办%@，请密切关注！";
+"pop_green_gem_bullet4" = "使用一颗解锁宝即可解锁一项商品。";
 
-"pop_purple_gem_bullet1" = "紅金寶是 %@ 的升級版，有助於競標時的效率，並減少信用卡或電信商的支付問題。";
-"pop_purple_gem_bullet2" = "使用 紅金寶 可解鎖商品或投標一次。";
+"pop_purple_gem_bullet1" = "红金宝是%@的升级版，有助于竞标时的效率，并减少信用卡或电信商的支付问题。";
+"pop_purple_gem_bullet2" = "使用红金宝可解锁商品或投标一次。";
 
 "ship_first_name" = "First Name";
 "ship_last_name" = "Last Name";

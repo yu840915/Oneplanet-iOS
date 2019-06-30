@@ -12,6 +12,7 @@ import FirebaseDynamicLinks
 import UserNotifications
 import FacebookCore
 import TwitterKit
+import StoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private(set) var notificationDelegate: UserNotificationDelegate?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        SKPaymentQueue.default().add(IAPTransactionProcessor.shared)
         setUpLogger()
         FirebaseApp.configure()
         DefaultStyleConfiguration.config()

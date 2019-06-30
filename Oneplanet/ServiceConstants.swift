@@ -19,6 +19,11 @@ struct ServiceConstants {
     }
 }
 
+struct IAPProductIdentifiers {
+    static let unlock = "Bidding_qualificationAA"
+    static let bid = "Bidding_placardAA"
+}
+
 struct ServiceURLs {
     static var base: URL = URL(string: "https://api.oneplanet-official.com")!
     static let appSettings = URL(string:UIApplication.openSettingsURLString)!

@@ -118,6 +118,8 @@
 		E0A4618622B6284500D26720 /* KeyboardAppearanceObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A4618522B6284500D26720 /* KeyboardAppearanceObserver.swift */; };
 		E0A4618822B6328400D26720 /* PhoneNumberKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0A4618722B6328300D26720 /* PhoneNumberKit.framework */; };
 		E0A4618A22B6347800D26720 /* PhoneNumberBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A4618922B6347800D26720 /* PhoneNumberBuilder.swift */; };
+		E0B1E18F22C8F6F900F41248 /* IAPTransactionProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B1E18E22C8F6F900F41248 /* IAPTransactionProcessor.swift */; };
+		E0B1E19122C9087D00F41248 /* IAPProductTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B1E19022C9087D00F41248 /* IAPProductTypeTests.swift */; };
 		E0B57DE122A0FA48006AEADB /* DefaultStyleConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B57DE022A0FA48006AEADB /* DefaultStyleConfiguration.swift */; };
 		E0B57DE322A0FAA3006AEADB /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B57DE222A0FAA3006AEADB /* Toast.swift */; };
 		E0B57DE722A0FE77006AEADB /* Toast.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0B57DE622A0FE77006AEADB /* Toast.xib */; };
@@ -287,6 +289,8 @@
 		E0A4618522B6284500D26720 /* KeyboardAppearanceObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAppearanceObserver.swift; sourceTree = "<group>"; };
 		E0A4618722B6328300D26720 /* PhoneNumberKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PhoneNumberKit.framework; path = Carthage/Build/iOS/PhoneNumberKit.framework; sourceTree = SOURCE_ROOT; };
 		E0A4618922B6347800D26720 /* PhoneNumberBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberBuilder.swift; sourceTree = "<group>"; };
+		E0B1E18E22C8F6F900F41248 /* IAPTransactionProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPTransactionProcessor.swift; sourceTree = "<group>"; };
+		E0B1E19022C9087D00F41248 /* IAPProductTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPProductTypeTests.swift; sourceTree = "<group>"; };
 		E0B57DE022A0FA48006AEADB /* DefaultStyleConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStyleConfiguration.swift; sourceTree = "<group>"; };
 		E0B57DE222A0FAA3006AEADB /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		E0B57DE622A0FE77006AEADB /* Toast.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Toast.xib; sourceTree = "<group>"; };
@@ -532,6 +536,7 @@
 				E0814FB422873103002F1C02 /* RoughNumberFormatterTests.swift */,
 				E0FF7979228C3F6800F61318 /* MyProfileTests.swift */,
 				E0D1BBD822ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift */,
+				E0B1E19022C9087D00F41248 /* IAPProductTypeTests.swift */,
 				E05BB274226D5D2F00721F20 /* Info.plist */,
 			);
 			path = OneplanetTests;
@@ -640,6 +645,7 @@
 				E0D7DCDC229CE82300B40D76 /* PromoPopUpViewController.swift */,
 				E0BDCCE9229FA044006A9D20 /* PromotionPageList.swift */,
 				E0814FB022864F79002F1C02 /* UserFlowMainViewController.swift */,
+				E0B1E18E22C8F6F900F41248 /* IAPTransactionProcessor.swift */,
 				E00611F02294F4ED0032AE30 /* Home */,
 				E0FF797D228D38CE00F61318 /* Post.storyboard */,
 				E032844322AB6A0E001F02E8 /* Auction */,
@@ -1041,6 +1047,7 @@
 				E089F711228EB18F003E77DF /* SectionHeaderView.swift in Sources */,
 				E07276EB2274B515001239C0 /* WebViewController.swift in Sources */,
 				E06589C622705B4F00C9E4E6 /* PhotoGridCollectionViewController.swift in Sources */,
+				E0B1E18F22C8F6F900F41248 /* IAPTransactionProcessor.swift in Sources */,
 				E07277012277EE3D001239C0 /* AppConfiguration.swift in Sources */,
 				E0A4618A22B6347800D26720 /* PhoneNumberBuilder.swift in Sources */,
 				E032844522AB6A50001F02E8 /* AuctionMainViewController.swift in Sources */,
@@ -1055,6 +1062,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0B1E19122C9087D00F41248 /* IAPProductTypeTests.swift in Sources */,
 				E07276FF227743D7001239C0 /* URLRouterTests.swift in Sources */,
 				E0814FB522873103002F1C02 /* RoughNumberFormatterTests.swift in Sources */,
 				E0D1BBD922ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift in Sources */,

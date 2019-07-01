@@ -19,12 +19,37 @@ class IAPTransactionProcessor: NSObject, SKPaymentTransactionObserver {
     
     private(set) weak var userSession: UserSession?
     
+    
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        
+        transactions.forEach{handleUpdate(of: $0, in: queue) }
     }
     
+    private func handleUpdate(of transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
+        switch transaction.transactionState {
+        case .deferred: break
+        case .failed: break
+        case .purchasing: break
+        case .purchased: break
+        case .restored: break
+        }
+    }
     
+}
+
+class Invoice {
+    let iapProduct: SKProduct
+    let iapType: IAPProductType
+    let associatedProductID: String?
+    var transaction: SKPaymentTransaction?
     
+    init?(iapProduct: SKProduct, associatedProductID: String?) {
+        guard let type = IAPProductType.from(iapProduct.productIdentifier) else {
+            return nil
+        }
+        self.associatedProductID = associatedProductID
+        iapType = type
+        self.iapProduct = iapProduct
+    }
 }
 
 class BlueGemRelatedIAPProducts {

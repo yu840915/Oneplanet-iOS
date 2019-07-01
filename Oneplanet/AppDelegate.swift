@@ -35,7 +35,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         TWTRTwitter.sharedInstance().start(withConsumerKey:TwitterCredentials.key, consumerSecret:TwitterCredentials.secret)
         WXApi.registerApp("wxc34b2b654e956933")
+//        prepareDataStore()
         return true
+    }
+    
+    private func prepareDataStore() {
+        let op = PrepareDataStoreOperation()
+        op.start()
+        DataStore.shared = op.dataStore
     }
     
     private func setUpUserNotificationDelegate() {

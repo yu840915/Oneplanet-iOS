@@ -117,6 +117,11 @@ PODS:
     - ReachabilitySwift (= 4.3.0)
     - Starscream (~> 3.0.5)
   - ReachabilitySwift (4.3.0)
+  - Realm (3.15.0):
+    - Realm/Headers (= 3.15.0)
+  - Realm/Headers (3.15.0)
+  - RealmSwift (3.15.0):
+    - Realm (= 3.15.0)
   - Starscream (3.0.6)
   - TwitterCore (3.2.0)
   - TwitterKit (3.4.2):
@@ -134,6 +139,7 @@ DEPENDENCIES:
   - Firebase/RemoteConfig
   - Kingfisher (~> 5.5.0)
   - PusherSwift (~> 7.0)
+  - RealmSwift (~> 3.15.0)
   - TwitterKit (~> 3.4.2)
 
 SPEC REPOS:
@@ -165,6 +171,8 @@ SPEC REPOS:
     - Protobuf
     - PusherSwift
     - ReachabilitySwift
+    - Realm
+    - RealmSwift
     - Starscream
     - TwitterCore
     - TwitterKit
@@ -197,10 +205,12 @@ SPEC CHECKSUMS:
   Protobuf: 1eb9700044745f00181c136ef21b8ff3ad5a0fd5
   PusherSwift: d15d6290be0b0b57fd9ac80b03661a6ba24623ec
   ReachabilitySwift: 408477d1b6ed9779dba301953171e017c31241f3
+  Realm: 9b834e1be6062f544805252c812348872dc5d4ed
+  RealmSwift: 8a41886f8ab6efef9eb8df97de2f2bb911561a79
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
   TwitterCore: 8cbc9ad34d91c63a0035ea05bfbfc0d7ca72a28c
   TwitterKit: 5e4f41d70b9abdb41df5467f52d7aa2c0fd26ebb
 
-PODFILE CHECKSUM: df5c75b46aa62925de88b1d220212dc5ec9a81bd
+PODFILE CHECKSUM: 63cd87d972e3026067b83c89c953c5e74819a947
 
 COCOAPODS: 1.5.3

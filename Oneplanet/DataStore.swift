@@ -20,13 +20,6 @@ class DataStore {
         self.operationQueue = operationQueue
     }
     
-    init() { //For testing
-        let config = Realm.Configuration(schemaVersion: 1, migrationBlock: { (migration, oldSchemaVersion) in
-        })
-        realm = try! Realm(configuration: config)
-        self.operationQueue = .main
-    }
-    
     @discardableResult func save(_ changeHandler: (()->Void)) -> Bool {
         do {
             try realm.write {

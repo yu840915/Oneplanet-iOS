@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appConfiguration.update()
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         TWTRTwitter.sharedInstance().start(withConsumerKey:TwitterCredentials.key, consumerSecret:TwitterCredentials.secret)
-        WXApi.registerApp("wxc34b2b654e956933")
+        WXApi.registerApp("wx8630436ab3a5f7c2")
 //        prepareDataStore()
         return true
     }

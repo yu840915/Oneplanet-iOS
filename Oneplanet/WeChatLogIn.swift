@@ -28,17 +28,16 @@ class WeChatLogInOperation: SimpleAsynchronousOperation, SocialAuthenticationOpe
     
     override func main() {
         let req = SendAuthReq()
-        req.openID = "wxc34b2b654e956933"
         req.scope = "snsapi_userinfo"
         req.state = state
         authReq = req
         WeChatLogInOperation.runningLogIn = self
         WXApi.send(req)
-//        if WXApi.isWXAppSupport() {
-//            WXApi.send(req)
-//        } else {
-//            WXApi.sendAuthReq(req, viewController: presenter, delegate: self)
-//        }
+        if WXApi.isWXAppSupport() {
+            WXApi.send(req)
+        } else {
+            WXApi.sendAuthReq(req, viewController: presenter, delegate: self)
+        }
     }
     
     func onResp(_ resp: BaseResp!) {
@@ -69,8 +68,10 @@ class WeChatLogInOperation: SimpleAsynchronousOperation, SocialAuthenticationOpe
         let op = submitCodeOperation!
         guard let token = op.token,
             let session = op.wechatSession else {
-            return
+                fail(with: nil)
+                return
         }
+        finish()
     }
     
     private func fail(with error: Error?) {

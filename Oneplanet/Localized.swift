@@ -151,7 +151,8 @@ class Feature {//fx_
         return NSLocalizedString("fx_hot", comment: "")
     }
     var me: String {
-        return NSLocalizedString("fx_my", comment: "")
+        return ""
+//        return NSLocalizedString("fx_my", comment: "")
     }
     var life: String {
         return NSLocalizedString("fx_life", comment: "")

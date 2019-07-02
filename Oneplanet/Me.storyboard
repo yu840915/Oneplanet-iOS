@@ -16,6 +16,7 @@
             <objects>
                 <navigationController id="cr6-d0-CvM" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="MY" image="ic_my_nor" selectedImage="ic_my_sel" id="tR2-3E-L62">
+                        <inset key="imageInsets" minX="0.0" minY="-5" maxX="0.0" maxY="5"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-2"/>
                     </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -823,8 +824,8 @@
         <image name="bt_smallgreen_nor" width="29" height="28"/>
         <image name="ic_contactus_nor" width="40" height="40"/>
         <image name="ic_morelist_nor" width="40" height="40"/>
-        <image name="ic_my_nor" width="64" height="49"/>
-        <image name="ic_my_sel" width="64" height="49"/>
+        <image name="ic_my_nor" width="64" height="86"/>
+        <image name="ic_my_sel" width="64" height="86"/>
         <image name="ic_youtube_nor" width="40" height="40"/>
         <image name="im_alien_none0" width="375" height="375"/>
         <image name="im_bgall" width="609" height="812"/>

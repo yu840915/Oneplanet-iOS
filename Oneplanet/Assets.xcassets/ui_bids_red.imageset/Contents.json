@@ -1,6 +1,17 @@
 {
   "images" : [
     {
+      "resizing" : {
+        "mode" : "3-part-horizontal",
+        "center" : {
+          "mode" : "tile",
+          "width" : 1
+        },
+        "cap-insets" : {
+          "right" : 2,
+          "left" : 2
+        }
+      },
       "idiom" : "universal",
       "filename" : "ui_bids_red.pdf",
       "scale" : "1x"

@@ -382,6 +382,11 @@
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t8E-ct-r4V">
                                                                             <rect key="frame" x="0.0" y="0.0" width="20" height="44"/>
                                                                             <subviews>
+                                                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qc9-Jx-66z" userLabel="Lead Indicator">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="44"/>
+                                                                                    <state key="normal" backgroundImage="ui_bids_red"/>
+                                                                                    <state key="selected" backgroundImage="ui_bids_green"/>
+                                                                                </button>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYP-qT-2ca" userLabel="Digit Label">
                                                                                     <rect key="frame" x="2" y="7.5" width="16" height="29"/>
                                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
@@ -389,9 +394,12 @@
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                             </subviews>
-                                                                            <color key="backgroundColor" name="lock red"/>
+                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="44" id="1NM-QF-enm"/>
+                                                                                <constraint firstItem="Qc9-Jx-66z" firstAttribute="centerX" secondItem="t8E-ct-r4V" secondAttribute="centerX" id="GP5-65-72n"/>
+                                                                                <constraint firstItem="Qc9-Jx-66z" firstAttribute="centerY" secondItem="t8E-ct-r4V" secondAttribute="centerY" id="QIO-dh-4dM"/>
+                                                                                <constraint firstItem="Qc9-Jx-66z" firstAttribute="width" secondItem="t8E-ct-r4V" secondAttribute="width" id="R5p-H5-Xl5"/>
                                                                                 <constraint firstItem="uYP-qT-2ca" firstAttribute="centerX" secondItem="t8E-ct-r4V" secondAttribute="centerX" id="YGp-dH-e2I"/>
                                                                                 <constraint firstAttribute="width" constant="20" id="jXd-fc-CpA"/>
                                                                                 <constraint firstItem="uYP-qT-2ca" firstAttribute="centerY" secondItem="t8E-ct-r4V" secondAttribute="centerY" id="yX3-M6-Vi0"/>
@@ -400,6 +408,11 @@
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mpT-68-jJK">
                                                                             <rect key="frame" x="22" y="0.0" width="20" height="44"/>
                                                                             <subviews>
+                                                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qZb-sd-0Oy" userLabel="Lead Indicator">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="44"/>
+                                                                                    <state key="normal" backgroundImage="ui_bids_red"/>
+                                                                                    <state key="selected" backgroundImage="ui_bids_green"/>
+                                                                                </button>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NpE-Kd-97a" userLabel="Digit Label">
                                                                                     <rect key="frame" x="2" y="7.5" width="16" height="29"/>
                                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
@@ -407,10 +420,13 @@
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                             </subviews>
-                                                                            <color key="backgroundColor" name="lock red"/>
+                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
+                                                                                <constraint firstItem="qZb-sd-0Oy" firstAttribute="centerY" secondItem="mpT-68-jJK" secondAttribute="centerY" id="5J2-dR-esK"/>
+                                                                                <constraint firstItem="qZb-sd-0Oy" firstAttribute="centerX" secondItem="mpT-68-jJK" secondAttribute="centerX" id="Ci7-Xm-jz8"/>
                                                                                 <constraint firstAttribute="width" constant="20" id="LJa-rB-XfL"/>
                                                                                 <constraint firstAttribute="height" constant="44" id="O5J-v3-ETO"/>
+                                                                                <constraint firstItem="qZb-sd-0Oy" firstAttribute="width" secondItem="mpT-68-jJK" secondAttribute="width" id="ldW-Ts-Gzn"/>
                                                                                 <constraint firstItem="NpE-Kd-97a" firstAttribute="centerY" secondItem="mpT-68-jJK" secondAttribute="centerY" id="v1Y-W8-S3E"/>
                                                                                 <constraint firstItem="NpE-Kd-97a" firstAttribute="centerX" secondItem="mpT-68-jJK" secondAttribute="centerX" id="xbW-wv-6CX"/>
                                                                             </constraints>
@@ -418,6 +434,11 @@
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vuH-tB-xmP">
                                                                             <rect key="frame" x="44" y="0.0" width="20" height="44"/>
                                                                             <subviews>
+                                                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="udO-bU-1Iy" userLabel="Lead Indicator">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="44"/>
+                                                                                    <state key="normal" backgroundImage="ui_bids_red"/>
+                                                                                    <state key="selected" backgroundImage="ui_bids_green"/>
+                                                                                </button>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0B3-rb-Fks" userLabel="Digit Label">
                                                                                     <rect key="frame" x="2" y="7.5" width="16" height="29"/>
                                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
@@ -425,10 +446,13 @@
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                             </subviews>
-                                                                            <color key="backgroundColor" name="lock red"/>
+                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="44" id="3b8-gn-RqT"/>
                                                                                 <constraint firstAttribute="width" constant="20" id="Apw-uL-Z08"/>
+                                                                                <constraint firstItem="udO-bU-1Iy" firstAttribute="centerY" secondItem="vuH-tB-xmP" secondAttribute="centerY" id="MbZ-MG-MCN"/>
+                                                                                <constraint firstItem="udO-bU-1Iy" firstAttribute="width" secondItem="vuH-tB-xmP" secondAttribute="width" id="OuY-wu-YOj"/>
+                                                                                <constraint firstItem="udO-bU-1Iy" firstAttribute="centerX" secondItem="vuH-tB-xmP" secondAttribute="centerX" id="T4f-qv-aKv"/>
                                                                                 <constraint firstItem="0B3-rb-Fks" firstAttribute="centerX" secondItem="vuH-tB-xmP" secondAttribute="centerX" id="c7z-TI-Tkt"/>
                                                                                 <constraint firstItem="0B3-rb-Fks" firstAttribute="centerY" secondItem="vuH-tB-xmP" secondAttribute="centerY" id="n84-Nn-dzt"/>
                                                                             </constraints>
@@ -494,24 +518,24 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bIS-q9-31b">
-                                                            <rect key="frame" x="200" y="0.0" width="73" height="56"/>
+                                                            <rect key="frame" x="200" y="0.0" width="64.5" height="56"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tgj-da-2TG">
-                                                            <rect key="frame" x="283" y="0.0" width="37" height="56"/>
+                                                            <rect key="frame" x="274.5" y="0.0" width="45.5" height="56"/>
                                                             <subviews>
                                                                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="vsX-eB-LJM">
-                                                                    <rect key="frame" x="0.0" y="9.5" width="37" height="37"/>
+                                                                    <rect key="frame" x="4.5" y="9.5" width="37" height="37"/>
                                                                     <color key="color" name="default placeholder"/>
                                                                 </activityIndicatorView>
                                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zfw-7n-PSp" userLabel="Countdown Label">
-                                                                    <rect key="frame" x="0.0" y="19" width="37" height="18"/>
+                                                                    <rect key="frame" x="0.0" y="19" width="45.5" height="18"/>
                                                                     <fontDescription key="fontDescription" name="DS-Digital-BoldItalic" family="DS-Digital" pointSize="18"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zab-2B-r2s">
-                                                                    <rect key="frame" x="0.0" y="19" width="37" height="18"/>
+                                                                    <rect key="frame" x="4.5" y="19" width="37" height="18"/>
                                                                     <subviews>
                                                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WIN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0m-7T-DfP" userLabel="Win Label">
                                                                             <rect key="frame" x="0.0" y="0.0" width="0.0" height="18"/>
@@ -591,6 +615,9 @@
                                     <outlet property="previewImageView" destination="FdA-4z-yTa" id="0BD-Rc-o2S"/>
                                     <outlet property="runningIndicator" destination="vsX-eB-LJM" id="5bp-Es-td6"/>
                                     <outlet property="tensLabel" destination="NpE-Kd-97a" id="k6s-4G-j87"/>
+                                    <outletCollection property="leadIndicators" destination="Qc9-Jx-66z" collectionClass="NSMutableArray" id="U5o-dr-8R2"/>
+                                    <outletCollection property="leadIndicators" destination="qZb-sd-0Oy" collectionClass="NSMutableArray" id="6Ya-1w-wlH"/>
+                                    <outletCollection property="leadIndicators" destination="udO-bU-1Iy" collectionClass="NSMutableArray" id="GRF-gP-aXa"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="runningBiddingCell" rowHeight="153" id="6zq-wK-xn3" customClass="RunningBiddingIndicationCell" customModule="Oneplanet" customModuleProvider="target">
@@ -2103,6 +2130,8 @@ The winner must check if the Receipt information is filled in to ensure that the
         <image name="ic_lockon_nor" width="40" height="40"/>
         <image name="im_bgall" width="609" height="812"/>
         <image name="im_userphotodefault_nor" width="179" height="179"/>
+        <image name="ui_bids_green" width="5" height="44"/>
+        <image name="ui_bids_red" width="5" height="44"/>
         <image name="ui_fieldwhite_fai" width="35" height="41"/>
         <image name="ui_fieldwhite_nor" width="35" height="41"/>
         <image name="ui_timebg" width="180" height="48"/>

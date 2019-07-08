@@ -318,6 +318,7 @@ class BiddingProductCell: UITableViewCell {
     @IBOutlet weak var tensLabel: UILabel!
     @IBOutlet weak var digitLabel: UILabel!
     @IBOutlet weak var coverView: UIView!
+    @IBOutlet var leadIndicators: [UIButton]!
     var bidAction: (()->())?
     
     private let countdownTimeAttribute: [NSAttributedString.Key: Any] = [.kern: 3.5]

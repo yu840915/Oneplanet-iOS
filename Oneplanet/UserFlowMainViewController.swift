@@ -17,7 +17,9 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
     fileprivate var hasViewBeenVisible = false
     private var appBecomeActiveHandle: Any?
     private var userActionRounter: URLRouter!
-
+    @IBOutlet weak var balloonString: UIImageView!
+    @IBOutlet weak var balloonRightPadding: NSLayoutConstraint!
+    
     class func fromDefaultStoryboard() -> UserFlowMainViewController {
         return UIStoryboard(name: "MainUserFlow", bundle: nil).instantiateInitialViewController() as! UserFlowMainViewController
     }
@@ -46,6 +48,24 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
         imageView.frame = frame
         contentTabbarController.tabBar.addSubview(imageView)
         contentTabbarController.tabBar.sendSubviewToBack(imageView)
+        let hot = contentTabbarController.viewControllers?.compactMap{$0 as? UINavigationController}.compactMap{$0.viewControllers.first as? HotCollectionViewController}.first
+        hot?.balloonString = balloonString
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        guard let tabItem = contentTabbarController.tabBar.subviews.last,
+            tabItem.frame.origin.x > 0 else {
+            return
+        }
+        let rect = tabItem.convert(tabItem.bounds, to: view)
+        let offset = (rect.width - 64) / 2
+        let padding = view.bounds.maxX - rect.maxX + offset
+        let expPadding = -(padding + 10)
+        if balloonRightPadding.constant != expPadding {
+            balloonRightPadding.constant = expPadding
+            view.setNeedsLayout()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

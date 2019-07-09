@@ -263,6 +263,16 @@ class LocalizedMessages {//msg_
     var bidPaymentTooLate: String {
         return NSLocalizedString("msg_bid_payment_too_late", comment: "")
     }
+    var race1Monologue: String {
+        return NSLocalizedString("msg_race1_monologue", comment: "")
+    }
+    var race2Monologue: String {
+        return NSLocalizedString("msg_race2_monologue", comment: "")
+    }
+    var race3Monologue: String {
+        return NSLocalizedString("msg_race3_monologue", comment: "")
+    }
+
 }
 
 class LocalizedMessageFormats {//msgf_

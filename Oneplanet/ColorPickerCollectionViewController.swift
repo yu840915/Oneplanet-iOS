@@ -15,6 +15,7 @@ class ColorPickerCollectionViewController: UICollectionViewController {
     var colors: [CharacterColor] = []
     var selectedColor: CharacterColor?
     var didChangeSelection: ((CharacterColor)->())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

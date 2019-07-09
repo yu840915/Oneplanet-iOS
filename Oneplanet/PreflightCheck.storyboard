@@ -385,14 +385,40 @@
                                                             <action selector="pickNext:" destination="Lx7-eq-Zww" eventType="touchUpInside" id="1DF-4f-Xnt"/>
                                                         </connections>
                                                     </button>
+                                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="v1i-NC-dya">
+                                                        <rect key="frame" x="175.5" y="0.0" width="69.5" height="34"/>
+                                                        <subviews>
+                                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SrZ-Lc-Rty">
+                                                                <rect key="frame" x="0.0" y="0.0" width="69.5" height="34"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="po3-r4-PC4">
+                                                                        <rect key="frame" x="16" y="8" width="37.5" height="18"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <color key="backgroundColor" red="0.89803921568627454" green="0.90196078431372551" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="34" id="2l7-kq-uAL"/>
+                                                                    <constraint firstItem="po3-r4-PC4" firstAttribute="centerX" secondItem="SrZ-Lc-Rty" secondAttribute="centerX" id="Jwn-eZ-rE6"/>
+                                                                    <constraint firstItem="po3-r4-PC4" firstAttribute="leading" secondItem="SrZ-Lc-Rty" secondAttribute="leading" constant="16" id="k3O-Al-o24"/>
+                                                                    <constraint firstItem="po3-r4-PC4" firstAttribute="centerY" secondItem="SrZ-Lc-Rty" secondAttribute="centerY" id="w8U-CE-Fvf"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="v1i-NC-dya" secondAttribute="trailing" constant="20" id="8sn-mC-A1m"/>
+                                                    <constraint firstItem="v1i-NC-dya" firstAttribute="centerX" secondItem="NIx-5Q-gbK" secondAttribute="centerX" priority="900" constant="50" id="9ob-NV-L6s"/>
                                                     <constraint firstAttribute="width" secondItem="NIx-5Q-gbK" secondAttribute="height" id="E3N-lO-vR0"/>
                                                     <constraint firstItem="yZU-ho-Wwc" firstAttribute="height" secondItem="NIx-5Q-gbK" secondAttribute="height" id="KrT-KT-6AP"/>
                                                     <constraint firstItem="yZU-ho-Wwc" firstAttribute="width" secondItem="NIx-5Q-gbK" secondAttribute="width" multiplier="1.5" id="Nlk-hN-Ukt"/>
                                                     <constraint firstItem="yZU-ho-Wwc" firstAttribute="centerX" secondItem="NIx-5Q-gbK" secondAttribute="centerX" id="UGy-U1-DB7"/>
                                                     <constraint firstItem="yZU-ho-Wwc" firstAttribute="centerY" secondItem="NIx-5Q-gbK" secondAttribute="centerY" id="VAE-po-QOA"/>
+                                                    <constraint firstItem="v1i-NC-dya" firstAttribute="top" secondItem="NIx-5Q-gbK" secondAttribute="top" id="dbO-RA-JDf"/>
                                                     <constraint firstItem="CyI-8D-3io" firstAttribute="centerY" secondItem="NIx-5Q-gbK" secondAttribute="centerY" id="fpm-Tu-YKc"/>
                                                     <constraint firstAttribute="trailing" secondItem="r5x-jR-HBi" secondAttribute="trailing" id="lwf-Nw-8CV"/>
                                                     <constraint firstItem="r5x-jR-HBi" firstAttribute="centerY" secondItem="NIx-5Q-gbK" secondAttribute="centerY" id="tp4-xo-7er"/>
@@ -494,10 +520,13 @@
                     <navigationItem key="navigationItem" id="I1k-M5-6et"/>
                     <connections>
                         <outlet property="alienDescriptionLabel" destination="Zjs-75-hto" id="9P2-JE-kb9"/>
+                        <outlet property="chatBubble" destination="SrZ-Lc-Rty" id="f7Q-9v-AlY"/>
                         <outlet property="colorPickerWidth" destination="ZBa-5C-KTB" id="csf-Mr-at7"/>
                         <outlet property="colorPromptLabel" destination="8xf-ia-Ylu" id="hgW-6p-Z0u"/>
                         <outlet property="doneButton" destination="tGd-kk-e4K" id="fyn-6U-qtX"/>
                         <outlet property="leftButton" destination="CyI-8D-3io" id="2hF-eQ-cxD"/>
+                        <outlet property="monologueContainer" destination="v1i-NC-dya" id="KSi-tj-lRi"/>
+                        <outlet property="monologueLabel" destination="po3-r4-PC4" id="gm9-LP-C0E"/>
                         <outlet property="rightButton" destination="r5x-jR-HBi" id="YzR-Ol-Idi"/>
                     </connections>
                 </viewController>
@@ -584,14 +613,14 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="cell" id="8Rq-76-8NK" customClass="AlienCell" customModule="Oneplanet" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="cell" id="8Rq-76-8NK" customClass="AlienCell" customModule="Oneplanet" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="-27.5" width="180" height="375"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="180" height="375"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_alien_a0" translatesAutoresizingMaskIntoConstraints="NO" id="4zF-WO-Xkk">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_alien_a0" translatesAutoresizingMaskIntoConstraints="NO" id="4zF-WO-Xkk">
                                             <rect key="frame" x="0.0" y="0.0" width="340" height="127"/>
                                         </imageView>
                                     </subviews>

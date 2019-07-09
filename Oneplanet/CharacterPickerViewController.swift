@@ -21,6 +21,11 @@ class CharacterPickerViewController: UIViewController, UserSessionDepending {
     @IBOutlet weak var colorPromptLabel: UILabel!
     @IBOutlet weak var colorPickerWidth: NSLayoutConstraint!
     
+    @IBOutlet weak var monologueContainer: UIStackView!
+    @IBOutlet weak var chatBubble: UIView!
+    @IBOutlet weak var monologueLabel: UILabel!
+    
+    private let monologueItem = MonologueItem()
     private var alienPicker: AlienPickerCollectionViewController!
     private var colorPicker: ColorPickerCollectionViewController!
     private var updateProfileOperation: UpdateProfileOperation? {
@@ -31,6 +36,9 @@ class CharacterPickerViewController: UIViewController, UserSessionDepending {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        monologueItem.containerView = monologueContainer
+        monologueItem.textLabel = monologueLabel
+        chatBubble.layer.cornerRadius = (chatBubble.frame.height / 2)
         localizeTitles()
         colorPickerWidth.constant = CGFloat(CharacterOptions.shared.colors.count * 44)
         updateAlienOptions(withColor: colorPicker.selectedColor!)
@@ -128,6 +136,7 @@ class CharacterPickerViewController: UIViewController, UserSessionDepending {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? AlienPickerCollectionViewController {
+            vc.monologueItem = monologueItem
             alienPicker = vc
         } else if let vc = segue.destination as? ColorPickerCollectionViewController {
             colorPicker = vc
@@ -139,4 +148,40 @@ class CharacterPickerViewController: UIViewController, UserSessionDepending {
         }
     }
 
+}
+
+class MonologueItem {
+    var isHidden: Bool = true {
+        didSet {
+            updateAppearance()
+        }
+    }
+    var monologue: String = "" {
+        didSet {
+            updateTextLabel()
+        }
+    }
+    var textLabel: UILabel? {
+        didSet {
+            updateTextLabel()
+        }
+    }
+    var containerView: UIView? {
+        didSet {
+            updateAppearance()
+        }
+    }
+    
+    private func updateTextLabel() {
+        guard let label = textLabel else {
+            return
+        }
+        label.text = monologue
+    }
+    private func updateAppearance() {
+        guard let view = containerView else {
+            return
+        }
+        view.isHidden = isHidden
+    }
 }

@@ -12,6 +12,9 @@ class Character {
     let race: Race
     let color: CharacterColor
     let avatar: UIImage
+    var monologue: String {
+        return race.monologue
+    }
     init(race: Race, color: CharacterColor, avatar: UIImage) {
         self.race = race
         self.color = color
@@ -37,6 +40,15 @@ enum Race: String {
         case .three: return #imageLiteral(resourceName: "im_alien3_bg")
         }
     }
+    
+    var monologue: String {
+        switch self {
+        case .one: return Localized.messages.race1Monologue
+        case .two: return Localized.messages.race2Monologue
+        case .three: return Localized.messages.race3Monologue
+        }
+    }
+
 }
 
 enum CharacterColor: String {

@@ -18,6 +18,7 @@ class IAPTransactionProcessor: NSObject, SKPaymentTransactionObserver {
     private override init() {}
     
     private(set) weak var userSession: UserSession?
+    private(set) var waitingInvoice: Invoice?
     
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
@@ -27,13 +28,33 @@ class IAPTransactionProcessor: NSObject, SKPaymentTransactionObserver {
     private func handleUpdate(of transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
         switch transaction.transactionState {
         case .deferred: break
-        case .failed: break
-        case .purchasing: break
-        case .purchased: break
-        case .restored: break
+        case .failed:
+            if waitingInvoice?.mayBeRelated(to: transaction) == true {
+                waitingInvoice = nil
+            }
+        case .purchasing:
+            break
+        case .purchased:
+            break
+        case .restored:
+            break
         }
     }
     
+    var canPlaceOrder: Bool {
+        if userSession == nil && waitingInvoice == nil {
+            return false
+        }
+        return true
+    }
+    
+    func placeOrder(with invoice: Invoice) {
+        guard canPlaceOrder else {
+            fatalError("Should check before placing order")
+        }
+        waitingInvoice = invoice
+        SKPaymentQueue.default().add(SKPayment(product: invoice.iapProduct))
+    }
 }
 
 class Invoice {
@@ -49,6 +70,13 @@ class Invoice {
         self.associatedProductID = associatedProductID
         iapType = type
         self.iapProduct = iapProduct
+    }
+    
+    func mayBeRelated(to transaction: SKPaymentTransaction) -> Bool {
+        guard transaction.payment.productIdentifier == iapProduct.productIdentifier else {
+            return false
+        }
+        return true
     }
 }
 

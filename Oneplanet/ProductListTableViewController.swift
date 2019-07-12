@@ -96,6 +96,13 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
                 self?.bidProductIfAllowed(at: indexPath)
             }
         }
+        cell.showDetailAction = {[weak self] in
+            self?.showProductDetailForCell(at: indexPath)
+        }
+    }
+    
+    private func showProductDetailForCell(at indexPath: IndexPath) {
+        performSegue(withIdentifier: SegueID.showProductDetail, sender: nil) //TODO: product
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -132,9 +139,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch sections[indexPath.section] {
         case .productList:
-            performSegue(withIdentifier: SegueID.showProductDetail, sender: nil) //TODO: product
-        case .bidList:
-            performSegue(withIdentifier: SegueID.showProductDetail, sender: nil) //TODO: product
+            showProductDetailForCell(at: indexPath)
         default: break
         }
     }
@@ -213,8 +218,8 @@ extension ProductListTableViewController {
         }
         var isSelectable: Bool {
             switch self {
-            case .productList, .bidList: return true
-            case .runningBiddingIndicator, .biddingEndedIndicator: return false
+            case .productList: return true
+            case .runningBiddingIndicator, .biddingEndedIndicator, .bidList: return false
             }
         }
     }
@@ -310,7 +315,7 @@ class BiddingProductCell: UITableViewCell {
 
     @IBOutlet weak var avatarContainer: UIView!
     @IBOutlet weak var avatarView: AvatarView!
-    @IBOutlet weak var previewImageView: UIImageView!
+    @IBOutlet weak var previewButton: UIButton!
     @IBOutlet weak var countdownLabel: UILabel!
     @IBOutlet weak var runningIndicator: UIActivityIndicatorView!
     @IBOutlet weak var bidButton: UIButton!
@@ -320,6 +325,7 @@ class BiddingProductCell: UITableViewCell {
     @IBOutlet weak var coverView: UIView!
     @IBOutlet var leadIndicators: [UIButton]!
     var bidAction: (()->())?
+    var showDetailAction: (()->())?
     
     private let countdownTimeAttribute: [NSAttributedString.Key: Any] = [.kern: 3.5]
     var deadline = Date() {
@@ -347,6 +353,7 @@ class BiddingProductCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         selectedBackgroundView = CommonViewFactory.shared.makeSelectionBackground()
+        previewButton.imageView?.contentMode = .scaleAspectFill
     }
     
     func tick() {
@@ -359,6 +366,9 @@ class BiddingProductCell: UITableViewCell {
         countdownLabel.attributedText = NSAttributedString(string: min + ":" + sec, attributes: countdownTimeAttribute)
     }
     
+    @IBAction func invokeDetailAction(_ sender: Any) {
+        showDetailAction?()
+    }
     
     @IBAction func invokeBidAction(_ sender: UIButton) {
         bidAction?()

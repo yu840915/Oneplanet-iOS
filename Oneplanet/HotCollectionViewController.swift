@@ -171,7 +171,11 @@ extension HotCollectionViewController: UICollectionViewDelegateFlowLayout {
         let len = (collectionView.bounds.width - totalGap) / num
         return CGSize(width: len, height: len)
     }
-
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        let w = collectionView.bounds.width
+        return CGSize(width: w, height: (w / 9) * 4)
+    }
 }
 
 extension HotCollectionViewController: ScrollToTopHandler {

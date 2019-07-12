@@ -79,6 +79,7 @@
                         <viewLayoutGuide key="safeArea" id="AX7-kr-RYD"/>
                     </view>
                     <connections>
+                        <outlet property="balloonButton" destination="A05-vr-3Vm" id="jWl-PC-zFg"/>
                         <outlet property="balloonRightPadding" destination="abG-iR-2t2" id="zJ9-NG-eqJ"/>
                         <outlet property="balloonString" destination="6jm-u3-B1b" id="CwJ-HI-XK9"/>
                     </connections>

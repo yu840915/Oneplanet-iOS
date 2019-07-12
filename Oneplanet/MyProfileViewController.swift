@@ -14,7 +14,6 @@ class MyProfileViewController: UIViewController, UserSessionDepending {
         return userSession.profile
     }
     
-    @IBOutlet weak var addPostButton: UIButton!
     private var profileController: ProfileCollectionViewController!
     private var idHeader: IDHeaderView?
     private var profileUpdateHandle: Any?
@@ -22,7 +21,6 @@ class MyProfileViewController: UIViewController, UserSessionDepending {
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareIDHeaderIfNeeded()
-        setUpAddPostButton()
         profileUpdateHandle = userSession.profileDidUpdate.add {[weak self] in
             OperationQueue.main.addOperation {
                 self?.updateViewsForProfile()
@@ -39,14 +37,6 @@ class MyProfileViewController: UIViewController, UserSessionDepending {
         }
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: header)
         idHeader = header
-    }
-    
-    private func setUpAddPostButton() {
-        addPostButton.isHidden = userSession.isGuest
-        addPostButton.layer.shadowOffset = CGSize(width: 0, height: 2)
-        addPostButton.layer.shadowRadius = 4
-        addPostButton.layer.shadowColor = UIColor.black.cgColor
-        addPostButton.layer.shadowOpacity = 0.5
     }
     
     private func updateViewsForProfile() {

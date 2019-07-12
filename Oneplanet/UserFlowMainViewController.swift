@@ -19,6 +19,7 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
     private var userActionRounter: URLRouter!
     @IBOutlet weak var balloonString: UIImageView!
     @IBOutlet weak var balloonRightPadding: NSLayoutConstraint!
+    @IBOutlet weak var balloonButton: UIButton!
     
     class func fromDefaultStoryboard() -> UserFlowMainViewController {
         return UIStoryboard(name: "MainUserFlow", bundle: nil).instantiateInitialViewController() as! UserFlowMainViewController
@@ -151,7 +152,10 @@ fileprivate extension UserFlowMainViewController {
         }
     }
     
-    
+    func updateBalloonAppearance() {
+        let showingBid = TabFeature.list[contentTabbarController.selectedIndex] == .bid
+        [balloonButton, balloonString].forEach{$0?.isHidden = showingBid}
+    }
 }
 
 fileprivate extension UserFlowMainViewController {
@@ -210,6 +214,10 @@ extension UserFlowMainViewController: UITabBarControllerDelegate {
             let handler = nav.topViewController as? ScrollToTopHandler {
             handler.setWantsScrollToTop()
         }
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        updateBalloonAppearance()
     }
 }
 

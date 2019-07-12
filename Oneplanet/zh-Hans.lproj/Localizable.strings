@@ -53,6 +53,10 @@
 "tl_required_input" = "必填";
 "tl_agree" = "我同意";
 "tl_filter" = "筛选";
+"tl_bid_state_lost" = "未得标";
+"tl_bid_state_to_ship" = "待出货";
+"tl_bid_state_shipping" = "出货中";
+"tl_bid_state_delivered" = "已领收";
 
 "pl_email" = "电子邮件地址";
 "pl_nickname" = "昵称";

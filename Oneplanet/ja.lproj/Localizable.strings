@@ -53,6 +53,10 @@
 "tl_required_input" = "(表示しません)";
 "tl_agree" = "Agree";
 "tl_filter" = "Filter";
+"tl_bid_state_lost" = "Failed";
+"tl_bid_state_to_ship" = "Waiting for shipment";
+"tl_bid_state_shipping" = "In shipment";
+"tl_bid_state_delivered" = "Received";
 
 "pl_email" = "メールアドレス";
 "pl_nickname" = "ニックネーム";

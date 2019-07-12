@@ -150,6 +150,19 @@ class LocalizedTitles {//tl_
     var filter: String {
         return NSLocalizedString("tl_filter", comment: "")
     }
+    var bidStateLose: String {
+        return NSLocalizedString("tl_bid_state_lost", comment: "")
+    }
+    var bidStateToShip: String {
+        return NSLocalizedString("tl_bid_state_to_ship", comment: "")
+    }
+    var bidStateShipping: String {
+        return NSLocalizedString("tl_bid_state_shipping", comment: "")
+    }
+    var bidStateDelivered: String {
+        return NSLocalizedString("tl_bid_state_delivered", comment: "")
+    }
+
 }
 
 class Feature {//fx_

@@ -144,6 +144,12 @@ class LocalizedTitles {//tl_
     var requiredInput: String {
         return NSLocalizedString("tl_required_input", comment: "")
     }
+    var agree: String {
+        return NSLocalizedString("tl_agree", comment: "")
+    }
+    var filter: String {
+        return NSLocalizedString("tl_filter", comment: "")
+    }
 }
 
 class Feature {//fx_
@@ -272,7 +278,9 @@ class LocalizedMessages {//msg_
     var race3Monologue: String {
         return NSLocalizedString("msg_race3_monologue", comment: "")
     }
-
+    var shippingInfoDescription: String {
+        return NSLocalizedString("msg_shipping_info_des", comment: "")
+    }
 }
 
 class LocalizedMessageFormats {//msgf_

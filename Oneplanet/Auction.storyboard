@@ -2060,6 +2060,7 @@ The winner must check if the Receipt information is filled in to ensure that the
                         <outlet property="endEditingTap" destination="YrU-SD-8r8" id="kXs-cJ-Toa"/>
                         <outlet property="exitButtonItem" destination="1Od-2f-oRt" id="DWq-rj-7xV"/>
                         <outlet property="firstNameFieldBlock" destination="Flo-hP-MuO" id="KGs-r5-xuP"/>
+                        <outlet property="informationLabel" destination="3xZ-iJ-T9Y" id="NtO-h3-ug4"/>
                         <outlet property="lastNameFieldBlock" destination="dQ3-KH-Pvu" id="VWE-Qj-W1O"/>
                         <outlet property="numberInputToolbar" destination="nNV-Uo-Uoh" id="ghU-Ed-MX4"/>
                         <outlet property="phonenumberFieldBlock" destination="cEo-U0-Yga" id="1Xi-zm-d1u"/>

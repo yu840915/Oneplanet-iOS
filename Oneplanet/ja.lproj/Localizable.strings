@@ -50,7 +50,9 @@
 "tl_unlock" = "Unlock";
 "tl_unlocked" = "Unlocked";
 "tl_bid" = "Bid";
-"tl_required_input" = "Required";
+"tl_required_input" = "(表示しません)";
+"tl_agree" = "Agree";
+"tl_filter" = "Filter";
 
 "pl_email" = "メールアドレス";
 "pl_nickname" = "ニックネーム";
@@ -71,9 +73,10 @@
 "msg_lot_closed" = "The commodity has been closed";
 "msg_lot_closed_des" = "This commodity has been closed, please wait for the new one to be announced soon.";
 "msg_bid_payment_too_late" = "Payment is successful but exceeding the biding time limit";
-"msg_race1_monologue" = "My name is Fucker.";
-"msg_race2_monologue" = "My name is Dicker.";
-"msg_race3_monologue" = "My name is Drunker.";
+"msg_race1_monologue" = "ファッカーです。";
+"msg_race2_monologue" = "ディカーです。";
+"msg_race3_monologue" = "ドランカーです。";
+"msg_shipping_info_des" = "International Shipping Service, please fill in the English address and receipt information, the goods can be successfully delivered";
 
 "msgf_accept_tos" = "アカウントを作成することによって、%@に同意することになります";
 "msgf_resend_verification_email" = "電子メールがみつかりませんか？%@";
@@ -122,8 +125,8 @@
 "ph_create_shipping_info" = "Add Shipping Info";
 "ph_edit_shipping_info" = "Edit Shipping Info";
 "ph_view_shipping_status" = "View details";
-"ph_commodities" = "Commodities";
-"ph_bidding_process" = "Bidding process";
+"ph_commodities" = "商品";
+"ph_bidding_process" = "マイオク";
 "ph_bid_count" = "Your bids";
 "ph_countdown" = "Countdown";
 "ph_bid_leader" = "Leading";
@@ -149,16 +152,16 @@
 
 "errtl_cannot_capture_photo" = "Cannot Take Photo";
 "errtl_cannot_pick_avatar" = "Cannot Get Profile Image";
-"errtl_generic_failure" = "Failed";
+"errtl_generic_failure" = "エラー";
 
 "warn_logout" = "ログアウト？";
 "warn_character_selection" = "エリアンの種類と色を一度選んだら変更ができません。よろしいですか？";
 
 "warntl_character_selection" = "選択しました。よろしいですか？";
 
-"act_bigging" = "Bidding...";
-"act_bigging_ended" = "End of Bidding!";
-"act_countdown" = "COUNTDOWN TO BIDDING…";
+"act_bigging" = "オークション残り時間…";
+"act_bigging_ended" = "オークションが終了しました！";
+"act_countdown" = "オークション カウントダウン...";
 
 "pop_blue_gem_usage" = "用途：解鎖商品、投標商品。";
 "pop_green_gem_usage" = "用途：解鎖商品、高效率投標商品。";
@@ -179,12 +182,12 @@
 "pop_purple_gem_bullet1" = "紅金寶是 %@ 的升級版，有助於競標時的效率，並減少信用卡或電信商的支付問題。";
 "pop_purple_gem_bullet2" = "使用 紅金寶 可解鎖商品或投標一次。";
 
-"ship_first_name" = "First Name";
-"ship_last_name" = "Last Name";
-"ship_address1" = "Address line 1";
-"ship_address2" = "Address line 2";
-"ship_city" = "City";
-"ship_region" = "Region";
-"ship_postal_code" = "Postal Code";
-"ship_country" = "Country";
-"ship_phoneNumber" = "Phone number (For delivery purpose only)";
+"ship_first_name" = "名前";
+"ship_last_name" = "苗字";
+"ship_address1" = "住所1";
+"ship_address2" = "住所2";
+"ship_city" = "都道府県";
+"ship_region" = "市区都";
+"ship_postal_code" = "郵便番号";
+"ship_country" = "国";
+"ship_phoneNumber" = "電話番号（配送に関する連絡のため）";

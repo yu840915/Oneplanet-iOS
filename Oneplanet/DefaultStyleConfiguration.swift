@@ -11,12 +11,19 @@ import UIKit
 class DefaultStyleConfiguration {
     class func config() {
         Toast.config()
-        let dimColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
+        let shadow = NSShadow()
+        shadow.shadowColor = UIColor.black
+        shadow.shadowBlurRadius = 2.0
+        shadow.shadowOffset = .zero
         UITabBarItem.appearance()
-            .setTitleTextAttributes([.foregroundColor : dimColor, .font: UIFont.systemFont(ofSize: 10, weight: .semibold)],
+            .setTitleTextAttributes([.foregroundColor : ColorPalette.defaultText, .font: UIFont.systemFont(ofSize: 10, weight: .semibold), .shadow: shadow],
                                     for: .normal)
+        let highlightedShadow = NSShadow()
+        highlightedShadow.shadowColor = UIColor.red
+        highlightedShadow.shadowBlurRadius = 2.0
+        highlightedShadow.shadowOffset = .zero
         UITabBarItem.appearance()
-            .setTitleTextAttributes([.foregroundColor : UIColor.black, .font: UIFont.systemFont(ofSize: 10, weight: .semibold)],
+            .setTitleTextAttributes([.foregroundColor : ColorPalette.defaultText, .font: UIFont.systemFont(ofSize: 10, weight: .semibold), .shadow: highlightedShadow],
                                     for: .selected)
         UITabBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().backIndicatorImage = UIImage(named: "ic_back_nor")

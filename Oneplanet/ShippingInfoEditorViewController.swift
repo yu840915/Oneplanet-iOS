@@ -12,6 +12,8 @@ import ModelBlocks
 class ShippingInfoEditorViewController: UIViewController, UserSessionDepending {
     
     var userSession: UserSession!
+    @IBOutlet weak var informationLabel: UILabel!
+    
     @IBOutlet weak var exitButtonItem: UIBarButtonItem!
     @IBOutlet weak var countryCodeField: UITextField!
     @IBOutlet weak var emailFieldBlock: InputFieldBlockView!

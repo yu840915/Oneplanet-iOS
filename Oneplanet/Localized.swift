@@ -144,6 +144,25 @@ class LocalizedTitles {//tl_
     var requiredInput: String {
         return NSLocalizedString("tl_required_input", comment: "")
     }
+    var agree: String {
+        return NSLocalizedString("tl_agree", comment: "")
+    }
+    var filter: String {
+        return NSLocalizedString("tl_filter", comment: "")
+    }
+    var bidStateLose: String {
+        return NSLocalizedString("tl_bid_state_lost", comment: "")
+    }
+    var bidStateToShip: String {
+        return NSLocalizedString("tl_bid_state_to_ship", comment: "")
+    }
+    var bidStateShipping: String {
+        return NSLocalizedString("tl_bid_state_shipping", comment: "")
+    }
+    var bidStateDelivered: String {
+        return NSLocalizedString("tl_bid_state_delivered", comment: "")
+    }
+
 }
 
 class Feature {//fx_
@@ -151,7 +170,8 @@ class Feature {//fx_
         return NSLocalizedString("fx_hot", comment: "")
     }
     var me: String {
-        return NSLocalizedString("fx_my", comment: "")
+        return ""
+//        return NSLocalizedString("fx_my", comment: "")
     }
     var life: String {
         return NSLocalizedString("fx_life", comment: "")
@@ -261,6 +281,18 @@ class LocalizedMessages {//msg_
     }
     var bidPaymentTooLate: String {
         return NSLocalizedString("msg_bid_payment_too_late", comment: "")
+    }
+    var race1Monologue: String {
+        return NSLocalizedString("msg_race1_monologue", comment: "")
+    }
+    var race2Monologue: String {
+        return NSLocalizedString("msg_race2_monologue", comment: "")
+    }
+    var race3Monologue: String {
+        return NSLocalizedString("msg_race3_monologue", comment: "")
+    }
+    var shippingInfoDescription: String {
+        return NSLocalizedString("msg_shipping_info_des", comment: "")
     }
 }
 

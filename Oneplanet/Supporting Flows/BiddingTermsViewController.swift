@@ -60,7 +60,7 @@ class BiddingTermsViewController: UIViewController {
 private extension BiddingTermsViewController {
     func localizeTitles() {
         titleLabel.text = Localized.titles.biddingTerms
-        submitButton.setTitle(Localized.titles.ok, for: .normal)
+        submitButton.setTitle(Localized.titles.agree, for: .normal)
         agreeButton.setTitle(Localized.messages.biddingTermsAcceptence, for: .normal)
     }
 }

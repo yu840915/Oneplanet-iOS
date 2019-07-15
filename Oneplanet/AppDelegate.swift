@@ -12,6 +12,7 @@ import FirebaseDynamicLinks
 import UserNotifications
 import FacebookCore
 import TwitterKit
+import StoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private(set) var notificationDelegate: UserNotificationDelegate?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        SKPaymentQueue.default().add(IAPTransactionProcessor.shared)
         setUpLogger()
         FirebaseApp.configure()
         DefaultStyleConfiguration.config()
@@ -32,8 +34,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appConfiguration.update()
         SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         TWTRTwitter.sharedInstance().start(withConsumerKey:TwitterCredentials.key, consumerSecret:TwitterCredentials.secret)
-        WXApi.registerApp("wxc34b2b654e956933")
+        WXApi.registerApp("wx8630436ab3a5f7c2")
+//        prepareDataStore()
         return true
+    }
+    
+    private func prepareDataStore() {
+        let op = PrepareDataStoreOperation()
+        op.start()
+        DataStore.shared = op.dataStore
     }
     
     private func setUpUserNotificationDelegate() {

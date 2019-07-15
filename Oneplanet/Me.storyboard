@@ -16,6 +16,7 @@
             <objects>
                 <navigationController id="cr6-d0-CvM" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="MY" image="ic_my_nor" selectedImage="ic_my_sel" id="tR2-3E-L62">
+                        <inset key="imageInsets" minX="0.0" minY="-5" maxX="0.0" maxY="5"/>
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-2"/>
                     </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -179,17 +180,11 @@
                                     <segue destination="UGj-Rj-lAV" kind="embed" id="D9Y-kb-hi7"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BqQ-ev-Qae" userLabel="Post Button">
-                                <rect key="frame" x="299" y="561" width="56" height="57"/>
-                                <state key="normal" image="bt_addphoto_nor"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="SdQ-I0-mMe" secondAttribute="bottom" id="0gE-Iz-Kbx"/>
-                            <constraint firstItem="RVS-SF-Hmv" firstAttribute="trailing" secondItem="BqQ-ev-Qae" secondAttribute="trailing" constant="20" id="GGJ-KQ-fnQ"/>
                             <constraint firstItem="SdQ-I0-mMe" firstAttribute="top" secondItem="RVS-SF-Hmv" secondAttribute="top" id="MbH-Ma-ca8"/>
-                            <constraint firstItem="RVS-SF-Hmv" firstAttribute="bottom" secondItem="BqQ-ev-Qae" secondAttribute="bottom" id="YnW-Ve-j2t"/>
                             <constraint firstItem="SdQ-I0-mMe" firstAttribute="width" secondItem="ADv-sf-ok3" secondAttribute="width" id="n5L-59-GDD"/>
                             <constraint firstItem="SdQ-I0-mMe" firstAttribute="centerX" secondItem="RVS-SF-Hmv" secondAttribute="centerX" id="oJC-BD-ldc"/>
                         </constraints>
@@ -202,9 +197,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="addPostButton" destination="BqQ-ev-Qae" id="wm1-5D-zNT"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ssc-S1-m5x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -819,12 +811,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bt_addphoto_nor" width="56" height="57"/>
         <image name="bt_smallgreen_nor" width="29" height="28"/>
         <image name="ic_contactus_nor" width="40" height="40"/>
         <image name="ic_morelist_nor" width="40" height="40"/>
-        <image name="ic_my_nor" width="64" height="49"/>
-        <image name="ic_my_sel" width="64" height="49"/>
+        <image name="ic_my_nor" width="64" height="86"/>
+        <image name="ic_my_sel" width="64" height="86"/>
         <image name="ic_youtube_nor" width="40" height="40"/>
         <image name="im_alien_none0" width="375" height="375"/>
         <image name="im_bgall" width="609" height="812"/>

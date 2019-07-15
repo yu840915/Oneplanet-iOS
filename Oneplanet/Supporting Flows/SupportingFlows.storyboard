@@ -598,9 +598,10 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                <state key="normal" title="Ticking means that you have agreed to the bidding terms" image="ic_flitertap_tap">
+                                                <state key="normal" title="Ticking means that you have agreed to the bidding terms" image="ic_checkmark_nor">
                                                     <color key="titleColor" name="black background"/>
                                                 </state>
+                                                <state key="selected" image="ic_checkmark_tap"/>
                                                 <connections>
                                                     <action selector="toggleTermAgreement:" destination="MKP-Su-LJ4" eventType="touchUpInside" id="78B-7C-ZzA"/>
                                                 </connections>
@@ -667,6 +668,7 @@
                             <constraint firstItem="0gd-8K-LyL" firstAttribute="centerY" secondItem="Ntv-yH-xB4" secondAttribute="centerY" id="mIV-mK-odk"/>
                             <constraint firstItem="0gd-8K-LyL" firstAttribute="width" secondItem="Ntv-yH-xB4" secondAttribute="width" id="yoJ-sk-34s"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Z4K-xG-jdH"/>
                     </view>
                     <connections>
                         <outlet property="agreeButton" destination="Lmp-xi-ypd" id="yZH-av-LL3"/>
@@ -696,6 +698,8 @@
         <image name="ic_cameraflash_tap" width="21" height="29"/>
         <image name="ic_camerarotation_nor" width="33" height="27"/>
         <image name="ic_cancelblack_nor" width="17" height="16"/>
+        <image name="ic_checkmark_nor" width="20" height="20"/>
+        <image name="ic_checkmark_tap" width="20" height="20"/>
         <image name="ic_flitertap_tap" width="20" height="20"/>
         <image name="ui_cameramaterial_nor" width="375" height="375"/>
         <image name="ui_myphotomask_nor" width="750" height="750"/>

@@ -138,7 +138,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="153"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dDq-y2-pmi">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner_test" translatesAutoresizingMaskIntoConstraints="NO" id="dDq-y2-pmi">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="153"/>
                                         </imageView>
                                     </subviews>
@@ -163,9 +163,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="banner_test" width="900" height="400"/>
         <image name="ic_home_nor" width="64" height="49"/>
         <image name="ic_home_sel" width="64" height="49"/>
         <image name="im_first1" width="609" height="812"/>
-        <image name="ui_logoblack" width="138" height="33"/>
+        <image name="ui_logoblack" width="101" height="24"/>
     </resources>
 </document>

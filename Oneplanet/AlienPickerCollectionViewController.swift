@@ -26,6 +26,8 @@ class AlienPickerCollectionViewController: UICollectionViewController {
             shouldScrollToPreselectIndex = true
         }
     }
+    var monologueItem: MonologueItem!
+
     private(set) var selectedIndex: Int = 0 {
         didSet {
             if oldValue != selectedIndex {
@@ -125,6 +127,15 @@ class AlienPickerCollectionViewController: UICollectionViewController {
             let headIdx = IndexPath(row: 0, section: 1)
             collectionView.scrollToItem(at: headIdx, at: .centeredHorizontally, animated: false)
         }
+        updateForMonologue()
+    }
+    
+    private func updateForMonologue() {
+        monologueItem.monologue = characters[selectedIndex].monologue
+        let isTracking = collectionView.isTracking
+        let width = Int(collectionView.frame.width / 3)
+        let isOffset = (Int(collectionView.contentOffset.x) % width) > 10
+        monologueItem.isHidden = isTracking || isOffset
     }
     
     override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {

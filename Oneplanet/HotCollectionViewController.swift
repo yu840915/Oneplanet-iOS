@@ -10,11 +10,13 @@ import UIKit
 
 class HotCollectionViewController: UICollectionViewController, UserSessionDepending {
     
+    var balloonString: UIImageView!
     var userSession: UserSession!
     var needsUpdateTabar = true
     private var headerController: HotHeaderCollectionViewController?
     private var hidingSignalProducer: TabbarHidingSignalProducer?
     var expectedTabbarFrame: CGRect = .zero
+    var expectedBalloonFrame: CGRect = .zero
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpNavigationItems()
@@ -48,6 +50,9 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
             self?.animateTabbar()
         }
         hidingSignalProducer = producer
+        if expectedBalloonFrame == .zero {
+            expectedBalloonFrame = balloonString.frame
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -62,8 +67,11 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
             return
         }
         var frame = expectedTabbarFrame
+        var balloonFrame = expectedBalloonFrame
         frame.origin.y += producer.hidingFactor * (frame.height + 20)
+        balloonFrame.size.height += producer.hidingFactor * (frame.height + 20)
         tabbar.frame = frame
+        balloonString.frame = balloonFrame
     }
     
     private func animateTabbar() {
@@ -72,9 +80,12 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
                 return
         }
         var frame = expectedTabbarFrame
+        var balloonFrame = expectedBalloonFrame
         frame.origin.y += producer.hidingFactor * (frame.height + 20)
+        balloonFrame.size.height += producer.hidingFactor * (frame.height + 20)
         UIView.animate(withDuration: 0.15) {
             tabbar.frame = frame
+            self.balloonString.frame = balloonFrame
         }
     }
     
@@ -160,7 +171,11 @@ extension HotCollectionViewController: UICollectionViewDelegateFlowLayout {
         let len = (collectionView.bounds.width - totalGap) / num
         return CGSize(width: len, height: len)
     }
-
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        let w = collectionView.bounds.width
+        return CGSize(width: w, height: (w / 9) * 4)
+    }
 }
 
 extension HotCollectionViewController: ScrollToTopHandler {

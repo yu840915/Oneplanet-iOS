@@ -39,7 +39,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="black background"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="2S8-qy-rV3" customClass="NormalNoticeItemCell" customModule="Oneplanet" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="normalNoticeCell" rowHeight="80" id="2S8-qy-rV3" customClass="NormalNoticeItemCell" customModule="Oneplanet" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2S8-qy-rV3" id="KcC-Zg-fQM">
@@ -148,7 +148,7 @@
                                     <outlet property="timeLabel" destination="AWi-Wq-wTK" id="g3o-jb-eA5"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="NnM-Ur-9Wn" customClass="WarningNoticeItemCell" customModule="Oneplanet" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="warningNoticeCell" rowHeight="80" id="NnM-Ur-9Wn" customClass="WarningNoticeItemCell" customModule="Oneplanet" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="108" width="414" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NnM-Ur-9Wn" id="b39-mi-hPb">
@@ -224,10 +224,21 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="GVc-K4-Pbo"/>
+                    <connections>
+                        <segue destination="ibo-9l-t1D" kind="presentation" identifier="showPopup" id="fR5-pg-HGz"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="phN-eK-i3y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="283" y="112"/>
+        </scene>
+        <!--GemActionPopUpEntry-->
+        <scene sceneID="LLf-NT-kyB">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Unlock" referencedIdentifier="GemActionPopUpEntry" id="ibo-9l-t1D" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iph-2f-fyf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1104" y="110"/>
         </scene>
     </scenes>
     <resources>

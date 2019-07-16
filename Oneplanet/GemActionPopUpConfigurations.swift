@@ -36,6 +36,9 @@ class GemActionPopUpConfiguration {
     var shouldShowCancel: Bool {
         return true
     }
+    var shouldShowTitle: Bool {
+        return true
+    }
 }
 
 class UnlockPopUpConfiguration: GemActionPopUpConfiguration {

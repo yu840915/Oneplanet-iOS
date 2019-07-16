@@ -89,6 +89,7 @@
 		E07276FF227743D7001239C0 /* URLRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276FE227743D7001239C0 /* URLRouterTests.swift */; };
 		E07277012277EE3D001239C0 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07277002277EE3C001239C0 /* AppConfiguration.swift */; };
 		E077A72E22DDA4C300A2245E /* NoticeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E077A72D22DDA4C300A2245E /* NoticeList.swift */; };
+		E077A73022DDF63500A2245E /* NoticeUIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E077A72F22DDF63500A2245E /* NoticeUIHelpers.swift */; };
 		E0814E3522DC2BBF002D0E32 /* NoticeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0814E3422DC2BBF002D0E32 /* NoticeTableViewController.swift */; };
 		E0814FAE22864B10002F1C02 /* MainUserFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0814FAD22864B10002F1C02 /* MainUserFlow.storyboard */; };
 		E0814FB122864F79002F1C02 /* UserFlowMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0814FB022864F79002F1C02 /* UserFlowMainViewController.swift */; };
@@ -263,6 +264,7 @@
 		E07276FE227743D7001239C0 /* URLRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRouterTests.swift; sourceTree = "<group>"; };
 		E07277002277EE3C001239C0 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
 		E077A72D22DDA4C300A2245E /* NoticeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeList.swift; sourceTree = "<group>"; };
+		E077A72F22DDF63500A2245E /* NoticeUIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeUIHelpers.swift; sourceTree = "<group>"; };
 		E0814E3422DC2BBF002D0E32 /* NoticeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTableViewController.swift; sourceTree = "<group>"; };
 		E0814FAD22864B10002F1C02 /* MainUserFlow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainUserFlow.storyboard; sourceTree = "<group>"; };
 		E0814FB022864F79002F1C02 /* UserFlowMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFlowMainViewController.swift; sourceTree = "<group>"; };
@@ -646,6 +648,7 @@
 			children = (
 				E0FF7981228D3A3D00F61318 /* Notification.storyboard */,
 				E0814E3422DC2BBF002D0E32 /* NoticeTableViewController.swift */,
+				E077A72F22DDF63500A2245E /* NoticeUIHelpers.swift */,
 				E077A72D22DDA4C300A2245E /* NoticeList.swift */,
 			);
 			name = Notifications;
@@ -1017,6 +1020,7 @@
 				E0D7DCDB229CE65C00B40D76 /* PromoPopUpFlowViewController.swift in Sources */,
 				E06589BB227001F300C9E4E6 /* AskForAuthorizationOperation.swift in Sources */,
 				E03C329A226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift in Sources */,
+				E077A73022DDF63500A2245E /* NoticeUIHelpers.swift in Sources */,
 				E03C32AE226D8E6800C32FD7 /* SharedFormatters.swift in Sources */,
 				E0DA38A222C31E3800EC4170 /* GemActionPopUpConfigurations.swift in Sources */,
 				E07276F82276D0DC001239C0 /* RequestUserNotificationAuthorizationOperation.swift in Sources */,

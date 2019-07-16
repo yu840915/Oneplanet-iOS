@@ -489,6 +489,12 @@ class LocalizedPhrase { //ph_
     var goToBiddingPage: String {
         return NSLocalizedString("ph_goto_bidding", comment: "")
     }
+    var getGem: String {
+        return NSLocalizedString("ph_get_gem", comment: "")
+    }
+    var hasGotGem: String {
+        return NSLocalizedString("ph_has_got_gem", comment: "")
+    }
 }
 
 class EmptyMessages {//no_

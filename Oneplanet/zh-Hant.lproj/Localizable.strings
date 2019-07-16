@@ -144,6 +144,8 @@
 "ph_bid_lot" = "商品";
 "ph_successful_shipping_info_submission" = "填寫完成";
 "ph_goto_bidding" = "Go bidding page";
+"ph_get_gem" = "Get it";
+"ph_has_got_gem" = "Has got it";
 
 "no_posts" = "還沒有貼文";
 "no_promo_popups" = "No Promotion Pop-ups Yet";

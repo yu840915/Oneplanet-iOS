@@ -144,6 +144,8 @@
 "ph_bid_lot" = "Commodity";
 "ph_successful_shipping_info_submission" = "Filled in successfully";
 "ph_goto_bidding" = "Go bidding page";
+"ph_get_gem" = "Get it";
+"ph_has_got_gem" = "Has got it";
 
 "no_posts" = "投稿がありません";
 "no_promo_popups" = "No Promotion Pop-ups Yet";

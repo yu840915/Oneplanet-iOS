@@ -46,6 +46,13 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sq4-VG-hcf">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="80" id="mbe-5Z-bDm"/>
+                                            </constraints>
+                                        </view>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="X9B-BV-QFZ">
                                             <rect key="frame" x="10" y="17" width="388" height="46"/>
                                             <subviews>
@@ -98,7 +105,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="N0y-AV-top">
                                                     <rect key="frame" x="56" y="5.5" width="222" height="35.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1b-Yd-Twa" userLabel="Message Label">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1b-Yd-Twa" userLabel="Message Label">
                                                             <rect key="frame" x="0.0" y="0.0" width="222" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" name="default text"/>
@@ -134,8 +141,12 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="sq4-VG-hcf" firstAttribute="height" relation="lessThanOrEqual" secondItem="KcC-Zg-fQM" secondAttribute="height" id="9QT-hY-26G"/>
+                                        <constraint firstItem="sq4-VG-hcf" firstAttribute="centerX" secondItem="KcC-Zg-fQM" secondAttribute="centerX" id="DmJ-1H-9de"/>
+                                        <constraint firstItem="sq4-VG-hcf" firstAttribute="width" secondItem="KcC-Zg-fQM" secondAttribute="width" id="EgT-QK-S6q"/>
                                         <constraint firstItem="X9B-BV-QFZ" firstAttribute="centerY" secondItem="KcC-Zg-fQM" secondAttribute="centerY" id="fp8-x6-2dx"/>
                                         <constraint firstItem="X9B-BV-QFZ" firstAttribute="leading" secondItem="KcC-Zg-fQM" secondAttribute="leading" constant="10" id="hQb-qv-DsE"/>
+                                        <constraint firstItem="sq4-VG-hcf" firstAttribute="centerY" secondItem="KcC-Zg-fQM" secondAttribute="centerY" id="t4X-Ky-2hI"/>
                                         <constraint firstItem="X9B-BV-QFZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="KcC-Zg-fQM" secondAttribute="top" constant="4" id="tg2-Y1-UPj"/>
                                         <constraint firstAttribute="trailing" secondItem="X9B-BV-QFZ" secondAttribute="trailing" constant="16" id="zSu-QE-JTc"/>
                                     </constraints>
@@ -155,6 +166,13 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gOW-Ra-j6h">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="80" id="HDS-oI-eIq"/>
+                                            </constraints>
+                                        </view>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Thr-JJ-bPa">
                                             <rect key="frame" x="10" y="17" width="388" height="46"/>
                                             <subviews>
@@ -176,7 +194,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="yOl-tQ-bx5">
                                                     <rect key="frame" x="56" y="5.5" width="282" height="35.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTF-cy-o0N" userLabel="Message Label">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sTF-cy-o0N" userLabel="Message Label">
                                                             <rect key="frame" x="0.0" y="0.0" width="282" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" name="default text"/>
@@ -204,10 +222,14 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="gOW-Ra-j6h" firstAttribute="centerX" secondItem="b39-mi-hPb" secondAttribute="centerX" id="V4C-04-f7S"/>
                                         <constraint firstItem="Thr-JJ-bPa" firstAttribute="top" relation="greaterThanOrEqual" secondItem="b39-mi-hPb" secondAttribute="top" constant="4" id="Yq8-zs-tm0"/>
+                                        <constraint firstItem="gOW-Ra-j6h" firstAttribute="width" secondItem="b39-mi-hPb" secondAttribute="width" id="aYQ-il-Cyb"/>
                                         <constraint firstAttribute="trailing" secondItem="Thr-JJ-bPa" secondAttribute="trailing" constant="16" id="fb4-2L-GtE"/>
                                         <constraint firstItem="Thr-JJ-bPa" firstAttribute="centerY" secondItem="b39-mi-hPb" secondAttribute="centerY" id="gbZ-Tz-TmN"/>
                                         <constraint firstItem="Thr-JJ-bPa" firstAttribute="leading" secondItem="b39-mi-hPb" secondAttribute="leading" constant="10" id="heY-Pa-H7l"/>
+                                        <constraint firstItem="gOW-Ra-j6h" firstAttribute="height" relation="lessThanOrEqual" secondItem="b39-mi-hPb" secondAttribute="height" id="kGa-xv-YL5"/>
+                                        <constraint firstItem="gOW-Ra-j6h" firstAttribute="centerY" secondItem="b39-mi-hPb" secondAttribute="centerY" id="wzg-9K-bdz"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" name="black background"/>

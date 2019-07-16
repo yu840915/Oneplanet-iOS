@@ -77,10 +77,17 @@ class NoticeTableViewController: UITableViewController {
         let notice = getNotice(at: indexPath)
         switch notice.type {
         case .followNotice:
+            cell.updateViews(with: FollowNoticeViewModel(notice: notice))
             cell.action = {[weak self] in
                 self?.showFollowAction(for: notice)
             }
-        case .giftFromOfficialAccount, .likeFromOfficialAccount:
+        case .giftFromOfficialAccount:
+            cell.updateViews(with: GiftFromOfficialNoticeViewModel(notice: notice))
+            cell.action = {[weak self] in
+                self?.showGetGemPopUp(for: notice)
+            }
+        case .likeFromOfficialAccount:
+            cell.updateViews(with: LikeFromOfficialNoticeViewModel(notice: notice))
             cell.action = {[weak self] in
                 self?.showGetGemPopUp(for: notice)
             }
@@ -89,7 +96,14 @@ class NoticeTableViewController: UITableViewController {
     }
     
     private func setUpWarningNoticeCell(_ cell: WarningNoticeItemCell, forNoticeAt indexPath: IndexPath) {
-        
+        let notice = getNotice(at: indexPath)
+        switch notice.type {
+        case .profileReported:
+            cell.updateViews(with: ProfileReportedViewModel(notice: notice))
+        case .postReported:
+            cell.updateViews(with: PostReportedViewModel(notice: notice))
+        default: break
+        }
     }
     
     private func getNotice(at indexPath: IndexPath) -> Notice {
@@ -122,7 +136,6 @@ class NoticeTableViewController: UITableViewController {
     }
     
     private func showProfilePage(for notice: Notice) {
-        
     }
     
     private func switchToMyProfile() {
@@ -154,78 +167,4 @@ extension NoticeTableViewController {
         static let normalNoticeCell = "normalNoticeCell"
         static let warningNoticeCell = "warningNoticeCell"
     }
-}
-
-class NoticeGroup {
-    let label: Label
-    let notices: [Notice]
-    init(notices: [Notice], label: Label) {
-        self.notices = notices
-        self.label = label
-    }
-    
-    enum Label {
-        case unread
-        case read
-    }
-}
-
-protocol NoticeItemDisplayable {
-    var attributedMessage: NSAttributedString {get}
-    var pastTime: String {get}
-}
-
-class NoticeItemCell: UITableViewCell {
-    @IBOutlet weak var avatarView: AvatarView!
-    @IBOutlet weak var messageLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        selectedBackgroundView = CommonViewFactory.shared.makeSelectionBackground()
-    }
-    func updateViews(with dataSource: NoticeItemDisplayable) {
-        messageLabel.attributedText = dataSource.attributedMessage
-        timeLabel.text = dataSource.pastTime
-    }
-}
-
-protocol NormalNoticeItemDisplayable: NoticeItemDisplayable {
-    var actionTitle: String {get}
-    var selectedActionTitle: String? {get}
-//    var user: User {get}
-}
-
-
-class NormalNoticeItemCell: NoticeItemCell {
-    var action: (()->())? {
-        didSet {
-            actionButton.isUserInteractionEnabled = (action != nil)
-        }
-    }
-    @IBOutlet weak var actionButton: UIButton!
-    
-    @IBAction func invokeAction(_ sender: UIButton) {
-        action?()
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        actionButton.setImage(actionButton.backgroundImage(for: .highlighted), for: [.selected, .highlighted])        
-    }
-    
-    func updateViews(with dataSource: NormalNoticeItemDisplayable) {
-        super.updateViews(with: dataSource)
-        actionButton.setTitle(dataSource.actionTitle, for: .normal)
-        actionButton.setTitle(dataSource.selectedActionTitle, for: .selected)
-        actionButton.setTitle(dataSource.selectedActionTitle, for: [.selected, .highlighted])
-    }
-}
-
-protocol WarningNoticeItemDisplayable: NoticeItemDisplayable {
-    var contentImage: WebImageInfo? { get }
-}
-
-
-class WarningNoticeItemCell: NoticeItemCell {
-    @IBOutlet weak var contentImageView: UIImageView!
 }

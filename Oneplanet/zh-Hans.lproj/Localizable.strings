@@ -8,7 +8,7 @@
 
 "iso_code" = "zh-hans";
 
-"fx_hot" = "家";
+"fx_hot" = "热门";
 "fx_my" = "我的";
 "fx_life" = "动态";
 "fx_bid" = "投标";
@@ -101,6 +101,11 @@
 "msgf_received_gem" = "获得 %@ 1 颗";
 "msgf_unlock_succeeded" = "已解锁 %@!";
 "msgf_bid_succeeded" = "Successfully qualified for %@ bidding";
+"msgf_start_following_you" = "%@ started following you";
+"msgf_liked_your_post" = "%@ liked your post";
+"msgf_you_received_num_gems" = "You received %@ %@s";
+"msgf_post_reported" = "Your post has been reported for %@";
+"msgf_profile_reported" = "Your account %@ has been reported for %@";
 
 "ph_guest_login" = "访客进入";
 "ph_email_login" = "或通过电子邮件登录";
@@ -172,7 +177,7 @@
 "pop_purple_gem_usage" = "用途：解锁商品。";
 
 "pop_blue_gem_action" = "立即前往 上传照片";
-"pop_green_gem_action" = "前往%@查看";
+"pop_green_gem_action" = "前往%@";
 
 "pop_blue_gem_bullet1" = "获得方式一：上传照片后，画面左上角的经验值会增加，满格即获得一颗竞标宝。";
 "pop_blue_gem_bullet2" = "使用一颗竞标宝+ %@，可解锁商品或投标一次。";

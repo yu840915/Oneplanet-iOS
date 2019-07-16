@@ -8,7 +8,7 @@
 
 "iso_code" = "en";
 
-"fx_hot" = "HOME";
+"fx_hot" = "HOT";
 "fx_my" = "MY";
 "fx_life" = "LIFE";
 "fx_bid" = "BID";
@@ -66,7 +66,7 @@
 "msg_open_mail_app_prompt" = "Click here to open your email address";
 "msg_mail_resent" = "The email has been sent again";
 "msg_join_prompt" = "Go to sign up now for more features";
-"msg_alien_description" = "The aliens you choose will be on your own page";
+"msg_alien_description" = "The alien you choose will be on your own page";
 "msg_ongoing_bidding" = "Other goods are still bidding, please wait for the bidding to end.";
 "msg_successful_shipping_info_submission" = "The winning goods will be sent to this address. If the address changes, please remember to update this page.";
 "msg_bidding_terms_acceptence" = "Ticking means that you have agreed to the bidding terms";
@@ -77,7 +77,7 @@
 "msg_lot_closed" = "The goods has been closed";
 "msg_lot_closed_des" = "This goods has been closed, please wait for the new one to be announced soon.";
 "msg_bid_payment_too_late" = "Payment is successful but exceeding the biding time limit";
-"msg_race1_monologue" = "My name is Fucker.";
+"msg_race1_monologue" = "My name is Focker.";
 "msg_race2_monologue" = "My name is Dicker.";
 "msg_race3_monologue" = "My name is Drunker.";
 "msg_shipping_info_des" = "International Shipping Service, please fill in the English address and receipt information, the goods can be successfully delivered";
@@ -101,6 +101,11 @@
 "msgf_received_gem" = "Get a %@";
 "msgf_unlock_succeeded" = "Unlocked %@!";
 "msgf_bid_succeeded" = "Successfully qualified for %@ bidding";
+"msgf_start_following_you" = "%@ started following you";
+"msgf_liked_your_post" = "%@ liked your post";
+"msgf_you_received_num_gems" = "You received %@ %@s";
+"msgf_post_reported" = "Your post has been reported for %@";
+"msgf_profile_reported" = "Your account %@ has been reported for %@";
 
 "ph_guest_login" = "Guest";
 "ph_email_login" = "Or Login With Email";
@@ -118,7 +123,7 @@
 "ph_copy_id" = "copy ID";
 "ph_follow" = "Follow";
 "ph_following" = "Following";
-"ph_choose_role" = "Choose Role";
+"ph_choose_role" = "Choose your Alien";
 "ph_choose_color" = "Choose Color";
 "ph_edit_profile" = "Edit Profile";
 "ph_block_list" = "Blocked Account";
@@ -159,9 +164,9 @@
 "errtl_generic_failure" = "Failed";
 
 "warn_logout" = "Log Out?";
-"warn_character_selection" = "Can't change the group after selection, continue？";
+"warn_character_selection" = "Alien species and colors must not be more change, to be sure to choose?";
 
-"warntl_character_selection" = "Determined choice？";
+"warntl_character_selection" = "Confirm?";
 
 "act_bigging" = "Bidding...";
 "act_bigging_ended" = "End of Bidding!";
@@ -172,7 +177,7 @@
 "pop_purple_gem_usage" = "用途：解鎖商品。";
 
 "pop_blue_gem_action" = "Go to upload photos";
-"pop_green_gem_action" = "Go to view the %@";
+"pop_green_gem_action" = "Go to %@";
 
 "pop_blue_gem_bullet1" = "獲得方式一：上傳照片後，畫面左上角的經驗值會增加，滿格即獲得一顆 競標寶。";
 "pop_blue_gem_bullet2" = "使用一顆 競標寶 + %@，可解鎖商品或投標一次。";

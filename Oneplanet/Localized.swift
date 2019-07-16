@@ -358,6 +358,22 @@ class LocalizedMessageFormats {//msgf_
     var bidSucceeded: String {
         return NSLocalizedString("msgf_bid_succeeded", comment: "")
     }
+    var startFollowingYou: String {
+        return NSLocalizedString("msgf_start_following_you", comment: "")
+    }
+    var likedYourPost: String {
+        return NSLocalizedString("msgf_liked_your_post", comment: "")
+    }
+    var gaveYouNumberGems: String {
+        return NSLocalizedString("msgf_you_received_num_gems", comment: "")
+    }
+    var postReported: String {
+        return NSLocalizedString("msgf_post_reported", comment: "")
+    }
+    var profileReported: String {
+        return NSLocalizedString("msgf_profile_reported", comment: "")
+    }
+    
 }
 
 class LocalizedPhrase { //ph_

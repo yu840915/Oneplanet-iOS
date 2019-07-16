@@ -156,7 +156,6 @@ extension NoticeTableViewController {
     }
 }
 
-
 class NoticeGroup {
     let label: Label
     let notices: [Notice]

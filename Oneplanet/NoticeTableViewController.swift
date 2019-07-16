@@ -60,19 +60,48 @@ class NoticeTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let notice = getNotice(at: indexPath)
-        let reuseID: String
+        
         switch notice.type {
         case .followNotice, .giftFromOfficialAccount, .likeFromOfficialAccount:
-            reuseID = NoticeTableViewController.ReuseID.normalNoticeCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: ReuseID.normalNoticeCell, for: indexPath) as! NormalNoticeItemCell
+            setUpNormalNoticeCell(cell, forNoticeAt: indexPath)
+            return cell
         case .postReported, .profileReported:
-            reuseID = NoticeTableViewController.ReuseID.warningNoticeCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: ReuseID.warningNoticeCell, for: indexPath) as! WarningNoticeItemCell
+            setUpWarningNoticeCell(cell, forNoticeAt: indexPath)
+            return cell
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseID, for: indexPath)
-        return cell
+    }
+    
+    private func setUpNormalNoticeCell(_ cell: NormalNoticeItemCell, forNoticeAt indexPath: IndexPath) {
+        let notice = getNotice(at: indexPath)
+        switch notice.type {
+        case .followNotice:
+            cell.action = {[weak self] in
+                self?.showFollowAction(for: notice)
+            }
+        case .giftFromOfficialAccount, .likeFromOfficialAccount:
+            cell.action = {[weak self] in
+                self?.showGetGemPopUp(for: notice)
+            }
+        default: break
+        }
+    }
+    
+    private func setUpWarningNoticeCell(_ cell: WarningNoticeItemCell, forNoticeAt indexPath: IndexPath) {
+        
     }
     
     private func getNotice(at indexPath: IndexPath) -> Notice {
         return groups[indexPath.section].notices[indexPath.row]
+    }
+    
+    private func showGetGemPopUp(for notice: Notice) {
+        performSegue(withIdentifier: SegueID.showPopup, sender: nil)
+    }
+    
+    private func showFollowAction(for notice: Notice) {
+        
     }
     
     override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
@@ -81,6 +110,7 @@ class NoticeTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         let notice = getNotice(at: indexPath)
         switch notice.type {
         case .followNotice, .giftFromOfficialAccount, .likeFromOfficialAccount:
@@ -110,6 +140,7 @@ class NoticeTableViewController: UITableViewController {
     }
     
     private func prepareContent(for controller: GemActionPopUpViewController) {
+        controller.configuration = GemActionPopUpConfiguration()
     }
 
 }

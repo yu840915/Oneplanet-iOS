@@ -147,10 +147,10 @@
 "ph_get_gem" = "Get it";
 "ph_has_got_gem" = "Has got it";
 
-"phf_seconds_ago_short" = "%@ s";
-"phf_minutes_ago_short" = "%@ m";
-"phf_hours_ago_short" = "%@ h";
-"phf_days_ago_short" = "%@ d";
+"phf_seconds_ago_short" = "%@s";
+"phf_minutes_ago_short" = "%@m";
+"phf_hours_ago_short" = "%@h";
+"phf_days_ago_short" = "%@d";
 "phf_seconds_ago" = "%@ seconds ago";
 "phf_minutes_ago" = "%@ minutes ago";
 "phf_hours_ago" = "%@ hours ago";

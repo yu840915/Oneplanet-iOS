@@ -25,7 +25,10 @@ struct SharedNumberFormatters {
         result.maximumFractionDigits = 0
         return result
     }()
+}
 
+struct SharedSpeciaFormatters {
+    static let dateFromNowForNotices: DateFromNowFormatter = DateFromNowFormatter()
 }
 
 class RoughNumberFormatter: Formatter {

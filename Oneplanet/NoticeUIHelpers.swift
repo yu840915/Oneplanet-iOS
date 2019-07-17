@@ -37,7 +37,7 @@ class NoticeViewModel: NoticeItemDisplayable {
         return NSAttributedString(string: "")
     }
     var pastTime: String {
-        return "2h"
+        return SharedSpeciaFormatters.dateFromNowForNotices.string(from: notice.date)
     }
 }
 
@@ -49,6 +49,7 @@ class NoticeItemCell: UITableViewCell {
         super.awakeFromNib()
         selectedBackgroundView = CommonViewFactory.shared.makeSelectionBackground()
     }
+    
     func updateViews(with dataSource: NoticeItemDisplayable) {
         messageLabel.attributedText = dataSource.attributedMessage
         timeLabel.text = dataSource.pastTime

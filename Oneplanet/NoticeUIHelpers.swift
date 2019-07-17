@@ -217,7 +217,6 @@ class LikeFromOfficialNoticePopUpConfiguration: GemActionPopUpConfiguration {
         attrStr.addAttributes([.font: UIFont.systemFont(ofSize: 12, weight: .semibold)], range: nameRange)
         attrStr.addAttributes([.font: UIFont.systemFont(ofSize: 12, weight: .semibold)], range: gemRange)
         return attrStr
-        
     }
     override var actionTitle: String {
         return Localized.phrases.getGem

@@ -22,6 +22,7 @@ class NoticeTableViewController: UITableViewController {
             }
         }
     }
+    private weak var actionPopUp: GemActionPopUpViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +80,7 @@ class NoticeTableViewController: UITableViewController {
         case .followNotice:
             cell.updateViews(with: FollowNoticeViewModel(notice: notice))
             cell.action = {[weak self] in
-                self?.showFollowAction(for: notice)
+                self?.performFollowAction(for: notice)
             }
         case .giftFromOfficialAccount:
             cell.updateViews(with: GiftFromOfficialNoticeViewModel(notice: notice))
@@ -119,11 +120,19 @@ class NoticeTableViewController: UITableViewController {
             config = LikeFromOfficialNoticePopUpConfiguration(notice: notice)
         default: return
         }
+        config?.mainAction = {[weak self] in
+            self?.redeemGemsIfAllowed(for: notice)
+        }
         performSegue(withIdentifier: SegueID.showPopup, sender: config)
     }
     
-    private func showFollowAction(for notice: Notice) {
-        
+    private func redeemGemsIfAllowed(for notice: Notice) {
+        if actionPopUp != nil {
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    private func performFollowAction(for notice: Notice) {
     }
     
     override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
@@ -154,9 +163,10 @@ class NoticeTableViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let container = segue.destination as? PopUpContainerViewController {
-            container.contentViewControllerSetUpBlock = {content in
+            container.contentViewControllerSetUpBlock = {[weak self] content in
                 let vc = content as! GemActionPopUpViewController
                 vc.configuration = (sender as! GemActionPopUpConfiguration)
+                self?.actionPopUp = vc
             }
         }
     }

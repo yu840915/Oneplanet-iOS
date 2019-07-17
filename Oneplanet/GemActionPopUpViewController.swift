@@ -40,7 +40,7 @@ class GemActionPopUpViewController: UIViewController {
     }
     
     @IBAction func invokeAction(_ sender: UIButton) {
-        mainAction?()
+        (mainAction ?? configuration.mainAction)?()
     }
     
     

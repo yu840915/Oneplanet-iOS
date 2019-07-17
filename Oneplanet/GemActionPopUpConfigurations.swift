@@ -39,6 +39,7 @@ class GemActionPopUpConfiguration {
     var shouldShowTitle: Bool {
         return true
     }
+    var mainAction: (()->())?
 }
 
 class UnlockPopUpConfiguration: GemActionPopUpConfiguration {

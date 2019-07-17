@@ -26,6 +26,7 @@ class Localized {
     static let emptyMessages = EmptyMessages()
     static let gemStonePopUp = GemStonePopUp()
     static let shippingInfoTerms = LocalizedShippingInfoTerms()
+    static let phraseFormats = LocalizedPhraseFormats()
 }
 
 class LocalizedTitles {//tl_
@@ -495,6 +496,35 @@ class LocalizedPhrase { //ph_
     var hasGotGem: String {
         return NSLocalizedString("ph_has_got_gem", comment: "")
     }
+}
+
+class LocalizedPhraseFormats {//phf_
+    fileprivate init() {}
+    var secondsAgoShort: String {
+        return NSLocalizedString("phf_seconds_ago_short", comment: "")
+    }
+    var minutesAgoShort: String {
+        return NSLocalizedString("phf_minutes_ago_short", comment: "")
+    }
+    var hoursAgoShort: String {
+        return NSLocalizedString("phf_hours_ago_short", comment: "")
+    }
+    var daysAgoShort: String {
+        return NSLocalizedString("phf_days_ago_short", comment: "")
+    }
+    var secondsAgo: String {
+        return NSLocalizedString("phf_seconds_ago", comment: "")
+    }
+    var minutesAgo: String {
+        return NSLocalizedString("phf_minutes_ago", comment: "")
+    }
+    var hoursAgo: String {
+        return NSLocalizedString("phf_hours_ago", comment: "")
+    }
+    var daysAgo: String {
+        return NSLocalizedString("phf_days_ago", comment: "")
+    }
+
 }
 
 class EmptyMessages {//no_

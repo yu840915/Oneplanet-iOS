@@ -8,8 +8,10 @@
 
 import UIKit
 
-class NoticeTableViewController: UITableViewController {
+class NoticeTableViewController: UITableViewController, UserSessionDepending {
     
+    var userSession: UserSession!
+    var noticeList: NoticeList!
     private var notices: [Notice] = [] {
         didSet {
             groupNotices()
@@ -22,10 +24,13 @@ class NoticeTableViewController: UITableViewController {
             }
         }
     }
+    private var listUpdateHandles: [Any]?
     private weak var actionPopUp: GemActionPopUpViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        prepareNoticeList()
+        tableView.register(SectionHeaderView.defaultNib(), forHeaderFooterViewReuseIdentifier: ReuseID.header)
         title = Localized.feature.notice
         notices = [
             Notice(type: .followNotice, isRead: true),
@@ -35,20 +40,10 @@ class NoticeTableViewController: UITableViewController {
             Notice(type: .postReported, isRead: true),
         ]
     }
-    
-    private func groupNotices() {
-        let unreads =  notices.filter{!$0.isRead}
-        let reads = notices.filter{$0.isRead}
-        var list: [NoticeGroup] = []
-        if !unreads.isEmpty {
-            list.append(NoticeGroup(notices: unreads, label: .unread))
-        }
-        if !reads.isEmpty {
-            list.append(NoticeGroup(notices: reads, label: .read))
-        }
-        groups = list
-    }
 
+    @IBAction func reloadList(_ sender: UIRefreshControl) {
+        noticeList.reload()
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -111,28 +106,21 @@ class NoticeTableViewController: UITableViewController {
         return groups[indexPath.section].notices[indexPath.row]
     }
     
-    private func showGetGemPopUp(for notice: Notice) {
-        var config: GemActionPopUpConfiguration?
-        switch notice.type {
-        case .giftFromOfficialAccount:
-            config = GiftFromOfficialNoticePopUpConfiguration(notice: notice)
-        case .likeFromOfficialAccount:
-            config = LikeFromOfficialNoticePopUpConfiguration(notice: notice)
-        default: return
-        }
-        config?.mainAction = {[weak self] in
-            self?.redeemGemsIfAllowed(for: notice)
-        }
-        performSegue(withIdentifier: SegueID.showPopup, sender: config)
-    }
-    
-    private func redeemGemsIfAllowed(for notice: Notice) {
-        if actionPopUp != nil {
-            dismiss(animated: true, completion: nil)
-        }
-    }
-    
+
     private func performFollowAction(for notice: Notice) {
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let result = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReuseID.header) as! SectionHeaderView
+        switch groups[section].label {
+        case .read:
+            result.titleLabel.text = Localized.phrases.newNotices
+        case .unread:
+            result.titleLabel.text = Localized.phrases.readNotices
+        }
+        result.titleLabel.textColor = ColorPalette.defaultText
+        result.separator.isHidden = true
+        return result
     }
     
     override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
@@ -152,11 +140,12 @@ class NoticeTableViewController: UITableViewController {
         }
     }
     
-    private func showProfilePage(for notice: Notice) {
-    }
-    
-    private func switchToMyProfile() {
-        router.handle(DeepLinks.meTab)
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let isLastSection = indexPath.section == (groups.count - 1)
+        let isLastRow = indexPath.row == (groups[indexPath.section].notices.count - 1)
+        if isLastSection && isLastRow && noticeList.hasMore {
+            noticeList.loadMoreIfAllowed()
+        }
     }
     
     // MARK: - Navigation
@@ -172,6 +161,93 @@ class NoticeTableViewController: UITableViewController {
     }
 }
 
+private extension NoticeTableViewController {
+    func prepareNoticeList() {
+        noticeList = NoticeList(session: userSession)
+        var handles = [Any]()
+        handles.append(noticeList.addItemDidFetchHandler {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.handleListUpdate()
+            }
+        })
+        handles.append(noticeList.addFetchingFailureHandler({[weak self] (error) in
+            OperationQueue.main.addOperation {
+                self?.handleFetchFailure(with: error)
+            }
+        }))
+        listUpdateHandles = handles
+        noticeList.reload()
+    }
+    
+    func handleListUpdate() {
+        refreshControl?.endRefreshing()
+        notices = noticeList.items
+        updateBackgroun()
+    }
+    
+    func handleFetchFailure(with error: Error?) {
+        refreshControl?.endRefreshing()
+        updateBackgroun(with: error)
+    }
+    
+    func updateBackgroun(with error: Error? = nil) {
+        if !notices.isEmpty {
+            tableView.backgroundView = nil
+        } else {
+            let view = CommonViewFactory.shared.makeSimpleEmptyView()
+            view.titleLabel.text = Localized.emptyMessages.notices
+            if let error = error {
+                view.detailLabel.text = error.localizedDescription
+            }
+            tableView.backgroundView = view
+        }
+    }
+    
+    func groupNotices() {
+        let unreads =  notices.filter{!$0.isRead}
+        let reads = notices.filter{$0.isRead}
+        var list: [NoticeGroup] = []
+        if !unreads.isEmpty {
+            list.append(NoticeGroup(notices: unreads, label: .unread))
+        }
+        if !reads.isEmpty {
+            list.append(NoticeGroup(notices: reads, label: .read))
+        }
+        groups = list
+    }
+    
+    func redeemGemsIfAllowed(for notice: Notice) {
+        if actionPopUp != nil {
+            dismiss(animated: true, completion: nil)
+        }
+    }
+}
+
+private extension NoticeTableViewController {
+    func showProfilePage(for notice: Notice) {
+    }
+    
+    func switchToMyProfile() {
+        router.handle(DeepLinks.meTab)
+    }
+    
+    func showGetGemPopUp(for notice: Notice) {
+        var config: GemActionPopUpConfiguration?
+        switch notice.type {
+        case .giftFromOfficialAccount:
+            config = GiftFromOfficialNoticePopUpConfiguration(notice: notice)
+        case .likeFromOfficialAccount:
+            config = LikeFromOfficialNoticePopUpConfiguration(notice: notice)
+        default: return
+        }
+        config?.mainAction = {[weak self] in
+            self?.redeemGemsIfAllowed(for: notice)
+        }
+        performSegue(withIdentifier: SegueID.showPopup, sender: config)
+    }
+    
+}
+
 extension NoticeTableViewController {
     struct SegueID {
         static let showPopup = "showPopup"
@@ -180,5 +256,6 @@ extension NoticeTableViewController {
     struct ReuseID {
         static let normalNoticeCell = "normalNoticeCell"
         static let warningNoticeCell = "warningNoticeCell"
+        static let header = "header"
     }
 }

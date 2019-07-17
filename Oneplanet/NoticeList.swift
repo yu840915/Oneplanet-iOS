@@ -10,15 +10,50 @@ import Foundation
 import ModelBlocks
 import Alamofire
 
-//class GetNoticePageOperation: AlamofireAPIAccessOperation {
-//    let session: UserSession
-//    
-//    ini
-//    
-//    override func prepareURLRequest() throws -> URLRequest {
-//        
-//    }
-//}
+class NoticeList: PaginatedList<GetNoticePageOperationFactory> {
+    let session: UserSession
+    init(session: UserSession) {
+        self.session = session
+        super.init(operationFactory: GetNoticePageOperationFactory(session: session))
+    }
+}
+
+class GetNoticePageOperation: AlamofireAPIAccessOperation, PaginatedFetchingOperationType, ListingType {
+    
+    var items: [Notice] = []
+    var isBeginning: Bool {
+        return true
+    }
+    
+    var nextPageFetchingOperation: PaginatedFetchingOperationType? {
+        return nil
+    }
+    var retryOperation: PaginatedFetchingOperationType?
+    let session: UserSession
+    private let url: URL
+    
+    init(session: UserSession, url: URL?) {
+        self.session = session
+        self.url = url ?? ServiceURLs.base.appendingPathComponent("notices")
+    }
+    
+    override func prepareURLRequest() throws -> URLRequest {
+        let req = URLRequest(url: url)
+        return session.addingAuthorizationToken(to: req)
+    }
+}
+
+class GetNoticePageOperationFactory: PaginatedFetchingOperationFactoryType {
+    
+    let session: UserSession
+    init(session: UserSession) {
+        self.session = session
+    }
+    
+    func makeInitialOperation() -> GetNoticePageOperation {
+        return GetNoticePageOperation(session: session, url: nil)
+    }
+}
 
 class Notice {
     let isRead: Bool

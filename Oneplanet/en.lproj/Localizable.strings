@@ -147,6 +147,8 @@
 "ph_goto_bidding" = "Go bidding page";
 "ph_get_gem" = "Get it";
 "ph_has_got_gem" = "Has got it";
+"ph_new_notices" = "New Notices";
+"ph_read_notices" = "Read Notices";
 
 "phf_seconds_ago_short" = "%@s";
 "phf_minutes_ago_short" = "%@m";
@@ -161,6 +163,7 @@
 "no_promo_popups" = "No Promotion Pop-ups Yet";
 "no_unlocked_lots_title" = "You did not participate in this bidding";
 "no_unlocked_lots_message" = "Please grasp the next bid! The next issue will be announced in 48H!";
+"no_notices" = "No Notices";
 
 "err_no_camera_access" = "Enable Camera Access";
 "err_no_library_access" = "Enable Library Access";

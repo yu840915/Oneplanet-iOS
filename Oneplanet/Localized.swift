@@ -498,6 +498,12 @@ class LocalizedPhrase { //ph_
     var hasGotGem: String {
         return NSLocalizedString("ph_has_got_gem", comment: "")
     }
+    var newNotices: String {
+        return NSLocalizedString("ph_new_notices", comment: "")
+    }
+    var readNotices: String {
+        return NSLocalizedString("ph_read_notices", comment: "")
+    }
 }
 
 class LocalizedPhraseFormats {//phf_
@@ -541,6 +547,9 @@ class EmptyMessages {//no_
     }
     var unlockedLotsMessage: String {
         return NSLocalizedString("no_unlocked_lots_message", comment: "")
+    }
+    var notices: String {
+        return NSLocalizedString("no_notices", comment: "")
     }
 }
 

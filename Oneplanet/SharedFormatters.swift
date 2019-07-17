@@ -25,7 +25,10 @@ struct SharedNumberFormatters {
         result.maximumFractionDigits = 0
         return result
     }()
+}
 
+struct SharedSpeciaFormatters {
+    static let dateFromNowForNotices: DateFromNowFormatter = DateFromNowFormatter()
 }
 
 class RoughNumberFormatter: Formatter {
@@ -67,5 +70,53 @@ class RoughNumberFormatter: Formatter {
             result += 1
         }
         return result
+    }
+}
+
+class DateFromNowFormatter: Formatter {
+    private let numberFormatter: NumberFormatter = {
+        let value = NumberFormatter()
+        value.numberStyle = .decimal
+        value.maximumFractionDigits = 0
+        value.roundingMode = .up
+        return value
+    }()
+    private let dateFormatter: DateFormatter = {
+        let val = DateFormatter()
+        val.dateStyle = .short
+        return val
+    }()
+    private var secondFormat: String {
+        return Localized.phraseFormats.secondsAgoShort
+    }
+    private var hourFormat: String {
+        return Localized.phraseFormats.hoursAgoShort
+    }
+    private var minuteFormat: String {
+        return Localized.phraseFormats.minutesAgoShort
+    }
+    let extractor: TimeIntervalComponentExtractor = {
+        let sec = TimeIntervalComponentExtractor(unitInterval: .second, next: nil)
+        let min = TimeIntervalComponentExtractor(unitInterval: .minute, next: sec)
+        let hour = TimeIntervalComponentExtractor(unitInterval: .hour, next: min)
+        return TimeIntervalComponentExtractor(unitInterval: .day, next: hour)
+    }()
+
+    func string(from date: Date, since from: Date) -> String {
+        let interval = from.timeIntervalSince(date)
+        let comps = TimeIntervalComponents(extractor.extract(from: interval))
+        if comps.days > 0 {
+            return dateFormatter.string(from: date)
+        } else if comps.hours > 0 {
+            return String(format: hourFormat, numberFormatter.string(for: comps.hours)!)
+        } else if comps.minutes > 0 {
+            return String(format: minuteFormat, numberFormatter.string(for: comps.minutes)!)
+        } else {
+            return String(format: secondFormat, numberFormatter.string(for: interval)!)
+        }
+    }
+    
+    func string(from date: Date) -> String {
+        return string(from: date, since: Date())
     }
 }

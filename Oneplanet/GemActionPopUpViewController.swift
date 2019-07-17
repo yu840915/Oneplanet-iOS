@@ -30,6 +30,7 @@ class GemActionPopUpViewController: UIViewController {
         actionButton.setTitle(configuration.actionTitle, for: .normal)
         cancelButton.setTitle(configuration.cancelTitle, for: .normal)
         cancelButton.isHidden = !configuration.shouldShowCancel
+        titleLabel.isHidden = !configuration.shouldShowTitle
     }
     
     private func handleLink(_ url: URL) {
@@ -39,7 +40,7 @@ class GemActionPopUpViewController: UIViewController {
     }
     
     @IBAction func invokeAction(_ sender: UIButton) {
-        mainAction?()
+        (mainAction ?? configuration.mainAction)?()
     }
     
     

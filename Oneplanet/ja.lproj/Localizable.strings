@@ -8,7 +8,7 @@
 
 "iso_code" = "ja";
 
-"fx_hot" = "ホーム";
+"fx_hot" = "人気";
 "fx_my" = "マイページ";
 "fx_life" = "タイムライン";
 "fx_bid" = "オークション";
@@ -36,7 +36,7 @@
 "tl_more" = "もっと";
 "tl_account" = "アカウント";
 "tl_mail_sent" = "メールを送りました";
-"tl_user_id" = "User ID";
+"tl_user_id" = " ユーザーID";
 "tl_email" = "メール";
 "tl_gender" = "性別";
 "tl_male" = "男性";
@@ -101,6 +101,12 @@
 "msgf_received_gem" = "Getting a %@";
 "msgf_unlock_succeeded" = "Unlocked %@!";
 "msgf_bid_succeeded" = "Successfully qualified for %@ bidding";
+"msgf_start_following_you" = "%@ started following you";
+"msgf_liked_your_post" = "%@ liked your post";
+"msgf_you_received_num_gems" = "You received %@ %@s";
+"msgf_post_reported" = "Your post has been reported for %@";
+"msgf_profile_reported" = "Your account %@ has been reported for %@";
+"msgf_liked_your_post_and_gave_gem" = "Your photo was liked by %@, congratulations to get a %@.";
 
 "ph_guest_login" = "ゲスト登録";
 "ph_email_login" = "またはメールアドレスでログイン";
@@ -139,11 +145,25 @@
 "ph_bid_lot" = "Commodity";
 "ph_successful_shipping_info_submission" = "Filled in successfully";
 "ph_goto_bidding" = "Go bidding page";
+"ph_get_gem" = "Get it";
+"ph_has_got_gem" = "Has got it";
+"ph_new_notices" = "New Notices";
+"ph_read_notices" = "Read Notices";
+
+"phf_seconds_ago_short" = "%@ s";
+"phf_minutes_ago_short" = "%@ m";
+"phf_hours_ago_short" = "%@ h";
+"phf_days_ago_short" = "%@ d";
+"phf_seconds_ago" = "%@秒前";
+"phf_minutes_ago" = "%@分前";
+"phf_hours_ago" = "%@時間前";
+"phf_days_ago" = "%@天前";
 
 "no_posts" = "投稿がありません";
 "no_promo_popups" = "No Promotion Pop-ups Yet";
 "no_unlocked_lots_title" = "你沒有參加這次競標";
 "no_unlocked_lots_message" = "請把握下次競標！48H 內會公布下一期競標品！";
+"no_notices" = "No Notices";
 
 "err_no_camera_access" = "カメラへのリクセルを求めています";
 "err_no_library_access" = "写真をライブラリに追加しようとしています";

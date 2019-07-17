@@ -8,7 +8,7 @@
 
 "iso_code" = "zh-hant";
 
-"fx_hot" = "首頁";
+"fx_hot" = "熱門";
 "fx_my" = "我的";
 "fx_life" = "動態";
 "fx_bid" = "競標";
@@ -101,6 +101,12 @@
 "msgf_received_gem" = "獲得 %@ 1 顆";
 "msgf_unlock_succeeded" = "已解鎖 %@!";
 "msgf_bid_succeeded" = "Successfully qualified for %@ bidding";
+"msgf_start_following_you" = "%@ started following you";
+"msgf_liked_your_post" = "%@ liked your post";
+"msgf_you_received_num_gems" = "You received %@ %@s";
+"msgf_post_reported" = "Your post has been reported for %@";
+"msgf_profile_reported" = "Your account %@ has been reported for %@";
+"msgf_liked_your_post_and_gave_gem" = "Your photo was liked by %@, congratulations to get a %@.";
 
 "ph_guest_login" = "訪客進入";
 "ph_email_login" = "或使用電子郵件登入";
@@ -139,11 +145,25 @@
 "ph_bid_lot" = "商品";
 "ph_successful_shipping_info_submission" = "填寫完成";
 "ph_goto_bidding" = "Go bidding page";
+"ph_get_gem" = "Get it";
+"ph_has_got_gem" = "Has got it";
+"ph_new_notices" = "新通知";
+"ph_read_notices" = "過去的通知";
+
+"phf_seconds_ago_short" = "%@ s";
+"phf_minutes_ago_short" = "%@ m";
+"phf_hours_ago_short" = "%@ h";
+"phf_days_ago_short" = "%@ d";
+"phf_seconds_ago" = "%@秒前";
+"phf_minutes_ago" = "%@分鐘前";
+"phf_hours_ago" = "%@小時前";
+"phf_days_ago" = "%@天前";
 
 "no_posts" = "還沒有貼文";
 "no_promo_popups" = "No Promotion Pop-ups Yet";
 "no_unlocked_lots_title" = "你沒有參加這次競標";
 "no_unlocked_lots_message" = "請把握下次競標！48H 內會公布下一期競標品！";
+"no_notices" = "目前沒有通知";
 
 "err_no_camera_access" = "啟用相機權限";
 "err_no_library_access" = "啟用圖庫存取權限";
@@ -172,7 +192,7 @@
 "pop_purple_gem_usage" = "用途：解鎖商品。";
 
 "pop_blue_gem_action" = "立即前往 上傳照片";
-"pop_green_gem_action" = "前往%@查看";
+"pop_green_gem_action" = "前往%@";
 
 "pop_blue_gem_bullet1" = "獲得方式一：上傳照片後，畫面左上角的經驗值會增加，滿格即獲得一顆 競標寶。";
 "pop_blue_gem_bullet2" = "使用一顆 競標寶 + %@，可解鎖商品或投標一次。";

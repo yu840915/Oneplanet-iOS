@@ -55,7 +55,6 @@ class TimeIntervalComponentExtractorTests: XCTestCase {
         let extractor = TimeIntervalComponentExtractor(unitInterval: .day, next: hrExtractor)
         
         let comps = extractor.extract(from: 3 * .day + 5 * .hour + 12.0 * .minute + 20 * .second)
-        
        XCTAssertTrue(comps.contains(TimeIntervalComponent(unitInterval: .day, units: 3)))
         XCTAssertTrue(comps.contains(TimeIntervalComponent(unitInterval: .hour, units: 5)))
         XCTAssertTrue(comps.contains(TimeIntervalComponent(unitInterval: .minute, units: 12)))

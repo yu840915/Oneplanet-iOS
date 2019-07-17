@@ -129,6 +129,12 @@ fileprivate extension UserFlowMainViewController {
             }
             return true
         }
+        actionRouter.add(DeepLinks.meTab.path) {[weak self] (info) -> Bool in
+            OperationQueue.main.addOperation {
+                return self?.switchToTab(.my)
+            }
+            return true
+        }
         self.userActionRounter = actionRouter
         router.addOverridingRouter(actionRouter)
     }
@@ -142,14 +148,15 @@ fileprivate extension UserFlowMainViewController {
     }
 
     func checkAccess(forTab tab: TabFeature) -> Bool {
-        switch tab {
-        case .hot, .bid:
-            return true
-        case .life, .notice, .my:
-            let op = FeatureAccessCheckOperation(userSession: userSession)
-            op.start()
-            return op.isAccessible
-        }
+        return true
+//        switch tab {
+//        case .hot, .bid:
+//            return true
+//        case .life, .notice, .my:
+//            let op = FeatureAccessCheckOperation(userSession: userSession)
+//            op.start()
+//            return op.isAccessible
+//        }
     }
     
     func updateBalloonAppearance() {

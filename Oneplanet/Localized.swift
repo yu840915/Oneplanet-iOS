@@ -26,6 +26,7 @@ class Localized {
     static let emptyMessages = EmptyMessages()
     static let gemStonePopUp = GemStonePopUp()
     static let shippingInfoTerms = LocalizedShippingInfoTerms()
+    static let phraseFormats = LocalizedPhraseFormats()
 }
 
 class LocalizedTitles {//tl_
@@ -358,6 +359,24 @@ class LocalizedMessageFormats {//msgf_
     var bidSucceeded: String {
         return NSLocalizedString("msgf_bid_succeeded", comment: "")
     }
+    var startFollowingYou: String {
+        return NSLocalizedString("msgf_start_following_you", comment: "")
+    }
+    var likedYourPost: String {
+        return NSLocalizedString("msgf_liked_your_post", comment: "")
+    }
+    var gaveYouNumberGems: String {
+        return NSLocalizedString("msgf_you_received_num_gems", comment: "")
+    }
+    var postReported: String {
+        return NSLocalizedString("msgf_post_reported", comment: "")
+    }
+    var profileReported: String {
+        return NSLocalizedString("msgf_profile_reported", comment: "")
+    }
+    var likedYourPostAndGaveGem: String {
+        return NSLocalizedString("msgf_liked_your_post_and_gave_gem", comment: "")
+    }
 }
 
 class LocalizedPhrase { //ph_
@@ -473,6 +492,47 @@ class LocalizedPhrase { //ph_
     var goToBiddingPage: String {
         return NSLocalizedString("ph_goto_bidding", comment: "")
     }
+    var getGem: String {
+        return NSLocalizedString("ph_get_gem", comment: "")
+    }
+    var hasGotGem: String {
+        return NSLocalizedString("ph_has_got_gem", comment: "")
+    }
+    var newNotices: String {
+        return NSLocalizedString("ph_new_notices", comment: "")
+    }
+    var readNotices: String {
+        return NSLocalizedString("ph_read_notices", comment: "")
+    }
+}
+
+class LocalizedPhraseFormats {//phf_
+    fileprivate init() {}
+    var secondsAgoShort: String {
+        return NSLocalizedString("phf_seconds_ago_short", comment: "")
+    }
+    var minutesAgoShort: String {
+        return NSLocalizedString("phf_minutes_ago_short", comment: "")
+    }
+    var hoursAgoShort: String {
+        return NSLocalizedString("phf_hours_ago_short", comment: "")
+    }
+    var daysAgoShort: String {
+        return NSLocalizedString("phf_days_ago_short", comment: "")
+    }
+    var secondsAgo: String {
+        return NSLocalizedString("phf_seconds_ago", comment: "")
+    }
+    var minutesAgo: String {
+        return NSLocalizedString("phf_minutes_ago", comment: "")
+    }
+    var hoursAgo: String {
+        return NSLocalizedString("phf_hours_ago", comment: "")
+    }
+    var daysAgo: String {
+        return NSLocalizedString("phf_days_ago", comment: "")
+    }
+
 }
 
 class EmptyMessages {//no_
@@ -487,6 +547,9 @@ class EmptyMessages {//no_
     }
     var unlockedLotsMessage: String {
         return NSLocalizedString("no_unlocked_lots_message", comment: "")
+    }
+    var notices: String {
+        return NSLocalizedString("no_notices", comment: "")
     }
 }
 

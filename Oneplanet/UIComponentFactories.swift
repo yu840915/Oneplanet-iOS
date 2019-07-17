@@ -26,6 +26,10 @@ class CommonViewFactory {
         view.backgroundColor = .init(white: 1.0, alpha: 0.2)
         return view
     }
+    
+    func makeSimpleEmptyView() -> SimpleEmptyView {
+        return SimpleEmptyView.fromDefaultNib()
+    }
 
 }
 

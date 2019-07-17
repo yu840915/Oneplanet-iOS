@@ -8,7 +8,7 @@
 
 "iso_code" = "zh-hans";
 
-"fx_hot" = "家";
+"fx_hot" = "热门";
 "fx_my" = "我的";
 "fx_life" = "动态";
 "fx_bid" = "投标";
@@ -24,7 +24,7 @@
 "tl_all_photos" = "所有照片";
 "tl_login" = "登入";
 "tl_logins" = "登入";
-"tl_log_out" = "注销";
+"tl_log_out" = "退出";
 "tl_title" = "标题";
 "tl_tos" = "使用条款";
 "tl_bidding_terms" = "竞标条款";
@@ -101,6 +101,12 @@
 "msgf_received_gem" = "获得 %@ 1 颗";
 "msgf_unlock_succeeded" = "已解锁 %@!";
 "msgf_bid_succeeded" = "Successfully qualified for %@ bidding";
+"msgf_start_following_you" = "%@ started following you";
+"msgf_liked_your_post" = "%@ liked your post";
+"msgf_you_received_num_gems" = "You received %@ %@s";
+"msgf_post_reported" = "Your post has been reported for %@";
+"msgf_profile_reported" = "Your account %@ has been reported for %@";
+"msgf_liked_your_post_and_gave_gem" = "Your photo was liked by %@, congratulations to get a %@.";
 
 "ph_guest_login" = "访客进入";
 "ph_email_login" = "或通过电子邮件登录";
@@ -139,11 +145,25 @@
 "ph_bid_lot" = "商品";
 "ph_successful_shipping_info_submission" = "填写完成";
 "ph_goto_bidding" = "Go bidding page";
+"ph_get_gem" = "Get it";
+"ph_has_got_gem" = "Has got it";
+"ph_new_notices" = "New Notices";
+"ph_read_notices" = "Read Notices";
+
+"phf_seconds_ago_short" = "%@ s";
+"phf_minutes_ago_short" = "%@ m";
+"phf_hours_ago_short" = "%@ h";
+"phf_days_ago_short" = "%@ d";
+"phf_seconds_ago" = "%@秒前";
+"phf_minutes_ago" = "%@分钟前";
+"phf_hours_ago" = "%@小时前";
+"phf_days_ago" = "%@天前";
 
 "no_posts" = "还没有贴子";
 "no_promo_popups" = "No Promotion Pop-ups Yet";
 "no_unlocked_lots_title" = "你没有参加这次竞标";
 "no_unlocked_lots_message" = "请把握下次竞标！48H 内会公布下一期商品！";
+"no_notices" = "No Notices";
 
 "err_no_camera_access" = "启用摄像头访问";
 "err_no_library_access" = "启用图库访问";
@@ -172,7 +192,7 @@
 "pop_purple_gem_usage" = "用途：解锁商品。";
 
 "pop_blue_gem_action" = "立即前往 上传照片";
-"pop_green_gem_action" = "前往%@查看";
+"pop_green_gem_action" = "前往%@";
 
 "pop_blue_gem_bullet1" = "获得方式一：上传照片后，画面左上角的经验值会增加，满格即获得一颗竞标宝。";
 "pop_blue_gem_bullet2" = "使用一颗竞标宝+ %@，可解锁商品或投标一次。";

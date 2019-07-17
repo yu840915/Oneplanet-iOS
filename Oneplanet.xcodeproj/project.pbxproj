@@ -88,6 +88,9 @@
 		E07276FD2277424E001239C0 /* URLRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276FC2277424E001239C0 /* URLRouter.swift */; };
 		E07276FF227743D7001239C0 /* URLRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276FE227743D7001239C0 /* URLRouterTests.swift */; };
 		E07277012277EE3D001239C0 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07277002277EE3C001239C0 /* AppConfiguration.swift */; };
+		E077A72E22DDA4C300A2245E /* NoticeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E077A72D22DDA4C300A2245E /* NoticeList.swift */; };
+		E077A73022DDF63500A2245E /* NoticeUIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E077A72F22DDF63500A2245E /* NoticeUIHelpers.swift */; };
+		E0814E3522DC2BBF002D0E32 /* NoticeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0814E3422DC2BBF002D0E32 /* NoticeTableViewController.swift */; };
 		E0814FAE22864B10002F1C02 /* MainUserFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0814FAD22864B10002F1C02 /* MainUserFlow.storyboard */; };
 		E0814FB122864F79002F1C02 /* UserFlowMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0814FB022864F79002F1C02 /* UserFlowMainViewController.swift */; };
 		E0814FB322865CC2002F1C02 /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0814FB222865CC2002F1C02 /* Me.storyboard */; };
@@ -107,6 +110,8 @@
 		E08C312B227826850013DD0C /* EmailInputValidatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08C312A227826850013DD0C /* EmailInputValidatorTests.swift */; };
 		E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */; };
 		E091994622C616C3000AF381 /* BidFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E091994522C616C3000AF381 /* BidFlowViewController.swift */; };
+		E093935222DF0308004F045A /* SimpleEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E093935122DF0308004F045A /* SimpleEmptyView.swift */; };
+		E093935422DF031D004F045A /* SimpleEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E093935322DF031D004F045A /* SimpleEmptyView.xib */; };
 		E0A4617222B234D500D26720 /* ProductListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0A4617122B234D500D26720 /* ProductListHeader.xib */; };
 		E0A4617422B234F600D26720 /* BiddingListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0A4617322B234F600D26720 /* BiddingListHeader.xib */; };
 		E0A4617622B2351100D26720 /* BiddingProcessHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0A4617522B2351100D26720 /* BiddingProcessHeader.xib */; };
@@ -145,6 +150,7 @@
 		E0DCD05722B9CC3D008D9C63 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DCD05622B9CC3D008D9C63 /* ProductDetailViewController.swift */; };
 		E0DCD05922B9D828008D9C63 /* EmptyLotListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0DCD05822B9D827008D9C63 /* EmptyLotListView.xib */; };
 		E0DCD05B22B9D960008D9C63 /* EmptyLotListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DCD05A22B9D960008D9C63 /* EmptyLotListView.swift */; };
+		E0DE81B622DEB2CC00F785E3 /* DateFromNowFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DE81B522DEB2CC00F785E3 /* DateFromNowFormatterTests.swift */; };
 		E0FF797A228C3F6800F61318 /* MyProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FF7979228C3F6800F61318 /* MyProfileTests.swift */; };
 		E0FF797C228D2FC400F61318 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0FF797B228D2FC400F61318 /* Home.storyboard */; };
 		E0FF797E228D38CE00F61318 /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0FF797D228D38CE00F61318 /* Post.storyboard */; };
@@ -260,6 +266,9 @@
 		E07276FC2277424E001239C0 /* URLRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRouter.swift; sourceTree = "<group>"; };
 		E07276FE227743D7001239C0 /* URLRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRouterTests.swift; sourceTree = "<group>"; };
 		E07277002277EE3C001239C0 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
+		E077A72D22DDA4C300A2245E /* NoticeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeList.swift; sourceTree = "<group>"; };
+		E077A72F22DDF63500A2245E /* NoticeUIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeUIHelpers.swift; sourceTree = "<group>"; };
+		E0814E3422DC2BBF002D0E32 /* NoticeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTableViewController.swift; sourceTree = "<group>"; };
 		E0814FAD22864B10002F1C02 /* MainUserFlow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainUserFlow.storyboard; sourceTree = "<group>"; };
 		E0814FB022864F79002F1C02 /* UserFlowMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFlowMainViewController.swift; sourceTree = "<group>"; };
 		E0814FB222865CC2002F1C02 /* Me.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
@@ -279,6 +288,8 @@
 		E08C312A227826850013DD0C /* EmailInputValidatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailInputValidatorTests.swift; sourceTree = "<group>"; };
 		E08F148F226EED8000937352 /* LibraryImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryImagePickerViewController.swift; sourceTree = "<group>"; };
 		E091994522C616C3000AF381 /* BidFlowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidFlowViewController.swift; sourceTree = "<group>"; };
+		E093935122DF0308004F045A /* SimpleEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEmptyView.swift; sourceTree = "<group>"; };
+		E093935322DF031D004F045A /* SimpleEmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleEmptyView.xib; sourceTree = "<group>"; };
 		E0A4617122B234D500D26720 /* ProductListHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductListHeader.xib; sourceTree = "<group>"; };
 		E0A4617322B234F600D26720 /* BiddingListHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BiddingListHeader.xib; sourceTree = "<group>"; };
 		E0A4617522B2351100D26720 /* BiddingProcessHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BiddingProcessHeader.xib; sourceTree = "<group>"; };
@@ -317,6 +328,7 @@
 		E0DCD05622B9CC3D008D9C63 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
 		E0DCD05822B9D827008D9C63 /* EmptyLotListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyLotListView.xib; sourceTree = "<group>"; };
 		E0DCD05A22B9D960008D9C63 /* EmptyLotListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyLotListView.swift; sourceTree = "<group>"; };
+		E0DE81B522DEB2CC00F785E3 /* DateFromNowFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFromNowFormatterTests.swift; sourceTree = "<group>"; };
 		E0FF7979228C3F6800F61318 /* MyProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTests.swift; sourceTree = "<group>"; };
 		E0FF797B228D2FC400F61318 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		E0FF797D228D38CE00F61318 /* Post.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
@@ -393,6 +405,8 @@
 				E0B57DE222A0FAA3006AEADB /* Toast.swift */,
 				E0B57DE622A0FE77006AEADB /* Toast.xib */,
 				E021105222BA1AFA007DE085 /* BiddingTermsViewController.swift */,
+				E093935122DF0308004F045A /* SimpleEmptyView.swift */,
+				E093935322DF031D004F045A /* SimpleEmptyView.xib */,
 				E06589C42270536A00C9E4E6 /* Image Picking */,
 			);
 			path = "Supporting Flows";
@@ -541,6 +555,7 @@
 				E0FF7979228C3F6800F61318 /* MyProfileTests.swift */,
 				E0D1BBD822ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift */,
 				E0B1E19022C9087D00F41248 /* IAPProductTypeTests.swift */,
+				E0DE81B522DEB2CC00F785E3 /* DateFromNowFormatterTests.swift */,
 				E05BB274226D5D2F00721F20 /* Info.plist */,
 			);
 			path = OneplanetTests;
@@ -637,6 +652,17 @@
 			name = "Server Push Message";
 			sourceTree = "<group>";
 		};
+		E0814E3322DC29E6002D0E32 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				E0FF7981228D3A3D00F61318 /* Notification.storyboard */,
+				E0814E3422DC2BBF002D0E32 /* NoticeTableViewController.swift */,
+				E077A72F22DDF63500A2245E /* NoticeUIHelpers.swift */,
+				E077A72D22DDA4C300A2245E /* NoticeList.swift */,
+			);
+			name = Notifications;
+			sourceTree = "<group>";
+		};
 		E0814FAF22864D5D002F1C02 /* Main User Flow */ = {
 			isa = PBXGroup;
 			children = (
@@ -652,7 +678,7 @@
 				E00611F02294F4ED0032AE30 /* Home */,
 				E0FF797D228D38CE00F61318 /* Post.storyboard */,
 				E032844322AB6A0E001F02E8 /* Auction */,
-				E0FF7981228D3A3D00F61318 /* Notification.storyboard */,
+				E0814E3322DC29E6002D0E32 /* Notifications */,
 				E030E4D5228BC3BD0084D383 /* Me */,
 			);
 			name = "Main User Flow";
@@ -783,6 +809,7 @@
 				E07276F32276AA85001239C0 /* GoogleService-Info.plist in Resources */,
 				E03C32A3226D866200C32FD7 /* Localizable.strings in Resources */,
 				E05BB265226D5D2E00721F20 /* Assets.xcassets in Resources */,
+				E093935422DF031D004F045A /* SimpleEmptyView.xib in Resources */,
 				E0DCD04F22B7E77D008D9C63 /* PickerConfirmButtonFooter.xib in Resources */,
 				E03C32B9226DA44A00C32FD7 /* Onboarding.storyboard in Resources */,
 				E0FF797C228D2FC400F61318 /* Home.storyboard in Resources */,
@@ -971,15 +998,18 @@
 				E055ACA72293D114000B7B31 /* ProfileEditorTableViewController.swift in Sources */,
 				E06F5011227B34880067DAE4 /* ProfileDraft.swift in Sources */,
 				E030E4D4228AB1ED0084D383 /* IDHeaderView.swift in Sources */,
+				E0814E3522DC2BBF002D0E32 /* NoticeTableViewController.swift in Sources */,
 				E0837EF5228022C400B13BAF /* TwitterLogIn.swift in Sources */,
 				E0A4617A22B2984A00D26720 /* BiddingListHeader.swift in Sources */,
 				E07276FD2277424E001239C0 /* URLRouter.swift in Sources */,
 				E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */,
 				E081590D22A63616007C9776 /* BlueGemPopUpViewController.swift in Sources */,
 				E03C32AC226D872A00C32FD7 /* Localized.swift in Sources */,
+				E093935222DF0308004F045A /* SimpleEmptyView.swift in Sources */,
 				E03C32B5226D969500C32FD7 /* ColorPalette .swift in Sources */,
 				E0837EF3227FFFBF00B13BAF /* FacebookLogin.swift in Sources */,
 				E06589BF22701B9F00C9E4E6 /* CapturePhotoOperation.swift in Sources */,
+				E077A72E22DDA4C300A2245E /* NoticeList.swift in Sources */,
 				E0BAB71F228482D1007E747C /* InputFieldView.swift in Sources */,
 				E081591122A65276007C9776 /* PurpleGemStoreViewController.swift in Sources */,
 				E0DCD05522B8B620008D9C63 /* ShippingInfoEditorHelpers.swift in Sources */,
@@ -1001,6 +1031,7 @@
 				E0D7DCDB229CE65C00B40D76 /* PromoPopUpFlowViewController.swift in Sources */,
 				E06589BB227001F300C9E4E6 /* AskForAuthorizationOperation.swift in Sources */,
 				E03C329A226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift in Sources */,
+				E077A73022DDF63500A2245E /* NoticeUIHelpers.swift in Sources */,
 				E03C32AE226D8E6800C32FD7 /* SharedFormatters.swift in Sources */,
 				E0DA38A222C31E3800EC4170 /* GemActionPopUpConfigurations.swift in Sources */,
 				E07276F82276D0DC001239C0 /* RequestUserNotificationAuthorizationOperation.swift in Sources */,
@@ -1073,6 +1104,7 @@
 				E0B1E19122C9087D00F41248 /* IAPProductTypeTests.swift in Sources */,
 				E07276FF227743D7001239C0 /* URLRouterTests.swift in Sources */,
 				E0814FB522873103002F1C02 /* RoughNumberFormatterTests.swift in Sources */,
+				E0DE81B622DEB2CC00F785E3 /* DateFromNowFormatterTests.swift in Sources */,
 				E0D1BBD922ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift in Sources */,
 				E0FF797A228C3F6800F61318 /* MyProfileTests.swift in Sources */,
 				E05BB273226D5D2F00721F20 /* OneplanetTests.swift in Sources */,

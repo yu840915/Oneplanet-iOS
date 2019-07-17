@@ -374,7 +374,9 @@ class LocalizedMessageFormats {//msgf_
     var profileReported: String {
         return NSLocalizedString("msgf_profile_reported", comment: "")
     }
-    
+    var likedYourPostAndGaveGem: String {
+        return NSLocalizedString("msgf_liked_your_post_and_gave_gem", comment: "")
+    }
 }
 
 class LocalizedPhrase { //ph_

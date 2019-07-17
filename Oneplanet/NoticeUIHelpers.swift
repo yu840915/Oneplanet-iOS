@@ -159,3 +159,73 @@ class PostReportedViewModel: NoticeViewModel, WarningNoticeItemDisplayable {
     }
     let contentImage: WebImageInfo? = nil
 }
+
+class LikeFromOfficalNoticePopUpConfiguration: GemActionPopUpConfiguration {
+    
+}
+
+class GiftFromOfficialNoticePopUpConfiguration: GemActionPopUpConfiguration {
+    let notice: Notice
+    init(notice: Notice) {
+        self.notice = notice
+    }
+    
+    override var icon: UIImage {
+        return Currency.greenGem.largeIcon
+    }
+    
+    override var attributedSubtitle: NSAttributedString {
+        let num = "3"
+        let gem = Localized.titles.blueGem
+        let text = String(format: Localized.messageFormats.gaveYouNumberGems, num, gem)
+        let attrStr = NSMutableAttributedString(string: text, attributes: subtitleAttributes)
+        let numRange = (text as NSString).range(of: num)
+        let gemRange = (text as NSString).range(of: gem)
+        attrStr.addAttributes([.font: UIFont.systemFont(ofSize: 12, weight: .semibold)], range: numRange)
+        attrStr.addAttributes([.font: UIFont.systemFont(ofSize: 12, weight: .semibold)], range: gemRange)
+        return attrStr
+    }
+    
+    override var actionTitle: String {
+        return Localized.phrases.getGem
+    }
+    override var shouldShowTitle: Bool {
+        return false
+    }
+    override var shouldShowCancel: Bool {
+        return false
+    }
+}
+
+class LikeFromOfficialNoticePopUpConfiguration: GemActionPopUpConfiguration {
+    let notice: Notice
+    init(notice: Notice) {
+        self.notice = notice
+    }
+
+    override var icon: UIImage {
+        return Currency.greenGem.largeIcon
+    }
+    
+    override var attributedSubtitle: NSAttributedString {
+        let gem = Currency.greenGem.displayName
+        let official = "Supreme.AI"
+        let text = String(format: Localized.messageFormats.likedYourPostAndGaveGem, official, gem)
+        let attrStr = NSMutableAttributedString(string: text, attributes: subtitleAttributes)
+        let nameRange = (text as NSString).range(of: official)
+        let gemRange = (text as NSString).range(of: gem)
+        attrStr.addAttributes([.font: UIFont.systemFont(ofSize: 12, weight: .semibold)], range: nameRange)
+        attrStr.addAttributes([.font: UIFont.systemFont(ofSize: 12, weight: .semibold)], range: gemRange)
+        return attrStr
+        
+    }
+    override var actionTitle: String {
+        return Localized.phrases.getGem
+    }
+    override var shouldShowTitle: Bool {
+        return false
+    }
+    override var shouldShowCancel: Bool {
+        return false
+    }
+}

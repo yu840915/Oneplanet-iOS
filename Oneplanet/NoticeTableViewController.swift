@@ -111,7 +111,15 @@ class NoticeTableViewController: UITableViewController {
     }
     
     private func showGetGemPopUp(for notice: Notice) {
-        performSegue(withIdentifier: SegueID.showPopup, sender: nil)
+        var config: GemActionPopUpConfiguration?
+        switch notice.type {
+        case .giftFromOfficialAccount:
+            config = GiftFromOfficialNoticePopUpConfiguration(notice: notice)
+        case .likeFromOfficialAccount:
+            config = LikeFromOfficialNoticePopUpConfiguration(notice: notice)
+        default: return
+        }
+        performSegue(withIdentifier: SegueID.showPopup, sender: config)
     }
     
     private func showFollowAction(for notice: Notice) {
@@ -146,16 +154,12 @@ class NoticeTableViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let container = segue.destination as? PopUpContainerViewController {
-            container.contentViewControllerSetUpBlock = {[weak self] content in
-                self?.prepareContent(for: content as! GemActionPopUpViewController)
+            container.contentViewControllerSetUpBlock = {content in
+                let vc = content as! GemActionPopUpViewController
+                vc.configuration = (sender as! GemActionPopUpConfiguration)
             }
         }
     }
-    
-    private func prepareContent(for controller: GemActionPopUpViewController) {
-        controller.configuration = GemActionPopUpConfiguration()
-    }
-
 }
 
 extension NoticeTableViewController {

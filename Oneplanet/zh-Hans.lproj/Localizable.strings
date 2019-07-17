@@ -106,6 +106,7 @@
 "msgf_you_received_num_gems" = "You received %@ %@s";
 "msgf_post_reported" = "Your post has been reported for %@";
 "msgf_profile_reported" = "Your account %@ has been reported for %@";
+"msgf_liked_your_post_and_gave_gem" = "Your photo was liked by %@, congratulations to get a %@.";
 
 "ph_guest_login" = "访客进入";
 "ph_email_login" = "或通过电子邮件登录";

@@ -48,7 +48,7 @@ class UserSession {
         updateProfileOperation = nil
         if op.success == true {
             let draft = op.draft
-            profile = MyProfile(id: profile!.id, nickname: draft.nickname, gender: draft.gender, avatar: profile!.avatar)
+            profile = MyProfile(id: profile!.displayID, nickname: draft.nickname, gender: draft.gender, avatar: profile!.avatar)
         }
     }
     
@@ -124,7 +124,7 @@ enum LoginType {
 }
 
 class MyProfile: Decodable, UserProfileDisplayable {
-    let id: String
+    let displayID: String
     let nickname: String
     fileprivate(set) var avatar: WebImageInfo?
     var character: Character?
@@ -135,7 +135,7 @@ class MyProfile: Decodable, UserProfileDisplayable {
     }
     
     init(id: String, nickname: String, gender: Gender = .unknown, avatar: WebImageInfo?) {
-        self.id = id
+        self.displayID = id
         self.nickname = nickname
         self.avatar = avatar
         self.gender = gender
@@ -143,13 +143,13 @@ class MyProfile: Decodable, UserProfileDisplayable {
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        id = try container.decode(String.self, forKey: .id)
+        displayID = try container.decode(String.self, forKey: .id)
         nickname = try container.decodeIfPresent(String.self, forKey: .nickname) ?? ""
         gender = .unknown
     }
     
     func updating(with draft: ProfileDraft) -> MyProfile {
-        let profile = MyProfile(id: id,
+        let profile = MyProfile(id: displayID,
                                 nickname: draft.nickname,
                                 avatar: avatar)
         profile.character = draft.character

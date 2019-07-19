@@ -40,12 +40,12 @@ class MyProfileViewController: UIViewController, UserSessionDepending {
     }
     
     private func updateViewsForProfile() {
-        idHeader?.idLabel.text = profile.id
+        idHeader?.idLabel.text = profile.displayID
         profileController.profile = profile
     }
     private func copyID() {
-        UIPasteboard.general.string = profile.id
-        Toast.show(with: String(format: Localized.messageFormats.didCopyMyId, profile.id))
+        UIPasteboard.general.string = profile.displayID
+        Toast.show(with: String(format: Localized.messageFormats.didCopyMyId, profile.displayID))
     }
 
     // MARK: - Navigation

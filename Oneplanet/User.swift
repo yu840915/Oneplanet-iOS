@@ -8,6 +8,20 @@
 
 import UIKit
 
+class User: UserProfileDisplayable {
+    let nickname: String
+    let avatar: WebImageInfo? = nil
+    let character: Character?
+    let id: String
+    let displayID: String
+    init(id: String, displayID: String, nickname: String, character: Character?) {
+        self.displayID = displayID
+        self.id = id
+        self.nickname = nickname
+        self.character = character
+    }
+}
+
 class Character {
     let race: Race
     let color: CharacterColor

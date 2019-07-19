@@ -9,7 +9,7 @@
 import UIKit
 
 protocol UserProfileDisplayable {
-    var id: String {get}
+    var displayID: String {get}
     var nickname: String {get}
     var avatar: WebImageInfo? {get}
     var character: Character? {get}

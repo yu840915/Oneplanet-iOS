@@ -112,6 +112,10 @@
 		E091994622C616C3000AF381 /* BidFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E091994522C616C3000AF381 /* BidFlowViewController.swift */; };
 		E093935222DF0308004F045A /* SimpleEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E093935122DF0308004F045A /* SimpleEmptyView.swift */; };
 		E093935422DF031D004F045A /* SimpleEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E093935322DF031D004F045A /* SimpleEmptyView.xib */; };
+		E0A050C422E16B53002FCFC3 /* ReportReasonPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A050C322E16B53002FCFC3 /* ReportReasonPickerTableViewController.swift */; };
+		E0A050C622E17067002FCFC3 /* ReportDescriptionInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A050C522E17067002FCFC3 /* ReportDescriptionInputViewController.swift */; };
+		E0A050C822E17607002FCFC3 /* ReportHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A050C722E17607002FCFC3 /* ReportHelpers.swift */; };
+		E0A050CA22E19299002FCFC3 /* ReportThankyouViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A050C922E19299002FCFC3 /* ReportThankyouViewController.swift */; };
 		E0A4617222B234D500D26720 /* ProductListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0A4617122B234D500D26720 /* ProductListHeader.xib */; };
 		E0A4617422B234F600D26720 /* BiddingListHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0A4617322B234F600D26720 /* BiddingListHeader.xib */; };
 		E0A4617622B2351100D26720 /* BiddingProcessHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0A4617522B2351100D26720 /* BiddingProcessHeader.xib */; };
@@ -290,6 +294,10 @@
 		E091994522C616C3000AF381 /* BidFlowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidFlowViewController.swift; sourceTree = "<group>"; };
 		E093935122DF0308004F045A /* SimpleEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEmptyView.swift; sourceTree = "<group>"; };
 		E093935322DF031D004F045A /* SimpleEmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleEmptyView.xib; sourceTree = "<group>"; };
+		E0A050C322E16B53002FCFC3 /* ReportReasonPickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportReasonPickerTableViewController.swift; sourceTree = "<group>"; };
+		E0A050C522E17067002FCFC3 /* ReportDescriptionInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDescriptionInputViewController.swift; sourceTree = "<group>"; };
+		E0A050C722E17607002FCFC3 /* ReportHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportHelpers.swift; sourceTree = "<group>"; };
+		E0A050C922E19299002FCFC3 /* ReportThankyouViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportThankyouViewController.swift; sourceTree = "<group>"; };
 		E0A4617122B234D500D26720 /* ProductListHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductListHeader.xib; sourceTree = "<group>"; };
 		E0A4617322B234F600D26720 /* BiddingListHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BiddingListHeader.xib; sourceTree = "<group>"; };
 		E0A4617522B2351100D26720 /* BiddingProcessHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BiddingProcessHeader.xib; sourceTree = "<group>"; };
@@ -407,6 +415,10 @@
 				E021105222BA1AFA007DE085 /* BiddingTermsViewController.swift */,
 				E093935122DF0308004F045A /* SimpleEmptyView.swift */,
 				E093935322DF031D004F045A /* SimpleEmptyView.xib */,
+				E0A050C322E16B53002FCFC3 /* ReportReasonPickerTableViewController.swift */,
+				E0A050C722E17607002FCFC3 /* ReportHelpers.swift */,
+				E0A050C522E17067002FCFC3 /* ReportDescriptionInputViewController.swift */,
+				E0A050C922E19299002FCFC3 /* ReportThankyouViewController.swift */,
 				E06589C42270536A00C9E4E6 /* Image Picking */,
 			);
 			path = "Supporting Flows";
@@ -1022,6 +1034,7 @@
 				E06589BD22700AEC00C9E4E6 /* CaptureSessionController.swift in Sources */,
 				E0D1BBDB22ACEE9500951F19 /* TimeIntervalComponents.swift in Sources */,
 				E0190F4B226DB55400C212D5 /* UIComponentFactories.swift in Sources */,
+				E0A050C422E16B53002FCFC3 /* ReportReasonPickerTableViewController.swift in Sources */,
 				E0DA38A622C48BC400EC4170 /* UnlockFlowViewController.swift in Sources */,
 				E0BDCCEA229FA044006A9D20 /* PromotionPageList.swift in Sources */,
 				E0B57DE322A0FAA3006AEADB /* Toast.swift in Sources */,
@@ -1074,9 +1087,11 @@
 				E0FF7984228D48FA00F61318 /* MyProfileViewController.swift in Sources */,
 				E021105322BA1AFA007DE085 /* BiddingTermsViewController.swift in Sources */,
 				E02842AF229A31AF007212D7 /* CharacterPickerViewController.swift in Sources */,
+				E0A050CA22E19299002FCFC3 /* ReportThankyouViewController.swift in Sources */,
 				E032844922AB7286001F02E8 /* ProductListTableViewController.swift in Sources */,
 				E03C329E226D772400C32FD7 /* Logger.swift in Sources */,
 				E03C32B3226D925100C32FD7 /* ServiceConstants.swift in Sources */,
+				E0A050C822E17607002FCFC3 /* ReportHelpers.swift in Sources */,
 				E081590F22A63628007C9776 /* GreenGemPopUpViewController.swift in Sources */,
 				E032844B22AB7A90001F02E8 /* BiddingProcessTableViewController.swift in Sources */,
 				E091994622C616C3000AF381 /* BidFlowViewController.swift in Sources */,
@@ -1093,6 +1108,7 @@
 				E0190F4D226DCCFB00C212D5 /* UserSession.swift in Sources */,
 				E0DCD05122B7E86B008D9C63 /* PickerConfirmButtonFooter.swift in Sources */,
 				E0190F49226DB0E000C212D5 /* WelcomeMessageViewController.swift in Sources */,
+				E0A050C622E17067002FCFC3 /* ReportDescriptionInputViewController.swift in Sources */,
 				E06589CD2271ADFD00C9E4E6 /* WelcomeMessageContentCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

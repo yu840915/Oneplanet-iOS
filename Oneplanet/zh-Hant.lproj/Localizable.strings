@@ -57,9 +57,11 @@
 "tl_bid_state_to_ship" = "待出貨";
 "tl_bid_state_shipping" = "出貨中";
 "tl_bid_state_delivered" = "已領收";
+"tl_report" = "Report";
 
 "pl_email" = "電子郵件地址";
 "pl_nickname" = "暱稱";
+"pl_report_description" = "Enter the reason for the report";
 
 "msg_email_verification_instruction" = "電子郵件已發送。請單擊電子郵件中的鏈接以完成登入。";
 "msg_add_avatar_prompt" = "添加個人資料照片，以便你的朋友知道這就是你。";
@@ -81,6 +83,12 @@
 "msg_race2_monologue" = "我的名字叫迪克。";
 "msg_race3_monologue" = "我的名字叫壯克。";
 "msg_shipping_info_des" = "「國際運送服務」，請填寫英文地址及收件資訊，商品才可以成功送達";
+"msg_report_user_prompt" = "Why are you reporting this account?";
+"msg_report_post_prompt" = "Choose a reason for reporting this post:";
+"msg_report_user_caption" = "If you report someone’s post, Oneplanet doesn’t tell them who reported it";
+"msg_report_post_caption" = "If you report someone’s post, Oneplanet doesn’t tell them who reported it";
+"msg_thankyou_reporting_user" = "Thanks for reporting this";
+"msg_thankyou_reporting_post" = "Thanks for reporting this post";
 
 "msgf_accept_tos" = "註冊或登錄即表示你同意我們的%@";
 "msgf_resend_verification_email" = "你沒有收到電子郵件？%@";
@@ -107,6 +115,7 @@
 "msgf_post_reported" = "Your post has been reported for %@";
 "msgf_profile_reported" = "Your account %@ has been reported for %@";
 "msgf_liked_your_post_and_gave_gem" = "Your photo was liked by %@, congratulations to get a %@.";
+"msgf_thankyou_report_user" = "Thank you for helping keep the Oneplanet safe and fun for everyone. Remember, we don’t reveal who submitted reports to the person who posted the photo or comment.\n\nOur team will review the post and if it vidolates our %@, we’ll remove it.";
 
 "ph_guest_login" = "訪客進入";
 "ph_email_login" = "或使用電子郵件登入";
@@ -215,3 +224,15 @@
 "ship_postal_code" = "郵遞區號";
 "ship_country" = "國家";
 "ship_phoneNumber" = "電話號碼（僅限送貨）";
+
+"rp_terms_violation" = "I believe this account violates Oneplanet’s Terms";
+"rp_dont_like_post_title" = "I just don’t like it";
+"rp_dnudity_title" = "Nudity or pornography";
+"rp_hate_speech_title" = "Hate speech or symbols";
+"rp_violance_title" = "Violence or threat of violence";
+"rp_hate_speech_subtitle" = "Racist, homophobic or sexist slurs";
+"rp_violance_subtitle" = "Graphic injury, unlawful activity, dangerous or criminal organizations";
+"rp_dont_like_post_detail" = "Don’t like this post?";
+"rp_dnudity_detail" = "Report as nudity or pornography?";
+"rp_hate_speech_detail" = "Report as hate speech or symbols?";
+"rp_violance_detail" = "Report as violence or threat of violence?";

@@ -57,9 +57,11 @@
 "tl_bid_state_to_ship" = "Waiting for shipment";
 "tl_bid_state_shipping" = "In shipment";
 "tl_bid_state_delivered" = "Received";
+"tl_report" = "Report";
 
 "pl_email" = "メールアドレス";
 "pl_nickname" = "ニックネーム";
+"pl_report_description" = "Enter the reason for the report";
 
 "msg_email_verification_instruction" = "電子メールに送信しました。ログインするには、こちたのURLをクリックしてください。";
 "msg_add_avatar_prompt" = "友達があなただとわかるようにプロフィール写真を登録してください";
@@ -81,6 +83,12 @@
 "msg_race2_monologue" = "ディカーです。";
 "msg_race3_monologue" = "ドランカーです。";
 "msg_shipping_info_des" = "International Shipping Service, please fill in the English address and receipt information, the goods can be successfully delivered";
+"msg_report_user_prompt" = "Why are you reporting this account?";
+"msg_report_post_prompt" = "Choose a reason for reporting this post:";
+"msg_report_user_caption" = "If you report someone’s post, Oneplanet doesn’t tell them who reported it";
+"msg_report_post_caption" = "If you report someone’s post, Oneplanet doesn’t tell them who reported it";
+"msg_thankyou_reporting_user" = "Thanks for reporting this";
+"msg_thankyou_reporting_post" = "Thanks for reporting this post";
 
 "msgf_accept_tos" = "アカウントを作成することによって、%@に同意することになります";
 "msgf_resend_verification_email" = "電子メールがみつかりませんか？%@";
@@ -107,6 +115,7 @@
 "msgf_post_reported" = "Your post has been reported for %@";
 "msgf_profile_reported" = "Your account %@ has been reported for %@";
 "msgf_liked_your_post_and_gave_gem" = "Your photo was liked by %@, congratulations to get a %@.";
+"msgf_thankyou_report_user" = "Thank you for helping keep the Oneplanet safe and fun for everyone. Remember, we don’t reveal who submitted reports to the person who posted the photo or comment.\n\nOur team will review the post and if it vidolates our %@, we’ll remove it.";
 
 "ph_guest_login" = "ゲスト登録";
 "ph_email_login" = "またはメールアドレスでログイン";
@@ -215,3 +224,15 @@
 "ship_postal_code" = "郵便番号";
 "ship_country" = "国";
 "ship_phoneNumber" = "電話番号（配送に関する連絡のため）";
+
+"rp_terms_violation" = "I believe this account violates Oneplanet’s Terms";
+"rp_dont_like_post_title" = "I just don’t like it";
+"rp_dnudity_title" = "Nudity or pornography";
+"rp_hate_speech_title" = "Hate speech or symbols";
+"rp_violance_title" = "Violence or threat of violence";
+"rp_hate_speech_subtitle" = "Racist, homophobic or sexist slurs";
+"rp_violance_subtitle" = "Graphic injury, unlawful activity, dangerous or criminal organizations";
+"rp_dont_like_post_detail" = "Don’t like this post?";
+"rp_dnudity_detail" = "Report as nudity or pornography?";
+"rp_hate_speech_detail" = "Report as hate speech or symbols?";
+"rp_violance_detail" = "Report as violence or threat of violence?";

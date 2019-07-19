@@ -27,6 +27,7 @@ class Localized {
     static let gemStonePopUp = GemStonePopUp()
     static let shippingInfoTerms = LocalizedShippingInfoTerms()
     static let phraseFormats = LocalizedPhraseFormats()
+    static let reportReasons = LocalizedReportReasons()
 }
 
 class LocalizedTitles {//tl_
@@ -163,7 +164,9 @@ class LocalizedTitles {//tl_
     var bidStateDelivered: String {
         return NSLocalizedString("tl_bid_state_delivered", comment: "")
     }
-
+    var report: String {
+        return NSLocalizedString("tl_report", comment: "")
+    }
 }
 
 class Feature {//fx_
@@ -201,6 +204,9 @@ class LocalizedPlaceholder {//pl_
     }
     var nickname: String {
         return NSLocalizedString("pl_nickname", comment: "")
+    }
+    var reportDescription: String {
+        return NSLocalizedString("pl_report_description", comment: "")
     }
 }
 
@@ -295,6 +301,24 @@ class LocalizedMessages {//msg_
     var shippingInfoDescription: String {
         return NSLocalizedString("msg_shipping_info_des", comment: "")
     }
+    var reportUserPrompt: String {
+        return NSLocalizedString("msg_report_user_prompt", comment: "")
+    }
+    var reportPostPrompt: String {
+        return NSLocalizedString("msg_report_post_prompt", comment: "")
+    }
+    var reportUserCaption: String {
+        return NSLocalizedString("msg_report_user_caption", comment: "")
+    }
+    var reportPostCaption: String {
+        return NSLocalizedString("msg_report_post_caption", comment: "")
+    }
+    var thankYouForReportingUser: String {
+        return NSLocalizedString("msg_thankyou_reporting_user", comment: "")
+    }
+    var thankYouForReportingPost: String {
+        return NSLocalizedString("msg_thankyou_reporting_post", comment: "")
+    }
 }
 
 class LocalizedMessageFormats {//msgf_
@@ -376,6 +400,9 @@ class LocalizedMessageFormats {//msgf_
     }
     var likedYourPostAndGaveGem: String {
         return NSLocalizedString("msgf_liked_your_post_and_gave_gem", comment: "")
+    }
+    var thankYouForReportUser: String {
+        return NSLocalizedString("msgf_thankyou_report_user", comment: "")
     }
 }
 
@@ -596,6 +623,7 @@ class LocalizedErrors {//err_
 }
 
 class GemStonePopUp { //pop
+    fileprivate init() {}
     var blueGemUsage: String {
         return NSLocalizedString("pop_blue_gem_usage", comment: "")
     }
@@ -641,6 +669,7 @@ class GemStonePopUp { //pop
 }
 
 class LocalizedShippingInfoTerms {//ship_
+    fileprivate init() {}
     var email: String {
         return Localized.titles.email
     }
@@ -670,5 +699,43 @@ class LocalizedShippingInfoTerms {//ship_
     }
     var phoneNumber: String {
         return NSLocalizedString("ship_phoneNumber", comment: "")
+    }
+}
+
+class LocalizedReportReasons { //rp_
+    fileprivate init() {}
+    var termsViolation: String {
+        return NSLocalizedString("rp_terms_violation", comment: "")
+    }
+    
+    var dontLikePostTitle: String {
+        return NSLocalizedString("rp_dont_like_post_title", comment: "")
+    }
+    var dontLikePostDetail: String {
+        return NSLocalizedString("rp_dont_like_post_detail", comment: "")
+    }
+    var nudityTitle: String {
+        return NSLocalizedString("rp_dnudity_title", comment: "")
+    }
+    var nudityDetail: String {
+        return NSLocalizedString("rp_dnudity_detail", comment: "")
+    }
+    var hateSpeechTitle: String {
+        return NSLocalizedString("rp_hate_speech_title", comment: "")
+    }
+    var hateSpeechDetail: String {
+        return NSLocalizedString("rp_hate_speech_detail", comment: "")
+    }
+    var hateSpeechSubtitle: String {
+        return NSLocalizedString("rp_hate_speech_subtitle", comment: "")
+    }
+    var violanceTitle: String {
+        return NSLocalizedString("rp_violance_title", comment: "")
+    }
+    var violanceDetail: String {
+        return NSLocalizedString("rp_violance_detail", comment: "")
+    }
+    var violanceSubtitle: String {
+        return NSLocalizedString("rp_violance_subtitle", comment: "")
     }
 }

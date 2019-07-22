@@ -32,6 +32,14 @@
             </objects>
             <point key="canvasLocation" x="-722" y="98"/>
         </scene>
+        <!--ReportEntry-->
+        <scene sceneID="gc0-Xq-dBQ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SupportingFlows" referencedIdentifier="ReportEntry" id="vsP-dl-9e7" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wzh-2P-Brl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="12" y="2091"/>
+        </scene>
         <!--FriendListsViewController-->
         <scene sceneID="N6Y-31-g6L">
             <objects>
@@ -105,6 +113,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="j6u-Vh-x5p" kind="show" identifier="showFriendLists" id="kVb-Eq-PLA"/>
+                        <segue destination="vsP-dl-9e7" kind="presentation" identifier="showReportFlow" id="KYh-HC-jfC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CJq-km-KGF" userLabel="First Responder" sceneMemberID="firstResponder"/>

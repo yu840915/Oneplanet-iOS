@@ -68,6 +68,10 @@ class MyProfileViewController: UIViewController, UserSessionDepending {
             let vc = nav.viewControllers.first as? FriendListsViewController {
             NavigationBarStyle.darkGray.configure(nav.navigationBar)
             vc.userSession = userSession
+            vc.profile = profile
+            if let url = sender as? URL, url == DeepLinks.followingList {
+                vc.preselectedTab = .following
+            }
         }
     }
 
@@ -81,7 +85,7 @@ extension MyProfileViewController {
 
 extension MyProfileViewController {
    func showFollowList(with url: URL) {
-        performSegue(withIdentifier: SegueID.showFriendLists, sender: nil)
+        performSegue(withIdentifier: SegueID.showFriendLists, sender: url)
     }
 }
 

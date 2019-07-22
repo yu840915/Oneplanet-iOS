@@ -717,18 +717,18 @@
                         <color key="backgroundColor" name="black background"/>
                         <color key="separatorColor" name="default placeholder"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="HAy-Dq-GQM">
+                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="HAy-Dq-GQM">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oJG-Dq-aZf">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oJG-Dq-aZf">
                                     <rect key="frame" x="6" y="19" width="35.5" height="17"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" name="default placeholder"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wgw-dJ-Xqc">
-                                    <rect key="frame" x="0.0" y="54.5" width="414" height="0.5"/>
+                                    <rect key="frame" x="0.0" y="-0.5" width="414" height="0.5"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="0.29999999999999999" id="VdP-mM-SGM"/>
@@ -746,7 +746,7 @@
                                 <constraint firstItem="Wgw-dJ-Xqc" firstAttribute="centerX" secondItem="HAy-Dq-GQM" secondAttribute="centerX" id="wTD-BD-7SV"/>
                             </constraints>
                         </view>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="tBB-Q1-dew">
+                        <view key="tableFooterView" contentMode="scaleToFill" misplaced="YES" id="tBB-Q1-dew">
                             <rect key="frame" x="0.0" y="163" width="414" height="10"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>

@@ -19,6 +19,7 @@ class UserProfileViewController: UIViewController, UserSessionDepending {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
         prepareIDHeaderIfNeeded()
         updateViewsForProfile()
     }
@@ -56,6 +57,9 @@ class UserProfileViewController: UIViewController, UserSessionDepending {
         sheet.addAction(UIAlertAction(title: Localized.titles.unblock, style: .destructive, handler: { (_) in
             self.showUnblockAlert()
         }))
+        sheet.addAction(UIAlertAction(title: Localized.titles.report, style: .destructive, handler: { (_) in
+            self.startReportFlow()
+        }))
         sheet.addAction(UIAlertAction(title: Localized.titles.cancel, style: .cancel, handler: nil))
         present(sheet, animated: true, completion: nil)
     }
@@ -74,13 +78,26 @@ class UserProfileViewController: UIViewController, UserSessionDepending {
             }
             profileController = vc
         }
+        if let vc = segue.destination as? FriendListsViewController {
+            vc.profile = profile
+            if let url = sender as? URL, url == DeepLinks.followingList {
+                vc.preselectedTab = .following
+            }
+        }
+        if let nav = segue.destination as? UINavigationController,
+            let vc = nav.viewControllers.first as? ReportReasonPickerTableViewController {
+            vc.flowController = (sender as! ReportFlowController)
+            vc.didFinishReport = {
+                
+            }
+        }
     }
     
 }
 
 private extension UserProfileViewController {
     func showFollowList(with url: URL) {
-        performSegue(withIdentifier: SegueID.showFriendLists, sender: nil)
+        performSegue(withIdentifier: SegueID.showFriendLists, sender: url)
     }
     
     func copyID() {
@@ -119,10 +136,15 @@ private extension UserProfileViewController {
     func unblockUser() {
         
     }
+    
+    func startReportFlow() {
+        performSegue(withIdentifier: SegueID.showReportFlow, sender: UserReportFlowController())
+    }
 }
 
 extension UserProfileViewController {
     struct SegueID {
         static let showFriendLists = "showFriendLists"
+        static let showReportFlow = "showReportFlow"
     }
 }

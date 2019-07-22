@@ -12,6 +12,9 @@ import XLPagerTabStrip
 class FriendListsViewController: ButtonBarPagerTabStripViewController, UserSessionDepending {
     
     var userSession: UserSession!
+    var profile: UserProfileDisplayable!
+    var preselectedTab: Tab = .follower
+    private var shouldUpdateForPreselection = true
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,6 +23,7 @@ class FriendListsViewController: ButtonBarPagerTabStripViewController, UserSessi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = profile.nickname
         navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
         changeCurrentIndexProgressive = {[weak self] (oldCell, newCell, progressPercentage, changeCurrentIndex, animated) in
             self?.updateButtonBarCell(oldCell: oldCell, newCell: newCell, progressPercentage: progressPercentage, changeCurrentIndex: changeCurrentIndex, animated: animated)
@@ -32,6 +36,19 @@ class FriendListsViewController: ButtonBarPagerTabStripViewController, UserSessi
             nav.viewControllers.count == 1 {
             navigationItem.leftBarButtonItem = UIBarButtonItem(title: Localized.titles.done, style: .done, target: self, action: #selector(exit(_:)))
         }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if shouldUpdateForPreselection {
+            shouldUpdateForPreselection = false
+            moveToViewController(at: preselectedTab.rawValue, animated: false)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
@@ -63,5 +80,35 @@ class FriendListsViewController: ButtonBarPagerTabStripViewController, UserSessi
         // Pass the selected object to the new view controller.
     }
     */
+    
+    enum Tab: Int {
+        case follower = 0
+        case following = 1
+    }
 
+}
+
+class FriendshipOverviewModel: UserOverviewDisplayable {
+    var avatar: WebImageInfo? {
+        return profile.avatar
+    }
+    var displayName: String {
+        return profile.nickname
+    }
+    var displayID: String {
+        return profile.displayID
+    }
+    var character: Character? {
+        return profile.character
+    }
+    let actionTitle: String = Localized.phrases.follow
+    let selectedActionTitle: String? = Localized.phrases.following
+    
+    let profile: UserProfileDisplayable
+    
+    init(profile: UserProfileDisplayable) {
+        self.profile = profile
+    }
+
+    
 }

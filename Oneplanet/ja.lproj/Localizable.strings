@@ -60,6 +60,8 @@
 "tl_report" = "Report";
 "tl_block" = "Block";
 "tl_unblock" = "ブロックを解除";
+"tl_followers" = "フォロワー";
+"tl_followings" = "フォロー中";
 
 "pl_email" = "メールアドレス";
 "pl_nickname" = "ニックネーム";
@@ -171,6 +173,8 @@
 "phf_minutes_ago" = "%@分前";
 "phf_hours_ago" = "%@時間前";
 "phf_days_ago" = "%@天前";
+"phf_followers" = "%@ フォロワー";
+"phf_followings" = "%@ フォロー中";
 
 "no_posts" = "投稿がありません";
 "no_promo_popups" = "No Promotion Pop-ups Yet";
@@ -240,3 +244,5 @@
 "rp_dnudity_detail" = "Report as nudity or pornography?";
 "rp_hate_speech_detail" = "Report as hate speech or symbols?";
 "rp_violance_detail" = "Report as violence or threat of violence?";
+
+"smb_enum_spliter" = ", ";

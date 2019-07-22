@@ -60,6 +60,8 @@
 "tl_report" = "Report";
 "tl_block" = "Block";
 "tl_unblock" = "Unblock";
+"tl_followers" = "Followers";
+"tl_followings" = "Following";
 
 "pl_email" = "Email Address";
 "pl_nickname" = "Nickname";
@@ -171,6 +173,8 @@
 "phf_minutes_ago" = "%@ minutes ago";
 "phf_hours_ago" = "%@ hours ago";
 "phf_days_ago" = "%@ days ago";
+"phf_followers" = "%@ followers";
+"phf_followings" = "%@ following";
 
 "no_posts" = "No Posts Yet";
 "no_promo_popups" = "No Promotion Pop-ups Yet";
@@ -240,3 +244,5 @@
 "rp_dnudity_detail" = "Report as nudity or pornography?";
 "rp_hate_speech_detail" = "Report as hate speech or symbols?";
 "rp_violance_detail" = "Report as violence or threat of violence?";
+
+"smb_enum_spliter" = ", ";

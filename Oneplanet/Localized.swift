@@ -28,6 +28,8 @@ class Localized {
     static let shippingInfoTerms = LocalizedShippingInfoTerms()
     static let phraseFormats = LocalizedPhraseFormats()
     static let reportReasons = LocalizedReportReasons()
+    static let symbols = LocalizedSimbols()
+    
 }
 
 class LocalizedTitles {//tl_
@@ -172,6 +174,12 @@ class LocalizedTitles {//tl_
     }
     var block: String {
         return NSLocalizedString("tl_block", comment: "")
+    }
+    var followers: String {
+    return NSLocalizedString("tl_followers", comment: "")
+    }
+    var followings: String {
+        return NSLocalizedString("tl_followings", comment: "")
     }
 }
 
@@ -571,7 +579,12 @@ class LocalizedPhraseFormats {//phf_
     var daysAgo: String {
         return NSLocalizedString("phf_days_ago", comment: "")
     }
-
+    var followers: String {
+        return NSLocalizedString("phf_followers", comment: "")
+    }
+    var followings: String {
+        return NSLocalizedString("phf_followings", comment: "")
+    }
 }
 
 class EmptyMessages {//no_
@@ -749,5 +762,12 @@ class LocalizedReportReasons { //rp_
     }
     var violanceSubtitle: String {
         return NSLocalizedString("rp_violance_subtitle", comment: "")
+    }
+}
+
+
+class LocalizedSimbols { //smb_
+    var enumSpliter: String {
+        return NSLocalizedString("smb_enum_spliter", comment: "")
     }
 }

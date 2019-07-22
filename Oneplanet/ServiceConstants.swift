@@ -65,6 +65,12 @@ struct DeepLinks {
     static var postEditor: URL {
         return ServiceURLs.base.appendingPathComponent("modal/post-editor")
     }
+    static var followerList: URL {
+        return ServiceURLs.base.appendingPathComponent("modal/followers")
+    }
+    static var followingList: URL {
+        return ServiceURLs.base.appendingPathComponent("modal/followings")
+    }
 }
 
 extension JSONDecoder {

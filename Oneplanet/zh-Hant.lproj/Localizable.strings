@@ -60,6 +60,8 @@
 "tl_report" = "Report";
 "tl_block" = "Block";
 "tl_unblock" = "解除封鎖";
+"tl_followers" = "粉絲";
+"tl_followings" = "追蹤中";
 
 "pl_email" = "電子郵件地址";
 "pl_nickname" = "暱稱";
@@ -171,6 +173,8 @@
 "phf_minutes_ago" = "%@分鐘前";
 "phf_hours_ago" = "%@小時前";
 "phf_days_ago" = "%@天前";
+"phf_followers" = "%@ 粉絲";
+"phf_followings" = "%@ 追蹤中";
 
 "no_posts" = "還沒有貼文";
 "no_promo_popups" = "No Promotion Pop-ups Yet";
@@ -240,3 +244,5 @@
 "rp_dnudity_detail" = "Report as nudity or pornography?";
 "rp_hate_speech_detail" = "Report as hate speech or symbols?";
 "rp_violance_detail" = "Report as violence or threat of violence?";
+
+"smb_enum_spliter" = "、";

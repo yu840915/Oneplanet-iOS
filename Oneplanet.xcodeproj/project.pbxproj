@@ -28,6 +28,9 @@
 		E02842B1229A32C2007212D7 /* ColorPickerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02842B0229A32C2007212D7 /* ColorPickerCollectionViewController.swift */; };
 		E02842B3229A3399007212D7 /* AlienPickerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02842B2229A3399007212D7 /* AlienPickerCollectionViewController.swift */; };
 		E02F49C922E569160014DEBE /* UserOverviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02F49C822E569160014DEBE /* UserOverviewCell.swift */; };
+		E02F49CB22E5948A0014DEBE /* FriendListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02F49CA22E5948A0014DEBE /* FriendListsViewController.swift */; };
+		E02F49CD22E594EE0014DEBE /* FollowerListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02F49CC22E594EE0014DEBE /* FollowerListTableViewController.swift */; };
+		E02F49CF22E595010014DEBE /* FollowingListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02F49CE22E595010014DEBE /* FollowingListTableViewController.swift */; };
 		E030E4D0228A71CB0084D383 /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030E4CF228A71CB0084D383 /* ProfileDetailViewController.swift */; };
 		E030E4D2228AB0B70084D383 /* IDHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E030E4D1228AB0B60084D383 /* IDHeaderView.xib */; };
 		E030E4D4228AB1ED0084D383 /* IDHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030E4D3228AB1ED0084D383 /* IDHeaderView.swift */; };
@@ -200,6 +203,9 @@
 		E02842B0229A32C2007212D7 /* ColorPickerCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerCollectionViewController.swift; sourceTree = "<group>"; };
 		E02842B2229A3399007212D7 /* AlienPickerCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlienPickerCollectionViewController.swift; sourceTree = "<group>"; };
 		E02F49C822E569160014DEBE /* UserOverviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOverviewCell.swift; sourceTree = "<group>"; };
+		E02F49CA22E5948A0014DEBE /* FriendListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListsViewController.swift; sourceTree = "<group>"; };
+		E02F49CC22E594EE0014DEBE /* FollowerListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerListTableViewController.swift; sourceTree = "<group>"; };
+		E02F49CE22E595010014DEBE /* FollowingListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingListTableViewController.swift; sourceTree = "<group>"; };
 		E030E4CF228A71CB0084D383 /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
 		E030E4D1228AB0B60084D383 /* IDHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IDHeaderView.xib; sourceTree = "<group>"; };
 		E030E4D3228AB1ED0084D383 /* IDHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDHeaderView.swift; sourceTree = "<group>"; };
@@ -434,6 +440,9 @@
 				E0814FB222865CC2002F1C02 /* Me.storyboard */,
 				E0FF7983228D48FA00F61318 /* MyProfileViewController.swift */,
 				E0B7B9C922E1D8580005DF77 /* BlockListTableViewController.swift */,
+				E02F49CA22E5948A0014DEBE /* FriendListsViewController.swift */,
+				E02F49CC22E594EE0014DEBE /* FollowerListTableViewController.swift */,
+				E02F49CE22E595010014DEBE /* FollowingListTableViewController.swift */,
 				E02F49C822E569160014DEBE /* UserOverviewCell.swift */,
 				E0814FB622893FAF002F1C02 /* ProfileCollectionViewController.swift */,
 				E030E4CF228A71CB0084D383 /* ProfileDetailViewController.swift */,
@@ -1030,6 +1039,7 @@
 				E06589BF22701B9F00C9E4E6 /* CapturePhotoOperation.swift in Sources */,
 				E077A72E22DDA4C300A2245E /* NoticeList.swift in Sources */,
 				E0BAB71F228482D1007E747C /* InputFieldView.swift in Sources */,
+				E02F49CD22E594EE0014DEBE /* FollowerListTableViewController.swift in Sources */,
 				E081591122A65276007C9776 /* PurpleGemStoreViewController.swift in Sources */,
 				E0DCD05522B8B620008D9C63 /* ShippingInfoEditorHelpers.swift in Sources */,
 				E0190F53226DD62200C212D5 /* UserProgressChecklist.swift in Sources */,
@@ -1065,6 +1075,7 @@
 				E0B57DE122A0FA48006AEADB /* DefaultStyleConfiguration.swift in Sources */,
 				E00611F22294F5680032AE30 /* HotCollectionViewController.swift in Sources */,
 				E0DCD05B22B9D960008D9C63 /* EmptyLotListView.swift in Sources */,
+				E02F49CF22E595010014DEBE /* FollowingListTableViewController.swift in Sources */,
 				E03C32B0226D8E8F00C32FD7 /* NavigationBarStyle.swift in Sources */,
 				E030E4D7228BC3E90084D383 /* User.swift in Sources */,
 				E0A4617822B28B3000D26720 /* ProductListHeader.swift in Sources */,
@@ -1081,6 +1092,7 @@
 				E05BB25E226D5D2A00721F20 /* AppDelegate.swift in Sources */,
 				E0DA38A022C282EC00EC4170 /* GemPickerTableViewController.swift in Sources */,
 				E00611F6229500FA0032AE30 /* HotNavigationItemView.swift in Sources */,
+				E02F49CB22E5948A0014DEBE /* FriendListsViewController.swift in Sources */,
 				E06F4FFE22789C760067DAE4 /* AppLifeCycleObserver.swift in Sources */,
 				E032844F22ABB2FE001F02E8 /* BadgeView.swift in Sources */,
 				E0CB5E11228F0B4A00C0C010 /* TreasuryBarViewController.swift in Sources */,

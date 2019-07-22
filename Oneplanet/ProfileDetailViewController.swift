@@ -15,8 +15,26 @@ protocol UserProfileDisplayable {
     var character: Character? {get}
 }
 
+protocol FollowCountsProvider {
+    var followers: Int {get}
+    var followings: Int {get}
+}
+
+struct FakeCount: FollowCountsProvider {
+    var followers: Int = 1000
+    var followings: Int = 1530
+}
+
 class ProfileDetailViewController: UIViewController, UserSessionDepending, DefaultInstanceFactory {
     var userSession: UserSession!
+    var showFollowListAction: ((URL)->())?
+    var followCountsProvider: FollowCountsProvider? {
+        didSet {
+            if isViewLoaded {
+                updateViewsForFollowCounts()
+            }
+        }
+    }
     var configuration: DisplayConfiguration = .forGuest {
         didSet {
             if isViewLoaded {
@@ -31,7 +49,7 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
     
     @IBOutlet weak var avatarView: AvatarView!
     @IBOutlet weak var nicknameLabel: UILabel!
-    @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var countsTextView: UITextView!
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var raceImageView: UIImageView!
     var profile: UserProfileDisplayable? {
@@ -47,6 +65,8 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
         preferredContentSize = CGSize(width: UIView.noIntrinsicMetric, height: 475)
         localizeTitles()
         updateViewsForProfile()
+        updateViewsForFollowCounts()
+        followCountsProvider = FakeCount()
     }
     
     private func localizeTitles() {
@@ -63,8 +83,30 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
             raceImageView.image = image
         }
         actionButton.isHidden = !configuration.actionButton
-        detailLabel.isHidden = !configuration.detailLabel
+        countsTextView.isHidden = !configuration.detailLabel
         avatarView.avatar = profile.avatar
+    }
+    
+    private func updateViewsForFollowCounts() {
+        guard let provider = followCountsProvider else { return }
+        let followerCount = SharedNumberFormatters.roughNumber.string(for: provider.followers)
+        let follower = String(format: Localized.phraseFormats.followers, followerCount)
+        let followingsCount = SharedNumberFormatters.roughNumber.string(for: provider.followings)
+        let followings = String(format: Localized.phraseFormats.followings, SharedNumberFormatters.roughNumber.string(for: provider.followings))
+        let text = [follower, followings].joined(separator: Localized.symbols.enumSpliter)
+        let followerCountRange = (text as NSString).range(of: followerCount)
+        let followerRange = (text as NSString).range(of: follower)
+        let followingsCountRange = (text as NSString).range(of: followingsCount)
+        let followingRange = (text as NSString).range(of: followings)
+        let attrStr = NSMutableAttributedString(string: text, attributes: [.foregroundColor : ColorPalette.defaultText])
+        attrStr.addAttributes([.link : DeepLinks.followerList], range: followerRange)
+        attrStr.addAttributes([.link : DeepLinks.followingList], range: followingRange)
+        attrStr.addAttributes([.font: UIFont.systemFont(ofSize: 14, weight: .semibold)], range: followerCountRange)
+        attrStr.addAttributes([.font: UIFont.systemFont(ofSize: 14, weight: .semibold)], range: followingsCountRange)
+        countsTextView.linkTextAttributes = [
+            .foregroundColor : ColorPalette.defaultText,
+            .font: UIFont.systemFont(ofSize: 14)]
+        countsTextView.attributedText = attrStr
     }
     
     @IBAction func performAction(_ sender: UIButton) {
@@ -76,6 +118,15 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
             vc.userSession = userSession
             vc.draft = ProfileDraft(profile: userSession.profile!)
         }
+    }
+}
+
+extension ProfileDetailViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        OperationQueue.main.addOperation {
+            self.showFollowListAction?(URL)
+        }
+        return false
     }
 }
 

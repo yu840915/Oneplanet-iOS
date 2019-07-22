@@ -52,6 +52,7 @@ class WeChatLogInOperation: SimpleAsynchronousOperation, SocialAuthenticationOpe
             fail(with: nil)
             return
         }
+        debugPrint("[Wechat] code \(code)")
         submitAuthCode(code)
     }
     

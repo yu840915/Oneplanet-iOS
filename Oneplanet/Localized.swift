@@ -167,6 +167,12 @@ class LocalizedTitles {//tl_
     var report: String {
         return NSLocalizedString("tl_report", comment: "")
     }
+    var unblock: String {
+        return NSLocalizedString("tl_unblock", comment: "")
+    }
+    var block: String {
+        return NSLocalizedString("tl_block", comment: "")
+    }
 }
 
 class Feature {//fx_
@@ -319,6 +325,9 @@ class LocalizedMessages {//msg_
     var thankYouForReportingPost: String {
         return NSLocalizedString("msg_thankyou_reporting_post", comment: "")
     }
+    var unblockDescription: String {
+        return NSLocalizedString("msg_unblock_des", comment: "")
+    }
 }
 
 class LocalizedMessageFormats {//msgf_
@@ -403,6 +412,9 @@ class LocalizedMessageFormats {//msgf_
     }
     var thankYouForReportUser: String {
         return NSLocalizedString("msgf_thankyou_report_user", comment: "")
+    }
+    var unblockUserPrompt: String {
+        return NSLocalizedString("msgf_unblock_user_prompt", comment: "")
     }
 }
 

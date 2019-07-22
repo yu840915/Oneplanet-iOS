@@ -27,6 +27,7 @@
 		E02842AF229A31AF007212D7 /* CharacterPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02842AE229A31AE007212D7 /* CharacterPickerViewController.swift */; };
 		E02842B1229A32C2007212D7 /* ColorPickerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02842B0229A32C2007212D7 /* ColorPickerCollectionViewController.swift */; };
 		E02842B3229A3399007212D7 /* AlienPickerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02842B2229A3399007212D7 /* AlienPickerCollectionViewController.swift */; };
+		E02F49C922E569160014DEBE /* UserOverviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02F49C822E569160014DEBE /* UserOverviewCell.swift */; };
 		E030E4D0228A71CB0084D383 /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030E4CF228A71CB0084D383 /* ProfileDetailViewController.swift */; };
 		E030E4D2228AB0B70084D383 /* IDHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E030E4D1228AB0B60084D383 /* IDHeaderView.xib */; };
 		E030E4D4228AB1ED0084D383 /* IDHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030E4D3228AB1ED0084D383 /* IDHeaderView.swift */; };
@@ -198,6 +199,7 @@
 		E02842AE229A31AE007212D7 /* CharacterPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterPickerViewController.swift; sourceTree = "<group>"; };
 		E02842B0229A32C2007212D7 /* ColorPickerCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerCollectionViewController.swift; sourceTree = "<group>"; };
 		E02842B2229A3399007212D7 /* AlienPickerCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlienPickerCollectionViewController.swift; sourceTree = "<group>"; };
+		E02F49C822E569160014DEBE /* UserOverviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOverviewCell.swift; sourceTree = "<group>"; };
 		E030E4CF228A71CB0084D383 /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
 		E030E4D1228AB0B60084D383 /* IDHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IDHeaderView.xib; sourceTree = "<group>"; };
 		E030E4D3228AB1ED0084D383 /* IDHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDHeaderView.swift; sourceTree = "<group>"; };
@@ -432,6 +434,7 @@
 				E0814FB222865CC2002F1C02 /* Me.storyboard */,
 				E0FF7983228D48FA00F61318 /* MyProfileViewController.swift */,
 				E0B7B9C922E1D8580005DF77 /* BlockListTableViewController.swift */,
+				E02F49C822E569160014DEBE /* UserOverviewCell.swift */,
 				E0814FB622893FAF002F1C02 /* ProfileCollectionViewController.swift */,
 				E030E4CF228A71CB0084D383 /* ProfileDetailViewController.swift */,
 				E089F70C228E9ECB003E77DF /* AvatarView.swift */,
@@ -1090,6 +1093,7 @@
 				E02842B3229A3399007212D7 /* AlienPickerCollectionViewController.swift in Sources */,
 				E0FF7984228D48FA00F61318 /* MyProfileViewController.swift in Sources */,
 				E021105322BA1AFA007DE085 /* BiddingTermsViewController.swift in Sources */,
+				E02F49C922E569160014DEBE /* UserOverviewCell.swift in Sources */,
 				E02842AF229A31AF007212D7 /* CharacterPickerViewController.swift in Sources */,
 				E0A050CA22E19299002FCFC3 /* ReportThankyouViewController.swift in Sources */,
 				E032844922AB7286001F02E8 /* ProductListTableViewController.swift in Sources */,

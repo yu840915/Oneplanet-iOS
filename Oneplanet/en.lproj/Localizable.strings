@@ -58,6 +58,8 @@
 "tl_bid_state_shipping" = "In shipment";
 "tl_bid_state_delivered" = "Received";
 "tl_report" = "Report";
+"tl_block" = "Block";
+"tl_unblock" = "Unblock";
 
 "pl_email" = "Email Address";
 "pl_nickname" = "Nickname";
@@ -89,6 +91,7 @@
 "msg_report_post_caption" = "If you report someone’s post, Oneplanet doesn’t tell them who reported it";
 "msg_thankyou_reporting_user" = "Thanks for reporting this";
 "msg_thankyou_reporting_post" = "Thanks for reporting this post";
+"msg_unblock_des" = "They will now be able to request to follow you on Oneplanet. Oneplanet won't let them know you unblocked them";
 
 "msgf_accept_tos" = "By signing up or login, you agree to our %@.";
 "msgf_resend_verification_email" = "You did not receive the email? %@.";
@@ -116,6 +119,7 @@
 "msgf_profile_reported" = "Your account %@ has been reported for %@";
 "msgf_liked_your_post_and_gave_gem" = "Your photo was liked by %@, congratulations to get a %@.";
 "msgf_thankyou_report_user" = "Thank you for helping keep the Oneplanet safe and fun for everyone. Remember, we don’t reveal who submitted reports to the person who posted the photo or comment.\n\nOur team will review the post and if it vidolates our %@, we’ll remove it.";
+"msgf_unblock_user_prompt" = "Unblock %@?";
 
 "ph_guest_login" = "Guest";
 "ph_email_login" = "Or Login With Email";

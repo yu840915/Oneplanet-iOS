@@ -801,7 +801,12 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="W8E-l4-jxI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" name="black background"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="S4V-Pd-UXd">
+                            <rect key="frame" x="0.0" y="108" width="375" height="1"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="80" id="2cm-He-itF" customClass="UserOverviewCell" customModule="Oneplanet" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
@@ -888,7 +893,7 @@
                                                     </state>
                                                     <state key="selected" backgroundImage="bt_smallwirewhite_nor"/>
                                                     <connections>
-                                                        <action selector="invokeAction:" destination="2cm-He-itF" eventType="touchUpInside" id="Zpn-MK-HmP"/>
+                                                        <action selector="invokeAction:" destination="2cm-He-itF" eventType="touchUpInside" id="XiC-9s-9aJ"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -906,7 +911,10 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" name="black background"/>
                                 <connections>
-                                    <outlet property="actionButton" destination="ObD-Gr-Fwb" id="li0-bg-ec0"/>
+                                    <outlet property="actionButton" destination="ObD-Gr-Fwb" id="Wjq-cN-hpT"/>
+                                    <outlet property="avatarView" destination="Nel-7y-VuH" id="rhi-Jh-NVA"/>
+                                    <outlet property="idLabel" destination="GdF-mZ-IL6" id="wXl-5i-Q40"/>
+                                    <outlet property="nameLabel" destination="Pc4-t0-x6g" id="Vdb-Oe-TaM"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

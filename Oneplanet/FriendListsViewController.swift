@@ -13,13 +13,47 @@ class FriendListsViewController: ButtonBarPagerTabStripViewController, UserSessi
     
     var userSession: UserSession!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        PagerStyleConfigurer().configure(self)
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
+        changeCurrentIndexProgressive = {[weak self] (oldCell, newCell, progressPercentage, changeCurrentIndex, animated) in
+            self?.updateButtonBarCell(oldCell: oldCell, newCell: newCell, progressPercentage: progressPercentage, changeCurrentIndex: changeCurrentIndex, animated: animated)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let nav = navigationController,
+            nav.viewControllers.count == 1 {
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: Localized.titles.done, style: .done, target: self, action: #selector(exit(_:)))
+        }
+    }
+    
+    override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
+        let controllers = [FollowerListTableViewController.fromDefaultStoryboard(), FollowingListTableViewController.fromDefaultStoryboard()]
+        controllers
+            .compactMap{$0 as? UserSessionDepending}
+            .forEach{$0.userSession = userSession}
+        return controllers
+    }
 
+    @IBAction func exit(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+
+    func updateButtonBarCell(oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) {
+        guard changeCurrentIndex else { return }
+        oldCell?.label.textColor = PagerStyleConfigurer.Style.normal.titleColor
+        oldCell?.label.font = PagerStyleConfigurer.Style.normal.font
+        newCell?.label.textColor = PagerStyleConfigurer.Style.highlighted.titleColor
+        newCell?.label.font = PagerStyleConfigurer.Style.highlighted.font
+    }
+    
     /*
     // MARK: - Navigation
 

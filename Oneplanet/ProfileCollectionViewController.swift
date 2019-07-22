@@ -16,6 +16,7 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
     fileprivate var sections: [Section] = [.detail]
     fileprivate var posts: [Any] = []
     private var detailController: ProfileDetailViewController?
+    var showFollowListAction: ((URL)->())?
     var profile: UserProfileDisplayable! {
         didSet {
             if isViewLoaded {
@@ -84,6 +85,9 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
     private func prepareContentViewController(for cell: ProfileContainerCell) {
         let vc = ProfileDetailViewController.fromDefaultStoryboard()
         vc.userSession = userSession
+        vc.showFollowListAction = {[weak self] url in
+            self?.showFollowListAction?(url)
+        }
         addChild(vc)
         cell.setUp(vc)
         vc.didMove(toParent: self)

@@ -63,17 +63,26 @@ class UserProfileViewController: UIViewController, UserSessionDepending {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let vc = segue.destination as? ProfileCollectionViewController {
+        if let vc = segue.destination as? UserSessionDepending {
             vc.userSession = userSession
+        }
+        if let vc = segue.destination as? ProfileCollectionViewController {            
             vc.profile = profile
             vc.configuration = isMe ? .forMe: .forOther
+            vc.showFollowListAction = {[weak self] url in
+                self?.showFollowList(with: url)
+            }
             profileController = vc
         }
     }
-
+    
 }
 
 private extension UserProfileViewController {
+    func showFollowList(with url: URL) {
+        performSegue(withIdentifier: SegueID.showFriendLists, sender: nil)
+    }
+    
     func copyID() {
         UIPasteboard.general.string = profile.displayID
         Toast.show(with: String(format: Localized.messageFormats.didCopyId, profile.displayID))
@@ -109,5 +118,11 @@ private extension UserProfileViewController {
     
     func unblockUser() {
         
+    }
+}
+
+extension UserProfileViewController {
+    struct SegueID {
+        static let showFriendLists = "showFriendLists"
     }
 }

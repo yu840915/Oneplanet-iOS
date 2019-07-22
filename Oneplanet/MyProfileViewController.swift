@@ -55,14 +55,34 @@ class MyProfileViewController: UIViewController, UserSessionDepending {
             vc.userSession = userSession
             vc.profile = profile
             vc.configuration = userSession.isGuest ? .forGuest: .forMe
+            vc.showFollowListAction = {[weak self] url in
+                self?.showFollowList(with: url)
+            }
             profileController = vc
         }
         if let nav = segue.destination as? UINavigationController,
             let vc = nav.viewControllers.first as? SettingsTableViewController {
             vc.userSession = userSession
         }
+        if let nav = segue.destination as? UINavigationController,
+            let vc = nav.viewControllers.first as? FriendListsViewController {
+            NavigationBarStyle.darkGray.configure(nav.navigationBar)
+            vc.userSession = userSession
+        }
     }
 
+}
+
+extension MyProfileViewController {
+    struct SegueID {
+        static let showFriendLists = "showFriendLists"
+    }
+}
+
+extension MyProfileViewController {
+   func showFollowList(with url: URL) {
+        performSegue(withIdentifier: SegueID.showFriendLists, sender: nil)
+    }
 }
 
 extension MyProfileViewController: ScrollToTopHandler {

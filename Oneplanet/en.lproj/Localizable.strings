@@ -94,10 +94,12 @@
 "msg_thankyou_reporting_user" = "Thanks for reporting this";
 "msg_thankyou_reporting_post" = "Thanks for reporting this post";
 "msg_unblock_des" = "They will now be able to request to follow you on Oneplanet. Oneplanet won't let them know you unblocked them";
+"msg_block_des" = "They won’t be able to find your profile, posts or story on Oneplanet. Oneplanet won’t let them know you blocked them";
 
 "msgf_accept_tos" = "By signing up or login, you agree to our %@.";
 "msgf_resend_verification_email" = "You did not receive the email? %@.";
 "msgf_did_copy_my_id" = "My Oneplanet ID [%@] Copied.";
+"msgf_did_copy_id" = "Oneplanet ID [%@] Copied";
 "msgf_winner_notice" = "The winner must check if the %@ is filled in to ensure that the goods can be delivered.";
 "msgf_unlock_lot" = "Unlock %@?";
 "msgf_did_unlock_lot" = "Unlocked %@!";
@@ -122,6 +124,7 @@
 "msgf_liked_your_post_and_gave_gem" = "Your photo was liked by %@, congratulations to get a %@.";
 "msgf_thankyou_report_user" = "Thank you for helping keep the Oneplanet safe and fun for everyone. Remember, we don’t reveal who submitted reports to the person who posted the photo or comment.\n\nOur team will review the post and if it vidolates our %@, we’ll remove it.";
 "msgf_unblock_user_prompt" = "Unblock %@?";
+"msgf_block_user_prompt" = "Block %@?";
 
 "ph_guest_login" = "Guest";
 "ph_email_login" = "Or Login With Email";
@@ -138,6 +141,7 @@
 "ph_nickname_rule" = "Nickname cap 30 characters, can't use punctuation or emoji";
 "ph_copy_id" = "copy ID";
 "ph_follow" = "Follow";
+"ph_unfollow" = "Unfollow";
 "ph_following" = "Following";
 "ph_choose_role" = "Choose your Alien";
 "ph_choose_color" = "Choose Color";

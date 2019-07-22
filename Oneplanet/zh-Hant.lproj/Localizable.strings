@@ -94,10 +94,12 @@
 "msg_thankyou_reporting_user" = "Thanks for reporting this";
 "msg_thankyou_reporting_post" = "Thanks for reporting this post";
 "msg_unblock_des" = "他們現在可以在 Oneplanet 上追蹤你。Oneplanet 不會讓他們知道你已將他們解除封鎖。";
+"msg_block_des" = "They won’t be able to find your profile, posts or story on Oneplanet. Oneplanet won’t let them know you blocked them";
 
 "msgf_accept_tos" = "註冊或登錄即表示你同意我們的%@";
 "msgf_resend_verification_email" = "你沒有收到電子郵件？%@";
 "msgf_did_copy_my_id" = "我的 Oneplanet ID [%@] 已複製。";
+"msgf_did_copy_id" = "Oneplanet ID [%@] 已複製。";
 "msgf_winner_notice" = "得標者請檢查是否填寫%@，以確保商品能夠送達。";
 "msgf_unlock_lot" = "解鎖 %@？";
 "msgf_did_unlock_lot" = "已解鎖 %@！";
@@ -122,6 +124,7 @@
 "msgf_liked_your_post_and_gave_gem" = "Your photo was liked by %@, congratulations to get a %@.";
 "msgf_thankyou_report_user" = "Thank you for helping keep the Oneplanet safe and fun for everyone. Remember, we don’t reveal who submitted reports to the person who posted the photo or comment.\n\nOur team will review the post and if it vidolates our %@, we’ll remove it.";
 "msgf_unblock_user_prompt" = "解鎖封鎖%@嗎？";
+"msgf_block_user_prompt" = "Block %@?";
 
 "ph_guest_login" = "訪客進入";
 "ph_email_login" = "或使用電子郵件登入";
@@ -138,6 +141,7 @@
 "ph_nickname_rule" = "暱稱上限 30 字元，不得包含標點符號或表情符號";
 "ph_copy_id" = "複製 ID";
 "ph_follow" = "Follow";
+"ph_unfollow" = "Unfollow";
 "ph_following" = "Following";
 "ph_choose_role" = "選擇外星人種類";
 "ph_choose_color" = "選擇顏色";

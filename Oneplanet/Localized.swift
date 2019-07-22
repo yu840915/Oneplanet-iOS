@@ -336,6 +336,9 @@ class LocalizedMessages {//msg_
     var unblockDescription: String {
         return NSLocalizedString("msg_unblock_des", comment: "")
     }
+    var blockDescription: String {
+        return NSLocalizedString("msg_block_des", comment: "")
+    }
 }
 
 class LocalizedMessageFormats {//msgf_
@@ -351,6 +354,9 @@ class LocalizedMessageFormats {//msgf_
     }
     var didCopyMyId: String {
         return NSLocalizedString("msgf_did_copy_my_id", comment: "")
+    }
+    var didCopyId: String {
+        return NSLocalizedString("msgf_did_copy_id", comment: "")
     }
     var winnerNotice: String {
         return NSLocalizedString("msgf_winner_notice", comment: "")
@@ -424,6 +430,9 @@ class LocalizedMessageFormats {//msgf_
     var unblockUserPrompt: String {
         return NSLocalizedString("msgf_unblock_user_prompt", comment: "")
     }
+    var blockUserPrompt: String {
+        return NSLocalizedString("msgf_block_user_prompt", comment: "")
+    }
 }
 
 class LocalizedPhrase { //ph_
@@ -472,6 +481,9 @@ class LocalizedPhrase { //ph_
     }
     var follow: String {
         return NSLocalizedString("ph_follow", comment: "")
+    }
+    var unfollow: String {
+        return NSLocalizedString("ph_unfollow", comment: "")
     }
     var following: String {
         return NSLocalizedString("ph_following", comment: "")

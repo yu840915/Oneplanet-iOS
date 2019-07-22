@@ -14,6 +14,7 @@ class BlockListTableViewController: UITableViewController, UserSessionDepending 
     var users: [User] = []
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
         title = Localized.phrases.blockList
         users = [User(id: "123", displayID: "Maker123", nickname: "Mia", character: nil)]
     }
@@ -43,23 +44,32 @@ class BlockListTableViewController: UITableViewController, UserSessionDepending 
             self.unblock(user)
         }))
         present(alert, animated: true, completion: nil)
-        
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: SegueID.showProfile, sender: users[indexPath.row])
     }
     
     private func unblock(_ user: User) {
         
     }
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let vc = segue.destination as? UserProfileViewController {
+            vc.userSession = userSession
+            vc.profile = (sender as! User)
+        }
     }
-    */
+    
+}
 
+extension BlockListTableViewController {
+    struct SegueID {
+        static let showProfile = "showProfile"
+    }
 }
 
 class BlockedUserOverviewModel: UserOverviewDisplayable {

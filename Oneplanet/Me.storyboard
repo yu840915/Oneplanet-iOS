@@ -32,6 +32,74 @@
             </objects>
             <point key="canvasLocation" x="-722" y="98"/>
         </scene>
+        <!--ProfileCollectionViewController-->
+        <scene sceneID="vdy-Qa-Yd1">
+            <objects>
+                <viewControllerPlaceholder referencedIdentifier="ProfileCollectionViewController" id="GQf-sp-Uqo" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hbt-0v-nuv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="54" y="2280"/>
+        </scene>
+        <!--UserProfileViewController-->
+        <scene sceneID="kFe-vh-vpl">
+            <objects>
+                <viewControllerPlaceholder referencedIdentifier="UserProfileViewController" id="pPI-SY-TZW" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Ps-3v-QfM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4102" y="572"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="CkV-eb-eWR">
+            <objects>
+                <navigationController storyboardIdentifier="profileEntry" id="e9s-c7-sf1" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ux1-MM-2H4">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="J1K-Xq-1EA" kind="relationship" relationship="rootViewController" id="bpe-5x-QiM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QQz-zX-sO0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1583" y="2282"/>
+        </scene>
+        <!--User Profile View Controller-->
+        <scene sceneID="tWs-rC-Mhb">
+            <objects>
+                <viewController storyboardIdentifier="UserProfileViewController" id="J1K-Xq-1EA" customClass="UserProfileViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mwp-5X-kay">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zH4-Za-Ppw">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <connections>
+                                    <segue destination="GQf-sp-Uqo" kind="embed" id="M7U-e7-fBr"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="zH4-Za-Ppw" secondAttribute="bottom" id="Jho-DC-TAo"/>
+                            <constraint firstItem="zH4-Za-Ppw" firstAttribute="centerX" secondItem="myv-RF-Fen" secondAttribute="centerX" id="YHw-K3-Fr3"/>
+                            <constraint firstItem="zH4-Za-Ppw" firstAttribute="width" secondItem="Mwp-5X-kay" secondAttribute="width" id="Z6x-mc-BHb"/>
+                            <constraint firstItem="zH4-Za-Ppw" firstAttribute="top" secondItem="myv-RF-Fen" secondAttribute="top" id="yyW-Ly-PZ0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="myv-RF-Fen"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="yTT-s4-Y25">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="ic_more_nor" id="KBP-Pe-vp3">
+                            <connections>
+                                <action selector="showActionSheet:" destination="J1K-Xq-1EA" id="65q-1A-9nw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CJq-km-KGF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-722" y="2281"/>
+        </scene>
         <!--Profile Detail View Controller-->
         <scene sceneID="qAj-SZ-MXI">
             <objects>
@@ -280,7 +348,7 @@
         <!--Profile Collection View Controller-->
         <scene sceneID="ECN-gZ-EaE">
             <objects>
-                <collectionViewController id="UGj-Rj-lAV" customClass="ProfileCollectionViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="ProfileCollectionViewController" id="UGj-Rj-lAV" customClass="ProfileCollectionViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="Xez-yY-Ish">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -998,6 +1066,9 @@
                             <outlet property="delegate" destination="6Dr-pj-fYY" id="gQi-N9-zJE"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="pPI-SY-TZW" kind="show" identifier="showProfile" id="Vvu-5K-qfr"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qoJ-DE-t0o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1287,11 +1358,20 @@
             </objects>
             <point key="canvasLocation" x="1836" y="2282"/>
         </scene>
+        <!--profileEntry-->
+        <scene sceneID="DoV-1I-8pF">
+            <objects>
+                <viewControllerPlaceholder referencedIdentifier="profileEntry" id="HGn-DQ-6Kf" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E2E-DX-mRi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3752" y="2281"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bt_smallgreen_nor" width="29" height="28"/>
         <image name="bt_smallwirewhite_nor" width="29" height="28"/>
         <image name="ic_contactus_nor" width="40" height="40"/>
+        <image name="ic_more_nor" width="13" height="3"/>
         <image name="ic_morelist_nor" width="40" height="40"/>
         <image name="ic_my_nor" width="64" height="86"/>
         <image name="ic_my_sel" width="64" height="86"/>

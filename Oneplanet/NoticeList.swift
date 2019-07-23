@@ -28,7 +28,9 @@ class GetNoticePageOperation: AlamofireAPIAccessOperation, PaginatedFetchingOper
     var nextPageFetchingOperation: PaginatedFetchingOperationType? {
         return nil
     }
-    var retryOperation: PaginatedFetchingOperationType?
+    var retryOperation: PaginatedFetchingOperationType? {
+        return GetNoticePageOperation(session: session, url: url)
+    }
     let session: UserSession
     private let url: URL
     

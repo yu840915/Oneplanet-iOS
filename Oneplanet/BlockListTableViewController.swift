@@ -10,13 +10,20 @@ import UIKit
 
 class BlockListTableViewController: UITableViewController, UserSessionDepending {
     
+    var blockList: UserList!
     var userSession: UserSession!
     var users: [User] = []
+    private var listUpdateHandles: [Any]?
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
         title = Localized.phrases.blockList
+        prepareList()
         users = [User(id: "123", displayID: "Maker123", nickname: "Mia", character: nil)]
+    }
+    
+    @IBAction func reload(_ sender: UIRefreshControl) {
+        blockList.reload()
     }
 
     // MARK: - Table view data source
@@ -51,10 +58,6 @@ class BlockListTableViewController: UITableViewController, UserSessionDepending 
         performSegue(withIdentifier: SegueID.showProfile, sender: users[indexPath.row])
     }
     
-    private func unblock(_ user: User) {
-        
-    }
-
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -64,6 +67,53 @@ class BlockListTableViewController: UITableViewController, UserSessionDepending 
         }
     }
     
+}
+extension BlockListTableViewController {
+    func prepareList() {
+        blockList = UserList.blockList(with: userSession)
+        var handles = [Any]()
+        handles.append(blockList.addItemDidFetchHandler {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.handleListUpdate()
+            }
+        })
+        handles.append(blockList.addFetchingFailureHandler({[weak self] (error) in
+            OperationQueue.main.addOperation {
+                self?.handleFetchFailure(with: error)
+            }
+        }))
+        listUpdateHandles = handles
+        blockList.reload()
+    }
+    
+    func handleListUpdate() {
+        refreshControl?.endRefreshing()
+        users = blockList.items
+        tableView.reloadData()
+        updateBackground()
+    }
+    
+    func handleFetchFailure(with error: Error?) {
+        refreshControl?.endRefreshing()
+        updateBackground(with: error)
+    }
+    
+    func updateBackground(with error: Error? = nil) {
+        if !users.isEmpty {
+            tableView.backgroundView = nil
+        } else {
+            let view = CommonViewFactory.shared.makeSimpleEmptyView()
+            view.titleLabel.text = Localized.emptyMessages.blockList
+            if let error = error {
+                view.detailLabel.text = error.localizedDescription
+            }
+            tableView.backgroundView = view
+        }
+    }
+    
+    func unblock(_ user: User) {
+        
+    }
 }
 
 extension BlockListTableViewController {

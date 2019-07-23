@@ -1089,6 +1089,12 @@
                             <outlet property="delegate" destination="6Dr-pj-fYY" id="gQi-N9-zJE"/>
                         </connections>
                     </tableView>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="cL4-gW-Yr2">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="reload:" destination="6Dr-pj-fYY" eventType="valueChanged" id="K2Z-eR-clf"/>
+                        </connections>
+                    </refreshControl>
                     <connections>
                         <segue destination="pPI-SY-TZW" kind="show" identifier="showProfile" id="Vvu-5K-qfr"/>
                     </connections>
@@ -1243,6 +1249,7 @@
                         </connections>
                     </tableView>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="GMn-JN-DTk">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
                             <action selector="reload:" destination="9AN-Ox-XJC" eventType="valueChanged" id="Mf7-VF-vGr"/>

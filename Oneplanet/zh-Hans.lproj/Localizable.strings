@@ -62,6 +62,8 @@
 "tl_unblock" = "解除黑名单";
 "tl_followers" = "粉丝";
 "tl_followings" = "关注中";
+"tl_content" = "內容";
+"tl_send" = "送出";
 
 "pl_email" = "电子邮件地址";
 "pl_nickname" = "昵称";
@@ -95,6 +97,8 @@
 "msg_thankyou_reporting_post" = "Thanks for reporting this post";
 "msg_unblock_des" = "They will now be able to request to follow you on Oneplanet. Oneplanet won't let them know you unblocked them";
 "msg_block_des" = "They won’t be able to find your profile, posts or story on Oneplanet. Oneplanet won’t let them know you blocked them";
+"msg_recover_account_des" = "如果您不同意我们的处理方式，请提供以下信息以帮助我们调查";
+"msg_petition_submitted" = "已将问题回报给 Oneplanet，请等待 Oneplanet 审核过后并回复你";
 
 "msgf_accept_tos" = "注册或登录即表示你同意我们的%@";
 "msgf_resend_verification_email" = "你没有收到电子邮件？%@";
@@ -168,6 +172,9 @@
 "ph_has_got_gem" = "Has got it";
 "ph_new_notices" = "New Notices";
 "ph_read_notices" = "Read Notices";
+"ph_recover_account" = "恢复账户";
+"ph_petition_submitted" = "回报成功";
+"ph_i_get_it" = "我知道了";
 
 "phf_seconds_ago_short" = "%@ s";
 "phf_minutes_ago_short" = "%@ m";
@@ -204,8 +211,10 @@
 
 "warn_logout" = "退出？";
 "warn_character_selection" = "Can't change the group after selection, continue？";
+"warn_account_banned" = "你帐户的社群功能已被停用，因为它违反了我们的使用条款。 了解如何恢复账户";
 
 "warntl_character_selection" = "Determined choice？";
+"warntl_account_banned" = "社群功能停权";
 
 "act_bigging" = "竞标中...";
 "act_bigging_ended" = "竞标结束！";

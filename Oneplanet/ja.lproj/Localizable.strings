@@ -62,6 +62,8 @@
 "tl_unblock" = "ブロックを解除";
 "tl_followers" = "フォロワー";
 "tl_followings" = "フォロー中";
+"tl_content" = "コンテンツ";
+"tl_send" = "送信";
 
 "pl_email" = "メールアドレス";
 "pl_nickname" = "ニックネーム";
@@ -95,6 +97,8 @@
 "msg_thankyou_reporting_post" = "Thanks for reporting this post";
 "msg_unblock_des" = "ブロックを解除すると、この人はOneplanetであなたをファローできるようになります。ブロックが解除されたことは、相手に通知されません。";
 "msg_block_des" = "They won’t be able to find your profile, posts or story on Oneplanet. Oneplanet won’t let them know you blocked them";
+"msg_recover_account_des" = "利用規約違反していない場合、確認するために、下記までの情報をお願いいたします";
+"msg_petition_submitted" = "Oneplanetに報告を成功しました。Oneplanetが確認してからの返信を待ってください";
 
 "msgf_accept_tos" = "アカウントを作成することによって、%@に同意することになります";
 "msgf_resend_verification_email" = "電子メールがみつかりませんか？%@";
@@ -168,6 +172,9 @@
 "ph_has_got_gem" = "Has got it";
 "ph_new_notices" = "New Notices";
 "ph_read_notices" = "Read Notices";
+"ph_recover_account" = "アカウント復元";
+"ph_petition_submitted" = "報告成功";
+"ph_i_get_it" = "分かりました";
 
 "phf_seconds_ago_short" = "%@ s";
 "phf_minutes_ago_short" = "%@ m";
@@ -204,8 +211,10 @@
 
 "warn_logout" = "ログアウト？";
 "warn_character_selection" = "エリアンの種類と色を一度選んだら変更ができません。よろしいですか？";
+"warn_account_banned" = "コミュニティガイドライン違反ということで、コミュニティ機能を停止されました。アカウント復元はこちら";
 
 "warntl_character_selection" = "選択しました。よろしいですか？";
+"warntl_account_banned" = "コミュニティ機能停止";
 
 "act_bigging" = "オークション残り時間…";
 "act_bigging_ended" = "オークションが終了しました！";

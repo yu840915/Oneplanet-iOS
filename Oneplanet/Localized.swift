@@ -176,10 +176,16 @@ class LocalizedTitles {//tl_
         return NSLocalizedString("tl_block", comment: "")
     }
     var followers: String {
-    return NSLocalizedString("tl_followers", comment: "")
+        return NSLocalizedString("tl_followers", comment: "")
     }
     var followings: String {
         return NSLocalizedString("tl_followings", comment: "")
+    }
+    var content: String {
+        return NSLocalizedString("tl_content", comment: "")
+    }
+    var send: String {
+        return NSLocalizedString("tl_send", comment: "")
     }
 }
 
@@ -245,11 +251,17 @@ class LocalizedWarnings {//warn_
     var characterSelection: String {
         return NSLocalizedString("warn_character_selection", comment: "")
     }
+    var accountBanned: String {
+        return NSLocalizedString("warn_account_banned", comment: "")
+    }
 }
 
 class LocalizedWarningTitles {//warntl_
     var characterSelection: String {
         return NSLocalizedString("warntl_character_selection", comment: "")
+    }
+    var accountBanned: String {
+        return NSLocalizedString("warntl_account_banned", comment: "")
     }
 }
 
@@ -338,6 +350,12 @@ class LocalizedMessages {//msg_
     }
     var blockDescription: String {
         return NSLocalizedString("msg_block_des", comment: "")
+    }
+    var recoverAccountDescription: String {
+        return NSLocalizedString("msg_recover_account_des", comment: "")
+    }
+    var petitionSubmitted: String {
+        return NSLocalizedString("msg_petition_submitted", comment: "")
     }
 }
 
@@ -562,6 +580,15 @@ class LocalizedPhrase { //ph_
     }
     var readNotices: String {
         return NSLocalizedString("ph_read_notices", comment: "")
+    }
+    var recoverAccount: String {
+        return NSLocalizedString("ph_recover_account", comment: "")
+    }
+    var petitionSubmitted: String {
+        return NSLocalizedString("ph_petition_submitted", comment: "")
+    }
+    var iGetIt: String {
+        return NSLocalizedString("ph_i_get_it", comment: "")
     }
 }
 

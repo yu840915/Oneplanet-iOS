@@ -25,6 +25,13 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
         }
     }
     var configuration: ProfileDetailViewController.DisplayConfiguration = .forGuest
+    var shouldShowWarning = false {
+        didSet {
+            if isViewLoaded {
+                collectionView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +86,7 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
             prepareContentViewController(for: cell)
         }
         cell.contentViewController?.profile = profile
+        cell.contentViewController?.shouldShowWarning = shouldShowWarning
         cell.contentViewController?.configuration = configuration
     }
     
@@ -114,7 +122,8 @@ extension ProfileCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch sections[indexPath.section] {
         case .detail:
-            return CGSize(width: collectionView.bounds.width, height: (90 + collectionView.frame.width))
+            let h = shouldShowWarning ? ProfileDetailViewController.warningHeight : ProfileDetailViewController.baseHeight
+            return CGSize(width: collectionView.bounds.width, height: h)
         case .emptyView:
             return CGSize(width: collectionView.bounds.width, height: 160)
         case .posts:

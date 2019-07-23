@@ -62,6 +62,8 @@
 "tl_unblock" = "Unblock";
 "tl_followers" = "Followers";
 "tl_followings" = "Following";
+"tl_content" = "Content";
+"tl_send" = "Send";
 
 "pl_email" = "Email Address";
 "pl_nickname" = "Nickname";
@@ -95,6 +97,8 @@
 "msg_thankyou_reporting_post" = "Thanks for reporting this post";
 "msg_unblock_des" = "They will now be able to request to follow you on Oneplanet. Oneplanet won't let them know you unblocked them";
 "msg_block_des" = "They won’t be able to find your profile, posts or story on Oneplanet. Oneplanet won’t let them know you blocked them";
+"msg_recover_account_des" = "If you disagree with our disposition, please provide the following information to help us investigate.";
+"msg_petition_submitted" = "The problem has been reported to Oneplanet, please wait for the Oneplanet review and reply to you";
 
 "msgf_accept_tos" = "By signing up or login, you agree to our %@.";
 "msgf_resend_verification_email" = "You did not receive the email? %@.";
@@ -168,6 +172,9 @@
 "ph_has_got_gem" = "Has got it";
 "ph_new_notices" = "New Notices";
 "ph_read_notices" = "Read Notices";
+"ph_recover_account" = "Recover account";
+"ph_petition_submitted" = "Successful return";
+"ph_i_get_it" = "I get it";
 
 "phf_seconds_ago_short" = "%@s";
 "phf_minutes_ago_short" = "%@m";
@@ -204,8 +211,10 @@
 
 "warn_logout" = "Log Out?";
 "warn_character_selection" = "Alien species and colors must not be more change, to be sure to choose?";
+"warn_account_banned" = "The community feature of your account has been deactivated because it violates our terms of use. Learn how to recover your account";
 
 "warntl_character_selection" = "Confirm?";
+"warntl_account_banned" = "Community function suspension";
 
 "act_bigging" = "Bidding...";
 "act_bigging_ended" = "End of Bidding!";

@@ -26,12 +26,26 @@ struct FakeCount: FollowCountsProvider {
 }
 
 class ProfileDetailViewController: UIViewController, UserSessionDepending, DefaultInstanceFactory {
+    class var baseHeight: CGFloat {
+        return 90 + UIScreen.main.bounds.width
+    }
+    class var warningHeight: CGFloat {
+        return 184 + baseHeight
+    }
+
     var userSession: UserSession!
     var showFollowListAction: ((URL)->())?
     var followCountsProvider: FollowCountsProvider? {
         didSet {
             if isViewLoaded {
                 updateViewsForFollowCounts()
+            }
+        }
+    }
+    var shouldShowWarning = false {
+        didSet {
+            if isViewLoaded {
+                warningView.isHidden = !shouldShowWarning
             }
         }
     }
@@ -52,6 +66,8 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
     @IBOutlet weak var countsTextView: UITextView!
     @IBOutlet weak var actionButton: UIButton!
     @IBOutlet weak var raceImageView: UIImageView!
+    @IBOutlet weak var warningView: BanWarningView!
+    
     var profile: UserProfileDisplayable? {
         didSet {
             if isViewLoaded {
@@ -62,11 +78,11 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        preferredContentSize = CGSize(width: UIView.noIntrinsicMetric, height: 475)
         localizeTitles()
         updateViewsForProfile()
         updateViewsForFollowCounts()
         followCountsProvider = FakeCount()
+        warningView.isHidden = !shouldShowWarning
     }
     
     private func localizeTitles() {
@@ -114,8 +130,11 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let nav = segue.destination as? UINavigationController,
-            let vc = nav.viewControllers.first as? CharacterPickerViewController {
+            let vc = nav.viewControllers.first as? UserSessionDepending {
             vc.userSession = userSession
+        }
+        if let nav = segue.destination as? UINavigationController,
+            let vc = nav.viewControllers.first as? CharacterPickerViewController {
             vc.draft = ProfileDraft(profile: userSession.profile!)
         }
     }
@@ -140,5 +159,18 @@ extension ProfileDetailViewController {
         static let forMe = DisplayConfiguration(actionButton: false, detailLabel: true)
         static let forOther = DisplayConfiguration(actionButton: true, detailLabel: true)
         static let forGuest = DisplayConfiguration(actionButton: false, detailLabel: false)
+    }
+}
+
+class BanWarningView: UIView {
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var actionButton: UIButton!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        titleLabel.text = Localized.warningTitles.accountBanned
+        detailLabel.text = Localized.warnings.accountBanned
+        actionButton.setTitle(Localized.phrases.recoverAccount, for: .normal)
     }
 }

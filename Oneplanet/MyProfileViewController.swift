@@ -58,6 +58,7 @@ class MyProfileViewController: UIViewController, UserSessionDepending {
             vc.showFollowListAction = {[weak self] url in
                 self?.showFollowList(with: url)
             }
+            vc.shouldShowWarning = userSession.isBanned
             profileController = vc
         }
         if let nav = segue.destination as? UINavigationController,

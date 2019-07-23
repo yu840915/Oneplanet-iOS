@@ -62,6 +62,8 @@
 "tl_unblock" = "解除封鎖";
 "tl_followers" = "粉絲";
 "tl_followings" = "追蹤中";
+"tl_content" = "內容";
+"tl_send" = "送出";
 
 "pl_email" = "電子郵件地址";
 "pl_nickname" = "暱稱";
@@ -95,6 +97,8 @@
 "msg_thankyou_reporting_post" = "Thanks for reporting this post";
 "msg_unblock_des" = "他們現在可以在 Oneplanet 上追蹤你。Oneplanet 不會讓他們知道你已將他們解除封鎖。";
 "msg_block_des" = "They won’t be able to find your profile, posts or story on Oneplanet. Oneplanet won’t let them know you blocked them";
+"msg_recover_account_des" = "如果你認為自己沒有違反我們的使用條款，請提供以下信息以幫助我們進行調查";
+"msg_petition_submitted" = "已將問題回報給 Oneplanet，請等待 Oneplanet 審核過後並回覆你";
 
 "msgf_accept_tos" = "註冊或登錄即表示你同意我們的%@";
 "msgf_resend_verification_email" = "你沒有收到電子郵件？%@";
@@ -168,6 +172,9 @@
 "ph_has_got_gem" = "Has got it";
 "ph_new_notices" = "新通知";
 "ph_read_notices" = "過去的通知";
+"ph_recover_account" = "恢復帳戶";
+"ph_petition_submitted" = "回報成功";
+"ph_i_get_it" = "我知道了";
 
 "phf_seconds_ago_short" = "%@ s";
 "phf_minutes_ago_short" = "%@ m";
@@ -204,8 +211,10 @@
 
 "warn_logout" = "登出？";
 "warn_character_selection" = "外星人種類及顏色確定後不可更換，確定選擇？";
+"warn_account_banned" = "你帳戶的社群功能已被停用，因為它違反了我們的使用條款。 了解如何恢復帳戶";
 
 "warntl_character_selection" = "確定選擇？";
+"warntl_account_banned" = "社群功能停權";
 
 "act_bigging" = "競標中...";
 "act_bigging_ended" = "競標結束！";

@@ -24,7 +24,6 @@ class FollowingListTableViewController: UITableViewController, DefaultInstanceFa
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
-//        users = [User(id: "567", displayID: "Momo123", nickname: "Momo", character: nil)]
         prepareForList()
     }
 
@@ -53,6 +52,13 @@ class FollowingListTableViewController: UITableViewController, DefaultInstanceFa
         performSegue(withIdentifier: SegueID.showProfile, sender: users[indexPath.row])
     }
 
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let isLastRow = indexPath.row == (users.count - 1)
+        if isLastRow && userList.hasMore {
+            userList.loadMoreIfAllowed()
+        }
+    }
+    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

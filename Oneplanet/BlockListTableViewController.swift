@@ -19,7 +19,6 @@ class BlockListTableViewController: UITableViewController, UserSessionDepending 
         navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
         title = Localized.phrases.blockList
         prepareList()
-        users = [User(id: "123", displayID: "Maker123", nickname: "Mia", character: nil)]
     }
     
     @IBAction func reload(_ sender: UIRefreshControl) {
@@ -56,6 +55,13 @@ class BlockListTableViewController: UITableViewController, UserSessionDepending 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: SegueID.showProfile, sender: users[indexPath.row])
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let isLastRow = indexPath.row == (users.count - 1)
+        if isLastRow && blockList.hasMore {
+            blockList.loadMoreIfAllowed()
+        }
     }
     
     // MARK: - Navigation

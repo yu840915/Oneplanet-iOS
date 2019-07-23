@@ -185,6 +185,9 @@
 "no_unlocked_lots_title" = "你沒有參加這次競標";
 "no_unlocked_lots_message" = "請把握下次競標！48H 內會公布下一期競標品！";
 "no_notices" = "目前沒有通知";
+"no_block_list" = "Empty list";
+"no_follower_list" = "You don't have followers yet";
+"no_following_list" = "You haven't followed others yet";
 
 "err_no_camera_access" = "啟用相機權限";
 "err_no_library_access" = "啟用圖庫存取權限";

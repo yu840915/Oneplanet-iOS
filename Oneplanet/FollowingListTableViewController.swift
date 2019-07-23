@@ -16,45 +16,56 @@ class FollowingListTableViewController: UITableViewController, DefaultInstanceFa
     }
 
     var userSession: UserSession!
+    var users: [User] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
+        users = [User(id: "567", displayID: "Momo123", nickname: "Momo", character: nil)]
     }
 
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return users.count
     }
-
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! UserOverviewCell
+        let user = users[indexPath.row]
+        cell.updateViews(with: FriendshipOverviewModel(profile: user))
+        cell.action = {[weak self] in
+            self?.changeFriendship(for: user)
+        }
         return cell
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: SegueID.showProfile, sender: users[indexPath.row])
+    }
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let vc = segue.destination as? UserProfileViewController {
+            vc.userSession = userSession
+            vc.profile = (sender as! User)
+        }
     }
-    */
 
 }
+private extension FollowingListTableViewController {
+    func changeFriendship(for user: User) {
+        
+    }
+}
 
+extension FollowingListTableViewController {
+    struct SegueID {
+        static let showProfile = "showProfile"
+    }
+
+}
 extension FollowingListTableViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: Localized.titles.followings)

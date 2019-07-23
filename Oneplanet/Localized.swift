@@ -615,6 +615,15 @@ class EmptyMessages {//no_
     var notices: String {
         return NSLocalizedString("no_notices", comment: "")
     }
+    var blockList: String {
+        return NSLocalizedString("no_block_list", comment: "")
+    }
+    var followerList: String {
+        return NSLocalizedString("no_follower_list", comment: "")
+    }
+    var followingList: String {
+        return NSLocalizedString("no_following_list", comment: "")
+    }
 }
 
 class LocalizedErrorsTitles {//errtl_

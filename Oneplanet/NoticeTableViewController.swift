@@ -182,15 +182,15 @@ private extension NoticeTableViewController {
     func handleListUpdate() {
         refreshControl?.endRefreshing()
         notices = noticeList.items
-        updateBackgroun()
+        updateBackground()
     }
     
     func handleFetchFailure(with error: Error?) {
         refreshControl?.endRefreshing()
-        updateBackgroun(with: error)
+        updateBackground(with: error)
     }
     
-    func updateBackgroun(with error: Error? = nil) {
+    func updateBackground(with error: Error? = nil) {
         if !notices.isEmpty {
             tableView.backgroundView = nil
         } else {

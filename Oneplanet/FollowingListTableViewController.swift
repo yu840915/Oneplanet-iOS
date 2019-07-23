@@ -15,14 +15,23 @@ class FollowingListTableViewController: UITableViewController, DefaultInstanceFa
         return UIStoryboard(name: "Me", bundle: nil).instantiateViewController(withIdentifier: "FollowingListTableViewController") as! FollowingListTableViewController
     }
 
+    var userList: UserList!
     var userSession: UserSession!
     var users: [User] = []
+    var configuration: Configuration = Configuration()
+    
+    private var listUpdateHandles: [Any]?
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
-        users = [User(id: "567", displayID: "Momo123", nickname: "Momo", character: nil)]
+//        users = [User(id: "567", displayID: "Momo123", nickname: "Momo", character: nil)]
+        prepareForList()
     }
 
+    @IBAction func reload(_ sender: UIRefreshControl) {
+        userList.reload()
+    }
+    
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,6 +64,47 @@ class FollowingListTableViewController: UITableViewController, DefaultInstanceFa
 
 }
 private extension FollowingListTableViewController {
+    func prepareForList() {
+        var handles = [Any]()
+        handles.append(userList.addItemDidFetchHandler {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.handleListUpdate()
+            }
+        })
+        handles.append(userList.addFetchingFailureHandler({[weak self] (error) in
+            OperationQueue.main.addOperation {
+                self?.handleFetchFailure(with: error)
+            }
+        }))
+        listUpdateHandles = handles
+        userList.reload()
+    }
+    
+    func handleListUpdate() {
+        refreshControl?.endRefreshing()
+        users = userList.items
+        tableView.reloadData()
+        updateBackground()
+    }
+    
+    func handleFetchFailure(with error: Error?) {
+        refreshControl?.endRefreshing()
+        updateBackground(with: error)
+    }
+    
+    func updateBackground(with error: Error? = nil) {
+        if !users.isEmpty {
+            tableView.backgroundView = nil
+        } else {
+            let view = CommonViewFactory.shared.makeSimpleEmptyView()
+            view.titleLabel.text = configuration.emptyMessage
+            if let error = error {
+                view.detailLabel.text = error.localizedDescription
+            }
+            tableView.backgroundView = view
+        }
+    }
+    
     func changeFriendship(for user: User) {
         
     }
@@ -68,6 +118,28 @@ extension FollowingListTableViewController {
 }
 extension FollowingListTableViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: Localized.titles.followings)
+        return IndicatorInfo(title: title ?? "")
+    }
+}
+
+extension FollowingListTableViewController {
+    class Configuration {
+        static let forFollowerList: Configuration = FollowerListConfiguration()
+        static let forFollowingList: Configuration = FollowingListConfiguration()
+        var emptyMessage: String {
+            return ""
+        }
+    }
+    
+    class FollowerListConfiguration: Configuration {
+        override var emptyMessage: String {
+            return Localized.emptyMessages.followerList
+        }
+    }
+
+    class FollowingListConfiguration: Configuration {
+        override var emptyMessage: String {
+            return Localized.emptyMessages.followingList
+        }
     }
 }

@@ -11,7 +11,7 @@ import UIKit
 class UserProfileViewController: UIViewController, UserSessionDepending {
     
     var userSession: UserSession!
-    var profile: UserProfileDisplayable!
+    var profile: User!
     private var isMe: Bool = false
     private var idHeader: IDHeaderView?
 
@@ -80,6 +80,8 @@ class UserProfileViewController: UIViewController, UserSessionDepending {
         }
         if let vc = segue.destination as? FriendListsViewController {
             vc.profile = profile
+            vc.followerList = UserList.followerList(for: profile, userSession: userSession)
+            vc.followingList = UserList.followerList(for: profile, userSession: userSession)
             if let url = sender as? URL, url == DeepLinks.followingList {
                 vc.preselectedTab = .following
             }

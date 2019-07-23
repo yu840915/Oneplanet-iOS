@@ -69,6 +69,8 @@ class MyProfileViewController: UIViewController, UserSessionDepending {
             NavigationBarStyle.darkGray.configure(nav.navigationBar)
             vc.userSession = userSession
             vc.profile = profile
+            vc.followerList = UserList.followerList(with: userSession)
+            vc.followingList = UserList.followerList(with: userSession)
             if let url = sender as? URL, url == DeepLinks.followingList {
                 vc.preselectedTab = .following
             }

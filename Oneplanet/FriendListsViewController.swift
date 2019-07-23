@@ -15,6 +15,8 @@ class FriendListsViewController: ButtonBarPagerTabStripViewController, UserSessi
     var profile: UserProfileDisplayable!
     var preselectedTab: Tab = .follower
     private var shouldUpdateForPreselection = true
+    var followerList: UserList!
+    var followingList: UserList!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -46,17 +48,18 @@ class FriendListsViewController: ButtonBarPagerTabStripViewController, UserSessi
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
-    
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        let controllers = [FollowerListTableViewController.fromDefaultStoryboard(), FollowingListTableViewController.fromDefaultStoryboard()]
-        controllers
-            .compactMap{$0 as? UserSessionDepending}
-            .forEach{$0.userSession = userSession}
-        return controllers
+        let follower = FollowingListTableViewController.fromDefaultStoryboard()
+        follower.userList = followerList
+        follower.userSession = userSession
+        follower.configuration = .forFollowerList
+        follower.title = Localized.titles.followers
+        let following = FollowingListTableViewController.fromDefaultStoryboard()
+        following.userList = followingList
+        following.title = Localized.titles.followings
+        following.configuration = .forFollowingList
+        following.userSession = userSession
+        return [follower, following]
     }
 
     @IBAction func exit(_ sender: UIBarButtonItem) {
@@ -70,22 +73,14 @@ class FriendListsViewController: ButtonBarPagerTabStripViewController, UserSessi
         newCell?.label.textColor = PagerStyleConfigurer.Style.highlighted.titleColor
         newCell?.label.font = PagerStyleConfigurer.Style.highlighted.font
     }
-    
-    /*
-    // MARK: - Navigation
+   
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
+extension FriendListsViewController {
     enum Tab: Int {
         case follower = 0
         case following = 1
     }
-
 }
 
 class FriendshipOverviewModel: UserOverviewDisplayable {

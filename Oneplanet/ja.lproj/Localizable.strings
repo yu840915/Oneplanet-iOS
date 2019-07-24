@@ -84,7 +84,7 @@
 "msg_lot_being_bid_des" = "ただいま入札中です。次回の商品が48時間以内に発表されます。お見逃しなく！";
 "msg_lot_closed" = "The commodity has been closed";
 "msg_lot_closed_des" = "オークションが終了しました。次回の商品が48時間以内に発表されます。お見逃しなく！";
-"msg_bid_payment_too_late" = "Payment is successful but exceeding the biding time limit";
+"msg_bid_payment_too_late" = "支払いが成功しましたが、入札時間を超えました";
 "msg_race1_monologue" = "ファッカーです。";
 "msg_race2_monologue" = "ディカーです。";
 "msg_race3_monologue" = "ドランカーです。";
@@ -117,13 +117,13 @@
 "msgf_insufficient_gem_unlock_des" = "一つ商品をアンロックするごとに、1 %@ + %@が必要です。";
 "msgf_insufficient_gem_bid_des" = "毎回入札するごとに、 1 %@ + %@が必要です。";
 "msgf_earn_blue_gem_instruction" = "写真をアップロードして、%@ をゲットしよう！";
-"msgf_received_gem" = "Getting a %@";
+"msgf_received_gem" = "%@をゲットしました";
 "msgf_unlock_succeeded" = "%@でアンロックに成功しました";
 "msgf_bid_succeeded" = "Successfully qualified for %@ bidding";
 "msgf_start_following_you" = "%@ started following you";
 "msgf_liked_your_post" = "%@ liked your post";
 "msgf_you_received_num_gems" = "You received %@ %@s";
-"msgf_post_reported" = "Your post has been reported for %@";
+"msgf_post_reported" = "%@の原因で投稿が報告されました";
 "msgf_profile_reported" = "Your account %@ has been reported for %@";
 "msgf_liked_your_post_and_gave_gem" = "Your photo was liked by %@, congratulations to get a %@.";
 "msgf_thankyou_report_user" = "Thank you for helping keep the Oneplanet safe and fun for everyone. Remember, we don’t reveal who submitted reports to the person who posted the photo or comment.\n\nOur team will review the post and if it vidolates our %@, we’ll remove it.";

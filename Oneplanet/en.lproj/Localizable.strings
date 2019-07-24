@@ -122,9 +122,9 @@
 "msgf_bid_succeeded" = "Successfully qualified for %@ bidding";
 "msgf_start_following_you" = "%@ started following you";
 "msgf_liked_your_post" = "%@ liked your post";
-"msgf_you_received_num_gems" = "You received %@ %@s";
-"msgf_post_reported" = "Your post has been reported for %@";
-"msgf_profile_reported" = "Your account %@ has been reported for %@";
+"msgf_you_received_num_gems" = "The official gift %@ %@s";
+"msgf_post_reported" = "Your photo was reported by the user because of %@";
+"msgf_profile_reported" = "Your Oneplanet account %@ was reported by the user because of the violation of Oneplanet %@";
 "msgf_liked_your_post_and_gave_gem" = "Your photo was liked by %@, congratulations to get a %@.";
 "msgf_thankyou_report_user" = "Thank you for helping keep the Oneplanet safe and fun for everyone. Remember, we don’t reveal who submitted reports to the person who posted the photo or comment.\n\nOur team will review the post and if it vidolates our %@, we’ll remove it.";
 "msgf_unblock_user_prompt" = "Unblock %@?";

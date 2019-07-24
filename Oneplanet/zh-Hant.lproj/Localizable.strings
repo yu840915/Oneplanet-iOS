@@ -57,7 +57,7 @@
 "tl_bid_state_to_ship" = "待出貨";
 "tl_bid_state_shipping" = "出貨中";
 "tl_bid_state_delivered" = "已領收";
-"tl_report" = "Report";
+"tl_report" = "檢舉";
 "tl_block" = "Block";
 "tl_unblock" = "解除封鎖";
 "tl_followers" = "粉絲";
@@ -82,7 +82,7 @@
 "msg_bid_succeeded" = "Successfully qualified for CommodityName bidding";
 "msg_lot_being_bid" = "商品正在競標中";
 "msg_lot_being_bid_des" = "競標正在進行中，48H 內會公布下一期商品，敬請期待！";
-"msg_lot_closed" = "商品已經結標";
+"msg_lot_closed" = "已超過解鎖時間";
 "msg_lot_closed_des" = "本期競標已結束，48H 內會公布下一期商品，敬請期待！";
 "msg_bid_payment_too_late" = "付款成功但超過了下標時限";
 "msg_race1_monologue" = "我的名字叫法克。";
@@ -144,8 +144,8 @@
 "ph_try_again" = "再試一次";
 "ph_nickname_rule" = "暱稱上限 30 字元，不得包含標點符號或表情符號";
 "ph_copy_id" = "複製 ID";
-"ph_follow" = "Follow";
-"ph_unfollow" = "Unfollow";
+"ph_follow" = "追蹤";
+"ph_unfollow" = "取消追蹤";
 "ph_following" = "Following";
 "ph_choose_role" = "選擇外星人種類";
 "ph_choose_color" = "選擇顏色";

@@ -53,11 +53,17 @@
 "tl_required_input" = "Required";
 "tl_agree" = "Agree";
 "tl_filter" = "Filter";
-"tl_bid_state_lost" = "Failed";
+"tl_bid_state_lost" = "Lose";
 "tl_bid_state_to_ship" = "Waiting for shipment";
 "tl_bid_state_shipping" = "In shipment";
 "tl_bid_state_delivered" = "Received";
 "tl_report" = "Report";
+"tl_block" = "Block";
+"tl_unblock" = "Unblock";
+"tl_followers" = "Followers";
+"tl_followings" = "Following";
+"tl_content" = "Content";
+"tl_send" = "Send";
 
 "pl_email" = "Email Address";
 "pl_nickname" = "Nickname";
@@ -75,9 +81,9 @@
 "msg_unlock_succeeded" = "Successfully unlocked";
 "msg_bid_succeeded" = "Successfully qualified for CommodityName bidding";
 "msg_lot_being_bid" = "This goods is being bid";
-"msg_lot_being_bid_des" = "This goods is currently being bidding. Please go to the bidding page to bid or watch the game";
-"msg_lot_closed" = "The goods has been closed";
-"msg_lot_closed_des" = "This goods has been closed, please wait for the new one to be announced soon.";
+"msg_lot_being_bid_des" = "The bidding is in progress and the next issue will be announced within 48H, so stay tuned!";
+"msg_lot_closed" = "Unlock time was ended";
+"msg_lot_closed_des" = "The bidding has ended. The next issue will be announced within 48H, so stay tuned!";
 "msg_bid_payment_too_late" = "Payment is successful but exceeding the biding time limit";
 "msg_race1_monologue" = "My name is Focker.";
 "msg_race2_monologue" = "My name is Dicker.";
@@ -89,14 +95,19 @@
 "msg_report_post_caption" = "If you report someone’s post, Oneplanet doesn’t tell them who reported it";
 "msg_thankyou_reporting_user" = "Thanks for reporting this";
 "msg_thankyou_reporting_post" = "Thanks for reporting this post";
+"msg_unblock_des" = "They will now be able to request to follow you on Oneplanet. Oneplanet won't let them know you unblocked them";
+"msg_block_des" = "They won’t be able to find your profile, posts or story on Oneplanet. Oneplanet won’t let them know you blocked them";
+"msg_recover_account_des" = "If you disagree with our disposition, please provide the following information to help us investigate.";
+"msg_petition_submitted" = "The problem has been reported to Oneplanet, please wait for the Oneplanet review and reply to you";
+"msg_unlock_option_prompt" = "Which gem do you want to use to unlock?";
 
 "msgf_accept_tos" = "By signing up or login, you agree to our %@.";
 "msgf_resend_verification_email" = "You did not receive the email? %@.";
 "msgf_did_copy_my_id" = "My Oneplanet ID [%@] Copied.";
+"msgf_did_copy_id" = "Oneplanet ID [%@] Copied";
 "msgf_winner_notice" = "The winner must check if the %@ is filled in to ensure that the goods can be delivered.";
 "msgf_unlock_lot" = "Unlock %@?";
-"msgf_did_unlock_lot" = "Unlocked %@!";
-"msgf_unlock_option_prompt" = "Select %@ or %@ to unlock";
+"msgf_did_unlock_lot" = "%@ Unlocked!";
 "msgf_unlock_with_gem_iap" = "Use a %@ + %@ to unlock?";
 "msgf_unlock_with_gem" = "Use a %@ to unlock?";
 "msgf_insufficient_gem" = "Your %@ is not enough";
@@ -104,18 +115,20 @@
 "msgf_bid_with_gem_iap" = "Use a %@ + %@ to bid once?";
 "msgf_bid_with_gem" = "Use %@ to bid once?";
 "msgf_insufficient_gem_unlock_des" = "To unlock a goods you need to use a %@ + %@。";
-"msgf_insufficient_gem_bid_des" = "To bid a goods you need to use a %@ + %@。";
+"msgf_insufficient_gem_bid_des" = "You need to use one %@ + %@ for each bid.";
 "msgf_earn_blue_gem_instruction" = "Take and upload a photo to get the %@!";
 "msgf_received_gem" = "Get a %@";
 "msgf_unlock_succeeded" = "Unlocked %@!";
 "msgf_bid_succeeded" = "Successfully qualified for %@ bidding";
 "msgf_start_following_you" = "%@ started following you";
 "msgf_liked_your_post" = "%@ liked your post";
-"msgf_you_received_num_gems" = "You received %@ %@s";
-"msgf_post_reported" = "Your post has been reported for %@";
-"msgf_profile_reported" = "Your account %@ has been reported for %@";
+"msgf_you_received_num_gems" = "The official gift %@ %@s";
+"msgf_post_reported" = "Your photo was reported by the user because of %@";
+"msgf_profile_reported" = "Your Oneplanet account %@ was reported by the user because of the violation of Oneplanet %@";
 "msgf_liked_your_post_and_gave_gem" = "Your photo was liked by %@, congratulations to get a %@.";
 "msgf_thankyou_report_user" = "Thank you for helping keep the Oneplanet safe and fun for everyone. Remember, we don’t reveal who submitted reports to the person who posted the photo or comment.\n\nOur team will review the post and if it vidolates our %@, we’ll remove it.";
+"msgf_unblock_user_prompt" = "Unblock %@?";
+"msgf_block_user_prompt" = "Block %@?";
 
 "ph_guest_login" = "Guest";
 "ph_email_login" = "Or Login With Email";
@@ -132,6 +145,7 @@
 "ph_nickname_rule" = "Nickname cap 30 characters, can't use punctuation or emoji";
 "ph_copy_id" = "copy ID";
 "ph_follow" = "Follow";
+"ph_unfollow" = "Unfollow";
 "ph_following" = "Following";
 "ph_choose_role" = "Choose your Alien";
 "ph_choose_color" = "Choose Color";
@@ -158,6 +172,10 @@
 "ph_has_got_gem" = "Has got it";
 "ph_new_notices" = "New Notices";
 "ph_read_notices" = "Read Notices";
+"ph_recover_account" = "Recover account";
+"ph_petition_submitted" = "Successful return";
+"ph_i_get_it" = "I get it";
+"ph_unlock_option_prompt" = "Select gems to unlock";
 
 "phf_seconds_ago_short" = "%@s";
 "phf_minutes_ago_short" = "%@m";
@@ -167,12 +185,17 @@
 "phf_minutes_ago" = "%@ minutes ago";
 "phf_hours_ago" = "%@ hours ago";
 "phf_days_ago" = "%@ days ago";
+"phf_followers" = "%@ followers";
+"phf_followings" = "%@ following";
 
 "no_posts" = "No Posts Yet";
 "no_promo_popups" = "No Promotion Pop-ups Yet";
 "no_unlocked_lots_title" = "You did not participate in this bidding";
 "no_unlocked_lots_message" = "Please grasp the next bid! The next issue will be announced in 48H!";
 "no_notices" = "No Notices";
+"no_block_list" = "Empty list";
+"no_follower_list" = "You don't have followers yet";
+"no_following_list" = "You haven't followed others yet";
 
 "err_no_camera_access" = "Enable Camera Access";
 "err_no_library_access" = "Enable Library Access";
@@ -189,8 +212,10 @@
 
 "warn_logout" = "Log Out?";
 "warn_character_selection" = "Alien species and colors must not be more change, to be sure to choose?";
+"warn_account_banned" = "The community feature of your account has been deactivated because it violates our terms of use. Learn how to recover your account";
 
 "warntl_character_selection" = "Confirm?";
+"warntl_account_banned" = "Community function suspension";
 
 "act_bigging" = "Bidding...";
 "act_bigging_ended" = "End of Bidding!";
@@ -236,3 +261,5 @@
 "rp_dnudity_detail" = "Report as nudity or pornography?";
 "rp_hate_speech_detail" = "Report as hate speech or symbols?";
 "rp_violance_detail" = "Report as violence or threat of violence?";
+
+"smb_enum_spliter" = ", ";

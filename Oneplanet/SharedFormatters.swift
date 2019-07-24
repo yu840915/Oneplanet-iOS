@@ -25,6 +25,7 @@ struct SharedNumberFormatters {
         result.maximumFractionDigits = 0
         return result
     }()
+    static let roughNumber = RoughNumberFormatter()
 }
 
 struct SharedSpeciaFormatters {
@@ -51,6 +52,9 @@ class RoughNumberFormatter: Formatter {
     }
     
     override func string(for obj: Any?) -> String? {
+        if let int = obj as? Int {
+            return string(for: int)
+        }
         return nil
     }
     

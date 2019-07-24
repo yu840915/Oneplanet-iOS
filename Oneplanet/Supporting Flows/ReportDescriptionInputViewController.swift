@@ -9,6 +9,8 @@
 import UIKit
 
 class ReportDescriptionInputViewController: UIViewController {
+    
+    @IBOutlet weak var cancelButtonItem: UIBarButtonItem!
     @IBOutlet weak var reasonLabel: UILabel!
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var descriptionInputView: UITextView!
@@ -24,6 +26,7 @@ class ReportDescriptionInputViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = Localized.titles.report
+        cancelButtonItem.title = Localized.titles.cancel
         reportButton.setTitle(Localized.titles.report, for: .normal)
         reportLabel.text = flowController.reportCaption
         placeholderLabel.text = Localized.placeholder.reportDescription

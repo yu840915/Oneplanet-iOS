@@ -27,6 +27,10 @@
 		E02842AF229A31AF007212D7 /* CharacterPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02842AE229A31AE007212D7 /* CharacterPickerViewController.swift */; };
 		E02842B1229A32C2007212D7 /* ColorPickerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02842B0229A32C2007212D7 /* ColorPickerCollectionViewController.swift */; };
 		E02842B3229A3399007212D7 /* AlienPickerCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02842B2229A3399007212D7 /* AlienPickerCollectionViewController.swift */; };
+		E02F49C922E569160014DEBE /* UserOverviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02F49C822E569160014DEBE /* UserOverviewCell.swift */; };
+		E02F49CB22E5948A0014DEBE /* FriendListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02F49CA22E5948A0014DEBE /* FriendListsViewController.swift */; };
+		E02F49CF22E595010014DEBE /* FollowingListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02F49CE22E595010014DEBE /* FollowingListTableViewController.swift */; };
+		E02F49D122E5A9A00014DEBE /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02F49D022E5A9A00014DEBE /* UserProfileViewController.swift */; };
 		E030E4D0228A71CB0084D383 /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030E4CF228A71CB0084D383 /* ProfileDetailViewController.swift */; };
 		E030E4D2228AB0B70084D383 /* IDHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E030E4D1228AB0B60084D383 /* IDHeaderView.xib */; };
 		E030E4D4228AB1ED0084D383 /* IDHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030E4D3228AB1ED0084D383 /* IDHeaderView.swift */; };
@@ -58,6 +62,7 @@
 		E05BB273226D5D2F00721F20 /* OneplanetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BB272226D5D2F00721F20 /* OneplanetTests.swift */; };
 		E06261C8226D640D00A96F55 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E06261C7226D640D00A96F55 /* StoreKit.framework */; };
 		E06261CE226D6F2200A96F55 /* ModelBlocks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E06261CD226D6F2200A96F55 /* ModelBlocks.framework */; };
+		E064A78622E6B0D200636387 /* UserLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = E064A78522E6B0D200636387 /* UserLists.swift */; };
 		E06589BB227001F300C9E4E6 /* AskForAuthorizationOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06589BA227001F300C9E4E6 /* AskForAuthorizationOperation.swift */; };
 		E06589BD22700AEC00C9E4E6 /* CaptureSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06589BC22700AEC00C9E4E6 /* CaptureSessionController.swift */; };
 		E06589BF22701B9F00C9E4E6 /* CapturePhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06589BE22701B9F00C9E4E6 /* CapturePhotoOperation.swift */; };
@@ -88,6 +93,7 @@
 		E07276FD2277424E001239C0 /* URLRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276FC2277424E001239C0 /* URLRouter.swift */; };
 		E07276FF227743D7001239C0 /* URLRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07276FE227743D7001239C0 /* URLRouterTests.swift */; };
 		E07277012277EE3D001239C0 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E07277002277EE3C001239C0 /* AppConfiguration.swift */; };
+		E076729C22E70C8800A3939A /* PetitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E076729B22E70C8800A3939A /* PetitionViewController.swift */; };
 		E077A72E22DDA4C300A2245E /* NoticeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E077A72D22DDA4C300A2245E /* NoticeList.swift */; };
 		E077A73022DDF63500A2245E /* NoticeUIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E077A72F22DDF63500A2245E /* NoticeUIHelpers.swift */; };
 		E0814E3522DC2BBF002D0E32 /* NoticeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0814E3422DC2BBF002D0E32 /* NoticeTableViewController.swift */; };
@@ -132,6 +138,7 @@
 		E0B57DE122A0FA48006AEADB /* DefaultStyleConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B57DE022A0FA48006AEADB /* DefaultStyleConfiguration.swift */; };
 		E0B57DE322A0FAA3006AEADB /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B57DE222A0FAA3006AEADB /* Toast.swift */; };
 		E0B57DE722A0FE77006AEADB /* Toast.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0B57DE622A0FE77006AEADB /* Toast.xib */; };
+		E0B7B9CA22E1D8580005DF77 /* BlockListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B7B9C922E1D8580005DF77 /* BlockListTableViewController.swift */; };
 		E0BAB71F228482D1007E747C /* InputFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BAB71E228482D1007E747C /* InputFieldView.swift */; };
 		E0BD3A7A22C9E42400E2609F /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BD3A7922C9E42400E2609F /* DataStore.swift */; };
 		E0BDCCEA229FA044006A9D20 /* PromotionPageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BDCCE9229FA044006A9D20 /* PromotionPageList.swift */; };
@@ -197,6 +204,10 @@
 		E02842AE229A31AE007212D7 /* CharacterPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterPickerViewController.swift; sourceTree = "<group>"; };
 		E02842B0229A32C2007212D7 /* ColorPickerCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerCollectionViewController.swift; sourceTree = "<group>"; };
 		E02842B2229A3399007212D7 /* AlienPickerCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlienPickerCollectionViewController.swift; sourceTree = "<group>"; };
+		E02F49C822E569160014DEBE /* UserOverviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserOverviewCell.swift; sourceTree = "<group>"; };
+		E02F49CA22E5948A0014DEBE /* FriendListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListsViewController.swift; sourceTree = "<group>"; };
+		E02F49CE22E595010014DEBE /* FollowingListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingListTableViewController.swift; sourceTree = "<group>"; };
+		E02F49D022E5A9A00014DEBE /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		E030E4CF228A71CB0084D383 /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
 		E030E4D1228AB0B60084D383 /* IDHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IDHeaderView.xib; sourceTree = "<group>"; };
 		E030E4D3228AB1ED0084D383 /* IDHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDHeaderView.swift; sourceTree = "<group>"; };
@@ -233,6 +244,7 @@
 		E06261C6226D63E700A96F55 /* Oneplanet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Oneplanet.entitlements; sourceTree = "<group>"; };
 		E06261C7226D640D00A96F55 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		E06261CD226D6F2200A96F55 /* ModelBlocks.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ModelBlocks.framework; path = Carthage/Build/iOS/ModelBlocks.framework; sourceTree = SOURCE_ROOT; };
+		E064A78522E6B0D200636387 /* UserLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLists.swift; sourceTree = "<group>"; };
 		E06589BA227001F300C9E4E6 /* AskForAuthorizationOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskForAuthorizationOperation.swift; sourceTree = "<group>"; };
 		E06589BC22700AEC00C9E4E6 /* CaptureSessionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSessionController.swift; sourceTree = "<group>"; };
 		E06589BE22701B9F00C9E4E6 /* CapturePhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapturePhotoOperation.swift; sourceTree = "<group>"; };
@@ -270,6 +282,7 @@
 		E07276FC2277424E001239C0 /* URLRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRouter.swift; sourceTree = "<group>"; };
 		E07276FE227743D7001239C0 /* URLRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRouterTests.swift; sourceTree = "<group>"; };
 		E07277002277EE3C001239C0 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
+		E076729B22E70C8800A3939A /* PetitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetitionViewController.swift; sourceTree = "<group>"; };
 		E077A72D22DDA4C300A2245E /* NoticeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeList.swift; sourceTree = "<group>"; };
 		E077A72F22DDF63500A2245E /* NoticeUIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeUIHelpers.swift; sourceTree = "<group>"; };
 		E0814E3422DC2BBF002D0E32 /* NoticeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTableViewController.swift; sourceTree = "<group>"; };
@@ -314,6 +327,7 @@
 		E0B57DE022A0FA48006AEADB /* DefaultStyleConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStyleConfiguration.swift; sourceTree = "<group>"; };
 		E0B57DE222A0FAA3006AEADB /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		E0B57DE622A0FE77006AEADB /* Toast.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Toast.xib; sourceTree = "<group>"; };
+		E0B7B9C922E1D8580005DF77 /* BlockListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockListTableViewController.swift; sourceTree = "<group>"; };
 		E0BAB71E228482D1007E747C /* InputFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFieldView.swift; sourceTree = "<group>"; };
 		E0BD3A7922C9E42400E2609F /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		E0BDCCE9229FA044006A9D20 /* PromotionPageList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionPageList.swift; sourceTree = "<group>"; };
@@ -429,6 +443,13 @@
 			children = (
 				E0814FB222865CC2002F1C02 /* Me.storyboard */,
 				E0FF7983228D48FA00F61318 /* MyProfileViewController.swift */,
+				E02F49D022E5A9A00014DEBE /* UserProfileViewController.swift */,
+				E0B7B9C922E1D8580005DF77 /* BlockListTableViewController.swift */,
+				E02F49CA22E5948A0014DEBE /* FriendListsViewController.swift */,
+				E02F49CE22E595010014DEBE /* FollowingListTableViewController.swift */,
+				E076729B22E70C8800A3939A /* PetitionViewController.swift */,
+				E064A78522E6B0D200636387 /* UserLists.swift */,
+				E02F49C822E569160014DEBE /* UserOverviewCell.swift */,
 				E0814FB622893FAF002F1C02 /* ProfileCollectionViewController.swift */,
 				E030E4CF228A71CB0084D383 /* ProfileDetailViewController.swift */,
 				E089F70C228E9ECB003E77DF /* AvatarView.swift */,
@@ -1014,6 +1035,7 @@
 				E0837EF5228022C400B13BAF /* TwitterLogIn.swift in Sources */,
 				E0A4617A22B2984A00D26720 /* BiddingListHeader.swift in Sources */,
 				E07276FD2277424E001239C0 /* URLRouter.swift in Sources */,
+				E0B7B9CA22E1D8580005DF77 /* BlockListTableViewController.swift in Sources */,
 				E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */,
 				E081590D22A63616007C9776 /* BlueGemPopUpViewController.swift in Sources */,
 				E03C32AC226D872A00C32FD7 /* Localized.swift in Sources */,
@@ -1027,6 +1049,7 @@
 				E0DCD05522B8B620008D9C63 /* ShippingInfoEditorHelpers.swift in Sources */,
 				E0190F53226DD62200C212D5 /* UserProgressChecklist.swift in Sources */,
 				E0DA389E22C2824500EC4170 /* GemActionPopUpViewController.swift in Sources */,
+				E064A78622E6B0D200636387 /* UserLists.swift in Sources */,
 				E06589C32270362300C9E4E6 /* GenericAppError.swift in Sources */,
 				E06589C8227060EC00C9E4E6 /* PhotoList.swift in Sources */,
 				E0190F55226EC82500C212D5 /* UserFlowRootViewController.swift in Sources */,
@@ -1058,6 +1081,7 @@
 				E0B57DE122A0FA48006AEADB /* DefaultStyleConfiguration.swift in Sources */,
 				E00611F22294F5680032AE30 /* HotCollectionViewController.swift in Sources */,
 				E0DCD05B22B9D960008D9C63 /* EmptyLotListView.swift in Sources */,
+				E02F49CF22E595010014DEBE /* FollowingListTableViewController.swift in Sources */,
 				E03C32B0226D8E8F00C32FD7 /* NavigationBarStyle.swift in Sources */,
 				E030E4D7228BC3E90084D383 /* User.swift in Sources */,
 				E0A4617822B28B3000D26720 /* ProductListHeader.swift in Sources */,
@@ -1074,6 +1098,7 @@
 				E05BB25E226D5D2A00721F20 /* AppDelegate.swift in Sources */,
 				E0DA38A022C282EC00EC4170 /* GemPickerTableViewController.swift in Sources */,
 				E00611F6229500FA0032AE30 /* HotNavigationItemView.swift in Sources */,
+				E02F49CB22E5948A0014DEBE /* FriendListsViewController.swift in Sources */,
 				E06F4FFE22789C760067DAE4 /* AppLifeCycleObserver.swift in Sources */,
 				E032844F22ABB2FE001F02E8 /* BadgeView.swift in Sources */,
 				E0CB5E11228F0B4A00C0C010 /* TreasuryBarViewController.swift in Sources */,
@@ -1086,6 +1111,7 @@
 				E02842B3229A3399007212D7 /* AlienPickerCollectionViewController.swift in Sources */,
 				E0FF7984228D48FA00F61318 /* MyProfileViewController.swift in Sources */,
 				E021105322BA1AFA007DE085 /* BiddingTermsViewController.swift in Sources */,
+				E02F49C922E569160014DEBE /* UserOverviewCell.swift in Sources */,
 				E02842AF229A31AF007212D7 /* CharacterPickerViewController.swift in Sources */,
 				E0A050CA22E19299002FCFC3 /* ReportThankyouViewController.swift in Sources */,
 				E032844922AB7286001F02E8 /* ProductListTableViewController.swift in Sources */,
@@ -1104,8 +1130,10 @@
 				E0B1E18F22C8F6F900F41248 /* IAPTransactionProcessor.swift in Sources */,
 				E07277012277EE3D001239C0 /* AppConfiguration.swift in Sources */,
 				E0A4618A22B6347800D26720 /* PhoneNumberBuilder.swift in Sources */,
+				E076729C22E70C8800A3939A /* PetitionViewController.swift in Sources */,
 				E032844522AB6A50001F02E8 /* AuctionMainViewController.swift in Sources */,
 				E0190F4D226DCCFB00C212D5 /* UserSession.swift in Sources */,
+				E02F49D122E5A9A00014DEBE /* UserProfileViewController.swift in Sources */,
 				E0DCD05122B7E86B008D9C63 /* PickerConfirmButtonFooter.swift in Sources */,
 				E0190F49226DB0E000C212D5 /* WelcomeMessageViewController.swift in Sources */,
 				E0A050C622E17067002FCFC3 /* ReportDescriptionInputViewController.swift in Sources */,

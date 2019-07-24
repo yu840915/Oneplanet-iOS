@@ -18,16 +18,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Jou-0e-AAz">
-                    <rect key="frame" x="174" y="104" width="66.5" height="95"/>
+                    <rect key="frame" x="174" y="104" width="66.5" height="45"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Empty" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8J-Zg-zGr" userLabel="Title Label">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Empty" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8J-Zg-zGr" userLabel="Title Label">
                             <rect key="frame" x="0.0" y="0.0" width="66.5" height="29"/>
                             <fontDescription key="fontDescription" type="system" pointSize="24"/>
                             <color key="textColor" name="default placeholder"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ea-u2-7es" userLabel="Detail Label">
-                            <rect key="frame" x="0.0" y="45" width="66.5" height="50"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ea-u2-7es" userLabel="Detail Label">
+                            <rect key="frame" x="0.0" y="45" width="66.5" height="0.0"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" name="default placeholder"/>
                             <nil key="highlightedColor"/>

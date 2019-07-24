@@ -40,12 +40,12 @@ class MyProfileViewController: UIViewController, UserSessionDepending {
     }
     
     private func updateViewsForProfile() {
-        idHeader?.idLabel.text = profile.id
+        idHeader?.idLabel.text = profile.displayID
         profileController.profile = profile
     }
     private func copyID() {
-        UIPasteboard.general.string = profile.id
-        Toast.show(with: String(format: Localized.messageFormats.didCopyMyId, profile.id))
+        UIPasteboard.general.string = profile.displayID
+        Toast.show(with: String(format: Localized.messageFormats.didCopyMyId, profile.displayID))
     }
 
     // MARK: - Navigation
@@ -55,14 +55,41 @@ class MyProfileViewController: UIViewController, UserSessionDepending {
             vc.userSession = userSession
             vc.profile = profile
             vc.configuration = userSession.isGuest ? .forGuest: .forMe
+            vc.showFollowListAction = {[weak self] url in
+                self?.showFollowList(with: url)
+            }
+            vc.shouldShowWarning = userSession.isBanned
             profileController = vc
         }
         if let nav = segue.destination as? UINavigationController,
             let vc = nav.viewControllers.first as? SettingsTableViewController {
             vc.userSession = userSession
         }
+        if let nav = segue.destination as? UINavigationController,
+            let vc = nav.viewControllers.first as? FriendListsViewController {
+            NavigationBarStyle.darkGray.configure(nav.navigationBar)
+            vc.userSession = userSession
+            vc.profile = profile
+            vc.followerList = UserList.followerList(with: userSession)
+            vc.followingList = UserList.followerList(with: userSession)
+            if let url = sender as? URL, url == DeepLinks.followingList {
+                vc.preselectedTab = .following
+            }
+        }
     }
 
+}
+
+extension MyProfileViewController {
+    struct SegueID {
+        static let showFriendLists = "showFriendLists"
+    }
+}
+
+extension MyProfileViewController {
+   func showFollowList(with url: URL) {
+        performSegue(withIdentifier: SegueID.showFriendLists, sender: url)
+    }
 }
 
 extension MyProfileViewController: ScrollToTopHandler {

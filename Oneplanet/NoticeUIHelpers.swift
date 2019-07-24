@@ -146,7 +146,7 @@ class WarningNoticeItemCell: NoticeItemCell {
 class ProfileReportedViewModel: NoticeViewModel, WarningNoticeItemDisplayable {
     override var attributedMessage: NSAttributedString {
         let account = "hello@oneplanet.live"
-        let reason = "Abuse"
+        let reason = Localized.titles.tos
         return NSAttributedString(string: String(format: Localized.messageFormats.profileReported, account, reason), attributes: [.font:  UIFont.systemFont(ofSize: 12)])
     }
     let contentImage: WebImageInfo? = nil

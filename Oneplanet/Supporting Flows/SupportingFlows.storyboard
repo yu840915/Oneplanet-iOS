@@ -741,12 +741,12 @@
                                 <constraint firstItem="oJG-Dq-aZf" firstAttribute="leading" secondItem="HAy-Dq-GQM" secondAttribute="leading" constant="6" id="JO5-9p-Wm4"/>
                                 <constraint firstItem="oJG-Dq-aZf" firstAttribute="centerY" secondItem="HAy-Dq-GQM" secondAttribute="centerY" id="fdN-98-Vi0"/>
                                 <constraint firstItem="Wgw-dJ-Xqc" firstAttribute="width" secondItem="HAy-Dq-GQM" secondAttribute="width" id="hYG-gP-mn8"/>
-                                <constraint firstItem="oJG-Dq-aZf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="HAy-Dq-GQM" secondAttribute="top" constant="10" id="lhd-UD-myB"/>
+                                <constraint firstItem="oJG-Dq-aZf" firstAttribute="top" relation="greaterThanOrEqual" secondItem="HAy-Dq-GQM" secondAttribute="top" priority="900" constant="10" id="lhd-UD-myB"/>
                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="oJG-Dq-aZf" secondAttribute="trailing" constant="6" id="uSh-dU-wro"/>
                                 <constraint firstItem="Wgw-dJ-Xqc" firstAttribute="centerX" secondItem="HAy-Dq-GQM" secondAttribute="centerX" id="wTD-BD-7SV"/>
                             </constraints>
                         </view>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="tBB-Q1-dew">
+                        <view key="tableFooterView" contentMode="scaleToFill" misplaced="YES" id="tBB-Q1-dew">
                             <rect key="frame" x="0.0" y="163" width="414" height="10"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -963,6 +963,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="cancelButtonItem" destination="gBl-eT-I4s" id="CbQ-yV-x5o"/>
                         <outlet property="descriptionInputView" destination="oDm-yz-fgF" id="D6F-gD-4Ff"/>
                         <outlet property="endEditingTap" destination="dh5-8X-Ucv" id="UhN-T3-CZU"/>
                         <outlet property="headerLabel" destination="pwX-y3-SWY" id="pg2-pZ-Pn6"/>

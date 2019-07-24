@@ -20,6 +20,7 @@ class ReportReasonPickerTableViewController: UITableViewController {
         super.viewDidLoad()
         title = Localized.titles.report
         navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
+        cancelButtonItem.title = Localized.titles.cancel
         headerLabel.text = flowController.headerTitle
     }
 

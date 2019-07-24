@@ -92,8 +92,8 @@ class ProfileEditorTableViewController: UITableViewController, UserSessionDepend
     }
     
     @IBAction func copyId(_ sender: UIButton) {
-        UIPasteboard.general.string = profile.id
-        Toast.show(with: String(format: Localized.messageFormats.didCopyMyId, profile.id))
+        UIPasteboard.general.string = profile.displayID
+        Toast.show(with: String(format: Localized.messageFormats.didCopyMyId, profile.displayID))
     }
     
     @IBAction func startImagePickingFlow(_ sender: UIButton) {
@@ -145,7 +145,7 @@ fileprivate extension ProfileEditorTableViewController {
     }
     
     func updateViewsForSession() {
-        userIdField.text = profile.id
+        userIdField.text = profile.displayID
         emailField.text = userSession.loginType.displayName
     }
     

@@ -16,6 +16,7 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
     fileprivate var sections: [Section] = [.detail]
     fileprivate var posts: [Any] = []
     private var detailController: ProfileDetailViewController?
+    var showFollowListAction: ((URL)->())?
     var profile: UserProfileDisplayable! {
         didSet {
             if isViewLoaded {
@@ -24,6 +25,13 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
         }
     }
     var configuration: ProfileDetailViewController.DisplayConfiguration = .forGuest
+    var shouldShowWarning = false {
+        didSet {
+            if isViewLoaded {
+                collectionView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,12 +86,16 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
             prepareContentViewController(for: cell)
         }
         cell.contentViewController?.profile = profile
+        cell.contentViewController?.shouldShowWarning = shouldShowWarning
         cell.contentViewController?.configuration = configuration
     }
     
     private func prepareContentViewController(for cell: ProfileContainerCell) {
         let vc = ProfileDetailViewController.fromDefaultStoryboard()
         vc.userSession = userSession
+        vc.showFollowListAction = {[weak self] url in
+            self?.showFollowListAction?(url)
+        }
         addChild(vc)
         cell.setUp(vc)
         vc.didMove(toParent: self)
@@ -110,7 +122,8 @@ extension ProfileCollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch sections[indexPath.section] {
         case .detail:
-            return CGSize(width: collectionView.bounds.width, height: (90 + collectionView.frame.width))
+            let h = shouldShowWarning ? ProfileDetailViewController.warningHeight : ProfileDetailViewController.baseHeight
+            return CGSize(width: collectionView.bounds.width, height: h)
         case .emptyView:
             return CGSize(width: collectionView.bounds.width, height: 160)
         case .posts:

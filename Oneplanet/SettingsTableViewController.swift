@@ -89,7 +89,8 @@ class SettingsTableViewController: UITableViewController, UserSessionDepending {
         switch sections[indexPath.section].rows[indexPath.row] {
         case .editProfile:
             performSegue(withIdentifier: SegueID.editProfile, sender: nil)
-        case .blockList: break
+        case .blockList:
+            performSegue(withIdentifier: SegueID.showBlockedList, sender: nil)
         case .biddingTerms:
             performSegue(withIdentifier: SegueID.showBiddingTerms, sender: nil)
         case .terms:
@@ -139,6 +140,7 @@ extension SettingsTableViewController {
         static let showTerms = "showTerms"
         static let showBiddingTerms = "showBiddingTerms"
         static let editProfile = "editProfile"
+        static let showBlockedList = "showBlockedList"
     }
     
     enum ActionRow {

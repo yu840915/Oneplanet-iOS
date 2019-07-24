@@ -53,7 +53,7 @@
 "tl_required_input" = "Required";
 "tl_agree" = "Agree";
 "tl_filter" = "Filter";
-"tl_bid_state_lost" = "Failed";
+"tl_bid_state_lost" = "Lose";
 "tl_bid_state_to_ship" = "Waiting for shipment";
 "tl_bid_state_shipping" = "In shipment";
 "tl_bid_state_delivered" = "Received";
@@ -81,9 +81,9 @@
 "msg_unlock_succeeded" = "Successfully unlocked";
 "msg_bid_succeeded" = "Successfully qualified for CommodityName bidding";
 "msg_lot_being_bid" = "This goods is being bid";
-"msg_lot_being_bid_des" = "This goods is currently being bidding. Please go to the bidding page to bid or watch the game";
+"msg_lot_being_bid_des" = "The bidding is in progress and the next issue will be announced within 48H, so stay tuned!";
 "msg_lot_closed" = "The goods has been closed";
-"msg_lot_closed_des" = "This goods has been closed, please wait for the new one to be announced soon.";
+"msg_lot_closed_des" = "The bidding has ended. The next issue will be announced within 48H, so stay tuned!";
 "msg_bid_payment_too_late" = "Payment is successful but exceeding the biding time limit";
 "msg_race1_monologue" = "My name is Focker.";
 "msg_race2_monologue" = "My name is Dicker.";
@@ -99,6 +99,7 @@
 "msg_block_des" = "They won’t be able to find your profile, posts or story on Oneplanet. Oneplanet won’t let them know you blocked them";
 "msg_recover_account_des" = "If you disagree with our disposition, please provide the following information to help us investigate.";
 "msg_petition_submitted" = "The problem has been reported to Oneplanet, please wait for the Oneplanet review and reply to you";
+"msg_unlock_option_prompt" = "Which gem do you want to use to unlock?";
 
 "msgf_accept_tos" = "By signing up or login, you agree to our %@.";
 "msgf_resend_verification_email" = "You did not receive the email? %@.";
@@ -106,8 +107,7 @@
 "msgf_did_copy_id" = "Oneplanet ID [%@] Copied";
 "msgf_winner_notice" = "The winner must check if the %@ is filled in to ensure that the goods can be delivered.";
 "msgf_unlock_lot" = "Unlock %@?";
-"msgf_did_unlock_lot" = "Unlocked %@!";
-"msgf_unlock_option_prompt" = "Select %@ or %@ to unlock";
+"msgf_did_unlock_lot" = "%@ Unlocked!";
 "msgf_unlock_with_gem_iap" = "Use a %@ + %@ to unlock?";
 "msgf_unlock_with_gem" = "Use a %@ to unlock?";
 "msgf_insufficient_gem" = "Your %@ is not enough";
@@ -115,7 +115,7 @@
 "msgf_bid_with_gem_iap" = "Use a %@ + %@ to bid once?";
 "msgf_bid_with_gem" = "Use %@ to bid once?";
 "msgf_insufficient_gem_unlock_des" = "To unlock a goods you need to use a %@ + %@。";
-"msgf_insufficient_gem_bid_des" = "To bid a goods you need to use a %@ + %@。";
+"msgf_insufficient_gem_bid_des" = "You need to use one %@ + %@ for each bid.";
 "msgf_earn_blue_gem_instruction" = "Take and upload a photo to get the %@!";
 "msgf_received_gem" = "Get a %@";
 "msgf_unlock_succeeded" = "Unlocked %@!";
@@ -175,6 +175,7 @@
 "ph_recover_account" = "Recover account";
 "ph_petition_submitted" = "Successful return";
 "ph_i_get_it" = "I get it";
+"ph_unlock_option_prompt" = "Select gems to unlock";
 
 "phf_seconds_ago_short" = "%@s";
 "phf_minutes_ago_short" = "%@m";

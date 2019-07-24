@@ -35,22 +35,11 @@ class GemPickerTableViewController: UITableViewController {
     }
     
     private func localizeTitles() {
-        subtitleLabel.text = String(format: Localized.messageFormats.unlockOptionPrompt, Localized.titles.blueGem, Localized.titles.purpleGem)
+        titleLabel.text = Localized.phrases.unlockOptionPrompt
+        subtitleLabel.text = Localized.messages.unlockOptionPrompt
         cancelButton.setTitle(Localized.titles.cancel, for: .normal)
         blueGemLabel.text = Localized.titles.blueGem
         purpleGemLabel.text = Localized.titles.purpleGem
-        prepareAttributedTitle()
-    }
-    
-    private func prepareAttributedTitle() {
-        let text = String(format: Localized.messageFormats.unlockLot, productName)
-        let range = (text as NSString).range(of: productName)
-        let result = NSMutableAttributedString(string: text, attributes: [.foregroundColor: UIColor.black, .font: UIFont.systemFont(ofSize: 17)])
-        result.addAttributes([
-            .foregroundColor: UIColor.black,
-            .font: UIFont.systemFont(ofSize: 17, weight: .semibold)],
-                             range: range)
-        titleLabel.attributedText = result
     }
     
     @IBAction func cancel(_ sender: Any) {

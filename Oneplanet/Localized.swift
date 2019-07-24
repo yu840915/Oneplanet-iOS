@@ -357,6 +357,9 @@ class LocalizedMessages {//msg_
     var petitionSubmitted: String {
         return NSLocalizedString("msg_petition_submitted", comment: "")
     }
+    var unlockOptionPrompt: String {
+        return NSLocalizedString("msg_unlock_option_prompt", comment: "")
+    }
 }
 
 class LocalizedMessageFormats {//msgf_
@@ -384,9 +387,6 @@ class LocalizedMessageFormats {//msgf_
     }
     var didUnlockLot: String {
         return NSLocalizedString("msgf_did_unlock_lot", comment: "")
-    }
-    var unlockOptionPrompt: String {
-        return NSLocalizedString("msgf_unlock_option_prompt", comment: "")
     }
     var unlockWithGemAndIAP: String {
         return NSLocalizedString("msgf_unlock_with_gem_iap", comment: "")
@@ -590,6 +590,10 @@ class LocalizedPhrase { //ph_
     var iGetIt: String {
         return NSLocalizedString("ph_i_get_it", comment: "")
     }
+    var unlockOptionPrompt: String {
+        return NSLocalizedString("ph_unlock_option_prompt", comment: "")
+    }
+
 }
 
 class LocalizedPhraseFormats {//phf_

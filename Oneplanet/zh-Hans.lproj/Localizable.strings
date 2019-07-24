@@ -81,9 +81,9 @@
 "msg_unlock_succeeded" = "解锁成功";
 "msg_bid_succeeded" = "Successfully qualified for CommodityName bidding";
 "msg_lot_being_bid" = "商品正在竞标中";
-"msg_lot_being_bid_des" = "This commodity is currently being bidding. Please go to the bidding page to bid or watch the game";
+"msg_lot_being_bid_des" = "竞标正在进行中，48H内会公布下一期商品，敬请期待！";
 "msg_lot_closed" = "商品已经结标";
-"msg_lot_closed_des" = "此商品已经结标，敬请期待即将公布的新商品";
+"msg_lot_closed_des" = "本期竞标已结束，48H内会公布下一期商品，敬请期待！";
 "msg_bid_payment_too_late" = "付款成功但超过了下标时限";
 "msg_race1_monologue" = "我的名字叫法克。";
 "msg_race2_monologue" = "我的名字叫迪克。";
@@ -95,10 +95,11 @@
 "msg_report_post_caption" = "If you report someone’s post, Oneplanet doesn’t tell them who reported it";
 "msg_thankyou_reporting_user" = "Thanks for reporting this";
 "msg_thankyou_reporting_post" = "Thanks for reporting this post";
-"msg_unblock_des" = "They will now be able to request to follow you on Oneplanet. Oneplanet won't let them know you unblocked them";
+"msg_unblock_des" = "他们现在可以在Oneplanet上追踪你。Oneplanet不会让他们知道你已将他们解除封锁";
 "msg_block_des" = "They won’t be able to find your profile, posts or story on Oneplanet. Oneplanet won’t let them know you blocked them";
 "msg_recover_account_des" = "如果您不同意我们的处理方式，请提供以下信息以帮助我们调查";
 "msg_petition_submitted" = "已将问题回报给 Oneplanet，请等待 Oneplanet 审核过后并回复你";
+"msg_unlock_option_prompt" = "你要使用哪种宝石来解锁？";
 
 "msgf_accept_tos" = "注册或登录即表示你同意我们的%@";
 "msgf_resend_verification_email" = "你没有收到电子邮件？%@";
@@ -107,15 +108,14 @@
 "msgf_winner_notice" = "得标者请检查是否填写%@，以确保商品能够送达。";
 "msgf_unlock_lot" = "解锁 %@？";
 "msgf_did_unlock_lot" = "已解锁 %@！";
-"msgf_unlock_option_prompt" = "你要使用 %@ 或是 %@ 来解锁？";
 "msgf_unlock_with_gem_iap" = "使用一颗 %@ + %@？";
 "msgf_unlock_with_gem" = "使用一颗 %@ 解锁？";
-"msgf_insufficient_gem" = "你的 %@ 不足";
+"msgf_insufficient_gem" = "你的 %@ 数量不足";
 "msgf_bid_prompt" = "投标 %@ 一次";
 "msgf_bid_with_gem_iap" = "使用一颗 %@ + %@ 投标一次?";
 "msgf_bid_with_gem" = "使用一颗 %@ 投标一次？";
 "msgf_insufficient_gem_unlock_des" = "解锁一次需要使用一颗 %@ + %@。";
-"msgf_insufficient_gem_bid_des" = "投标一次需要使用一颗 %@ + %@。";
+"msgf_insufficient_gem_bid_des" = "每投标一次需要使用一颗 %@ + %@。";
 "msgf_earn_blue_gem_instruction" = "拍照上传照片就能获得 %@，赶紧去拍照！";
 "msgf_received_gem" = "获得 %@ 1 颗";
 "msgf_unlock_succeeded" = "已解锁 %@!";
@@ -160,9 +160,9 @@
 "ph_view_shipping_status" = "查看出货状况";
 "ph_commodities" = "商品";
 "ph_bidding_process" = "竞标历程";
-"ph_bid_count" = "你投标次数";
+"ph_bid_count" = "投标次数";
 "ph_countdown" = "结标时间";
-"ph_bid_leader" = "领先中";
+"ph_bid_leader" = "领先者";
 "ph_product_name" = "商品名称";
 "ph_bid_outcome" = "竞标结果";
 "ph_bid_lot" = "商品";
@@ -175,6 +175,7 @@
 "ph_recover_account" = "恢复账户";
 "ph_petition_submitted" = "回报成功";
 "ph_i_get_it" = "我知道了";
+"ph_unlock_option_prompt" = "选择宝石解锁";
 
 "phf_seconds_ago_short" = "%@ s";
 "phf_minutes_ago_short" = "%@ m";

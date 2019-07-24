@@ -81,9 +81,9 @@
 "msg_unlock_succeeded" = "解鎖成功";
 "msg_bid_succeeded" = "Successfully qualified for CommodityName bidding";
 "msg_lot_being_bid" = "商品正在競標中";
-"msg_lot_being_bid_des" = "This commodity is currently being bidding. Please go to the bidding page to bid or watch the game";
+"msg_lot_being_bid_des" = "競標正在進行中，48H 內會公布下一期商品，敬請期待！";
 "msg_lot_closed" = "商品已經結標";
-"msg_lot_closed_des" = "此商品已經結標，敬請期待即將公布的新商品";
+"msg_lot_closed_des" = "本期競標已結束，48H 內會公布下一期商品，敬請期待！";
 "msg_bid_payment_too_late" = "付款成功但超過了下標時限";
 "msg_race1_monologue" = "我的名字叫法克。";
 "msg_race2_monologue" = "我的名字叫迪克。";
@@ -99,6 +99,7 @@
 "msg_block_des" = "They won’t be able to find your profile, posts or story on Oneplanet. Oneplanet won’t let them know you blocked them";
 "msg_recover_account_des" = "如果你認為自己沒有違反我們的使用條款，請提供以下信息以幫助我們進行調查";
 "msg_petition_submitted" = "已將問題回報給 Oneplanet，請等待 Oneplanet 審核過後並回覆你";
+"msg_unlock_option_prompt" = "你要使用哪種寶石來解鎖?";
 
 "msgf_accept_tos" = "註冊或登錄即表示你同意我們的%@";
 "msgf_resend_verification_email" = "你沒有收到電子郵件？%@";
@@ -106,8 +107,7 @@
 "msgf_did_copy_id" = "Oneplanet ID [%@] 已複製。";
 "msgf_winner_notice" = "得標者請檢查是否填寫%@，以確保商品能夠送達。";
 "msgf_unlock_lot" = "解鎖 %@？";
-"msgf_did_unlock_lot" = "已解鎖 %@！";
-"msgf_unlock_option_prompt" = "你要使用 %@ 或是 %@ 來解鎖？";
+"msgf_did_unlock_lot" = "%@解鎖成功!";
 "msgf_unlock_with_gem_iap" = "使用一顆 %@ + %@？";
 "msgf_unlock_with_gem" = "使用一顆 %@ 解鎖？";
 "msgf_insufficient_gem" = "你的 %@ 不足";
@@ -115,7 +115,7 @@
 "msgf_bid_with_gem_iap" = "使用一顆 %@ + %@ 投標一次?";
 "msgf_bid_with_gem" = "使用一顆 %@ 投標一次？";
 "msgf_insufficient_gem_unlock_des" = "解鎖一次需要使用一顆 %@ + %@。";
-"msgf_insufficient_gem_bid_des" = "投標一次需要使用一顆 %@ + %@。";
+"msgf_insufficient_gem_bid_des" = "每投標一次需要使用一顆 %@ + %@。";
 "msgf_earn_blue_gem_instruction" = "拍照上傳照片就能獲得 %@，趕緊去拍照！";
 "msgf_received_gem" = "獲得 %@ 1 顆";
 "msgf_unlock_succeeded" = "已解鎖 %@!";
@@ -160,9 +160,9 @@
 "ph_view_shipping_status" = "查看出貨狀況";
 "ph_commodities" = "商品";
 "ph_bidding_process" = "競標歷程";
-"ph_bid_count" = "你投標次數";
+"ph_bid_count" = "投標次數";
 "ph_countdown" = "結標時間";
-"ph_bid_leader" = "領先中";
+"ph_bid_leader" = "領先者";
 "ph_product_name" = "商品名稱";
 "ph_bid_outcome" = "競標結果";
 "ph_bid_lot" = "商品";
@@ -175,6 +175,7 @@
 "ph_recover_account" = "恢復帳戶";
 "ph_petition_submitted" = "回報成功";
 "ph_i_get_it" = "我知道了";
+"ph_unlock_option_prompt" = "選擇寶石解鎖";
 
 "phf_seconds_ago_short" = "%@ s";
 "phf_minutes_ago_short" = "%@ m";

@@ -53,6 +53,8 @@
 		E03C32B5226D969500C32FD7 /* ColorPalette .swift in Sources */ = {isa = PBXBuildFile; fileRef = E03C32B4226D969500C32FD7 /* ColorPalette .swift */; };
 		E03C32B7226DA39700C32FD7 /* SwiftGif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E03C32B6226DA39700C32FD7 /* SwiftGif.framework */; };
 		E03C32B9226DA44A00C32FD7 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E03C32B8226DA44A00C32FD7 /* Onboarding.storyboard */; };
+		E045BE7722E974640035D08B /* PostFeedMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E045BE7622E974640035D08B /* PostFeedMainViewController.swift */; };
+		E045BE7922E976FE0035D08B /* PostFeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E045BE7822E976FE0035D08B /* PostFeedTableViewController.swift */; };
 		E055ACA72293D114000B7B31 /* ProfileEditorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E055ACA62293D114000B7B31 /* ProfileEditorTableViewController.swift */; };
 		E05BB25E226D5D2A00721F20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BB25D226D5D2A00721F20 /* AppDelegate.swift */; };
 		E05BB260226D5D2A00721F20 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BB25F226D5D2A00721F20 /* RootViewController.swift */; };
@@ -230,6 +232,8 @@
 		E03C32B4226D969500C32FD7 /* ColorPalette .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorPalette .swift"; sourceTree = "<group>"; };
 		E03C32B6226DA39700C32FD7 /* SwiftGif.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftGif.framework; path = Carthage/Build/iOS/SwiftGif.framework; sourceTree = SOURCE_ROOT; };
 		E03C32B8226DA44A00C32FD7 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		E045BE7622E974640035D08B /* PostFeedMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFeedMainViewController.swift; sourceTree = "<group>"; };
+		E045BE7822E976FE0035D08B /* PostFeedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFeedTableViewController.swift; sourceTree = "<group>"; };
 		E055ACA62293D114000B7B31 /* ProfileEditorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditorTableViewController.swift; sourceTree = "<group>"; };
 		E05BB25A226D5D2A00721F20 /* Oneplanet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oneplanet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E05BB25D226D5D2A00721F20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -527,6 +531,16 @@
 			name = Onboarding;
 			sourceTree = "<group>";
 		};
+		E045BE7522E973400035D08B /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				E0FF797D228D38CE00F61318 /* Post.storyboard */,
+				E045BE7622E974640035D08B /* PostFeedMainViewController.swift */,
+				E045BE7822E976FE0035D08B /* PostFeedTableViewController.swift */,
+			);
+			name = Post;
+			sourceTree = "<group>";
+		};
 		E05BB251226D5D2A00721F20 = {
 			isa = PBXGroup;
 			children = (
@@ -709,7 +723,7 @@
 				E0BDCCE9229FA044006A9D20 /* PromotionPageList.swift */,
 				E0814FB022864F79002F1C02 /* UserFlowMainViewController.swift */,
 				E00611F02294F4ED0032AE30 /* Home */,
-				E0FF797D228D38CE00F61318 /* Post.storyboard */,
+				E045BE7522E973400035D08B /* Post */,
 				E032844322AB6A0E001F02E8 /* Auction */,
 				E0814E3322DC29E6002D0E32 /* Notifications */,
 				E030E4D5228BC3BD0084D383 /* Me */,
@@ -1067,6 +1081,7 @@
 				E0D7DCDB229CE65C00B40D76 /* PromoPopUpFlowViewController.swift in Sources */,
 				E06589BB227001F300C9E4E6 /* AskForAuthorizationOperation.swift in Sources */,
 				E03C329A226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift in Sources */,
+				E045BE7922E976FE0035D08B /* PostFeedTableViewController.swift in Sources */,
 				E077A73022DDF63500A2245E /* NoticeUIHelpers.swift in Sources */,
 				E03C32AE226D8E6800C32FD7 /* SharedFormatters.swift in Sources */,
 				E0DA38A222C31E3800EC4170 /* GemActionPopUpConfigurations.swift in Sources */,
@@ -1132,6 +1147,7 @@
 				E0A4618A22B6347800D26720 /* PhoneNumberBuilder.swift in Sources */,
 				E076729C22E70C8800A3939A /* PetitionViewController.swift in Sources */,
 				E032844522AB6A50001F02E8 /* AuctionMainViewController.swift in Sources */,
+				E045BE7722E974640035D08B /* PostFeedMainViewController.swift in Sources */,
 				E0190F4D226DCCFB00C212D5 /* UserSession.swift in Sources */,
 				E02F49D122E5A9A00014DEBE /* UserProfileViewController.swift in Sources */,
 				E0DCD05122B7E86B008D9C63 /* PickerConfirmButtonFooter.swift in Sources */,

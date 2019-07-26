@@ -607,6 +607,7 @@
                             <outlet property="delegate" destination="7FN-v5-bgi" id="LwK-8w-6Dv"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="More" id="Gy8-tl-yb3">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="fLF-E5-5YB">
                             <connections>
@@ -622,6 +623,7 @@
                             <barButtonItem title="Item" image="ic_youtube_nor" id="xF0-zh-EEO"/>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="dismissButtonItem" destination="fLF-E5-5YB" id="lfF-P9-1Pu"/>
                         <outlet property="versionLabel" destination="IrI-2U-KY4" id="ygD-XE-nN3"/>

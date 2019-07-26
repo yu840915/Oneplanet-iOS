@@ -176,6 +176,8 @@
 "ph_petition_submitted" = "Successful return";
 "ph_i_get_it" = "I get it";
 "ph_unlock_option_prompt" = "Select gems to unlock";
+"ph_latest_posts" = "Latest";
+"ph_best_posts" = "Highest socreds";
 
 "phf_seconds_ago_short" = "%@s";
 "phf_minutes_ago_short" = "%@m";

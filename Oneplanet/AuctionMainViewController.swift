@@ -22,6 +22,7 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
         super.awakeFromNib()
         PagerStyleConfigurer().configure(self)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         buttonBarContainer.translatesAutoresizingMaskIntoConstraints = false

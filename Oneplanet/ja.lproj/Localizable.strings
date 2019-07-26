@@ -176,6 +176,8 @@
 "ph_petition_submitted" = "報告成功";
 "ph_i_get_it" = "分かりました";
 "ph_unlock_option_prompt" = "アンロックするジェムを選択します";
+"ph_latest_posts" = "Latest";
+"ph_best_posts" = "Highest socreds";
 
 "phf_seconds_ago_short" = "%@ s";
 "phf_minutes_ago_short" = "%@ m";

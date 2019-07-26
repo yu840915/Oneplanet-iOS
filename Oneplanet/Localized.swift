@@ -593,7 +593,12 @@ class LocalizedPhrase { //ph_
     var unlockOptionPrompt: String {
         return NSLocalizedString("ph_unlock_option_prompt", comment: "")
     }
-
+    var latestPosts: String {
+        return NSLocalizedString("ph_latest_posts", comment: "")
+    }
+    var bestPosts: String {
+        return NSLocalizedString("ph_best_posts", comment: "")
+    }
 }
 
 class LocalizedPhraseFormats {//phf_

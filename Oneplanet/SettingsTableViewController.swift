@@ -21,6 +21,19 @@ class SettingsTableViewController: UITableViewController, UserSessionDepending {
         navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
         localizeTitles()
         prepareSections()
+        prepareNavigationButtons()
+    }
+    
+    private func prepareNavigationButtons() {
+        let youtube = UIButton(frame: CGRect(origin: .zero, size: CGSize(width: 30, height: 30)))
+        let mail = UIButton(frame: CGRect(origin: .zero, size: CGSize(width: 30, height: 30)))
+        mail.setImage(navigationItem.rightBarButtonItems?[0].image, for: .normal)
+        youtube.setImage(navigationItem.rightBarButtonItems?[1].image, for: .normal)
+        mail.addTarget(self, action: #selector(showEmailComposer(_:)), for: .touchUpInside)
+        navigationItem.rightBarButtonItems = [
+            UIBarButtonItem(customView: mail),
+            UIBarButtonItem(customView: youtube)
+        ]
     }
     
     private func prepareSections() {

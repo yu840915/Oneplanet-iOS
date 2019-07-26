@@ -176,6 +176,8 @@
 "ph_petition_submitted" = "回报成功";
 "ph_i_get_it" = "我知道了";
 "ph_unlock_option_prompt" = "选择宝石解锁";
+"ph_latest_posts" = "Latest";
+"ph_best_posts" = "Highest socreds";
 
 "phf_seconds_ago_short" = "%@ s";
 "phf_minutes_ago_short" = "%@ m";

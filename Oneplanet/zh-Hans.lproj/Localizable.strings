@@ -100,6 +100,7 @@
 "msg_recover_account_des" = "如果您不同意我们的处理方式，请提供以下信息以帮助我们调查";
 "msg_petition_submitted" = "已将问题回报给 Oneplanet，请等待 Oneplanet 审核过后并回复你";
 "msg_unlock_option_prompt" = "你要使用哪种宝石来解锁？";
+"msg_thanks_for_reporting_post" = "Your feedback is important in helping us keep the Oneplanet community safe";
 
 "msgf_accept_tos" = "注册或登录即表示你同意我们的%@";
 "msgf_resend_verification_email" = "你没有收到电子邮件？%@";
@@ -178,6 +179,8 @@
 "ph_unlock_option_prompt" = "选择宝石解锁";
 "ph_latest_posts" = "Latest";
 "ph_best_posts" = "Highest socreds";
+"ph_thanks_for_reporting_post" = "Thanks for reporting this post";
+"ph_show_post" = "Show Post";
 
 "phf_seconds_ago_short" = "%@ s";
 "phf_minutes_ago_short" = "%@ m";

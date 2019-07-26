@@ -115,5 +115,5 @@ class BiddingFeatureAccessCheckOperation: SimpleAsynchronousOperation {
         })
     }
     
-    private var needsConsent: Bool = true
+    private var needsConsent: Bool = false
 }

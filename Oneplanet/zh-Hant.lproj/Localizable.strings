@@ -100,6 +100,7 @@
 "msg_recover_account_des" = "如果你認為自己沒有違反我們的使用條款，請提供以下信息以幫助我們進行調查";
 "msg_petition_submitted" = "已將問題回報給 Oneplanet，請等待 Oneplanet 審核過後並回覆你";
 "msg_unlock_option_prompt" = "你要使用哪種寶石來解鎖?";
+"msg_thanks_for_reporting_post" = "Your feedback is important in helping us keep the Oneplanet community safe";
 
 "msgf_accept_tos" = "註冊或登錄即表示你同意我們的%@";
 "msgf_resend_verification_email" = "你沒有收到電子郵件？%@";
@@ -178,6 +179,8 @@
 "ph_unlock_option_prompt" = "選擇寶石解鎖";
 "ph_latest_posts" = "Latest";
 "ph_best_posts" = "Highest socreds";
+"ph_thanks_for_reporting_post" = "Thanks for reporting this post";
+"ph_show_post" = "Show Post";
 
 "phf_seconds_ago_short" = "%@ s";
 "phf_minutes_ago_short" = "%@ m";

@@ -14,6 +14,8 @@
 		E00611F42294FFF10032AE30 /* HotNavigationItems.xib in Resources */ = {isa = PBXBuildFile; fileRef = E00611F32294FFF10032AE30 /* HotNavigationItems.xib */; };
 		E00611F6229500FA0032AE30 /* HotNavigationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00611F5229500FA0032AE30 /* HotNavigationItemView.swift */; };
 		E006BAC622AE250D00D7D118 /* DS-DIGIT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = E006BAC522AE250D00D7D118 /* DS-DIGIT.TTF */; };
+		E0125F9A22EADD8900AFF763 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0125F9922EADD8900AFF763 /* PostDetailViewController.swift */; };
+		E0125F9C22EAEA7F00AFF763 /* PostCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0125F9B22EAEA7F00AFF763 /* PostCardCell.swift */; };
 		E0190F49226DB0E000C212D5 /* WelcomeMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F48226DB0E000C212D5 /* WelcomeMessageViewController.swift */; };
 		E0190F4B226DB55400C212D5 /* UIComponentFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F4A226DB55400C212D5 /* UIComponentFactories.swift */; };
 		E0190F4D226DCCFB00C212D5 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0190F4C226DCCFB00C212D5 /* UserSession.swift */; };
@@ -193,6 +195,8 @@
 		E00611F32294FFF10032AE30 /* HotNavigationItems.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HotNavigationItems.xib; sourceTree = "<group>"; };
 		E00611F5229500FA0032AE30 /* HotNavigationItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotNavigationItemView.swift; sourceTree = "<group>"; };
 		E006BAC522AE250D00D7D118 /* DS-DIGIT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DS-DIGIT.TTF"; sourceTree = "<group>"; };
+		E0125F9922EADD8900AFF763 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		E0125F9B22EAEA7F00AFF763 /* PostCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCardCell.swift; sourceTree = "<group>"; };
 		E0190F48226DB0E000C212D5 /* WelcomeMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeMessageViewController.swift; sourceTree = "<group>"; };
 		E0190F4A226DB55400C212D5 /* UIComponentFactories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIComponentFactories.swift; sourceTree = "<group>"; };
 		E0190F4C226DCCFB00C212D5 /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
@@ -537,6 +541,8 @@
 				E0FF797D228D38CE00F61318 /* Post.storyboard */,
 				E045BE7622E974640035D08B /* PostFeedMainViewController.swift */,
 				E045BE7822E976FE0035D08B /* PostFeedTableViewController.swift */,
+				E0125F9B22EAEA7F00AFF763 /* PostCardCell.swift */,
+				E0125F9922EADD8900AFF763 /* PostDetailViewController.swift */,
 			);
 			name = Post;
 			sourceTree = "<group>";
@@ -1048,6 +1054,7 @@
 				E0814E3522DC2BBF002D0E32 /* NoticeTableViewController.swift in Sources */,
 				E0837EF5228022C400B13BAF /* TwitterLogIn.swift in Sources */,
 				E0A4617A22B2984A00D26720 /* BiddingListHeader.swift in Sources */,
+				E0125F9A22EADD8900AFF763 /* PostDetailViewController.swift in Sources */,
 				E07276FD2277424E001239C0 /* URLRouter.swift in Sources */,
 				E0B7B9CA22E1D8580005DF77 /* BlockListTableViewController.swift in Sources */,
 				E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */,
@@ -1082,6 +1089,7 @@
 				E06589BB227001F300C9E4E6 /* AskForAuthorizationOperation.swift in Sources */,
 				E03C329A226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift in Sources */,
 				E045BE7922E976FE0035D08B /* PostFeedTableViewController.swift in Sources */,
+				E0125F9C22EAEA7F00AFF763 /* PostCardCell.swift in Sources */,
 				E077A73022DDF63500A2245E /* NoticeUIHelpers.swift in Sources */,
 				E03C32AE226D8E6800C32FD7 /* SharedFormatters.swift in Sources */,
 				E0DA38A222C31E3800EC4170 /* GemActionPopUpConfigurations.swift in Sources */,

@@ -360,6 +360,9 @@ class LocalizedMessages {//msg_
     var unlockOptionPrompt: String {
         return NSLocalizedString("msg_unlock_option_prompt", comment: "")
     }
+    var thanksForReportingPost: String {
+        return NSLocalizedString("msg_thanks_for_reporting_post", comment: "")
+    }
 }
 
 class LocalizedMessageFormats {//msgf_
@@ -598,6 +601,12 @@ class LocalizedPhrase { //ph_
     }
     var bestPosts: String {
         return NSLocalizedString("ph_best_posts", comment: "")
+    }
+    var thanksForReportingPost: String {
+        return NSLocalizedString("ph_thanks_for_reporting_post", comment: "")
+    }
+    var showPost: String {
+        return NSLocalizedString("ph_show_post", comment: "")
     }
 }
 

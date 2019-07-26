@@ -59,3 +59,4 @@ private extension PostFeedMainViewController {
         newCell?.label.font = PagerStyleConfigurer.Style.highlighted.font
     }
 }
+

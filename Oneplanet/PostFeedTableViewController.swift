@@ -19,7 +19,7 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
     var posts: [Post] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        posts = [Post(), Post()]
     }
 
     // MARK: - Table view data source
@@ -28,28 +28,34 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
         return posts.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: ReuseID.reportedPostCell, for: indexPath)
 
         return cell
     }
-    */
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        performSegue(withIdentifier: SegueID.showDetail, sender: nil)
+    }
 
-    /*
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
 
 }
 
+extension PostFeedTableViewController {
+    struct ReuseID {
+        static let postCell = "postCell"
+        static let reportedPostCell = "reportedPostCell"
+        
+    }
+    struct SegueID {
+        static let showDetail = "showDetail"
+    }
+}
 extension PostFeedTableViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: title ?? "")

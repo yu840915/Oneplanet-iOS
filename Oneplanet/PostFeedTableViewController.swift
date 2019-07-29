@@ -30,8 +30,20 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ReuseID.postCell, for: indexPath) as! PostCardCell
-        cell.updateViews(with: FakePost())
+        setUpPostCell(cell, at: indexPath)
         return cell
+    }
+    
+    private func setUpPostCell(_ cell: PostCardCell, at indexPath: IndexPath) {
+        let post = posts[indexPath.row]
+        cell.updateViews(with: FakePost())
+        cell.moreActions = {[weak self] in
+            self?.showMoreAction(for: post)
+        }
+    }
+    
+    private func showMoreAction(for post: Post) {
+        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

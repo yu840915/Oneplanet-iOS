@@ -19,7 +19,7 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
     var posts: [Post] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        posts = [Post(), Post()]
+        posts = [Post(), Post(), Post(), Post(), Post()]
     }
 
     // MARK: - Table view data source
@@ -29,7 +29,7 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ReuseID.reportedPostCell, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: ReuseID.postCell, for: indexPath)
 
         return cell
     }
@@ -56,6 +56,7 @@ extension PostFeedTableViewController {
         static let showDetail = "showDetail"
     }
 }
+
 extension PostFeedTableViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: title ?? "")
@@ -64,4 +65,10 @@ extension PostFeedTableViewController: IndicatorInfoProvider {
 
 class Post {
     
+}
+
+extension UITableViewController: ScrollToTopHandler {
+    func setWantsScrollToTop() {
+        tableView.setContentOffset(.zero, animated: true)
+    }
 }

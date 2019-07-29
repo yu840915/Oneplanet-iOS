@@ -50,6 +50,14 @@ class PostFeedMainViewController: ButtonBarPagerTabStripViewController, UserSess
 
 }
 
+extension ButtonBarPagerTabStripViewController: ScrollToTopHandler {
+    func setWantsScrollToTop() {
+        if let vc = viewControllers[currentIndex] as? ScrollToTopHandler {
+            vc.setWantsScrollToTop()
+        }
+    }
+}
+
 private extension PostFeedMainViewController {
     func updateButtonBarCell(oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) {
         guard changeCurrentIndex else { return }

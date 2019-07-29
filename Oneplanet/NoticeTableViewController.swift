@@ -38,6 +38,16 @@ class NoticeTableViewController: UITableViewController, UserSessionDepending {
             Notice(type: .likeFromOfficialAccount, isRead: true),
             Notice(type: .profileReported, isRead: true),
             Notice(type: .postReported, isRead: true),
+            Notice(type: .followNotice, isRead: true),
+            Notice(type: .giftFromOfficialAccount, isRead: true),
+            Notice(type: .likeFromOfficialAccount, isRead: true),
+            Notice(type: .profileReported, isRead: true),
+            Notice(type: .postReported, isRead: true),
+            Notice(type: .followNotice, isRead: true),
+            Notice(type: .giftFromOfficialAccount, isRead: true),
+            Notice(type: .likeFromOfficialAccount, isRead: true),
+            Notice(type: .profileReported, isRead: true),
+            Notice(type: .postReported, isRead: true),
         ]
     }
 

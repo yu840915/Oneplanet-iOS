@@ -10,6 +10,15 @@ import UIKit
 
 class PostDetailViewController: UIViewController {
 
+    @IBOutlet weak var galleryCollectionView: UICollectionView!
+    @IBOutlet weak var avatarView: AvatarView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var contentTextView: UITextView!
+    @IBOutlet weak var moreButtonItem: UIBarButtonItem!
+    @IBOutlet weak var reportedPostView: ReportedPostView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,6 +34,9 @@ class PostDetailViewController: UIViewController {
     
     @IBAction func exit(_ sender: Any) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func showMoreActionSheet(_ sender: UIBarButtonItem) {
     }
     
     /*

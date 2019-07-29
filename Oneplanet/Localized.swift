@@ -608,6 +608,9 @@ class LocalizedPhrase { //ph_
     var showPost: String {
         return NSLocalizedString("ph_show_post", comment: "")
     }
+    var more: String {
+        return NSLocalizedString("ph_more", comment: "")
+    }
 }
 
 class LocalizedPhraseFormats {//phf_

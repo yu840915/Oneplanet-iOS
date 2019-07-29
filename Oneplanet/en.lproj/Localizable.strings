@@ -181,6 +181,7 @@
 "ph_best_posts" = "Highest socreds";
 "ph_thanks_for_reporting_post" = "Thanks for reporting this post";
 "ph_show_post" = "Show Post";
+"ph_more" = "more";
 
 "phf_seconds_ago_short" = "%@s";
 "phf_minutes_ago_short" = "%@m";

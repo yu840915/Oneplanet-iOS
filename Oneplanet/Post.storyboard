@@ -63,6 +63,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="600"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="1000" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3q-ET-SRu">
+                                            <rect key="frame" x="20" y="539" width="374" height="183.5"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                            <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Vt2-YH-EOx">
                                             <rect key="frame" x="0.0" y="98" width="20" height="374"/>
                                             <subviews>
@@ -288,12 +296,9 @@
                                                 <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="s6A-rP-aSa">
                                                     <rect key="frame" x="0.0" y="492" width="374" height="37"/>
                                                 </pageControl>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Content" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dJx-dF-4OQ">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Content" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="dJx-dF-4OQ">
                                                     <rect key="frame" x="0.0" y="539" width="374" height="33"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="67" id="kro-8Q-Fua"/>
-                                                    </constraints>
                                                     <color key="textColor" name="default text"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -307,25 +312,42 @@
                                                 </view>
                                             </subviews>
                                         </stackView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qoS-QU-uyV" userLabel="More Button">
+                                            <rect key="frame" x="361" y="542" width="33" height="29"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <state key="normal" title="more">
+                                                <color key="titleColor" name="default placeholder"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="invokeShowDetailAction:" destination="C2V-pE-YM6" eventType="touchUpInside" id="xoY-9s-f9R"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="P3q-ET-SRu" firstAttribute="width" secondItem="dJx-dF-4OQ" secondAttribute="width" id="6N8-Fn-P4u"/>
                                         <constraint firstItem="34C-IX-so6" firstAttribute="height" secondItem="soz-19-S1s" secondAttribute="height" id="9ca-pW-AP7"/>
                                         <constraint firstItem="Vt2-YH-EOx" firstAttribute="leading" secondItem="soz-19-S1s" secondAttribute="leading" id="B2q-9x-Vza"/>
                                         <constraint firstAttribute="trailing" secondItem="34C-IX-so6" secondAttribute="trailing" constant="20" id="FqB-el-aL2"/>
                                         <constraint firstItem="34C-IX-so6" firstAttribute="leading" secondItem="soz-19-S1s" secondAttribute="leading" constant="20" id="YTg-Ab-h6t"/>
                                         <constraint firstItem="Vt2-YH-EOx" firstAttribute="centerY" secondItem="d3o-no-tRI" secondAttribute="centerY" id="YuM-QI-UoC"/>
                                         <constraint firstItem="34C-IX-so6" firstAttribute="centerY" secondItem="soz-19-S1s" secondAttribute="centerY" id="ZIb-Zb-ZeF"/>
+                                        <constraint firstItem="P3q-ET-SRu" firstAttribute="centerX" secondItem="dJx-dF-4OQ" secondAttribute="centerX" id="hEy-sG-i1m"/>
+                                        <constraint firstItem="P3q-ET-SRu" firstAttribute="top" secondItem="dJx-dF-4OQ" secondAttribute="top" id="j3U-HR-ocw"/>
                                         <constraint firstItem="Vt2-YH-EOx" firstAttribute="height" secondItem="d3o-no-tRI" secondAttribute="height" id="ju3-1v-SaG"/>
+                                        <constraint firstItem="qoS-QU-uyV" firstAttribute="bottom" secondItem="dJx-dF-4OQ" secondAttribute="bottom" constant="-1" id="kpA-bk-rka"/>
+                                        <constraint firstItem="qoS-QU-uyV" firstAttribute="trailing" secondItem="dJx-dF-4OQ" secondAttribute="trailing" id="zjJ-AK-YnT"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="actionButton" destination="jaP-pc-ueI" id="08u-TK-Pf1"/>
                                     <outlet property="avatarView" destination="QIt-Ox-D7M" id="rtU-Cg-iui"/>
-                                    <outlet property="contentLabel" destination="dJx-dF-4OQ" id="3W8-9K-DbO"/>
+                                    <outlet property="contentTextView" destination="dJx-dF-4OQ" id="3W8-9K-DbO"/>
+                                    <outlet property="dateLabel" destination="Q1C-Po-9oS" id="eDs-SS-UaS"/>
                                     <outlet property="galleryCollectionView" destination="d3o-no-tRI" id="wSS-5e-Yi0"/>
-                                    <outlet property="idLabel" destination="Q1C-Po-9oS" id="eDs-SS-UaS"/>
+                                    <outlet property="layoutTextView" destination="P3q-ET-SRu" id="tKy-4k-uCv"/>
                                     <outlet property="moreActionButton" destination="2LV-Vp-mmr" id="Q5U-P7-HTc"/>
+                                    <outlet property="moreButton" destination="qoS-QU-uyV" id="wd6-Aw-0Rt"/>
                                     <outlet property="nameLabel" destination="iyR-sf-rhE" id="jV6-bx-c9h"/>
                                     <outlet property="pageControl" destination="s6A-rP-aSa" id="Vhd-A2-vLu"/>
                                 </connections>
@@ -716,7 +738,7 @@
                                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="DGO-5A-nSh">
                                                 <rect key="frame" x="0.0" y="492" width="374" height="37"/>
                                             </pageControl>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Content" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="j5w-IG-QqI">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Content" translatesAutoresizingMaskIntoConstraints="NO" id="j5w-IG-QqI">
                                                 <rect key="frame" x="0.0" y="539" width="374" height="33"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" name="default text"/>
@@ -766,9 +788,23 @@
                                 <action selector="exit:" destination="OGY-9S-l3i" id="vWf-fx-QYd"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="ic_more_nor" id="xRW-a7-bap"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="ic_more_nor" id="xRW-a7-bap">
+                            <connections>
+                                <action selector="showMoreActionSheet:" destination="OGY-9S-l3i" id="5sr-Z2-yw2"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="avatarView" destination="Zpl-VX-XQ0" id="rm3-0S-Qpd"/>
+                        <outlet property="contentTextView" destination="j5w-IG-QqI" id="5Vg-Ez-Lv5"/>
+                        <outlet property="dateLabel" destination="2Hc-Hj-oNJ" id="Nda-OX-2hK"/>
+                        <outlet property="galleryCollectionView" destination="NTa-Xb-1MK" id="Ot4-zY-FRh"/>
+                        <outlet property="moreButtonItem" destination="xRW-a7-bap" id="YD9-Zk-ra8"/>
+                        <outlet property="nameLabel" destination="Y7R-28-rOk" id="xmb-g2-1Pl"/>
+                        <outlet property="pageControl" destination="DGO-5A-nSh" id="x3L-Uz-lOc"/>
+                        <outlet property="reportedPostView" destination="obe-Py-uCn" id="gC8-pd-h37"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CAc-Sh-Kau" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

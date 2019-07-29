@@ -29,8 +29,8 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ReuseID.postCell, for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: ReuseID.postCell, for: indexPath) as! PostCardCell
+        cell.updateViews(with: FakePost())
         return cell
     }
     
@@ -71,4 +71,13 @@ extension UITableViewController: ScrollToTopHandler {
     func setWantsScrollToTop() {
         tableView.setContentOffset(.zero, animated: true)
     }
+}
+
+class FakePost: PostDisplayable {
+    var avatar: WebImageInfo?
+    var nickname: String = "Abc 123"
+    var formatedDate: String = "1m ago"
+    var photos: [WebImageInfo] = [WebImageInfo(url: URL(string: "https://i.imgur.com/lytdJKp.png")!)]
+    var message: String = "Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Contenta"
+    var relativeScore: Float? = 0.5
 }

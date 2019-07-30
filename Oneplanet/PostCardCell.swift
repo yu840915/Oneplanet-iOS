@@ -95,6 +95,9 @@ extension PostCardCell {
             self?.showDetailAction?()
         }
         galleryDataSource = ds
+        galleryCollectionView.contentOffset = .zero
+        galleryCollectionView.reloadData()
+        ds.pageControl = pageControl
     }
     
     private func setUpContentSection(with dataSource: PostDisplayable) {

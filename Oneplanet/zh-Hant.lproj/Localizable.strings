@@ -64,6 +64,7 @@
 "tl_followings" = "追蹤中";
 "tl_content" = "內容";
 "tl_send" = "送出";
+"tl_edit" = "編輯";
 
 "pl_email" = "電子郵件地址";
 "pl_nickname" = "暱稱";

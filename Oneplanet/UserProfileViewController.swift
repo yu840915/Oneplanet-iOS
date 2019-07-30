@@ -24,6 +24,15 @@ class UserProfileViewController: UIViewController, UserSessionDepending {
         updateViewsForProfile()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let nav = navigationController, nav.viewControllers.count == 1 {
+            NavigationBarStyle.darkGray.configure(nav.navigationBar)
+        } else {
+            navigationItem.leftBarButtonItem = nil
+        }
+    }
+    
     private func prepareIDHeaderIfNeeded() {
         guard !userSession.isGuest else { return }
         let header = IDHeaderView.fromDefaultNib()
@@ -39,7 +48,10 @@ class UserProfileViewController: UIViewController, UserSessionDepending {
         profileController.profile = profile
     }
     
-    
+    @IBAction func exit(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+
     @IBAction func showActionSheet(_ sender: UIBarButtonItem) {
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         sheet.addAction(UIAlertAction(title: Localized.phrases.copyID, style: .default, handler: { (_) in

@@ -29,6 +29,8 @@ class PostDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         if let nav = navigationController, nav.viewControllers.count == 1 {
             NavigationBarStyle.darkGray.configure(nav.navigationBar)
+        } else {
+            navigationItem.leftBarButtonItem = nil
         }
     }
     

@@ -64,6 +64,7 @@
 "tl_followings" = "Following";
 "tl_content" = "Content";
 "tl_send" = "Send";
+"tl_edit" = "Edit";
 
 "pl_email" = "Email Address";
 "pl_nickname" = "Nickname";

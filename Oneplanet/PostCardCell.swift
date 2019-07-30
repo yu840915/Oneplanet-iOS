@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 protocol PostDisplayable {
     var avatar: WebImageInfo? {get}
@@ -42,6 +43,7 @@ class PostCardCell: UITableViewCell {
     @IBOutlet weak var contentTextView: UITextView!
     @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var layoutTextView: UITextView!
+    private var galleryDataSource: PostPhotoGalleryDataSource?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -88,6 +90,11 @@ extension PostCardCell {
         nameLabel.text = dataSource.nickname
         dateLabel.text = dataSource.formatedDate
         setUpContentSection(with: dataSource)
+        let ds = PostPhotoGalleryDataSource(photos: dataSource.photos, collectionView: galleryCollectionView)
+        ds.didSelectPhoto = {[weak self] _ in
+            self?.showDetailAction?()
+        }
+        galleryDataSource = ds
     }
     
     private func setUpContentSection(with dataSource: PostDisplayable) {
@@ -120,5 +127,60 @@ class ReportedPostCell: UITableViewCell {
     
     @IBAction func invokeShowPostAction(_ sender: UIButton) {
         showPostAction?()
+    }
+}
+
+class PostPhotoGalleryDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    let photos: [WebImageInfo]
+    let collectionView: UICollectionView
+    var didSelectPhoto: ((WebImageInfo)->())?
+    init(photos: [WebImageInfo], collectionView: UICollectionView) {
+        self.photos = photos
+        self.collectionView = collectionView
+        super.init()
+        collectionView.dataSource = self
+        collectionView.delegate = self
+    }
+    
+    var pageControl: UIPageControl? {
+        didSet {
+            updatePageControl()
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return photos.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell =  collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! PhotoGalleryPageCell
+        cell.updateViews(with: photos[indexPath.row])
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return collectionView.frame.size
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        didSelectPhoto?(photos[indexPath.row])
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        updatePageControl()
+    }
+    
+    private func updatePageControl() {
+        guard let control = pageControl else { return }
+        control.numberOfPages = photos.count
+        control.currentPage = Int((collectionView.contentOffset.x / collectionView.frame.width).rounded(.toNearestOrAwayFromZero))
+    }
+}
+
+class PhotoGalleryPageCell: UICollectionViewCell {
+    @IBOutlet weak var imageView: UIImageView!
+    
+    func updateViews(with info: WebImageInfo) {
+        imageView.kf.setImage(with: info.url)
     }
 }

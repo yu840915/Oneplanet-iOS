@@ -104,13 +104,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="myv-RF-Fen"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="yTT-s4-Y25">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="ic_back_nor" id="Fx6-3o-7QS">
+                            <connections>
+                                <action selector="exit:" destination="J1K-Xq-1EA" id="ye1-N9-bgp"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="ic_more_nor" id="KBP-Pe-vp3">
                             <connections>
                                 <action selector="showActionSheet:" destination="J1K-Xq-1EA" id="65q-1A-9nw"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="j6u-Vh-x5p" kind="show" identifier="showFriendLists" id="kVb-Eq-PLA"/>
                         <segue destination="vsP-dl-9e7" kind="presentation" identifier="showReportFlow" id="KYh-HC-jfC"/>
@@ -1496,6 +1503,7 @@
         <image name="bt_bigwirewhite_tap" width="41" height="41"/>
         <image name="bt_smallgreen_nor" width="29" height="28"/>
         <image name="bt_smallwirewhite_nor" width="29" height="28"/>
+        <image name="ic_back_nor" width="40" height="40"/>
         <image name="ic_contactus_nor" width="40" height="40"/>
         <image name="ic_more_nor" width="13" height="3"/>
         <image name="ic_morelist_nor" width="40" height="40"/>

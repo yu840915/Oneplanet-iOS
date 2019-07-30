@@ -187,6 +187,9 @@ class LocalizedTitles {//tl_
     var send: String {
         return NSLocalizedString("tl_send", comment: "")
     }
+    var edit: String {
+        return NSLocalizedString("tl_edit", comment: "")
+    }
 }
 
 class Feature {//fx_

@@ -40,32 +40,92 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
         cell.moreActions = {[weak self] in
             self?.showMoreAction(for: post)
         }
+        cell.mainAction = {[weak self] in
+            self?.followAuthor(of: post)
+        }
+        cell.showDetailAction = {[weak self] in
+            self?.showDetail(for: post)
+        }
+        cell.showProfileAction = {[weak self] in
+            self?.showProfile(for: post)
+        }
     }
     
     private func showMoreAction(for post: Post) {
-        
+        let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        sheet.addAction(UIAlertAction(title: Localized.titles.edit, style: .default, handler: { (_) in
+                self.edit(post)
+        }))
+        sheet.addAction(UIAlertAction(title: Localized.titles.report, style: .destructive, handler: { (_) in
+            self.report(post)
+        }))
+        sheet.addAction(UIAlertAction(title: Localized.phrases.unfollow, style: .destructive, handler: { (_) in
+            self.unfollowAuthor(of: post)
+        }))
+        sheet.addAction(UIAlertAction(title: Localized.titles.cancel, style: .cancel, handler: nil))
+        present(sheet, animated: true, completion: nil)
     }
     
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        performSegue(withIdentifier: SegueID.showDetail, sender: nil)
+        showDetail(for: posts[indexPath.row])
     }
 
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let nav = segue.destination as? UINavigationController {
+            if let vc = nav.viewControllers.first as? UserSessionDepending {
+                vc.userSession = userSession
+            }
+            if let vc = nav.viewControllers.first as? UserProfileViewController {
+                vc.profile = (sender as! User)
+            } else if let vc = nav.viewControllers.first as? PostDetailViewController {
+                
+            } else if let vc = nav.viewControllers.first as? ReportReasonPickerTableViewController {
+                vc.flowController = (sender as! ReportFlowController)
+            }
+        }
     }
 
+}
+
+private extension PostFeedTableViewController {
+    func showDetail(for post: Post) {
+        performSegue(withIdentifier: SegueID.showDetail, sender: post)
+    }
+    
+    func followAuthor(of post: Post) {
+        
+    }
+    
+    func unfollowAuthor(of post: Post) {
+        
+    }
+    
+    func showProfile(for post: Post) {
+        performSegue(withIdentifier: SegueID.showProfile, sender: post.author)
+    }
+    
+    func edit(_ post: Post) {
+        
+    }
+    
+    func report(_ post: Post) {
+        performSegue(withIdentifier: SegueID.showReportFlow, sender: PostReportFlowController())
+    }
 }
 
 extension PostFeedTableViewController {
     struct ReuseID {
         static let postCell = "postCell"
         static let reportedPostCell = "reportedPostCell"
-        
     }
+    
     struct SegueID {
         static let showDetail = "showDetail"
+        static let showReportFlow = "showReportFlow"
+        static let showProfile = "showProfile"
     }
 }
 
@@ -76,7 +136,7 @@ extension PostFeedTableViewController: IndicatorInfoProvider {
 }
 
 class Post {
-    
+    let author: User = User(id: "123", displayID: "Mike 123", nickname: "Mike", character: CharacterOptions.shared.character(for: .one, color: .blue))
 }
 
 extension UITableViewController: ScrollToTopHandler {

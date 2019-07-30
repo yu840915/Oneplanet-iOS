@@ -45,7 +45,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vvn-Gp-4Hw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1300" y="507"/>
+            <point key="canvasLocation" x="1248" y="856"/>
         </scene>
         <!--Post Feed Table View Controller-->
         <scene sceneID="HrR-bl-gav">
@@ -215,7 +215,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rPm-IT-6kx">
                                                     <rect key="frame" x="0.0" y="98" width="374" height="384"/>
                                                     <subviews>
-                                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d3o-no-tRI">
+                                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d3o-no-tRI">
                                                             <rect key="frame" x="0.0" y="0.0" width="374" height="374"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
@@ -228,7 +228,7 @@
                                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                             </collectionViewFlowLayout>
                                                             <cells>
-                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="qjy-aA-b73">
+                                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="qjy-aA-b73" customClass="PhotoGalleryPageCell" customModule="Oneplanet" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="371"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -246,6 +246,9 @@
                                                                         <constraint firstItem="jjk-kc-qNZ" firstAttribute="centerY" secondItem="qjy-aA-b73" secondAttribute="centerY" id="US5-x6-buP"/>
                                                                         <constraint firstItem="jjk-kc-qNZ" firstAttribute="centerX" secondItem="qjy-aA-b73" secondAttribute="centerX" id="mjZ-ma-Bhm"/>
                                                                     </constraints>
+                                                                    <connections>
+                                                                        <outlet property="imageView" destination="jjk-kc-qNZ" id="YVZ-gv-5eT"/>
+                                                                    </connections>
                                                                 </collectionViewCell>
                                                             </cells>
                                                         </collectionView>
@@ -459,6 +462,8 @@
                     <navigationItem key="navigationItem" id="LoH-N0-oO7"/>
                     <connections>
                         <segue destination="qVM-qw-Df3" kind="presentation" identifier="showDetail" id="HP7-l0-kPv"/>
+                        <segue destination="huG-Zh-4dh" kind="presentation" identifier="showReportFlow" id="HoG-Gy-8of"/>
+                        <segue destination="GiQ-rM-AH9" kind="presentation" identifier="showProfile" id="qBe-rD-zYH"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oyu-yK-e24" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -657,7 +662,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dPq-uX-68J">
                                                 <rect key="frame" x="0.0" y="98" width="374" height="384"/>
                                                 <subviews>
-                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NTa-Xb-1MK">
+                                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NTa-Xb-1MK">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="374"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -670,7 +675,7 @@
                                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         </collectionViewFlowLayout>
                                                         <cells>
-                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" id="sQZ-Qi-dk1">
+                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="cell" id="sQZ-Qi-dk1" customClass="PhotoGalleryPageCell" customModule="Oneplanet" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="371"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -804,11 +809,13 @@
                         <outlet property="nameLabel" destination="Y7R-28-rOk" id="xmb-g2-1Pl"/>
                         <outlet property="pageControl" destination="DGO-5A-nSh" id="x3L-Uz-lOc"/>
                         <outlet property="reportedPostView" destination="obe-Py-uCn" id="gC8-pd-h37"/>
+                        <segue destination="huG-Zh-4dh" kind="presentation" identifier="showReportFlow" id="h1E-Fs-afE"/>
+                        <segue destination="GiQ-rM-AH9" kind="presentation" identifier="showProfile" id="pCU-9w-eMx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CAc-Sh-Kau" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2103" y="837"/>
+            <point key="canvasLocation" x="2051" y="856"/>
         </scene>
         <!--Post Feed Main View Controller-->
         <scene sceneID="Vc3-yY-hd8">
@@ -881,6 +888,40 @@
             </objects>
             <point key="canvasLocation" x="287" y="110"/>
         </scene>
+        <!--ReportEntry-->
+        <scene sceneID="7DH-zy-q6I">
+            <objects>
+                <viewControllerPlaceholder storyboardName="SupportingFlows" referencedIdentifier="ReportEntry" id="huG-Zh-4dh" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Sy-eq-8TB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1217" y="1377"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mZN-rl-BeL">
+            <objects>
+                <navigationController id="GiQ-rM-AH9" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Z9F-9x-CkS">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="CeN-lF-bz4" kind="relationship" relationship="rootViewController" id="FWF-5D-kXI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sJC-3F-XIZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1217" y="1811"/>
+        </scene>
+        <!--UserProfileViewController-->
+        <scene sceneID="Xss-lh-g8G">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Me" referencedIdentifier="UserProfileViewController" id="CeN-lF-bz4" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="fX3-bI-QiY"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kpx-am-7Ca" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2051" y="1811"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bt_smallgreen_nor" width="29" height="28"/>
@@ -906,4 +947,8 @@
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="pCU-9w-eMx"/>
+        <segue reference="h1E-Fs-afE"/>
+    </inferredMetricsTieBreakers>
 </document>

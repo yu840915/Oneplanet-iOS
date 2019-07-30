@@ -64,6 +64,7 @@
 "tl_followings" = "フォロー中";
 "tl_content" = "コンテンツ";
 "tl_send" = "送信";
+"tl_edit" = "編集する";
 
 "pl_email" = "メールアドレス";
 "pl_nickname" = "ニックネーム";

@@ -65,6 +65,7 @@
 "tl_content" = "Content";
 "tl_send" = "Send";
 "tl_edit" = "Edit";
+"tl_photo" = "Photo";
 
 "pl_email" = "Email Address";
 "pl_nickname" = "Nickname";

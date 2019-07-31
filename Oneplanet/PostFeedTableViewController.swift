@@ -81,7 +81,7 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
             if let vc = nav.viewControllers.first as? UserProfileViewController {
                 vc.profile = (sender as! User)
             } else if let vc = nav.viewControllers.first as? PostDetailViewController {
-                
+                vc.post = (sender as! Post)
             } else if let vc = nav.viewControllers.first as? ReportReasonPickerTableViewController {
                 vc.flowController = (sender as! ReportFlowController)
             }
@@ -150,6 +150,6 @@ class FakePost: PostDisplayable {
     var nickname: String = "Abc 123"
     var formatedDate: String = "1m ago"
     var photos: [WebImageInfo] = [WebImageInfo(url: URL(string: "https://i.imgur.com/lytdJKp.png")!), WebImageInfo(url: URL(string: "https://i.imgur.com/lytdJKp.png")!), WebImageInfo(url: URL(string: "https://i.imgur.com/lytdJKp.png")!)]
-    var message: String = "Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Contenta"
-    var relativeScore: Float? = 0.5
+    var message: String = "Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content"
+    var relativeScore: Float? = 1.0
 }

@@ -252,7 +252,7 @@
                                                                 </collectionViewCell>
                                                             </cells>
                                                         </collectionView>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mXg-zo-zXT">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mXg-zo-zXT" customClass="ScoreBarView" customModule="Oneplanet" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="374" width="374" height="10"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="1000" image="ui_scorebg" translatesAutoresizingMaskIntoConstraints="NO" id="SO1-Rz-Fls">
@@ -262,7 +262,7 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="10"/>
                                                                     <state key="normal" backgroundImage="ui_scorebg"/>
                                                                 </button>
-                                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eJr-ve-CXo">
+                                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eJr-ve-CXo" userLabel="Mask View">
                                                                     <rect key="frame" x="-374" y="0.0" width="374" height="10"/>
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_score" translatesAutoresizingMaskIntoConstraints="NO" id="IfI-wm-cym">
@@ -293,10 +293,15 @@
                                                                 <constraint firstItem="Wvu-Dm-frO" firstAttribute="centerX" secondItem="mXg-zo-zXT" secondAttribute="centerX" id="ug5-VS-ooq"/>
                                                                 <constraint firstItem="IfI-wm-cym" firstAttribute="centerX" secondItem="SO1-Rz-Fls" secondAttribute="centerX" id="z9S-Ah-JBs"/>
                                                             </constraints>
+                                                            <connections>
+                                                                <outlet property="barMaskView" destination="eJr-ve-CXo" id="hfR-5L-CbQ"/>
+                                                                <outlet property="scoreBarVisibleLength" destination="q7U-9t-cV6" id="pLx-VA-hhH"/>
+                                                                <outlet property="scoreButton" destination="Wvu-Dm-frO" id="KRu-ws-Vef"/>
+                                                            </connections>
                                                         </view>
                                                     </subviews>
                                                 </stackView>
-                                                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="s6A-rP-aSa">
+                                                <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="s6A-rP-aSa">
                                                     <rect key="frame" x="0.0" y="492" width="374" height="37"/>
                                                 </pageControl>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Content" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="dJx-dF-4OQ">
@@ -353,6 +358,7 @@
                                     <outlet property="moreButton" destination="qoS-QU-uyV" id="wd6-Aw-0Rt"/>
                                     <outlet property="nameLabel" destination="iyR-sf-rhE" id="jV6-bx-c9h"/>
                                     <outlet property="pageControl" destination="s6A-rP-aSa" id="Vhd-A2-vLu"/>
+                                    <outlet property="scoreBarView" destination="mXg-zo-zXT" id="0Oh-T2-4Zn"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reportedPostCell" rowHeight="250" id="tnr-TN-LPx" customClass="ReportedPostCell" customModule="Oneplanet" customModuleProvider="target">
@@ -575,7 +581,7 @@
                                     <outlet property="showPostButton" destination="KxG-V7-Rto" id="Fq2-dW-FP1"/>
                                 </connections>
                             </stackView>
-                            <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9jL-yL-Bn4">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9jL-yL-Bn4">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="n52-Kq-huY">
@@ -675,7 +681,7 @@
                                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                         </collectionViewFlowLayout>
                                                         <cells>
-                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="cell" id="sQZ-Qi-dk1" customClass="PhotoGalleryPageCell" customModule="Oneplanet" customModuleProvider="target">
+                                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="sQZ-Qi-dk1" customClass="PhotoGalleryPageCell" customModule="Oneplanet" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="1.5" width="374" height="371"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -683,7 +689,7 @@
                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_first1" translatesAutoresizingMaskIntoConstraints="NO" id="oUq-eA-ery">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="439"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="374" height="371"/>
                                                                         </imageView>
                                                                     </subviews>
                                                                 </view>
@@ -693,10 +699,13 @@
                                                                     <constraint firstItem="oUq-eA-ery" firstAttribute="centerX" secondItem="sQZ-Qi-dk1" secondAttribute="centerX" id="QPe-FV-sVX"/>
                                                                     <constraint firstItem="oUq-eA-ery" firstAttribute="centerY" secondItem="sQZ-Qi-dk1" secondAttribute="centerY" id="f4g-DO-HsO"/>
                                                                 </constraints>
+                                                                <connections>
+                                                                    <outlet property="imageView" destination="oUq-eA-ery" id="qfv-7l-bNk"/>
+                                                                </connections>
                                                             </collectionViewCell>
                                                         </cells>
                                                     </collectionView>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TPM-2d-xMZ">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TPM-2d-xMZ" customClass="ScoreBarView" customModule="Oneplanet" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="374" width="374" height="10"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="1000" image="ui_scorebg" translatesAutoresizingMaskIntoConstraints="NO" id="DDg-SH-ozD">
@@ -737,10 +746,15 @@
                                                             <constraint firstItem="DDg-SH-ozD" firstAttribute="centerX" secondItem="TPM-2d-xMZ" secondAttribute="centerX" id="rjt-jG-32O"/>
                                                             <constraint firstItem="oWG-li-Xuf" firstAttribute="trailing" secondItem="DDg-SH-ozD" secondAttribute="trailing" id="zYn-AI-qXp"/>
                                                         </constraints>
+                                                        <connections>
+                                                            <outlet property="barMaskView" destination="ghO-Q7-iqA" id="hEB-AD-B2M"/>
+                                                            <outlet property="scoreBarVisibleLength" destination="8mX-PL-8c9" id="4Fa-UF-beA"/>
+                                                            <outlet property="scoreButton" destination="1z3-Q4-gkm" id="WUK-4x-UB9"/>
+                                                        </connections>
                                                     </view>
                                                 </subviews>
                                             </stackView>
-                                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="DGO-5A-nSh">
+                                            <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="DGO-5A-nSh">
                                                 <rect key="frame" x="0.0" y="492" width="374" height="37"/>
                                             </pageControl>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Content" translatesAutoresizingMaskIntoConstraints="NO" id="j5w-IG-QqI">
@@ -809,8 +823,9 @@
                         <outlet property="nameLabel" destination="Y7R-28-rOk" id="xmb-g2-1Pl"/>
                         <outlet property="pageControl" destination="DGO-5A-nSh" id="x3L-Uz-lOc"/>
                         <outlet property="reportedPostView" destination="obe-Py-uCn" id="gC8-pd-h37"/>
+                        <outlet property="scorebarView" destination="TPM-2d-xMZ" id="Ply-5d-Nq9"/>
                         <segue destination="huG-Zh-4dh" kind="presentation" identifier="showReportFlow" id="h1E-Fs-afE"/>
-                        <segue destination="GiQ-rM-AH9" kind="presentation" identifier="showProfile" id="pCU-9w-eMx"/>
+                        <segue destination="CeN-lF-bz4" kind="show" identifier="showProfile" id="aNy-aY-wjN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CAc-Sh-Kau" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -910,7 +925,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sJC-3F-XIZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1217" y="1811"/>
+            <point key="canvasLocation" x="287" y="1800"/>
         </scene>
         <!--UserProfileViewController-->
         <scene sceneID="Xss-lh-g8G">
@@ -920,7 +935,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kpx-am-7Ca" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2051" y="1811"/>
+            <point key="canvasLocation" x="2051" y="1800"/>
         </scene>
     </scenes>
     <resources>
@@ -948,7 +963,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pCU-9w-eMx"/>
+        <segue reference="aNy-aY-wjN"/>
         <segue reference="h1E-Fs-afE"/>
     </inferredMetricsTieBreakers>
 </document>

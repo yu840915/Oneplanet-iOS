@@ -43,6 +43,8 @@ class PostCardCell: UITableViewCell {
     @IBOutlet weak var contentTextView: UITextView!
     @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var layoutTextView: UITextView!
+    @IBOutlet weak var scoreBarView: ScoreBarView!
+    
     private var galleryDataSource: PostPhotoGalleryDataSource?
     
     override func awakeFromNib() {
@@ -90,6 +92,12 @@ extension PostCardCell {
         nameLabel.text = dataSource.nickname
         dateLabel.text = dataSource.formatedDate
         setUpContentSection(with: dataSource)
+        if let score = dataSource.relativeScore {
+            scoreBarView.isHidden = false
+            scoreBarView.value = score
+        } else {
+            scoreBarView.isHidden = true
+        }
         let ds = PostPhotoGalleryDataSource(photos: dataSource.photos, collectionView: galleryCollectionView)
         ds.didSelectPhoto = {[weak self] _ in
             self?.showDetailAction?()
@@ -185,5 +193,32 @@ class PhotoGalleryPageCell: UICollectionViewCell {
     
     func updateViews(with info: WebImageInfo) {
         imageView.kf.setImage(with: info.url)
+    }
+}
+
+class ScoreBarView: UIView {
+    @IBOutlet weak var barMaskView: UIView!
+    @IBOutlet weak var scoreButton: UIButton!
+    @IBOutlet weak var scoreBarVisibleLength: NSLayoutConstraint!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        scoreButton.layer.shadowColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        scoreButton.layer.shadowRadius = 4
+        scoreButton.layer.shadowOffset = .zero
+        scoreButton.layer.shadowOpacity = 1.0
+        barMaskView.layer.cornerRadius = 5.0
+    }
+    
+    var value: Float = 0 {
+        didSet {
+            value = .maximum(0, .minimum(1, value))
+            updateScoreBarVisibleLength()
+        }
+    }
+    
+    func updateScoreBarVisibleLength() {
+        scoreBarVisibleLength.constant = CGFloat(value) * bounds.width
+        setNeedsLayout()
     }
 }

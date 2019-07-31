@@ -65,6 +65,7 @@
 "tl_content" = "コンテンツ";
 "tl_send" = "送信";
 "tl_edit" = "編集する";
+"tl_photo" = "写真";
 
 "pl_email" = "メールアドレス";
 "pl_nickname" = "ニックネーム";

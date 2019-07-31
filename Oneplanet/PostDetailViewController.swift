@@ -8,8 +8,10 @@
 
 import UIKit
 
-class PostDetailViewController: UIViewController {
-
+class PostDetailViewController: UIViewController, UserSessionDepending {
+    
+    var userSession: UserSession!
+    var post: Post!
     @IBOutlet weak var galleryCollectionView: UICollectionView!
     @IBOutlet weak var avatarView: AvatarView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -18,11 +20,18 @@ class PostDetailViewController: UIViewController {
     @IBOutlet weak var contentTextView: UITextView!
     @IBOutlet weak var moreButtonItem: UIBarButtonItem!
     @IBOutlet weak var reportedPostView: ReportedPostView!
-
+    @IBOutlet weak var scorebarView: ScoreBarView!
+    
+    private var galleryDataSource: PostPhotoGalleryDataSource?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        title = Localized.titles.photo
+        navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
+        avatarView.action = {[weak self] in
+            self?.showProfileForAuthor()
+        }
+        updateViews(with: FakePost())
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,18 +48,90 @@ class PostDetailViewController: UIViewController {
     }
     
     @IBAction func showMoreActionSheet(_ sender: UIBarButtonItem) {
+        let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        sheet.addAction(UIAlertAction(title: Localized.titles.edit, style: .default, handler: { (_) in
+            self.editPost()
+        }))
+        sheet.addAction(UIAlertAction(title: Localized.titles.report, style: .destructive, handler: { (_) in
+            self.reportPost()
+        }))
+        sheet.addAction(UIAlertAction(title: Localized.titles.cancel, style: .cancel, handler: nil))
+        present(sheet, animated: true, completion: nil)
     }
     
-    /*
+    func updateViews(with dataSource: PostDisplayable) {
+        pageControl.isHidden = !dataSource.shouldShowPageControl
+        avatarView.avatar = dataSource.avatar
+        nameLabel.text = dataSource.nickname
+        dateLabel.text = dataSource.formatedDate
+        if let score = dataSource.relativeScore {
+            scorebarView.isHidden = false
+            scorebarView.value = score
+        } else {
+            scorebarView.isHidden = true
+        }
+        setUpContentSection(with: dataSource)
+        let ds = PostPhotoGalleryDataSource(photos: dataSource.photos, collectionView: galleryCollectionView)
+        galleryDataSource = ds
+        galleryCollectionView.contentOffset = .zero
+        galleryCollectionView.reloadData()
+        ds.pageControl = pageControl
+    }
+
+    private func setUpContentSection(with dataSource: PostDisplayable) {
+        contentTextView.isHidden = !dataSource.shouldShowContentSection
+        guard dataSource.shouldShowContentSection else {
+            return
+        }
+        let content = dataSource.nickname + " " + dataSource.message
+        let nameRange = (content as NSString).range(of: dataSource.nickname)
+        let attrStr = NSMutableAttributedString(string: content, attributes: [.font : UIFont.systemFont(ofSize: 14), .foregroundColor: ColorPalette.defaultText])
+        attrStr.addAttributes([.font : UIFont.systemFont(ofSize: 14, weight: .semibold)], range: nameRange)
+        contentTextView.attributedText = attrStr
+    }
+   
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let vc = segue.destination as? UserSessionDepending {
+            vc.userSession = userSession
+        }
+        if let vc = segue.destination as? UserProfileViewController {
+            vc.profile = (sender as! User)
+        }
+        if let nav = segue.destination as? UINavigationController {
+            if let vc = nav.viewControllers.first as? UserSessionDepending {
+                vc.userSession = userSession
+            }
+            if let vc = nav.viewControllers.first as? ReportReasonPickerTableViewController {
+                vc.flowController = (sender as! ReportFlowController)
+            }
+        }
     }
-    */
+}
 
+private extension PostDetailViewController {
+    func showProfileForAuthor() {
+        performSegue(withIdentifier: SegueID.showProfile, sender: post.author)
+    }
+    
+    func editPost() {
+        
+    }
+    
+    func reportPost() {
+        performSegue(withIdentifier: SegueID.showReportFlow, sender: PostReportFlowController())
+    }
+    
+
+}
+
+extension PostDetailViewController {
+    struct SegueID {
+        static let showDetail = "showDetail"
+        static let showReportFlow = "showReportFlow"
+        static let showProfile = "showProfile"
+    }
 }
 
 class ReportedPostView: UIStackView {
@@ -64,5 +145,4 @@ class ReportedPostView: UIStackView {
         detailLabel.text = Localized.messages.thanksForReportingPost
         showPostButton.setTitle(Localized.phrases.showPost, for: .normal)
     }
-
 }

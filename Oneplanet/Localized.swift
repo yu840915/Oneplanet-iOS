@@ -190,6 +190,9 @@ class LocalizedTitles {//tl_
     var edit: String {
         return NSLocalizedString("tl_edit", comment: "")
     }
+    var photo: String {
+        return NSLocalizedString("tl_photo", comment: "")
+    }
 }
 
 class Feature {//fx_

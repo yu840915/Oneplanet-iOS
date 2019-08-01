@@ -18,7 +18,7 @@ class FollowingListTableViewController: UITableViewController, DefaultInstanceFa
     var userList: UserList!
     var userSession: UserSession!
     var users: [User] = []
-    var sections: [Section] = [.content, .loading]
+    var sections: [Section] = []
     var configuration: Configuration = Configuration()
     
     private var listUpdateHandles: [Any]?

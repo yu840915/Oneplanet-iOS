@@ -84,6 +84,7 @@ class UserProfileViewController: UIViewController, UserSessionDepending {
         }
         if let vc = segue.destination as? ProfileCollectionViewController {            
             vc.profile = profile
+            vc.postList = PostList.userPostList(with: userSession, for: profile)
             vc.configuration = isMe ? .forMe: .forOther
             vc.showFollowListAction = {[weak self] url in
                 self?.showFollowList(with: url)

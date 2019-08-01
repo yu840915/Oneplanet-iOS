@@ -53,6 +53,7 @@ class MyProfileViewController: UIViewController, UserSessionDepending {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? ProfileCollectionViewController {
             vc.userSession = userSession
+            vc.postList = PostList.myPostList(with: userSession)
             vc.profile = profile
             vc.configuration = userSession.isGuest ? .forGuest: .forMe
             vc.showFollowListAction = {[weak self] url in

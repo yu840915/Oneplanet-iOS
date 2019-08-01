@@ -13,9 +13,11 @@ private let reuseIdentifier = "Cell"
 class ProfileCollectionViewController: UICollectionViewController, UserSessionDepending {
     
     var userSession: UserSession!
+    var postList: PostList!
     fileprivate var sections: [Section] = [.detail]
-    fileprivate var posts: [Any] = []
+    fileprivate var posts: [Post] = []
     private var detailController: ProfileDetailViewController?
+    var refreshControl: UIRefreshControl!
     var showFollowListAction: ((URL)->())?
     var profile: UserProfileDisplayable! {
         didSet {
@@ -32,22 +34,23 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
             }
         }
     }
+    private var listUpdateHandles: [Any]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateSections()
-    }
-    
-    private func updateSections() {
-        var result: [Section] = [.detail]
-        if posts.isEmpty {
-            result.append(.emptyView)
-        } else {
-            result.append(.posts)
-        }
-        sections = result
+        let control = UIRefreshControl()
+        control.tintColor = .white
+        control.addTarget(self, action: #selector(reload(_:)), for: .valueChanged)
+        collectionView.addSubview(control)
+        refreshControl = control
+        prepareForList()
     }
 
+
+    @IBAction func reload(_ sender: UIRefreshControl) {
+        postList.reload()
+    }
+    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -114,6 +117,47 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
 
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return sections[indexPath.section] == .posts
+    }
+
+}
+
+extension ProfileCollectionViewController {
+    func prepareForList() {
+        var handles = [Any]()
+        handles.append(postList.addItemDidFetchHandler {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.handleListUpdate()
+            }
+        })
+        handles.append(postList.addFetchingFailureHandler({[weak self] (error) in
+            OperationQueue.main.addOperation {
+                self?.handleListUpdate()
+            }
+        }))
+        listUpdateHandles = handles
+        postList.reload()
+    }
+    
+    func handleListUpdate() {
+        refreshControl?.endRefreshing()
+        posts = postList.items
+        prepareSections()
+    }
+
+    func prepareSections() {
+        let hasContent = !posts.isEmpty
+        let hasMore = postList.hasMore
+        var val: [Section] = [.detail]
+        if hasContent {
+            val.append(.posts)
+        } else {
+            val.append(.emptyView)
+        }
+        if hasContent && hasMore {
+//            val.append(.loading)
+        }
+        sections = val
+        collectionView.reloadData()
     }
 
 }

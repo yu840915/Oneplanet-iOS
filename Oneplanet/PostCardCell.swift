@@ -49,6 +49,7 @@ class PostCardCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        layoutTextView.textContainer.lineBreakMode = .byWordWrapping
         contentTextView.textContainer.maximumNumberOfLines = 3
         contentTextView.textContainer.lineBreakMode = .byTruncatingTail
         actionButton.setTitle(Localized.phrases.follow, for: .normal)
@@ -61,15 +62,17 @@ class PostCardCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         if contentTextView.textContainer.exclusionPaths.isEmpty {
-            let w = moreButton.bounds.width
-            let y = contentTextView.bounds.width - w
-            contentTextView.textContainer.exclusionPaths = [UIBezierPath(rect: CGRect(x: y, y: 50, width: w, height: 10))]
-            layoutTextView.textContainer.exclusionPaths = [UIBezierPath(rect: CGRect(x: y, y: 50, width: w, height: 10))]
             setNeedsLayout()
         } else {
-            let showMore = layoutTextView.frame.height > contentTextView.frame.height
+            let differentHeight = layoutTextView.frame.height > contentTextView.frame.height
+            let differentUnlaidChar = layoutTextView.layoutManager.firstUnlaidCharacterIndex() != contentTextView.layoutManager.firstUnlaidCharacterIndex()
+            let showMore = differentHeight || differentUnlaidChar
             moreButton.isHidden = !showMore
         }
+        let w = moreButton.bounds.width
+        let x = contentTextView.bounds.width - w
+        contentTextView.textContainer.exclusionPaths = [UIBezierPath(rect: CGRect(x: x, y: 45, width: w, height: 10))]
+        layoutTextView.textContainer.exclusionPaths = [UIBezierPath(rect: CGRect(x: x, y: 45, width: w, height: 10))]
     }
     
     @IBAction func invokeAction(_ sender: UIButton) {
@@ -117,8 +120,12 @@ extension PostCardCell {
         let nameRange = (content as NSString).range(of: dataSource.nickname)
         let attrStr = NSMutableAttributedString(string: content, attributes: [.font : UIFont.systemFont(ofSize: 14), .foregroundColor: ColorPalette.defaultText])
         attrStr.addAttributes([.font : UIFont.systemFont(ofSize: 14, weight: .semibold)], range: nameRange)
-        layoutTextView.text = content
+        contentTextView.textContainer.exclusionPaths = []
+        layoutTextView.textContainer.exclusionPaths = []
+        layoutTextView.alpha = 0
+        layoutTextView.attributedText = attrStr
         contentTextView.attributedText = attrStr
+        contentView.setNeedsLayout()
     }
 }
 

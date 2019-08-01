@@ -238,6 +238,6 @@ class FakePost: PostDisplayable {
     var nickname: String = "Abc 123"
     var formatedDate: String = "1m ago"
     var photos: [WebImageInfo] = [WebImageInfo(url: URL(string: "https://i.imgur.com/lytdJKp.png")!), WebImageInfo(url: URL(string: "https://i.imgur.com/lytdJKp.png")!), WebImageInfo(url: URL(string: "https://i.imgur.com/lytdJKp.png")!)]
-    var message: String = "Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content"
+    var message: String = "Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content iap"
     var relativeScore: Float? = 1.0
 }

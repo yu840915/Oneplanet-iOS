@@ -1038,12 +1038,12 @@
         <scene sceneID="kso-m7-ARl">
             <objects>
                 <tableViewController id="6Dr-pj-fYY" customClass="BlockListTableViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="W8E-l4-jxI">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="W8E-l4-jxI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="black background"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="S4V-Pd-UXd">
-                            <rect key="frame" x="0.0" y="108" width="375" height="1"/>
+                            <rect key="frame" x="0.0" y="168" width="375" height="1"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
@@ -1052,7 +1052,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2cm-He-itF" id="aqJ-Hp-yW2">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="sU1-Ro-Udf">
@@ -1157,6 +1157,28 @@
                                     <outlet property="nameLabel" destination="Pc4-t0-x6g" id="Vdb-Oe-TaM"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="loadingCell" rowHeight="60" id="TyX-rB-BmH" customClass="LoadingCell" customModule="Oneplanet" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="108" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TyX-rB-BmH" id="E5n-me-34W">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="rwQ-Ym-xzy">
+                                            <rect key="frame" x="169" y="11.5" width="37" height="36.5"/>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="rwQ-Ym-xzy" firstAttribute="centerY" secondItem="E5n-me-34W" secondAttribute="centerY" id="7E1-xJ-xMl"/>
+                                        <constraint firstItem="rwQ-Ym-xzy" firstAttribute="top" secondItem="E5n-me-34W" secondAttribute="top" constant="11.5" id="HYY-T2-d7Z"/>
+                                        <constraint firstItem="rwQ-Ym-xzy" firstAttribute="centerX" secondItem="E5n-me-34W" secondAttribute="centerX" id="k45-0D-fNi"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="activityIndicator" destination="rwQ-Ym-xzy" id="EqY-L1-tjU"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="6Dr-pj-fYY" id="8t1-Kr-2LI"/>
@@ -1198,12 +1220,12 @@
         <scene sceneID="9th-Hq-qcF">
             <objects>
                 <tableViewController storyboardIdentifier="FollowingListTableViewController" id="9AN-Ox-XJC" customClass="FollowingListTableViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="avA-le-Uji">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="avA-le-Uji">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="black background"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="NiB-r0-g6U">
-                            <rect key="frame" x="0.0" y="108" width="375" height="1"/>
+                            <rect key="frame" x="0.0" y="168" width="375" height="1"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
@@ -1212,7 +1234,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="F2D-QX-cMf" id="g9s-LR-VY0">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="MOo-O3-7q9">
@@ -1315,6 +1337,28 @@
                                     <outlet property="avatarView" destination="Yfj-HS-aCP" id="her-uJ-ELb"/>
                                     <outlet property="idLabel" destination="1Cj-zB-89v" id="EsU-tf-x3r"/>
                                     <outlet property="nameLabel" destination="1IX-hJ-LZR" id="Tx5-d8-sIB"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="loadingCell" rowHeight="60" id="bqn-Sl-l1W" customClass="LoadingCell" customModule="Oneplanet" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="108" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bqn-Sl-l1W" id="21x-wZ-zfJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="BxJ-Hx-6YW">
+                                            <rect key="frame" x="169" y="11.5" width="37" height="36.5"/>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="BxJ-Hx-6YW" firstAttribute="top" secondItem="21x-wZ-zfJ" secondAttribute="top" constant="11.5" id="2WY-tf-j3E"/>
+                                        <constraint firstItem="BxJ-Hx-6YW" firstAttribute="centerY" secondItem="21x-wZ-zfJ" secondAttribute="centerY" id="ZwV-Ch-5RA"/>
+                                        <constraint firstItem="BxJ-Hx-6YW" firstAttribute="centerX" secondItem="21x-wZ-zfJ" secondAttribute="centerX" id="xqz-Hv-CTt"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="activityIndicator" destination="BxJ-Hx-6YW" id="ybK-q1-vNp"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

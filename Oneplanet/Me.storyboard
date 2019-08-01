@@ -38,7 +38,7 @@
                 <viewControllerPlaceholder storyboardName="SupportingFlows" referencedIdentifier="ReportEntry" id="vsP-dl-9e7" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wzh-2P-Brl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="12" y="2091"/>
+            <point key="canvasLocation" x="-10" y="2157"/>
         </scene>
         <!--FriendListsViewController-->
         <scene sceneID="N6Y-31-g6L">
@@ -46,7 +46,7 @@
                 <viewControllerPlaceholder referencedIdentifier="FriendListsViewController" id="j6u-Vh-x5p" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lea-9J-Qcb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="26" y="2220"/>
+            <point key="canvasLocation" x="25" y="2256"/>
         </scene>
         <!--ProfileCollectionViewController-->
         <scene sceneID="vdy-Qa-Yd1">
@@ -121,6 +121,7 @@
                     <connections>
                         <segue destination="j6u-Vh-x5p" kind="show" identifier="showFriendLists" id="kVb-Eq-PLA"/>
                         <segue destination="vsP-dl-9e7" kind="presentation" identifier="showReportFlow" id="KYh-HC-jfC"/>
+                        <segue destination="16I-RO-jBg" kind="show" identifier="showPostDetail" id="R7Z-kW-hKH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CJq-km-KGF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -434,6 +435,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="RFq-m0-MVm" kind="presentation" identifier="showFriendLists" id="5Yh-ug-opG"/>
+                        <segue destination="5e6-Hr-3vw" kind="presentation" identifier="showPostDetail" id="qVK-KF-vDb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ssc-S1-m5x" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -483,14 +485,14 @@
                                     <outlet property="containerView" destination="rTa-np-1ML" id="RVo-FJ-bAn"/>
                                 </connections>
                             </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="postCell" id="ZbD-BM-7re" customClass="PostThumbnailCell" customModule="Oneplanet" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="postCell" id="ZbD-BM-7re" customClass="PhotoGalleryPageCell" customModule="Oneplanet" customModuleProvider="target">
                                 <rect key="frame" x="112.5" y="250" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qrw-EF-d1c">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qrw-EF-d1c">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="86"/>
                                         </imageView>
                                     </subviews>
@@ -582,6 +584,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sek-aR-Xuo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="284" y="830"/>
+        </scene>
+        <!--PostDetailViewController-->
+        <scene sceneID="BbG-1b-VV2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Post" referencedIdentifier="PostDetailViewController" id="16I-RO-jBg" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QU8-wB-Kqw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="28" y="2091"/>
+        </scene>
+        <!--PostDetailEntry-->
+        <scene sceneID="c2Q-VK-DN8">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Post" referencedIdentifier="PostDetailEntry" id="5e6-Hr-3vw" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YkX-7j-lQq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="926" y="562"/>
         </scene>
         <!--More-->
         <scene sceneID="6uX-98-iNm">

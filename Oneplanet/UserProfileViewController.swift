@@ -89,6 +89,9 @@ class UserProfileViewController: UIViewController, UserSessionDepending {
             vc.showFollowListAction = {[weak self] url in
                 self?.showFollowList(with: url)
             }
+            vc.showPostDetailAction = {[weak self] post in
+                self?.performSegue(withIdentifier: SegueID.showPostDetail, sender: post)
+            }
             profileController = vc
         }
         if let vc = segue.destination as? FriendListsViewController {
@@ -99,11 +102,19 @@ class UserProfileViewController: UIViewController, UserSessionDepending {
                 vc.preselectedTab = .following
             }
         }
-        if let nav = segue.destination as? UINavigationController,
-            let vc = nav.viewControllers.first as? ReportReasonPickerTableViewController {
-            vc.flowController = (sender as! ReportFlowController)
-            vc.didFinishReport = {
-                
+        if let vc = segue.destination as? PostDetailViewController {
+            vc.post = (sender as! Post)
+        }
+        if let nav = segue.destination as? UINavigationController{
+            if let vc = nav.viewControllers.first as? UserSessionDepending {
+                vc.userSession = userSession
+            }
+            if let vc = nav.viewControllers.first as? ReportReasonPickerTableViewController {
+                NavigationBarStyle.darkGray.configure(nav.navigationBar)
+                vc.flowController = (sender as! ReportFlowController)
+                vc.didFinishReport = {
+                    
+                }
             }
         }
     }
@@ -161,5 +172,6 @@ extension UserProfileViewController {
     struct SegueID {
         static let showFriendLists = "showFriendLists"
         static let showReportFlow = "showReportFlow"
+        static let showPostDetail = "showPostDetail"
     }
 }

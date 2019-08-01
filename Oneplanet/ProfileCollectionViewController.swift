@@ -19,6 +19,7 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
     private var detailController: ProfileDetailViewController?
     var refreshControl: UIRefreshControl!
     var showFollowListAction: ((URL)->())?
+    var showPostDetailAction: ((Post)->())?
     var profile: UserProfileDisplayable! {
         didSet {
             if isViewLoaded {
@@ -78,7 +79,7 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
         case .detail:
             updateViews(inDetailCell: cell as! ProfileContainerCell)
         case .posts:
-            updateViews(inPostCell: cell as! PostThumbnailCell, at: indexPath)
+            updateViews(inPostCell: cell as! PhotoGalleryPageCell, at: indexPath)
         case .emptyView, .loading: break
         }
         return cell
@@ -105,8 +106,10 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
         detailController = vc
     }
     
-    private func updateViews(inPostCell cell: PostThumbnailCell, at indexPath: IndexPath) {
-        
+    private func updateViews(inPostCell cell: PhotoGalleryPageCell, at indexPath: IndexPath) {
+        let post = posts[indexPath.row]
+        let ds = FakePost()
+        cell.updateViews(with: ds.photos[0])
     }
     
     // MARK: UICollectionViewDelegate
@@ -133,6 +136,11 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return sections[indexPath.section] == .posts
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard sections[indexPath.section] == .posts else { return }
+        showPostDetailAction?(posts[indexPath.row])
+    }
 
 }
 
@@ -156,6 +164,7 @@ extension ProfileCollectionViewController {
     func handleListUpdate() {
         refreshControl?.endRefreshing()
         posts = postList.items
+        posts = [Post(), Post(), Post(), Post()]
         prepareSections()
     }
 
@@ -238,6 +247,10 @@ class ProfileContainerCell: UICollectionViewCell {
 
 class PostThumbnailCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
+    
+    func updateViews(with dataSource: PostDisplayable) {
+        
+    }
 }
 
 class EmptyPostListCell: UICollectionViewCell {

@@ -34,7 +34,7 @@
         <!--Navigation Controller-->
         <scene sceneID="6Ax-57-U59">
             <objects>
-                <navigationController id="qVM-qw-Df3" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="PostDetailEntry" id="qVM-qw-Df3" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="y3v-F9-Mnu">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -508,7 +508,7 @@
         <!--Title-->
         <scene sceneID="fuW-1g-4ne">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="OGY-9S-l3i" customClass="PostDetailViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostDetailViewController" hidesBottomBarWhenPushed="YES" id="OGY-9S-l3i" customClass="PostDetailViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="n6N-Cc-ANG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -997,6 +997,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="aNy-aY-wjN"/>
-        <segue reference="HoG-Gy-8of"/>
+        <segue reference="h1E-Fs-afE"/>
     </inferredMetricsTieBreakers>
 </document>

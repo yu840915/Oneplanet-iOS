@@ -24,7 +24,6 @@ class FollowingListTableViewController: UITableViewController, DefaultInstanceFa
     private var listUpdateHandles: [Any]?
     override func viewDidLoad() {
         super.viewDidLoad()
-        users = [User(id: "123", displayID: "Mike", nickname: "Mike", character: nil)]
         navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
         prepareForList()
     }
@@ -111,8 +110,19 @@ private extension FollowingListTableViewController {
     func handleListUpdate() {
         refreshControl?.endRefreshing()
         users = userList.items
-        tableView.reloadData()
+        prepareSections()
         updateBackground()
+    }
+    
+    func prepareSections() {
+        let hasContent = !users.isEmpty
+        let hasMore = userList.hasMore
+        var val: [Section] = [.content]
+        if hasContent && hasMore {
+            val.append(.loading)
+        }
+        sections = val
+        tableView.reloadData()
     }
     
     func handleFetchFailure(with error: Error?) {

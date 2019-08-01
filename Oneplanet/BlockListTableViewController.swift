@@ -13,6 +13,7 @@ class BlockListTableViewController: UITableViewController, UserSessionDepending 
     var blockList: UserList!
     var userSession: UserSession!
     var users: [User] = []
+    var sections: [Section] = []
     private var listUpdateHandles: [Any]?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,20 +27,35 @@ class BlockListTableViewController: UITableViewController, UserSessionDepending 
     }
 
     // MARK: - Table view data source
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users.count
+        switch sections[section] {
+        case .content: return users.count
+        case .loading: return 1
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! UserOverviewCell
+        let section = sections[indexPath.section]
+        let cell = tableView.dequeueReusableCell(withIdentifier: section.reuseID, for: indexPath)
+        switch section {
+        case .content:
+            prepareContentCell(cell as! UserOverviewCell, at: indexPath)
+        case .loading: break
+        }
+        return cell
+    }
+    
+    private func prepareContentCell(_ cell: UserOverviewCell, at indexPath: IndexPath) {
         let user = users[indexPath.row]
         cell.updateViews(with: BlockedUserOverviewModel(profile: user))
         cell.action = {[weak self] in
             self?.showUnblockAlertForUser(at: indexPath)
         }
         cell.actionButton.isSelected = true
-        return cell
     }
     
     private func showUnblockAlertForUser(at indexPath: IndexPath) {
@@ -58,9 +74,14 @@ class BlockListTableViewController: UITableViewController, UserSessionDepending 
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let isLastRow = indexPath.row == (users.count - 1)
-        if isLastRow && blockList.hasMore {
-            blockList.loadMoreIfAllowed()
+        switch sections[indexPath.section] {
+        case .content:
+            let isLastRow = indexPath.row == (users.count - 1)
+            if isLastRow && blockList.hasMore {
+                blockList.loadMoreIfAllowed()
+            }
+        case .loading:
+            (cell as! LoadingCell).activityIndicator.startAnimating()
         }
     }
     
@@ -95,8 +116,19 @@ extension BlockListTableViewController {
     func handleListUpdate() {
         refreshControl?.endRefreshing()
         users = blockList.items
-        tableView.reloadData()
+        prepareSections()
         updateBackground()
+    }
+    
+    func prepareSections() {
+        let hasContent = !users.isEmpty
+        let hasMore = blockList.hasMore
+        var val: [Section] = [.content]
+        if hasContent && hasMore {
+            val.append(.loading)
+        }
+        sections = val
+        tableView.reloadData()
     }
     
     func handleFetchFailure(with error: Error?) {
@@ -123,6 +155,14 @@ extension BlockListTableViewController {
 }
 
 extension BlockListTableViewController {
+    enum Section: String {
+        case content = "cell"
+        case loading = "loadingCell"
+        var reuseID: String {
+            return rawValue
+        }
+    }
+    
     struct SegueID {
         static let showProfile = "showProfile"
     }

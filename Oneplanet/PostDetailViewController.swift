@@ -23,11 +23,13 @@ class PostDetailViewController: UIViewController, UserSessionDepending {
     @IBOutlet weak var scorebarView: ScoreBarView!
     
     private var galleryDataSource: PostPhotoGalleryDataSource?
+    var canShowAuthorProfile = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = Localized.titles.photo
         navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
+        avatarView.isUserInteractionEnabled = canShowAuthorProfile
         avatarView.action = {[weak self] in
             self?.showProfileForAuthor()
         }
@@ -112,7 +114,9 @@ class PostDetailViewController: UIViewController, UserSessionDepending {
 
 private extension PostDetailViewController {
     func showProfileForAuthor() {
-        performSegue(withIdentifier: SegueID.showProfile, sender: post.author)
+        if canShowAuthorProfile {
+            performSegue(withIdentifier: SegueID.showProfile, sender: post.author)
+        }
     }
     
     func editPost() {

@@ -80,6 +80,7 @@ class MyProfileViewController: UIViewController, UserSessionDepending {
                 }
             } else if let vc = nav.viewControllers.first as? PostDetailViewController {
                 vc.post = (sender as! Post)
+                vc.canShowAuthorProfile = false
             }
         }
     }

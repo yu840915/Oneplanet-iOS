@@ -14,7 +14,8 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
     class func fromDefaultStoryboard() -> PostFeedTableViewController {
         return UIStoryboard(name: "Post", bundle: nil).instantiateViewController(withIdentifier: "PostFeedTableViewController") as! PostFeedTableViewController
     }
-
+    
+    @IBOutlet weak var searchButton: UIButton!
     var userSession: UserSession!
     var posts: [Post] = []
     var postList: PostList!
@@ -23,6 +24,7 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchButton.layer.cornerRadius = 4
         posts = [Post(), Post(), Post(), Post(), Post()]
 //        prepareForList()
     }

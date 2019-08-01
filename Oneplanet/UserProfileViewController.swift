@@ -104,6 +104,7 @@ class UserProfileViewController: UIViewController, UserSessionDepending {
         }
         if let vc = segue.destination as? PostDetailViewController {
             vc.post = (sender as! Post)
+            vc.canShowAuthorProfile = false
         }
         if let nav = segue.destination as? UINavigationController{
             if let vc = nav.viewControllers.first as? UserSessionDepending {

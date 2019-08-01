@@ -32,9 +32,11 @@ class PostFeedMainViewController: ButtonBarPagerTabStripViewController, UserSess
         let latest = PostFeedTableViewController.fromDefaultStoryboard()
         latest.title = Localized.phrases.latestPosts
         latest.userSession = userSession
+        latest.postList = PostList.postList(with: userSession)
         let promoted = PostFeedTableViewController.fromDefaultStoryboard()
         promoted.userSession = userSession
         promoted.title = Localized.phrases.bestPosts
+        promoted.postList = PostList.promotedPostList(with: userSession)
         return [latest, promoted]
     }
     

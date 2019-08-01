@@ -17,21 +17,42 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
 
     var userSession: UserSession!
     var posts: [Post] = []
+    var postList: PostList!
+    var sections: [Section] = [.content, .loading]
+    private var listUpdateHandles: [Any]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         posts = [Post(), Post(), Post(), Post(), Post()]
+//        prepareForList()
     }
 
+    @IBAction func reload(_ sender: UIRefreshControl) {
+        postList.reload()
+    }
+    
     // MARK: - Table view data source
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        switch sections[section] {
+        case .content: return posts.count
+        case .loading: return 1
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ReuseID.postCell, for: indexPath) as! PostCardCell
-        setUpPostCell(cell, at: indexPath)
-        return cell
+        switch sections[indexPath.section] {
+        case .content:
+            let cell = tableView.dequeueReusableCell(withIdentifier: ReuseID.postCell, for: indexPath) as! PostCardCell
+            setUpPostCell(cell, at: indexPath)
+            return cell
+        case .loading:
+            return tableView.dequeueReusableCell(withIdentifier: ReuseID.loadingCell, for: indexPath)
+        }
     }
     
     private func setUpPostCell(_ cell: PostCardCell, at indexPath: IndexPath) {
@@ -66,7 +87,18 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
         present(sheet, animated: true, completion: nil)
     }
     
-    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        switch sections[indexPath.section] {
+        case .content:
+            let isLastRow = indexPath.row == (posts.count - 1)
+            if isLastRow && postList.hasMore {
+                postList.loadMoreIfAllowed()
+            }
+        case .loading:
+            (cell as! LoadingCell).activityIndicator.startAnimating()
+        }
+    }
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         showDetail(for: posts[indexPath.row])
     }
@@ -88,6 +120,60 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
         }
     }
 
+}
+
+private extension PostFeedTableViewController {
+    func prepareForList() {
+        var handles = [Any]()
+        handles.append(postList.addItemDidFetchHandler {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.handleListUpdate()
+            }
+        })
+        handles.append(postList.addFetchingFailureHandler({[weak self] (error) in
+            OperationQueue.main.addOperation {
+                self?.handleFetchFailure(with: error)
+            }
+        }))
+        listUpdateHandles = handles
+        postList.reload()
+    }
+    
+    func handleListUpdate() {
+        refreshControl?.endRefreshing()
+        posts = postList.items
+        prepareSections()
+        updateBackground()
+    }
+    
+    func prepareSections() {
+        let hasContent = !posts.isEmpty
+        let hasMore = postList.hasMore
+        var val: [Section] = [.content]
+        if hasContent && hasMore {
+            val.append(.loading)
+        }
+        sections = val
+        tableView.reloadData()
+    }
+    
+    func handleFetchFailure(with error: Error?) {
+        refreshControl?.endRefreshing()
+        updateBackground(with: error)
+    }
+    
+    func updateBackground(with error: Error? = nil) {
+        if !posts.isEmpty {
+            tableView.backgroundView = nil
+        } else {
+            let view = CommonViewFactory.shared.makeSimpleEmptyView()
+            view.titleLabel.text = Localized.emptyMessages.posts
+            if let error = error {
+                view.detailLabel.text = error.localizedDescription
+            }
+            tableView.backgroundView = view
+        }
+    }
 }
 
 private extension PostFeedTableViewController {
@@ -120,6 +206,12 @@ extension PostFeedTableViewController {
     struct ReuseID {
         static let postCell = "postCell"
         static let reportedPostCell = "reportedPostCell"
+        static let loadingCell = "loadingCell"
+    }
+    
+    enum Section {
+        case content
+        case loading
     }
     
     struct SegueID {
@@ -133,10 +225,6 @@ extension PostFeedTableViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: title ?? "")
     }
-}
-
-class Post {
-    let author: User = User(id: "123", displayID: "Mike 123", nickname: "Mike", character: CharacterOptions.shared.character(for: .one, color: .blue))
 }
 
 extension UITableViewController: ScrollToTopHandler {

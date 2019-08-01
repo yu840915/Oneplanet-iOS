@@ -166,6 +166,8 @@
 		E0DCD05922B9D828008D9C63 /* EmptyLotListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0DCD05822B9D827008D9C63 /* EmptyLotListView.xib */; };
 		E0DCD05B22B9D960008D9C63 /* EmptyLotListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DCD05A22B9D960008D9C63 /* EmptyLotListView.swift */; };
 		E0DE81B622DEB2CC00F785E3 /* DateFromNowFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DE81B522DEB2CC00F785E3 /* DateFromNowFormatterTests.swift */; };
+		E0EAEB7B22F1F25600C8E7C8 /* PostList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEB7A22F1F25600C8E7C8 /* PostList.swift */; };
+		E0EAEB7D22F2891400C8E7C8 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEB7C22F2891400C8E7C8 /* LoadingCell.swift */; };
 		E0FF797A228C3F6800F61318 /* MyProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FF7979228C3F6800F61318 /* MyProfileTests.swift */; };
 		E0FF797C228D2FC400F61318 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0FF797B228D2FC400F61318 /* Home.storyboard */; };
 		E0FF797E228D38CE00F61318 /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0FF797D228D38CE00F61318 /* Post.storyboard */; };
@@ -359,6 +361,8 @@
 		E0DCD05822B9D827008D9C63 /* EmptyLotListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyLotListView.xib; sourceTree = "<group>"; };
 		E0DCD05A22B9D960008D9C63 /* EmptyLotListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyLotListView.swift; sourceTree = "<group>"; };
 		E0DE81B522DEB2CC00F785E3 /* DateFromNowFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFromNowFormatterTests.swift; sourceTree = "<group>"; };
+		E0EAEB7A22F1F25600C8E7C8 /* PostList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostList.swift; sourceTree = "<group>"; };
+		E0EAEB7C22F2891400C8E7C8 /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		E0FF7979228C3F6800F61318 /* MyProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTests.swift; sourceTree = "<group>"; };
 		E0FF797B228D2FC400F61318 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		E0FF797D228D38CE00F61318 /* Post.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
@@ -441,6 +445,7 @@
 				E0A050C722E17607002FCFC3 /* ReportHelpers.swift */,
 				E0A050C522E17067002FCFC3 /* ReportDescriptionInputViewController.swift */,
 				E0A050C922E19299002FCFC3 /* ReportThankyouViewController.swift */,
+				E0EAEB7C22F2891400C8E7C8 /* LoadingCell.swift */,
 				E06589C42270536A00C9E4E6 /* Image Picking */,
 			);
 			path = "Supporting Flows";
@@ -541,6 +546,7 @@
 				E0FF797D228D38CE00F61318 /* Post.storyboard */,
 				E045BE7622E974640035D08B /* PostFeedMainViewController.swift */,
 				E045BE7822E976FE0035D08B /* PostFeedTableViewController.swift */,
+				E0EAEB7A22F1F25600C8E7C8 /* PostList.swift */,
 				E0125F9B22EAEA7F00AFF763 /* PostCardCell.swift */,
 				E0125F9922EADD8900AFF763 /* PostDetailViewController.swift */,
 			);
@@ -1064,6 +1070,7 @@
 				E03C32B5226D969500C32FD7 /* ColorPalette .swift in Sources */,
 				E0837EF3227FFFBF00B13BAF /* FacebookLogin.swift in Sources */,
 				E06589BF22701B9F00C9E4E6 /* CapturePhotoOperation.swift in Sources */,
+				E0EAEB7B22F1F25600C8E7C8 /* PostList.swift in Sources */,
 				E077A72E22DDA4C300A2245E /* NoticeList.swift in Sources */,
 				E0BAB71F228482D1007E747C /* InputFieldView.swift in Sources */,
 				E081591122A65276007C9776 /* PurpleGemStoreViewController.swift in Sources */,
@@ -1093,6 +1100,7 @@
 				E077A73022DDF63500A2245E /* NoticeUIHelpers.swift in Sources */,
 				E03C32AE226D8E6800C32FD7 /* SharedFormatters.swift in Sources */,
 				E0DA38A222C31E3800EC4170 /* GemActionPopUpConfigurations.swift in Sources */,
+				E0EAEB7D22F2891400C8E7C8 /* LoadingCell.swift in Sources */,
 				E07276F82276D0DC001239C0 /* RequestUserNotificationAuthorizationOperation.swift in Sources */,
 				E0FF7986228D51E800F61318 /* SettingsTableViewController.swift in Sources */,
 				E06589C12270333100C9E4E6 /* PickImageOperation.swift in Sources */,

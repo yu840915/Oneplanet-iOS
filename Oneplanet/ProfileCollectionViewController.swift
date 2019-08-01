@@ -65,7 +65,7 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch sections[section] {
-        case .detail, .emptyView: return 1
+        case .detail, .emptyView, .loading: return 1
         case .posts: return posts.count
         }
     }
@@ -79,7 +79,7 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
             updateViews(inDetailCell: cell as! ProfileContainerCell)
         case .posts:
             updateViews(inPostCell: cell as! PostThumbnailCell, at: indexPath)
-        case .emptyView: break
+        case .emptyView, .loading: break
         }
         return cell
     }
@@ -111,6 +111,21 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
     
     // MARK: UICollectionViewDelegate
 
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let section = sections[indexPath.section]
+        switch section {
+        case .posts:
+            let isLastRow = indexPath.row == (posts.count - 1)
+            if isLastRow && postList.hasMore {
+                postList.loadMoreIfAllowed()
+            }
+        case .loading:
+            (cell as! LoadingCollectionViewCell).activityIndicator.startAnimating()
+        case .emptyView, .detail: break
+        }
+
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
         return sections[indexPath.section] == .posts
     }
@@ -154,7 +169,7 @@ extension ProfileCollectionViewController {
             val.append(.emptyView)
         }
         if hasContent && hasMore {
-//            val.append(.loading)
+            val.append(.loading)
         }
         sections = val
         collectionView.reloadData()
@@ -175,6 +190,8 @@ extension ProfileCollectionViewController: UICollectionViewDelegateFlowLayout {
             let totalGap = (num - 1) * (collectionViewLayout as! UICollectionViewFlowLayout).minimumInteritemSpacing
             let len = (collectionView.bounds.width - totalGap) / num
             return CGSize(width: len, height: len)
+        case .loading:
+            return CGSize(width: collectionView.bounds.width, height: 60)
         }
     }
 }
@@ -184,6 +201,7 @@ extension ProfileCollectionViewController {
         case detail = "detailCell"
         case posts = "postCell"
         case emptyView = "emptyCell"
+        case loading = "loadingCell"
         
         var reuseID: String { return rawValue }
     }

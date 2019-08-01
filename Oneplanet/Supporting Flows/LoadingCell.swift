@@ -18,3 +18,14 @@ class LoadingCell: UITableViewCell {
     }
 
 }
+
+class LoadingCollectionViewCell: UICollectionViewCell {
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        activityIndicator.startAnimating()
+    }
+    
+}

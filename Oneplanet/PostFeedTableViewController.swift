@@ -21,11 +21,12 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
     var postList: PostList!
     var sections: [Section] = [.content, .loading]
     private var listUpdateHandles: [Any]?
+    private var expandPostsIDs = Set<String>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         searchButton.layer.cornerRadius = 4
-        posts = [Post(), Post(), Post(), Post(), Post()]
+        posts = [Post(id: "1"), Post(id: "2"), Post(id: "3"), Post(id: "4"), Post(id: "5")]
 //        prepareForList()
     }
 
@@ -59,6 +60,7 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
     
     private func setUpPostCell(_ cell: PostCardCell, at indexPath: IndexPath) {
         let post = posts[indexPath.row]
+        cell.expanded = expandPostsIDs.contains(post.id)
         cell.updateViews(with: FakePost())
         cell.moreActions = {[weak self] in
             self?.showMoreAction(for: post)
@@ -67,11 +69,20 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
             self?.followAuthor(of: post)
         }
         cell.showDetailAction = {[weak self] in
-            self?.showDetail(for: post)
+            self?.expendCell(at: indexPath)
         }
         cell.showProfileAction = {[weak self] in
             self?.showProfile(for: post)
         }
+    }
+    
+    private func expendCell(at indexPath: IndexPath) {
+        expandPostsIDs.insert(posts[indexPath.row].id)
+        UIView.setAnimationsEnabled(false)
+        tableView.beginUpdates()
+        tableView.reloadRows(at: [indexPath], with: .none)
+        tableView.endUpdates()
+        UIView.setAnimationsEnabled(true)
     }
     
     private func showMoreAction(for post: Post) {
@@ -102,7 +113,7 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        showDetail(for: posts[indexPath.row])
+        expendCell(at: indexPath)
     }
 
     // MARK: - Navigation
@@ -179,10 +190,6 @@ private extension PostFeedTableViewController {
 }
 
 private extension PostFeedTableViewController {
-    func showDetail(for post: Post) {
-        performSegue(withIdentifier: SegueID.showDetail, sender: post)
-    }
-    
     func followAuthor(of post: Post) {
         
     }
@@ -240,6 +247,6 @@ class FakePost: PostDisplayable {
     var nickname: String = "Abc 123"
     var formatedDate: String = "1m ago"
     var photos: [WebImageInfo] = [WebImageInfo(url: URL(string: "https://i.imgur.com/lytdJKp.png")!), WebImageInfo(url: URL(string: "https://i.imgur.com/lytdJKp.png")!), WebImageInfo(url: URL(string: "https://i.imgur.com/lytdJKp.png")!)]
-    var message: String = "Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content iap"
+    var message: String = "Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content iap"
     var relativeScore: Float? = 1.0
 }

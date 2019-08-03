@@ -164,7 +164,7 @@ extension ProfileCollectionViewController {
     func handleListUpdate() {
         refreshControl?.endRefreshing()
         posts = postList.items
-        posts = [Post(), Post(), Post(), Post()]
+        posts = [Post(id: "1"), Post(id: "2"), Post(id: "3"), Post(id: "4")]
         prepareSections()
     }
 

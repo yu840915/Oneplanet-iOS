@@ -41,11 +41,18 @@ class PostCardCell: UITableViewCell {
     @IBOutlet weak var galleryCollectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var contentTextView: UITextView!
+    
+    @IBOutlet weak var expandedContentTextView: UITextView!
     @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var layoutTextView: UITextView!
     @IBOutlet weak var scoreBarView: ScoreBarView!
     
     private var galleryDataSource: PostPhotoGalleryDataSource?
+    var expanded: Bool = false {
+        didSet {
+            updateViewForExpanded()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -59,8 +66,17 @@ class PostCardCell: UITableViewCell {
         }
     }
     
+    func updateViewForExpanded() {
+        contentTextView.isHidden = expanded
+        expandedContentTextView.isHidden = !expanded
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
+        if expanded {
+            moreButton.isHidden = true
+            return
+        }
         if contentTextView.textContainer.exclusionPaths.isEmpty {
             setNeedsLayout()
         } else {
@@ -112,7 +128,8 @@ extension PostCardCell {
     }
     
     private func setUpContentSection(with dataSource: PostDisplayable) {
-        contentTextView.isHidden = !dataSource.shouldShowContentSection
+        contentTextView.isHidden = !dataSource.shouldShowContentSection || expanded
+        expandedContentTextView.isHidden = !dataSource.shouldShowContentSection || !expanded
         guard dataSource.shouldShowContentSection else {
             return
         }
@@ -125,6 +142,7 @@ extension PostCardCell {
         layoutTextView.alpha = 0
         layoutTextView.attributedText = attrStr
         contentTextView.attributedText = attrStr
+        expandedContentTextView.attributedText = attrStr
         contentView.setNeedsLayout()
     }
 }

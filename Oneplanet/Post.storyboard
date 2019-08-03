@@ -295,11 +295,11 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="600"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3q-ET-SRu">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" scrollEnabled="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P3q-ET-SRu">
                                             <rect key="frame" x="20" y="539" width="374" height="183.5"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                            <color key="textColor" name="lock red"/>
+                                            <color key="textColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
@@ -310,7 +310,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="20" height="187"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_120film" translatesAutoresizingMaskIntoConstraints="NO" id="72k-YE-wyW">
-                                                            <rect key="frame" x="2" y="85.5" width="16" height="16"/>
+                                                            <rect key="frame" x="0.0" y="13.5" width="20" height="160"/>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -323,7 +323,7 @@
                                                     <rect key="frame" x="0.0" y="187" width="20" height="187"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_120film" translatesAutoresizingMaskIntoConstraints="NO" id="JsG-s3-DXV">
-                                                            <rect key="frame" x="2" y="85.5" width="16" height="16"/>
+                                                            <rect key="frame" x="0.0" y="13.5" width="20" height="160"/>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -414,7 +414,7 @@
                                                             </subviews>
                                                         </stackView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jaP-pc-ueI" userLabel="Action Button">
-                                                            <rect key="frame" x="224" y="21.5" width="100" height="17"/>
+                                                            <rect key="frame" x="224" y="16" width="100" height="28"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" priority="900" constant="100" id="iyP-ey-tAG"/>
                                                             </constraints>
@@ -445,7 +445,7 @@
                                                     </constraints>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="rPm-IT-6kx">
-                                                    <rect key="frame" x="0.0" y="98" width="374" height="390"/>
+                                                    <rect key="frame" x="0.0" y="98" width="374" height="384"/>
                                                     <subviews>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d3o-no-tRI">
                                                             <rect key="frame" x="0.0" y="0.0" width="374" height="374"/>
@@ -485,20 +485,20 @@
                                                             </cells>
                                                         </collectionView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mXg-zo-zXT" customClass="ScoreBarView" customModule="Oneplanet" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="374" width="374" height="16"/>
+                                                            <rect key="frame" x="0.0" y="374" width="374" height="10"/>
                                                             <subviews>
                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="1000" image="ui_scorebg" translatesAutoresizingMaskIntoConstraints="NO" id="SO1-Rz-Fls">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="10"/>
                                                                 </imageView>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wvu-Dm-frO" userLabel="Scorebar Button">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="10"/>
                                                                     <state key="normal" backgroundImage="ui_scorebg"/>
                                                                 </button>
                                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eJr-ve-CXo" userLabel="Mask View">
-                                                                    <rect key="frame" x="-374" y="3" width="374" height="10"/>
+                                                                    <rect key="frame" x="-374" y="0.0" width="374" height="10"/>
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_score" translatesAutoresizingMaskIntoConstraints="NO" id="IfI-wm-cym">
-                                                                            <rect key="frame" x="374" y="-3" width="374" height="16"/>
+                                                                            <rect key="frame" x="374" y="0.0" width="374" height="10"/>
                                                                         </imageView>
                                                                     </subviews>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -534,11 +534,18 @@
                                                         </view>
                                                     </subviews>
                                                 </stackView>
-                                                <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="s6A-rP-aSa">
-                                                    <rect key="frame" x="0.0" y="498" width="374" height="31"/>
+                                                <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="s6A-rP-aSa">
+                                                    <rect key="frame" x="0.0" y="492" width="374" height="37"/>
                                                 </pageControl>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" editable="NO" text="Content" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="dJx-dF-4OQ">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Content" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="dJx-dF-4OQ">
                                                     <rect key="frame" x="0.0" y="539" width="374" height="33"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" name="default text"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                                <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Content" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="yqN-K9-qio">
+                                                    <rect key="frame" x="0.0" y="577" width="374" height="0.0"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="textColor" name="default text"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -585,6 +592,7 @@
                                     <outlet property="avatarView" destination="QIt-Ox-D7M" id="rtU-Cg-iui"/>
                                     <outlet property="contentTextView" destination="dJx-dF-4OQ" id="3W8-9K-DbO"/>
                                     <outlet property="dateLabel" destination="Q1C-Po-9oS" id="eDs-SS-UaS"/>
+                                    <outlet property="expandedContentTextView" destination="yqN-K9-qio" id="bdQ-7b-ZEg"/>
                                     <outlet property="galleryCollectionView" destination="d3o-no-tRI" id="wSS-5e-Yi0"/>
                                     <outlet property="layoutTextView" destination="P3q-ET-SRu" id="tKy-4k-uCv"/>
                                     <outlet property="moreActionButton" destination="2LV-Vp-mmr" id="Q5U-P7-HTc"/>
@@ -1214,9 +1222,6 @@
         </namedColor>
         <namedColor name="default text">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="lock red">
-            <color red="0.86274509803921573" green="0.15686274509803921" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>

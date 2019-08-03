@@ -38,7 +38,7 @@
                 <viewControllerPlaceholder storyboardName="SupportingFlows" referencedIdentifier="ReportEntry" id="vsP-dl-9e7" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wzh-2P-Brl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="12" y="2091"/>
+            <point key="canvasLocation" x="-10" y="2157"/>
         </scene>
         <!--FriendListsViewController-->
         <scene sceneID="N6Y-31-g6L">
@@ -46,7 +46,7 @@
                 <viewControllerPlaceholder referencedIdentifier="FriendListsViewController" id="j6u-Vh-x5p" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lea-9J-Qcb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="26" y="2220"/>
+            <point key="canvasLocation" x="25" y="2256"/>
         </scene>
         <!--ProfileCollectionViewController-->
         <scene sceneID="vdy-Qa-Yd1">
@@ -104,16 +104,24 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="myv-RF-Fen"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="yTT-s4-Y25">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="ic_back_nor" id="Fx6-3o-7QS">
+                            <connections>
+                                <action selector="exit:" destination="J1K-Xq-1EA" id="ye1-N9-bgp"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="ic_more_nor" id="KBP-Pe-vp3">
                             <connections>
                                 <action selector="showActionSheet:" destination="J1K-Xq-1EA" id="65q-1A-9nw"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="j6u-Vh-x5p" kind="show" identifier="showFriendLists" id="kVb-Eq-PLA"/>
                         <segue destination="vsP-dl-9e7" kind="presentation" identifier="showReportFlow" id="KYh-HC-jfC"/>
+                        <segue destination="16I-RO-jBg" kind="show" identifier="showPostDetail" id="R7Z-kW-hKH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CJq-km-KGF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -321,7 +329,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SYh-wa-E6N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="329" y="1494"/>
+            <point key="canvasLocation" x="284" y="1506"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bsI-l6-9NK">
@@ -427,6 +435,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="RFq-m0-MVm" kind="presentation" identifier="showFriendLists" id="5Yh-ug-opG"/>
+                        <segue destination="5e6-Hr-3vw" kind="presentation" identifier="showPostDetail" id="qVK-KF-vDb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ssc-S1-m5x" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -448,7 +457,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <imageView key="backgroundView" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_bgall" id="MVK-a5-ygs">
-                            <rect key="frame" x="0.0" y="-20" width="375" height="603"/>
+                            <rect key="frame" x="0.0" y="19" width="375" height="603"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <cells>
@@ -476,14 +485,14 @@
                                     <outlet property="containerView" destination="rTa-np-1ML" id="RVo-FJ-bAn"/>
                                 </connections>
                             </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="postCell" id="ZbD-BM-7re" customClass="PostThumbnailCell" customModule="Oneplanet" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="postCell" id="ZbD-BM-7re" customClass="PhotoGalleryPageCell" customModule="Oneplanet" customModuleProvider="target">
                                 <rect key="frame" x="112.5" y="250" width="150" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qrw-EF-d1c">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qrw-EF-d1c">
                                             <rect key="frame" x="0.0" y="0.0" width="150" height="86"/>
                                         </imageView>
                                     </subviews>
@@ -543,6 +552,27 @@
                                     <outlet property="textLabel" destination="Qrb-bB-BTh" id="pLr-8D-Vsq"/>
                                 </connections>
                             </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" reuseIdentifier="loadingCell" id="TBK-Q7-ziS" customClass="LoadingCollectionViewCell" customModule="Oneplanet" customModuleProvider="target">
+                                <rect key="frame" x="112.5" y="562" width="150" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="150" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="XVI-kg-JN6">
+                                            <rect key="frame" x="56.5" y="12" width="37" height="37"/>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="XVI-kg-JN6" firstAttribute="centerY" secondItem="TBK-Q7-ziS" secondAttribute="centerY" id="AoH-de-UYE"/>
+                                    <constraint firstItem="XVI-kg-JN6" firstAttribute="centerX" secondItem="TBK-Q7-ziS" secondAttribute="centerX" id="Qkn-UO-vyb"/>
+                                </constraints>
+                                <size key="customSize" width="150" height="60"/>
+                                <connections>
+                                    <outlet property="activityIndicator" destination="XVI-kg-JN6" id="9hW-Qn-ky7"/>
+                                </connections>
+                            </collectionViewCell>
                         </cells>
                         <connections>
                             <outlet property="dataSource" destination="UGj-Rj-lAV" id="mZU-RG-caH"/>
@@ -553,7 +583,23 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sek-aR-Xuo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="329" y="796"/>
+            <point key="canvasLocation" x="284" y="830"/>
+        </scene>
+        <!--PostDetailViewController-->
+        <scene sceneID="BbG-1b-VV2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Post" referencedIdentifier="PostDetailViewController" id="16I-RO-jBg" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QU8-wB-Kqw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="28" y="2091"/>
+        </scene>
+        <!--PostDetailEntry-->
+        <scene sceneID="c2Q-VK-DN8">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Post" referencedIdentifier="PostDetailEntry" id="5e6-Hr-3vw" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YkX-7j-lQq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="926" y="562"/>
         </scene>
         <!--More-->
         <scene sceneID="6uX-98-iNm">
@@ -607,6 +653,7 @@
                             <outlet property="delegate" destination="7FN-v5-bgi" id="LwK-8w-6Dv"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="More" id="Gy8-tl-yb3">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="fLF-E5-5YB">
                             <connections>
@@ -622,6 +669,7 @@
                             <barButtonItem title="Item" image="ic_youtube_nor" id="xF0-zh-EEO"/>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="dismissButtonItem" destination="fLF-E5-5YB" id="lfF-P9-1Pu"/>
                         <outlet property="versionLabel" destination="IrI-2U-KY4" id="ygD-XE-nN3"/>
@@ -1029,12 +1077,12 @@
         <scene sceneID="kso-m7-ARl">
             <objects>
                 <tableViewController id="6Dr-pj-fYY" customClass="BlockListTableViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="W8E-l4-jxI">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="W8E-l4-jxI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="black background"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="S4V-Pd-UXd">
-                            <rect key="frame" x="0.0" y="108" width="375" height="1"/>
+                            <rect key="frame" x="0.0" y="168" width="375" height="1"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
@@ -1043,7 +1091,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2cm-He-itF" id="aqJ-Hp-yW2">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="sU1-Ro-Udf">
@@ -1148,6 +1196,28 @@
                                     <outlet property="nameLabel" destination="Pc4-t0-x6g" id="Vdb-Oe-TaM"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="loadingCell" rowHeight="60" id="TyX-rB-BmH" customClass="LoadingCell" customModule="Oneplanet" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="108" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TyX-rB-BmH" id="E5n-me-34W">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="rwQ-Ym-xzy">
+                                            <rect key="frame" x="169" y="11.5" width="37" height="36.5"/>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="rwQ-Ym-xzy" firstAttribute="centerY" secondItem="E5n-me-34W" secondAttribute="centerY" id="7E1-xJ-xMl"/>
+                                        <constraint firstItem="rwQ-Ym-xzy" firstAttribute="top" secondItem="E5n-me-34W" secondAttribute="top" constant="11.5" id="HYY-T2-d7Z"/>
+                                        <constraint firstItem="rwQ-Ym-xzy" firstAttribute="centerX" secondItem="E5n-me-34W" secondAttribute="centerX" id="k45-0D-fNi"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="activityIndicator" destination="rwQ-Ym-xzy" id="EqY-L1-tjU"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="6Dr-pj-fYY" id="8t1-Kr-2LI"/>
@@ -1189,12 +1259,12 @@
         <scene sceneID="9th-Hq-qcF">
             <objects>
                 <tableViewController storyboardIdentifier="FollowingListTableViewController" id="9AN-Ox-XJC" customClass="FollowingListTableViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="avA-le-Uji">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="avA-le-Uji">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="black background"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="NiB-r0-g6U">
-                            <rect key="frame" x="0.0" y="108" width="375" height="1"/>
+                            <rect key="frame" x="0.0" y="168" width="375" height="1"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
@@ -1203,7 +1273,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="F2D-QX-cMf" id="g9s-LR-VY0">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="MOo-O3-7q9">
@@ -1306,6 +1376,28 @@
                                     <outlet property="avatarView" destination="Yfj-HS-aCP" id="her-uJ-ELb"/>
                                     <outlet property="idLabel" destination="1Cj-zB-89v" id="EsU-tf-x3r"/>
                                     <outlet property="nameLabel" destination="1IX-hJ-LZR" id="Tx5-d8-sIB"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="loadingCell" rowHeight="60" id="bqn-Sl-l1W" customClass="LoadingCell" customModule="Oneplanet" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="108" width="375" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bqn-Sl-l1W" id="21x-wZ-zfJ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="BxJ-Hx-6YW">
+                                            <rect key="frame" x="169" y="11.5" width="37" height="36.5"/>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="BxJ-Hx-6YW" firstAttribute="top" secondItem="21x-wZ-zfJ" secondAttribute="top" constant="11.5" id="2WY-tf-j3E"/>
+                                        <constraint firstItem="BxJ-Hx-6YW" firstAttribute="centerY" secondItem="21x-wZ-zfJ" secondAttribute="centerY" id="ZwV-Ch-5RA"/>
+                                        <constraint firstItem="BxJ-Hx-6YW" firstAttribute="centerX" secondItem="21x-wZ-zfJ" secondAttribute="centerX" id="xqz-Hv-CTt"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="activityIndicator" destination="BxJ-Hx-6YW" id="ybK-q1-vNp"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1494,6 +1586,7 @@
         <image name="bt_bigwirewhite_tap" width="41" height="41"/>
         <image name="bt_smallgreen_nor" width="29" height="28"/>
         <image name="bt_smallwirewhite_nor" width="29" height="28"/>
+        <image name="ic_back_nor" width="40" height="40"/>
         <image name="ic_contactus_nor" width="40" height="40"/>
         <image name="ic_more_nor" width="13" height="3"/>
         <image name="ic_morelist_nor" width="40" height="40"/>

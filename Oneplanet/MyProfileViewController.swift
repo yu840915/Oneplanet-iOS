@@ -53,36 +53,43 @@ class MyProfileViewController: UIViewController, UserSessionDepending {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? ProfileCollectionViewController {
             vc.userSession = userSession
+            vc.postList = PostList.myPostList(with: userSession)
             vc.profile = profile
             vc.configuration = userSession.isGuest ? .forGuest: .forMe
             vc.showFollowListAction = {[weak self] url in
                 self?.showFollowList(with: url)
             }
+            vc.showPostDetailAction = {[weak self] post in
+                self?.performSegue(withIdentifier: SegueID.showPostDetail, sender: post)
+            }
             vc.shouldShowWarning = userSession.isBanned
             profileController = vc
         }
-        if let nav = segue.destination as? UINavigationController,
-            let vc = nav.viewControllers.first as? SettingsTableViewController {
-            vc.userSession = userSession
-        }
-        if let nav = segue.destination as? UINavigationController,
-            let vc = nav.viewControllers.first as? FriendListsViewController {
-            NavigationBarStyle.darkGray.configure(nav.navigationBar)
-            vc.userSession = userSession
-            vc.profile = profile
-            vc.followerList = UserList.followerList(with: userSession)
-            vc.followingList = UserList.followerList(with: userSession)
-            if let url = sender as? URL, url == DeepLinks.followingList {
-                vc.preselectedTab = .following
+        if let nav = segue.destination as? UINavigationController{
+            if let vc = nav.viewControllers.first as? UserSessionDepending {
+                vc.userSession = userSession
+            }
+            if let vc = nav.viewControllers.first as? FriendListsViewController {
+                NavigationBarStyle.darkGray.configure(nav.navigationBar)
+                vc.userSession = userSession
+                vc.profile = profile
+                vc.followerList = UserList.followerList(with: userSession)
+                vc.followingList = UserList.followerList(with: userSession)
+                if let url = sender as? URL, url == DeepLinks.followingList {
+                    vc.preselectedTab = .following
+                }
+            } else if let vc = nav.viewControllers.first as? PostDetailViewController {
+                vc.post = (sender as! Post)
+                vc.canShowAuthorProfile = false
             }
         }
     }
-
 }
 
 extension MyProfileViewController {
     struct SegueID {
         static let showFriendLists = "showFriendLists"
+        static let showPostDetail = "showPostDetail"
     }
 }
 

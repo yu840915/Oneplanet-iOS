@@ -13,10 +13,13 @@ private let reuseIdentifier = "Cell"
 class ProfileCollectionViewController: UICollectionViewController, UserSessionDepending {
     
     var userSession: UserSession!
+    var postList: PostList!
     fileprivate var sections: [Section] = [.detail]
-    fileprivate var posts: [Any] = []
+    fileprivate var posts: [Post] = []
     private var detailController: ProfileDetailViewController?
+    var refreshControl: UIRefreshControl!
     var showFollowListAction: ((URL)->())?
+    var showPostDetailAction: ((Post)->())?
     var profile: UserProfileDisplayable! {
         didSet {
             if isViewLoaded {
@@ -32,22 +35,23 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
             }
         }
     }
+    private var listUpdateHandles: [Any]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateSections()
-    }
-    
-    private func updateSections() {
-        var result: [Section] = [.detail]
-        if posts.isEmpty {
-            result.append(.emptyView)
-        } else {
-            result.append(.posts)
-        }
-        sections = result
+        let control = UIRefreshControl()
+        control.tintColor = .white
+        control.addTarget(self, action: #selector(reload(_:)), for: .valueChanged)
+        collectionView.addSubview(control)
+        refreshControl = control
+        prepareForList()
     }
 
+
+    @IBAction func reload(_ sender: UIRefreshControl) {
+        postList.reload()
+    }
+    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -62,7 +66,7 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch sections[section] {
-        case .detail, .emptyView: return 1
+        case .detail, .emptyView, .loading: return 1
         case .posts: return posts.count
         }
     }
@@ -75,8 +79,8 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
         case .detail:
             updateViews(inDetailCell: cell as! ProfileContainerCell)
         case .posts:
-            updateViews(inPostCell: cell as! PostThumbnailCell, at: indexPath)
-        case .emptyView: break
+            updateViews(inPostCell: cell as! PhotoGalleryPageCell, at: indexPath)
+        case .emptyView, .loading: break
         }
         return cell
     }
@@ -102,18 +106,82 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
         detailController = vc
     }
     
-    private func updateViews(inPostCell cell: PostThumbnailCell, at indexPath: IndexPath) {
-        
+    private func updateViews(inPostCell cell: PhotoGalleryPageCell, at indexPath: IndexPath) {
+        let post = posts[indexPath.row]
+        let ds = FakePost()
+        cell.updateViews(with: ds.photos[0])
     }
     
     // MARK: UICollectionViewDelegate
 
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let section = sections[indexPath.section]
+        switch section {
+        case .posts:
+            let isLastRow = indexPath.row == (posts.count - 1)
+            if isLastRow && postList.hasMore {
+                postList.loadMoreIfAllowed()
+            }
+        case .loading:
+            (cell as! LoadingCollectionViewCell).activityIndicator.startAnimating()
+        case .emptyView, .detail: break
+        }
+
+    }
+    
     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
         return sections[indexPath.section] == .posts
     }
 
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return sections[indexPath.section] == .posts
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard sections[indexPath.section] == .posts else { return }
+        showPostDetailAction?(posts[indexPath.row])
+    }
+
+}
+
+extension ProfileCollectionViewController {
+    func prepareForList() {
+        var handles = [Any]()
+        handles.append(postList.addItemDidFetchHandler {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.handleListUpdate()
+            }
+        })
+        handles.append(postList.addFetchingFailureHandler({[weak self] (error) in
+            OperationQueue.main.addOperation {
+                self?.handleListUpdate()
+            }
+        }))
+        listUpdateHandles = handles
+        postList.reload()
+    }
+    
+    func handleListUpdate() {
+        refreshControl?.endRefreshing()
+        posts = postList.items
+        posts = [Post(id: "1"), Post(id: "2"), Post(id: "3"), Post(id: "4")]
+        prepareSections()
+    }
+
+    func prepareSections() {
+        let hasContent = !posts.isEmpty
+        let hasMore = postList.hasMore
+        var val: [Section] = [.detail]
+        if hasContent {
+            val.append(.posts)
+        } else {
+            val.append(.emptyView)
+        }
+        if hasContent && hasMore {
+            val.append(.loading)
+        }
+        sections = val
+        collectionView.reloadData()
     }
 
 }
@@ -131,6 +199,8 @@ extension ProfileCollectionViewController: UICollectionViewDelegateFlowLayout {
             let totalGap = (num - 1) * (collectionViewLayout as! UICollectionViewFlowLayout).minimumInteritemSpacing
             let len = (collectionView.bounds.width - totalGap) / num
             return CGSize(width: len, height: len)
+        case .loading:
+            return CGSize(width: collectionView.bounds.width, height: 60)
         }
     }
 }
@@ -140,6 +210,7 @@ extension ProfileCollectionViewController {
         case detail = "detailCell"
         case posts = "postCell"
         case emptyView = "emptyCell"
+        case loading = "loadingCell"
         
         var reuseID: String { return rawValue }
     }
@@ -176,6 +247,10 @@ class ProfileContainerCell: UICollectionViewCell {
 
 class PostThumbnailCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
+    
+    func updateViews(with dataSource: PostDisplayable) {
+        
+    }
 }
 
 class EmptyPostListCell: UICollectionViewCell {

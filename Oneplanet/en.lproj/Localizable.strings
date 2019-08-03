@@ -64,6 +64,8 @@
 "tl_followings" = "Following";
 "tl_content" = "Content";
 "tl_send" = "Send";
+"tl_edit" = "Edit";
+"tl_photo" = "Photo";
 
 "pl_email" = "Email Address";
 "pl_nickname" = "Nickname";
@@ -100,6 +102,7 @@
 "msg_recover_account_des" = "If you disagree with our disposition, please provide the following information to help us investigate.";
 "msg_petition_submitted" = "The problem has been reported to Oneplanet, please wait for the Oneplanet review and reply to you";
 "msg_unlock_option_prompt" = "Which gem do you want to use to unlock?";
+"msg_thanks_for_reporting_post" = "Your feedback is important in helping us keep the Oneplanet community safe";
 
 "msgf_accept_tos" = "By signing up or login, you agree to our %@.";
 "msgf_resend_verification_email" = "You did not receive the email? %@.";
@@ -129,6 +132,7 @@
 "msgf_thankyou_report_user" = "Thank you for helping keep the Oneplanet safe and fun for everyone. Remember, we don’t reveal who submitted reports to the person who posted the photo or comment.\n\nOur team will review the post and if it vidolates our %@, we’ll remove it.";
 "msgf_unblock_user_prompt" = "Unblock %@?";
 "msgf_block_user_prompt" = "Block %@?";
+"msgf_no_search_results" = "No results for \"%@\"";
 
 "ph_guest_login" = "Guest";
 "ph_email_login" = "Or Login With Email";
@@ -176,6 +180,11 @@
 "ph_petition_submitted" = "Successful return";
 "ph_i_get_it" = "I get it";
 "ph_unlock_option_prompt" = "Select gems to unlock";
+"ph_latest_posts" = "Latest";
+"ph_best_posts" = "Highest socreds";
+"ph_thanks_for_reporting_post" = "Thanks for reporting this post";
+"ph_show_post" = "Show Post";
+"ph_more" = "more";
 
 "phf_seconds_ago_short" = "%@s";
 "phf_minutes_ago_short" = "%@m";

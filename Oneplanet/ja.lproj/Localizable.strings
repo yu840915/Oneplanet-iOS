@@ -64,6 +64,8 @@
 "tl_followings" = "フォロー中";
 "tl_content" = "コンテンツ";
 "tl_send" = "送信";
+"tl_edit" = "編集する";
+"tl_photo" = "写真";
 
 "pl_email" = "メールアドレス";
 "pl_nickname" = "ニックネーム";
@@ -100,6 +102,7 @@
 "msg_recover_account_des" = "利用規約違反していない場合、確認するために、下記までの情報をお願いいたします";
 "msg_petition_submitted" = "Oneplanetに報告を成功しました。Oneplanetが確認してからの返信を待ってください";
 "msg_unlock_option_prompt" = "どのジェムでアンロックしますか？";
+"msg_thanks_for_reporting_post" = "Your feedback is important in helping us keep the Oneplanet community safe";
 
 "msgf_accept_tos" = "アカウントを作成することによって、%@に同意することになります";
 "msgf_resend_verification_email" = "電子メールがみつかりませんか？%@";
@@ -129,6 +132,7 @@
 "msgf_thankyou_report_user" = "Thank you for helping keep the Oneplanet safe and fun for everyone. Remember, we don’t reveal who submitted reports to the person who posted the photo or comment.\n\nOur team will review the post and if it vidolates our %@, we’ll remove it.";
 "msgf_unblock_user_prompt" = "%@さんのブロックを解除しますか？";
 "msgf_block_user_prompt" = "Block %@?";
+"msgf_no_search_results" = "No results for \"%@\"";
 
 "ph_guest_login" = "ゲスト登録";
 "ph_email_login" = "またはメールアドレスでログイン";
@@ -176,6 +180,11 @@
 "ph_petition_submitted" = "報告成功";
 "ph_i_get_it" = "分かりました";
 "ph_unlock_option_prompt" = "アンロックするジェムを選択します";
+"ph_latest_posts" = "Latest";
+"ph_best_posts" = "Highest socreds";
+"ph_thanks_for_reporting_post" = "Thanks for reporting this post";
+"ph_show_post" = "Show Post";
+"ph_more" = "more";
 
 "phf_seconds_ago_short" = "%@ s";
 "phf_minutes_ago_short" = "%@ m";

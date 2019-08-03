@@ -89,6 +89,11 @@ class CharacterOptions {
     static let shared = CharacterOptions()
     private init() {}
     let colors: [CharacterColor] = [.green, .pink, .blue]
+    func character(for race: Race, color: CharacterColor) -> Character? {
+        return characterOptions(for: color).first(where: {
+            return $0.race == race
+        })
+    }
     func characterOptions(for color: CharacterColor) -> [Character] {
         switch color {
         case .green:

@@ -1,19 +1,8 @@
 {
   "images" : [
     {
-      "resizing" : {
-        "mode" : "3-part-horizontal",
-        "center" : {
-          "mode" : "tile",
-          "width" : 1
-        },
-        "cap-insets" : {
-          "right" : 69,
-          "left" : 70
-        }
-      },
       "idiom" : "universal",
-      "filename" : "ui_scorebg.pdf",
+      "filename" : "ic_search_nor.pdf",
       "scale" : "1x"
     },
     {

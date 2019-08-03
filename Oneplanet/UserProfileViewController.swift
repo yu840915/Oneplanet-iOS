@@ -24,6 +24,15 @@ class UserProfileViewController: UIViewController, UserSessionDepending {
         updateViewsForProfile()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let nav = navigationController, nav.viewControllers.count == 1 {
+            NavigationBarStyle.darkGray.configure(nav.navigationBar)
+        } else {
+            navigationItem.leftBarButtonItem = nil
+        }
+    }
+    
     private func prepareIDHeaderIfNeeded() {
         guard !userSession.isGuest else { return }
         let header = IDHeaderView.fromDefaultNib()
@@ -39,7 +48,10 @@ class UserProfileViewController: UIViewController, UserSessionDepending {
         profileController.profile = profile
     }
     
-    
+    @IBAction func exit(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+
     @IBAction func showActionSheet(_ sender: UIBarButtonItem) {
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         sheet.addAction(UIAlertAction(title: Localized.phrases.copyID, style: .default, handler: { (_) in
@@ -72,9 +84,13 @@ class UserProfileViewController: UIViewController, UserSessionDepending {
         }
         if let vc = segue.destination as? ProfileCollectionViewController {            
             vc.profile = profile
+            vc.postList = PostList.userPostList(with: userSession, for: profile)
             vc.configuration = isMe ? .forMe: .forOther
             vc.showFollowListAction = {[weak self] url in
                 self?.showFollowList(with: url)
+            }
+            vc.showPostDetailAction = {[weak self] post in
+                self?.performSegue(withIdentifier: SegueID.showPostDetail, sender: post)
             }
             profileController = vc
         }
@@ -86,11 +102,20 @@ class UserProfileViewController: UIViewController, UserSessionDepending {
                 vc.preselectedTab = .following
             }
         }
-        if let nav = segue.destination as? UINavigationController,
-            let vc = nav.viewControllers.first as? ReportReasonPickerTableViewController {
-            vc.flowController = (sender as! ReportFlowController)
-            vc.didFinishReport = {
-                
+        if let vc = segue.destination as? PostDetailViewController {
+            vc.post = (sender as! Post)
+            vc.canShowAuthorProfile = false
+        }
+        if let nav = segue.destination as? UINavigationController{
+            if let vc = nav.viewControllers.first as? UserSessionDepending {
+                vc.userSession = userSession
+            }
+            if let vc = nav.viewControllers.first as? ReportReasonPickerTableViewController {
+                NavigationBarStyle.darkGray.configure(nav.navigationBar)
+                vc.flowController = (sender as! ReportFlowController)
+                vc.didFinishReport = {
+                    
+                }
             }
         }
     }
@@ -148,5 +173,6 @@ extension UserProfileViewController {
     struct SegueID {
         static let showFriendLists = "showFriendLists"
         static let showReportFlow = "showReportFlow"
+        static let showPostDetail = "showPostDetail"
     }
 }

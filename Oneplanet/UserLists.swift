@@ -11,6 +11,9 @@ import ModelBlocks
 import Alamofire
 
 class UserList: PaginatedList<GetUserListOperationFactory> {
+    class func searchList(with userSession: UserSession, query: String) -> UserList {
+        return UserList(operationFactory: GetUserListOperationFactory(session: userSession, url: ServiceURLs.base.appendingPathComponent("users?q=\(query)")))
+    }
     class func followerList(with userSession: UserSession) -> UserList {
         return UserList(operationFactory: GetUserListOperationFactory(session: userSession, url: ServiceURLs.base.appendingPathComponent("me/followers")))
     }

@@ -187,6 +187,12 @@ class LocalizedTitles {//tl_
     var send: String {
         return NSLocalizedString("tl_send", comment: "")
     }
+    var edit: String {
+        return NSLocalizedString("tl_edit", comment: "")
+    }
+    var photo: String {
+        return NSLocalizedString("tl_photo", comment: "")
+    }
 }
 
 class Feature {//fx_
@@ -360,6 +366,9 @@ class LocalizedMessages {//msg_
     var unlockOptionPrompt: String {
         return NSLocalizedString("msg_unlock_option_prompt", comment: "")
     }
+    var thanksForReportingPost: String {
+        return NSLocalizedString("msg_thanks_for_reporting_post", comment: "")
+    }
 }
 
 class LocalizedMessageFormats {//msgf_
@@ -450,6 +459,9 @@ class LocalizedMessageFormats {//msgf_
     }
     var blockUserPrompt: String {
         return NSLocalizedString("msgf_block_user_prompt", comment: "")
+    }
+    var noSearchResults: String {
+        return NSLocalizedString("msgf_no_search_results", comment: "")
     }
 }
 
@@ -593,7 +605,21 @@ class LocalizedPhrase { //ph_
     var unlockOptionPrompt: String {
         return NSLocalizedString("ph_unlock_option_prompt", comment: "")
     }
-
+    var latestPosts: String {
+        return NSLocalizedString("ph_latest_posts", comment: "")
+    }
+    var bestPosts: String {
+        return NSLocalizedString("ph_best_posts", comment: "")
+    }
+    var thanksForReportingPost: String {
+        return NSLocalizedString("ph_thanks_for_reporting_post", comment: "")
+    }
+    var showPost: String {
+        return NSLocalizedString("ph_show_post", comment: "")
+    }
+    var more: String {
+        return NSLocalizedString("ph_more", comment: "")
+    }
 }
 
 class LocalizedPhraseFormats {//phf_

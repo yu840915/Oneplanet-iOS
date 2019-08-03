@@ -64,6 +64,8 @@
 "tl_followings" = "追蹤中";
 "tl_content" = "內容";
 "tl_send" = "送出";
+"tl_edit" = "編輯";
+"tl_photo" = "照片";
 
 "pl_email" = "電子郵件地址";
 "pl_nickname" = "暱稱";
@@ -100,6 +102,7 @@
 "msg_recover_account_des" = "如果你認為自己沒有違反我們的使用條款，請提供以下信息以幫助我們進行調查";
 "msg_petition_submitted" = "已將問題回報給 Oneplanet，請等待 Oneplanet 審核過後並回覆你";
 "msg_unlock_option_prompt" = "你要使用哪種寶石來解鎖?";
+"msg_thanks_for_reporting_post" = "Your feedback is important in helping us keep the Oneplanet community safe";
 
 "msgf_accept_tos" = "註冊或登錄即表示你同意我們的%@";
 "msgf_resend_verification_email" = "你沒有收到電子郵件？%@";
@@ -129,6 +132,7 @@
 "msgf_thankyou_report_user" = "Thank you for helping keep the Oneplanet safe and fun for everyone. Remember, we don’t reveal who submitted reports to the person who posted the photo or comment.\n\nOur team will review the post and if it vidolates our %@, we’ll remove it.";
 "msgf_unblock_user_prompt" = "解鎖封鎖%@嗎？";
 "msgf_block_user_prompt" = "Block %@?";
+"msgf_no_search_results" = "No results for \"%@\"";
 
 "ph_guest_login" = "訪客進入";
 "ph_email_login" = "或使用電子郵件登入";
@@ -176,6 +180,11 @@
 "ph_petition_submitted" = "回報成功";
 "ph_i_get_it" = "我知道了";
 "ph_unlock_option_prompt" = "選擇寶石解鎖";
+"ph_latest_posts" = "Latest";
+"ph_best_posts" = "Highest socreds";
+"ph_thanks_for_reporting_post" = "Thanks for reporting this post";
+"ph_show_post" = "Show Post";
+"ph_more" = "more";
 
 "phf_seconds_ago_short" = "%@ s";
 "phf_minutes_ago_short" = "%@ m";

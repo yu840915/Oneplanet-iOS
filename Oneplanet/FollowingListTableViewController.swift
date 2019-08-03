@@ -18,6 +18,7 @@ class FollowingListTableViewController: UITableViewController, DefaultInstanceFa
     var userList: UserList!
     var userSession: UserSession!
     var users: [User] = []
+    var sections: [Section] = []
     var configuration: Configuration = Configuration()
     
     private var listUpdateHandles: [Any]?
@@ -32,19 +33,38 @@ class FollowingListTableViewController: UITableViewController, DefaultInstanceFa
     }
     
     // MARK: - Table view data source
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users.count
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return sections.count
     }
     
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch sections[section] {
+        case .content: return users.count
+        case .loading: return 1
+        }
+    }
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! UserOverviewCell
+        let section = sections[indexPath.section]
+        let cell = tableView.dequeueReusableCell(withIdentifier: section.reuseID, for: indexPath)
+        switch section {
+        case .content:
+            prepareContentCell(cell as! UserOverviewCell, at: indexPath)
+        case .loading: break
+        }
+        return cell
+    }
+    
+    private func prepareContentCell(_ cell: UserOverviewCell, at indexPath: IndexPath) {
         let user = users[indexPath.row]
         cell.updateViews(with: FriendshipOverviewModel(profile: user))
         cell.action = {[weak self] in
             self?.changeFriendship(for: user)
         }
-        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return sections[indexPath.section] == .content
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -53,9 +73,14 @@ class FollowingListTableViewController: UITableViewController, DefaultInstanceFa
     }
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let isLastRow = indexPath.row == (users.count - 1)
-        if isLastRow && userList.hasMore {
-            userList.loadMoreIfAllowed()
+        switch sections[indexPath.section] {
+        case .content:
+            let isLastRow = indexPath.row == (users.count - 1)
+            if isLastRow && userList.hasMore {
+                userList.loadMoreIfAllowed()
+            }
+        case .loading:
+            (cell as! LoadingCell).activityIndicator.startAnimating()
         }
     }
     
@@ -89,8 +114,19 @@ private extension FollowingListTableViewController {
     func handleListUpdate() {
         refreshControl?.endRefreshing()
         users = userList.items
-        tableView.reloadData()
+        prepareSections()
         updateBackground()
+    }
+    
+    func prepareSections() {
+        let hasContent = !users.isEmpty
+        let hasMore = userList.hasMore
+        var val: [Section] = [.content]
+        if hasContent && hasMore {
+            val.append(.loading)
+        }
+        sections = val
+        tableView.reloadData()
     }
     
     func handleFetchFailure(with error: Error?) {
@@ -117,6 +153,14 @@ private extension FollowingListTableViewController {
 }
 
 extension FollowingListTableViewController {
+    enum Section: String {
+        case content = "cell"
+        case loading = "loadingCell"
+        var reuseID: String {
+            return rawValue
+        }
+    }
+
     struct SegueID {
         static let showProfile = "showProfile"
     }

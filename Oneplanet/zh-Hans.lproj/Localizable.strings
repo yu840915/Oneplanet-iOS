@@ -64,6 +64,8 @@
 "tl_followings" = "关注中";
 "tl_content" = "內容";
 "tl_send" = "送出";
+"tl_edit" = "编辑";
+"tl_photo" = "照片";
 
 "pl_email" = "电子邮件地址";
 "pl_nickname" = "昵称";
@@ -100,6 +102,7 @@
 "msg_recover_account_des" = "如果您不同意我们的处理方式，请提供以下信息以帮助我们调查";
 "msg_petition_submitted" = "已将问题回报给 Oneplanet，请等待 Oneplanet 审核过后并回复你";
 "msg_unlock_option_prompt" = "你要使用哪种宝石来解锁？";
+"msg_thanks_for_reporting_post" = "Your feedback is important in helping us keep the Oneplanet community safe";
 
 "msgf_accept_tos" = "注册或登录即表示你同意我们的%@";
 "msgf_resend_verification_email" = "你没有收到电子邮件？%@";
@@ -129,6 +132,7 @@
 "msgf_thankyou_report_user" = "Thank you for helping keep the Oneplanet safe and fun for everyone. Remember, we don’t reveal who submitted reports to the person who posted the photo or comment.\n\nOur team will review the post and if it vidolates our %@, we’ll remove it.";
 "msgf_unblock_user_prompt" = "移除黑名单%@？";
 "msgf_block_user_prompt" = "Block %@?";
+"msgf_no_search_results" = "No results for \"%@\"";
 
 "ph_guest_login" = "访客进入";
 "ph_email_login" = "或通过电子邮件登录";
@@ -176,6 +180,11 @@
 "ph_petition_submitted" = "回报成功";
 "ph_i_get_it" = "我知道了";
 "ph_unlock_option_prompt" = "选择宝石解锁";
+"ph_latest_posts" = "Latest";
+"ph_best_posts" = "Highest socreds";
+"ph_thanks_for_reporting_post" = "Thanks for reporting this post";
+"ph_show_post" = "Show Post";
+"ph_more" = "more";
 
 "phf_seconds_ago_short" = "%@ s";
 "phf_minutes_ago_short" = "%@ m";

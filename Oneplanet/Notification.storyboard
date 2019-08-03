@@ -34,7 +34,7 @@
         <scene sceneID="iCO-mO-Epe">
             <objects>
                 <tableViewController id="7K0-wo-v6f" customClass="NoticeTableViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ICy-PU-MfL">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="1" id="ICy-PU-MfL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="black background"/>
@@ -239,6 +239,28 @@
                                     <outlet property="timeLabel" destination="cIa-K2-D7s" id="Kot-pu-zkz"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="loadingCell" rowHeight="60" id="k6R-f9-bSM" customClass="LoadingCell" customModule="Oneplanet" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="188" width="414" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="k6R-f9-bSM" id="tSV-Oc-aA5">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="OLK-TV-Fwf">
+                                            <rect key="frame" x="188.5" y="11.5" width="37" height="37"/>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="OLK-TV-Fwf" firstAttribute="centerX" secondItem="tSV-Oc-aA5" secondAttribute="centerX" id="08y-aZ-zgH"/>
+                                        <constraint firstItem="OLK-TV-Fwf" firstAttribute="centerY" secondItem="tSV-Oc-aA5" secondAttribute="centerY" id="ZQo-Dp-yu5"/>
+                                        <constraint firstItem="OLK-TV-Fwf" firstAttribute="top" secondItem="tSV-Oc-aA5" secondAttribute="top" constant="11.5" id="tGH-1y-kkX"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="activityIndicator" destination="OLK-TV-Fwf" id="UKM-GP-HmA"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="7K0-wo-v6f" id="fxU-It-EHh"/>
@@ -247,6 +269,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="GVc-K4-Pbo"/>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="hLk-MS-7hM">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <connections>
                             <action selector="reloadList:" destination="7K0-wo-v6f" eventType="valueChanged" id="vXr-Cs-hwQ"/>

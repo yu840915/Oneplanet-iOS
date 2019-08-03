@@ -132,6 +132,7 @@
 "msgf_thankyou_report_user" = "Thank you for helping keep the Oneplanet safe and fun for everyone. Remember, we don’t reveal who submitted reports to the person who posted the photo or comment.\n\nOur team will review the post and if it vidolates our %@, we’ll remove it.";
 "msgf_unblock_user_prompt" = "Unblock %@?";
 "msgf_block_user_prompt" = "Block %@?";
+"msgf_no_search_results" = "No results for \"%@\"";
 
 "ph_guest_login" = "Guest";
 "ph_email_login" = "Or Login With Email";

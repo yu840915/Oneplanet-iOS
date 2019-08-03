@@ -168,6 +168,7 @@
 		E0DE81B622DEB2CC00F785E3 /* DateFromNowFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DE81B522DEB2CC00F785E3 /* DateFromNowFormatterTests.swift */; };
 		E0EAEB7B22F1F25600C8E7C8 /* PostList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEB7A22F1F25600C8E7C8 /* PostList.swift */; };
 		E0EAEB7D22F2891400C8E7C8 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEB7C22F2891400C8E7C8 /* LoadingCell.swift */; };
+		E0FE73AC22F5724D00CE665B /* UserSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FE73AB22F5724D00CE665B /* UserSearchTableViewController.swift */; };
 		E0FF797A228C3F6800F61318 /* MyProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FF7979228C3F6800F61318 /* MyProfileTests.swift */; };
 		E0FF797C228D2FC400F61318 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0FF797B228D2FC400F61318 /* Home.storyboard */; };
 		E0FF797E228D38CE00F61318 /* Post.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0FF797D228D38CE00F61318 /* Post.storyboard */; };
@@ -363,6 +364,7 @@
 		E0DE81B522DEB2CC00F785E3 /* DateFromNowFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFromNowFormatterTests.swift; sourceTree = "<group>"; };
 		E0EAEB7A22F1F25600C8E7C8 /* PostList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostList.swift; sourceTree = "<group>"; };
 		E0EAEB7C22F2891400C8E7C8 /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
+		E0FE73AB22F5724D00CE665B /* UserSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchTableViewController.swift; sourceTree = "<group>"; };
 		E0FF7979228C3F6800F61318 /* MyProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTests.swift; sourceTree = "<group>"; };
 		E0FF797B228D2FC400F61318 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		E0FF797D228D38CE00F61318 /* Post.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Post.storyboard; sourceTree = "<group>"; };
@@ -549,6 +551,7 @@
 				E0EAEB7A22F1F25600C8E7C8 /* PostList.swift */,
 				E0125F9B22EAEA7F00AFF763 /* PostCardCell.swift */,
 				E0125F9922EADD8900AFF763 /* PostDetailViewController.swift */,
+				E0FE73AB22F5724D00CE665B /* UserSearchTableViewController.swift */,
 			);
 			name = Post;
 			sourceTree = "<group>";
@@ -1073,6 +1076,7 @@
 				E0EAEB7B22F1F25600C8E7C8 /* PostList.swift in Sources */,
 				E077A72E22DDA4C300A2245E /* NoticeList.swift in Sources */,
 				E0BAB71F228482D1007E747C /* InputFieldView.swift in Sources */,
+				E0FE73AC22F5724D00CE665B /* UserSearchTableViewController.swift in Sources */,
 				E081591122A65276007C9776 /* PurpleGemStoreViewController.swift in Sources */,
 				E0DCD05522B8B620008D9C63 /* ShippingInfoEditorHelpers.swift in Sources */,
 				E0190F53226DD62200C212D5 /* UserProgressChecklist.swift in Sources */,

@@ -460,6 +460,9 @@ class LocalizedMessageFormats {//msgf_
     var blockUserPrompt: String {
         return NSLocalizedString("msgf_block_user_prompt", comment: "")
     }
+    var noSearchResults: String {
+        return NSLocalizedString("msgf_no_search_results", comment: "")
+    }
 }
 
 class LocalizedPhrase { //ph_

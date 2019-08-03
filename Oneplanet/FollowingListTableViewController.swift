@@ -63,6 +63,10 @@ class FollowingListTableViewController: UITableViewController, DefaultInstanceFa
         }
     }
     
+    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return sections[indexPath.section] == .content
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         performSegue(withIdentifier: SegueID.showProfile, sender: users[indexPath.row])

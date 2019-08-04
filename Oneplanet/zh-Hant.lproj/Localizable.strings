@@ -185,6 +185,10 @@
 "ph_thanks_for_reporting_post" = "Thanks for reporting this post";
 "ph_show_post" = "Show Post";
 "ph_more" = "more";
+"ph_upload_valued_photo" = "上傳照片評分";
+"ph_upload_free_photo" = "上傳照片";
+"ph_dont_show_again" = "永遠不再顯示";
+"ph_no_room_for_photo" = "full";
 
 "phf_seconds_ago_short" = "%@ s";
 "phf_minutes_ago_short" = "%@ m";
@@ -196,6 +200,7 @@
 "phf_days_ago" = "%@天前";
 "phf_followers" = "%@ 粉絲";
 "phf_followings" = "%@ 追蹤中";
+"phf_remaining_uploads" = "剩餘次數 %@/%@ (%@)";
 
 "no_posts" = "還沒有貼文";
 "no_promo_popups" = "No Promotion Pop-ups Yet";

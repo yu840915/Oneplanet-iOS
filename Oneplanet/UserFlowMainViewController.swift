@@ -77,9 +77,20 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
         router.resume()
     }
     
+    @IBAction func showCreationPortalIfAllowed(_ sender: UIButton) {
+        let op = FeatureAccessCheckOperation(userSession: userSession)
+        op.start()
+        if op.isAccessible {
+            performSegue(withIdentifier: SegueID.showPostCreationPortal, sender: nil)
+        }
+    }
+    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? UserSessionDepending {
+            vc.userSession = userSession
+        }
         if let tabbar = segue.destination as? UITabBarController {
             tabbar.delegate = self
             tabbar.viewControllers?
@@ -162,6 +173,12 @@ fileprivate extension UserFlowMainViewController {
     func updateBalloonAppearance() {
         let showingBid = TabFeature.list[contentTabbarController.selectedIndex] == .bid
         [balloonButton, balloonString].forEach{$0?.isHidden = showingBid}
+    }
+}
+
+extension UserFlowMainViewController {
+    struct SegueID {
+        static let showPostCreationPortal = "showPostCreationPortal"
     }
 }
 

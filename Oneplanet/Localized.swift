@@ -620,6 +620,18 @@ class LocalizedPhrase { //ph_
     var more: String {
         return NSLocalizedString("ph_more", comment: "")
     }
+    var uploadValuedPhoto: String {
+        return NSLocalizedString("ph_upload_valued_photo", comment: "")
+    }
+    var uploadFreePhoto: String {
+        return NSLocalizedString("ph_upload_free_photo", comment: "")
+    }
+    var dontShowAgain: String {
+        return NSLocalizedString("ph_dont_show_again", comment: "")
+    }
+    var noRoomForPhoto: String {
+        return NSLocalizedString("ph_no_room_for_photo", comment: "")
+    }
 }
 
 class LocalizedPhraseFormats {//phf_
@@ -653,6 +665,9 @@ class LocalizedPhraseFormats {//phf_
     }
     var followings: String {
         return NSLocalizedString("phf_followings", comment: "")
+    }
+    var remainingUploads: String {
+        return NSLocalizedString("phf_remaining_uploads", comment: "")
     }
 }
 

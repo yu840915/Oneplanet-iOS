@@ -49,8 +49,8 @@
 "tl_delete" = "削除";
 "tl_unlock" = "アンロックします";
 "tl_unlocked" = "アンロックしました";
-"tl_bid" = "Bid";
-"tl_required_input" = "(表示しません)";
+"tl_bid" = "オークション";
+"tl_required_input" = "必須項目";
 "tl_agree" = "同意する";
 "tl_filter" = "検索フィルタ";
 "tl_bid_state_lost" = "落札できませんでした";
@@ -185,6 +185,10 @@
 "ph_thanks_for_reporting_post" = "Thanks for reporting this post";
 "ph_show_post" = "Show Post";
 "ph_more" = "more";
+"ph_upload_valued_photo" = "Upload photo for rewards";
+"ph_upload_free_photo" = "Upload photo";
+"ph_dont_show_again" = "Never show again";
+"ph_no_room_for_photo" = "full";
 
 "phf_seconds_ago_short" = "%@ s";
 "phf_minutes_ago_short" = "%@ m";
@@ -196,6 +200,7 @@
 "phf_days_ago" = "%@天前";
 "phf_followers" = "%@ フォロワー";
 "phf_followings" = "%@ フォロー中";
+"phf_remaining_uploads" = "%@/%@ remain (%@)";
 
 "no_posts" = "投稿がありません";
 "no_promo_popups" = "No Promotion Pop-ups Yet";

@@ -185,6 +185,10 @@
 "ph_thanks_for_reporting_post" = "Thanks for reporting this post";
 "ph_show_post" = "Show Post";
 "ph_more" = "more";
+"ph_upload_valued_photo" = "Upload photo for rewards";
+"ph_upload_free_photo" = "Upload photo";
+"ph_dont_show_again" = "Never show again";
+"ph_no_room_for_photo" = "full";
 
 "phf_seconds_ago_short" = "%@ s";
 "phf_minutes_ago_short" = "%@ m";
@@ -196,6 +200,7 @@
 "phf_days_ago" = "%@天前";
 "phf_followers" = "%@ 粉丝";
 "phf_followings" = "%@ 关注中";
+"phf_remaining_uploads" = "%@/%@ remain (%@)";
 
 "no_posts" = "还没有贴子";
 "no_promo_popups" = "No Promotion Pop-ups Yet";

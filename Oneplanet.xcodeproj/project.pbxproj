@@ -139,6 +139,9 @@
 		E0A4618A22B6347800D26720 /* PhoneNumberBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A4618922B6347800D26720 /* PhoneNumberBuilder.swift */; };
 		E0B1E18F22C8F6F900F41248 /* IAPTransactionProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B1E18E22C8F6F900F41248 /* IAPTransactionProcessor.swift */; };
 		E0B1E19122C9087D00F41248 /* IAPProductTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B1E19022C9087D00F41248 /* IAPProductTypeTests.swift */; };
+		E0B3FBDB22F6895700BD53C9 /* PostCreationPortalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B3FBDA22F6895700BD53C9 /* PostCreationPortalViewController.swift */; };
+		E0B3FBDD22F6AE5B00BD53C9 /* ValuedPhotoInformationPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B3FBDC22F6AE5B00BD53C9 /* ValuedPhotoInformationPopUpViewController.swift */; };
+		E0B3FBDF22F6AE7300BD53C9 /* FreePhotoInformationPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B3FBDE22F6AE7300BD53C9 /* FreePhotoInformationPopUpViewController.swift */; };
 		E0B57DE122A0FA48006AEADB /* DefaultStyleConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B57DE022A0FA48006AEADB /* DefaultStyleConfiguration.swift */; };
 		E0B57DE322A0FAA3006AEADB /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B57DE222A0FAA3006AEADB /* Toast.swift */; };
 		E0B57DE722A0FE77006AEADB /* Toast.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0B57DE622A0FE77006AEADB /* Toast.xib */; };
@@ -336,6 +339,9 @@
 		E0A4618922B6347800D26720 /* PhoneNumberBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberBuilder.swift; sourceTree = "<group>"; };
 		E0B1E18E22C8F6F900F41248 /* IAPTransactionProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPTransactionProcessor.swift; sourceTree = "<group>"; };
 		E0B1E19022C9087D00F41248 /* IAPProductTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPProductTypeTests.swift; sourceTree = "<group>"; };
+		E0B3FBDA22F6895700BD53C9 /* PostCreationPortalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCreationPortalViewController.swift; sourceTree = "<group>"; };
+		E0B3FBDC22F6AE5B00BD53C9 /* ValuedPhotoInformationPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValuedPhotoInformationPopUpViewController.swift; sourceTree = "<group>"; };
+		E0B3FBDE22F6AE7300BD53C9 /* FreePhotoInformationPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FreePhotoInformationPopUpViewController.swift; sourceTree = "<group>"; };
 		E0B57DE022A0FA48006AEADB /* DefaultStyleConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultStyleConfiguration.swift; sourceTree = "<group>"; };
 		E0B57DE222A0FAA3006AEADB /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		E0B57DE622A0FE77006AEADB /* Toast.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Toast.xib; sourceTree = "<group>"; };
@@ -740,6 +746,9 @@
 				E0D7DCDC229CE82300B40D76 /* PromoPopUpViewController.swift */,
 				E0BDCCE9229FA044006A9D20 /* PromotionPageList.swift */,
 				E0814FB022864F79002F1C02 /* UserFlowMainViewController.swift */,
+				E0B3FBDA22F6895700BD53C9 /* PostCreationPortalViewController.swift */,
+				E0B3FBDC22F6AE5B00BD53C9 /* ValuedPhotoInformationPopUpViewController.swift */,
+				E0B3FBDE22F6AE7300BD53C9 /* FreePhotoInformationPopUpViewController.swift */,
 				E00611F02294F4ED0032AE30 /* Home */,
 				E045BE7522E973400035D08B /* Post */,
 				E032844322AB6A0E001F02E8 /* Auction */,
@@ -1096,6 +1105,7 @@
 				E0DA38A622C48BC400EC4170 /* UnlockFlowViewController.swift in Sources */,
 				E0BDCCEA229FA044006A9D20 /* PromotionPageList.swift in Sources */,
 				E0B57DE322A0FAA3006AEADB /* Toast.swift in Sources */,
+				E0B3FBDF22F6AE7300BD53C9 /* FreePhotoInformationPopUpViewController.swift in Sources */,
 				E089F70D228E9ECB003E77DF /* AvatarView.swift in Sources */,
 				E07276E322731334001239C0 /* EmailVerificationViewController.swift in Sources */,
 				E05BB260226D5D2A00721F20 /* RootViewController.swift in Sources */,
@@ -1116,6 +1126,7 @@
 				E0DCD05322B7EB67008D9C63 /* PickerTableViewController.swift in Sources */,
 				E0190F57226EDBC900C212D5 /* CameraImagePickerViewController.swift in Sources */,
 				E08C3129227817680013DD0C /* AuthActions.swift in Sources */,
+				E0B3FBDB22F6895700BD53C9 /* PostCreationPortalViewController.swift in Sources */,
 				E0B57DE122A0FA48006AEADB /* DefaultStyleConfiguration.swift in Sources */,
 				E00611F22294F5680032AE30 /* HotCollectionViewController.swift in Sources */,
 				E0DCD05B22B9D960008D9C63 /* EmptyLotListView.swift in Sources */,
@@ -1169,6 +1180,7 @@
 				E0B1E18F22C8F6F900F41248 /* IAPTransactionProcessor.swift in Sources */,
 				E07277012277EE3D001239C0 /* AppConfiguration.swift in Sources */,
 				E0A4618A22B6347800D26720 /* PhoneNumberBuilder.swift in Sources */,
+				E0B3FBDD22F6AE5B00BD53C9 /* ValuedPhotoInformationPopUpViewController.swift in Sources */,
 				E076729C22E70C8800A3939A /* PetitionViewController.swift in Sources */,
 				E032844522AB6A50001F02E8 /* AuctionMainViewController.swift in Sources */,
 				E045BE7722E974640035D08B /* PostFeedMainViewController.swift in Sources */,

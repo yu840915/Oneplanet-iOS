@@ -740,6 +740,21 @@ class LocalizedErrors {//err_
     }
 }
 
+class UploadPopUp { //pop
+    var freeUploadBullet: String {
+        return NSLocalizedString("pop_free_upload_bullet", comment: "")
+    }
+    var cantUploadBullet: String {
+        return NSLocalizedString("pop_cant_upload_bullet", comment: "")
+    }
+    var valuedUploadBullet1: String {
+        return NSLocalizedString("pop_valued_upload_bullet1", comment: "")
+    }
+    var valuedUploadBullet2: String {
+        return NSLocalizedString("pop_valued_upload_bullet2", comment: "")
+    }
+}
+
 class GemStonePopUp { //pop
     fileprivate init() {}
     var blueGemUsage: String {

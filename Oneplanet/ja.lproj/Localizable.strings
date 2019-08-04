@@ -254,6 +254,11 @@
 "pop_purple_gem_bullet1" = "紅金寶是 %@ 的升級版，有助於競標時的效率，並減少信用卡或電信商的支付問題。";
 "pop_purple_gem_bullet2" = "使用 紅金寶 可解鎖商品或投標一次。";
 
+"pop_free_upload_bullet" = "沒有限制上傳照片次數，但不能獲得%@。";
+"pop_cant_upload_bullet" = "請等待時間回復";
+"pop_valued_upload_bullet1" = "上傳照片評分獲得經驗值，當經驗值滿格即獲得一顆 %@";
+"pop_valued_upload_bullet2" = "越符合本次 Oneplanet 提示的顏色主題，收集 %@ 的效率越高。";
+
 "ship_first_name" = "名前";
 "ship_last_name" = "苗字";
 "ship_address1" = "住所1";

@@ -66,6 +66,10 @@ class PostCreationPortalViewController: UIViewController {
 
 }
 
+extension PostCreationPortalViewController {
+    
+}
+
 class PhotoUploadCapacity {
     let available: Int = 9
     let total: Int = 10

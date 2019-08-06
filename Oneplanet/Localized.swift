@@ -25,6 +25,7 @@ class Localized {
     static let placeholder = LocalizedPlaceholder()
     static let emptyMessages = EmptyMessages()
     static let gemStonePopUp = GemStonePopUp()
+    static let uploadPopUp = UploadPopUp()
     static let shippingInfoTerms = LocalizedShippingInfoTerms()
     static let phraseFormats = LocalizedPhraseFormats()
     static let reportReasons = LocalizedReportReasons()
@@ -741,6 +742,12 @@ class LocalizedErrors {//err_
 }
 
 class UploadPopUp { //pop
+    var postSuspended: String {
+        return NSLocalizedString("pop_post_suspended", comment: "")
+    }
+    var cooldownTime: String {
+        return NSLocalizedString("pop_cooldown_time", comment: "")
+    }
     var freeUploadBullet: String {
         return NSLocalizedString("pop_free_upload_bullet", comment: "")
     }

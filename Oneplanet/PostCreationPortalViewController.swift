@@ -11,6 +11,7 @@ import UIKit
 class PostCreationPortalViewController: UIViewController, UserSessionDepending {
     
     var userSession: UserSession!
+    @IBOutlet weak var controlContainer: UIStackView!
     @IBOutlet weak var valuedPhotoLabel: UILabel!
     @IBOutlet weak var valuedPhotoCapacityLabel: UILabel!
     @IBOutlet weak var freePhotoLabel: UILabel!
@@ -38,7 +39,7 @@ class PostCreationPortalViewController: UIViewController, UserSessionDepending {
     }
     
     @IBAction func selectValuedPhoto(_ sender: Any) {
-        performSegue(withIdentifier: SegueID.showCantUploadInfo, sender: nil)
+        performSegue(withIdentifier: SegueID.showValuedPhotoInfo, sender: nil)
 //        if Preferences.shouldHideValuedPhotoInfo.value == true {
 //            //repor
 //        } else {
@@ -65,6 +66,10 @@ class PostCreationPortalViewController: UIViewController, UserSessionDepending {
         if let contaier = segue.destination as? PopUpContainerViewController {
             if segue.identifier == SegueID.showCantUploadInfo {
                 contaier.isDismissTapOn = false
+            } else {
+                contaier.dismissAction = {[weak self] in
+                    self?.dismissPopUp()
+                }
             }
             contaier.contentViewControllerSetUpBlock = {[weak self] vc in
                 self?.preparePopUp(vc)
@@ -73,6 +78,7 @@ class PostCreationPortalViewController: UIViewController, UserSessionDepending {
     }
     
     private func preparePopUp(_ popUp: UIViewController) {
+        controlContainer.isHidden = true
         if let vc = popUp as? UserSessionDepending {
             vc.userSession = userSession
         }
@@ -86,15 +92,49 @@ class PostCreationPortalViewController: UIViewController, UserSessionDepending {
     }
     
     func prepareValuedPhotoPopUp(_ popUp: ValuedPhotoInformationPopUpViewController) {
-        
+        popUp.handleURL = {[weak self] url in
+            self?.exitAndHandle(url)
+        }
+        popUp.nextAction = {[weak self] in
+            
+        }
+        popUp.dismissAction = {[weak self] in
+            self?.dismissPopUp()
+        }
+    }
+    
+    func exitAndHandle(_ url: URL) {
+        let presenter = presentingViewController ?? self
+        presenter.dismiss(animated: true) {
+            OperationQueue.main.addOperation {
+                router.handle(url)
+            }
+        }
     }
     
     func prepareFreePhotoPopUp(_ popUp: FreePhotoInformationPopUpViewController) {
-        
+        popUp.handleURL = {[weak self] url in
+            self?.exitAndHandle(url)
+        }
+        popUp.nextAction = {[weak self] in
+            
+        }
+        popUp.dismissAction = {[weak self] in
+            self?.dismissPopUp()
+        }
     }
     
     func prepareSuspensionPopUp(_ popUp: ValuedPhotoSuspensionInformationViewController) {
         popUp.capacity = capacity
+        popUp.dismissAction = {[weak self] in
+            self?.dismissPopUp()
+        }
+    }
+    
+    func dismissPopUp() {
+        controlContainer.isHidden = false
+        dismiss(animated: true, completion: {
+        })
     }
 }
 

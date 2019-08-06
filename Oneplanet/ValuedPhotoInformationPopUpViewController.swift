@@ -17,7 +17,8 @@ class ValuedPhotoInformationPopUpViewController: UIViewController {
     @IBOutlet weak var hideButton: UIButton!
     var nextAction: (()->())?
     var handleURL: ((URL)->())?
-    
+    var dismissAction: (()->())?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         localizeContents()
@@ -60,6 +61,13 @@ class ValuedPhotoInformationPopUpViewController: UIViewController {
         sender.isSelected = !sender.isSelected
     }
 
+    @IBAction func exit(_ sender: Any) {
+        if dismissAction != nil {
+            dismissAction?()
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
+    }
 }
 
 extension ValuedPhotoInformationPopUpViewController: UITextViewDelegate {

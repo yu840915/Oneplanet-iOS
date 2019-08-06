@@ -168,6 +168,7 @@
                         <viewLayoutGuide key="safeArea" id="JRz-Cf-pRf"/>
                     </view>
                     <connections>
+                        <outlet property="controlContainer" destination="Bkj-pb-kcq" id="jc4-SW-F3V"/>
                         <outlet property="freePhotoLabel" destination="8Oe-kA-BOj" id="XCu-Kk-XhA"/>
                         <outlet property="valuedPhotoCapacityLabel" destination="xsi-6z-nHV" id="bLD-g7-cCZ"/>
                         <outlet property="valuedPhotoLabel" destination="Qqp-3U-0ms" id="fDr-Hx-jzP"/>
@@ -1339,16 +1340,31 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XrJ-FY-mxL">
+                                <rect key="frame" x="0.0" y="10" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="Ven-Rm-sCA"/>
+                                    <constraint firstAttribute="width" secondItem="XrJ-FY-mxL" secondAttribute="height" id="r7I-f5-d8V"/>
+                                </constraints>
+                                <state key="normal" image="ic_cancelblack_nor"/>
+                                <connections>
+                                    <action selector="exit:" destination="6Sb-3S-EDd" eventType="touchUpInside" id="L0Y-OH-pHU"/>
+                                    <action selector="exit:" destination="Xaq-X4-Ebv" eventType="touchUpInside" id="hDR-yu-Kos"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="VH9-vI-D8G" firstAttribute="width" secondItem="qk6-qg-wZB" secondAttribute="width" id="02f-kZ-j8I"/>
                             <constraint firstItem="VH9-vI-D8G" firstAttribute="top" secondItem="qk6-qg-wZB" secondAttribute="top" id="Cmn-hb-TkM"/>
                             <constraint firstItem="B2U-w7-wre" firstAttribute="leading" secondItem="qk6-qg-wZB" secondAttribute="leading" constant="10" id="GRU-fG-Rrz"/>
+                            <constraint firstItem="XrJ-FY-mxL" firstAttribute="top" secondItem="qk6-qg-wZB" secondAttribute="top" constant="10" id="UWq-SQ-unS"/>
+                            <constraint firstItem="XrJ-FY-mxL" firstAttribute="width" secondItem="XrJ-FY-mxL" secondAttribute="height" id="fYR-5M-Oy5"/>
                             <constraint firstAttribute="bottom" secondItem="VH9-vI-D8G" secondAttribute="bottom" constant="20" id="jNu-nu-OAh"/>
+                            <constraint firstItem="XrJ-FY-mxL" firstAttribute="leading" secondItem="qk6-qg-wZB" secondAttribute="leading" id="qar-rr-ud5"/>
                             <constraint firstItem="VH9-vI-D8G" firstAttribute="centerX" secondItem="qk6-qg-wZB" secondAttribute="centerX" id="rX1-p1-53f"/>
+                            <constraint firstItem="XrJ-FY-mxL" firstAttribute="width" secondItem="XrJ-FY-mxL" secondAttribute="height" id="zin-F5-FAg"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="LK8-MO-4sv"/>
                     </view>
                     <connections>
                         <outlet property="bulletTextView1" destination="890-AB-VDt" id="P13-Uc-S07"/>
@@ -1542,16 +1558,33 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O8Z-Vi-EQG">
+                                <rect key="frame" x="0.0" y="10" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="O8Z-Vi-EQG" secondAttribute="height" id="245-DF-5jF"/>
+                                    <constraint firstAttribute="width" constant="44" id="MJG-WI-kVW"/>
+                                </constraints>
+                                <state key="normal" image="ic_cancelblack_nor"/>
+                                <connections>
+                                    <action selector="exit:" destination="dL1-HT-YBh" eventType="touchUpInside" id="7OM-Oq-D7e"/>
+                                    <action selector="exit:" destination="Xaq-X4-Ebv" eventType="touchUpInside" id="WkU-oh-bb7"/>
+                                    <action selector="exit:" destination="6Sb-3S-EDd" eventType="touchUpInside" id="zSK-D6-PEo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="O8Z-Vi-EQG" firstAttribute="leading" secondItem="vOT-UE-Z1X" secondAttribute="leading" id="1P8-ga-9K6"/>
+                            <constraint firstItem="O8Z-Vi-EQG" firstAttribute="width" secondItem="O8Z-Vi-EQG" secondAttribute="height" id="28b-Jh-1Tl"/>
+                            <constraint firstItem="O8Z-Vi-EQG" firstAttribute="top" secondItem="vOT-UE-Z1X" secondAttribute="top" constant="10" id="2EM-ft-LD6"/>
+                            <constraint firstItem="O8Z-Vi-EQG" firstAttribute="width" secondItem="O8Z-Vi-EQG" secondAttribute="height" id="FB9-2u-RTO"/>
                             <constraint firstAttribute="bottom" secondItem="N8T-kK-07B" secondAttribute="bottom" constant="20" id="G1s-bT-Q4d"/>
                             <constraint firstItem="N8T-kK-07B" firstAttribute="width" secondItem="vOT-UE-Z1X" secondAttribute="width" id="OWR-iR-qCB"/>
                             <constraint firstItem="N8T-kK-07B" firstAttribute="top" secondItem="vOT-UE-Z1X" secondAttribute="top" id="moA-80-Zhv"/>
                             <constraint firstItem="N9g-kM-tST" firstAttribute="leading" secondItem="vOT-UE-Z1X" secondAttribute="leading" constant="10" id="nCc-9x-vt0"/>
+                            <constraint firstItem="O8Z-Vi-EQG" firstAttribute="width" secondItem="O8Z-Vi-EQG" secondAttribute="height" id="rh0-C8-3Az"/>
                             <constraint firstItem="N8T-kK-07B" firstAttribute="centerX" secondItem="vOT-UE-Z1X" secondAttribute="centerX" id="yV3-l7-af6"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="OVs-h7-zwN"/>
                     </view>
                     <connections>
                         <outlet property="bulletTextView1" destination="Uwm-RQ-nT7" id="oRW-sU-f5Q"/>

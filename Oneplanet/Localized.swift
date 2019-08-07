@@ -194,6 +194,9 @@ class LocalizedTitles {//tl_
     var photo: String {
         return NSLocalizedString("tl_photo", comment: "")
     }
+    var library: String {
+        return NSLocalizedString("tl_library", comment: "")
+    }
 }
 
 class Feature {//fx_

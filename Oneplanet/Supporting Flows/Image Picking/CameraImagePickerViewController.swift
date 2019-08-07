@@ -8,10 +8,15 @@
 
 import UIKit
 import AVFoundation
+import XLPagerTabStrip
 
 class CameraImagePickerViewController: UIViewController, DefaultInstanceFactory {
-    class func fromDefaultStoryboard() -> UINavigationController {
+    class func entryPoint() -> UINavigationController {
         return UIStoryboard(name: "SupportingFlows", bundle: nil).instantiateViewController(withIdentifier: "CameraImagePickerEntryPoint") as! UINavigationController
+    }
+    
+    class func fromDefaultStoryboard() -> CameraImagePickerViewController {
+        return UIStoryboard(name: "SupportingFlows", bundle: nil).instantiateViewController(withIdentifier: "CameraImagePickerViewController") as! CameraImagePickerViewController
     }
     @IBOutlet weak var switchButton: UIButton!
     @IBOutlet weak var flashButton: UIButton!
@@ -128,5 +133,11 @@ class CameraImagePickerViewController: UIViewController, DefaultInstanceFactory 
     
     @IBAction func takePhoto(_ sender: UIButton) {
         captureSessionController.takePhotoIfReady()
+    }
+}
+
+extension CameraImagePickerViewController: IndicatorInfoProvider {
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return IndicatorInfo(title: Localized.titles.photo)
     }
 }

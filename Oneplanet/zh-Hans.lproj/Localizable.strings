@@ -66,6 +66,7 @@
 "tl_send" = "送出";
 "tl_edit" = "编辑";
 "tl_photo" = "照片";
+"tl_library" = "Library";
 
 "pl_email" = "电子邮件地址";
 "pl_nickname" = "昵称";

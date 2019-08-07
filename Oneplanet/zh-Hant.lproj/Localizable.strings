@@ -66,6 +66,7 @@
 "tl_send" = "送出";
 "tl_edit" = "編輯";
 "tl_photo" = "照片";
+"tl_library" = "圖庫";
 
 "pl_email" = "電子郵件地址";
 "pl_nickname" = "暱稱";

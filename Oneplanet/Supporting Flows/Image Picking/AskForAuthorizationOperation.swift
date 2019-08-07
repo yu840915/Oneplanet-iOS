@@ -81,3 +81,29 @@ class AskForPhotoLibraryAuthorizationOperation: AskForAuthorizationOperation {
         finish()
     }
 }
+
+class AskForCameraAndLibraryAuthorizationOperation: SimpleAsynchronousOperation {
+    let cameraAuthOperation: AskForCameraAuthorizationOperation
+    let libraryAuthOperation: AskForPhotoLibraryAuthorizationOperation
+    override init() {
+        cameraAuthOperation = AskForCameraAuthorizationOperation()
+        libraryAuthOperation = AskForPhotoLibraryAuthorizationOperation()
+        super.init()
+    }
+    
+    override func main() {
+        guard !isCancelled else {return}
+        cameraAuthOperation.completionBlock = {[weak self] in
+            self?.askForLibraryAccess()
+        }
+        cameraAuthOperation.start()
+    }
+    
+    private func askForLibraryAccess() {
+        guard !isCancelled else {return}
+        libraryAuthOperation.completionBlock = {[weak self] in
+            self?.finish()
+        }
+        libraryAuthOperation.start()
+    }
+}

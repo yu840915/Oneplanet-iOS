@@ -122,6 +122,9 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
                     self?.showPostComposer(with: draft)
                 })
             }
+        } else if let nav = segue.destination as? UINavigationController,
+            let vc = nav.viewControllers.first as? PostCreationFlowViewController {
+            vc.postDraft = (sender as! PostDraft)
         }
     }
 
@@ -137,7 +140,7 @@ fileprivate extension UserFlowMainViewController {
     }
     
     func showPostComposer(with draft: PostDraft) {
-        
+        performSegue(withIdentifier: SegueID.showPostComposer, sender: draft)
     }
     
     func prepareRouter() {
@@ -199,6 +202,7 @@ fileprivate extension UserFlowMainViewController {
 extension UserFlowMainViewController {
     struct SegueID {
         static let showPostCreationPortal = "showPostCreationPortal"
+        static let showPostComposer = "showPostComposer"
     }
 }
 

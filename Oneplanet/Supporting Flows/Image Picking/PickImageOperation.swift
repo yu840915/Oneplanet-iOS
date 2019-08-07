@@ -73,7 +73,7 @@ class PickCameraImageOperation: PickImageOperation {
     }
     
     private func showCameraFlow(with session: CaptureSessionController) {
-        let nav = CameraImagePickerViewController.fromDefaultStoryboard()
+        let nav = CameraImagePickerViewController.entryPoint()
         let vc = nav.viewControllers.first as! CameraImagePickerViewController
         vc.captureSessionController = session
         vc.onPickingImage = {[weak self] photo in
@@ -129,7 +129,7 @@ class PickLibraryImageOperation: PickImageOperation {
     }
     
     private func prepareLibraryFlow() {
-        let nav = LibraryImagePickerViewController.fromDefaultStoryboard()
+        let nav = LibraryImagePickerViewController.entryPoint()
         let vc = nav.viewControllers.first as! LibraryImagePickerViewController
         vc.onPickingImage = {[weak self] image in
             self?.handlePickedImage(image)

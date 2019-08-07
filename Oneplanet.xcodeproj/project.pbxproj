@@ -153,6 +153,7 @@
 		E0C18E5D22F97C8D0086C114 /* UnavailableValuedPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C18E5C22F97C8D0086C114 /* UnavailableValuedPhotoViewController.swift */; };
 		E0C18E5F22FAA3DE0086C114 /* PostCreationFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C18E5E22FAA3DE0086C114 /* PostCreationFlowViewController.swift */; };
 		E0C18E6122FAA56A0086C114 /* PostDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C18E6022FAA56A0086C114 /* PostDraft.swift */; };
+		E0C18E6422FAEEFD0086C114 /* PostPhotoPickingFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C18E6322FAEEFD0086C114 /* PostPhotoPickingFlowViewController.swift */; };
 		E0CB5E11228F0B4A00C0C010 /* TreasuryBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CB5E10228F0B4A00C0C010 /* TreasuryBarViewController.swift */; };
 		E0CB5E15228F0E5F00C0C010 /* DS-DIGIB.TTF in Resources */ = {isa = PBXBuildFile; fileRef = E0CB5E14228F0E5F00C0C010 /* DS-DIGIB.TTF */; };
 		E0D1BBD922ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D1BBD822ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift */; };
@@ -356,6 +357,7 @@
 		E0C18E5C22F97C8D0086C114 /* UnavailableValuedPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnavailableValuedPhotoViewController.swift; sourceTree = "<group>"; };
 		E0C18E5E22FAA3DE0086C114 /* PostCreationFlowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCreationFlowViewController.swift; sourceTree = "<group>"; };
 		E0C18E6022FAA56A0086C114 /* PostDraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDraft.swift; sourceTree = "<group>"; };
+		E0C18E6322FAEEFD0086C114 /* PostPhotoPickingFlowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPhotoPickingFlowViewController.swift; sourceTree = "<group>"; };
 		E0CB5E10228F0B4A00C0C010 /* TreasuryBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreasuryBarViewController.swift; sourceTree = "<group>"; };
 		E0CB5E14228F0E5F00C0C010 /* DS-DIGIB.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DS-DIGIB.TTF"; sourceTree = "<group>"; };
 		E0D1BBD822ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalComponentExtractorTests.swift; sourceTree = "<group>"; };
@@ -771,6 +773,7 @@
 				E0C18E5C22F97C8D0086C114 /* UnavailableValuedPhotoViewController.swift */,
 				E0B3FBDE22F6AE7300BD53C9 /* FreePhotoInformationPopUpViewController.swift */,
 				E0C18E5E22FAA3DE0086C114 /* PostCreationFlowViewController.swift */,
+				E0C18E6322FAEEFD0086C114 /* PostPhotoPickingFlowViewController.swift */,
 			);
 			name = "Post Creation";
 			sourceTree = "<group>";
@@ -1134,6 +1137,7 @@
 				E0C18E5D22F97C8D0086C114 /* UnavailableValuedPhotoViewController.swift in Sources */,
 				E045BE7922E976FE0035D08B /* PostFeedTableViewController.swift in Sources */,
 				E0125F9C22EAEA7F00AFF763 /* PostCardCell.swift in Sources */,
+				E0C18E6422FAEEFD0086C114 /* PostPhotoPickingFlowViewController.swift in Sources */,
 				E077A73022DDF63500A2245E /* NoticeUIHelpers.swift in Sources */,
 				E03C32AE226D8E6800C32FD7 /* SharedFormatters.swift in Sources */,
 				E0DA38A222C31E3800EC4170 /* GemActionPopUpConfigurations.swift in Sources */,

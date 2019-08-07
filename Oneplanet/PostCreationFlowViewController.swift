@@ -7,25 +7,74 @@
 //
 
 import UIKit
+import XLPagerTabStrip
 
-class PostCreationFlowViewController: UIViewController {
+class PostCreationFlowViewController: UIViewController, UserSessionDepending {
 
+    var postDraft: PostDraft!
+    var userSession: UserSession!
+    var authorizationOperation: AskForCameraAndLibraryAuthorizationOperation?
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
     
-
-    /*
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        NavigationBarStyle.darkGray.configure(navigationController!.navigationBar)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        nextStep()
+    }
+    
+    func nextStep() {
+        if postDraft.images.isEmpty {
+            askForPermissions()
+        } else {
+            //show editor
+        }
+    }
+    
+    private func askForPermissions() {
+        let op = AskForCameraAndLibraryAuthorizationOperation()
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.checkPermissions()
+            }
+        }
+        authorizationOperation = op
+        op.start()
+    }
+    
+    private func checkPermissions() {
+        var canProceed = false
+        if AskForCameraAuthorizationOperation.authorizationStatus == .authorized {
+            canProceed = true
+        }
+        if AskForPhotoLibraryAuthorizationOperation.authorizationStatus == .authorized {
+            canProceed = true
+        }
+        if canProceed {
+            performSegue(withIdentifier: SegueID.showPhotoPicker, sender: nil)
+        } else {
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if let vc = segue.destination as? UserSessionDepending {
+            vc.userSession = userSession
+        }
     }
-    */
-
+    
 }
 
+extension PostCreationFlowViewController {
+    struct SegueID {
+        static let showPhotoPicker = "showPhotoPicker"
+    }
+}

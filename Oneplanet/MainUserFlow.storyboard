@@ -86,6 +86,7 @@
                         <outlet property="balloonRightPadding" destination="abG-iR-2t2" id="zJ9-NG-eqJ"/>
                         <outlet property="balloonString" destination="6jm-u3-B1b" id="CwJ-HI-XK9"/>
                         <segue destination="szV-Ho-GQ7" kind="presentation" identifier="showPostCreationPortal" id="0tR-UX-T3G"/>
+                        <segue destination="UGy-Ts-eLl" kind="presentation" identifier="showPostComposer" id="VZj-mH-WVl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ovv-6X-Z1S" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -279,7 +280,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iO7-BR-SyI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="199" y="1079"/>
+            <point key="canvasLocation" x="3145" y="1039"/>
         </scene>
         <!--Promo Pop Up View Controller-->
         <scene sceneID="VsA-mJ-UP9">
@@ -344,7 +345,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x4a-DU-mej" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1086" y="1079"/>
+            <point key="canvasLocation" x="4032" y="1039"/>
         </scene>
         <!--WebViewEntry-->
         <scene sceneID="ro0-ep-jZa">
@@ -352,7 +353,7 @@
                 <viewControllerPlaceholder storyboardName="SupportingFlows" referencedIdentifier="WebViewEntry" id="Mho-Im-iu9" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="12P-dG-n2e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1794" y="1079"/>
+            <point key="canvasLocation" x="4739" y="1039"/>
         </scene>
         <!--Auction-->
         <scene sceneID="EHW-7H-rWq">
@@ -1642,6 +1643,89 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pXf-7a-rub" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-842" y="1748"/>
+        </scene>
+        <!--Post Creation Flow View Controller-->
+        <scene sceneID="7zc-DW-PqH">
+            <objects>
+                <viewController id="8a8-VJ-hEf" customClass="PostCreationFlowViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LaP-hR-OWA">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" name="black background"/>
+                        <viewLayoutGuide key="safeArea" id="d8K-Om-oJv"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="t5H-4t-V2m"/>
+                    <connections>
+                        <segue destination="d2f-IV-6nP" kind="show" identifier="showPhotoPicker" animates="NO" id="mBp-Z3-Jzn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DPI-OE-vTh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="946" y="1039"/>
+        </scene>
+        <!--Post Photo Picking Flow View Controller-->
+        <scene sceneID="HmF-Tq-lRZ">
+            <objects>
+                <viewController id="d2f-IV-6nP" customClass="PostPhotoPickingFlowViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ywW-M3-zSI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ia-Gh-USp">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                            </scrollView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CvO-gD-B5B" customClass="ButtonBarView" customModule="XLPagerTabStrip">
+                                <rect key="frame" x="0.0" y="812" width="414" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Jeg-Ag-4hj"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="O1z-si-b04">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2ia-Gh-USp" firstAttribute="top" secondItem="40Z-aj-Rsk" secondAttribute="top" id="2x8-Q2-Y7P"/>
+                            <constraint firstItem="40Z-aj-Rsk" firstAttribute="bottom" secondItem="CvO-gD-B5B" secondAttribute="bottom" id="BBI-0g-4L4"/>
+                            <constraint firstItem="2ia-Gh-USp" firstAttribute="centerX" secondItem="ywW-M3-zSI" secondAttribute="centerX" id="ZHL-Mh-pxM"/>
+                            <constraint firstItem="CvO-gD-B5B" firstAttribute="width" secondItem="ywW-M3-zSI" secondAttribute="width" id="fYn-5f-JMB"/>
+                            <constraint firstItem="2ia-Gh-USp" firstAttribute="width" secondItem="ywW-M3-zSI" secondAttribute="width" id="fei-bI-R0N"/>
+                            <constraint firstAttribute="bottom" secondItem="2ia-Gh-USp" secondAttribute="bottom" id="qDt-aU-aq4"/>
+                            <constraint firstItem="CvO-gD-B5B" firstAttribute="centerX" secondItem="40Z-aj-Rsk" secondAttribute="centerX" id="sej-gJ-LCY"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="40Z-aj-Rsk"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="5UA-BK-Uuw"/>
+                    <connections>
+                        <outlet property="buttonBarView" destination="CvO-gD-B5B" id="R1P-Bg-rsB"/>
+                        <outlet property="containerView" destination="2ia-Gh-USp" id="Tkl-kk-c2R"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L9t-qI-Mt9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1761" y="1039"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="tYW-Fo-Cab">
+            <objects>
+                <navigationController id="UGy-Ts-eLl" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="I6T-42-ZpX">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="8a8-VJ-hEf" kind="relationship" relationship="rootViewController" id="qQg-Pc-wBO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gf8-NA-sAH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="194" y="1039"/>
         </scene>
         <!--Valued Photo Suspension Information View Controller-->
         <scene sceneID="hpp-Uq-PqM">

@@ -120,12 +120,22 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
         } else if let vc = segue.destination as? TreasuryBarViewController {
             vc.userSession = userSession
             treasuryBarController = vc
+        } else if let vc = segue.destination as? PostCreationPortalViewController {
+            vc.startPostCreationFlow = {[weak self] draft in
+                self?.dismiss(animated: true, completion: {
+                    self?.showPostComposer(with: draft)
+                })
+            }
         }
     }
 
 }
 
 fileprivate extension UserFlowMainViewController {
+    func showPostComposer(with draft: PostDraft) {
+        
+    }
+    
     func prepareRouter() {
         let actionRouter = URLRouter()
         actionRouter.add(DeepLinks.lifeTab.path) {[weak self] (info) -> Bool in

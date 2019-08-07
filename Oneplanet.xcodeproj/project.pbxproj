@@ -151,6 +151,8 @@
 		E0BDCCEA229FA044006A9D20 /* PromotionPageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0BDCCE9229FA044006A9D20 /* PromotionPageList.swift */; };
 		E0BDCCEC229FD3CE006A9D20 /* SwiftMessages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0BDCCEB229FD3CE006A9D20 /* SwiftMessages.framework */; };
 		E0C18E5D22F97C8D0086C114 /* UnavailableValuedPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C18E5C22F97C8D0086C114 /* UnavailableValuedPhotoViewController.swift */; };
+		E0C18E5F22FAA3DE0086C114 /* PostCreationFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C18E5E22FAA3DE0086C114 /* PostCreationFlowViewController.swift */; };
+		E0C18E6122FAA56A0086C114 /* PostDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C18E6022FAA56A0086C114 /* PostDraft.swift */; };
 		E0CB5E11228F0B4A00C0C010 /* TreasuryBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CB5E10228F0B4A00C0C010 /* TreasuryBarViewController.swift */; };
 		E0CB5E15228F0E5F00C0C010 /* DS-DIGIB.TTF in Resources */ = {isa = PBXBuildFile; fileRef = E0CB5E14228F0E5F00C0C010 /* DS-DIGIB.TTF */; };
 		E0D1BBD922ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D1BBD822ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift */; };
@@ -352,6 +354,8 @@
 		E0BDCCE9229FA044006A9D20 /* PromotionPageList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromotionPageList.swift; sourceTree = "<group>"; };
 		E0BDCCEB229FD3CE006A9D20 /* SwiftMessages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftMessages.framework; path = Carthage/Build/iOS/SwiftMessages.framework; sourceTree = SOURCE_ROOT; };
 		E0C18E5C22F97C8D0086C114 /* UnavailableValuedPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnavailableValuedPhotoViewController.swift; sourceTree = "<group>"; };
+		E0C18E5E22FAA3DE0086C114 /* PostCreationFlowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCreationFlowViewController.swift; sourceTree = "<group>"; };
+		E0C18E6022FAA56A0086C114 /* PostDraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDraft.swift; sourceTree = "<group>"; };
 		E0CB5E10228F0B4A00C0C010 /* TreasuryBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreasuryBarViewController.swift; sourceTree = "<group>"; };
 		E0CB5E14228F0E5F00C0C010 /* DS-DIGIB.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DS-DIGIB.TTF"; sourceTree = "<group>"; };
 		E0D1BBD822ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalComponentExtractorTests.swift; sourceTree = "<group>"; };
@@ -748,10 +752,7 @@
 				E0D7DCDC229CE82300B40D76 /* PromoPopUpViewController.swift */,
 				E0BDCCE9229FA044006A9D20 /* PromotionPageList.swift */,
 				E0814FB022864F79002F1C02 /* UserFlowMainViewController.swift */,
-				E0B3FBDA22F6895700BD53C9 /* PostCreationPortalViewController.swift */,
-				E0B3FBDC22F6AE5B00BD53C9 /* ValuedPhotoInformationPopUpViewController.swift */,
-				E0C18E5C22F97C8D0086C114 /* UnavailableValuedPhotoViewController.swift */,
-				E0B3FBDE22F6AE7300BD53C9 /* FreePhotoInformationPopUpViewController.swift */,
+				E0C18E6222FAA5A00086C114 /* Post Creation */,
 				E00611F02294F4ED0032AE30 /* Home */,
 				E045BE7522E973400035D08B /* Post */,
 				E032844322AB6A0E001F02E8 /* Auction */,
@@ -759,6 +760,19 @@
 				E030E4D5228BC3BD0084D383 /* Me */,
 			);
 			name = "Main User Flow";
+			sourceTree = "<group>";
+		};
+		E0C18E6222FAA5A00086C114 /* Post Creation */ = {
+			isa = PBXGroup;
+			children = (
+				E0B3FBDA22F6895700BD53C9 /* PostCreationPortalViewController.swift */,
+				E0C18E6022FAA56A0086C114 /* PostDraft.swift */,
+				E0B3FBDC22F6AE5B00BD53C9 /* ValuedPhotoInformationPopUpViewController.swift */,
+				E0C18E5C22F97C8D0086C114 /* UnavailableValuedPhotoViewController.swift */,
+				E0B3FBDE22F6AE7300BD53C9 /* FreePhotoInformationPopUpViewController.swift */,
+				E0C18E5E22FAA3DE0086C114 /* PostCreationFlowViewController.swift */,
+			);
+			name = "Post Creation";
 			sourceTree = "<group>";
 		};
 		E0DA389C22C27FC600EC4170 /* Unlock and Bid */ = {
@@ -1086,6 +1100,7 @@
 				E03C32AC226D872A00C32FD7 /* Localized.swift in Sources */,
 				E093935222DF0308004F045A /* SimpleEmptyView.swift in Sources */,
 				E03C32B5226D969500C32FD7 /* ColorPalette .swift in Sources */,
+				E0C18E5F22FAA3DE0086C114 /* PostCreationFlowViewController.swift in Sources */,
 				E0837EF3227FFFBF00B13BAF /* FacebookLogin.swift in Sources */,
 				E06589BF22701B9F00C9E4E6 /* CapturePhotoOperation.swift in Sources */,
 				E0EAEB7B22F1F25600C8E7C8 /* PostList.swift in Sources */,
@@ -1108,6 +1123,7 @@
 				E0DA38A622C48BC400EC4170 /* UnlockFlowViewController.swift in Sources */,
 				E0BDCCEA229FA044006A9D20 /* PromotionPageList.swift in Sources */,
 				E0B57DE322A0FAA3006AEADB /* Toast.swift in Sources */,
+				E0C18E6122FAA56A0086C114 /* PostDraft.swift in Sources */,
 				E0B3FBDF22F6AE7300BD53C9 /* FreePhotoInformationPopUpViewController.swift in Sources */,
 				E089F70D228E9ECB003E77DF /* AvatarView.swift in Sources */,
 				E07276E322731334001239C0 /* EmailVerificationViewController.swift in Sources */,

@@ -15,6 +15,7 @@ class PostCreationPortalViewController: UIViewController, UserSessionDepending {
     @IBOutlet weak var valuedPhotoLabel: UILabel!
     @IBOutlet weak var valuedPhotoCapacityLabel: UILabel!
     @IBOutlet weak var freePhotoLabel: UILabel!
+    var startPostCreationFlow: ((PostDraft)->())?
     private var capacity: PhotoUploadCapacity? = PhotoUploadCapacity()
     private var refreshClock: UpdateClock!
     private var cooldownTimeFormatter: PostCooldownTimeFormatter!
@@ -96,7 +97,7 @@ class PostCreationPortalViewController: UIViewController, UserSessionDepending {
             self?.exitAndHandle(url)
         }
         popUp.nextAction = {[weak self] in
-            
+            self?.startPostCreationFlow?(PostDraft(isValued: true))
         }
         popUp.dismissAction = {[weak self] in
             self?.dismissPopUp()
@@ -117,7 +118,7 @@ class PostCreationPortalViewController: UIViewController, UserSessionDepending {
             self?.exitAndHandle(url)
         }
         popUp.nextAction = {[weak self] in
-            
+            self?.startPostCreationFlow?(PostDraft(isValued: false))
         }
         popUp.dismissAction = {[weak self] in
             self?.dismissPopUp()
@@ -133,8 +134,7 @@ class PostCreationPortalViewController: UIViewController, UserSessionDepending {
     
     func dismissPopUp() {
         controlContainer.isHidden = false
-        dismiss(animated: true, completion: {
-        })
+        dismiss(animated: true, completion: {})
     }
 }
 

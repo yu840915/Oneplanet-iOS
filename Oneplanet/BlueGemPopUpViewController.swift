@@ -52,7 +52,7 @@ class BlueGemPopUpViewController: UIViewController {
 
     @IBAction func invokeGoAction(_ sender: UIButton) {
         self.dismiss(animated: true, completion: {
-            router.handle(DeepLinks.lifeTab)
+            router.handle(DeepLinks.postEditor)
         })
     }
 }

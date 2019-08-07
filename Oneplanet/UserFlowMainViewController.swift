@@ -78,11 +78,7 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
     }
     
     @IBAction func showCreationPortalIfAllowed(_ sender: UIButton) {
-        let op = FeatureAccessCheckOperation(userSession: userSession)
-        op.start()
-        if op.isAccessible {
-            performSegue(withIdentifier: SegueID.showPostCreationPortal, sender: nil)
-        }
+        showCreationPortalIfAllowed()
     }
     
     // MARK: - Navigation
@@ -132,6 +128,14 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
 }
 
 fileprivate extension UserFlowMainViewController {
+    func showCreationPortalIfAllowed() {
+        let op = FeatureAccessCheckOperation(userSession: userSession)
+        op.start()
+        if op.isAccessible {
+            performSegue(withIdentifier: SegueID.showPostCreationPortal, sender: nil)
+        }
+    }
+    
     func showPostComposer(with draft: PostDraft) {
         
     }
@@ -153,6 +157,12 @@ fileprivate extension UserFlowMainViewController {
         actionRouter.add(DeepLinks.meTab.path) {[weak self] (info) -> Bool in
             OperationQueue.main.addOperation {
                 return self?.switchToTab(.my)
+            }
+            return true
+        }
+        actionRouter.add(DeepLinks.postEditor.path) {[weak self] (info) -> Bool in
+            OperationQueue.main.addOperation {
+                return self?.showCreationPortalIfAllowed()
             }
             return true
         }

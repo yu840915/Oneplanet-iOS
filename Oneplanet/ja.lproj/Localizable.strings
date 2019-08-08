@@ -71,6 +71,7 @@
 "pl_email" = "メールアドレス";
 "pl_nickname" = "ニックネーム";
 "pl_report_description" = "Enter the reason for the report";
+"pl_caption" = "キャプションを書く";
 
 "msg_email_verification_instruction" = "電子メールに送信しました。ログインするには、こちたのURLをクリックしてください。";
 "msg_add_avatar_prompt" = "友達があなただとわかるようにプロフィール写真を登録してください";

@@ -71,6 +71,7 @@
 "pl_email" = "Email Address";
 "pl_nickname" = "Nickname";
 "pl_report_description" = "Enter the reason for the report";
+"pl_caption" = "Write a caption...";
 
 "msg_email_verification_instruction" = "The email has been sent. Please click the link in the email to complete the login.";
 "msg_add_avatar_prompt" = "Add a profile photo so your friends know it’s you";

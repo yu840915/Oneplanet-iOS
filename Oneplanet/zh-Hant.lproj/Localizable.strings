@@ -71,6 +71,7 @@
 "pl_email" = "電子郵件地址";
 "pl_nickname" = "暱稱";
 "pl_report_description" = "Enter the reason for the report";
+"pl_caption" = "寫些什麼...";
 
 "msg_email_verification_instruction" = "電子郵件已發送。請單擊電子郵件中的鏈接以完成登入。";
 "msg_add_avatar_prompt" = "添加個人資料照片，以便你的朋友知道這就是你。";

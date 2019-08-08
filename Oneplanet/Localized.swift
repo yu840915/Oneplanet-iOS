@@ -238,6 +238,9 @@ class LocalizedPlaceholder {//pl_
     var reportDescription: String {
         return NSLocalizedString("pl_report_description", comment: "")
     }
+    var caption: String {
+        return NSLocalizedString("pl_caption", comment: "")
+    }
 }
 
 class LocalizedActivityMessages {//act_

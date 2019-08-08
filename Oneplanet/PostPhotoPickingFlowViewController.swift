@@ -50,6 +50,7 @@ class PostPhotoPickingFlowViewController: ButtonBarPagerTabStripViewController, 
         if AskForPhotoLibraryAuthorizationOperation.authorizationStatus == .authorized {
             let lib = LibraryImagePickerViewController.fromDefaultStoryboard()
             lib.hasPadding = true
+            lib.hasAvatarIndicator = false
             lib.onPickingImage = {[weak self] image in
                 self?.onPickingImage(image)
             }
@@ -68,6 +69,7 @@ class PostPhotoPickingFlowViewController: ButtonBarPagerTabStripViewController, 
         oldCell?.label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         newCell?.label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
     }
+    
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         return CGSize(width: (view.frame.width / 2), height: 40)
     }

@@ -71,6 +71,7 @@
 "pl_email" = "电子邮件地址";
 "pl_nickname" = "昵称";
 "pl_report_description" = "Enter the reason for the report";
+"pl_caption" = "写些什么...";
 
 "msg_email_verification_instruction" = "电子邮件已发送。请单击电子邮件中的链接完成登录。";
 "msg_add_avatar_prompt" = "添加个人资料照片，以便你的朋友知道这就是你。";

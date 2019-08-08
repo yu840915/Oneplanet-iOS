@@ -43,6 +43,14 @@ class LibraryImagePickerViewController: UIViewController, DefaultInstanceFactory
             }
         }
     }
+    var hasAvatarIndicator = true {
+        didSet {
+            if isViewLoaded {
+                avatarIndicator.isHidden = !hasAvatarIndicator
+            }
+        }
+
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +62,7 @@ class LibraryImagePickerViewController: UIViewController, DefaultInstanceFactory
         updateViewsForStates()
         renderContext = CIContext(options: nil)
         padding.isHidden = !hasPadding
+        avatarIndicator.isHidden = !hasAvatarIndicator
     }
     
     private func updateHeader() {

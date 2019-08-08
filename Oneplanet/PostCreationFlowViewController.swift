@@ -63,14 +63,29 @@ class PostCreationFlowViewController: UIViewController, UserSessionDepending {
         }
     }
     
+    
+    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? UserSessionDepending {
             vc.userSession = userSession
         }
+        if let vc = segue.destination as? PostPhotoPickingFlowViewController {
+            vc.onPickingImage = {[weak self] image in
+                self?.showPostEditor(with: image)
+            }
+        }
     }
     
+}
+
+private extension PostCreationFlowViewController {
+    func showPostEditor(with image: UIImage) {
+        postDraft.images.append(ImageAttachment(image: image))
+        
+        
+    }
 }
 
 extension PostCreationFlowViewController {

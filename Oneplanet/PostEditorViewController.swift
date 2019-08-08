@@ -8,8 +8,11 @@
 
 import UIKit
 
-class PostEditorViewController: UIViewController, UserSessionDepending {
+class PostEditorViewController: UIViewController, UserSessionDepending, DefaultInstanceFactory {
     
+    static func fromDefaultStoryboard() -> PostEditorViewController {
+        return UIStoryboard(name: "MainUserFlow", bundle: nil).instantiateViewController(withIdentifier: "PostEditorViewController") as! PostEditorViewController
+    }
     var userSession: UserSession!
     var postDraft: PostDraft!
     @IBOutlet weak var okButtonItem: UIBarButtonItem!

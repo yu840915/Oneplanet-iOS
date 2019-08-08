@@ -18,9 +18,6 @@ class PostPhotoPickingFlowViewController: ButtonBarPagerTabStripViewController, 
         navigationItem.hidesBackButton = true
         changeCurrentIndexProgressive = {[weak self] (oldCell, newCell, progressPercentage, changeCurrentIndex, animated) in
             self?.updateButtonBarCell(oldCell: oldCell, newCell: newCell, progressPercentage: progressPercentage, changeCurrentIndex: changeCurrentIndex, animated: animated)
-            if changeCurrentIndex {
-                self?.updateNavigationItems()
-            }
         }
     }
     
@@ -28,6 +25,11 @@ class PostPhotoPickingFlowViewController: ButtonBarPagerTabStripViewController, 
         super.awakeFromNib()
         PagerStyleConfigurer().configure(self)
         settings.style.selectedBarHeight = 0
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        updateNavigationItems(currentIndex)
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
@@ -68,14 +70,17 @@ class PostPhotoPickingFlowViewController: ButtonBarPagerTabStripViewController, 
         newCell?.label.textColor = PagerStyleConfigurer.Style.highlighted.titleColor
         oldCell?.label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         newCell?.label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        if let new = newCell, let idx = buttonBarView.indexPath(for: new) {
+            updateNavigationItems(idx.row)
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         return CGSize(width: (view.frame.width / 2), height: 40)
     }
     
-    func updateNavigationItems() {
-        let vc = viewControllers[currentIndex]
+    func updateNavigationItems(_ newIndex: Int) {
+        let vc = viewControllers[newIndex]
         navigationItem.rightBarButtonItems = vc.navigationItem.rightBarButtonItems
         navigationItem.leftBarButtonItem = vc.navigationItem.leftBarButtonItem
         navigationItem.titleView = nil

@@ -1732,7 +1732,7 @@
         <!--Title-->
         <scene sceneID="XoR-8p-Ot4">
             <objects>
-                <viewController id="EBC-gf-AMZ" customClass="PostEditorViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostEditorViewController" id="EBC-gf-AMZ" customClass="PostEditorViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7Wi-Te-gls">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

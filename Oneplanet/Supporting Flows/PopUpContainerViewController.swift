@@ -12,6 +12,7 @@ class PopUpContainerViewController: UIViewController {
 
     private(set) var contentViewController: UIViewController!
     var contentViewControllerSetUpBlock: ((UIViewController)->())?
+    var dismissAction: (()->())?
     var shouldAddConstraintToContentView = false
     var shouldAddConstraintToDismissView = false
     var isDismissTapOn = true
@@ -48,7 +49,11 @@ class PopUpContainerViewController: UIViewController {
     
     @IBAction func exit(_ sender: Any) {
         if isDismissTapOn {
-            dismiss(animated: true, completion: nil)
+            if dismissAction != nil {
+                dismissAction?()
+            } else {
+                dismiss(animated: true, completion: nil)
+            }
         }
     }
     

@@ -106,6 +106,7 @@ class PagerStyleConfigurer {
         controller.settings.style.buttonBarItemTitleColor = Style.normal.titleColor
         controller.settings.style.buttonBarItemFont = Style.normal.font
         controller.settings.style.selectedBarHeight = 1
+        controller.settings.style.buttonBarItemLeftRightMargin = 0
         controller.pagerBehaviour = .progressive(skipIntermediateViewControllers: true, elasticIndicatorLimit: false)
     }
     

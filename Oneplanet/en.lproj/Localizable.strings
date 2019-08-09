@@ -66,10 +66,14 @@
 "tl_send" = "Send";
 "tl_edit" = "Edit";
 "tl_photo" = "Photo";
+"tl_library" = "Library";
+"tl_post" = "Post";
+"tl_share" = "Share";
 
 "pl_email" = "Email Address";
 "pl_nickname" = "Nickname";
 "pl_report_description" = "Enter the reason for the report";
+"pl_caption" = "Write a caption...";
 
 "msg_email_verification_instruction" = "The email has been sent. Please click the link in the email to complete the login.";
 "msg_add_avatar_prompt" = "Add a profile photo so your friends know it’s you";
@@ -77,12 +81,12 @@
 "msg_mail_resent" = "The email has been sent again";
 "msg_join_prompt" = "Go to sign up now for more features";
 "msg_alien_description" = "The alien you choose will be on your own page";
-"msg_ongoing_bidding" = "Other goods are still bidding, please wait for the bidding to end.";
-"msg_successful_shipping_info_submission" = "The winning goods will be sent to this address. If the address changes, please remember to update this page.";
+"msg_ongoing_bidding" = "Other items are still bidding, please wait for the bidding to end.";
+"msg_successful_shipping_info_submission" = "The winning items will be sent to this address. If the address changes, please remember to update this page";
 "msg_bidding_terms_acceptence" = "Ticking means that you have agreed to the bidding terms";
 "msg_unlock_succeeded" = "Successfully unlocked";
 "msg_bid_succeeded" = "Successfully qualified for CommodityName bidding";
-"msg_lot_being_bid" = "This goods is being bid";
+"msg_lot_being_bid" = "This item is being bid";
 "msg_lot_being_bid_des" = "The bidding is in progress and the next issue will be announced within 48H, so stay tuned!";
 "msg_lot_closed" = "Unlock time was ended";
 "msg_lot_closed_des" = "The bidding has ended. The next issue will be announced within 48H, so stay tuned!";
@@ -90,7 +94,7 @@
 "msg_race1_monologue" = "My name is Focker.";
 "msg_race2_monologue" = "My name is Dicker.";
 "msg_race3_monologue" = "My name is Drunker.";
-"msg_shipping_info_des" = "International Shipping Service, please fill in the English address and receipt information, the goods can be successfully delivered";
+"msg_shipping_info_des" = "International Shipping Service, please fill in the English address and receipt information, the item can be successfully delivered";
 "msg_report_user_prompt" = "Why are you reporting this account?";
 "msg_report_post_prompt" = "Choose a reason for reporting this post:";
 "msg_report_user_caption" = "If you report someone’s post, Oneplanet doesn’t tell them who reported it";
@@ -108,7 +112,7 @@
 "msgf_resend_verification_email" = "You did not receive the email? %@.";
 "msgf_did_copy_my_id" = "My Oneplanet ID [%@] Copied.";
 "msgf_did_copy_id" = "Oneplanet ID [%@] Copied";
-"msgf_winner_notice" = "The winner must check if the %@ is filled in to ensure that the goods can be delivered.";
+"msgf_winner_notice" = "The winner must check if the %@ is filled in to ensure that the items can be delivered.";
 "msgf_unlock_lot" = "Unlock %@?";
 "msgf_did_unlock_lot" = "%@ Unlocked!";
 "msgf_unlock_with_gem_iap" = "Use a %@ + %@ to unlock?";
@@ -117,7 +121,7 @@
 "msgf_bid_prompt" = "Bid %@ once";
 "msgf_bid_with_gem_iap" = "Use a %@ + %@ to bid once?";
 "msgf_bid_with_gem" = "Use %@ to bid once?";
-"msgf_insufficient_gem_unlock_des" = "To unlock a goods you need to use a %@ + %@。";
+"msgf_insufficient_gem_unlock_des" = "To unlock a items you need to use a %@ + %@。";
 "msgf_insufficient_gem_bid_des" = "You need to use one %@ + %@ for each bid.";
 "msgf_earn_blue_gem_instruction" = "Take and upload a photo to get the %@!";
 "msgf_received_gem" = "Get a %@";
@@ -162,14 +166,14 @@
 "ph_create_shipping_info" = "Fill in the recipient information";
 "ph_edit_shipping_info" = "Change the receipt information";
 "ph_view_shipping_status" = "View shipping status";
-"ph_commodities" = "Goods";
+"ph_commodities" = "Item";
 "ph_bidding_process" = "History";
 "ph_bid_count" = "Frequency";
 "ph_countdown" = "Closing time";
 "ph_bid_leader" = "Leading";
-"ph_product_name" = "Goods name";
+"ph_product_name" = "Item name";
 "ph_bid_outcome" = "Bidding result";
-"ph_bid_lot" = "Goods";
+"ph_bid_lot" = "Item";
 "ph_successful_shipping_info_submission" = "Filled in successfully";
 "ph_goto_bidding" = "Go bidding page";
 "ph_get_gem" = "Get it";
@@ -185,6 +189,10 @@
 "ph_thanks_for_reporting_post" = "Thanks for reporting this post";
 "ph_show_post" = "Show Post";
 "ph_more" = "more";
+"ph_upload_valued_photo" = "Upload photo for rewards";
+"ph_upload_free_photo" = "Upload photo";
+"ph_dont_show_again" = "Never show again";
+"ph_no_room_for_photo" = "full";
 
 "phf_seconds_ago_short" = "%@s";
 "phf_minutes_ago_short" = "%@m";
@@ -196,6 +204,7 @@
 "phf_days_ago" = "%@ days ago";
 "phf_followers" = "%@ followers";
 "phf_followings" = "%@ following";
+"phf_remaining_uploads" = "%@/%@ remain (%@)";
 
 "no_posts" = "No Posts Yet";
 "no_promo_popups" = "No Promotion Pop-ups Yet";
@@ -248,6 +257,13 @@
 
 "pop_purple_gem_bullet1" = "紅金寶是 %@ 的升級版，有助於競標時的效率，並減少信用卡或電信商的支付問題。";
 "pop_purple_gem_bullet2" = "使用 紅金寶 可解鎖商品或投標一次。";
+
+"pop_post_suspended" = "評分次數用完了";
+"pop_cooldown_time" = "等待時間 (%@)";
+"pop_free_upload_bullet" = "沒有限制上傳照片次數，但不能獲得%@。";
+"pop_cant_upload_bullet" = "請等待時間回復";
+"pop_valued_upload_bullet1" = "上傳照片評分獲得經驗值，當經驗值滿格即獲得一顆 %@";
+"pop_valued_upload_bullet2" = "越符合本次 Oneplanet 提示的顏色主題，收集 %@ 的效率越高。";
 
 "ship_first_name" = "First Name";
 "ship_last_name" = "Last Name";

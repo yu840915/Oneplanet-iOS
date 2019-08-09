@@ -16,6 +16,8 @@ class Preferences {
     static let loginEmail = StringPreferencesItem(key: "OPNLoginEmail")
     static let socialLoginType = StringPreferencesItem(key: "OPNSocialLoginType")
     static let lastPromoPopUpShowUpDate = DatePreferencesItem(key: "OPNLastPromoShowUpDate")
+    static let shouldHideFreePhotoInfo = BoolPreferencesItem(key: "OPNShouldHideFreePhotoInfo")
+    static let shouldHideValuedPhotoInfo = BoolPreferencesItem(key: "OPNShouldHideValuedPhotoInfo")
 }
 
 class PreferencesItem<T> {

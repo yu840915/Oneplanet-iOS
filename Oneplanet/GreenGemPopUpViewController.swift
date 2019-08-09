@@ -19,7 +19,6 @@ class GreenGemPopUpViewController: UIViewController {
     @IBOutlet weak var bulletTextView2: UITextView!
     @IBOutlet weak var bulletTextView3: UITextView!
     @IBOutlet weak var bulletTextView4: UITextView!
-    @IBOutlet weak var bulletTextView5: UITextView!
 
     @IBOutlet weak var goButton: UIButton!
     

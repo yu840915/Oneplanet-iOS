@@ -49,8 +49,8 @@
 "tl_delete" = "削除";
 "tl_unlock" = "アンロックします";
 "tl_unlocked" = "アンロックしました";
-"tl_bid" = "Bid";
-"tl_required_input" = "(表示しません)";
+"tl_bid" = "オークション";
+"tl_required_input" = "必須項目";
 "tl_agree" = "同意する";
 "tl_filter" = "検索フィルタ";
 "tl_bid_state_lost" = "落札できませんでした";
@@ -58,7 +58,7 @@
 "tl_bid_state_shipping" = "出荷中";
 "tl_bid_state_delivered" = "受け取りました";
 "tl_report" = "報告する";
-"tl_block" = "Block";
+"tl_block" = "ブロック";
 "tl_unblock" = "ブロックを解除";
 "tl_followers" = "フォロワー";
 "tl_followings" = "フォロー中";
@@ -66,10 +66,14 @@
 "tl_send" = "送信";
 "tl_edit" = "編集する";
 "tl_photo" = "写真";
+"tl_library" = "Library";
+"tl_post" = "投稿";
+"tl_share" = "シェアする";
 
 "pl_email" = "メールアドレス";
 "pl_nickname" = "ニックネーム";
-"pl_report_description" = "Enter the reason for the report";
+"pl_report_description" = "報告する理由を入力";
+"pl_caption" = "キャプションを書く";
 
 "msg_email_verification_instruction" = "電子メールに送信しました。ログインするには、こちたのURLをクリックしてください。";
 "msg_add_avatar_prompt" = "友達があなただとわかるようにプロフィール写真を登録してください";
@@ -83,7 +87,7 @@
 "msg_unlock_succeeded" = "アンロックに成功しました。";
 "msg_bid_succeeded" = "Successfully qualified for CommodityName bidding";
 "msg_lot_being_bid" = " This commodity is being bid";
-"msg_lot_being_bid_des" = "ただいま入札中です。次回の商品が48時間以内に発表されます。お見逃しなく！";
+"msg_lot_being_bid_des" = "ただいま入札中です。48時間以内次回の入札商品を公表します。お見逃しなく！";
 "msg_lot_closed" = "アンロックできる時間を超えてしまいました";
 "msg_lot_closed_des" = "オークションが終了しました。次回の商品が48時間以内に発表されます。お見逃しなく！";
 "msg_bid_payment_too_late" = "支払いが成功しましたが、入札時間を超えました";
@@ -91,18 +95,18 @@
 "msg_race2_monologue" = "ディカーです。";
 "msg_race3_monologue" = "ドランカーです。";
 "msg_shipping_info_des" = "「国際配送サービス」、英語アドレスとお届け先情報を記入してください";
-"msg_report_user_prompt" = "Why are you reporting this account?";
-"msg_report_post_prompt" = "Choose a reason for reporting this post:";
-"msg_report_user_caption" = "If you report someone’s post, Oneplanet doesn’t tell them who reported it";
-"msg_report_post_caption" = "If you report someone’s post, Oneplanet doesn’t tell them who reported it";
+"msg_report_user_prompt" = "このアカウントを報告する理由?";
+"msg_report_post_prompt" = "この投稿を報告する理由を選択してください。";
+"msg_report_user_caption" = "報告された投稿に関して、Oneplanetが投稿者に報告した人の情報を開示することはありません";
+"msg_report_post_caption" = "報告された投稿に関して、Oneplanetが投稿者に報告した人の情報を開示することはありません";
 "msg_thankyou_reporting_user" = "Thanks for reporting this";
 "msg_thankyou_reporting_post" = "Thanks for reporting this post";
 "msg_unblock_des" = "ブロックを解除すると、この人はOneplanetであなたをファローできるようになります。ブロックが解除されたことは、相手に通知されません。";
-"msg_block_des" = "They won’t be able to find your profile, posts or story on Oneplanet. Oneplanet won’t let them know you blocked them";
+"msg_block_des" = "ブロックされた人は、Oneplanetであなたのプロフィールや投稿を見られなくなります。プロックしたことは、相手に通知されません";
 "msg_recover_account_des" = "利用規約違反していない場合、確認するために、下記までの情報をお願いいたします";
 "msg_petition_submitted" = "Oneplanetに報告を成功しました。Oneplanetが確認してからの返信を待ってください";
 "msg_unlock_option_prompt" = "どのジェムでアンロックしますか？";
-"msg_thanks_for_reporting_post" = "Your feedback is important in helping us keep the Oneplanet community safe";
+"msg_thanks_for_reporting_post" = "いただいた情報は、Oneplanet コミュニティをより安全なものにするために使用されます";
 
 "msgf_accept_tos" = "アカウントを作成することによって、%@に同意することになります";
 "msgf_resend_verification_email" = "電子メールがみつかりませんか？%@";
@@ -129,9 +133,9 @@
 "msgf_post_reported" = "%@の原因で投稿が報告されました";
 "msgf_profile_reported" = "Your account %@ has been reported for %@";
 "msgf_liked_your_post_and_gave_gem" = "Your photo was liked by %@, congratulations to get a %@.";
-"msgf_thankyou_report_user" = "Thank you for helping keep the Oneplanet safe and fun for everyone. Remember, we don’t reveal who submitted reports to the person who posted the photo or comment.\n\nOur team will review the post and if it vidolates our %@, we’ll remove it.";
+"msgf_thankyou_report_user" = "Oneplanetの安全の維持にご協力いただきありがとうございます。報告を受けた写真やコメントの投稿者には、報告した人についての情報は開示されません。\n審査により%@に違反していると判断された場合、この投稿は削除されます。";
 "msgf_unblock_user_prompt" = "%@さんのブロックを解除しますか？";
-"msgf_block_user_prompt" = "Block %@?";
+"msgf_block_user_prompt" = "%@さんをブロックしますか？";
 "msgf_no_search_results" = "No results for \"%@\"";
 
 "ph_guest_login" = "ゲスト登録";
@@ -168,7 +172,7 @@
 "ph_countdown" = "残り時間";
 "ph_bid_leader" = "入札";
 "ph_product_name" = "商品名";
-"ph_bid_outcome" = "オークション落札結果";
+"ph_bid_outcome" = "入札結果";
 "ph_bid_lot" = "Commodity";
 "ph_successful_shipping_info_submission" = "入力完了";
 "ph_goto_bidding" = "Go bidding page";
@@ -182,9 +186,13 @@
 "ph_unlock_option_prompt" = "アンロックするジェムを選択します";
 "ph_latest_posts" = "Latest";
 "ph_best_posts" = "Highest socreds";
-"ph_thanks_for_reporting_post" = "Thanks for reporting this post";
-"ph_show_post" = "Show Post";
+"ph_thanks_for_reporting_post" = "ご報告ありがとうございました";
+"ph_show_post" = "投稿を見る";
 "ph_more" = "more";
+"ph_upload_valued_photo" = "Upload photo for rewards";
+"ph_upload_free_photo" = "Upload photo";
+"ph_dont_show_again" = "Never show again";
+"ph_no_room_for_photo" = "full";
 
 "phf_seconds_ago_short" = "%@ s";
 "phf_minutes_ago_short" = "%@ m";
@@ -196,6 +204,7 @@
 "phf_days_ago" = "%@天前";
 "phf_followers" = "%@ フォロワー";
 "phf_followings" = "%@ フォロー中";
+"phf_remaining_uploads" = "%@/%@ remain (%@)";
 
 "no_posts" = "投稿がありません";
 "no_promo_popups" = "No Promotion Pop-ups Yet";
@@ -249,6 +258,13 @@
 "pop_purple_gem_bullet1" = "紅金寶是 %@ 的升級版，有助於競標時的效率，並減少信用卡或電信商的支付問題。";
 "pop_purple_gem_bullet2" = "使用 紅金寶 可解鎖商品或投標一次。";
 
+"pop_post_suspended" = "評分次數用完了";
+"pop_cooldown_time" = "等待時間 (%@)";
+"pop_free_upload_bullet" = "沒有限制上傳照片次數，但不能獲得%@。";
+"pop_cant_upload_bullet" = "請等待時間回復";
+"pop_valued_upload_bullet1" = "上傳照片評分獲得經驗值，當經驗值滿格即獲得一顆 %@";
+"pop_valued_upload_bullet2" = "越符合本次 Oneplanet 提示的顏色主題，收集 %@ 的效率越高。";
+
 "ship_first_name" = "名前";
 "ship_last_name" = "苗字";
 "ship_address1" = "住所1";
@@ -259,16 +275,16 @@
 "ship_country" = "国";
 "ship_phoneNumber" = "電話番号（配送に関する連絡のため）";
 
-"rp_terms_violation" = "I believe this account violates Oneplanet’s Terms";
-"rp_dont_like_post_title" = "I just don’t like it";
-"rp_dnudity_title" = "Nudity or pornography";
-"rp_hate_speech_title" = "Hate speech or symbols";
-"rp_violance_title" = "Violence or threat of violence";
-"rp_hate_speech_subtitle" = "Racist, homophobic or sexist slurs";
-"rp_violance_subtitle" = "Graphic injury, unlawful activity, dangerous or criminal organizations";
-"rp_dont_like_post_detail" = "Don’t like this post?";
-"rp_dnudity_detail" = "Report as nudity or pornography?";
-"rp_hate_speech_detail" = "Report as hate speech or symbols?";
-"rp_violance_detail" = "Report as violence or threat of violence?";
+"rp_terms_violation" = "このアカウントはOneplanet利用規約に違反しているよ思う";
+"rp_dont_like_post_title" = "単に気に入らない";
+"rp_dnudity_title" = "ヌードまたはわいせつコンテンツ";
+"rp_hate_speech_title" = "ヘイトスピーチや差別的なシンボル";
+"rp_violance_title" = "暴力または暴力的脅威";
+"rp_hate_speech_subtitle" = "人種差別、同性愛嫌悪、性差別";
+"rp_violance_subtitle" = "生々しい傷、違法行為、危険な团体、犯罪組織";
+"rp_dont_like_post_detail" = "この投稿が気に入らない場合";
+"rp_dnudity_detail" = "ヌードまたはわいせつコンテンツとして報告しますか？";
+"rp_hate_speech_detail" = "ヘイトスピーチや差別的なシンボルとして報告しますか？";
+"rp_violance_detail" = "暴力または暴力的脅威として報告しますか？";
 
 "smb_enum_spliter" = ", ";

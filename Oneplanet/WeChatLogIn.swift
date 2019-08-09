@@ -95,6 +95,13 @@ class SubmitWeChatAuthCodeOperation: LogInOperation {
     init(authCode: String) {
         self.authCode = authCode
     }
+    
+    override func prepareURLRequest() throws -> URLRequest {
+        var comp = URLComponents(url: ServiceURLs.base.appendingPathComponent("weixinapp"), resolvingAgainstBaseURL: false)!
+        comp.queryItems = [.init(name: "code", value: authCode)]
+        return try URLRequest(url: comp.url!, method: .post)
+    }
+    
 }
 
 class WeChatSession {

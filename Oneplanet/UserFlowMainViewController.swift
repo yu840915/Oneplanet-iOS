@@ -77,9 +77,16 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
         router.resume()
     }
     
+    @IBAction func showCreationPortalIfAllowed(_ sender: UIButton) {
+        showCreationPortalIfAllowed()
+    }
+    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? UserSessionDepending {
+            vc.userSession = userSession
+        }
         if let tabbar = segue.destination as? UITabBarController {
             tabbar.delegate = self
             tabbar.viewControllers?
@@ -109,12 +116,33 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
         } else if let vc = segue.destination as? TreasuryBarViewController {
             vc.userSession = userSession
             treasuryBarController = vc
+        } else if let vc = segue.destination as? PostCreationPortalViewController {
+            vc.startPostCreationFlow = {[weak self] draft in
+                self?.dismiss(animated: true, completion: {
+                    self?.showPostComposer(with: draft)
+                })
+            }
+        } else if let nav = segue.destination as? UINavigationController,
+            let vc = nav.viewControllers.first as? PostCreationFlowViewController {
+            vc.postDraft = (sender as! PostDraft)
         }
     }
 
 }
 
 fileprivate extension UserFlowMainViewController {
+    func showCreationPortalIfAllowed() {
+        let op = FeatureAccessCheckOperation(userSession: userSession)
+        op.start()
+        if op.isAccessible {
+            performSegue(withIdentifier: SegueID.showPostCreationPortal, sender: nil)
+        }
+    }
+    
+    func showPostComposer(with draft: PostDraft) {
+        performSegue(withIdentifier: SegueID.showPostComposer, sender: draft)
+    }
+    
     func prepareRouter() {
         let actionRouter = URLRouter()
         actionRouter.add(DeepLinks.lifeTab.path) {[weak self] (info) -> Bool in
@@ -132,6 +160,12 @@ fileprivate extension UserFlowMainViewController {
         actionRouter.add(DeepLinks.meTab.path) {[weak self] (info) -> Bool in
             OperationQueue.main.addOperation {
                 return self?.switchToTab(.my)
+            }
+            return true
+        }
+        actionRouter.add(DeepLinks.postEditor.path) {[weak self] (info) -> Bool in
+            OperationQueue.main.addOperation {
+                return self?.showCreationPortalIfAllowed()
             }
             return true
         }
@@ -162,6 +196,13 @@ fileprivate extension UserFlowMainViewController {
     func updateBalloonAppearance() {
         let showingBid = TabFeature.list[contentTabbarController.selectedIndex] == .bid
         [balloonButton, balloonString].forEach{$0?.isHidden = showingBid}
+    }
+}
+
+extension UserFlowMainViewController {
+    struct SegueID {
+        static let showPostCreationPortal = "showPostCreationPortal"
+        static let showPostComposer = "showPostComposer"
     }
 }
 

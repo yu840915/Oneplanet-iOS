@@ -25,6 +25,7 @@ class Localized {
     static let placeholder = LocalizedPlaceholder()
     static let emptyMessages = EmptyMessages()
     static let gemStonePopUp = GemStonePopUp()
+    static let uploadPopUp = UploadPopUp()
     static let shippingInfoTerms = LocalizedShippingInfoTerms()
     static let phraseFormats = LocalizedPhraseFormats()
     static let reportReasons = LocalizedReportReasons()
@@ -193,6 +194,15 @@ class LocalizedTitles {//tl_
     var photo: String {
         return NSLocalizedString("tl_photo", comment: "")
     }
+    var library: String {
+        return NSLocalizedString("tl_library", comment: "")
+    }
+    var post: String {
+        return NSLocalizedString("tl_post", comment: "")
+    }
+    var share: String {
+        return NSLocalizedString("tl_share", comment: "")
+    }
 }
 
 class Feature {//fx_
@@ -233,6 +243,9 @@ class LocalizedPlaceholder {//pl_
     }
     var reportDescription: String {
         return NSLocalizedString("pl_report_description", comment: "")
+    }
+    var caption: String {
+        return NSLocalizedString("pl_caption", comment: "")
     }
 }
 
@@ -620,6 +633,18 @@ class LocalizedPhrase { //ph_
     var more: String {
         return NSLocalizedString("ph_more", comment: "")
     }
+    var uploadValuedPhoto: String {
+        return NSLocalizedString("ph_upload_valued_photo", comment: "")
+    }
+    var uploadFreePhoto: String {
+        return NSLocalizedString("ph_upload_free_photo", comment: "")
+    }
+    var dontShowAgain: String {
+        return NSLocalizedString("ph_dont_show_again", comment: "")
+    }
+    var noRoomForPhoto: String {
+        return NSLocalizedString("ph_no_room_for_photo", comment: "")
+    }
 }
 
 class LocalizedPhraseFormats {//phf_
@@ -653,6 +678,9 @@ class LocalizedPhraseFormats {//phf_
     }
     var followings: String {
         return NSLocalizedString("phf_followings", comment: "")
+    }
+    var remainingUploads: String {
+        return NSLocalizedString("phf_remaining_uploads", comment: "")
     }
 }
 
@@ -722,6 +750,27 @@ class LocalizedErrors {//err_
     }
     var invalidPhoneNumber: String {
         return NSLocalizedString("err_invalid_phone_number", comment: "")
+    }
+}
+
+class UploadPopUp { //pop
+    var postSuspended: String {
+        return NSLocalizedString("pop_post_suspended", comment: "")
+    }
+    var cooldownTime: String {
+        return NSLocalizedString("pop_cooldown_time", comment: "")
+    }
+    var freeUploadBullet: String {
+        return NSLocalizedString("pop_free_upload_bullet", comment: "")
+    }
+    var cantUploadBullet: String {
+        return NSLocalizedString("pop_cant_upload_bullet", comment: "")
+    }
+    var valuedUploadBullet1: String {
+        return NSLocalizedString("pop_valued_upload_bullet1", comment: "")
+    }
+    var valuedUploadBullet2: String {
+        return NSLocalizedString("pop_valued_upload_bullet2", comment: "")
     }
 }
 

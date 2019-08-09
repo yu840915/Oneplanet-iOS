@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import XLPagerTabStrip
 
 class LibraryImagePickerViewController: UIViewController, DefaultInstanceFactory {
-    class func fromDefaultStoryboard() -> UINavigationController {
+    class func entryPoint() -> UINavigationController {
         return UIStoryboard(name: "SupportingFlows", bundle: nil).instantiateViewController(withIdentifier: "LibraryImagePickerEntryPoint") as! UINavigationController
+    }
+    class func fromDefaultStoryboard() -> LibraryImagePickerViewController {
+        return UIStoryboard(name: "SupportingFlows", bundle: nil).instantiateViewController(withIdentifier: "LibraryImagePickerViewController") as! LibraryImagePickerViewController
     }
     @IBOutlet weak var cancelButtonItem: UIBarButtonItem!
     @IBOutlet weak var doneButtonItem: UIBarButtonItem!
@@ -26,10 +30,27 @@ class LibraryImagePickerViewController: UIViewController, DefaultInstanceFactory
     private var selectedPhoto: PhotoListItem?
     private var fetchImageOperation: FetchImageOperaion?
     private var selectedImage: UIImage?
+    @IBOutlet weak var padding: UIView!
+    
     @IBOutlet var imageWidthSnap: NSLayoutConstraint!
     @IBOutlet var imageHeightSnap: NSLayoutConstraint!
     private var imageAspectRatio: NSLayoutConstraint?
     private var renderContext: CIContext!
+    var hasPadding = false {
+        didSet {
+            if isViewLoaded {
+                padding.isHidden = !hasPadding
+            }
+        }
+    }
+    var hasAvatarIndicator = true {
+        didSet {
+            if isViewLoaded {
+                avatarIndicator.isHidden = !hasAvatarIndicator
+            }
+        }
+
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +61,8 @@ class LibraryImagePickerViewController: UIViewController, DefaultInstanceFactory
         updateHeader()
         updateViewsForStates()
         renderContext = CIContext(options: nil)
+        padding.isHidden = !hasPadding
+        avatarIndicator.isHidden = !hasAvatarIndicator
     }
     
     private func updateHeader() {
@@ -168,5 +191,11 @@ class LibraryImagePickerViewController: UIViewController, DefaultInstanceFactory
 extension LibraryImagePickerViewController: UIScrollViewDelegate {
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
+    }
+}
+
+extension LibraryImagePickerViewController: IndicatorInfoProvider {
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return IndicatorInfo(title: Localized.titles.library)
     }
 }

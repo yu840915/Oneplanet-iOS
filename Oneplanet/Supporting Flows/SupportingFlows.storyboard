@@ -32,7 +32,7 @@
         <!--Camera Image Picker View Controller-->
         <scene sceneID="iLo-zA-aOh">
             <objects>
-                <viewController id="WnI-oe-gMb" customClass="CameraImagePickerViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CameraImagePickerViewController" id="WnI-oe-gMb" customClass="CameraImagePickerViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="K8H-mR-R0R">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -160,7 +160,7 @@
         <!--Library Image Picker View Controller-->
         <scene sceneID="3CB-lW-VAk">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="RHr-jD-uUZ" customClass="LibraryImagePickerViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LibraryImagePickerViewController" automaticallyAdjustsScrollViewInsets="NO" id="RHr-jD-uUZ" customClass="LibraryImagePickerViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YEh-wV-KO1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -213,21 +213,33 @@
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_cameramaterial_nor" translatesAutoresizingMaskIntoConstraints="NO" id="Du7-pi-FLj">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="394"/>
                                             </imageView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LXW-3G-Bwy">
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="TIS-iP-LR8">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="360"/>
-                                                <connections>
-                                                    <segue destination="Ioq-me-wWC" kind="embed" id="rAZ-bX-IGH"/>
-                                                </connections>
-                                            </containerView>
+                                                <subviews>
+                                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LXW-3G-Bwy">
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="310"/>
+                                                        <connections>
+                                                            <segue destination="Ioq-me-wWC" kind="embed" id="rAZ-bX-IGH"/>
+                                                        </connections>
+                                                    </containerView>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pmv-Wd-fiJ" userLabel="Padding View">
+                                                        <rect key="frame" x="0.0" y="310" width="414" height="50"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" priority="750" constant="50" id="yOW-N2-5RF"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="LXW-3G-Bwy" firstAttribute="top" secondItem="3Ec-Fr-IIK" secondAttribute="top" id="53N-Lf-wwm"/>
-                                            <constraint firstItem="LXW-3G-Bwy" firstAttribute="centerX" secondItem="3Ec-Fr-IIK" secondAttribute="centerX" id="6DL-lA-dzL"/>
+                                            <constraint firstItem="TIS-iP-LR8" firstAttribute="width" secondItem="3Ec-Fr-IIK" secondAttribute="width" id="GMQ-UF-Ghs"/>
                                             <constraint firstItem="Du7-pi-FLj" firstAttribute="centerX" secondItem="3Ec-Fr-IIK" secondAttribute="centerX" id="TBJ-2b-ma5"/>
+                                            <constraint firstItem="TIS-iP-LR8" firstAttribute="top" secondItem="3Ec-Fr-IIK" secondAttribute="top" id="fkM-WH-hui"/>
                                             <constraint firstItem="Du7-pi-FLj" firstAttribute="centerY" secondItem="3Ec-Fr-IIK" secondAttribute="centerY" id="gku-cZ-ci8"/>
-                                            <constraint firstItem="LXW-3G-Bwy" firstAttribute="width" secondItem="3Ec-Fr-IIK" secondAttribute="width" id="iaQ-Ra-9gQ"/>
                                             <constraint firstItem="Du7-pi-FLj" firstAttribute="height" secondItem="3Ec-Fr-IIK" secondAttribute="height" id="krH-7i-Qlh"/>
+                                            <constraint firstItem="TIS-iP-LR8" firstAttribute="centerX" secondItem="3Ec-Fr-IIK" secondAttribute="centerX" id="pVc-FB-OAg"/>
                                             <constraint firstItem="Du7-pi-FLj" firstAttribute="width" secondItem="3Ec-Fr-IIK" secondAttribute="width" id="ya6-fh-gPL"/>
                                         </constraints>
                                     </view>
@@ -237,8 +249,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="KUG-JK-Ark" firstAttribute="centerX" secondItem="aLb-K4-3N6" secondAttribute="centerX" id="5Nr-QY-URd"/>
-                            <constraint firstItem="aLb-K4-3N6" firstAttribute="bottom" secondItem="LXW-3G-Bwy" secondAttribute="bottom" id="8TW-s8-WoV"/>
                             <constraint firstItem="aLb-K4-3N6" firstAttribute="top" secondItem="KUG-JK-Ark" secondAttribute="top" id="dva-zx-TNR"/>
+                            <constraint firstItem="aLb-K4-3N6" firstAttribute="bottom" secondItem="TIS-iP-LR8" secondAttribute="bottom" id="oYq-gj-V42"/>
                             <constraint firstItem="KUG-JK-Ark" firstAttribute="width" secondItem="YEh-wV-KO1" secondAttribute="width" id="obE-Rm-ax3"/>
                             <constraint firstAttribute="bottom" secondItem="KUG-JK-Ark" secondAttribute="bottom" id="okC-L3-pC7"/>
                         </constraints>
@@ -278,6 +290,7 @@
                         <outlet property="imageScrollView" destination="NTv-Pk-OOR" id="07O-OJ-abK"/>
                         <outlet property="imageView" destination="EEA-YT-5Bi" id="LE9-Zy-cw1"/>
                         <outlet property="imageWidthSnap" destination="KMa-cv-Syc" id="a8f-ZV-yE4"/>
+                        <outlet property="padding" destination="pmv-Wd-fiJ" id="1cE-LN-rjq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GGd-qi-XLy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -289,7 +302,7 @@
             <objects>
                 <collectionViewController automaticallyAdjustsScrollViewInsets="NO" id="Ioq-me-wWC" customClass="PhotoGridCollectionViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="KRO-hp-Au6">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="360"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="310"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="B39-ly-eQe">
@@ -717,18 +730,18 @@
                         <color key="backgroundColor" name="black background"/>
                         <color key="separatorColor" name="default placeholder"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="HAy-Dq-GQM">
+                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="HAy-Dq-GQM">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="oJG-Dq-aZf">
-                                    <rect key="frame" x="6" y="19" width="35.5" height="17"/>
+                                    <rect key="frame" x="6" y="0.0" width="35.5" height="0.0"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" name="default placeholder"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wgw-dJ-Xqc">
-                                    <rect key="frame" x="0.0" y="54.5" width="414" height="0.5"/>
+                                    <rect key="frame" x="0.0" y="-0.5" width="414" height="0.5"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="0.29999999999999999" id="VdP-mM-SGM"/>

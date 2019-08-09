@@ -67,6 +67,8 @@
 "tl_edit" = "編集する";
 "tl_photo" = "写真";
 "tl_library" = "Library";
+"tl_post" = "投稿";
+"tl_share" = "シェアする";
 
 "pl_email" = "メールアドレス";
 "pl_nickname" = "ニックネーム";

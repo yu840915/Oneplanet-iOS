@@ -197,6 +197,12 @@ class LocalizedTitles {//tl_
     var library: String {
         return NSLocalizedString("tl_library", comment: "")
     }
+    var post: String {
+        return NSLocalizedString("tl_post", comment: "")
+    }
+    var share: String {
+        return NSLocalizedString("tl_share", comment: "")
+    }
 }
 
 class Feature {//fx_

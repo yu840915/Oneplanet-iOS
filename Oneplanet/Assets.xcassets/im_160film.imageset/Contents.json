@@ -2,14 +2,17 @@
   "images" : [
     {
       "resizing" : {
-        "mode" : "3-part-vertical",
+        "mode" : "9-part",
         "center" : {
           "mode" : "tile",
+          "width" : 20,
           "height" : 160
         },
         "cap-insets" : {
+          "bottom" : 0,
           "top" : 0,
-          "bottom" : 0
+          "right" : 0,
+          "left" : 0
         }
       },
       "idiom" : "universal",
@@ -28,5 +31,8 @@
   "info" : {
     "version" : 1,
     "author" : "xcode"
+  },
+  "properties" : {
+    "template-rendering-intent" : "original"
   }
 }

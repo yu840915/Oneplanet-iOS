@@ -22,11 +22,32 @@ class PostEditorViewController: UIViewController, UserSessionDepending, DefaultI
     
     @IBOutlet weak var captionTextView: UITextView!
     @IBOutlet var endEditingTap: UITapGestureRecognizer!
+    @IBOutlet weak var contentScrollView: UIScrollView!
+    var keyboardObserver: KeyboardAppearanceObserver?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        localizeContents()
+        updateViewsForDraft()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let observer = KeyboardAppearanceObserver()
+        observer.keyboardWillChange = {[weak self] change in
+            self?.updateViewsForKeyboardChange(change)
+        }
+        keyboardObserver = observer
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        view.endEditing(false)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        keyboardObserver = nil
     }
     
     @IBAction func exit(_ sender: Any) {
@@ -37,22 +58,32 @@ class PostEditorViewController: UIViewController, UserSessionDepending, DefaultI
         view.endEditing(false)
     }
 
-    /*
+    @IBAction func submit(_ sender: Any) {
+        
+    }
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
-
 }
 
 private extension PostEditorViewController {
+    func updateViewsForKeyboardChange(_ change: KeyboardChangeInfo) {
+        let intersection = contentScrollView.convert(contentScrollView.bounds, to: nil).intersection(change.endRect)
+        contentScrollView.contentInset.bottom = intersection.height
+    }
+    
+    func localizeContents() {
+        title = Localized.titles.post
+        okButtonItem.title = Localized.titles.share
+        placeholderLabel.text = Localized.placeholder.caption
+    }
+    
     func updateViewsForDraft() {
         imageView.image = postDraft.images[0].localImage
-        
+        captionTextView.text = postDraft.caption
+        updatePlaceholderAppearance()
     }
     
     func updatePlaceholderAppearance() {
@@ -63,6 +94,16 @@ private extension PostEditorViewController {
 }
 
 extension PostEditorViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let result = (textView.text as NSString).replacingCharacters(in: range, with: text)
+        do {
+            try postDraft.captionValidator.validate(result)
+            return true
+        } catch _ {
+            return false
+        }
+    }
+    
     func textViewDidChange(_ textView: UITextView) {
         updatePlaceholderAppearance()
         guard textView.markedTextRange == nil else { return }

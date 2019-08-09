@@ -33,7 +33,7 @@ class PostCreationFlowViewController: UIViewController, UserSessionDepending {
         if postDraft.images.isEmpty {
             askForPermissions()
         } else {
-            //show editor
+            performSegue(withIdentifier: SegueID.showEditor, sender: nil)
         }
     }
     
@@ -63,8 +63,6 @@ class PostCreationFlowViewController: UIViewController, UserSessionDepending {
         }
     }
     
-    
-    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -75,6 +73,8 @@ class PostCreationFlowViewController: UIViewController, UserSessionDepending {
             vc.onPickingImage = {[weak self] image in
                 self?.showPostEditor(with: image)
             }
+        } else if let vc = segue.destination as? PostEditorViewController {
+            vc.postDraft = postDraft
         }
     }
     
@@ -93,5 +93,6 @@ private extension PostCreationFlowViewController {
 extension PostCreationFlowViewController {
     struct SegueID {
         static let showPhotoPicker = "showPhotoPicker"
+        static let showEditor = "showEditor"
     }
 }

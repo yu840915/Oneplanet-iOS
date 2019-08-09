@@ -67,6 +67,8 @@
 "tl_edit" = "編輯";
 "tl_photo" = "照片";
 "tl_library" = "圖庫";
+"tl_post" = "貼文";
+"tl_share" = "分享";
 
 "pl_email" = "電子郵件地址";
 "pl_nickname" = "暱稱";

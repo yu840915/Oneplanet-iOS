@@ -15,6 +15,7 @@ class PostEditorViewController: UIViewController, UserSessionDepending, DefaultI
     }
     var userSession: UserSession!
     var postDraft: PostDraft!
+    
     @IBOutlet weak var okButtonItem: UIBarButtonItem!
     
     @IBOutlet weak var placeholderLabel: UILabel!
@@ -24,6 +25,7 @@ class PostEditorViewController: UIViewController, UserSessionDepending, DefaultI
     @IBOutlet var endEditingTap: UITapGestureRecognizer!
     @IBOutlet weak var contentScrollView: UIScrollView!
     var keyboardObserver: KeyboardAppearanceObserver?
+    var submitOperation: SubmitPostDraftOperation?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +61,16 @@ class PostEditorViewController: UIViewController, UserSessionDepending, DefaultI
     }
 
     @IBAction func submit(_ sender: Any) {
-        
+        dismiss(animated: true, completion: nil)
+//        guard submitOperation == nil else {return}
+//        let op = SubmitPostDraftOperation(draft: postDraft, session: userSession)
+//        op.completionBlock = {[weak self] in
+//            OperationQueue.main.addOperation {
+//                self?.didSubmitPostDraft()
+//            }
+//        }
+//        submitOperation = op
+//        op.start()
     }
     
     // MARK: - Navigation
@@ -69,6 +80,18 @@ class PostEditorViewController: UIViewController, UserSessionDepending, DefaultI
 }
 
 private extension PostEditorViewController {
+    func didSubmitPostDraft() {
+        let op = submitOperation!
+        submitOperation = nil
+        if op.success == true {
+            dismiss(animated: true, completion: nil)
+        } else if let error = op.error {
+            let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: Localized.titles.dismiss, style: .cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
+    }
+    
     func updateViewsForKeyboardChange(_ change: KeyboardChangeInfo) {
         let intersection = contentScrollView.convert(contentScrollView.bounds, to: nil).intersection(change.endRect)
         contentScrollView.contentInset.bottom = intersection.height

@@ -1801,7 +1801,7 @@
                                     <constraint firstItem="FD6-yR-9wV" firstAttribute="leading" secondItem="iIg-FD-nKc" secondAttribute="leading" id="wS9-bl-JnE"/>
                                 </constraints>
                             </scrollView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_160film" translatesAutoresizingMaskIntoConstraints="NO" id="ICq-Mf-2th">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_160film" translatesAutoresizingMaskIntoConstraints="NO" id="ICq-Mf-2th">
                                 <rect key="frame" x="0.0" y="88" width="20" height="808"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="GfY-sD-QED"/>

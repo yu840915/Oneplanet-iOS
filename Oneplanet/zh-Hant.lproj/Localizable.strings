@@ -58,7 +58,7 @@
 "tl_bid_state_shipping" = "出貨中";
 "tl_bid_state_delivered" = "已領收";
 "tl_report" = "檢舉";
-"tl_block" = "Block";
+"tl_block" = "封鎖";
 "tl_unblock" = "解除封鎖";
 "tl_followers" = "粉絲";
 "tl_followings" = "追蹤中";
@@ -72,7 +72,7 @@
 
 "pl_email" = "電子郵件地址";
 "pl_nickname" = "暱稱";
-"pl_report_description" = "Enter the reason for the report";
+"pl_report_description" = "輸入檢舉原因";
 "pl_caption" = "寫些什麼...";
 
 "msg_email_verification_instruction" = "電子郵件已發送。請單擊電子郵件中的鏈接以完成登入。";
@@ -95,18 +95,18 @@
 "msg_race2_monologue" = "我的名字叫迪克。";
 "msg_race3_monologue" = "我的名字叫壯克。";
 "msg_shipping_info_des" = "「國際運送服務」，請填寫英文地址及收件資訊，商品才可以成功送達";
-"msg_report_user_prompt" = "Why are you reporting this account?";
-"msg_report_post_prompt" = "Choose a reason for reporting this post:";
-"msg_report_user_caption" = "If you report someone’s post, Oneplanet doesn’t tell them who reported it";
-"msg_report_post_caption" = "If you report someone’s post, Oneplanet doesn’t tell them who reported it";
+"msg_report_user_prompt" = "為什麼要檢舉這個帳號？";
+"msg_report_post_prompt" = "選擇檢舉這篇貼文的原因：";
+"msg_report_user_caption" = "您檢舉其他人的貼文時，Oneplanet 不會揭露檢舉人的身分";
+"msg_report_post_caption" = "您檢舉其他人的貼文時，Oneplanet 不會揭露檢舉人的身分";
 "msg_thankyou_reporting_user" = "Thanks for reporting this";
-"msg_thankyou_reporting_post" = "Thanks for reporting this post";
+"msg_thankyou_reporting_post" = "謝謝你檢舉這則貼文";
 "msg_unblock_des" = "他們現在可以在 Oneplanet 上追蹤你。Oneplanet 不會讓他們知道你已將他們解除封鎖。";
-"msg_block_des" = "They won’t be able to find your profile, posts or story on Oneplanet. Oneplanet won’t let them know you blocked them";
+"msg_block_des" = "他們將無法在 Oneplanet 上找到你的個人資料或貼文。 Oneplanet 不會讓他們知道你封鎖了他們";
 "msg_recover_account_des" = "如果你認為自己沒有違反我們的使用條款，請提供以下信息以幫助我們進行調查";
 "msg_petition_submitted" = "已將問題回報給 Oneplanet，請等待 Oneplanet 審核過後並回覆你";
 "msg_unlock_option_prompt" = "你要使用哪種寶石來解鎖?";
-"msg_thanks_for_reporting_post" = "Your feedback is important in helping us keep the Oneplanet community safe";
+"msg_thanks_for_reporting_post" = "您的反饋意見對於幫助我們保持 Oneplanet 社群的安全非常重要";
 
 "msgf_accept_tos" = "註冊或登錄即表示你同意我們的%@";
 "msgf_resend_verification_email" = "你沒有收到電子郵件？%@";
@@ -133,9 +133,9 @@
 "msgf_post_reported" = "您的照片被用戶檢舉了，因為%@";
 "msgf_profile_reported" = "您的 Oneplanet 帳號 %@ 被用戶檢舉，原因是 違反了 Oneplanet 的%@";
 "msgf_liked_your_post_and_gave_gem" = "你的照片被 %@ 喜歡了，恭喜獲得一顆 %@";
-"msgf_thankyou_report_user" = "Thank you for helping keep the Oneplanet safe and fun for everyone. Remember, we don’t reveal who submitted reports to the person who posted the photo or comment.\n\nOur team will review the post and if it vidolates our %@, we’ll remove it.";
+"msgf_thankyou_report_user" = "感謝您的幫助，讓 Oneplanet 保持安全和有趣。請記住，我們不會透露誰向發布照片或評論的人提交了報告。\n我們的團隊將審核該貼文，如果它違反了我們的%@，我們會將它刪除。";
 "msgf_unblock_user_prompt" = "解鎖封鎖%@嗎？";
-"msgf_block_user_prompt" = "Block %@?";
+"msgf_block_user_prompt" = "確定要封鎖%@嗎？";
 "msgf_no_search_results" = "No results for \"%@\"";
 
 "ph_guest_login" = "訪客進入";
@@ -186,8 +186,8 @@
 "ph_unlock_option_prompt" = "選擇寶石解鎖";
 "ph_latest_posts" = "Latest";
 "ph_best_posts" = "Highest socreds";
-"ph_thanks_for_reporting_post" = "Thanks for reporting this post";
-"ph_show_post" = "Show Post";
+"ph_thanks_for_reporting_post" = "謝謝你檢舉這則貼文";
+"ph_show_post" = "顯示貼文";
 "ph_more" = "more";
 "ph_upload_valued_photo" = "上傳照片評分";
 "ph_upload_free_photo" = "上傳照片";
@@ -275,16 +275,16 @@
 "ship_country" = "國家";
 "ship_phoneNumber" = "電話號碼（僅限送貨）";
 
-"rp_terms_violation" = "I believe this account violates Oneplanet’s Terms";
-"rp_dont_like_post_title" = "I just don’t like it";
-"rp_dnudity_title" = "Nudity or pornography";
-"rp_hate_speech_title" = "Hate speech or symbols";
-"rp_violance_title" = "Violence or threat of violence";
-"rp_hate_speech_subtitle" = "Racist, homophobic or sexist slurs";
-"rp_violance_subtitle" = "Graphic injury, unlawful activity, dangerous or criminal organizations";
-"rp_dont_like_post_detail" = "Don’t like this post?";
-"rp_dnudity_detail" = "Report as nudity or pornography?";
-"rp_hate_speech_detail" = "Report as hate speech or symbols?";
-"rp_violance_detail" = "Report as violence or threat of violence?";
+"rp_terms_violation" = "我認為此帳戶違反了 Oneplanet 的使用條款";
+"rp_dont_like_post_title" = "我不喜歡這則貼文";
+"rp_dnudity_title" = "露點照或色情內容";
+"rp_hate_speech_title" = "仇恨言論或符號";
+"rp_violance_title" = "暴力或暴力威脅";
+"rp_hate_speech_subtitle" = "種族歧視、恐同症或性別主義毀謗";
+"rp_violance_subtitle" = "露出血淋淋的傷口、非法活動、危險或犯罪組織";
+"rp_dont_like_post_detail" = "不喜歡這則貼文嗎？";
+"rp_dnudity_detail" = "檢舉為露點照或色情內容？";
+"rp_hate_speech_detail" = "檢舉為仇恨言論或符號？";
+"rp_violance_detail" = "檢舉暴力或暴力威脅？";
 
 "smb_enum_spliter" = "、";

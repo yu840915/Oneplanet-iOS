@@ -159,14 +159,22 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cT4-SI-2Wy" userLabel="Cancel Button">
-                                        <rect key="frame" x="124.66666666666666" y="144" width="56" height="72"/>
-                                        <state key="normal" image="bt_balloon_sel"/>
-                                        <connections>
-                                            <action selector="exit:" destination="szV-Ho-GQ7" eventType="touchUpInside" id="dcf-x6-V5o"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JM6-P5-qQZ">
+                                        <rect key="frame" x="0.0" y="144" width="180.66666666666666" height="72"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cT4-SI-2Wy" userLabel="Cancel Button">
+                                                <rect key="frame" x="0.0" y="0.0" width="180.66666666666666" height="72"/>
+                                                <state key="normal" image="bt_balloon_sel"/>
+                                                <connections>
+                                                    <action selector="exit:" destination="szV-Ho-GQ7" eventType="touchUpInside" id="dcf-x6-V5o"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="cT4-SI-2Wy" firstAttribute="width" secondItem="CUX-zj-qr9" secondAttribute="width" id="Tc5-Ax-hwQ"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" name="translucent dark background"/>

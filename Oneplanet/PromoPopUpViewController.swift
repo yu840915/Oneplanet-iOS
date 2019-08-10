@@ -25,7 +25,7 @@ class PromoPopUpViewController: UIViewController {
     
     private func updateViewsForPage() {
         goButton.isHidden = (page.link == nil)
-        imageView.kf.setImage(with: page.poster.url)
+        imageView.kf.setImage(with: page.cover.url)
     }
     
     @IBAction func goToLink(_ sender: UIButton) {

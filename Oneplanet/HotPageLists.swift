@@ -78,4 +78,59 @@ class GetCollectionPageOperation: AlamofireAPIAccessOperation, PaginatedFetching
         }
         nextPageFetchingOperation = GetCollectionPageOperation(session: session, url: url, isBeginning: false)
     }
+    
+    override func processData(with data: Data) throws {
+        items = try JSONDecoder.default.decode([CollectionItem].self, from: data)
+    }
+
+    override func willFinishProcess() throws {
+        let data = """
+[
+    {
+        "id": "5d46b2f5338f3f58a865a10b",
+        "type": "product"
+    },
+    {
+        "id": "5d46b2f5338f3f58a865a10c",
+        "type": "category"
+    },
+    {
+        "id": "5d46b2f5338f3f58a865a10d",
+        "type": "ad",
+        "url": "https://asdasdasd/"
+    },
+]
+""".data(using: .utf8)!
+        items = try JSONDecoder.default.decode([CollectionItem].self, from: data)
+    }
+}
+
+class CollectionCategoryItem: CollectionItemPreviewing {
+    let id: String
+    let cover: WebImageInfo
+    
+    init(id: String) {
+        self.id = id
+        cover = WebImageInfo(url: ServiceURLs.base.appendingPathComponent("category/\(id)"))
+    }
+
+    class func from(_ collectionItem: CollectionItem) -> CollectionCategoryItem? {
+        guard collectionItem.type.lowercased() == "category" else {return nil}
+        return CollectionCategoryItem(id: collectionItem.id)
+    }
+}
+
+class CollectionProductItem: CollectionItemPreviewing {
+    let id: String
+    let cover: WebImageInfo
+
+    init(id: String) {
+        self.id = id
+        cover = WebImageInfo(url: ServiceURLs.base.appendingPathComponent("product/\(id)"))
+    }
+    
+    class func from(_ collectionItem: CollectionItem) -> CollectionProductItem? {
+        guard collectionItem.type.lowercased() == "product" else {return nil}
+        return CollectionProductItem(id: collectionItem.id)
+    }
 }

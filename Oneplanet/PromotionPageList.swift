@@ -16,15 +16,15 @@ class PromotionPageList {
     }
 }
 
-class PromotionAd {
+class PromotionAd: CollectionItemPreviewing {
     let id: String
     let link: URL?
-    let poster: WebImageInfo
+    let cover: WebImageInfo
     
     init(id: String, link: URL?) {
         self.link = link
         self.id = id
-        poster = WebImageInfo(url: ServiceURLs.base.appendingPathComponent("ad/\(id).jpg"))
+        cover = WebImageInfo(url: ServiceURLs.base.appendingPathComponent("ad/\(id).jpg"))
     }
     
     class func from(_ collectionItem: CollectionItem) -> PromotionAd? {
@@ -52,6 +52,9 @@ class GetPromotionPageListOperation: AlamofireAPIAccessOperation {
     }
 }
 
+protocol CollectionItemPreviewing {
+    var cover: WebImageInfo {get}
+}
 
 class CollectionItem: Decodable {
     let id: String
@@ -61,5 +64,9 @@ class CollectionItem: Decodable {
     enum CodingKeys: String, CodingKey {
         case id, type
         case link = "url"
+    }
+    
+    var previewable: CollectionItemPreviewing? {
+        return PromotionAd.from(self) ?? CollectionProductItem.from(self) ?? CollectionCategoryItem.from(self)
     }
 }

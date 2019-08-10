@@ -20,7 +20,7 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
     var hotList: HotItemList!
     var bannerList: BannerItemList!
     var updateHandles: [Any]?
-    var hotItems: [CollectionItem] = []
+    var hotItems: [CollectionItemPreviewing] = []
     var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
@@ -146,8 +146,8 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseID.cell, for: indexPath) as! HotItemCell
-    
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseID.cell, for: indexPath) as! PhotoGalleryPageCell
+        cell.updateViews(with: hotItems[indexPath.row].cover)
         return cell
     }
     
@@ -213,7 +213,7 @@ private extension HotCollectionViewController {
     
     func handleHotListUpdate() {
         refreshControl.endRefreshing()
-        hotItems = hotList.items
+        hotItems = hotList.items.compactMap{ $0.previewable }
         collectionView.reloadData()
         updateBackground()
     }
@@ -224,7 +224,7 @@ private extension HotCollectionViewController {
     }
     
     func handleBannerUpdate() {
-        headerController?.items = bannerList.items
+        headerController?.items = bannerList.items.compactMap{$0.previewable}
         updateBackground()
     }
     
@@ -303,8 +303,3 @@ class PromotionHeader: UICollectionReusableView {
         super.updateConstraints()
     }
 }
-
-class HotItemCell: UICollectionViewCell {
-    
-}
-

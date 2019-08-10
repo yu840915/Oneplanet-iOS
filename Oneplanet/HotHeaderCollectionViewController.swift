@@ -17,7 +17,7 @@ class HotHeaderCollectionViewController: UICollectionViewController, UserSession
     }
     var userSession: UserSession!
 
-    var items: [CollectionItem] = [] {
+    var items: [CollectionItemPreviewing] = [] {
         didSet {
             if isViewLoaded {
                 updateSections()
@@ -109,14 +109,14 @@ class HotHeaderCollectionViewController: UICollectionViewController, UserSession
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let section = sections[indexPath.section]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        
-        let item: CollectionItem
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoGalleryPageCell
+        let item: CollectionItemPreviewing
         switch section {
         case .headPadding: item = items.last!
         case .endPadding: item = items.first!
         case .body: item = items[indexPath.row]
         }
+        cell.updateViews(with: item.cover)
         return cell
     }
 

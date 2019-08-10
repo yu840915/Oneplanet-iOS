@@ -68,10 +68,13 @@ class WeChatLogInOperation: SimpleAsynchronousOperation, SocialAuthenticationOpe
     private func didGetToken() {
         let op = submitCodeOperation!
         guard let token = op.token,
-            let session = op.wechatSession else {
+            let profile = op.profile else {
                 fail(with: nil)
                 return
         }
+        self.token = token
+        self.profile = profile
+        success = true
         finish()
     }
     
@@ -97,7 +100,7 @@ class SubmitWeChatAuthCodeOperation: LogInOperation {
     }
     
     override func prepareURLRequest() throws -> URLRequest {
-        var comp = URLComponents(url: ServiceURLs.base.appendingPathComponent("weixinapp"), resolvingAgainstBaseURL: false)!
+        var comp = URLComponents(url: ServiceURLs.base.appendingPathComponent("login/weixinapp"), resolvingAgainstBaseURL: false)!
         comp.queryItems = [.init(name: "code", value: authCode)]
         return try URLRequest(url: comp.url!, method: .post)
     }

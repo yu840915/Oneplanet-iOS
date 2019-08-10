@@ -57,6 +57,8 @@
 		E03C32B9226DA44A00C32FD7 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E03C32B8226DA44A00C32FD7 /* Onboarding.storyboard */; };
 		E045BE7722E974640035D08B /* PostFeedMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E045BE7622E974640035D08B /* PostFeedMainViewController.swift */; };
 		E045BE7922E976FE0035D08B /* PostFeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E045BE7822E976FE0035D08B /* PostFeedTableViewController.swift */; };
+		E05398C522FE98AC00AAF803 /* WebLinkingKeyMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05398C422FE98AC00AAF803 /* WebLinkingKeyMap.swift */; };
+		E05398C722FE9D8400AAF803 /* WebLinking.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05398C622FE9D8400AAF803 /* WebLinking.swift */; };
 		E055ACA72293D114000B7B31 /* ProfileEditorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E055ACA62293D114000B7B31 /* ProfileEditorTableViewController.swift */; };
 		E05BB25E226D5D2A00721F20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BB25D226D5D2A00721F20 /* AppDelegate.swift */; };
 		E05BB260226D5D2A00721F20 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BB25F226D5D2A00721F20 /* RootViewController.swift */; };
@@ -250,6 +252,8 @@
 		E03C32B8226DA44A00C32FD7 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		E045BE7622E974640035D08B /* PostFeedMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFeedMainViewController.swift; sourceTree = "<group>"; };
 		E045BE7822E976FE0035D08B /* PostFeedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFeedTableViewController.swift; sourceTree = "<group>"; };
+		E05398C422FE98AC00AAF803 /* WebLinkingKeyMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebLinkingKeyMap.swift; sourceTree = "<group>"; };
+		E05398C622FE9D8400AAF803 /* WebLinking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebLinking.swift; sourceTree = "<group>"; };
 		E055ACA62293D114000B7B31 /* ProfileEditorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditorTableViewController.swift; sourceTree = "<group>"; };
 		E05BB25A226D5D2A00721F20 /* Oneplanet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oneplanet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E05BB25D226D5D2A00721F20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -707,6 +711,8 @@
 				E06589C92270C1A500C9E4E6 /* UpdateClock.swift */,
 				E06F4FFD22789C760067DAE4 /* AppLifeCycleObserver.swift */,
 				E0A4618522B6284500D26720 /* KeyboardAppearanceObserver.swift */,
+				E05398C422FE98AC00AAF803 /* WebLinkingKeyMap.swift */,
+				E05398C622FE9D8400AAF803 /* WebLinking.swift */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -1106,6 +1112,7 @@
 				E03C32AC226D872A00C32FD7 /* Localized.swift in Sources */,
 				E093935222DF0308004F045A /* SimpleEmptyView.swift in Sources */,
 				E03C32B5226D969500C32FD7 /* ColorPalette .swift in Sources */,
+				E05398C522FE98AC00AAF803 /* WebLinkingKeyMap.swift in Sources */,
 				E0C18E5F22FAA3DE0086C114 /* PostCreationFlowViewController.swift in Sources */,
 				E0837EF3227FFFBF00B13BAF /* FacebookLogin.swift in Sources */,
 				E06589BF22701B9F00C9E4E6 /* CapturePhotoOperation.swift in Sources */,
@@ -1176,6 +1183,7 @@
 				E0DA38A022C282EC00EC4170 /* GemPickerTableViewController.swift in Sources */,
 				E00611F6229500FA0032AE30 /* HotNavigationItemView.swift in Sources */,
 				E02F49CB22E5948A0014DEBE /* FriendListsViewController.swift in Sources */,
+				E05398C722FE9D8400AAF803 /* WebLinking.swift in Sources */,
 				E06F4FFE22789C760067DAE4 /* AppLifeCycleObserver.swift in Sources */,
 				E032844F22ABB2FE001F02E8 /* BadgeView.swift in Sources */,
 				E0CB5E11228F0B4A00C0C010 /* TreasuryBarViewController.swift in Sources */,

@@ -1091,7 +1091,7 @@ The winner must check if the Receipt information is filled in to ensure that the
         <!--Product Detail View Controller-->
         <scene sceneID="JKl-9L-GYg">
             <objects>
-                <viewController storyboardIdentifier="ProductDetailViewController" id="Kvw-Xq-bR5" customClass="ProductDetailViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProductDetailViewController" hidesBottomBarWhenPushed="YES" id="Kvw-Xq-bR5" customClass="ProductDetailViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4fI-dk-UoM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1100,7 +1100,7 @@ The winner must check if the Receipt information is filled in to ensure that the
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZXb-JW-AKT">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oxS-Zv-zib">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="543.5"/>
@@ -1232,6 +1232,29 @@ The winner must check if the Receipt information is filled in to ensure that the
                                     <constraint firstAttribute="bottom" secondItem="oxS-Zv-zib" secondAttribute="bottom" id="wSa-1P-SDT"/>
                                 </constraints>
                             </scrollView>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vrL-Jz-O94">
+                                <rect key="frame" x="150.5" y="401" width="113.5" height="104"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="m0M-Ld-hrv">
+                                        <rect key="frame" x="38" y="0.0" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shipping Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ek-Pa-dWh" userLabel="Error Label">
+                                        <rect key="frame" x="0.0" y="47" width="113.5" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" name="default text"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T02-5X-WDf" userLabel="Retry Button">
+                                        <rect key="frame" x="33.5" y="74" width="46" height="30"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" name="button green"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="retry:" destination="Kvw-Xq-bR5" eventType="touchUpInside" id="eke-GX-Jvl"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1239,8 +1262,11 @@ The winner must check if the Receipt information is filled in to ensure that the
                             <constraint firstItem="6oH-Ys-TL8" firstAttribute="centerX" secondItem="4fI-dk-UoM" secondAttribute="centerX" id="L63-4o-ekT"/>
                             <constraint firstAttribute="bottom" secondItem="ZXb-JW-AKT" secondAttribute="bottom" id="MaF-OH-ntK"/>
                             <constraint firstItem="ZXb-JW-AKT" firstAttribute="top" secondItem="bkE-8F-7gW" secondAttribute="top" id="NbK-gB-bwd"/>
+                            <constraint firstItem="vrL-Jz-O94" firstAttribute="centerX" secondItem="bkE-8F-7gW" secondAttribute="centerX" id="SRl-37-f2Z"/>
                             <constraint firstItem="6oH-Ys-TL8" firstAttribute="centerY" secondItem="4fI-dk-UoM" secondAttribute="centerY" id="TF2-r7-HRL"/>
+                            <constraint firstItem="vrL-Jz-O94" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bkE-8F-7gW" secondAttribute="leading" constant="20" id="cxQ-bs-Xyb"/>
                             <constraint firstItem="6oH-Ys-TL8" firstAttribute="height" secondItem="4fI-dk-UoM" secondAttribute="height" id="egW-eg-Jo8"/>
+                            <constraint firstItem="vrL-Jz-O94" firstAttribute="centerY" secondItem="bkE-8F-7gW" secondAttribute="centerY" id="joU-OL-WCm"/>
                             <constraint firstItem="ZXb-JW-AKT" firstAttribute="width" secondItem="4fI-dk-UoM" secondAttribute="width" id="nSp-xc-l2B"/>
                             <constraint firstItem="ZXb-JW-AKT" firstAttribute="centerX" secondItem="bkE-8F-7gW" secondAttribute="centerX" id="xrK-N4-qm6"/>
                         </constraints>
@@ -1248,13 +1274,17 @@ The winner must check if the Receipt information is filled in to ensure that the
                     </view>
                     <navigationItem key="navigationItem" id="apN-VH-OMd"/>
                     <connections>
+                        <outlet property="accessoryContainer" destination="vrL-Jz-O94" id="N0B-QJ-Dic"/>
                         <outlet property="contentContainer" destination="ZXb-JW-AKT" id="I4p-CJ-TY8"/>
                         <outlet property="detailTextView" destination="gvk-tN-Wxe" id="Nkc-Zq-Tuc"/>
+                        <outlet property="errorLabel" destination="3ek-Pa-dWh" id="cfc-VR-aPh"/>
                         <outlet property="galleryCollectionView" destination="9mQ-1R-MJt" id="kUU-JZ-ghA"/>
+                        <outlet property="loadingIndicator" destination="m0M-Ld-hrv" id="oA7-sQ-UVA"/>
                         <outlet property="lockButton" destination="Low-rR-min" id="YRP-R9-j7g"/>
                         <outlet property="lockLabel" destination="nHQ-w0-Ye0" id="6RG-ZY-SHh"/>
                         <outlet property="lockView" destination="5QL-eJ-FCI" id="pE0-cV-5rp"/>
                         <outlet property="pageControl" destination="VcJ-g0-y3i" id="DHg-wm-Ntz"/>
+                        <outlet property="retryButton" destination="T02-5X-WDf" id="bsG-mA-nSm"/>
                         <outlet property="titleLabel" destination="dbZ-H6-33D" id="mFA-nl-oqA"/>
                         <segue destination="gpY-XL-9Kb" kind="presentation" identifier="enterUnlockFlow" id="HXb-NP-8nb"/>
                     </connections>
@@ -2210,7 +2240,7 @@ The winner must check if the Receipt information is filled in to ensure that the
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Jan-oh-NbX"/>
-        <segue reference="8pF-Y6-fub"/>
+        <segue reference="kIk-ce-MVu"/>
+        <segue reference="Scs-0i-F1U"/>
     </inferredMetricsTieBreakers>
 </document>

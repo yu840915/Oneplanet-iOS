@@ -25,6 +25,7 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
         setUpRefreshControl()
         prepareLists()
     }

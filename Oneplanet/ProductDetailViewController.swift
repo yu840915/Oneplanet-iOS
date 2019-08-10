@@ -12,9 +12,20 @@ import Kingfisher
 class ProductDetailViewController: UIViewController, UserSessionDepending {
 
     var userSession: UserSession!
-    var product: Product?
-    var getDetailOperation: GetProductDetailOperation!
+    var product: Product? {
+        didSet {
+            if isViewLoaded {
+                updateViewsForProductIfNeeded()
+            }
+        }
+    }
+    var productQuery: String?
 
+    @IBOutlet weak var accessoryContainer: UIStackView!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var errorLabel: UILabel!
+    @IBOutlet weak var retryButton: UIButton!
+    
     @IBOutlet weak var contentContainer: UIScrollView!
     @IBOutlet weak var lockView: UIStackView!
     @IBOutlet weak var lockButton: UIButton!
@@ -24,6 +35,7 @@ class ProductDetailViewController: UIViewController, UserSessionDepending {
     @IBOutlet weak var detailTextView: UITextView!
     @IBOutlet weak var galleryCollectionView: UICollectionView!
     private var featureCheck: BiddingFeatureAccessCheckOperation?
+    private var getDetailOperation: GetProductDetailOperation?
     private var previews: [WebImageInfo] = [] {
         didSet {
             updateViewsForPreviews()
@@ -33,11 +45,11 @@ class ProductDetailViewController: UIViewController, UserSessionDepending {
     override func viewDidLoad() {
         super.viewDidLoad()
         localizeTitles()
-        prepareAndGetProductDetail()
-    }
-    
-    private func prepareAndGetProductDetail() {
-        
+        if product != nil {
+            updateViewsForProductIfNeeded()
+        } else {
+            getProductDetail()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,6 +72,10 @@ class ProductDetailViewController: UIViewController, UserSessionDepending {
         op.start()
     }
     
+    @IBAction func retry(_ sender: Any) {
+        getProductDetail()
+    }
+    
     func handleCheckResultAndUnlockIfAllowed() {
         let op = featureCheck!
         featureCheck = nil
@@ -75,6 +91,46 @@ class ProductDetailViewController: UIViewController, UserSessionDepending {
         }
     }
 
+}
+
+private extension ProductDetailViewController {
+    func updateViewsForProductIfNeeded() {
+        guard let prod = product else { return }
+        accessoryContainer.isHidden = true
+        contentContainer.isHidden = false
+        previews = prod.images
+        titleLabel.text = prod.displayName
+        detailTextView.text = prod.description
+    }
+    
+    func getProductDetail() {
+        guard getDetailOperation == nil else {return}
+        accessoryContainer.isHidden = false
+        loadingIndicator.startAnimating()
+        errorLabel.isHidden = true
+        retryButton.isHidden = true
+        let op = GetProductDetailOperation(query: productQuery!, session: userSession)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didGetProductDetail()
+            }
+        }
+        getDetailOperation = op
+        op.start()
+    }
+    
+    func didGetProductDetail() {
+        let op = getDetailOperation!
+        getDetailOperation = nil
+        if let prod = op.product {
+            product = prod
+        } else {
+            loadingIndicator.stopAnimating()
+            errorLabel.isHidden = false
+            retryButton.isHidden = false
+            errorLabel.text = op.error?.localizedDescription
+        }
+    }
 }
 
 extension ProductDetailViewController {
@@ -112,6 +168,7 @@ private extension ProductDetailViewController {
     
     func localizeTitles() {
         title = Localized.phrases.bidLot
+        retryButton.setTitle(Localized.phrases.tryAgain, for: .normal)
         updateViewsForLockState()
     }
     

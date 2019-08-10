@@ -179,11 +179,11 @@ class BlockedUserOverviewModel: UserOverviewDisplayable {
     var displayName: String {
         return profile.nickname
     }
-    var displayID: String {
-        return profile.displayID
+    var username: String {
+        return profile.username
     }
-    var character: Character? {
-        return profile.character
+    var character: Alien? {
+        return profile.alien
     }
     let actionTitle: String = Localized.titles.unblock
     let selectedActionTitle: String? = nil

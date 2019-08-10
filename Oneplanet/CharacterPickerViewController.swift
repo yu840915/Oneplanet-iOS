@@ -40,7 +40,7 @@ class CharacterPickerViewController: UIViewController, UserSessionDepending {
         monologueItem.textLabel = monologueLabel
         chatBubble.layer.cornerRadius = (chatBubble.frame.height / 2)
         localizeTitles()
-        colorPickerWidth.constant = CGFloat(CharacterOptions.shared.colors.count * 44)
+        colorPickerWidth.constant = CGFloat(AlienOptions.shared.colors.count * 44)
         updateAlienOptions(withColor: colorPicker.selectedColor!)
         setUpPreselection()
     }
@@ -62,13 +62,13 @@ class CharacterPickerViewController: UIViewController, UserSessionDepending {
         doneButton.setTitle(Localized.titles.ok, for: .normal)
     }
     
-    private func updateAlienOptions(withColor color: CharacterColor) {
-        alienPicker.characters = CharacterOptions.shared.characterOptions(for: color)
+    private func updateAlienOptions(withColor color: AlienColor) {
+        alienPicker.characters = AlienOptions.shared.alienOptions(for: color)
     }
     
     private func setUpPreselection() {
-        let characters = CharacterOptions.shared.characterOptions(for: colorPicker.selectedColor!)
-        if let character = draft.character,
+        let characters = AlienOptions.shared.alienOptions(for: colorPicker.selectedColor!)
+        if let character = draft.alien,
             let idx = characters.index(of: character) {
             alienPicker.preselectedIndex = idx
         }
@@ -77,7 +77,7 @@ class CharacterPickerViewController: UIViewController, UserSessionDepending {
     @IBAction func submit(_ sender: UIButton) {
         view.endEditing(false)
         if let color = colorPicker.selectedColor {
-            draft.character = CharacterOptions.shared.characterOptions(for: color)[alienPicker.selectedIndex]
+            draft.alien = AlienOptions.shared.alienOptions(for: color)[alienPicker.selectedIndex]
         }
         showConfirmAlert()
     }
@@ -140,8 +140,8 @@ class CharacterPickerViewController: UIViewController, UserSessionDepending {
             alienPicker = vc
         } else if let vc = segue.destination as? ColorPickerCollectionViewController {
             colorPicker = vc
-            vc.colors = CharacterOptions.shared.colors
-            vc.selectedColor = draft.character?.color ?? CharacterOptions.shared.colors[0]
+            vc.colors = AlienOptions.shared.colors
+            vc.selectedColor = draft.alien?.color ?? AlienOptions.shared.colors[0]
             vc.didChangeSelection = {[weak self] color in
                 self?.updateAlienOptions(withColor: color)
             }

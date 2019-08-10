@@ -382,6 +382,9 @@ class LocalizedMessages {//msg_
     var thanksForReportingPost: String {
         return NSLocalizedString("msg_thanks_for_reporting_post", comment: "")
     }
+    var usernameRules: String {
+        return NSLocalizedString("msg_username_rules", comment: "")
+    }
 }
 
 class LocalizedMessageFormats {//msgf_
@@ -723,6 +726,12 @@ class LocalizedErrorsTitles {//errtl_
     var cannotPickAvatar: String {
         return NSLocalizedString("errtl_cannot_pick_avatar", comment: "")
     }
+    var usernameTooShort: String {
+        return NSLocalizedString("errtl_username_too_short", comment: "")
+    }
+    var usernameUnavailable: String {
+        return NSLocalizedString("errtl_username_unavailable", comment: "")
+    }
 }
 
 class LocalizedErrors {//err_
@@ -750,6 +759,9 @@ class LocalizedErrors {//err_
     }
     var invalidPhoneNumber: String {
         return NSLocalizedString("err_invalid_phone_number", comment: "")
+    }
+    var usernameUnavailable: String {
+        return NSLocalizedString("err_username_unavailable", comment: "")
     }
 }
 

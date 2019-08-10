@@ -107,6 +107,7 @@
 "msg_petition_submitted" = "Oneplanetに報告を成功しました。Oneplanetが確認してからの返信を待ってください";
 "msg_unlock_option_prompt" = "どのジェムでアンロックしますか？";
 "msg_thanks_for_reporting_post" = "いただいた情報は、Oneplanet コミュニティをより安全なものにするために使用されます";
+"msg_username_rules" = "ID は5文字以上";
 
 "msgf_accept_tos" = "アカウントを作成することによって、%@に同意することになります";
 "msgf_resend_verification_email" = "電子メールがみつかりませんか？%@";
@@ -223,10 +224,13 @@
 "err_account_not_exist" = "有効なメールアドレスではないようです。";
 "err_invalid_nickname" = "命名規則に準拠していません";
 "err_invalid_phone_number" = "Please input valid phone number";
+"err_username_unavailable" = "ほかの ID を使ってください";
 
 "errtl_cannot_capture_photo" = "Cannot Take Photo";
 "errtl_cannot_pick_avatar" = "Cannot Get Profile Image";
 "errtl_generic_failure" = "エラー";
+"errtl_username_too_short" = "ID が短すぎる";
+"errtl_username_unavailable" = "この ID は使えません";
 
 "warn_logout" = "ログアウト？";
 "warn_character_selection" = "エリアンの種類と色を一度選んだら変更ができません。よろしいですか？";

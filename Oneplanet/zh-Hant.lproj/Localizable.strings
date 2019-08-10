@@ -107,6 +107,7 @@
 "msg_petition_submitted" = "已將問題回報給 Oneplanet，請等待 Oneplanet 審核過後並回覆你";
 "msg_unlock_option_prompt" = "你要使用哪種寶石來解鎖?";
 "msg_thanks_for_reporting_post" = "您的反饋意見對於幫助我們保持 Oneplanet 社群的安全非常重要";
+"msg_username_rules" = "ID 至少五字元";
 
 "msgf_accept_tos" = "註冊或登錄即表示你同意我們的%@";
 "msgf_resend_verification_email" = "你沒有收到電子郵件？%@";
@@ -223,10 +224,13 @@
 "err_account_not_exist" = "你輸入的電子郵件似乎不屬於某個帳號。請檢查電子郵件，然後再試一次。";
 "err_invalid_nickname" = "你的暱稱不符合規定。";
 "err_invalid_phone_number" = "Please input valid phone number";
+"err_username_unavailable" = "請使用其他 ID";
 
 "errtl_cannot_capture_photo" = "無法拍照";
 "errtl_cannot_pick_avatar" = "無法取得大頭照";
 "errtl_generic_failure" = "失敗";
+"errtl_username_too_short" = "你的 ID 太短";
+"errtl_username_unavailable" = "此 ID 無法使用";
 
 "warn_logout" = "登出？";
 "warn_character_selection" = "外星人種類及顏色確定後不可更換，確定選擇？";

@@ -10,42 +10,53 @@ import UIKit
 
 class User: UserProfileDisplayable {
     let nickname: String
+    let username: String
     let avatar: WebImageInfo? = nil
-    let character: Character?
+    let alien: Alien?
     let id: String
-    let displayID: String
-    init(id: String, displayID: String, nickname: String, character: Character?) {
-        self.displayID = displayID
+    init(id: String, username: String, nickname: String, character: Alien?) {
+        self.username = username
         self.id = id
         self.nickname = nickname
-        self.character = character
+        self.alien = character
     }
 }
 
-class Character {
+class Alien: Decodable {
     let race: Race
-    let color: CharacterColor
-    let avatar: UIImage
+    let color: AlienColor
+    var avatar: UIImage {
+        return AlienAvatars.shared.avatar(for: race, color: color)
+    }
     var monologue: String {
         return race.monologue
     }
-    init(race: Race, color: CharacterColor, avatar: UIImage) {
+    init(race: Race, color: AlienColor) {
         self.race = race
         self.color = color
-        self.avatar = avatar
+    }
+    enum CodingKeys: String, CodingKey {
+        case race = "avatar"
+        case color
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        race = Race(rawValue: try container.decode(String.self, forKey: .race)) ?? .one
+        color = AlienColor(rawValue: try container.decode(String.self, forKey: .color)) ?? .green
     }
 }
 
-extension Character: Equatable {
-    static func ==(lhs: Character, rhs: Character) -> Bool {
+extension Alien: Equatable {
+    static func ==(lhs: Alien, rhs: Alien) -> Bool {
         return lhs.race == rhs.race && lhs.color == rhs.color
     }
 }
 
 enum Race: String {
-    case one
-    case two
-    case three
+    case one = "alien-1"
+    case two = "alien-2"
+    case three = "alien-3"
     
     var frameImage: UIImage {
         switch self {
@@ -65,7 +76,7 @@ enum Race: String {
 
 }
 
-enum CharacterColor: String {
+enum AlienColor: String {
     case green
     case pink
     case blue
@@ -85,26 +96,45 @@ enum CharacterColor: String {
     }
 }
 
-class CharacterOptions {
-    static let shared = CharacterOptions()
+class AlienAvatars {
+    static let shared = AlienAvatars()
+    private let lookupTable: [AlienColor: [Race: UIImage]] =
+        [.green: [.one: #imageLiteral(resourceName: "im_alien1_green"), .two: #imageLiteral(resourceName: "im_alien2_green"), .three: #imageLiteral(resourceName: "im_alien3_green")],
+         .pink: [.one: #imageLiteral(resourceName: "im_alien1_pink"), .two: #imageLiteral(resourceName: "im_alien2_pink"), .three: #imageLiteral(resourceName: "im_alien3_pink")],
+         .blue: [.one: #imageLiteral(resourceName: "im_alien1_blue"), .two: #imageLiteral(resourceName: "im_alien2_blue"), .three: #imageLiteral(resourceName: "im_alien3_blue")]]
+    
+    func avatar(for race: Race, color: AlienColor) -> UIImage {
+        if let image = lookupTable[color]?[race] {
+            return image
+        } else {
+            switch race {
+            case .one: return #imageLiteral(resourceName: "im_alien1_green")
+            case .two: return #imageLiteral(resourceName: "im_alien2_green")
+            case .three: return #imageLiteral(resourceName: "im_alien3_green")
+            }
+        }
+    }
+}
+
+class AlienOptions {
+    static let shared = AlienOptions()
     private init() {}
-    let colors: [CharacterColor] = [.green, .pink, .blue]
-    func character(for race: Race, color: CharacterColor) -> Character? {
-        return characterOptions(for: color).first(where: {
+    let colors: [AlienColor] = [.green, .pink, .blue]
+    func alien(for race: Race, color: AlienColor) -> Alien? {
+        return alienOptions(for: color).first(where: {
             return $0.race == race
         })
     }
-    func characterOptions(for color: CharacterColor) -> [Character] {
+    func alienOptions(for color: AlienColor) -> [Alien] {
         switch color {
         case .green:
-            return [Character(race: .one, color: color, avatar: #imageLiteral(resourceName: "im_alien1_green")), Character(race: .two, color: color, avatar: #imageLiteral(resourceName: "im_alien2_green")), Character(race: .three, color: color, avatar: #imageLiteral(resourceName: "im_alien3_green"))]
+            return [Alien(race: .one, color: color), Alien(race: .two, color: color), Alien(race: .three, color: color)]
         case .pink:
-            return [Character(race: .one, color: color, avatar: #imageLiteral(resourceName: "im_alien1_pink")), Character(race: .two, color: color, avatar: #imageLiteral(resourceName: "im_alien2_pink")), Character(race: .three, color: color, avatar: #imageLiteral(resourceName: "im_alien3_pink"))]
+            return [Alien(race: .one, color: color), Alien(race: .two, color: color), Alien(race: .three, color: color)]
         case .blue:
-            return [Character(race: .one, color: color, avatar: #imageLiteral(resourceName: "im_alien1_blue")), Character(race: .two, color: color, avatar: #imageLiteral(resourceName: "im_alien2_blue")), Character(race: .three, color: color, avatar: #imageLiteral(resourceName: "im_alien3_blue"))]
+            return [Alien(race: .one, color: color), Alien(race: .two, color: color), Alien(race: .three, color: color)]
         default:
-            return [Character(race: .one, color: color, avatar: #imageLiteral(resourceName: "im_alien1_green")), Character(race: .two, color: color, avatar: #imageLiteral(resourceName: "im_alien2_green")), Character(race: .three, color: color, avatar: #imageLiteral(resourceName: "im_alien3_green"))]
-
+            return [Alien(race: .one, color: color), Alien(race: .two, color: color), Alien(race: .three, color: color)]
         }
     }
     

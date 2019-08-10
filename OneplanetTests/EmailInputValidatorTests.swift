@@ -268,4 +268,20 @@ class InputValidatorTests: XCTestCase {
         XCTAssertNoThrow(try validator.validate("0800235123"))
         XCTAssertNoThrow(try validator.validate("0222351234#123"))
     }
+    
+    func testThrowsIfInvalidUsernameCharacters() {
+        let validator = UsernameInputValidator()
+        
+        XCTAssertThrowsError(try validator.validate("123 "))
+        XCTAssertThrowsError(try validator.validate("aa bb"))
+        XCTAssertThrowsError(try validator.validate(" aabb"))
+    }
+    
+    func testNotThrowsIfInvalidUsernameCharacters() {
+        let validator = UsernameInputValidator()
+        
+        XCTAssertNoThrow(try validator.validate("v.tcva58_z"))
+        XCTAssertNoThrow(try validator.validate("zcjwmsj168"))
+        XCTAssertNoThrow(try validator.validate("zcjwmsj-168"))
+    }
 }

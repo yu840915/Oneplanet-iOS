@@ -15,9 +15,19 @@ class ProfileDraft {
     let updateObservers = MulticastCallbackNode<()->()>()
     let intermediateNicknameValidator = InputLengthValidator(max: 30)
     let nicknameValidator = AndValidator([NonEmptyInputValidator(), InputLengthValidator(max: 30), NicknameInputValidator()])
+    let usernameValidator = AndValidator([InputLengthValidator(min: 5, max: 10), UsernameInputValidator()])
+    let intermediateUsernameValidator = AndValidator([InputLengthValidator(max: 10), UsernameInputValidator()])
+    
     var nickname: String = "" {
         didSet {
             if oldValue != nickname {
+                notifyChange()
+            }
+        }
+    }
+    var username: String = "" {
+        didSet {
+            if oldValue != username {
                 notifyChange()
             }
         }
@@ -36,7 +46,7 @@ class ProfileDraft {
             }
         }
     }
-    var character: Character?
+    var alien: Alien?
     
     func setDefaultAvatarIfAllowed(_ attachemnt: ImageAttachment) {
         guard avatar == nil else { return }
@@ -50,7 +60,16 @@ class ProfileDraft {
     }
     
     func validate() throws {
-        try nicknameValidator.validate(nickname)
+        try validateField(.username, input: username, validator: usernameValidator)
+        try validateField(.nickname, input: nickname, validator: nicknameValidator)
+    }
+    
+    private func validateField(_ field: Field, input: String, validator: TextInputValidator) throws {
+        do {
+            try validator.validate(input)
+        } catch let error as NSError {
+            throw ProfileDraftInputError(field: field, inputError: error)
+        }
     }
     
     var isValid: Bool {
@@ -66,9 +85,29 @@ class ProfileDraft {
     
     init(profile: MyProfile) {
         nickname = profile.nickname
+        username = profile.username
         gender = profile.gender
     }
+    
+    enum Field {
+        case username, nickname
+    }
 }
+
+class ProfileDraftInputError: NSError {
+    let field: ProfileDraft.Field
+    let inputError: NSError
+    init(field: ProfileDraft.Field, inputError: NSError) {
+        self.field = field
+        self.inputError = inputError
+        super.init(domain: inputError.domain, code: inputError.code, userInfo: inputError.userInfo)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
 
 class UpdateProfileOperation: SimpleAsynchronousOperation, FailableOperationType {
     let draft: ProfileDraft
@@ -144,8 +183,19 @@ class UpdateProfileContentOperation: AlamofireAPIAccessOperation {
     }
     
     override func prepareDataRequest() throws -> DataRequest {
+        return Alamofire.request(ServiceURLs.base.appendingPathComponent("me"), method: .put, parameters: try serializeProfileDraft(), encoding: JSONEncoding.default, headers: session.authorizationHeader)
+    }
+    
+    private func serializeProfileDraft() throws -> Parameters {
         try draft.validate()
-        return Alamofire.request(ServiceURLs.base.appendingPathComponent("me"), method: .put, parameters: ["username": draft.nickname], encoding: JSONEncoding.default, headers: session.authorizationHeader)
+        var result: Parameters = ["username": draft.username, "nickname": draft.nickname]
+        if let gender = draft.gender.toString() {
+            result["gender"] = gender
+        }
+        if let alien = draft.alien {
+            result["alien"] = ["avatar": alien.race.rawValue, "color": alien.color.rawValue]
+        }
+        return result
     }
 }
 

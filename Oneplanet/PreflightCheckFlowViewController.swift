@@ -63,7 +63,7 @@ class PreflightCheckFlowViewController: UIViewController, UserSessionDepending {
     private func nextStep(with profile: MyProfile) {
         if profile.nickname.isEmpty {
             startProfileCreation(with: profile)
-        } else if profile.character == nil {
+        } else if profile.alien == nil {
             startSelectCharacter(with: profile)
         } else {
             didFinishPreflightCheck?()

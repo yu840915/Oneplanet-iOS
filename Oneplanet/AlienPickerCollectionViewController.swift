@@ -12,7 +12,7 @@ private let reuseIdentifier = "cell"
 
 class AlienPickerCollectionViewController: UICollectionViewController {
     
-    var characters: [Character] = [] {
+    var characters: [Alien] = [] {
         didSet {
             if isViewLoaded {
                 updateSections()
@@ -96,7 +96,7 @@ class AlienPickerCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let section = sections[indexPath.section]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! AlienCell
-        let character: Character
+        let character: Alien
         switch section {
         case .headPadding: character = characters[characters.endIndex - 2 + indexPath.row]
         case .endPadding, .body: character = characters[indexPath.row]

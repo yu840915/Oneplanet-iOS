@@ -9,10 +9,10 @@
 import UIKit
 
 protocol UserProfileDisplayable {
-    var displayID: String {get}
+    var username: String {get}
     var nickname: String {get}
     var avatar: WebImageInfo? {get}
-    var character: Character? {get}
+    var alien: Alien? {get}
 }
 
 protocol FollowCountsProvider {
@@ -93,9 +93,9 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
     
     private func updateViewsForProfile() {
         guard let profile = self.profile else { return }
-        avatarView.backgrondImage = profile.character?.race.frameImage
+        avatarView.backgrondImage = profile.alien?.race.frameImage
         nicknameLabel.text = profile.nickname
-        if let image = profile.character?.avatar {
+        if let image = profile.alien?.avatar {
             raceImageView.image = image
         }
         actionButton.isHidden = !configuration.actionButton

@@ -12,9 +12,9 @@ private let reuseIdentifier = "cell"
 
 class ColorPickerCollectionViewController: UICollectionViewController {
     
-    var colors: [CharacterColor] = []
-    var selectedColor: CharacterColor?
-    var didChangeSelection: ((CharacterColor)->())?
+    var colors: [AlienColor] = []
+    var selectedColor: AlienColor?
+    var didChangeSelection: ((AlienColor)->())?
     
     override func viewDidLoad() {
         super.viewDidLoad()

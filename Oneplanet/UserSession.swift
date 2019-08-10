@@ -30,19 +30,21 @@ class UserSession {
     private(set) var isActive = true
     let sessionBecomeInactiveObservers = MulticastCallbackNode<()->()>()
     private(set) var updateProfileOperation: UpdateProfileOperation?
+    private var submitProfileCompletion: ((Bool, Error?)->())?
     
     init(token: String, loginType: LoginType) {
         self.bearerToken = token
         self.loginType = loginType
     }
     
-    func submitProfileChanges(with draft: ProfileDraft) {
+    func submitProfileChanges(with draft: ProfileDraft, completion: ((Bool, Error?)->())? = nil) {
         updateProfileOperation?.cancel()
         let op = UpdateProfileOperation(draft: draft, session: self)
         op.completionBlock = {[weak self] in
             self?.didSubmitProfileChanges()
         }
         updateProfileOperation = op
+        submitProfileCompletion = completion
         op.start()
     }
     
@@ -51,8 +53,10 @@ class UserSession {
         updateProfileOperation = nil
         if op.success == true {
             let draft = op.draft
-            profile = MyProfile(id: profile!.displayID, nickname: draft.nickname, gender: draft.gender, avatar: profile!.avatar)
+            profile = MyProfile(id: profile!.id, username: draft.username, nickname: draft.nickname, gender: draft.gender, avatar: profile!.avatar)
         }
+        submitProfileCompletion?(op.success ?? false, op.error)
+        submitProfileCompletion = nil
     }
     
     func updateProfile(_ profile: MyProfile) {
@@ -127,35 +131,42 @@ enum LoginType {
 }
 
 class MyProfile: Decodable, UserProfileDisplayable {
-    let displayID: String
+    let id: String
     let nickname: String
+    let username: String
     fileprivate(set) var avatar: WebImageInfo?
-    var character: Character?
+    var alien: Alien?
     let gender: Gender
     enum CodingKeys: String, CodingKey {
         case id
-        case nickname = "username"
+        case nickname
+        case username
+        case gender
     }
     
-    init(id: String, nickname: String, gender: Gender = .unknown, avatar: WebImageInfo?) {
-        self.displayID = id
+    init(id: String, username: String, nickname: String, gender: Gender, avatar: WebImageInfo?) {
+        self.id = id
         self.nickname = nickname
         self.avatar = avatar
         self.gender = gender
+        self.username = username
     }
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        displayID = try container.decode(String.self, forKey: .id)
+        id = try container.decode(String.self, forKey: .id)
         nickname = try container.decodeIfPresent(String.self, forKey: .nickname) ?? ""
-        gender = .unknown
+        username = try container.decodeIfPresent(String.self, forKey: .username) ?? ""
+        gender = Gender.from(try container.decodeIfPresent(String.self, forKey: .gender))
     }
     
     func updating(with draft: ProfileDraft) -> MyProfile {
-        let profile = MyProfile(id: displayID,
+        let profile = MyProfile(id: id,
+                                username: draft.username,
                                 nickname: draft.nickname,
+                                gender: draft.gender,
                                 avatar: avatar)
-        profile.character = draft.character
+        profile.alien = draft.alien
         return profile
     }
 }
@@ -170,11 +181,27 @@ enum Gender {
         }
     }
     static var options: [Gender] = [.unknown, .male, .female]
+    static func from(_ rawValue: String?) -> Gender {
+        guard let val = rawValue else {return .unknown}
+        switch val.lowercased() {
+        case "m": return .male
+        case "f": return .female
+        default: return .unknown
+        }
+    }
+    
+    func toString() -> String? {
+        switch self {
+        case .male: return "M"
+        case .female: return "F"
+        default: return nil
+        }
+    }
 }
 
 class GuestProfile: MyProfile {
     init() {
-        super.init(id: "", nickname: "Guest", avatar: nil)
+        super.init(id: "", username: "guest", nickname: "Guest", gender: .unknown, avatar: nil)
     }
     
     required init(from decoder: Decoder) throws {

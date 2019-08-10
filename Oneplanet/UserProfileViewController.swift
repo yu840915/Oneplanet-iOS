@@ -44,7 +44,7 @@ class UserProfileViewController: UIViewController, UserSessionDepending {
     }
     
     private func updateViewsForProfile() {
-        idHeader?.idLabel.text = profile.displayID
+        idHeader?.idLabel.text = profile.username
         profileController.profile = profile
     }
     
@@ -128,8 +128,8 @@ private extension UserProfileViewController {
     }
     
     func copyID() {
-        UIPasteboard.general.string = profile.displayID
-        Toast.show(with: String(format: Localized.messageFormats.didCopyId, profile.displayID))
+        UIPasteboard.general.string = profile.username
+        Toast.show(with: String(format: Localized.messageFormats.didCopyId, profile.username))
     }
     
     func followUser() {

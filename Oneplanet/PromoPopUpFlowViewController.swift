@@ -25,7 +25,7 @@ class PromoPopUpFlowViewController: UIViewController, UserSessionDepending, Defa
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var retryButton: UIButton!
     
-    fileprivate(set) var promoPages: [PromotionPage] = []
+    fileprivate(set) var promoPages: [PromotionAd] = []
     fileprivate var getPageListOperaion: GetPromotionPageListOperation?
     fileprivate var appearanceAction: (()->())?
     fileprivate var isViewVisible = false
@@ -67,7 +67,7 @@ class PromoPopUpFlowViewController: UIViewController, UserSessionDepending, Defa
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? PromoPopUpViewController {
-            vc.page = (sender as! PromotionPage)
+            vc.page = (sender as! PromotionAd)
             vc.dismissAction = {[weak self] in
                 self?.dismissCurrentAndShowNextIfAvailable()
             }

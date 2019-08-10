@@ -23,6 +23,14 @@ class WebLinkingKeyMap {
     func findKey(for keyFrag: String) -> String? {
         return map[keyFrag]
     }
+    
+    func findLink(in response: HTTPURLResponse, for keyFrag: String) -> URL? {
+        guard let rel = findKey(for: PageRelation.next),
+            let link = response.findLink(relation: rel) else  {
+                return nil
+        }
+        return URL(string: link.uri)
+    }
 }
 
 struct PageRelation {

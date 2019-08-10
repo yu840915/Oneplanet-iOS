@@ -17,8 +17,7 @@ class HotHeaderCollectionViewController: UICollectionViewController, UserSession
     }
     var userSession: UserSession!
 
-    typealias ItemType = UIColor
-    var items: [ItemType] = [] {
+    var items: [CollectionItem] = [] {
         didSet {
             if isViewLoaded {
                 updateSections()
@@ -32,7 +31,6 @@ class HotHeaderCollectionViewController: UICollectionViewController, UserSession
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        items = [.red, .yellow, .blue]
         updateSections()
     }
     
@@ -113,13 +111,12 @@ class HotHeaderCollectionViewController: UICollectionViewController, UserSession
         let section = sections[indexPath.section]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         
-        let item: ItemType
+        let item: CollectionItem
         switch section {
         case .headPadding: item = items.last!
         case .endPadding: item = items.first!
         case .body: item = items[indexPath.row]
         }
-        cell.backgroundColor = item
         return cell
     }
 

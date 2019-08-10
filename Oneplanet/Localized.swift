@@ -712,6 +712,9 @@ class EmptyMessages {//no_
     var followingList: String {
         return NSLocalizedString("no_following_list", comment: "")
     }
+    var generic: String {
+        return NSLocalizedString("no_generic", comment: "")
+    }
 }
 
 class LocalizedErrorsTitles {//errtl_

@@ -215,6 +215,7 @@
 "no_block_list" = "Empty list";
 "no_follower_list" = "You don't have followers yet";
 "no_following_list" = "You haven't followed others yet";
+"no_generic" = "No Items";
 
 "err_no_camera_access" = "啟用相機權限";
 "err_no_library_access" = "啟用圖庫存取權限";

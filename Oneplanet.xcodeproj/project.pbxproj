@@ -60,6 +60,8 @@
 		E05398C522FE98AC00AAF803 /* WebLinkingKeyMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05398C422FE98AC00AAF803 /* WebLinkingKeyMap.swift */; };
 		E05398C722FE9D8400AAF803 /* WebLinking.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05398C622FE9D8400AAF803 /* WebLinking.swift */; };
 		E05398C922FEA2A000AAF803 /* CollectionItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05398C822FEA2A000AAF803 /* CollectionItemTests.swift */; };
+		E05398CB22FEB0E700AAF803 /* TabbarHidingSignalProducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05398CA22FEB0E700AAF803 /* TabbarHidingSignalProducer.swift */; };
+		E05398CD22FEB24D00AAF803 /* HotPageLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05398CC22FEB24D00AAF803 /* HotPageLists.swift */; };
 		E055ACA72293D114000B7B31 /* ProfileEditorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E055ACA62293D114000B7B31 /* ProfileEditorTableViewController.swift */; };
 		E05BB25E226D5D2A00721F20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BB25D226D5D2A00721F20 /* AppDelegate.swift */; };
 		E05BB260226D5D2A00721F20 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BB25F226D5D2A00721F20 /* RootViewController.swift */; };
@@ -256,6 +258,8 @@
 		E05398C422FE98AC00AAF803 /* WebLinkingKeyMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebLinkingKeyMap.swift; sourceTree = "<group>"; };
 		E05398C622FE9D8400AAF803 /* WebLinking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebLinking.swift; sourceTree = "<group>"; };
 		E05398C822FEA2A000AAF803 /* CollectionItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionItemTests.swift; sourceTree = "<group>"; };
+		E05398CA22FEB0E700AAF803 /* TabbarHidingSignalProducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarHidingSignalProducer.swift; sourceTree = "<group>"; };
+		E05398CC22FEB24D00AAF803 /* HotPageLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotPageLists.swift; sourceTree = "<group>"; };
 		E055ACA62293D114000B7B31 /* ProfileEditorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditorTableViewController.swift; sourceTree = "<group>"; };
 		E05BB25A226D5D2A00721F20 /* Oneplanet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oneplanet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E05BB25D226D5D2A00721F20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -448,7 +452,9 @@
 				E00611F32294FFF10032AE30 /* HotNavigationItems.xib */,
 				E00611F5229500FA0032AE30 /* HotNavigationItemView.swift */,
 				E00611F12294F5680032AE30 /* HotCollectionViewController.swift */,
+				E05398CA22FEB0E700AAF803 /* TabbarHidingSignalProducer.swift */,
 				E003BA372296933F001814F4 /* HotHeaderCollectionViewController.swift */,
+				E05398CC22FEB24D00AAF803 /* HotPageLists.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -1123,6 +1129,7 @@
 				E077A72E22DDA4C300A2245E /* NoticeList.swift in Sources */,
 				E0BAB71F228482D1007E747C /* InputFieldView.swift in Sources */,
 				E0FE73AC22F5724D00CE665B /* UserSearchTableViewController.swift in Sources */,
+				E05398CB22FEB0E700AAF803 /* TabbarHidingSignalProducer.swift in Sources */,
 				E081591122A65276007C9776 /* PurpleGemStoreViewController.swift in Sources */,
 				E0DCD05522B8B620008D9C63 /* ShippingInfoEditorHelpers.swift in Sources */,
 				E0190F53226DD62200C212D5 /* UserProgressChecklist.swift in Sources */,
@@ -1186,6 +1193,7 @@
 				E0DA38A022C282EC00EC4170 /* GemPickerTableViewController.swift in Sources */,
 				E00611F6229500FA0032AE30 /* HotNavigationItemView.swift in Sources */,
 				E02F49CB22E5948A0014DEBE /* FriendListsViewController.swift in Sources */,
+				E05398CD22FEB24D00AAF803 /* HotPageLists.swift in Sources */,
 				E05398C722FE9D8400AAF803 /* WebLinking.swift in Sources */,
 				E06F4FFE22789C760067DAE4 /* AppLifeCycleObserver.swift in Sources */,
 				E032844F22ABB2FE001F02E8 /* BadgeView.swift in Sources */,

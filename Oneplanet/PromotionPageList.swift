@@ -9,14 +9,14 @@
 import Foundation
 
 class PromotionPageList {
-    let pages: [PromotionPage]
+    let pages: [PromotionAd]
     
-    init(pages: [PromotionPage]) {
+    init(pages: [PromotionAd]) {
         self.pages = pages
     }
 }
 
-class PromotionPage {
+class PromotionAd {
     let id: String
     let link: URL?
     let poster: WebImageInfo
@@ -27,9 +27,9 @@ class PromotionPage {
         poster = WebImageInfo(url: ServiceURLs.base.appendingPathComponent("ad/\(id).jpg"))
     }
     
-    class func from(_ collectionItem: CollectionItem) -> PromotionPage? {
+    class func from(_ collectionItem: CollectionItem) -> PromotionAd? {
         guard collectionItem.type.lowercased() == "ad" else {return nil}
-        return PromotionPage(id: collectionItem.id, link: collectionItem.link)
+        return PromotionAd(id: collectionItem.id, link: collectionItem.link)
     }
 }
 
@@ -48,7 +48,7 @@ class GetPromotionPageListOperation: AlamofireAPIAccessOperation {
     
     override func processData(with data: Data) throws {
         let items = try JSONDecoder.default.decode([CollectionItem].self, from: data)
-        list = PromotionPageList(pages: items.compactMap{PromotionPage.from($0)})
+        list = PromotionPageList(pages: items.compactMap{PromotionAd.from($0)})
     }
 }
 

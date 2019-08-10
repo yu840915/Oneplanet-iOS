@@ -13,7 +13,7 @@ class PromoPopUpViewController: UIViewController {
 
     @IBOutlet weak var goButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
-    var page: PromotionPage!
+    var page: PromotionAd!
     var dismissAction: (()->())?
     var linkHandler: ((URL)->(Bool))?
     

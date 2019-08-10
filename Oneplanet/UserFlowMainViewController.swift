@@ -215,7 +215,7 @@ fileprivate extension UserFlowMainViewController {
         }
         guard promoPopUpSupressionRequests.isEmpty else { return }
         guard getPageListOperaion == nil else { return }
-        let op = GetPromotionPageListOperation()
+        let op = GetPromotionPageListOperation(session: userSession)
         op.completionBlock = {[weak self] in
             OperationQueue.main.addOperation {
                 self?.didGetPromoPopup()

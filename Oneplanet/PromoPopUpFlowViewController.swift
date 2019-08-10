@@ -85,7 +85,7 @@ fileprivate extension PromoPopUpFlowViewController {
         processingContainerView.isHidden = false
         errorView.isHidden = true
         loadingIndicator.startAnimating()
-        let op = GetPromotionPageListOperation()
+        let op = GetPromotionPageListOperation(session: userSession)
         op.completionBlock = {[weak self] in
             OperationQueue.main.addOperation {
                 self?.didGetPromotionPageList()

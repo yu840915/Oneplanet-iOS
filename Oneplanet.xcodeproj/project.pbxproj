@@ -62,6 +62,8 @@
 		E05398C922FEA2A000AAF803 /* CollectionItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05398C822FEA2A000AAF803 /* CollectionItemTests.swift */; };
 		E05398CB22FEB0E700AAF803 /* TabbarHidingSignalProducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05398CA22FEB0E700AAF803 /* TabbarHidingSignalProducer.swift */; };
 		E05398CD22FEB24D00AAF803 /* HotPageLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05398CC22FEB24D00AAF803 /* HotPageLists.swift */; };
+		E05398CF22FF0F5000AAF803 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05398CE22FF0F5000AAF803 /* Product.swift */; };
+		E05398D122FF1C6600AAF803 /* ProductTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05398D022FF1C6600AAF803 /* ProductTests.swift */; };
 		E055ACA72293D114000B7B31 /* ProfileEditorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E055ACA62293D114000B7B31 /* ProfileEditorTableViewController.swift */; };
 		E05BB25E226D5D2A00721F20 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BB25D226D5D2A00721F20 /* AppDelegate.swift */; };
 		E05BB260226D5D2A00721F20 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BB25F226D5D2A00721F20 /* RootViewController.swift */; };
@@ -260,6 +262,8 @@
 		E05398C822FEA2A000AAF803 /* CollectionItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionItemTests.swift; sourceTree = "<group>"; };
 		E05398CA22FEB0E700AAF803 /* TabbarHidingSignalProducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarHidingSignalProducer.swift; sourceTree = "<group>"; };
 		E05398CC22FEB24D00AAF803 /* HotPageLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotPageLists.swift; sourceTree = "<group>"; };
+		E05398CE22FF0F5000AAF803 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		E05398D022FF1C6600AAF803 /* ProductTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductTests.swift; sourceTree = "<group>"; };
 		E055ACA62293D114000B7B31 /* ProfileEditorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditorTableViewController.swift; sourceTree = "<group>"; };
 		E05BB25A226D5D2A00721F20 /* Oneplanet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Oneplanet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E05BB25D226D5D2A00721F20 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -532,6 +536,7 @@
 				E0A4618322B5405700D26720 /* ShippingInfoDraft.swift */,
 				E0A4618922B6347800D26720 /* PhoneNumberBuilder.swift */,
 				E032844A22AB7A90001F02E8 /* BiddingProcessTableViewController.swift */,
+				E05398CE22FF0F5000AAF803 /* Product.swift */,
 				E0DA389C22C27FC600EC4170 /* Unlock and Bid */,
 			);
 			name = Auction;
@@ -650,6 +655,7 @@
 				E0B1E19022C9087D00F41248 /* IAPProductTypeTests.swift */,
 				E0DE81B522DEB2CC00F785E3 /* DateFromNowFormatterTests.swift */,
 				E05398C822FEA2A000AAF803 /* CollectionItemTests.swift */,
+				E05398D022FF1C6600AAF803 /* ProductTests.swift */,
 				E05BB274226D5D2F00721F20 /* Info.plist */,
 			);
 			path = OneplanetTests;
@@ -1113,6 +1119,7 @@
 				E0814E3522DC2BBF002D0E32 /* NoticeTableViewController.swift in Sources */,
 				E0837EF5228022C400B13BAF /* TwitterLogIn.swift in Sources */,
 				E0A4617A22B2984A00D26720 /* BiddingListHeader.swift in Sources */,
+				E05398CF22FF0F5000AAF803 /* Product.swift in Sources */,
 				E0125F9A22EADD8900AFF763 /* PostDetailViewController.swift in Sources */,
 				E07276FD2277424E001239C0 /* URLRouter.swift in Sources */,
 				E0B7B9CA22E1D8580005DF77 /* BlockListTableViewController.swift in Sources */,
@@ -1249,6 +1256,7 @@
 				E0814FB522873103002F1C02 /* RoughNumberFormatterTests.swift in Sources */,
 				E0DE81B622DEB2CC00F785E3 /* DateFromNowFormatterTests.swift in Sources */,
 				E0D1BBD922ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift in Sources */,
+				E05398D122FF1C6600AAF803 /* ProductTests.swift in Sources */,
 				E05398C922FEA2A000AAF803 /* CollectionItemTests.swift in Sources */,
 				E0FF797A228C3F6800F61318 /* MyProfileTests.swift in Sources */,
 				E05BB273226D5D2F00721F20 /* OneplanetTests.swift in Sources */,

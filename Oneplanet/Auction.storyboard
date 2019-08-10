@@ -1075,7 +1075,7 @@ The winner must check if the Receipt information is filled in to ensure that the
         <!--Navigation Controller-->
         <scene sceneID="pFv-bA-ExP">
             <objects>
-                <navigationController id="rgg-0G-mBk" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="productDetail" id="rgg-0G-mBk" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jg5-f4-dAx">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1091,7 +1091,7 @@ The winner must check if the Receipt information is filled in to ensure that the
         <!--Product Detail View Controller-->
         <scene sceneID="JKl-9L-GYg">
             <objects>
-                <viewController id="Kvw-Xq-bR5" customClass="ProductDetailViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProductDetailViewController" id="Kvw-Xq-bR5" customClass="ProductDetailViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4fI-dk-UoM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1099,8 +1099,8 @@ The winner must check if the Receipt information is filled in to ensure that the
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_bgall" translatesAutoresizingMaskIntoConstraints="NO" id="6oH-Ys-TL8">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZXb-JW-AKT">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                            <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZXb-JW-AKT">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oxS-Zv-zib">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="543.5"/>
@@ -1248,6 +1248,7 @@ The winner must check if the Receipt information is filled in to ensure that the
                     </view>
                     <navigationItem key="navigationItem" id="apN-VH-OMd"/>
                     <connections>
+                        <outlet property="contentContainer" destination="ZXb-JW-AKT" id="I4p-CJ-TY8"/>
                         <outlet property="detailTextView" destination="gvk-tN-Wxe" id="Nkc-Zq-Tuc"/>
                         <outlet property="galleryCollectionView" destination="9mQ-1R-MJt" id="kUU-JZ-ghA"/>
                         <outlet property="lockButton" destination="Low-rR-min" id="YRP-R9-j7g"/>
@@ -2209,7 +2210,7 @@ The winner must check if the Receipt information is filled in to ensure that the
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="c3P-m4-Ttc"/>
+        <segue reference="Jan-oh-NbX"/>
         <segue reference="8pF-Y6-fub"/>
     </inferredMetricsTieBreakers>
 </document>

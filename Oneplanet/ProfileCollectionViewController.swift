@@ -141,7 +141,6 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
         guard sections[indexPath.section] == .posts else { return }
         showPostDetailAction?(posts[indexPath.row])
     }
-
 }
 
 extension ProfileCollectionViewController {

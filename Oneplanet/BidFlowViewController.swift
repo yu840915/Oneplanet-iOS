@@ -10,7 +10,7 @@ import UIKit
 
 class BidFlowViewController: UIViewController, UserSessionDepending {
     var userSession: UserSession!
-    var product: Product! = Product()
+    var product: Product!
 
     var pageViewController: UIPageViewController!
     override func viewDidLoad() {
@@ -44,7 +44,7 @@ extension BidFlowViewController {
         let product = self.product!
         let container = prepareActionPopUp{[weak self] vc in
             vc.configuration =
-                BidWithBlueGemPopUpConfiguration(productName: product.name, formattedPrice: "$1.99")
+                BidWithBlueGemPopUpConfiguration(productName: product.displayName, formattedPrice: "$1.99")
             vc.mainAction = {
                 self?.bid(with: .blueGem)
             }

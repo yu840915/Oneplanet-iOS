@@ -16,6 +16,7 @@ class HotHeaderCollectionViewController: UICollectionViewController, UserSession
         return UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HotHeaderCollectionViewController") as! HotHeaderCollectionViewController
     }
     var userSession: UserSession!
+    var showDetailAction: ((CollectionItemPreviewing)->())?
 
     var items: [CollectionItemPreviewing] = [] {
         didSet {
@@ -128,6 +129,10 @@ class HotHeaderCollectionViewController: UICollectionViewController, UserSession
 
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return true
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        showDetailAction?(items[indexPath.row])
     }
     
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {

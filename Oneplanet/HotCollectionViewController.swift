@@ -169,6 +169,9 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
         addChild(vc)
         header.setUp(vc)
         vc.didMove(toParent: self)
+        vc.showDetailAction = {[weak self] item in
+            self?.showDetail(for: item)
+        }
         headerController = vc
     }
 
@@ -181,10 +184,25 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return true
     }
-
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        showDetail(for: hotItems[indexPath.row])
+    }
 }
 
 private extension HotCollectionViewController {
+    func showDetail(for item: CollectionItemPreviewing) {
+        if let product = item as? CollectionProductItem {
+            performSegue(withIdentifier: SegueID.showProductDetail, sender: product)
+        } else if let category = item as? CollectionCategoryItem {
+            router.handle(DeepLinks.categoryList.appendingPathComponent(category.id))
+        } else if let ad = item as? PromotionAd {
+            if let link = ad.link {
+                router.handle(link)
+            }
+        }
+    }
+    
     func prepareLists() {
         let hot = HotItemList(session: userSession)
         let banner = BannerItemList(session: userSession)
@@ -272,6 +290,7 @@ extension HotCollectionViewController {
     }
     struct SegueID {
         static let showPromoPopup = "showPromoPopup"
+        static let showProductDetail = "showProductDetail"
     }
 }
 

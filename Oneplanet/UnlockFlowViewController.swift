@@ -10,7 +10,7 @@ import UIKit
 
 class UnlockFlowViewController: UIViewController, UserSessionDepending {
     var userSession: UserSession!
-    var product: Product! = Product()
+    var product: Product!
     
     var pageViewController: UIPageViewController!
     override func viewDidLoad() {
@@ -44,7 +44,7 @@ private extension UnlockFlowViewController {
     func showGreenGemPopUp() {
         let product = self.product!
         let container = prepareActionPopUp{[weak self] vc in
-            vc.configuration = UnlockWithGreenGemPopUpConfiguration(productName: product.name)
+            vc.configuration = UnlockWithGreenGemPopUpConfiguration(productName: product.displayName)
             vc.mainAction = {
                 self?.unlock(with: .greenGem)
             }
@@ -140,8 +140,4 @@ extension UnlockFlowViewController {
         static let actionPopUpEntry = "GemActionPopUpEntry"
         static let pickerEntry = "GemPickerEntry"
     }
-}
-
-class Product {
-    let name = "T-Shirt"
 }

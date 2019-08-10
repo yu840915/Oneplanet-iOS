@@ -12,6 +12,10 @@ import Kingfisher
 class ProductDetailViewController: UIViewController, UserSessionDepending {
 
     var userSession: UserSession!
+    var product: Product?
+    var getDetailOperation: GetProductDetailOperation!
+
+    @IBOutlet weak var contentContainer: UIScrollView!
     @IBOutlet weak var lockView: UIStackView!
     @IBOutlet weak var lockButton: UIButton!
     @IBOutlet weak var lockLabel: UILabel!
@@ -29,7 +33,11 @@ class ProductDetailViewController: UIViewController, UserSessionDepending {
     override func viewDidLoad() {
         super.viewDidLoad()
         localizeTitles()
-        updateViewsForPreviews()
+        prepareAndGetProductDetail()
+    }
+    
+    private func prepareAndGetProductDetail() {
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

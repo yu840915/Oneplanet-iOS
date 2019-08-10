@@ -108,6 +108,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="mmk-1D-Rbb" kind="presentation" identifier="showPromoPopup" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="7dV-ci-XKD"/>
+                        <segue destination="YNk-Gg-1Pp" kind="show" identifier="showProductDetail" id="N9w-Ir-7oX"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="55Y-VR-dPf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -121,6 +122,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bi7-ma-hlp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1128" y="110"/>
+        </scene>
+        <!--ProductDetailViewController-->
+        <scene sceneID="YWx-MY-wN9">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Auction" referencedIdentifier="ProductDetailViewController" id="YNk-Gg-1Pp" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E2j-UB-JYg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1110" y="198"/>
         </scene>
         <!--Hot Header Collection View Controller-->
         <scene sceneID="hFp-1m-i6i">

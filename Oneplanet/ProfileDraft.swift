@@ -188,7 +188,7 @@ class UpdateProfileContentOperation: AlamofireAPIAccessOperation {
     
     private func serializeProfileDraft() throws -> Parameters {
         try draft.validate()
-        var result: Parameters = ["username": draft.username, "nickname": draft.nickname]
+        var result: Parameters = ["username": draft.username, "display_name": draft.nickname]
         if let gender = draft.gender.toString() {
             result["gender"] = gender
         }

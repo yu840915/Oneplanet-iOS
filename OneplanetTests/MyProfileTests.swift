@@ -24,7 +24,7 @@ class MyProfileTests: XCTestCase {
 {
     "id": "AD123FDF13",
     "username": "zcjwmsj168",
-    "nickname": "Mike 123",
+    "display_name": "Mike 123",
 }
 """.data(using: .utf8)!
         do {

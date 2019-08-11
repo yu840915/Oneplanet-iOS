@@ -139,9 +139,10 @@ class MyProfile: Decodable, UserProfileDisplayable {
     let gender: Gender
     enum CodingKeys: String, CodingKey {
         case id
-        case nickname
+        case nickname = "display_name"
         case username
         case gender
+        case alien
     }
     
     init(id: String, username: String, nickname: String, gender: Gender, avatar: WebImageInfo?) {
@@ -158,6 +159,7 @@ class MyProfile: Decodable, UserProfileDisplayable {
         nickname = try container.decodeIfPresent(String.self, forKey: .nickname) ?? ""
         username = try container.decodeIfPresent(String.self, forKey: .username) ?? ""
         gender = Gender.from(try container.decodeIfPresent(String.self, forKey: .gender))
+        alien = try container.decodeIfPresent(Alien.self, forKey: .alien)
     }
     
     func updating(with draft: ProfileDraft) -> MyProfile {

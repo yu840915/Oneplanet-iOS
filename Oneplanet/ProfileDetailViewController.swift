@@ -100,6 +100,7 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
         }
         actionButton.isHidden = !configuration.actionButton
         countsTextView.isHidden = !configuration.detailLabel
+        avatarView.avatar = nil
         avatarView.avatar = profile.avatar
     }
     

@@ -192,6 +192,13 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         showDetail(for: hotItems[indexPath.row])
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let isLast = indexPath.row == (hotItems.count - 1)
+        if isLast {
+            hotList.loadMoreIfAllowed()
+        }
+    }
 }
 
 private extension HotCollectionViewController {

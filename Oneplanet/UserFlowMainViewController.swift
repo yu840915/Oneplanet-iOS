@@ -21,6 +21,7 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
     @IBOutlet weak var balloonString: UIImageView!
     @IBOutlet weak var balloonRightPadding: NSLayoutConstraint!
     @IBOutlet weak var balloonButton: UIButton!
+    var baloonNavigationCoordinator: BaloonNavigationCoordinator?
     
     class func fromDefaultStoryboard() -> UserFlowMainViewController {
         return UIStoryboard(name: "MainUserFlow", bundle: nil).instantiateInitialViewController() as! UserFlowMainViewController
@@ -77,6 +78,9 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
         appearanceAction?()
         appearanceAction = nil
         router.resume()
+        if baloonNavigationCoordinator == nil {
+            handleTabbarSwitch()
+        }
     }
     
     @IBAction func showCreationPortalIfAllowed(_ sender: UIButton) {
@@ -196,7 +200,7 @@ fileprivate extension UserFlowMainViewController {
         }
         contentTabbarController.selectedViewController = contentTabbarController.viewControllers![idx]
         OperationQueue.main.addOperation {
-            self.updateBalloonAppearance()
+            self.handleTabbarSwitch()
         }
     }
 
@@ -213,7 +217,18 @@ fileprivate extension UserFlowMainViewController {
     
     func updateBalloonAppearance() {
         let showingBid = TabFeature.list[contentTabbarController.selectedIndex] == .bid
-        [balloonButton, balloonString].forEach{$0?.isHidden = showingBid}
+        let canShowWithNav = baloonNavigationCoordinator?.canShowBaloon ?? true
+        if canShowWithNav {
+            OperationQueue.main.addOperation {
+                self.adjustTabBarFrame()
+            }
+        }
+        [balloonButton, balloonString].forEach{$0?.isHidden = showingBid || !canShowWithNav}
+    }
+    
+    func adjustTabBarFrame() {
+        let hot = contentTabbarController.viewControllers!.compactMap{$0 as? UINavigationController}.compactMap{$0.viewControllers.first as? HotCollectionViewController}.first!
+        contentTabbarController.tabBar.frame = hot.expectedTabbarFrame
     }
     
     func showCategoryList(with query: String) {
@@ -302,8 +317,19 @@ extension UserFlowMainViewController: UITabBarControllerDelegate {
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        handleTabbarSwitch()
+    }
+    
+    func handleTabbarSwitch() {
+        let nav = contentTabbarController.viewControllers![contentTabbarController.selectedIndex] as! UINavigationController
+        let coord = BaloonNavigationCoordinator(navigationController: nav)
+        coord.baloonAppearanceHandler = {[weak self] in
+            self?.updateBalloonAppearance()
+        }
+        baloonNavigationCoordinator = coord
         updateBalloonAppearance()
     }
+    
 }
 
 enum TabFeature {
@@ -337,4 +363,34 @@ extension UIViewController {
 
 protocol ScrollToTopHandler: AnyObject {
     func setWantsScrollToTop()
+}
+
+class BaloonNavigationCoordinator: NSObject, UINavigationControllerDelegate {
+    var baloonAppearanceHandler: (()->())?
+    private(set) var canShowBaloon: Bool {
+        didSet {
+            if oldValue != canShowBaloon {
+                baloonAppearanceHandler?()
+            }
+        }
+    }
+    let navigationController: UINavigationController
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+        canShowBaloon = (navigationController.viewControllers.count == 1)
+        super.init()
+        navigationController.delegate = self
+    }
+    
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        if viewController != navigationController.viewControllers.first {
+            canShowBaloon = false
+        }
+    }
+    
+    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+        if viewController == navigationController.viewControllers.first {
+            canShowBaloon = true
+        }
+    }
 }

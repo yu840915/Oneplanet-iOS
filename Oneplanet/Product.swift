@@ -14,6 +14,9 @@ class ProductOverview: Decodable {
     let description: String
     let name: String
     let displayName: String
+    var cover: WebImageInfo {
+        return WebImageInfo(url: ServiceURLs.base.appendingPathComponent("product/\(name)"))
+    }
     
     enum CodingKeys: String, CodingKey {
         case description, name
@@ -72,14 +75,16 @@ class GetProductDetailOperation: AlamofireAPIAccessOperation {
     ]
 }
 """.data(using: .utf8)!
-        product = try JSONDecoder.default.decode(Product.self, from: data)        
+        product = try JSONDecoder.default.decode(Product.self, from: data)
     }
     
 }
 
 class CategoryList: PaginatedList<GetProductCagegoryPageOperationFactory> {
-    init(session: UserSession, category: CollectionCategoryItem) {
-        super.init(operationFactory: GetProductCagegoryPageOperationFactory(session: session, query: category.id))
+    let query: String
+    init(session: UserSession, query: String) {
+        self.query = query
+        super.init(operationFactory: GetProductCagegoryPageOperationFactory(session: session, query: query))
     }
 }
 
@@ -139,5 +144,25 @@ class GetProductCagegoryPageOperation: AlamofireAPIAccessOperation, PaginatedFet
     override func processData(with data: Data) throws {
         items = try JSONDecoder.default.decode([ProductOverview].self, from: data)
     }
-
+    
+    override func willFinishProcess() throws {
+        let data = """
+[
+    {
+        "description": "This is the description of product 1",
+        "display_name": "Product 1",
+        "name": "product-1"
+    },
+    {
+        "description": "This is the description of product 2",
+        "display_name": "Product 2",
+        "name": "product-2"
+    }
+]
+""".data(using: .utf8)!
+        items = try JSONDecoder.default.decode([ProductOverview].self, from: data)
+    }
+    
 }
+
+

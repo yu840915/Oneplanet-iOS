@@ -10,7 +10,7 @@ import UIKit
 
 class UnlockFlowViewController: UIViewController, UserSessionDepending {
     var userSession: UserSession!
-    var product: Product!
+    var product: ProductOverview!
     
     var pageViewController: UIPageViewController!
     override func viewDidLoad() {

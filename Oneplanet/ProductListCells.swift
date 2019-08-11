@@ -1,0 +1,210 @@
+//
+//  ProductListCells.swift
+//  Oneplanet
+//
+//  Created by 立宣于 on 2019/8/11.
+//  Copyright © 2019 何一品居. All rights reserved.
+//
+
+import UIKit
+import Kingfisher
+
+class ProductOverviewCell: UITableViewCell {
+    @IBOutlet weak var contentBackgroundView: UIView!
+    @IBOutlet weak var previewImageView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var lockButton: UIButton!
+    @IBOutlet weak var lockLabel: UILabel!
+    var isLocked = true {
+        didSet {
+            if oldValue != isLocked {
+                updateViewsForLockState()
+            }
+        }
+    }
+    var unlockAction: (()->())?
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        contentBackgroundView.backgroundColor = .white
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        contentBackgroundView.backgroundColor = .white
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        updateViewsForLockState()
+        selectedBackgroundView = CommonViewFactory.shared.makeSelectionBackground()
+    }
+    
+    private func updateViewsForLockState() {
+        let appearance = isLocked ? LockAppearance.forLocked : LockAppearance.forUnlocked
+        lockLabel.text = appearance.title
+        lockLabel.textColor = appearance.color
+        lockButton.isEnabled = isLocked
+    }
+    
+    @IBAction func invokeUnlockAction(_ sender: UIButton) {
+        unlockAction?()
+    }
+}
+
+extension ProductOverviewCell {
+    func updateViews(with overview: ProductOverview) {
+        titleLabel.text = overview.displayName
+        previewImageView.kf.setImage(with: overview.cover.url)
+    }
+}
+
+class LockAppearance {
+    let title: String
+    let color: UIColor
+    init(title: String, color: UIColor) {
+        self.title = title
+        self.color = color
+    }
+    static let forLocked = LockAppearance(title: Localized.titles.unlock, color: ColorPalette.bidRed)
+    static let forUnlocked = LockAppearance(title: Localized.titles.unlocked, color: ColorPalette.bidGreen)
+}
+
+class BiddingProductCell: UITableViewCell {
+    @IBOutlet weak var contentBackgroundView: UIView!
+    
+    @IBOutlet weak var avatarContainer: UIView!
+    @IBOutlet weak var avatarView: AvatarView!
+    @IBOutlet weak var previewButton: UIButton!
+    @IBOutlet weak var countdownLabel: UILabel!
+    @IBOutlet weak var runningIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var bidButton: UIButton!
+    @IBOutlet weak var hundredLabel: UILabel!
+    @IBOutlet weak var tensLabel: UILabel!
+    @IBOutlet weak var digitLabel: UILabel!
+    @IBOutlet weak var coverView: UIView!
+    @IBOutlet var leadIndicators: [UIButton]!
+    var bidAction: (()->())?
+    var showDetailAction: (()->())?
+    
+    private let countdownTimeAttribute: [NSAttributedString.Key: Any] = [.kern: 3.5]
+    var deadline = Date() {
+        didSet {
+            tick()
+        }
+    }
+    let extractor: TimeIntervalComponentExtractor = {
+        let sec = TimeIntervalComponentExtractor(unitInterval: .second, next: nil)
+        return TimeIntervalComponentExtractor(unitInterval: .minute, next: sec)
+    }()
+    
+    let formatter: NumberFormatter = SharedNumberFormatters.clockComponent
+    
+    override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+        super.setHighlighted(highlighted, animated: animated)
+        contentBackgroundView.backgroundColor = .white
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        contentBackgroundView.backgroundColor = .white
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        selectedBackgroundView = CommonViewFactory.shared.makeSelectionBackground()
+        previewButton.imageView?.contentMode = .scaleAspectFill
+    }
+    
+    func tick() {
+        let i = deadline.timeIntervalSinceNow
+        let comps = TimeIntervalComponents(extractor.extract(from: i))
+        let min = formatter.string(for: comps.minutes) ?? "00"
+        let sec = formatter.string(for: comps.seconds) ?? "00"
+        var attr = countdownTimeAttribute
+        attr[.foregroundColor] =  i < .minute ? ColorPalette.bidRed : ColorPalette.bidGreen
+        countdownLabel.attributedText = NSAttributedString(string: min + ":" + sec, attributes: countdownTimeAttribute)
+    }
+    
+    @IBAction func invokeDetailAction(_ sender: Any) {
+        showDetailAction?()
+    }
+    
+    @IBAction func invokeBidAction(_ sender: UIButton) {
+        bidAction?()
+    }
+}
+
+class CountDownClockView: UIView {
+    @IBOutlet weak var dayValueLabel: UILabel!
+    @IBOutlet weak var hourValueLabel: UILabel!
+    @IBOutlet weak var minuteValueLabel: UILabel!
+    @IBOutlet weak var secondValueLabel: UILabel!
+    
+    var deadline = Date() {
+        didSet {
+            tick()
+        }
+    }
+    private let attributes: [NSAttributedString.Key: Any] = [.kern: 4.67]
+    let extractor: TimeIntervalComponentExtractor = {
+        let sec = TimeIntervalComponentExtractor(unitInterval: .second, next: nil)
+        let min = TimeIntervalComponentExtractor(unitInterval: .minute, next: sec)
+        let hour = TimeIntervalComponentExtractor(unitInterval: .hour, next: min)
+        return TimeIntervalComponentExtractor(unitInterval: .day, next: hour)
+    }()
+    let formatter: NumberFormatter = SharedNumberFormatters.clockComponent
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+    func tick() {
+        let comps = TimeIntervalComponents(extractor.extract(from: deadline.timeIntervalSinceNow))
+        dayValueLabel.attributedText = NSAttributedString(string: formatter.string(for: comps.days) ?? "00", attributes: attributes)
+        hourValueLabel.attributedText = NSAttributedString(string: formatter.string(for: comps.hours) ?? "00", attributes: attributes)
+        minuteValueLabel.attributedText = NSAttributedString(string: formatter.string(for: comps.minutes) ?? "00", attributes: attributes)
+        secondValueLabel.attributedText = NSAttributedString(string: formatter.string(for: comps.seconds) ?? "00", attributes: attributes)
+    }
+}
+
+class BiddingStateIndicationCell: UITableViewCell {
+    @IBOutlet weak var stateLabel: UILabel!
+    @IBOutlet weak var descriptionTextView: UITextView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        descriptionTextView.linkTextAttributes = [
+            .foregroundColor : ColorPalette.buttonGreen,
+            .font: UIFont.systemFont(ofSize: 12, weight: .semibold)]
+    }
+    
+    fileprivate func prepareWinnerNotice() -> NSAttributedString {
+        let text = String(format: Localized.messageFormats.winnerNotice, Localized.phrases.shippingInfo)
+        let linkRange = (text as NSString).range(of: Localized.phrases.shippingInfo)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        let attrStr = NSMutableAttributedString(string: text, attributes: [.foregroundColor : ColorPalette.defaultText, .paragraphStyle: paragraphStyle])
+        attrStr.addAttributes([.link : DeepLinks.shippingInfo], range: linkRange)
+        return attrStr
+    }
+}
+
+class RunningBiddingIndicationCell: BiddingStateIndicationCell {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        stateLabel.text = Localized.activity.bidding
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        let attrStr = NSMutableAttributedString(string: Localized.messages.ongoingBidding + "\n", attributes: [.foregroundColor : ColorPalette.defaultText, .paragraphStyle: paragraphStyle])
+        attrStr.append(prepareWinnerNotice())
+        descriptionTextView.attributedText = attrStr
+    }
+}
+
+class BiddingEndIndicationCell: BiddingStateIndicationCell {
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        stateLabel.text = Localized.activity.biddingEnded
+        descriptionTextView.attributedText = prepareWinnerNotice()
+    }
+}

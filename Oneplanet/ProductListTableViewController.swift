@@ -35,7 +35,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
             self?.refreshDynamicViews()
         })
         countdownDescriptionLabel.text = Localized.activity.countdown
-//        updateCategoryList(with: "all")
+        updateCategoryList(with: "all")
     }
     
     func updateCategoryList(with query: String) {

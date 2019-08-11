@@ -138,6 +138,9 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
         if let vc = segue.destination as? UserSessionDepending {
             vc.userSession = userSession
         }
+        if let vc = segue.destination as? ProductDetailViewController {
+            vc.productQuery = (sender as! CollectionProductItem).id
+        }
     }
 
     // MARK: UICollectionViewDataSource

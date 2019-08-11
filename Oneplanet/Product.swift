@@ -57,6 +57,24 @@ class GetProductDetailOperation: AlamofireAPIAccessOperation {
     override func processData(with data: Data) throws {
         product = try JSONDecoder.default.decode(Product.self, from: data)
     }
+
+    override func handleClientError(with response: HTTPURLResponse) throws {
+        let data = """
+{
+    "description": "This is the description of product 1",
+    "display_name": "Product 1",
+    "id": "5d43130c3c02809acf2b5e5e",
+    "name": "product-1",
+    "images": [
+        "http://127.0.0.1:8000/product/5d43130c3c02809acf2b5e5e/5d431c0737c1c9eb861c2a30.jpg",
+        "http://127.0.0.1:8000/product/5d43130c3c02809acf2b5e5e/5d431c0737c1c9eb861c2a31.jpg",
+        "http://127.0.0.1:8000/product/5d43130c3c02809acf2b5e5e/5d431c0737c1c9eb861c2a32.jpg"
+    ]
+}
+""".data(using: .utf8)!
+        product = try JSONDecoder.default.decode(Product.self, from: data)        
+    }
+    
 }
 
 class CategoryList: PaginatedList<GetProductCagegoryPageOperationFactory> {
@@ -121,5 +139,5 @@ class GetProductCagegoryPageOperation: AlamofireAPIAccessOperation, PaginatedFet
     override func processData(with data: Data) throws {
         items = try JSONDecoder.default.decode([ProductOverview].self, from: data)
     }
-    
+
 }

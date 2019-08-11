@@ -89,6 +89,9 @@ class ProductDetailViewController: UIViewController, UserSessionDepending {
         if let vc = segue.destination as? UserSessionDepending {
             vc.userSession = userSession
         }
+        if let vc = segue.destination as? UnlockFlowViewController {
+            vc.product = product!
+        }
     }
 
 }

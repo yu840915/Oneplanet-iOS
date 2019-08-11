@@ -71,7 +71,7 @@ private extension UnlockFlowViewController {
         container.isDismissTapOn = false
         container.contentViewControllerSetUpBlock = {[weak self] vc in
             let picker = vc as! GemPickerTableViewController
-            picker.productName = product.name
+            picker.productName = product.displayName
             picker.cancelAction = {
                 self?.cancelAndExit()
             }
@@ -91,7 +91,7 @@ private extension UnlockFlowViewController {
     func showBlueGemPopUp(animated: Bool) {
         let product = self.product!
         let container = prepareActionPopUp{[weak self] vc in
-            vc.configuration = UnlockWithBlueGemPopUpConfiguration(productName: product.name, formattedPrice: "$1.99")
+            vc.configuration = UnlockWithBlueGemPopUpConfiguration(productName: product.displayName, formattedPrice: "$1.99")
             vc.mainAction = {
                 self?.unlock(with: .blueGem)
             }
@@ -102,7 +102,7 @@ private extension UnlockFlowViewController {
     func showPurpleGemPopUp(animated: Bool) {
         let product = self.product!
         let container = prepareActionPopUp{[weak self] vc in
-            vc.configuration = UnlockWithPurpleGemPopUpConfiguration(productName: product.name)
+            vc.configuration = UnlockWithPurpleGemPopUpConfiguration(productName: product.displayName)
             vc.mainAction = {
                 self?.unlock(with: .purpleGem)
             }
@@ -111,7 +111,7 @@ private extension UnlockFlowViewController {
     }
     
     func showUnlockSucceededAlert() {
-        let alert = UIAlertController(title: String(format: Localized.messageFormats.unlockSucceeded, product.name), message: Localized.messages.unlockSucceeded, preferredStyle: .alert)
+        let alert = UIAlertController(title: String(format: Localized.messageFormats.unlockSucceeded, product.displayName), message: Localized.messages.unlockSucceeded, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: Localized.titles.ok, style: .default, handler: { (_) in
             self.dismiss(animated: false, completion: nil)
         }))

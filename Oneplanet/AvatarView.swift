@@ -81,8 +81,8 @@ class AvatarView: UIView {
                     self?.didDownloadImage()
                 }
             }
-            op.start()
             fetchOperation = op
+            op.start()
         } else {
             cancelDownload()
             avatarButton.kf.setBackgroundImage(with: info.url, for: .normal)

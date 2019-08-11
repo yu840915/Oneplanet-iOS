@@ -17,8 +17,25 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
     private var hidingSignalProducer: TabbarHidingSignalProducer?
     var expectedTabbarFrame: CGRect = .zero
     var expectedBalloonFrame: CGRect = .zero
+    var hotList: HotItemList!
+    var bannerList: BannerItemList!
+    var updateHandles: [Any]?
+    var hotItems: [CollectionItemPreviewing] = []
+    var refreshControl: UIRefreshControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
+        setUpRefreshControl()
+        prepareLists()
+    }
+    
+    private func setUpRefreshControl() {
+        let control = UIRefreshControl()
+        control.tintColor = .white
+        control.addTarget(self, action: #selector(reload(_:)), for: .valueChanged)
+        collectionView.addSubview(control)
+        refreshControl = control
         setUpNavigationItems()
     }
     
@@ -59,6 +76,11 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
         super.viewDidDisappear(animated)
         hidingSignalProducer = nil
         tabBarController?.tabBar.transform = .identity
+    }
+    
+    @IBAction func reload(_ sender: UIRefreshControl) {
+        hotList.reload()
+        bannerList.reload()
     }
     
     private func moveTabbar() {
@@ -116,17 +138,20 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
         if let vc = segue.destination as? UserSessionDepending {
             vc.userSession = userSession
         }
+        if let vc = segue.destination as? ProductDetailViewController {
+            vc.productQuery = (sender as! CollectionProductItem).id
+        }
     }
 
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return hotItems.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseID.cell, for: indexPath) as! HotItemCell
-    
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReuseID.cell, for: indexPath) as! PhotoGalleryPageCell
+        cell.updateViews(with: hotItems[indexPath.row].cover)
         return cell
     }
     
@@ -148,6 +173,9 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
         addChild(vc)
         header.setUp(vc)
         vc.didMove(toParent: self)
+        vc.showDetailAction = {[weak self] item in
+            self?.showDetail(for: item)
+        }
         headerController = vc
     }
 
@@ -160,7 +188,79 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return true
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        showDetail(for: hotItems[indexPath.row])
+    }
+}
 
+private extension HotCollectionViewController {
+    func showDetail(for item: CollectionItemPreviewing) {
+        if let product = item as? CollectionProductItem {
+            performSegue(withIdentifier: SegueID.showProductDetail, sender: product)
+        } else if let category = item as? CollectionCategoryItem {
+            router.handle(DeepLinks.categoryList.appendingPathComponent(category.id))
+        } else if let ad = item as? PromotionAd {
+            if let link = ad.link {
+                router.handle(link)
+            }
+        }
+    }
+    
+    func prepareLists() {
+        let hot = HotItemList(session: userSession)
+        let banner = BannerItemList(session: userSession)
+        var handles: [Any] = []
+        handles.append(hot.addItemDidFetchHandler {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.handleHotListUpdate()
+            }
+        })
+        handles.append(hot.addFetchingFailureHandler({[weak self] (error) in
+            OperationQueue.main.addOperation {
+                self?.handleHotListUpdateFailure(with: error)
+            }
+        }))
+        handles.append(banner.addItemDidFetchHandler {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.handleBannerUpdate()
+            }
+        })
+        updateHandles = handles
+        hotList = hot
+        bannerList = banner
+        hot.reload()
+        banner.reload()
+    }
+    
+    func handleHotListUpdate() {
+        refreshControl.endRefreshing()
+        hotItems = hotList.items.compactMap{ $0.previewable }
+        collectionView.reloadData()
+        updateBackground()
+    }
+    
+    func handleHotListUpdateFailure(with error: Error?) {
+        refreshControl.endRefreshing()
+        updateBackground(with: error)
+    }
+    
+    func handleBannerUpdate() {
+        headerController?.items = bannerList.items.compactMap{$0.previewable}
+        updateBackground()
+    }
+    
+    func updateBackground(with error: Error? = nil) {
+        let shouldShowBackground = bannerList.items.isEmpty && hotItems.isEmpty
+        if shouldShowBackground {
+            let view = SimpleEmptyView.fromDefaultNib()
+            view.titleLabel.text = Localized.emptyMessages.generic
+            view.detailLabel.text = error?.localizedDescription
+            collectionView.backgroundView = view
+        } else {
+            collectionView.backgroundView = nil
+        }
+    }
 }
 
 extension HotCollectionViewController: UICollectionViewDelegateFlowLayout {
@@ -173,6 +273,9 @@ extension HotCollectionViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if hotList.items.isEmpty {
+            return .zero
+        }
         let w = collectionView.bounds.width
         return CGSize(width: w, height: (w / 9) * 4)
     }
@@ -191,6 +294,7 @@ extension HotCollectionViewController {
     }
     struct SegueID {
         static let showPromoPopup = "showPromoPopup"
+        static let showProductDetail = "showProductDetail"
     }
 }
 
@@ -220,123 +324,5 @@ class PromotionHeader: UICollectionReusableView {
             shouldAddConstraintsForContent = false
         }
         super.updateConstraints()
-    }
-}
-
-class HotItemCell: UICollectionViewCell {
-    
-}
-
-class TabbarHidingSignalProducer {
-    let scrollView: UIScrollView
-    let halfHidingInterval: CGFloat
-    private(set) var hidingFactor: CGFloat = 0
-    var hidingFactorDidChange: (()->())?
-    var animateFactorChange: (()->())?
-    private var eventHandles: [Any]?
-    private var startingOffset: InitialCondition?
-    private weak var inertiaTimer: Timer?
-    private var isDragging: Bool {
-        didSet {
-            if oldValue != isDragging {
-                if isDragging {
-                    handleStartDragging()
-                } else {
-                    handleEndDragging()
-                }
-            }
-        }
-    }
-    private var draggingWatcher: UpdateClock!
-    
-    init(scrollView: UIScrollView, halfHidingInterval: CGFloat) {
-        self.scrollView = scrollView
-        self.halfHidingInterval = halfHidingInterval
-        isDragging = scrollView.isTracking
-        draggingWatcher = UpdateClock(preferredFrameRate: 30, onTick: {[weak self] in
-            self?.updateDragging()
-        })
-        setUpEventHandles()
-    }
-    
-    private func setUpEventHandles() {
-        var handles: [Any] = []
-        handles.append(scrollView.observe(\.contentOffset) {[weak self] (scrollView, change) in
-            self?.handleDidScroll(change: change)
-        })
-        eventHandles = handles
-    }
-    
-    private func updateDragging() {
-        isDragging = scrollView.isTracking
-    }
-    
-    private func handleDidScroll(change: NSKeyValueObservedChange<CGPoint>) {
-        isDragging = scrollView.isTracking
-        let isAtTop = scrollView.contentOffset.y < 60
-        let isAtBottom = (scrollView.contentSize.height + scrollView.adjustedContentInset.bottom - scrollView.contentOffset.y - scrollView.frame.height) < 5
-        if isAtTop {
-            updateFactorIfDifferent(0, animated: true)
-            return
-        } else if isAtBottom {
-            updateFactorIfDifferent(1, animated: true)
-            return
-        }
-        guard scrollView.isTracking || inertiaTimer != nil else { return }
-        if let condition = startingOffset {
-            var relD = (scrollView.contentOffset.y - condition.offset.y) / halfHidingInterval
-            if condition.factor > 0 {
-               relD = condition.factor + relD
-            }
-            updateFactorIfDifferent(max(0, min(1, relD)), animated: false)
-        } else {
-            startingOffset = InitialCondition(offset: scrollView.contentOffset, factor: hidingFactor)
-        }
-    }
-    
-    private func updateFactorIfDifferent(_ factor: CGFloat, animated: Bool) {
-        guard hidingFactor != factor else { return }
-        hidingFactor = factor
-        if animated {
-            let handler = animateFactorChange ?? hidingFactorDidChange
-            handler?()
-        } else {
-            hidingFactorDidChange?()
-        }
-    }
-    
-    private func handleStartDragging() {
-        inertiaTimer?.invalidate()
-        inertiaTimer = nil
-    }
-    
-    private func handleEndDragging() {
-        guard hidingFactor != 0 && hidingFactor != 1 else {
-            startingOffset = nil
-            return
-        }
-        inertiaTimer = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: false) {[weak self] (_) in
-            self?.snapHiddingFactor()
-        }
-    }
-    
-    private func snapHiddingFactor() {
-        guard let condition = startingOffset else { return }
-        inertiaTimer = nil
-        startingOffset = nil
-        var factor: CGFloat = 0
-        if condition.factor > 0 {
-            factor = ((condition.offset.y - scrollView.contentOffset.y) > halfHidingInterval / 2) ? 0 : 1
-        } else {
-            factor = ((scrollView.contentOffset.y - condition.offset.y) > halfHidingInterval / 2) ? 1 : 0
-        }
-        updateFactorIfDifferent(factor, animated: true)
-    }
-}
-
-extension TabbarHidingSignalProducer {
-    struct InitialCondition {
-        let offset: CGPoint
-        let factor: CGFloat
     }
 }

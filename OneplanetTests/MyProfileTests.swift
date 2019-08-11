@@ -23,12 +23,14 @@ class MyProfileTests: XCTestCase {
         let data = """
 {
     "id": "AD123FDF13",
-    "username": "Mike 123",
+    "username": "zcjwmsj168",
+    "display_name": "Mike 123",
 }
 """.data(using: .utf8)!
         do {
             let profile = try JSONDecoder.default.decode(MyProfile.self, from: data)
-            XCTAssertEqual(profile.displayID, "AD123FDF13")
+            XCTAssertEqual(profile.id, "AD123FDF13")
+            XCTAssertEqual(profile.username, "zcjwmsj168")
             XCTAssertEqual(profile.nickname, "Mike 123")
         } catch let error {
             XCTFail(error.localizedDescription)

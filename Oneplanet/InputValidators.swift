@@ -143,6 +143,23 @@ class NicknameInputValidator: TextInputValidator {
     }
 }
 
+class UsernameInputValidator: TextInputValidator {
+    private let predicate: NSPredicate
+    
+    override init() {
+        let regex = "[A-Z0-9a-z._\\-]+"
+        predicate = NSPredicate(format:"SELF MATCHES %@", regex)
+        super.init()
+    }
+    
+    override func validate(_ input: String) throws {
+        if predicate.evaluate(with: input) {
+            return
+        }
+        throw InputError(localizedDescription: Localized.errors.nonAlphanumericalCharacter)
+    }
+}
+
 class EmptyInputValidator: TextInputValidator {
     override func validate(_ input: String) throws {
         if !input.isEmpty {

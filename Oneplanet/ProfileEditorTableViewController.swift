@@ -26,7 +26,7 @@ class ProfileEditorTableViewController: UITableViewController, UserSessionDepend
     @IBOutlet weak var genderLabel: UILabel!
     
     @IBOutlet weak var nicknameField: UITextField!
-    @IBOutlet weak var userIdField: UITextField!
+    @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var genderField: UITextField!
     @IBOutlet var pickerView: UIPickerView!
@@ -67,6 +67,8 @@ class ProfileEditorTableViewController: UITableViewController, UserSessionDepend
         updateViewsForDraft()
     }
     
+    
+    
     deinit {
         pickImageOperation?.cancel()
         submitChangesIfNeeded()
@@ -91,9 +93,14 @@ class ProfileEditorTableViewController: UITableViewController, UserSessionDepend
         profileDraft.nickname = sender.text ?? ""
     }
     
+    @IBAction func updateUsername(_ sender: UITextField) {
+        guard sender.markedTextRange == nil else { return }
+        profileDraft.username = sender.text ?? ""
+    }
+    
     @IBAction func copyId(_ sender: UIButton) {
-        UIPasteboard.general.string = profile.displayID
-        Toast.show(with: String(format: Localized.messageFormats.didCopyMyId, profile.displayID))
+        UIPasteboard.general.string = profile.username
+        Toast.show(with: String(format: Localized.messageFormats.didCopyMyId, profile.username))
     }
     
     @IBAction func startImagePickingFlow(_ sender: UIButton) {
@@ -122,6 +129,23 @@ fileprivate extension ProfileEditorTableViewController {
         userSession.submitProfileChanges(with: profileDraft)
     }
     
+    func handleSubmission(_ success: Bool, error: Error?) {
+        if success {
+            profileDraft = ProfileDraft(profile: profile)
+        } else if let error = error as? GenericHTTPResponseError,
+            error.source == .client {
+            showAlertForClientErrorAndRestoreValues()
+        }
+    }
+    
+    func showAlertForClientErrorAndRestoreValues() {
+        let alert = UIAlertController(title: Localized.errorTitles.usernameUnavailable, message: Localized.errors.usernameUnavailable, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Localized.titles.ok, style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+        profileDraft = ProfileDraft(profile: profile)
+        updateViewsForDraft()
+    }
+    
     func getAvatar() {
         guard let avatar = profile.avatar else {return}
         let op = DownloadImageOperaion(info: avatar)
@@ -145,13 +169,13 @@ fileprivate extension ProfileEditorTableViewController {
     }
     
     func updateViewsForSession() {
-        userIdField.text = profile.displayID
         emailField.text = userSession.loginType.displayName
     }
     
     func updateViewsForDraft() {
         avatarView.attachment = profileDraft.avatar
-        avatarView.backgrondImage = profile.character?.race.frameImage
+        avatarView.backgrondImage = profile.alien?.race.frameImage
+        usernameField.text = profileDraft.username
         nicknameField.text = profileDraft.nickname
         genderField.text = profileDraft.gender.displayName
     }
@@ -235,6 +259,32 @@ extension ProfileEditorTableViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         endEditingTap.isEnabled = false
+        if textField == usernameField {
+            checkUsernameAndSubmit()
+        }
+    }
+    
+    func checkUsernameAndSubmit() {
+        do {
+            try profileDraft.validate()
+            userSession.submitProfileChanges(with: profileDraft) {[weak self] (success, error) in
+                OperationQueue.main.addOperation {
+                    self?.handleSubmission(success, error: error)
+                }
+            }
+        } catch let error {
+            if let e = error as? ProfileDraftInputError, e.field == .username {
+                handleInvalidUsername()
+            }
+        }
+    }
+    
+    func handleInvalidUsername() {
+        profileDraft.username = profile.username
+        usernameField.text = profileDraft.username
+        let alert = UIAlertController(title: Localized.errorTitles.usernameTooShort, message: Localized.messages.usernameRules, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Localized.titles.ok, style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -243,16 +293,16 @@ extension ProfileEditorTableViewController: UITextFieldDelegate {
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        guard textField == nicknameField else { return false }
         let result = ((textField.text ?? "") as NSString).replacingCharacters(in: range, with: string)
         if result.isEmpty {
             return true
         }
         do {
-            if result.isEmpty {
-                return true
+            if textField == nicknameField {
+                try profileDraft.intermediateNicknameValidator.validate(result)
+            } else if textField == usernameField {
+                try profileDraft.intermediateUsernameValidator.validate(result)
             }
-            try profileDraft.intermediateNicknameValidator.validate(result)
             return true
         } catch _  {
             return false

@@ -11,6 +11,7 @@ import UIKit
 class UserFlowMainViewController: UIViewController, UserSessionDepending, DefaultInstanceFactory {
     var userSession: UserSession!
     private var contentTabbarController: UITabBarController!
+    private var auctionController: AuctionMainViewController!
     private var treasuryBarController: TreasuryBarViewController!
     fileprivate var getPageListOperaion: GetPromotionPageListOperation?
     fileprivate var appearanceAction: (()->())?
@@ -20,6 +21,7 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
     @IBOutlet weak var balloonString: UIImageView!
     @IBOutlet weak var balloonRightPadding: NSLayoutConstraint!
     @IBOutlet weak var balloonButton: UIButton!
+    var baloonNavigationCoordinator: BaloonNavigationCoordinator?
     
     class func fromDefaultStoryboard() -> UserFlowMainViewController {
         return UIStoryboard(name: "MainUserFlow", bundle: nil).instantiateInitialViewController() as! UserFlowMainViewController
@@ -31,6 +33,7 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        auctionController = contentTabbarController.viewControllers?.compactMap{$0 as? UINavigationController}.compactMap{$0.viewControllers.first as? AuctionMainViewController}.first
         setUpTabbarBackground()
         getPromoPopupIfNeeded()
         appBecomeActiveHandle = AppLifeCycleObserver.didBecomeActive.observers.add {[weak self] (_) in
@@ -75,6 +78,9 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
         appearanceAction?()
         appearanceAction = nil
         router.resume()
+        if baloonNavigationCoordinator == nil {
+            handleTabbarSwitch()
+        }
     }
     
     @IBAction func showCreationPortalIfAllowed(_ sender: UIButton) {
@@ -122,9 +128,14 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
                     self?.showPostComposer(with: draft)
                 })
             }
-        } else if let nav = segue.destination as? UINavigationController,
-            let vc = nav.viewControllers.first as? PostCreationFlowViewController {
-            vc.postDraft = (sender as! PostDraft)
+        } else if let nav = segue.destination as? UINavigationController {
+            if let vc = nav.viewControllers.first as? PostCreationFlowViewController {
+                vc.postDraft = (sender as! PostDraft)
+            } else if let vc = nav.viewControllers.first as? WebViewController {
+                NavigationBarStyle.darkGray.configure(nav.navigationBar)
+                vc.exitTitle = Localized.titles.done
+                vc.request = URLRequest(url: sender as! URL)
+            }
         }
     }
 
@@ -147,27 +158,36 @@ fileprivate extension UserFlowMainViewController {
         let actionRouter = URLRouter()
         actionRouter.add(DeepLinks.lifeTab.path) {[weak self] (info) -> Bool in
             OperationQueue.main.addOperation {
-                return self?.switchToTab(.life)
+                self?.switchToTab(.life)
             }
             return true
         }
         actionRouter.add(DeepLinks.noticeTab.path) {[weak self] (info) -> Bool in
             OperationQueue.main.addOperation {
-                return self?.switchToTab(.notice)
+                self?.switchToTab(.notice)
             }
             return true
         }
         actionRouter.add(DeepLinks.meTab.path) {[weak self] (info) -> Bool in
             OperationQueue.main.addOperation {
-                return self?.switchToTab(.my)
+                self?.switchToTab(.my)
             }
             return true
         }
         actionRouter.add(DeepLinks.postEditor.path) {[weak self] (info) -> Bool in
             OperationQueue.main.addOperation {
-                return self?.showCreationPortalIfAllowed()
+                self?.showCreationPortalIfAllowed()
             }
             return true
+        }
+        actionRouter.add(DeepLinks.categoryListPattern.path) {[weak self] (info) -> Bool in
+            OperationQueue.main.addOperation {
+                self?.showCategoryList(with: info["query"] as! String)
+            }
+            return true
+        }
+        actionRouter.add("*") {[weak self] (info) -> Bool in
+            return self?.routeToWebViewIfNeeded(with: info) ?? false
         }
         self.userActionRounter = actionRouter
         router.addOverridingRouter(actionRouter)
@@ -179,23 +199,54 @@ fileprivate extension UserFlowMainViewController {
                 return
         }
         contentTabbarController.selectedViewController = contentTabbarController.viewControllers![idx]
+        OperationQueue.main.addOperation {
+            self.handleTabbarSwitch()
+        }
     }
 
     func checkAccess(forTab tab: TabFeature) -> Bool {
-        return true
-//        switch tab {
-//        case .hot, .bid:
-//            return true
-//        case .life, .notice, .my:
-//            let op = FeatureAccessCheckOperation(userSession: userSession)
-//            op.start()
-//            return op.isAccessible
-//        }
+        switch tab {
+        case .hot, .bid:
+            return true
+        case .life, .notice, .my:
+            let op = FeatureAccessCheckOperation(userSession: userSession)
+            op.start()
+            return op.isAccessible
+        }
     }
     
     func updateBalloonAppearance() {
         let showingBid = TabFeature.list[contentTabbarController.selectedIndex] == .bid
-        [balloonButton, balloonString].forEach{$0?.isHidden = showingBid}
+        let canShowWithNav = baloonNavigationCoordinator?.canShowBaloon ?? true
+        if canShowWithNav {
+            OperationQueue.main.addOperation {
+                self.adjustTabBarFrame()
+            }
+        }
+        [balloonButton, balloonString].forEach{$0?.isHidden = showingBid || !canShowWithNav}
+    }
+    
+    func adjustTabBarFrame() {
+        let hot = contentTabbarController.viewControllers!.compactMap{$0 as? UINavigationController}.compactMap{$0.viewControllers.first as? HotCollectionViewController}.first!
+        contentTabbarController.tabBar.frame = hot.expectedTabbarFrame
+    }
+    
+    func showCategoryList(with query: String) {
+        switchToTab(.bid)
+        auctionController.showCategoryList(with: query)
+    }
+    
+    func routeToWebViewIfNeeded(with info: [String: Any]) -> Bool {
+        guard let url = info[URLRouter.Keys.url] as? URL else {
+            return false
+        }
+        let isHTTP = url.scheme?.lowercased().hasPrefix("http") == true
+        let isNotAPI = url.host?.lowercased() != ServiceURLs.base.host?.lowercased()
+        guard isHTTP && isNotAPI else {return false}
+        OperationQueue.main.addOperation {
+            self.performSegue(withIdentifier: SegueID.showWebView, sender: url)
+        }
+        return true
     }
 }
 
@@ -203,6 +254,7 @@ extension UserFlowMainViewController {
     struct SegueID {
         static let showPostCreationPortal = "showPostCreationPortal"
         static let showPostComposer = "showPostComposer"
+        static let showWebView = "showWebView"
     }
 }
 
@@ -215,7 +267,7 @@ fileprivate extension UserFlowMainViewController {
         }
         guard promoPopUpSupressionRequests.isEmpty else { return }
         guard getPageListOperaion == nil else { return }
-        let op = GetPromotionPageListOperation()
+        let op = GetPromotionPageListOperation(session: userSession)
         op.completionBlock = {[weak self] in
             OperationQueue.main.addOperation {
                 self?.didGetPromoPopup()
@@ -265,8 +317,19 @@ extension UserFlowMainViewController: UITabBarControllerDelegate {
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        handleTabbarSwitch()
+    }
+    
+    func handleTabbarSwitch() {
+        let nav = contentTabbarController.viewControllers![contentTabbarController.selectedIndex] as! UINavigationController
+        let coord = BaloonNavigationCoordinator(navigationController: nav)
+        coord.baloonAppearanceHandler = {[weak self] in
+            self?.updateBalloonAppearance()
+        }
+        baloonNavigationCoordinator = coord
         updateBalloonAppearance()
     }
+    
 }
 
 enum TabFeature {
@@ -300,4 +363,34 @@ extension UIViewController {
 
 protocol ScrollToTopHandler: AnyObject {
     func setWantsScrollToTop()
+}
+
+class BaloonNavigationCoordinator: NSObject, UINavigationControllerDelegate {
+    var baloonAppearanceHandler: (()->())?
+    private(set) var canShowBaloon: Bool {
+        didSet {
+            if oldValue != canShowBaloon {
+                baloonAppearanceHandler?()
+            }
+        }
+    }
+    let navigationController: UINavigationController
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+        canShowBaloon = (navigationController.viewControllers.count == 1)
+        super.init()
+        navigationController.delegate = self
+    }
+    
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        if viewController != navigationController.viewControllers.first {
+            canShowBaloon = false
+        }
+    }
+    
+    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+        if viewController == navigationController.viewControllers.first {
+            canShowBaloon = true
+        }
+    }
 }

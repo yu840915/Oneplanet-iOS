@@ -11,7 +11,7 @@ import ModelBlocks
 
 class Post {
     let id: String
-    let author: User = User(id: "123", displayID: "Mike 123", nickname: "Mike", character: CharacterOptions.shared.character(for: .one, color: .blue))
+    let author: User = User(id: "123", username: "Mike 123", nickname: "Mike", character: AlienOptions.shared.alien(for: .one, color: .blue))
     init(id: String) {
         self.id = id
     }

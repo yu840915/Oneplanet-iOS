@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -33,7 +34,7 @@
         <scene sceneID="LC5-aP-S45">
             <objects>
                 <collectionViewController id="Od8-w1-jw5" customClass="HotCollectionViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="6Qr-1O-UQL">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="6Qr-1O-UQL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -49,24 +50,28 @@
                             <gestureRecognizers/>
                         </imageView>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="r9s-48-k4M" customClass="HotItemCell" customModule="Oneplanet" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="r9s-48-k4M" customClass="PhotoGalleryPageCell" customModule="Oneplanet" customModuleProvider="target">
                                 <rect key="frame" x="6" y="172" width="170" height="171"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="170" height="171"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_first1" translatesAutoresizingMaskIntoConstraints="NO" id="g8e-TW-Tdh">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g8e-TW-Tdh">
                                             <rect key="frame" x="0.0" y="0.0" width="170" height="171"/>
                                         </imageView>
                                     </subviews>
                                 </view>
+                                <color key="backgroundColor" name="translucent dark background"/>
                                 <constraints>
                                     <constraint firstItem="g8e-TW-Tdh" firstAttribute="width" secondItem="r9s-48-k4M" secondAttribute="width" id="2FY-kQ-R4t"/>
                                     <constraint firstItem="g8e-TW-Tdh" firstAttribute="centerY" secondItem="r9s-48-k4M" secondAttribute="centerY" id="6Vu-e7-GIp"/>
                                     <constraint firstItem="g8e-TW-Tdh" firstAttribute="centerX" secondItem="r9s-48-k4M" secondAttribute="centerX" id="Fvo-T1-vbh"/>
                                     <constraint firstItem="g8e-TW-Tdh" firstAttribute="height" secondItem="r9s-48-k4M" secondAttribute="height" id="Vvf-Qm-KVH"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="imageView" destination="g8e-TW-Tdh" id="CKY-lJ-ezX"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="header" id="dR2-cl-CL1" customClass="PromotionHeader" customModule="Oneplanet" customModuleProvider="target">
@@ -75,9 +80,10 @@
                             <subviews>
                                 <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AmQ-r9-37k">
                                     <rect key="frame" x="6" y="0.0" width="402" height="160"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" name="translucent dark background"/>
                                 </view>
                             </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="AmQ-r9-37k" firstAttribute="top" secondItem="dR2-cl-CL1" secondAttribute="top" id="0YT-V9-xzL"/>
                                 <constraint firstItem="AmQ-r9-37k" firstAttribute="leading" secondItem="dR2-cl-CL1" secondAttribute="leading" constant="6" id="LGh-G5-5BT"/>
@@ -102,6 +108,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="mmk-1D-Rbb" kind="presentation" identifier="showPromoPopup" modalPresentationStyle="overFullScreen" modalTransitionStyle="crossDissolve" id="7dV-ci-XKD"/>
+                        <segue destination="YNk-Gg-1Pp" kind="show" identifier="showProductDetail" id="N9w-Ir-7oX"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="55Y-VR-dPf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -116,6 +123,14 @@
             </objects>
             <point key="canvasLocation" x="1128" y="110"/>
         </scene>
+        <!--ProductDetailViewController-->
+        <scene sceneID="YWx-MY-wN9">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Auction" referencedIdentifier="ProductDetailViewController" id="YNk-Gg-1Pp" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E2j-UB-JYg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1110" y="198"/>
+        </scene>
         <!--Hot Header Collection View Controller-->
         <scene sceneID="hFp-1m-i6i">
             <objects>
@@ -123,7 +138,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" id="r8m-DF-V7U">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="5oT-Lk-Khd">
                             <size key="itemSize" width="414" height="153"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -131,14 +146,14 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="DrM-gf-xT5" customClass="HotItemCell" customModule="Oneplanet" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="DrM-gf-xT5" customClass="PhotoGalleryPageCell" customModule="Oneplanet" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="153"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="153"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="banner_test" translatesAutoresizingMaskIntoConstraints="NO" id="dDq-y2-pmi">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dDq-y2-pmi">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="153"/>
                                         </imageView>
                                     </subviews>
@@ -149,6 +164,9 @@
                                     <constraint firstItem="dDq-y2-pmi" firstAttribute="height" secondItem="DrM-gf-xT5" secondAttribute="height" id="mFV-xH-Sxn"/>
                                     <constraint firstItem="dDq-y2-pmi" firstAttribute="width" secondItem="DrM-gf-xT5" secondAttribute="width" id="sbf-eY-sYW"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="imageView" destination="dDq-y2-pmi" id="kc1-D6-9g4"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -163,10 +181,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="banner_test" width="900" height="400"/>
         <image name="ic_home_nor" width="64" height="49"/>
         <image name="ic_home_sel" width="64" height="49"/>
-        <image name="im_first1" width="609" height="812"/>
         <image name="ui_logoblack" width="101" height="24"/>
+        <namedColor name="translucent dark background">
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.60000002384185791" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

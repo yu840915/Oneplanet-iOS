@@ -107,6 +107,7 @@
 "msg_petition_submitted" = "已将问题回报给 Oneplanet，请等待 Oneplanet 审核过后并回复你";
 "msg_unlock_option_prompt" = "你要使用哪种宝石来解锁？";
 "msg_thanks_for_reporting_post" = "您的反馈意见对于帮助我们保持 Oneplanet 社群的安全非常重要";
+"msg_username_rules" = "ID至少5个字符";
 
 "msgf_accept_tos" = "注册或登录即表示你同意我们的%@";
 "msgf_resend_verification_email" = "你没有收到电子邮件？%@";
@@ -214,6 +215,7 @@
 "no_block_list" = "Empty list";
 "no_follower_list" = "You don't have followers yet";
 "no_following_list" = "You haven't followed others yet";
+"no_generic" = "No Items";
 
 "err_no_camera_access" = "启用摄像头访问";
 "err_no_library_access" = "启用图库访问";
@@ -223,10 +225,13 @@
 "err_account_not_exist" = "你输入的电子邮件似乎不属于某个帐号。请检查电子邮件，然后再试一次。";
 "err_invalid_nickname" = "你的昵称不符合规定。";
 "err_invalid_phone_number" = "Please input valid phone number";
+"err_username_unavailable" = "请使用其他ID";
 
 "errtl_cannot_capture_photo" = "无法拍照";
 "errtl_cannot_pick_avatar" = "无法取得大头照";
 "errtl_generic_failure" = "失败";
+"errtl_username_too_short" = "你的 ID 太短了";
+"errtl_username_unavailable" = "此ID无效";
 
 "warn_logout" = "退出？";
 "warn_character_selection" = "Can't change the group after selection, continue？";

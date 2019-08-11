@@ -107,6 +107,7 @@
 "msg_petition_submitted" = "The problem has been reported to Oneplanet, please wait for the Oneplanet review and reply to you";
 "msg_unlock_option_prompt" = "Which gem do you want to use to unlock?";
 "msg_thanks_for_reporting_post" = "Your feedback is important in helping us keep the Oneplanet community safe";
+"msg_username_rules" = "ID at least five characters";
 
 "msgf_accept_tos" = "By signing up or login, you agree to our %@.";
 "msgf_resend_verification_email" = "You did not receive the email? %@.";
@@ -214,6 +215,7 @@
 "no_block_list" = "Empty list";
 "no_follower_list" = "You don't have followers yet";
 "no_following_list" = "You haven't followed others yet";
+"no_generic" = "No Items";
 
 "err_no_camera_access" = "Enable Camera Access";
 "err_no_library_access" = "Enable Library Access";
@@ -223,10 +225,13 @@
 "err_account_not_exist" = "The email you entered does not appear to belong to an account.\n Please check your email and try again";
 "err_invalid_nickname" = "Your nickname is in the wrong format";
 "err_invalid_phone_number" = "Please input valid phone number";
+"err_username_unavailable" = "Please use a different ID";
 
 "errtl_cannot_capture_photo" = "Cannot Take Photo";
 "errtl_cannot_pick_avatar" = "Cannot Get Profile Image";
 "errtl_generic_failure" = "Failed";
+"errtl_username_too_short" = "This ID is too short";
+"errtl_username_unavailable" = "This ID is not effective";
 
 "warn_logout" = "Log Out?";
 "warn_character_selection" = "Alien species and colors must not be more change, to be sure to choose?";

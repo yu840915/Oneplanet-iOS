@@ -17,6 +17,8 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
     private var productListBadge: BadgeView!
     private var biddingProcessBadge: BadgeView!
     private var biddingFeatureCheckOperation: BiddingFeatureAccessCheckOperation?
+    private var productListController: ProductListTableViewController!
+    private var initialQuery: String?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,6 +32,9 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
             self?.updateButtonBarCell(oldCell: oldCell, newCell: newCell, progressPercentage: progressPercentage, changeCurrentIndex: changeCurrentIndex, animated: animated)
         }
         navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
+        if let q = initialQuery {
+            showCategoryList(with: q)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -39,13 +44,24 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        let controllers = [ProductListTableViewController.fromDefaultStoryboard(), BiddingProcessTableViewController.fromDefaultStoryboard()]
+        let productList = ProductListTableViewController.fromDefaultStoryboard()
+        productListController = productList
+        let controllers = [productList, BiddingProcessTableViewController.fromDefaultStoryboard()]
         controllers
             .compactMap{$0 as? UserSessionDepending}
             .forEach{$0.userSession = userSession}
         return controllers
     }
-
+    
+    func showCategoryList(with query: String) {
+        guard isViewLoaded else {
+            initialQuery = query
+            return
+        }
+        productListController.updateCategoryList(with: query)
+        moveTo(viewController: productListController)
+    }
+    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

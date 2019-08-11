@@ -29,7 +29,7 @@ class UserOverviewCell: UITableViewCell {
         avatarView.avatar = dataSource.avatar
         avatarView.backgrondImage = dataSource.character?.race.frameImage
         nameLabel.text = dataSource.displayName
-        idLabel.text = dataSource.displayID
+        idLabel.text = dataSource.username
         actionButton.setTitle(dataSource.actionTitle, for: .normal)
         actionButton.setTitle(dataSource.selectedActionTitle, for: .selected)
         actionButton.setTitle(dataSource.selectedActionTitle, for: [.selected, .highlighted])
@@ -41,8 +41,8 @@ class UserOverviewCell: UITableViewCell {
 protocol UserOverviewDisplayable {
     var avatar: WebImageInfo? {get}
     var displayName: String {get}
-    var displayID: String {get}
+    var username: String {get}
     var actionTitle: String {get}
-    var character: Character? {get}
+    var character: Alien? {get}
     var selectedActionTitle: String? {get}
 }

@@ -56,6 +56,12 @@ struct DeepLinks {
     static var meTab: URL {
         return ServiceURLs.base.appendingPathComponent("tab/me")
     }
+    static var categoryList: URL {
+        return ServiceURLs.base.appendingPathComponent("category")
+    }
+    static var categoryListPattern: URL {
+        return ServiceURLs.base.appendingPathComponent("category/:query")
+    }
     static var modalEventsPage: URL {
         return ServiceURLs.base.appendingPathComponent("modal/events")
     }

@@ -88,6 +88,13 @@ class AlamofireAPIAccessOperation: SimpleAsynchronousOperation, FailableOperatio
 }
 
 class GenericHTTPResponseError: NSError {
+    var source: Source {
+        switch response.statusCode {
+        case 400..<500: return .client
+        case 500..<600: return .server
+        default: return .other
+        }
+    }
     let response: HTTPURLResponse
     init(response: HTTPURLResponse) {
         self.response = response
@@ -97,4 +104,11 @@ class GenericHTTPResponseError: NSError {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    enum Source {
+        case client
+        case server
+        case other
+    }
 }
+

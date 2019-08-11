@@ -16,9 +16,9 @@ class HotHeaderCollectionViewController: UICollectionViewController, UserSession
         return UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "HotHeaderCollectionViewController") as! HotHeaderCollectionViewController
     }
     var userSession: UserSession!
+    var showDetailAction: ((CollectionItemPreviewing)->())?
 
-    typealias ItemType = UIColor
-    var items: [ItemType] = [] {
+    var items: [CollectionItemPreviewing] = [] {
         didSet {
             if isViewLoaded {
                 updateSections()
@@ -32,7 +32,6 @@ class HotHeaderCollectionViewController: UICollectionViewController, UserSession
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        items = [.red, .yellow, .blue]
         updateSections()
     }
     
@@ -111,15 +110,14 @@ class HotHeaderCollectionViewController: UICollectionViewController, UserSession
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let section = sections[indexPath.section]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        
-        let item: ItemType
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! PhotoGalleryPageCell
+        let item: CollectionItemPreviewing
         switch section {
         case .headPadding: item = items.last!
         case .endPadding: item = items.first!
         case .body: item = items[indexPath.row]
         }
-        cell.backgroundColor = item
+        cell.updateViews(with: item.cover)
         return cell
     }
 
@@ -131,6 +129,10 @@ class HotHeaderCollectionViewController: UICollectionViewController, UserSession
 
     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
         return true
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        showDetailAction?(items[indexPath.row])
     }
     
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {

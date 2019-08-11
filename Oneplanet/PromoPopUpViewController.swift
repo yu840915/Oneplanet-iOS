@@ -13,7 +13,7 @@ class PromoPopUpViewController: UIViewController {
 
     @IBOutlet weak var goButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
-    var page: PromotionPage!
+    var page: PromotionAd!
     var dismissAction: (()->())?
     var linkHandler: ((URL)->(Bool))?
     
@@ -25,7 +25,7 @@ class PromoPopUpViewController: UIViewController {
     
     private func updateViewsForPage() {
         goButton.isHidden = (page.link == nil)
-        imageView.kf.setImage(with: page.poster.url)
+        imageView.kf.setImage(with: page.cover.url)
     }
     
     @IBAction func goToLink(_ sender: UIButton) {

@@ -9,34 +9,64 @@
 import Foundation
 
 class PromotionPageList {
-    let pages: [PromotionPage]
+    let pages: [PromotionAd]
     
-    init(pages: [PromotionPage]) {
+    init(pages: [PromotionAd]) {
         self.pages = pages
     }
 }
 
-class PromotionPage {
+class PromotionAd: CollectionItemPreviewing {
+    let id: String
     let link: URL?
-    let poster: WebImageInfo
+    let cover: WebImageInfo
     
-    init(link: URL?, poster: WebImageInfo) {
+    init(id: String, link: URL?) {
         self.link = link
-        self.poster = poster
+        self.id = id
+        cover = WebImageInfo(url: ServiceURLs.base.appendingPathComponent("ad/\(id).jpg"))
+    }
+    
+    class func from(_ collectionItem: CollectionItem) -> PromotionAd? {
+        guard collectionItem.type.lowercased() == "ad" else {return nil}
+        return PromotionAd(id: collectionItem.id, link: collectionItem.link)
     }
 }
 
 class GetPromotionPageListOperation: AlamofireAPIAccessOperation {
     private(set) var list: PromotionPageList?
-    
-    override func prepareURLRequest() throws -> URLRequest {
-        return URLRequest(url: URL(string: "https://www.google.com")!)
+    let session: UserSession
+    init(session: UserSession) {
+        self.session = session
     }
     
-    override func willFinishProcess() throws {
-        list = PromotionPageList(pages: [
-            PromotionPage(link: URL(string: "https://www.google.com")!, poster: WebImageInfo(url: URL(string: "https://i.imgur.com/lytdJKp.png")!)),
-            ])
+    override func prepareURLRequest() throws -> URLRequest {
+        var comp = URLComponents(url: ServiceURLs.base.appendingPathComponent("collection/popups"), resolvingAgainstBaseURL: false)!
+        comp.queryItems = [URLQueryItem(name: "page", value: "1"),URLQueryItem(name: "limit", value: "20")]
+        return session.addingAuthorizationToken(to: URLRequest(url: comp.url!))
+    }
+    
+    override func processData(with data: Data) throws {
+        let items = try JSONDecoder.default.decode([CollectionItem].self, from: data)
+        list = PromotionPageList(pages: items.compactMap{PromotionAd.from($0)})
     }
 }
 
+protocol CollectionItemPreviewing {
+    var cover: WebImageInfo {get}
+}
+
+class CollectionItem: Decodable {
+    let id: String
+    let type: String
+    let link: URL?
+    
+    enum CodingKeys: String, CodingKey {
+        case id, type
+        case link = "url"
+    }
+    
+    var previewable: CollectionItemPreviewing? {
+        return PromotionAd.from(self) ?? CollectionProductItem.from(self) ?? CollectionCategoryItem.from(self)
+    }
+}

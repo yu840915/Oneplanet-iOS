@@ -97,7 +97,7 @@ class GetCollectionPageOperation: AlamofireAPIAccessOperation, PaginatedFetching
     {
         "id": "5d46b2f5338f3f58a865a10d",
         "type": "ad",
-        "url": "https://asdasdasd/"
+        "url": "https://www.google.com/"
     },
 ]
 """.data(using: .utf8)!

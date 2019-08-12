@@ -17,11 +17,15 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
     private var hidingSignalProducer: TabbarHidingSignalProducer?
     var expectedTabbarFrame: CGRect = .zero
     var expectedBalloonStringFrame: CGRect = .zero
+    var balloonTransform: CGAffineTransform {
+        return .init(translationX: .zero, y: -StatusBarFrameObserver.shared.extraBarHeight)
+    }
     var hotList: HotItemList!
     var bannerList: BannerItemList!
     var updateHandles: [Any]?
     var hotItems: [CollectionItemPreviewing] = []
     var refreshControl: UIRefreshControl!
+    var statusBarHandle: Any?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,11 +76,15 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
         } else {
             animateTabbar()
         }
+        statusBarHandle = StatusBarFrameObserver.shared.statusBarHeightChangeObserverse.add {[weak self] in
+            self?.animateTabbar()
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         hidingSignalProducer = nil
+        statusBarHandle = nil
     }
     
     @IBAction func reload(_ sender: UIRefreshControl) {
@@ -93,8 +101,8 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
         var balloonFrame = expectedBalloonStringFrame
         frame.origin.y += producer.hidingFactor * (frame.height + 20)
         balloonFrame.size.height += producer.hidingFactor * (frame.height + 20)
-        tabbar.frame = frame
-        balloonString.frame = balloonFrame
+        tabbar.frame = frame.applying(balloonTransform)
+        balloonString.frame = balloonFrame.applying(balloonTransform)
     }
     
     private func animateTabbar() {
@@ -107,8 +115,8 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
         frame.origin.y += producer.hidingFactor * (frame.height + 20)
         balloonFrame.size.height += producer.hidingFactor * (frame.height + 20)
         UIView.animate(withDuration: 0.15) {
-            tabbar.frame = frame
-            self.balloonString.frame = balloonFrame
+            tabbar.frame = frame.applying(self.balloonTransform)
+            self.balloonString.frame = balloonFrame.applying(self.balloonTransform)
         }
     }
     

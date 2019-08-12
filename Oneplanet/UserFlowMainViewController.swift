@@ -21,7 +21,8 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
     @IBOutlet weak var balloonString: UIImageView!
     @IBOutlet weak var balloonRightPadding: NSLayoutConstraint!
     @IBOutlet weak var balloonButton: UIButton!
-    var baloonNavigationCoordinator: BaloonNavigationCoordinator?
+    var balloonNavigationCoordinator: BalloonNavigationCoordinator?
+    var statusBarHandle: Any?
     
     class func fromDefaultStoryboard() -> UserFlowMainViewController {
         return UIStoryboard(name: "MainUserFlow", bundle: nil).instantiateInitialViewController() as! UserFlowMainViewController
@@ -78,9 +79,24 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
         appearanceAction?()
         appearanceAction = nil
         router.resume()
-        if baloonNavigationCoordinator == nil {
+        if balloonNavigationCoordinator == nil {
             handleTabbarSwitch()
         }
+        statusBarHandle = StatusBarFrameObserver.shared.statusBarHeightChangeObserverse.add {[weak self] in
+            self?.handleStatusBarChange()
+        }
+    }
+    
+    private func handleStatusBarChange() {
+        if TabFeature.list[contentTabbarController.selectedIndex] == .hot {
+            return
+        }
+        updateBalloonAppearance()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        statusBarHandle = nil
     }
     
     @IBAction func showCreationPortalIfAllowed(_ sender: UIButton) {
@@ -217,7 +233,7 @@ fileprivate extension UserFlowMainViewController {
     
     func updateBalloonAppearance() {
         let showingBid = TabFeature.list[contentTabbarController.selectedIndex] == .bid
-        let canShowWithNav = baloonNavigationCoordinator?.canShowBaloon ?? true
+        let canShowWithNav = balloonNavigationCoordinator?.canShowBalloon ?? true
         if canShowWithNav {
             OperationQueue.main.addOperation {
                 self.adjustTabBarFrame()
@@ -228,8 +244,8 @@ fileprivate extension UserFlowMainViewController {
     
     func adjustTabBarFrame() {
         let hot = contentTabbarController.viewControllers!.compactMap{$0 as? UINavigationController}.compactMap{$0.viewControllers.first as? HotCollectionViewController}.first!
-        contentTabbarController.tabBar.frame = hot.expectedTabbarFrame
-        balloonString.frame = hot.expectedBalloonStringFrame
+        contentTabbarController.tabBar.frame = hot.expectedTabbarFrame.applying(hot.balloonTransform)
+        balloonString.frame = hot.expectedBalloonStringFrame.applying(hot.balloonTransform)
     }
     
     func showCategoryList(with query: String) {
@@ -323,11 +339,11 @@ extension UserFlowMainViewController: UITabBarControllerDelegate {
     
     func handleTabbarSwitch() {
         let nav = contentTabbarController.viewControllers![contentTabbarController.selectedIndex] as! UINavigationController
-        let coord = BaloonNavigationCoordinator(navigationController: nav)
-        coord.baloonAppearanceHandler = {[weak self] in
+        let coord = BalloonNavigationCoordinator(navigationController: nav)
+        coord.balloonAppearanceHandler = {[weak self] in
             self?.updateBalloonAppearance()
         }
-        baloonNavigationCoordinator = coord
+        balloonNavigationCoordinator = coord
         updateBalloonAppearance()
     }
     
@@ -340,9 +356,13 @@ enum TabFeature {
 
 extension UIViewController {
     var isXgenerationScreen: Bool {
-        let insets = UIApplication.shared.keyWindow!.safeAreaInsets
-        let inset = max(insets.bottom, insets.left, insets.right)
-        return inset > 0
+        return UIApplication.shared.keyWindow!.isXgenerationScreen
+    }
+}
+
+extension UIWindow {
+    var isXgenerationScreen: Bool {
+        return max(safeAreaInsets.bottom, safeAreaInsets.left, safeAreaInsets.right) > 0
     }
 }
 
@@ -366,32 +386,32 @@ protocol ScrollToTopHandler: AnyObject {
     func setWantsScrollToTop()
 }
 
-class BaloonNavigationCoordinator: NSObject, UINavigationControllerDelegate {
-    var baloonAppearanceHandler: (()->())?
-    private(set) var canShowBaloon: Bool {
+class BalloonNavigationCoordinator: NSObject, UINavigationControllerDelegate {
+    var balloonAppearanceHandler: (()->())?
+    private(set) var canShowBalloon: Bool {
         didSet {
-            if oldValue != canShowBaloon {
-                baloonAppearanceHandler?()
+            if oldValue != canShowBalloon {
+                balloonAppearanceHandler?()
             }
         }
     }
     let navigationController: UINavigationController
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
-        canShowBaloon = (navigationController.viewControllers.count == 1)
+        canShowBalloon = (navigationController.viewControllers.count == 1)
         super.init()
         navigationController.delegate = self
     }
     
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         if viewController != navigationController.viewControllers.first {
-            canShowBaloon = false
+            canShowBalloon = false
         }
     }
     
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         if viewController == navigationController.viewControllers.first {
-            canShowBaloon = true
+            canShowBalloon = true
         }
     }
 }

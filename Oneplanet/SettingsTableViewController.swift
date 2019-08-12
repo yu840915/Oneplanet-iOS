@@ -63,7 +63,8 @@ class SettingsTableViewController: UITableViewController, UserSessionDepending {
     }
 
     @IBAction func showEmailComposer(_ sender: Any) {
-        UIApplication.shared.open(URL(string: "message://")!, options: [:], completionHandler: nil)
+        let url = URL(string: "mailto:oneplanetservice@theonecollection.com.tw")!
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     @IBAction func exit(_ sender: UIBarButtonItem) {

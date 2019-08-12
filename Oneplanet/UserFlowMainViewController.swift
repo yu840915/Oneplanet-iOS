@@ -229,6 +229,7 @@ fileprivate extension UserFlowMainViewController {
     func adjustTabBarFrame() {
         let hot = contentTabbarController.viewControllers!.compactMap{$0 as? UINavigationController}.compactMap{$0.viewControllers.first as? HotCollectionViewController}.first!
         contentTabbarController.tabBar.frame = hot.expectedTabbarFrame
+        balloonString.frame = hot.expectedBalloonStringFrame
     }
     
     func showCategoryList(with query: String) {

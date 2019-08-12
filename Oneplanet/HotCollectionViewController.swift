@@ -16,7 +16,7 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
     private var headerController: HotHeaderCollectionViewController?
     private var hidingSignalProducer: TabbarHidingSignalProducer?
     var expectedTabbarFrame: CGRect = .zero
-    var expectedBalloonFrame: CGRect = .zero
+    var expectedBalloonStringFrame: CGRect = .zero
     var hotList: HotItemList!
     var bannerList: BannerItemList!
     var updateHandles: [Any]?
@@ -67,15 +67,16 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
             self?.animateTabbar()
         }
         hidingSignalProducer = producer
-        if expectedBalloonFrame == .zero {
-            expectedBalloonFrame = balloonString.frame
+        if expectedBalloonStringFrame == .zero {
+            expectedBalloonStringFrame = balloonString.frame
+        } else {
+            animateTabbar()
         }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         hidingSignalProducer = nil
-        tabBarController?.tabBar.transform = .identity
     }
     
     @IBAction func reload(_ sender: UIRefreshControl) {
@@ -89,7 +90,7 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
             return
         }
         var frame = expectedTabbarFrame
-        var balloonFrame = expectedBalloonFrame
+        var balloonFrame = expectedBalloonStringFrame
         frame.origin.y += producer.hidingFactor * (frame.height + 20)
         balloonFrame.size.height += producer.hidingFactor * (frame.height + 20)
         tabbar.frame = frame
@@ -102,7 +103,7 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
                 return
         }
         var frame = expectedTabbarFrame
-        var balloonFrame = expectedBalloonFrame
+        var balloonFrame = expectedBalloonStringFrame
         frame.origin.y += producer.hidingFactor * (frame.height + 20)
         balloonFrame.size.height += producer.hidingFactor * (frame.height + 20)
         UIView.animate(withDuration: 0.15) {

@@ -82,6 +82,53 @@ class GetCollectionPageOperation: AlamofireAPIAccessOperation, PaginatedFetching
     override func processData(with data: Data) throws {
         items = try JSONDecoder.default.decode([CollectionItem].self, from: data)
     }
+
+    override func willFinishProcess() throws {
+        let data = """
+[
+    {
+        "id": "5d46b2f5338f3f58a865a10b",
+        "type": "product"
+    },
+    {
+        "id": "5d46b2f5338f3f58a865a10c",
+        "type": "category"
+    },
+    {
+        "id": "5d46b2f5338f3f58a865a10d",
+        "type": "ad",
+        "url": "https://www.google.com/"
+    },
+    {
+        "id": "5d46b2f5338f3f58a865a10b",
+        "type": "product"
+    },
+    {
+        "id": "5d46b2f5338f3f58a865a10c",
+        "type": "category"
+    },
+    {
+        "id": "5d46b2f5338f3f58a865a10d",
+        "type": "ad",
+        "url": "https://www.google.com/"
+    },
+    {
+        "id": "5d46b2f5338f3f58a865a10b",
+        "type": "product"
+    },
+    {
+        "id": "5d46b2f5338f3f58a865a10c",
+        "type": "category"
+    },
+    {
+        "id": "5d46b2f5338f3f58a865a10d",
+        "type": "ad",
+        "url": "https://www.google.com/"
+    },
+]
+""".data(using: .utf8)!
+        items = try JSONDecoder.default.decode([CollectionItem].self, from: data)
+    }
 }
 
 class CollectionCategoryItem: CollectionItemPreviewing {

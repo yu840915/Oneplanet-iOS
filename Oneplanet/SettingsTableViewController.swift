@@ -74,7 +74,6 @@ class SettingsTableViewController: UITableViewController, UserSessionDepending {
     @IBAction func showYoutubePage(_ sender: UIBarButtonItem) {
         let url = URL(string: "https://www.youtube.com/channel/UC8qsQgekPZR2kzhU_vdKg1w")!
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
-
     }
     
     // MARK: - Table view data source

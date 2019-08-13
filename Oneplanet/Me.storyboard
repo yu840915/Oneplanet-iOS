@@ -666,7 +666,11 @@
                                     <action selector="showEmailComposer:" destination="7FN-v5-bgi" id="3uA-TX-kkS"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" image="ic_youtube_nor" id="xF0-zh-EEO"/>
+                            <barButtonItem title="Item" image="ic_youtube_nor" id="xF0-zh-EEO">
+                                <connections>
+                                    <action selector="showYoutubePage:" destination="7FN-v5-bgi" id="Eyx-9k-msK"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>

@@ -71,6 +71,12 @@ class SettingsTableViewController: UITableViewController, UserSessionDepending {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func showYoutubePage(_ sender: UIBarButtonItem) {
+        let url = URL(string: "https://www.youtube.com/channel/UC8qsQgekPZR2kzhU_vdKg1w")!
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

@@ -228,11 +228,6 @@ class ScoreBarView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        scoreButton.layer.shadowColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        scoreButton.layer.shadowRadius = 4
-        scoreButton.layer.shadowOffset = .zero
-        scoreButton.layer.shadowOpacity = 1.0
-        barMaskView.layer.cornerRadius = 5.0
     }
     
     var value: Float = 0 {

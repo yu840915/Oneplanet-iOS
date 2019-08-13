@@ -43,6 +43,12 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
             }
         }
         prepareRouter()
+        [balloonButton, balloonString].forEach{
+            $0?.layer.shadowColor = UIColor.black.cgColor
+            $0?.layer.shadowOpacity = 1.0
+            $0?.layer.shadowRadius = 4
+            $0?.layer.shadowOffset = .init(width: -2, height: 4)
+        }
     }
     
     private func setUpTabbarBackground() {

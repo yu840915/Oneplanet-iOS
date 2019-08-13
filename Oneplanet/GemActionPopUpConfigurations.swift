@@ -58,7 +58,7 @@ class UnlockPopUpConfiguration: GemActionPopUpConfiguration {
 
 class UnlockWithGreenGemPopUpConfiguration: UnlockPopUpConfiguration {
     override var icon: UIImage {
-        return #imageLiteral(resourceName: "ic_key80_nor")
+        return #imageLiteral(resourceName: "im_02_unlock")
     }
     override var attributedSubtitle: NSAttributedString {
         return NSAttributedString(
@@ -69,7 +69,7 @@ class UnlockWithGreenGemPopUpConfiguration: UnlockPopUpConfiguration {
 
 class UnlockWithPurpleGemPopUpConfiguration: UnlockPopUpConfiguration {
     override var icon: UIImage {
-        return #imageLiteral(resourceName: "ic_coin80_nor")
+        return #imageLiteral(resourceName: "im_03_unlock")
     }
     override var attributedSubtitle: NSAttributedString {
         return NSAttributedString(
@@ -85,7 +85,7 @@ class UnlockWithBlueGemPopUpConfiguration: UnlockPopUpConfiguration {
         super.init(productName: productName)
     }
     override var icon: UIImage {
-        return #imageLiteral(resourceName: "ic_gem80_nor")
+        return #imageLiteral(resourceName: "im_04_unlock")
     }
     override var attributedSubtitle: NSAttributedString {
         return NSAttributedString(
@@ -110,7 +110,7 @@ class BidPopUpConfiguration: GemActionPopUpConfiguration {
 
 class BidWithPurpleGemPopUpConfiguration: UnlockPopUpConfiguration {
     override var icon: UIImage {
-        return #imageLiteral(resourceName: "ic_coin80_nor")
+        return #imageLiteral(resourceName: "im_08_rubidbid")
     }
     override var attributedSubtitle: NSAttributedString {
         return NSAttributedString(
@@ -126,7 +126,7 @@ class BidWithBlueGemPopUpConfiguration: UnlockPopUpConfiguration {
         super.init(productName: productName)
     }
     override var icon: UIImage {
-        return #imageLiteral(resourceName: "ic_gem80_nor")
+        return #imageLiteral(resourceName: "im_09_safridbid")
     }
     override var attributedSubtitle: NSAttributedString {
         return NSAttributedString(
@@ -142,7 +142,7 @@ class InsufficientBlueGemToUnlockPopUpConfiguration: GemActionPopUpConfiguration
     }
 
     override var icon: UIImage {
-        return #imageLiteral(resourceName: "ic_gem80_nor")
+        return #imageLiteral(resourceName: "im_00_insufficient")
     }
     
     override var attributedTitle: NSAttributedString {
@@ -182,7 +182,7 @@ class InsufficientBlueGemToBidPopUpConfiguration: GemActionPopUpConfiguration {
         self.formattedPrice = formattedPrice
     }
     override var icon: UIImage {
-        return #imageLiteral(resourceName: "ic_gem80_nor")
+        return #imageLiteral(resourceName: "im_00_insufficient")
     }
     override var attributedTitle: NSAttributedString {
         return NSAttributedString(string: String(format: Localized.messageFormats.insufficientGem, Localized.titles.blueGem), attributes: titleAttributes)
@@ -233,6 +233,9 @@ class LotClosedPopUpConfiguration: UnlockPopUpConfiguration {
     override var attributedTitle: NSAttributedString {
         return NSAttributedString(string: Localized.messages.lotClosed, attributes: titleAttributes)
     }
+    override var icon: UIImage {
+        return #imageLiteral(resourceName: "im_01_timeended")
+    }
     override var attributedSubtitle: NSAttributedString {
         return NSAttributedString(string: Localized.messages.lotClosedDescription, attributes: subtitleAttributes)
     }
@@ -244,6 +247,9 @@ class LotClosedPopUpConfiguration: UnlockPopUpConfiguration {
 class BidTooLateConfiguration: GemActionPopUpConfiguration {
     override var attributedTitle: NSAttributedString {
         return NSAttributedString(string: Localized.messages.bidPaymentTooLate, attributes: titleAttributes)
+    }
+    override var icon: UIImage {
+        return #imageLiteral(resourceName: "im_07_rubid")
     }
     override var attributedSubtitle: NSAttributedString {
         return NSAttributedString(string: String(format: Localized.messageFormats.receivedGem, Localized.titles.greenGem), attributes: subtitleAttributes)

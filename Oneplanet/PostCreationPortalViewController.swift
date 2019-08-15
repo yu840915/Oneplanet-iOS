@@ -15,6 +15,8 @@ class PostCreationPortalViewController: UIViewController, UserSessionDepending {
     @IBOutlet weak var valuedPhotoLabel: UILabel!
     @IBOutlet weak var valuedPhotoCapacityLabel: UILabel!
     @IBOutlet weak var freePhotoLabel: UILabel!
+    @IBOutlet weak var balloonPadding: NSLayoutConstraint!
+    
     var startPostCreationFlow: ((PostDraft)->())?
     private var capacity: PhotoUploadCapacity? = PhotoUploadCapacity()
     private var refreshClock: UpdateClock!
@@ -22,6 +24,7 @@ class PostCreationPortalViewController: UIViewController, UserSessionDepending {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        balloonPadding.constant = -(UserFlowMainViewController.ballonPadding)
         cooldownTimeFormatter = PostCooldownTimeFormatter()
         valuedPhotoLabel.text = Localized.phrases.uploadValuedPhoto
         freePhotoLabel.text = Localized.phrases.uploadFreePhoto

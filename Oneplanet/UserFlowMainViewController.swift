@@ -9,6 +9,7 @@
 import UIKit
 
 class UserFlowMainViewController: UIViewController, UserSessionDepending, DefaultInstanceFactory {
+    static var ballonPadding: CGFloat = 0
     var userSession: UserSession!
     private var contentTabbarController: UITabBarController!
     private var auctionController: AuctionMainViewController!
@@ -75,6 +76,7 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
         let expPadding = -(padding + 10)
         if balloonRightPadding.constant != expPadding {
             balloonRightPadding.constant = expPadding
+            UserFlowMainViewController.ballonPadding = expPadding
             view.setNeedsLayout()
         }
     }

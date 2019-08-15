@@ -184,6 +184,7 @@
 		E0DE81B622DEB2CC00F785E3 /* DateFromNowFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DE81B522DEB2CC00F785E3 /* DateFromNowFormatterTests.swift */; };
 		E0EAEB7B22F1F25600C8E7C8 /* PostList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEB7A22F1F25600C8E7C8 /* PostList.swift */; };
 		E0EAEB7D22F2891400C8E7C8 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEB7C22F2891400C8E7C8 /* LoadingCell.swift */; };
+		E0EDD1522305ABCF00F732DE /* PostEditorPhotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EDD1512305ABCF00F732DE /* PostEditorPhotoCollectionViewController.swift */; };
 		E0FE73AC22F5724D00CE665B /* UserSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FE73AB22F5724D00CE665B /* UserSearchTableViewController.swift */; };
 		E0FE73B022F596C500CE665B /* PushListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FE73AF22F596C500CE665B /* PushListener.swift */; };
 		E0FF797A228C3F6800F61318 /* MyProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FF7979228C3F6800F61318 /* MyProfileTests.swift */; };
@@ -397,6 +398,7 @@
 		E0DE81B522DEB2CC00F785E3 /* DateFromNowFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFromNowFormatterTests.swift; sourceTree = "<group>"; };
 		E0EAEB7A22F1F25600C8E7C8 /* PostList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostList.swift; sourceTree = "<group>"; };
 		E0EAEB7C22F2891400C8E7C8 /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
+		E0EDD1512305ABCF00F732DE /* PostEditorPhotoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorPhotoCollectionViewController.swift; sourceTree = "<group>"; };
 		E0FE73AB22F5724D00CE665B /* UserSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchTableViewController.swift; sourceTree = "<group>"; };
 		E0FE73AF22F596C500CE665B /* PushListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushListener.swift; sourceTree = "<group>"; };
 		E0FF7979228C3F6800F61318 /* MyProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTests.swift; sourceTree = "<group>"; };
@@ -801,6 +803,7 @@
 				E0C18E5E22FAA3DE0086C114 /* PostCreationFlowViewController.swift */,
 				E0C18E6322FAEEFD0086C114 /* PostPhotoPickingFlowViewController.swift */,
 				E0C18E6522FC85890086C114 /* PostEditorViewController.swift */,
+				E0EDD1512305ABCF00F732DE /* PostEditorPhotoCollectionViewController.swift */,
 			);
 			name = "Post Creation";
 			sourceTree = "<group>";
@@ -1154,6 +1157,7 @@
 				E06589BD22700AEC00C9E4E6 /* CaptureSessionController.swift in Sources */,
 				E0D1BBDB22ACEE9500951F19 /* TimeIntervalComponents.swift in Sources */,
 				E0190F4B226DB55400C212D5 /* UIComponentFactories.swift in Sources */,
+				E0EDD1522305ABCF00F732DE /* PostEditorPhotoCollectionViewController.swift in Sources */,
 				E0A050C422E16B53002FCFC3 /* ReportReasonPickerTableViewController.swift in Sources */,
 				E0DA38A622C48BC400EC4170 /* UnlockFlowViewController.swift in Sources */,
 				E0BDCCEA229FA044006A9D20 /* PromotionPageList.swift in Sources */,

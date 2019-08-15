@@ -24,13 +24,22 @@ class PostEditorViewController: UIViewController, UserSessionDepending, DefaultI
     @IBOutlet weak var captionTextView: UITextView!
     @IBOutlet var endEditingTap: UITapGestureRecognizer!
     @IBOutlet weak var contentScrollView: UIScrollView!
+    
+    @IBOutlet weak var photoEditorContainer: UIView!
+    
     var keyboardObserver: KeyboardAppearanceObserver?
     var submitOperation: SubmitPostDraftOperation?
+    var photoEditor: PostEditorPhotoCollectionViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         localizeContents()
         updateViewsForDraft()
+        if userSession.isAdmin {
+            imageView.isHidden = true
+        } else {
+            photoEditorContainer.isHidden = true
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -76,6 +85,9 @@ class PostEditorViewController: UIViewController, UserSessionDepending, DefaultI
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? PostEditorPhotoCollectionViewController {
+            photoEditor = vc
+        }
     }
 }
 
@@ -104,7 +116,8 @@ private extension PostEditorViewController {
     }
     
     func updateViewsForDraft() {
-        imageView.image = postDraft.images[0].localImage
+        imageView.image = postDraft.images.first?.localImage
+        photoEditor.attachments = postDraft.images
         captionTextView.text = postDraft.caption
         updatePlaceholderAppearance()
     }

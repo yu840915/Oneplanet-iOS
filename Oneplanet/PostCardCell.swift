@@ -219,6 +219,10 @@ class PhotoGalleryPageCell: UICollectionViewCell {
     func updateViews(with info: WebImageInfo) {
         imageView.kf.setImage(with: info.url)
     }
+    
+    func updateViews(with attachement: ImageAttachment) {
+        imageView.image = attachement.localImage
+    }
 }
 
 class ScoreBarView: UIView {

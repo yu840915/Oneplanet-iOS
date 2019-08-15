@@ -154,6 +154,7 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
             }
         } else if let nav = segue.destination as? UINavigationController {
             if let vc = nav.viewControllers.first as? PostCreationFlowViewController {
+                vc.userSession = userSession
                 vc.postDraft = (sender as! PostDraft)
             } else if let vc = nav.viewControllers.first as? WebViewController {
                 NavigationBarStyle.darkGray.configure(nav.navigationBar)

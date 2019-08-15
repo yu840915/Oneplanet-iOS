@@ -16,6 +16,7 @@ class PostCreationPortalViewController: UIViewController, UserSessionDepending {
     @IBOutlet weak var valuedPhotoCapacityLabel: UILabel!
     @IBOutlet weak var freePhotoLabel: UILabel!
     @IBOutlet weak var balloonPadding: NSLayoutConstraint!
+    @IBOutlet weak var valuedPostCell: UIStackView!
     
     var startPostCreationFlow: ((PostDraft)->())?
     private var capacity: PhotoUploadCapacity? = PhotoUploadCapacity()
@@ -31,6 +32,7 @@ class PostCreationPortalViewController: UIViewController, UserSessionDepending {
         refreshClock = UpdateClock(onTick: {[weak self] in
             self?.updatePhotoCapacityLabel()
         })
+        valuedPostCell.isHidden = userSession.isAdmin
     }
     
     func updatePhotoCapacityLabel() {

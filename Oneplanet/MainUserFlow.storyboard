@@ -195,6 +195,7 @@
                         <outlet property="freePhotoLabel" destination="8Oe-kA-BOj" id="XCu-Kk-XhA"/>
                         <outlet property="valuedPhotoCapacityLabel" destination="xsi-6z-nHV" id="bLD-g7-cCZ"/>
                         <outlet property="valuedPhotoLabel" destination="Qqp-3U-0ms" id="fDr-Hx-jzP"/>
+                        <outlet property="valuedPostCell" destination="CUX-zj-qr9" id="d1R-SL-uDe"/>
                         <segue destination="thi-eF-IlH" kind="presentation" identifier="showValuedPhotoInfo" id="xAB-ua-3eb"/>
                         <segue destination="IdM-VW-wlo" kind="presentation" identifier="showFreePhotoInfo" id="UMJ-TF-JbG"/>
                         <segue destination="dYt-Ru-5KY" kind="presentation" identifier="showCantUploadInfo" id="ihv-IR-yQ0"/>
@@ -1223,16 +1224,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="VH9-vI-D8G">
-                                <rect key="frame" x="0.0" y="0.0" width="374" height="580"/>
+                                <rect key="frame" x="0.0" y="0.0" width="374.33333333333331" height="580"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="hcO-gV-fFh">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="198.66666666666666"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374.33333333333331" height="198.66666666666666"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j8q-U5-kvy">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="166.33333333333334"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374.33333333333331" height="166.33333333333334"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_bidgem_unlock" translatesAutoresizingMaskIntoConstraints="NO" id="p5q-Gr-RJR">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="166.33333333333334"/>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p5q-Gr-RJR">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374.33333333333331" height="166.33333333333334"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1255,13 +1256,13 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="B2U-w7-wre">
-                                        <rect key="frame" x="10" y="232.66666666666666" width="354" height="347.33333333333337"/>
+                                        <rect key="frame" x="10" y="232.66666666666666" width="354.33333333333331" height="347.33333333333337"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fjG-Ye-UG6">
-                                                <rect key="frame" x="0.0" y="0.0" width="354" height="216.33333333333334"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="354.33333333333331" height="216.33333333333334"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="1ru-0F-Cym" userLabel="Bullet Stack View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="354" height="171.66666666666666"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="354.33333333333331" height="171.66666666666666"/>
                                                         <subviews>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="• " textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pAO-fX-WVb" userLabel="Content Text View">
                                                                 <rect key="frame" x="0.0" y="0.0" width="19" height="30.333333333333332"/>
@@ -1270,7 +1271,7 @@
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                             </textView>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="獲得方式一：上傳照片後，畫面左上角的經驗會增加，滿格即獲得一顆 競標寶。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="890-AB-VDt" userLabel="Content Text View">
-                                                                <rect key="frame" x="19" y="0.0" width="335" height="44.666666666666664"/>
+                                                                <rect key="frame" x="19" y="0.0" width="335.33333333333331" height="44.666666666666664"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1281,7 +1282,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Fuz-Uf-B26" userLabel="Bullet Stack View">
-                                                        <rect key="frame" x="0.0" y="171.66666666666666" width="354" height="44.666666666666657"/>
+                                                        <rect key="frame" x="0.0" y="171.66666666666666" width="354.33333333333331" height="44.666666666666657"/>
                                                         <subviews>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="• " textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gHn-UK-LJl" userLabel="Content Text View">
                                                                 <rect key="frame" x="0.0" y="0.0" width="19" height="30.333333333333332"/>
@@ -1290,7 +1291,7 @@
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                             </textView>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="獲得方式一：上傳照片後，畫面左上角的經驗會增加，滿格即獲得一顆 競標寶。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="zBq-NY-quD" userLabel="Content Text View">
-                                                                <rect key="frame" x="19" y="0.0" width="335" height="44.666666666666664"/>
+                                                                <rect key="frame" x="19" y="0.0" width="335.33333333333331" height="44.666666666666664"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1303,14 +1304,14 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RgX-st-Y3V" userLabel="Padding">
-                                                <rect key="frame" x="0.0" y="226.33333333333334" width="354" height="16"/>
+                                                <rect key="frame" x="0.0" y="226.33333333333334" width="354.33333333333331" height="16"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="gB8-EJ-cM5"/>
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rfe-1q-mkM">
-                                                <rect key="frame" x="0.0" y="252.33333333333337" width="354" height="41"/>
+                                                <rect key="frame" x="0.0" y="252.33333333333337" width="354.33333333333331" height="41"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yeq-WL-yO8" userLabel="Padding">
                                                         <rect key="frame" x="0.0" y="0.0" width="10" height="41"/>
@@ -1320,7 +1321,7 @@
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LYE-7a-xeP" userLabel="OK Button">
-                                                        <rect key="frame" x="10" y="0.0" width="334" height="41"/>
+                                                        <rect key="frame" x="10" y="0.0" width="334.33333333333331" height="41"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                         <state key="normal" title="Go" backgroundImage="bt_biggreen_nor">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1330,7 +1331,7 @@
                                                         </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QlF-xP-py4" userLabel="Padding">
-                                                        <rect key="frame" x="344" y="0.0" width="10" height="41"/>
+                                                        <rect key="frame" x="344.33333333333331" y="0.0" width="10" height="41"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="10" id="uL7-il-OCs"/>
@@ -1339,7 +1340,7 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="APq-VM-f21">
-                                                <rect key="frame" x="0.0" y="303.33333333333337" width="354" height="44"/>
+                                                <rect key="frame" x="0.0" y="303.33333333333337" width="354.33333333333331" height="44"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F53-li-Qyx" userLabel="Hide Button">
                                                         <rect key="frame" x="109.66666666666669" y="0.0" width="135" height="44"/>
@@ -1462,16 +1463,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="N8T-kK-07B">
-                                <rect key="frame" x="0.0" y="0.0" width="374" height="580"/>
+                                <rect key="frame" x="0.0" y="0.0" width="374.33333333333331" height="580"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="sjp-sB-TqZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="198.66666666666666"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374.33333333333331" height="198.66666666666666"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qET-ij-cyH">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="166.33333333333334"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374.33333333333331" height="166.33333333333334"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_bidgem_unlock" translatesAutoresizingMaskIntoConstraints="NO" id="ndN-AL-25I">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="166.33333333333334"/>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ndN-AL-25I">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374.33333333333331" height="166.33333333333334"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1494,13 +1495,13 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="N9g-kM-tST">
-                                        <rect key="frame" x="10" y="232.66666666666666" width="354" height="347.33333333333337"/>
+                                        <rect key="frame" x="10" y="232.66666666666666" width="354.33333333333331" height="347.33333333333337"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Txv-cv-FZA">
-                                                <rect key="frame" x="0.0" y="0.0" width="354" height="216.33333333333334"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="354.33333333333331" height="216.33333333333334"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="tky-Gs-Fse" userLabel="Bullet Stack View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="354" height="216.33333333333334"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="354.33333333333331" height="216.33333333333334"/>
                                                         <subviews>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="• " textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdg-ii-stN" userLabel="Content Text View">
                                                                 <rect key="frame" x="0.0" y="0.0" width="19" height="30.333333333333332"/>
@@ -1509,7 +1510,7 @@
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                             </textView>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="獲得方式一：上傳照片後，畫面左上角的經驗會增加，滿格即獲得一顆 競標寶。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Uwm-RQ-nT7" userLabel="Content Text View">
-                                                                <rect key="frame" x="19" y="0.0" width="335" height="44.666666666666664"/>
+                                                                <rect key="frame" x="19" y="0.0" width="335.33333333333331" height="44.666666666666664"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1522,14 +1523,14 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eOW-OI-C0J" userLabel="Padding">
-                                                <rect key="frame" x="0.0" y="226.33333333333334" width="354" height="16"/>
+                                                <rect key="frame" x="0.0" y="226.33333333333334" width="354.33333333333331" height="16"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="w4Y-Wj-JZf"/>
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9OZ-KF-rSC">
-                                                <rect key="frame" x="0.0" y="252.33333333333337" width="354" height="41"/>
+                                                <rect key="frame" x="0.0" y="252.33333333333337" width="354.33333333333331" height="41"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="48f-lk-xeW" userLabel="Padding">
                                                         <rect key="frame" x="0.0" y="0.0" width="10" height="41"/>
@@ -1539,7 +1540,7 @@
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8eu-uC-pLn" userLabel="OK Button">
-                                                        <rect key="frame" x="10" y="0.0" width="334" height="41"/>
+                                                        <rect key="frame" x="10" y="0.0" width="334.33333333333331" height="41"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                         <state key="normal" title="Go" backgroundImage="bt_biggreen_nor">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1549,7 +1550,7 @@
                                                         </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kQt-Mw-9Hl" userLabel="Padding">
-                                                        <rect key="frame" x="344" y="0.0" width="10" height="41"/>
+                                                        <rect key="frame" x="344.33333333333331" y="0.0" width="10" height="41"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="10" id="yQO-PW-0IE"/>
@@ -1558,7 +1559,7 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9jf-Sh-lNE">
-                                                <rect key="frame" x="0.0" y="303.33333333333337" width="354" height="44"/>
+                                                <rect key="frame" x="0.0" y="303.33333333333337" width="354.33333333333331" height="44"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PrF-Vv-KoG" userLabel="Hide Button">
                                                         <rect key="frame" x="109.66666666666669" y="0.0" width="135" height="44"/>
@@ -1892,16 +1893,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="67i-H7-4T3">
-                                <rect key="frame" x="0.0" y="0.0" width="374" height="580"/>
+                                <rect key="frame" x="0.0" y="0.0" width="374.33333333333331" height="580"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="S2x-jZ-eWy">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="231"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374.33333333333331" height="231"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iaR-5a-XYH">
-                                                <rect key="frame" x="0.0" y="0.0" width="374" height="166.33333333333334"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374.33333333333331" height="166.33333333333334"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_bidgem_unlock" translatesAutoresizingMaskIntoConstraints="NO" id="ayY-cB-1w0">
-                                                        <rect key="frame" x="0.0" y="0.0" width="374" height="166.33333333333334"/>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ayY-cB-1w0">
+                                                        <rect key="frame" x="0.0" y="0.0" width="374.33333333333331" height="166.33333333333334"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1929,13 +1930,13 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Bqt-1z-WGB">
-                                        <rect key="frame" x="10" y="265" width="354" height="315"/>
+                                        <rect key="frame" x="10" y="265" width="354.33333333333331" height="315"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="2XZ-99-rfo">
-                                                <rect key="frame" x="0.0" y="0.0" width="354" height="238"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="354.33333333333331" height="238"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="iKH-xs-lcd" userLabel="Bullet Stack View">
-                                                        <rect key="frame" x="0.0" y="0.0" width="354" height="238"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="354.33333333333331" height="238"/>
                                                         <subviews>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="1000" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="• " textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pmn-DU-dPa" userLabel="Content Text View">
                                                                 <rect key="frame" x="0.0" y="0.0" width="19" height="30.333333333333332"/>
@@ -1944,7 +1945,7 @@
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                             </textView>
                                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalCompressionResistancePriority="749" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="獲得方式一：上傳照片後，畫面左上角的經驗會增加，滿格即獲得一顆 競標寶。" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fvy-9A-GKm" userLabel="Content Text View">
-                                                                <rect key="frame" x="19" y="0.0" width="335" height="44.666666666666664"/>
+                                                                <rect key="frame" x="19" y="0.0" width="335.33333333333331" height="44.666666666666664"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1957,14 +1958,14 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yuj-Sv-R5w" userLabel="Padding">
-                                                <rect key="frame" x="0.0" y="248" width="354" height="16"/>
+                                                <rect key="frame" x="0.0" y="248" width="354.33333333333331" height="16"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="1Nc-Tf-CT6"/>
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Gd-97-0hO">
-                                                <rect key="frame" x="0.0" y="274" width="354" height="41"/>
+                                                <rect key="frame" x="0.0" y="274" width="354.33333333333331" height="41"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZx-UQ-EFH" userLabel="Padding">
                                                         <rect key="frame" x="0.0" y="0.0" width="10" height="41"/>
@@ -1974,7 +1975,7 @@
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jzc-A9-RDZ" userLabel="OK Button">
-                                                        <rect key="frame" x="10" y="0.0" width="334" height="41"/>
+                                                        <rect key="frame" x="10" y="0.0" width="334.33333333333331" height="41"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                         <state key="normal" title="Go" backgroundImage="bt_biggreen_nor">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1984,7 +1985,7 @@
                                                         </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rDb-pN-PLO" userLabel="Padding">
-                                                        <rect key="frame" x="344" y="0.0" width="10" height="41"/>
+                                                        <rect key="frame" x="344.33333333333331" y="0.0" width="10" height="41"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="10" id="bXA-ki-uEH"/>
@@ -2091,7 +2092,6 @@
         <image name="ic_key_nor" width="28" height="28"/>
         <image name="im_160film" width="20" height="160"/>
         <image name="im_bgall" width="609" height="812"/>
-        <image name="im_bidgem_unlock" width="900" height="400"/>
         <image name="ui_balloonline_nor" width="10" height="68"/>
         <image name="ui_score" width="140" height="10"/>
         <image name="ui_scorebg" width="140" height="10"/>

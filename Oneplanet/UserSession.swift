@@ -18,6 +18,9 @@ class UserSession {
     var isBanned: Bool {
         return true
     }
+    var isAdmin: Bool {
+        return true
+    }
     let bearerToken: String
     let profileDidUpdate = MulticastCallbackNode<()->()>()
     let loginType: LoginType

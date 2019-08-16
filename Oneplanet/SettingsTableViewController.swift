@@ -63,11 +63,17 @@ class SettingsTableViewController: UITableViewController, UserSessionDepending {
     }
 
     @IBAction func showEmailComposer(_ sender: Any) {
-        UIApplication.shared.open(URL(string: "message://")!, options: [:], completionHandler: nil)
+        let url = URL(string: "mailto:oneplanetservice@theonecollection.com.tw")!
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     @IBAction func exit(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func showYoutubePage(_ sender: UIBarButtonItem) {
+        let url = URL(string: "https://www.youtube.com/channel/UC8qsQgekPZR2kzhU_vdKg1w")!
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     // MARK: - Table view data source

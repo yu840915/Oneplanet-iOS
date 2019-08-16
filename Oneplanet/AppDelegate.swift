@@ -13,6 +13,7 @@ import UserNotifications
 import FacebookCore
 import TwitterKit
 import StoreKit
+import ModelBlocks
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -112,4 +113,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate: WXApiDelegate {
+}
+
+
+class StatusBarFrameObserver {
+    static let shared = UIApplication.shared.keyWindow!.isXgenerationScreen ? StatusBarFrameObserver() : PreXGenScreenStatusBarFrameObserver()
+    let statusBarHeightChangeObserverse = MulticastCallbackNode<()->()>()
+    var extraBarHeight: CGFloat { return .zero }
+    
+    init() {
+    }
+}
+
+class PreXGenScreenStatusBarFrameObserver: StatusBarFrameObserver {
+    override var extraBarHeight: CGFloat {
+        return UIApplication.shared.statusBarFrame.height - 20
+    }
+    
+    override init() {
+        super.init()
+        NotificationCenter.default.addObserver(forName: UIApplication.didChangeStatusBarFrameNotification, object: nil, queue: .main) {[weak self] (_) in
+            self?.statusBarHeightChangeObserverse.invokeEach{$0()}
+        }
+    }
 }

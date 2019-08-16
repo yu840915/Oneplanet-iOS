@@ -96,10 +96,10 @@ class GiftFromOfficialNoticeViewModel: NoticeViewModel, NormalNoticeItemDisplaya
 
 class FollowNoticeViewModel: NoticeViewModel, NormalNoticeItemDisplayable {
     override var attributedMessage: NSAttributedString {
-        let official = "Suprem.AI"
-        let text = String(format: Localized.messageFormats.likedYourPost, official)
+        let nickname = "Mike"
+        let text = String(format: Localized.messageFormats.startFollowingYou, nickname)
         let attrStr = NSMutableAttributedString(string: text, attributes: [.font:  UIFont.systemFont(ofSize: 12)])
-        let range = (text as NSString).range(of: official)
+        let range = (text as NSString).range(of: nickname)
         attrStr.addAttributes([.font: UIFont.systemFont(ofSize: 12, weight: .semibold)], range: range)
         return attrStr
     }
@@ -171,7 +171,7 @@ class GiftFromOfficialNoticePopUpConfiguration: GemActionPopUpConfiguration {
     }
     
     override var icon: UIImage {
-        return Currency.greenGem.largeIcon
+        return #imageLiteral(resourceName: "im_06_safrid")
     }
     
     override var attributedSubtitle: NSAttributedString {
@@ -204,7 +204,7 @@ class LikeFromOfficialNoticePopUpConfiguration: GemActionPopUpConfiguration {
     }
 
     override var icon: UIImage {
-        return Currency.greenGem.largeIcon
+        return #imageLiteral(resourceName: "im_06_safrid")
     }
     
     override var attributedSubtitle: NSAttributedString {

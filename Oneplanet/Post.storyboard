@@ -178,7 +178,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="EC3-2v-pxp">
-                                            <rect key="frame" x="188.5" y="11.5" width="37" height="36.5"/>
+                                            <rect key="frame" x="188.5" y="11.5" width="37" height="37"/>
                                         </activityIndicatorView>
                                     </subviews>
                                     <constraints>
@@ -487,17 +487,17 @@
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mXg-zo-zXT" customClass="ScoreBarView" customModule="Oneplanet" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="374" width="374" height="10"/>
                                                             <subviews>
-                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="1000" image="ui_scorebg" translatesAutoresizingMaskIntoConstraints="NO" id="SO1-Rz-Fls">
+                                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="1000" image="ui_picscorebg" translatesAutoresizingMaskIntoConstraints="NO" id="SO1-Rz-Fls">
                                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="10"/>
                                                                 </imageView>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wvu-Dm-frO" userLabel="Scorebar Button">
                                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="10"/>
-                                                                    <state key="normal" backgroundImage="ui_scorebg"/>
+                                                                    <state key="normal" backgroundImage="ui_picscorebg"/>
                                                                 </button>
                                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eJr-ve-CXo" userLabel="Mask View">
                                                                     <rect key="frame" x="-374" y="0.0" width="374" height="10"/>
                                                                     <subviews>
-                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_score" translatesAutoresizingMaskIntoConstraints="NO" id="IfI-wm-cym">
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_picscore" translatesAutoresizingMaskIntoConstraints="NO" id="IfI-wm-cym">
                                                                             <rect key="frame" x="374" y="0.0" width="374" height="10"/>
                                                                         </imageView>
                                                                     </subviews>
@@ -520,6 +520,7 @@
                                                                 <constraint firstItem="eJr-ve-CXo" firstAttribute="leading" relation="lessThanOrEqual" secondItem="mXg-zo-zXT" secondAttribute="leading" id="cQQ-e0-DRQ"/>
                                                                 <constraint firstItem="IfI-wm-cym" firstAttribute="centerY" secondItem="SO1-Rz-Fls" secondAttribute="centerY" id="cbD-ia-aVC"/>
                                                                 <constraint firstItem="IfI-wm-cym" firstAttribute="top" secondItem="SO1-Rz-Fls" secondAttribute="top" id="fmK-lp-bjs"/>
+                                                                <constraint firstAttribute="height" constant="10" id="kiL-A2-PL4"/>
                                                                 <constraint firstItem="Wvu-Dm-frO" firstAttribute="height" secondItem="mXg-zo-zXT" secondAttribute="height" id="pRz-dG-az6"/>
                                                                 <constraint firstItem="eJr-ve-CXo" firstAttribute="trailing" secondItem="SO1-Rz-Fls" secondAttribute="leading" id="q7U-9t-cV6"/>
                                                                 <constraint firstItem="SO1-Rz-Fls" firstAttribute="centerX" secondItem="mXg-zo-zXT" secondAttribute="centerX" id="sfl-1M-qW2"/>
@@ -616,7 +617,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_flitertap_tap" translatesAutoresizingMaskIntoConstraints="NO" id="zO2-k7-4DZ">
-                                                            <rect key="frame" x="179" y="27" width="16" height="16"/>
+                                                            <rect key="frame" x="177" y="25" width="20" height="20"/>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -749,7 +750,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_flitertap_tap" translatesAutoresizingMaskIntoConstraints="NO" id="XvP-Hg-YUD">
-                                                                <rect key="frame" x="179" y="27" width="16" height="16"/>
+                                                                <rect key="frame" x="177" y="25" width="20" height="20"/>
                                                             </imageView>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -834,7 +835,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="n52-Kq-huY">
-                                        <rect key="frame" x="20" y="0.0" width="374" height="606"/>
+                                        <rect key="frame" x="20" y="0.0" width="374" height="600"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mir-1E-j3V">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="18"/>
@@ -915,7 +916,7 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="dPq-uX-68J">
-                                                <rect key="frame" x="0.0" y="98" width="374" height="390"/>
+                                                <rect key="frame" x="0.0" y="98" width="374" height="384"/>
                                                 <subviews>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NTa-Xb-1MK">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="374"/>
@@ -955,20 +956,20 @@
                                                         </cells>
                                                     </collectionView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TPM-2d-xMZ" customClass="ScoreBarView" customModule="Oneplanet" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="374" width="374" height="16"/>
+                                                        <rect key="frame" x="0.0" y="374" width="374" height="10"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="1000" image="ui_scorebg" translatesAutoresizingMaskIntoConstraints="NO" id="DDg-SH-ozD">
-                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="16"/>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="1000" image="ui_picscorebg" translatesAutoresizingMaskIntoConstraints="NO" id="DDg-SH-ozD">
+                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="10"/>
                                                             </imageView>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1z3-Q4-gkm" userLabel="Scorebar Button">
-                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="16"/>
-                                                                <state key="normal" backgroundImage="ui_scorebg"/>
+                                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1z3-Q4-gkm" userLabel="Scorebar Button">
+                                                                <rect key="frame" x="0.0" y="0.0" width="374" height="10"/>
+                                                                <state key="normal" backgroundImage="ui_picscorebg"/>
                                                             </button>
                                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghO-Q7-iqA">
-                                                                <rect key="frame" x="-374" y="3" width="374" height="10"/>
+                                                                <rect key="frame" x="-374" y="0.0" width="374" height="10"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_score" translatesAutoresizingMaskIntoConstraints="NO" id="oWG-li-Xuf">
-                                                                        <rect key="frame" x="374" y="-3" width="374" height="16"/>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_picscore" translatesAutoresizingMaskIntoConstraints="NO" id="oWG-li-Xuf">
+                                                                        <rect key="frame" x="374" y="0.0" width="374" height="10"/>
                                                                     </imageView>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -993,6 +994,7 @@
                                                             <constraint firstItem="DDg-SH-ozD" firstAttribute="centerY" secondItem="TPM-2d-xMZ" secondAttribute="centerY" id="gHI-Sr-uaY"/>
                                                             <constraint firstItem="DDg-SH-ozD" firstAttribute="width" secondItem="TPM-2d-xMZ" secondAttribute="width" id="in1-Z6-bUi"/>
                                                             <constraint firstItem="ghO-Q7-iqA" firstAttribute="leading" relation="lessThanOrEqual" secondItem="TPM-2d-xMZ" secondAttribute="leading" id="j9J-kN-uwt"/>
+                                                            <constraint firstAttribute="height" constant="10" id="rGz-rb-wls"/>
                                                             <constraint firstItem="DDg-SH-ozD" firstAttribute="centerX" secondItem="TPM-2d-xMZ" secondAttribute="centerX" id="rjt-jG-32O"/>
                                                             <constraint firstItem="oWG-li-Xuf" firstAttribute="trailing" secondItem="DDg-SH-ozD" secondAttribute="trailing" id="zYn-AI-qXp"/>
                                                         </constraints>
@@ -1005,17 +1007,17 @@
                                                 </subviews>
                                             </stackView>
                                             <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="DGO-5A-nSh">
-                                                <rect key="frame" x="0.0" y="498" width="374" height="37"/>
+                                                <rect key="frame" x="0.0" y="492" width="374" height="37"/>
                                             </pageControl>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Content" translatesAutoresizingMaskIntoConstraints="NO" id="j5w-IG-QqI">
-                                                <rect key="frame" x="0.0" y="545" width="374" height="33"/>
+                                                <rect key="frame" x="0.0" y="539" width="374" height="33"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="textColor" name="default text"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bd2-NU-1ME">
-                                                <rect key="frame" x="0.0" y="588" width="374" height="18"/>
+                                                <rect key="frame" x="0.0" y="582" width="374" height="18"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="18" id="RlM-SF-RP2"/>
@@ -1209,8 +1211,8 @@
         <image name="im_bgall" width="609" height="812"/>
         <image name="im_first1" width="609" height="812"/>
         <image name="im_userphotodefault_nor" width="179" height="179"/>
-        <image name="ui_score" width="140" height="10"/>
-        <image name="ui_scorebg" width="140" height="10"/>
+        <image name="ui_picscore" width="333" height="10"/>
+        <image name="ui_picscorebg" width="7" height="7"/>
         <namedColor name="black background">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -1226,6 +1228,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="aNy-aY-wjN"/>
-        <segue reference="HoG-Gy-8of"/>
+        <segue reference="h1E-Fs-afE"/>
     </inferredMetricsTieBreakers>
 </document>

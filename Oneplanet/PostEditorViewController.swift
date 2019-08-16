@@ -24,13 +24,22 @@ class PostEditorViewController: UIViewController, UserSessionDepending, DefaultI
     @IBOutlet weak var captionTextView: UITextView!
     @IBOutlet var endEditingTap: UITapGestureRecognizer!
     @IBOutlet weak var contentScrollView: UIScrollView!
+    
+    @IBOutlet weak var photoEditorContainer: UIView!
+    
     var keyboardObserver: KeyboardAppearanceObserver?
     var submitOperation: SubmitPostDraftOperation?
+    var photoEditor: PostEditorPhotoCollectionViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         localizeContents()
         updateViewsForDraft()
+        if userSession.isAdmin {
+            imageView.isHidden = true
+        } else {
+            photoEditorContainer.isHidden = true
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -76,6 +85,23 @@ class PostEditorViewController: UIViewController, UserSessionDepending, DefaultI
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? PostEditorPhotoCollectionViewController {
+            vc.isEditable = userSession.isAdmin
+            vc.photoPickerAction = {[weak self] in
+                self?.showPhotoPicker()
+            }
+            vc.deleteItemAction = {[weak self] index in
+                self?.deleteAttachment(at: index)
+            }
+            photoEditor = vc
+        }
+        if let nav = segue.destination as? UINavigationController,
+            let vc = nav.viewControllers.first as? PostPhotoPickingFlowViewController {
+            NavigationBarStyle.darkGray.configure(nav.navigationBar)
+            vc.onPickingImage = {[weak self] image in
+                self?.didPickImage(image)
+            }
+        }
     }
 }
 
@@ -104,7 +130,8 @@ private extension PostEditorViewController {
     }
     
     func updateViewsForDraft() {
-        imageView.image = postDraft.images[0].localImage
+        imageView.image = postDraft.images.first?.localImage
+        photoEditor.attachments = postDraft.images
         captionTextView.text = postDraft.caption
         updatePlaceholderAppearance()
     }
@@ -113,7 +140,25 @@ private extension PostEditorViewController {
         let hasText = captionTextView.text.isEmpty == false
         placeholderLabel.isHidden = hasText
     }
-
+    
+    func showPhotoPicker() {
+        performSegue(withIdentifier: SegueID.showPhotoPicker, sender: nil)
+    }
+    
+    func deleteAttachment(at index: Int) {
+        postDraft.images.remove(at: index)
+        updateViewsForDraft()
+    }
+    
+    func didPickImage(_ image: UIImage) {
+        dismiss(animated: true, completion: nil)
+        appendAttachment(with: image)
+    }
+    
+    func appendAttachment(with image: UIImage) {
+        postDraft.images.append(ImageAttachment(image: image))
+        updateViewsForDraft()
+    }
 }
 
 extension PostEditorViewController: UITextViewDelegate {
@@ -141,4 +186,10 @@ extension PostEditorViewController: UITextViewDelegate {
         endEditingTap.isEnabled = false
     }
 
+}
+
+extension PostEditorViewController {
+    struct SegueID {
+        static let showPhotoPicker = "showPhotoPicker"
+    }
 }

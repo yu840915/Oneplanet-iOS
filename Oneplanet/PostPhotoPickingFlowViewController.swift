@@ -102,6 +102,9 @@ class PostPhotoPickingFlowViewController: ButtonBarPagerTabStripViewController, 
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? UserSessionDepending {
+            vc.userSession = userSession
+        }
     }
 
 }

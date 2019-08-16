@@ -58,10 +58,6 @@ class TreasuryBarViewController: UIViewController, UserSessionDepending {
     
     // MARK: - Navigation
 
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        return checkAccess()
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
     }
@@ -94,29 +90,20 @@ fileprivate extension TreasuryBarViewController {
     }
     
     func showBlueGemPopUp() {
-        guard checkAccess() else { return }
         showPopUpController(BlueGemPopUpViewController.entryPoint())
     }
     
     func showGreenGemPopUp() {
-        guard checkAccess() else { return }
         showPopUpController(GreenGemPopUpViewController.entryPoint())
     }
     
     func showPurpleGemPopUp() {
-        guard checkAccess() else { return }
         showPopUpController(PurpleGemStoreViewController.entryPoint())
     }
 
     func showPopUpController(_ controller: PopUpContainerViewController) {
         let presenter = FrontViewControllerFinder.findFront() ?? self
         presenter.present(controller, animated: true, completion: nil)
-    }
-    
-    func checkAccess() -> Bool {
-        let op = FeatureAccessCheckOperation(userSession: userSession)
-        op.start()
-        return op.isAccessible
     }
 }
 

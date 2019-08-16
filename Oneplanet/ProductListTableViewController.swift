@@ -119,7 +119,6 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
             }
         }
         cell.showDetailAction = {[weak self] in
-            self?.showProductDetailForCell(at: indexPath)
         }
     }
     

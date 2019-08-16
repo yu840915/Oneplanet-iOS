@@ -15,7 +15,7 @@ pod install
 carthage update --platform iOS
 ```
 
-完成後開啟 `Oiyster.xcworkspace`
+完成後開啟 `Oneplanet.xcworkspace`
 
 ## 簡述
 

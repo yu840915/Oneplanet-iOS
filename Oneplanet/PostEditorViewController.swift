@@ -87,6 +87,12 @@ class PostEditorViewController: UIViewController, UserSessionDepending, DefaultI
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? PostEditorPhotoCollectionViewController {
             vc.isEditable = userSession.isAdmin
+            vc.photoPickerAction = {[weak self] in
+                self?.showPhotoPicker()
+            }
+            vc.deleteItemAction = {[weak self] index in
+                self?.deleteAttachment(at: index)
+            }
             photoEditor = vc
         }
     }
@@ -132,6 +138,10 @@ private extension PostEditorViewController {
         performSegue(withIdentifier: SegueID.showPhotoPicker, sender: nil)
     }
     
+    func deleteAttachment(at index: Int) {
+        postDraft.images.remove(at: index)
+        updateViewsForDraft()
+    }
 }
 
 extension PostEditorViewController: UITextViewDelegate {

@@ -18,6 +18,7 @@ class PostEditorPhotoCollectionViewController: UICollectionViewController {
         }
     }
     var photoPickerAction: (()->())?
+    var deleteItemAction: ((Int)->())?
     var sections: [Section] {
         return isEditable ? [.photo, .add] : [.photo]
     }
@@ -74,7 +75,7 @@ class PostEditorPhotoCollectionViewController: UICollectionViewController {
     private func presentActionSheetsForPhoto(at indexPath: IndexPath) {
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         sheet.addAction(UIAlertAction(title: Localized.titles.delete, style: .destructive, handler: { (_) in
-            
+            self.deleteItemAction?(indexPath.row)
         }))
         sheet.addAction(UIAlertAction(title: Localized.titles.cancel, style: .cancel, handler: nil))
         present(sheet, animated: true, completion: nil)

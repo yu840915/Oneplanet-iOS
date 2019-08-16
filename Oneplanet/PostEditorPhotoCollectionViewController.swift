@@ -17,6 +17,7 @@ class PostEditorPhotoCollectionViewController: UICollectionViewController {
             }
         }
     }
+    var photoPickerAction: (()->())?
     var sections: [Section] {
         return isEditable ? [.photo, .add] : [.photo]
     }
@@ -69,6 +70,15 @@ class PostEditorPhotoCollectionViewController: UICollectionViewController {
             cell.updateViews(with: photos[indexPath.row])
         }
     }
+    
+    private func presentActionSheetsForPhoto(at indexPath: IndexPath) {
+        let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        sheet.addAction(UIAlertAction(title: Localized.titles.delete, style: .destructive, handler: { (_) in
+            
+        }))
+        sheet.addAction(UIAlertAction(title: Localized.titles.cancel, style: .cancel, handler: nil))
+        present(sheet, animated: true, completion: nil)
+    }
 
     // MARK: UICollectionViewDelegate
 
@@ -77,7 +87,10 @@ class PostEditorPhotoCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        switch sections[indexPath.section] {
+        case .photo: presentActionSheetsForPhoto(at: indexPath)
+        case .add: photoPickerAction?()
+        }
     }
 }
 

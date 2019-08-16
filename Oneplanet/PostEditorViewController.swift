@@ -86,6 +86,7 @@ class PostEditorViewController: UIViewController, UserSessionDepending, DefaultI
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? PostEditorPhotoCollectionViewController {
+            vc.isEditable = userSession.isAdmin
             photoEditor = vc
         }
     }
@@ -126,7 +127,11 @@ private extension PostEditorViewController {
         let hasText = captionTextView.text.isEmpty == false
         placeholderLabel.isHidden = hasText
     }
-
+    
+    func showPhotoPicker() {
+        performSegue(withIdentifier: SegueID.showPhotoPicker, sender: nil)
+    }
+    
 }
 
 extension PostEditorViewController: UITextViewDelegate {
@@ -154,4 +159,10 @@ extension PostEditorViewController: UITextViewDelegate {
         endEditingTap.isEnabled = false
     }
 
+}
+
+extension PostEditorViewController {
+    struct SegueID {
+        static let showPhotoPicker = "showPhotoPicker"
+    }
 }

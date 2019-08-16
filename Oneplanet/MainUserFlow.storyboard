@@ -1867,6 +1867,7 @@
                         <outlet property="okButtonItem" destination="I4V-JK-cNM" id="0Qb-gq-p1a"/>
                         <outlet property="photoEditorContainer" destination="Kky-6X-r1v" id="LHs-A3-Wi1"/>
                         <outlet property="placeholderLabel" destination="eF6-Sx-4VN" id="MC2-Ui-Ygg"/>
+                        <segue destination="kAf-h0-2BB" kind="presentation" identifier="showPhotoPicker" id="bFH-Y6-SfY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="isX-N2-afA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2083,6 +2084,22 @@
             </objects>
             <point key="canvasLocation" x="301" y="-331"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="KGq-Eo-mkF">
+            <objects>
+                <navigationController id="kAf-h0-2BB" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="szr-7N-mSf">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="d2f-IV-6nP" kind="relationship" relationship="rootViewController" id="ZcZ-6E-l3h"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tUX-X1-msj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3145" y="1777"/>
+        </scene>
         <!--Post Editor Photo Collection View Controller-->
         <scene sceneID="KQY-rc-x92">
             <objects>
@@ -2146,7 +2163,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UNQ-EK-jSA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2616" y="1777"/>
+            <point key="canvasLocation" x="1761" y="2269"/>
         </scene>
     </scenes>
     <resources>
@@ -2200,6 +2217,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="ZcZ-6E-l3h"/>
         <segue reference="Vig-IT-DEU"/>
     </inferredMetricsTieBreakers>
 </document>

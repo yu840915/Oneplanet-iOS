@@ -573,7 +573,6 @@
 				E07276E222731334001239C0 /* EmailVerificationViewController.swift */,
 				E0BAB71E228482D1007E747C /* InputFieldView.swift */,
 				E06F5010227B34880067DAE4 /* ProfileDraft.swift */,
-				E0837EF622816B0D00B13BAF /* ImageAttachmentUploadFlowOperation.swift */,
 				E08C3128227817680013DD0C /* AuthActions.swift */,
 				E0837EF4228022C400B13BAF /* TwitterLogIn.swift */,
 				E0837EF2227FFFBF00B13BAF /* FacebookLogin.swift */,
@@ -797,6 +796,7 @@
 			children = (
 				E0B3FBDA22F6895700BD53C9 /* PostCreationPortalViewController.swift */,
 				E0C18E6022FAA56A0086C114 /* PostDraft.swift */,
+				E0837EF622816B0D00B13BAF /* ImageAttachmentUploadFlowOperation.swift */,
 				E0B3FBDC22F6AE5B00BD53C9 /* ValuedPhotoInformationPopUpViewController.swift */,
 				E0C18E5C22F97C8D0086C114 /* UnavailableValuedPhotoViewController.swift */,
 				E0B3FBDE22F6AE7300BD53C9 /* FreePhotoInformationPopUpViewController.swift */,

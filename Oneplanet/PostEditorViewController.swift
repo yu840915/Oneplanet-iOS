@@ -95,6 +95,13 @@ class PostEditorViewController: UIViewController, UserSessionDepending, DefaultI
             }
             photoEditor = vc
         }
+        if let nav = segue.destination as? UINavigationController,
+            let vc = nav.viewControllers.first as? PostPhotoPickingFlowViewController {
+            NavigationBarStyle.darkGray.configure(nav.navigationBar)
+            vc.onPickingImage = {[weak self] image in
+                self?.didPickImage(image)
+            }
+        }
     }
 }
 
@@ -140,6 +147,16 @@ private extension PostEditorViewController {
     
     func deleteAttachment(at index: Int) {
         postDraft.images.remove(at: index)
+        updateViewsForDraft()
+    }
+    
+    func didPickImage(_ image: UIImage) {
+        dismiss(animated: true, completion: nil)
+        appendAttachment(with: image)
+    }
+    
+    func appendAttachment(with image: UIImage) {
+        postDraft.images.append(ImageAttachment(image: image))
         updateViewsForDraft()
     }
 }

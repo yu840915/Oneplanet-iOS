@@ -283,6 +283,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="avatarIndicator" destination="US0-jb-Em5" id="5W2-m6-opH"/>
+                        <outlet property="bottomPadding" destination="yOW-N2-5RF" id="pj9-7A-pTm"/>
                         <outlet property="cancelButtonItem" destination="oti-cg-b2g" id="ZOM-hq-8CY"/>
                         <outlet property="doneButtonItem" destination="tkr-gY-UDs" id="ihG-wR-5ye"/>
                         <outlet property="headerButton" destination="j6X-tO-2K5" id="FLE-78-EVF"/>

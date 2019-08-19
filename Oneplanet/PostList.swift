@@ -24,7 +24,7 @@ class Post: Decodable {
 
 class PostList: PaginatedList<GetPostListOperationFactory> {
     class func postList(with userSession: UserSession) -> PostList {
-        return PostList(operationFactory: GetPostListOperationFactory(session: userSession, url: ServiceURLs.base.appendingPathComponent("posts")))
+        return PostList(operationFactory: GetPostListOperationFactory(session: userSession, url: ServiceURLs.base.appendingPathComponent("posts").addingFirstPageQeury()))
     }
 
     class func myPostList(with userSession: UserSession) -> PostList {

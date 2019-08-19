@@ -95,9 +95,7 @@ class GetProductCagegoryPageOperation: AlamofireAPIAccessOperation, PaginatedFet
     private let url: URL
     
     convenience init(session: UserSession, query: String) {
-        var comp = URLComponents(url: ServiceURLs.base.appendingPathComponent("category/\(query)"), resolvingAgainstBaseURL: false)!
-        comp.queryItems = [URLQueryItem(name: "page", value: "1"), URLQueryItem(name: "limit", value: "10")]
-        self.init(session: session, url: comp.url!, isBeginning: true)
+        self.init(session: session, url: ServiceURLs.base.appendingPathComponent("category/\(query)").addingFirstPageQeury(), isBeginning: true)
     }
     
     init(session: UserSession, url: URL, isBeginning: Bool) {

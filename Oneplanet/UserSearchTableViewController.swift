@@ -53,8 +53,11 @@ class UserSearchTableViewController: UITableViewController, UserSessionDepending
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         searchBar.becomeFirstResponder()
+        if view.frame.minY != topPadding {
+            navigationController?.view.setNeedsLayout()
+        }
     }
-    
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         searchBar.endEditing(false)

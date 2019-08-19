@@ -8,7 +8,7 @@
 
 import UIKit
 
-class User: UserProfileDisplayable {
+class User: Decodable, UserProfileDisplayable {
     let nickname: String
     let username: String
     let avatar: WebImageInfo? = nil
@@ -19,6 +19,21 @@ class User: UserProfileDisplayable {
         self.id = id
         self.nickname = nickname
         self.alien = character
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case nickname = "display_name"
+        case username
+        case alien
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(String.self, forKey: .id)
+        nickname = try container.decodeIfPresent(String.self, forKey: .nickname) ?? ""
+        username = try container.decodeIfPresent(String.self, forKey: .username) ?? ""
+        alien = try container.decodeIfPresent(Alien.self, forKey: .alien)
     }
 }
 

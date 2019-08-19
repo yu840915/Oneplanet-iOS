@@ -41,14 +41,36 @@ class GetPromotionPageListOperation: AlamofireAPIAccessOperation {
     }
     
     override func prepareURLRequest() throws -> URLRequest {
-        var comp = URLComponents(url: ServiceURLs.base.appendingPathComponent("collection/popups"), resolvingAgainstBaseURL: false)!
-        comp.queryItems = [URLQueryItem(name: "page", value: "1"),URLQueryItem(name: "limit", value: "20")]
-        return session.addingAuthorizationToken(to: URLRequest(url: comp.url!))
+        return session.addingAuthorizationToken(to: URLRequest(url: ServiceURLs.base.appendingPathComponent("collection/popups").addingFirstPageQeury(limit: 20)))
     }
     
     override func processData(with data: Data) throws {
         let items = try JSONDecoder.default.decode([CollectionItem].self, from: data)
         list = PromotionPageList(pages: items.compactMap{PromotionAd.from($0)})
+    }
+}
+
+extension URL {
+    func addingFirstPageQeury(limit :Int = 10) -> URL {
+        var comp = URLComponents(url: self, resolvingAgainstBaseURL: false)!
+        let items = [URLQueryItem(name: "page", value: "1"),URLQueryItem(name: "limit", value: "\(limit)")]
+        if let existing = comp.queryItems {
+            comp.queryItems = items + existing
+        } else {
+            comp.queryItems = items
+        }
+        return comp.url!
+    }
+    
+    func addingQ(_ q: String) -> URL {
+        var comp = URLComponents(url: self, resolvingAgainstBaseURL: false)!
+        let items = [URLQueryItem(name: "q", value: q)]
+        if let existing = comp.queryItems {
+            comp.queryItems = items + existing
+        } else {
+            comp.queryItems = items
+        }
+        return comp.url!
     }
 }
 

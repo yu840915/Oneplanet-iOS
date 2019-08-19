@@ -12,7 +12,8 @@ import Alamofire
 
 class UserList: PaginatedList<GetUserListOperationFactory> {
     class func searchList(with userSession: UserSession, query: String) -> UserList {
-        return UserList(operationFactory: GetUserListOperationFactory(session: userSession, url: ServiceURLs.base.appendingPathComponent("users?q=\(query)")))
+        let url = ServiceURLs.base.appendingPathComponent("user").addingQ(query)
+        return UserList(operationFactory: GetUserListOperationFactory(session: userSession, url: url))
     }
     class func followerList(with userSession: UserSession) -> UserList {
         return UserList(operationFactory: GetUserListOperationFactory(session: userSession, url: ServiceURLs.base.appendingPathComponent("me/followers")))
@@ -69,5 +70,12 @@ class GetUserListOperation: AlamofireAPIAccessOperation, PaginatedFetchingOperat
         self.session = session
         self.url = url
     }
-
+    
+    override func prepareURLRequest() throws -> URLRequest {
+        return session.addingAuthorizationToken(to: URLRequest(url: url))
+    }
+    
+    override func processData(with data: Data) throws {
+        items = try JSONDecoder.default.decode([User].self, from: data)
+    }
 }

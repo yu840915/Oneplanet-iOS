@@ -51,9 +51,7 @@ class GetCollectionPageOperation: AlamofireAPIAccessOperation, PaginatedFetching
     let session: UserSession
     private let url: URL
     convenience init(session: UserSession, name: ListName) {
-        var comp = URLComponents(url: ServiceURLs.base.appendingPathComponent("collection/\(name.rawValue)"), resolvingAgainstBaseURL: false)!
-        comp.queryItems = [URLQueryItem(name: "page", value: "1"), URLQueryItem(name: "limit", value: "10")]
-        self.init(session: session, url: comp.url!, isBeginning: true)
+        self.init(session: session, url: ServiceURLs.base.appendingPathComponent("collection/\(name.rawValue)").addingFirstPageQeury(), isBeginning: true)
     }
     
     init(session: UserSession, url: URL, isBeginning: Bool) {

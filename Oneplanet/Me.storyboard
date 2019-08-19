@@ -117,7 +117,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <segue destination="j6u-Vh-x5p" kind="show" identifier="showFriendLists" id="kVb-Eq-PLA"/>
                         <segue destination="vsP-dl-9e7" kind="presentation" identifier="showReportFlow" id="KYh-HC-jfC"/>

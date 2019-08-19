@@ -9,11 +9,16 @@
 import Foundation
 import ModelBlocks
 
-class Post {
+class Post: Decodable {
     let id: String
-    let author: User = User(id: "123", username: "Mike 123", nickname: "Mike", character: AlienOptions.shared.alien(for: .one, color: .blue))
-    init(id: String) {
-        self.id = id
+    let authorID: String
+    let caption: String
+    let imageURLs: [URL]
+    
+    enum CodingKeys: String, CodingKey {
+        case id, caption
+        case authorID = "user"
+        case imageURLs = "images"
     }
 }
 
@@ -67,5 +72,13 @@ class GetPostListOperation:  AlamofireAPIAccessOperation, PaginatedFetchingOpera
     init(session: UserSession, url: URL) {
         self.session = session
         self.url = url
+    }
+    
+    override func prepareURLRequest() throws -> URLRequest {
+        return session.addingAuthorizationToken(to: URLRequest(url: url))
+    }
+    
+    override func processData(with data: Data) throws {
+        items = try JSONDecoder.default.decode([Post].self, from: data)
     }
 }

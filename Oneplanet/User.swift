@@ -22,6 +22,17 @@ class User: UserProfileDisplayable {
     }
 }
 
+class UserFetcher {
+    let id: String
+    private(set) var user: User?
+//    private var getUserOperation: 
+    
+    init(id: String, user: User?) {
+        self.id = id
+        self.user = user
+    }
+}
+
 class Alien: Decodable {
     let race: Race
     let color: AlienColor

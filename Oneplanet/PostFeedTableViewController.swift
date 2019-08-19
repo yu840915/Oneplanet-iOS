@@ -26,8 +26,7 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
     override func viewDidLoad() {
         super.viewDidLoad()
         searchButton.layer.cornerRadius = 4
-        posts = [Post(id: "1"), Post(id: "2"), Post(id: "3"), Post(id: "4"), Post(id: "5")]
-//        prepareForList()
+        prepareForList()
     }
 
     @IBAction func reload(_ sender: UIRefreshControl) {
@@ -199,7 +198,7 @@ private extension PostFeedTableViewController {
     }
     
     func showProfile(for post: Post) {
-        performSegue(withIdentifier: SegueID.showProfile, sender: post.author)
+//        performSegue(withIdentifier: SegueID.showProfile, sender: post.author)
     }
     
     func edit(_ post: Post) {

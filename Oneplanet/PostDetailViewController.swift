@@ -115,7 +115,7 @@ class PostDetailViewController: UIViewController, UserSessionDepending {
 private extension PostDetailViewController {
     func showProfileForAuthor() {
         if canShowAuthorProfile {
-            performSegue(withIdentifier: SegueID.showProfile, sender: post.author)
+//            performSegue(withIdentifier: SegueID.showProfile, sender: post.author)
         }
     }
     

@@ -28,6 +28,14 @@ struct SharedNumberFormatters {
     static let roughNumber = RoughNumberFormatter()
 }
 
+struct SharedDateFormatters {
+    static let serverDate: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZZZZ"
+       return formatter
+    }()
+}
+
 struct SharedSpeciaFormatters {
     static let dateFromNowForNotices: DateFromNowFormatter = DateFromNowFormatter()
 }

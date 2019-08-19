@@ -14,11 +14,13 @@ class Post: Decodable {
     let authorID: String
     let caption: String
     let imageURLs: [URL]
+    let createdAt: Date
     
     enum CodingKeys: String, CodingKey {
         case id, caption
         case authorID = "user"
         case imageURLs = "images"
+        case createdAt = "created_at"
     }
 }
 

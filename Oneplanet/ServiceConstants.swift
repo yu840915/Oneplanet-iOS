@@ -80,5 +80,9 @@ struct DeepLinks {
 }
 
 extension JSONDecoder {
-    static let `default` = JSONDecoder()
+    static let `default`: JSONDecoder = {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(SharedDateFormatters.serverDate)
+        return decoder
+    }()
 }

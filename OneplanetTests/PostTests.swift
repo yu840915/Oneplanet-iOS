@@ -23,6 +23,7 @@ class PostTests: XCTestCase {
         let data = """
 {
     "id": "5d4f0e6e841fa8edbf790ca3",
+    "created_at":"2019-08-19T10:27:46.629000+00:00",
     "title": "qwe",
     "user": "5cf93b87a261e132018adbbf",
     "caption": "hello",
@@ -39,9 +40,13 @@ class PostTests: XCTestCase {
             XCTAssertEqual(post.authorID, "5cf93b87a261e132018adbbf")
             XCTAssertEqual(post.caption, "hello")
             XCTAssertEqual(post.imageURLs.count, 3)
+            XCTAssertEqual(post.createdAt, SharedDateFormatters.serverDate.date(from: "2019-08-19T10:27:46.629000+00:00"))
         } catch let error {
             XCTFail(error.localizedDescription)
         }
     }
-
+    
+    func testParseServerDate() {
+        XCTAssertNotNil(SharedDateFormatters.serverDate.date(from: "2019-08-19T10:27:46.629000+00:00"))
+    }
 }

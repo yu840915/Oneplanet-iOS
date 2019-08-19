@@ -1232,7 +1232,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j8q-U5-kvy">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="166"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_00_insufficient" translatesAutoresizingMaskIntoConstraints="NO" id="p5q-Gr-RJR">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_11_uploadphoto1" translatesAutoresizingMaskIntoConstraints="NO" id="p5q-Gr-RJR">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="166"/>
                                                     </imageView>
                                                 </subviews>
@@ -1472,7 +1472,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qET-ij-cyH">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="166"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_00_insufficient" translatesAutoresizingMaskIntoConstraints="NO" id="ndN-AL-25I">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_12_uploadphoto2" translatesAutoresizingMaskIntoConstraints="NO" id="ndN-AL-25I">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="166"/>
                                                     </imageView>
                                                 </subviews>
@@ -1914,7 +1914,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iaR-5a-XYH">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="166"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_00_insufficient" translatesAutoresizingMaskIntoConstraints="NO" id="ayY-cB-1w0">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_13_uploadphotofail" translatesAutoresizingMaskIntoConstraints="NO" id="ayY-cB-1w0">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="166"/>
                                                     </imageView>
                                                 </subviews>
@@ -2186,7 +2186,9 @@
         <image name="ic_gem_nor" width="28" height="28"/>
         <image name="ic_key80_nor" width="80" height="80"/>
         <image name="ic_key_nor" width="28" height="28"/>
-        <image name="im_00_insufficient" width="299" height="133"/>
+        <image name="im_11_uploadphoto1" width="299" height="133"/>
+        <image name="im_12_uploadphoto2" width="299" height="133"/>
+        <image name="im_13_uploadphotofail" width="299" height="133"/>
         <image name="im_160film" width="20" height="160"/>
         <image name="im_bgall" width="609" height="812"/>
         <image name="ui_balloonline_nor" width="10" height="68"/>

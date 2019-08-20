@@ -15,7 +15,8 @@ class PostEditorViewController: UIViewController, UserSessionDepending, DefaultI
     }
     var userSession: UserSession!
     var postDraft: PostDraft!
-    
+    var didPublish: ((Post?)->())?
+
     @IBOutlet weak var okButtonItem: UIBarButtonItem!
     
     @IBOutlet weak var placeholderLabel: UILabel!
@@ -111,7 +112,7 @@ class PostEditorViewController: UIViewController, UserSessionDepending, DefaultI
 private extension PostEditorViewController {
     func didSubmitPostDraft() {
         dismiss(animated: true, completion: nil)
-        //propagate
+        didPublish?(postDraft.updatedPost)
     }
     
     func didFailSubmission(with error: Error?) {

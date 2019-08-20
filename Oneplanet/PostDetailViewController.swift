@@ -114,12 +114,24 @@ class PostDetailViewController: UIViewController, UserSessionDepending {
             }
             if let vc = nav.viewControllers.first as? ReportReasonPickerTableViewController {
                 vc.flowController = (sender as! ReportFlowController)
+            } else if let vc = nav.viewControllers.first as? PostCreationFlowViewController {
+                vc.postDraft = PostDraft(post: (sender as! Post))
+                vc.didPublish = {[weak self] post in
+                    self?.handlePostUpdate(post)
+                }
             }
         }
     }
 }
 
 private extension PostDetailViewController {
+    func handlePostUpdate(_ post: Post?) {
+        if let post = post {
+            self.post = post
+            updateViews(with: PostCardViewModel(post: post))
+        }
+    }
+    
     func showProfileForAuthor() {
         if canShowAuthorProfile {
 //            performSegue(withIdentifier: SegueID.showProfile, sender: post.author)
@@ -127,7 +139,7 @@ private extension PostDetailViewController {
     }
     
     func editPost() {
-        
+        performSegue(withIdentifier: SegueID.showPostEditor, sender: nil)
     }
     
     func deletePost() {

@@ -14,6 +14,7 @@ class PostCreationFlowViewController: UIViewController, UserSessionDepending {
     var postDraft: PostDraft!
     var userSession: UserSession!
     var authorizationOperation: AskForCameraAndLibraryAuthorizationOperation?
+    var didPublish: ((Post?)->())?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -75,6 +76,9 @@ class PostCreationFlowViewController: UIViewController, UserSessionDepending {
             }
         } else if let vc = segue.destination as? PostEditorViewController {
             vc.postDraft = postDraft
+            vc.didPublish = {[weak self] post in
+                self?.didPublish?(post)
+            }
         }
     }
     
@@ -86,6 +90,9 @@ private extension PostCreationFlowViewController {
         let vc = PostEditorViewController.fromDefaultStoryboard()
         vc.userSession = userSession
         vc.postDraft = postDraft
+        vc.didPublish = {[weak self] post in
+            self?.didPublish?(post)
+        }
         navigationController!.pushViewController(vc, animated: true)
     }
 }

@@ -22,6 +22,8 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
     var sections: [Section] = [.content, .loading]
     private var listUpdateHandles: [Any]?
     private var expandPostsIDs = Set<String>()
+    private var needsUpdate = false
+    private var isVisible = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +33,32 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
 
     @IBAction func reload(_ sender: UIRefreshControl) {
         postList.reload()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        isVisible = true
+        updateIfNeeded()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        isVisible = false
+    }
+    
+    func setNeedsRefresh() {
+        if isVisible {
+            postList.reload()
+        } else {
+            needsUpdate = true
+        }
+    }
+    
+    private func updateIfNeeded() {
+        if needsUpdate {
+            needsUpdate = false
+            postList.reload()
+        }
     }
     
     // MARK: - Table view data source
@@ -134,6 +162,9 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
                 vc.flowController = (sender as! ReportFlowController)
             } else if let vc = nav.viewControllers.first as? PostCreationFlowViewController {
                 vc.postDraft = PostDraft(post: (sender as! Post))
+                vc.didPublish = {[weak self] _ in
+                    self?.setNeedsRefresh()
+                }
             }
         }
     }

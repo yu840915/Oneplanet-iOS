@@ -19,7 +19,7 @@ class UserSession {
         return true
     }
     var isAdmin: Bool {
-        return false
+        return true
     }
     let bearerToken: String
     let profileDidUpdate = MulticastCallbackNode<()->()>()

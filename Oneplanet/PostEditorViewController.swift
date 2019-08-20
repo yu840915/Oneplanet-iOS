@@ -76,7 +76,7 @@ class PostEditorViewController: UIViewController, UserSessionDepending, DefaultI
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? PostEditorPhotoCollectionViewController {
-            vc.isEditable = userSession.isAdmin
+            vc.isEditable = postDraft.originalPost == nil
             vc.photoPickerAction = {[weak self] in
                 self?.showPhotoPicker()
             }
@@ -134,7 +134,12 @@ private extension PostEditorViewController {
     }
     
     func updateViewsForDraft() {
-        imageView.image = postDraft.images.first?.localImage
+        if let webImage = postDraft.originalPost?.images.first {
+            imageView.kf.setImage(with: webImage.url)
+        } else {
+            imageView.image =  postDraft.images.first?.localImage
+        }
+        photoEditor.photos = postDraft.originalPost?.images ?? []
         photoEditor.attachments = postDraft.images
         captionTextView.text = postDraft.caption
         updatePlaceholderAppearance()

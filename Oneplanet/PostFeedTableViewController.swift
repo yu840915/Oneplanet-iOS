@@ -132,6 +132,8 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
                 vc.post = (sender as! Post)
             } else if let vc = nav.viewControllers.first as? ReportReasonPickerTableViewController {
                 vc.flowController = (sender as! ReportFlowController)
+            } else if let vc = nav.viewControllers.first as? PostCreationFlowViewController {
+                vc.postDraft = PostDraft(post: (sender as! Post))
             }
         }
     }
@@ -206,7 +208,7 @@ private extension PostFeedTableViewController {
     }
     
     func edit(_ post: Post) {
-        
+        performSegue(withIdentifier: SegueID.showPostEditor, sender: post)
     }
     
     func report(_ post: Post) {
@@ -230,6 +232,7 @@ extension PostFeedTableViewController {
         static let showDetail = "showDetail"
         static let showReportFlow = "showReportFlow"
         static let showProfile = "showProfile"
+        static let showPostEditor = "showPostEditor"
     }
 }
 

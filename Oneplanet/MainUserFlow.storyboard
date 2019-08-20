@@ -1885,7 +1885,7 @@
         <!--Navigation Controller-->
         <scene sceneID="tYW-Fo-Cab">
             <objects>
-                <navigationController id="UGy-Ts-eLl" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="PostEditorEntry" id="UGy-Ts-eLl" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="I6T-42-ZpX">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

@@ -30,7 +30,7 @@ class PostCreationFlowViewController: UIViewController, UserSessionDepending {
     }
     
     func nextStep() {
-        if postDraft.images.isEmpty {
+        if postDraft.originalPost == nil && postDraft.images.isEmpty {
             askForPermissions()
         } else {
             performSegue(withIdentifier: SegueID.showEditor, sender: nil)

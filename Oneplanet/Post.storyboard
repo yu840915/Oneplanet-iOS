@@ -31,6 +31,14 @@
             </objects>
             <point key="canvasLocation" x="-603" y="110"/>
         </scene>
+        <!--PostEditorEntry-->
+        <scene sceneID="AF8-TM-V7e">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MainUserFlow" referencedIdentifier="PostEditorEntry" id="dqs-s1-rFo" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aA3-eZ-iFp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="830" y="1377"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="6Ax-57-U59">
             <objects>
@@ -720,6 +728,7 @@
                         <segue destination="qVM-qw-Df3" kind="presentation" identifier="showDetail" id="HP7-l0-kPv"/>
                         <segue destination="huG-Zh-4dh" kind="presentation" identifier="showReportFlow" id="HoG-Gy-8of"/>
                         <segue destination="GiQ-rM-AH9" kind="presentation" identifier="showProfile" id="qBe-rD-zYH"/>
+                        <segue destination="dqs-s1-rFo" kind="presentation" identifier="showPostEditor" id="IHc-2l-Dfz"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oyu-yK-e24" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1078,6 +1087,7 @@
                         <outlet property="scorebarView" destination="TPM-2d-xMZ" id="Ply-5d-Nq9"/>
                         <segue destination="huG-Zh-4dh" kind="presentation" identifier="showReportFlow" id="h1E-Fs-afE"/>
                         <segue destination="CeN-lF-bz4" kind="show" identifier="showProfile" id="aNy-aY-wjN"/>
+                        <segue destination="dqs-s1-rFo" kind="presentation" identifier="showPostEditor" id="H9R-mZ-s12"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CAc-Sh-Kau" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1161,7 +1171,7 @@
                 <viewControllerPlaceholder storyboardName="SupportingFlows" referencedIdentifier="ReportEntry" id="huG-Zh-4dh" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Sy-eq-8TB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1217" y="1377"/>
+            <point key="canvasLocation" x="1452" y="1377"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mZN-rl-BeL">
@@ -1229,5 +1239,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="aNy-aY-wjN"/>
         <segue reference="h1E-Fs-afE"/>
+        <segue reference="IHc-2l-Dfz"/>
     </inferredMetricsTieBreakers>
 </document>

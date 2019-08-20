@@ -146,6 +146,7 @@ extension PostDetailViewController {
         static let showDetail = "showDetail"
         static let showReportFlow = "showReportFlow"
         static let showProfile = "showProfile"
+        static let showPostEditor = "showPostEditor"
     }
 }
 

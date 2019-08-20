@@ -72,7 +72,7 @@ class SubmitPostOperation: SimpleAsynchronousOperation, FailableOperationType {
             if draft.originalPost == nil {
                 uploadImages()
             } else {
-                
+                submitDraft()
             }
         } catch let error {
             fail(with: error)
@@ -155,6 +155,7 @@ class SubmitPostDraftOperation: AlamofireAPIAccessOperation {
     }
     
     override func processData(with data: Data) throws {
+        if data.isEmpty { return }
         post = try JSONDecoder.default.decode(Post.self, from: data)
     }
     

@@ -24,6 +24,7 @@ class UserSession {
     let bearerToken: String
     let profileDidUpdate = MulticastCallbackNode<()->()>()
     let loginType: LoginType
+    let postPublishObservers = MulticastCallbackNode<(Post?)->()>()
     private(set) var profile: MyProfile? {
         didSet {
             profileDidUpdate.invokeEach{$0()}
@@ -89,6 +90,10 @@ class UserSession {
         updateProfileOperation?.cancel()
         updateProfileOperation = nil
         sessionBecomeInactiveObservers.invokeEach{$0()}
+    }
+    
+    func broadcastPostPublish(_ post: Post?) {
+        postPublishObservers.invokeEach{$0(post)}
     }
 }
 

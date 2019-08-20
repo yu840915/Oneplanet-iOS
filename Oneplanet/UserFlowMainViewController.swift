@@ -176,7 +176,6 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
 fileprivate extension UserFlowMainViewController {
     func handleNewPost() {
         switchToTab(.life)
-        postController.setNeedsRefresh()
     }
     
     func showCreationPortalIfAllowed() {

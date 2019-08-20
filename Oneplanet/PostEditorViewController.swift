@@ -112,6 +112,7 @@ class PostEditorViewController: UIViewController, UserSessionDepending, DefaultI
 private extension PostEditorViewController {
     func didSubmitPostDraft() {
         dismiss(animated: true, completion: nil)
+        userSession.broadcastPostPublish(postDraft.updatedPost)
         didPublish?(postDraft.updatedPost)
     }
     

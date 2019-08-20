@@ -60,7 +60,7 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
     private func setUpPostCell(_ cell: PostCardCell, at indexPath: IndexPath) {
         let post = posts[indexPath.row]
         cell.expanded = expandPostsIDs.contains(post.id)
-        cell.updateViews(with: FakePost())
+        cell.updateViews(with: PostCardViewModel(post: post))
         cell.moreActions = {[weak self] in
             self?.showMoreAction(for: post)
         }
@@ -85,16 +85,20 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
     }
     
     private func showMoreAction(for post: Post) {
+        let isMine = post.authorID == userSession.profile?.id
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        sheet.addAction(UIAlertAction(title: Localized.titles.edit, style: .default, handler: { (_) in
+        if isMine {
+            sheet.addAction(UIAlertAction(title: Localized.titles.edit, style: .default, handler: { (_) in
                 self.edit(post)
-        }))
-        sheet.addAction(UIAlertAction(title: Localized.titles.report, style: .destructive, handler: { (_) in
-            self.report(post)
-        }))
-        sheet.addAction(UIAlertAction(title: Localized.phrases.unfollow, style: .destructive, handler: { (_) in
-            self.unfollowAuthor(of: post)
-        }))
+            }))
+        } else {
+            sheet.addAction(UIAlertAction(title: Localized.titles.report, style: .destructive, handler: { (_) in
+                self.report(post)
+            }))
+            sheet.addAction(UIAlertAction(title: Localized.phrases.unfollow, style: .destructive, handler: { (_) in
+                self.unfollowAuthor(of: post)
+            }))
+        }
         sheet.addAction(UIAlertAction(title: Localized.titles.cancel, style: .cancel, handler: nil))
         present(sheet, animated: true, completion: nil)
     }
@@ -241,11 +245,18 @@ extension UITableViewController: ScrollToTopHandler {
     }
 }
 
-class FakePost: PostDisplayable {
-    var avatar: WebImageInfo?
-    var nickname: String = "Abc 123"
-    var formatedDate: String = "1m ago"
-    var photos: [WebImageInfo] = [WebImageInfo(url: URL(string: "https://i.imgur.com/lytdJKp.png")!), WebImageInfo(url: URL(string: "https://i.imgur.com/lytdJKp.png")!), WebImageInfo(url: URL(string: "https://i.imgur.com/lytdJKp.png")!)]
-    var message: String = "Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content iap"
-    var relativeScore: Float? = 1.0
+class PostCardViewModel: PostDisplayable {
+    let avatar: WebImageInfo? = nil
+    let nickname: String = ""
+    let formatedDate: String
+    let photos: [WebImageInfo]
+    let message: String
+    let relativeScore: Float? = nil
+    var alien: Alien? = nil
+    
+    init(post: Post) {
+        photos = post.images
+        formatedDate = SharedSpeciaFormatters.dateFromNowForPosts.string(from: post.createdAt)
+        message = post.caption
+    }
 }

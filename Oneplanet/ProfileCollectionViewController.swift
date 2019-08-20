@@ -107,9 +107,7 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
     }
     
     private func updateViews(inPostCell cell: PhotoGalleryPageCell, at indexPath: IndexPath) {
-        let post = posts[indexPath.row]
-        let ds = FakePost()
-        cell.updateViews(with: ds.photos[0])
+        cell.updateViews(with: posts[indexPath.row].images[0])
     }
     
     // MARK: UICollectionViewDelegate

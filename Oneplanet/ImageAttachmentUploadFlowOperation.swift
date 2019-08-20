@@ -245,8 +245,8 @@ class UploadProgress {
         uploadDestination = nil
     }
     
-    func markAsFinished() {
-        imageLocation = uploadDestination
+    func markAsFinished(with finalLocation: UploadDestination? = nil) {
+            imageLocation = finalLocation ?? uploadDestination
     }
     
     var isFinished: Bool {

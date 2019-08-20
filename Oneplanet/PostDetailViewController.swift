@@ -33,7 +33,7 @@ class PostDetailViewController: UIViewController, UserSessionDepending {
         avatarView.action = {[weak self] in
             self?.showProfileForAuthor()
         }
-        updateViews(with: FakePost())
+        updateViews(with: PostCardViewModel(post: post))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,13 +50,20 @@ class PostDetailViewController: UIViewController, UserSessionDepending {
     }
     
     @IBAction func showMoreActionSheet(_ sender: UIBarButtonItem) {
+        let isMine = post.authorID == userSession.profile?.id
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        sheet.addAction(UIAlertAction(title: Localized.titles.edit, style: .default, handler: { (_) in
-            self.editPost()
-        }))
-        sheet.addAction(UIAlertAction(title: Localized.titles.report, style: .destructive, handler: { (_) in
-            self.reportPost()
-        }))
+        if isMine {
+            sheet.addAction(UIAlertAction(title: Localized.titles.edit, style: .default, handler: { (_) in
+                self.editPost()
+            }))
+            sheet.addAction(UIAlertAction(title: Localized.titles.delete, style: .destructive, handler: { (_) in
+                self.deletePost()
+            }))
+        } else {
+            sheet.addAction(UIAlertAction(title: Localized.titles.report, style: .destructive, handler: { (_) in
+                self.reportPost()
+            }))
+        }
         sheet.addAction(UIAlertAction(title: Localized.titles.cancel, style: .cancel, handler: nil))
         present(sheet, animated: true, completion: nil)
     }
@@ -120,6 +127,10 @@ private extension PostDetailViewController {
     }
     
     func editPost() {
+        
+    }
+    
+    func deletePost() {
         
     }
     

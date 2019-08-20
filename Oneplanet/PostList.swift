@@ -15,6 +15,9 @@ class Post: Decodable {
     let caption: String
     let imageURLs: [URL]
     let createdAt: Date
+    var images: [WebImageInfo] {
+        return imageURLs.map{WebImageInfo(url: $0)}
+    }
     
     enum CodingKeys: String, CodingKey {
         case id, caption

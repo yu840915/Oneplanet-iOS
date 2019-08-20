@@ -28,7 +28,7 @@ class PostEditorViewController: UIViewController, UserSessionDepending, DefaultI
     @IBOutlet weak var photoEditorContainer: UIView!
     
     var keyboardObserver: KeyboardAppearanceObserver?
-    var submitOperation: SubmitPostDraftOperation?
+    var submitOperation: SubmitPostOperation?
     var photoEditor: PostEditorPhotoCollectionViewController!
 
     override func viewDidLoad() {

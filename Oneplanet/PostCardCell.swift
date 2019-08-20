@@ -16,6 +16,7 @@ protocol PostDisplayable {
     var photos: [WebImageInfo] {get}
     var message: String {get}
     var relativeScore: Float? {get}
+    var alien: Alien? {get}
 }
 
 extension PostDisplayable {
@@ -215,6 +216,11 @@ class PostPhotoGalleryDataSource: NSObject, UICollectionViewDataSource, UICollec
 
 class PhotoGalleryPageCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        backgroundColor = ColorPalette.defaultEmptyBackground
+    }
     
     func updateViews(with info: WebImageInfo) {
         imageView.kf.setImage(with: info.url)

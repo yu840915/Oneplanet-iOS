@@ -38,6 +38,11 @@ struct SharedDateFormatters {
 
 struct SharedSpeciaFormatters {
     static let dateFromNowForNotices: DateFromNowFormatter = DateFromNowFormatter()
+    static let dateFromNowForPosts: DateFromNowFormatter = {
+       let formatter = DateFromNowFormatter()
+        formatter.style = .long
+        return formatter
+    }()
 }
 
 class RoughNumberFormatter: Formatter {
@@ -86,6 +91,7 @@ class RoughNumberFormatter: Formatter {
 }
 
 class DateFromNowFormatter: Formatter {
+    var style: Style = .short
     private let numberFormatter: NumberFormatter = {
         let value = NumberFormatter()
         value.numberStyle = .decimal
@@ -99,13 +105,13 @@ class DateFromNowFormatter: Formatter {
         return val
     }()
     private var secondFormat: String {
-        return Localized.phraseFormats.secondsAgoShort
+        return style == .short ? Localized.phraseFormats.secondsAgoShort : Localized.phraseFormats.secondsAgo
     }
     private var hourFormat: String {
-        return Localized.phraseFormats.hoursAgoShort
+        return style == .short ? Localized.phraseFormats.hoursAgoShort : Localized.phraseFormats.hoursAgo
     }
     private var minuteFormat: String {
-        return Localized.phraseFormats.minutesAgoShort
+        return style == .short ? Localized.phraseFormats.minutesAgoShort : Localized.phraseFormats.minutesAgo
     }
     let extractor: TimeIntervalComponentExtractor = {
         let sec = TimeIntervalComponentExtractor(unitInterval: .second, next: nil)
@@ -130,5 +136,10 @@ class DateFromNowFormatter: Formatter {
     
     func string(from date: Date) -> String {
         return string(from: date, since: Date())
+    }
+    
+    enum Style {
+        case short
+        case long
     }
 }

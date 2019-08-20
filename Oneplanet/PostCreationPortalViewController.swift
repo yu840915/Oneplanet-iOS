@@ -11,6 +11,7 @@ import UIKit
 class PostCreationPortalViewController: UIViewController, UserSessionDepending {
     
     var userSession: UserSession!
+    var didPublish: ((Post?)->())?
     @IBOutlet weak var controlContainer: UIStackView!
     @IBOutlet weak var valuedPhotoLabel: UILabel!
     @IBOutlet weak var valuedPhotoCapacityLabel: UILabel!

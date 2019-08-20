@@ -19,6 +19,14 @@ class Post: Decodable {
         return imageURLs.map{WebImageInfo(url: $0)}
     }
     
+    init(post: Post, caption: String) {
+        id = post.id
+        authorID = post.authorID
+        self.caption = caption
+        imageURLs = post.imageURLs
+        createdAt = post.createdAt
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id, caption
         case authorID = "user"

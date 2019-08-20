@@ -16,6 +16,13 @@ class PostDraft {
     var images: [ImageAttachment] = []
     var caption: String = ""
     var captionValidator = InputLengthValidator(max: 200)
+    var updatedPost: Post? {
+        if let post = originalPost {
+            return Post(post: post, caption: caption)
+        } else {
+            return nil
+        }
+    }
     
     init(isValued: Bool) {
         self.isValued = isValued
@@ -119,6 +126,7 @@ class SubmitPostOperation: SimpleAsynchronousOperation, FailableOperationType {
 class SubmitPostDraftOperation: AlamofireAPIAccessOperation {
     let draft: PostDraft
     let session: UserSession
+    private(set) var post: Post?
     typealias Keys = Post.CodingKeys
 
     init(draft: PostDraft, session: UserSession) {
@@ -144,6 +152,16 @@ class SubmitPostDraftOperation: AlamofireAPIAccessOperation {
             images = draft.images.compactMap{$0.progress.imageLocation?.url}
         }
         return [Keys.caption.rawValue: draft.caption, Keys.imageURLs.rawValue: images.map{$0.absoluteString}]
+    }
+    
+    override func processData(with data: Data) throws {
+        post = try JSONDecoder.default.decode(Post.self, from: data)
+    }
+    
+    override func willFinishProcess() throws {
+        if post == nil {
+            
+        }
     }
 }
 

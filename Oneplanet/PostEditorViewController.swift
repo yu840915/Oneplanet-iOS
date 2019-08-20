@@ -28,7 +28,6 @@ class PostEditorViewController: UIViewController, UserSessionDepending, DefaultI
     @IBOutlet weak var photoEditorContainer: UIView!
     
     var keyboardObserver: KeyboardAppearanceObserver?
-    var submitOperation: SubmitPostOperation?
     var photoEditor: PostEditorPhotoCollectionViewController!
 
     override func viewDidLoad() {
@@ -70,15 +69,7 @@ class PostEditorViewController: UIViewController, UserSessionDepending, DefaultI
     }
 
     @IBAction func submit(_ sender: Any) {
-        guard submitOperation == nil else {return}
-        let op = SubmitPostOperation(draft: postDraft, session: userSession)
-        op.completionBlock = {[weak self] in
-            OperationQueue.main.addOperation {
-                self?.didSubmitPostDraft()
-            }
-        }
-        submitOperation = op
-        op.start()
+        performSegue(withIdentifier: SegueID.showSubmittingPage, sender: nil)
     }
     
     // MARK: - Navigation
@@ -93,6 +84,19 @@ class PostEditorViewController: UIViewController, UserSessionDepending, DefaultI
                 self?.deleteAttachment(at: index)
             }
             photoEditor = vc
+        } else if let vc = segue.destination as? PostSubmissionViewController {
+            vc.userSession = userSession
+            vc.postDraft = postDraft
+            vc.didPublish = {[weak self] in
+                OperationQueue.main.addOperation {
+                    self?.didSubmitPostDraft()
+                }
+            }
+            vc.didFail = {[weak self] error in
+                OperationQueue.main.addOperation {
+                    self?.didFailSubmission(with: error)
+                }
+            }
         }
         if let nav = segue.destination as? UINavigationController,
             let vc = nav.viewControllers.first as? PostPhotoPickingFlowViewController {
@@ -106,11 +110,12 @@ class PostEditorViewController: UIViewController, UserSessionDepending, DefaultI
 
 private extension PostEditorViewController {
     func didSubmitPostDraft() {
-        let op = submitOperation!
-        submitOperation = nil
-        if op.success == true {
-            dismiss(animated: true, completion: nil)
-        } else if let error = op.error {
+        dismiss(animated: true, completion: nil)
+        //propagate
+    }
+    
+    func didFailSubmission(with error: Error?) {
+        if let error = error {
             let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: Localized.titles.dismiss, style: .cancel, handler: nil))
             present(alert, animated: true, completion: nil)
@@ -190,5 +195,6 @@ extension PostEditorViewController: UITextViewDelegate {
 extension PostEditorViewController {
     struct SegueID {
         static let showPhotoPicker = "showPhotoPicker"
+        static let showSubmittingPage = "showSubmittingPage"
     }
 }

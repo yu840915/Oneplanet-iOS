@@ -8,28 +8,49 @@
 
 import UIKit
 
-class PostSubmissionViewController: UIViewController {
-
+class PostSubmissionViewController: UIViewController, UserSessionDepending {
+    
+    var userSession: UserSession!
+    var postDraft: PostDraft!
+    var submitOperation: SubmitPostOperation!
+    var didPublish: (()->())?
+    var didFail: ((Error?)->())?
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        let op = SubmitPostOperation(draft: postDraft, session: userSession)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didSubmitPostDraft()
+            }
+        }
+        submitOperation = op
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         activityIndicator.startAnimating()
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        submitOperation.start()
     }
-    */
+
+    func didSubmitPostDraft() {
+        let op = submitOperation!
+        submitOperation = nil
+        if op.success == true {
+            dismiss(animated: false) {[didPublish] in
+                didPublish?()
+            }
+        } else {
+            let error = op.error
+            dismiss(animated: false) {[didFail] in
+                didFail?(error)
+            }
+        }
+    }
 
 }

@@ -95,3 +95,14 @@ class GetPostListOperation:  AlamofireAPIAccessOperation, PaginatedFetchingOpera
         items = try JSONDecoder.default.decode([Post].self, from: data)
     }
 }
+
+class DeduplicationHelper {
+    private var ids = Set<String>()
+    func addIfAllowed(_ id: String) -> Bool {
+        if ids.contains(id) {
+            return false
+        }
+        ids.insert(id)
+        return true
+    }
+}

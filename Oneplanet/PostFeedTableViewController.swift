@@ -159,7 +159,8 @@ private extension PostFeedTableViewController {
     
     func handleListUpdate() {
         refreshControl?.endRefreshing()
-        posts = postList.items
+        let helper = DeduplicationHelper()
+        posts = postList.items.filter{ helper.addIfAllowed($0.id) }
         prepareSections()
         updateBackground()
     }

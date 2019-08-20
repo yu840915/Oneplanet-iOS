@@ -1870,6 +1870,7 @@
                         <outlet property="photoEditorContainer" destination="Kky-6X-r1v" id="LHs-A3-Wi1"/>
                         <outlet property="placeholderLabel" destination="eF6-Sx-4VN" id="MC2-Ui-Ygg"/>
                         <segue destination="kAf-h0-2BB" kind="presentation" identifier="showPhotoPicker" id="bFH-Y6-SfY"/>
+                        <segue destination="rv1-fF-CeN" kind="presentation" identifier="showSubmittingPage" animates="NO" id="fHn-qq-LAB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="isX-N2-afA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2101,7 +2102,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tUX-X1-msj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3145" y="1777"/>
+            <point key="canvasLocation" x="2674" y="1777"/>
         </scene>
         <!--Post Editor Photo Collection View Controller-->
         <scene sceneID="KQY-rc-x92">
@@ -2166,7 +2167,34 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UNQ-EK-jSA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1761" y="2269"/>
+            <point key="canvasLocation" x="1761" y="2278"/>
+        </scene>
+        <!--Post Submission View Controller-->
+        <scene sceneID="X0h-65-Sys">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="rv1-fF-CeN" customClass="PostSubmissionViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Gy1-8D-vsF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="UC5-ft-Qtz">
+                                <rect key="frame" x="188.5" y="253.5" width="37" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" name="translucent dark background"/>
+                        <constraints>
+                            <constraint firstItem="UC5-ft-Qtz" firstAttribute="centerX" secondItem="XwW-v8-gWE" secondAttribute="centerX" id="mUs-UN-ZzZ"/>
+                            <constraint firstItem="UC5-ft-Qtz" firstAttribute="centerY" secondItem="XwW-v8-gWE" secondAttribute="centerY" multiplier="0.6" id="zqC-mK-nFO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XwW-v8-gWE"/>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="UC5-ft-Qtz" id="kXr-e1-256"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UXE-c4-yh9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2674" y="2501"/>
         </scene>
     </scenes>
     <resources>
@@ -2223,7 +2251,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mBp-Z3-Jzn"/>
+        <segue reference="ZcZ-6E-l3h"/>
         <segue reference="Vig-IT-DEU"/>
     </inferredMetricsTieBreakers>
 </document>

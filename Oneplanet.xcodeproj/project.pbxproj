@@ -57,6 +57,7 @@
 		E03C32B7226DA39700C32FD7 /* SwiftGif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E03C32B6226DA39700C32FD7 /* SwiftGif.framework */; };
 		E03C32B9226DA44A00C32FD7 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E03C32B8226DA44A00C32FD7 /* Onboarding.storyboard */; };
 		E03F5135230A82F600F1C794 /* PostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03F5134230A82F600F1C794 /* PostTests.swift */; };
+		E03F5137230BBDE500F1C794 /* PostSubmissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03F5136230BBDE500F1C794 /* PostSubmissionViewController.swift */; };
 		E045BE7722E974640035D08B /* PostFeedMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E045BE7622E974640035D08B /* PostFeedMainViewController.swift */; };
 		E045BE7922E976FE0035D08B /* PostFeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E045BE7822E976FE0035D08B /* PostFeedTableViewController.swift */; };
 		E05398C522FE98AC00AAF803 /* WebLinkingKeyMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05398C422FE98AC00AAF803 /* WebLinkingKeyMap.swift */; };
@@ -260,6 +261,7 @@
 		E03C32B6226DA39700C32FD7 /* SwiftGif.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftGif.framework; path = Carthage/Build/iOS/SwiftGif.framework; sourceTree = SOURCE_ROOT; };
 		E03C32B8226DA44A00C32FD7 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		E03F5134230A82F600F1C794 /* PostTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTests.swift; sourceTree = "<group>"; };
+		E03F5136230BBDE500F1C794 /* PostSubmissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSubmissionViewController.swift; sourceTree = "<group>"; };
 		E045BE7622E974640035D08B /* PostFeedMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFeedMainViewController.swift; sourceTree = "<group>"; };
 		E045BE7822E976FE0035D08B /* PostFeedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFeedTableViewController.swift; sourceTree = "<group>"; };
 		E05398C422FE98AC00AAF803 /* WebLinkingKeyMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebLinkingKeyMap.swift; sourceTree = "<group>"; };
@@ -806,6 +808,7 @@
 				E0C18E5E22FAA3DE0086C114 /* PostCreationFlowViewController.swift */,
 				E0C18E6322FAEEFD0086C114 /* PostPhotoPickingFlowViewController.swift */,
 				E0C18E6522FC85890086C114 /* PostEditorViewController.swift */,
+				E03F5136230BBDE500F1C794 /* PostSubmissionViewController.swift */,
 				E0EDD1512305ABCF00F732DE /* PostEditorPhotoCollectionViewController.swift */,
 			);
 			name = "Post Creation";
@@ -1188,6 +1191,7 @@
 				E06F500F227AFD740067DAE4 /* WeChatLogIn.swift in Sources */,
 				E0DCD05322B7EB67008D9C63 /* PickerTableViewController.swift in Sources */,
 				E0190F57226EDBC900C212D5 /* CameraImagePickerViewController.swift in Sources */,
+				E03F5137230BBDE500F1C794 /* PostSubmissionViewController.swift in Sources */,
 				E08C3129227817680013DD0C /* AuthActions.swift in Sources */,
 				E0B3FBDB22F6895700BD53C9 /* PostCreationPortalViewController.swift in Sources */,
 				E0B57DE122A0FA48006AEADB /* DefaultStyleConfiguration.swift in Sources */,

@@ -58,7 +58,6 @@ class SubmitPostOperation: SimpleAsynchronousOperation, FailableOperationType {
         self.session = session
     }
     
-    
     override func main() {
         guard !isCancelled else {return}
         do {
@@ -74,7 +73,7 @@ class SubmitPostOperation: SimpleAsynchronousOperation, FailableOperationType {
     }
     
     private func uploadImages() {
-        let preset = ProcessImageOperation.Preset(compressionQuality: 1.0)
+        let preset = ProcessImageOperation.Preset(compressionQuality: 1.0, maxSize: 750)
         let op = ConcurrentTaskOperation<UpdatePostPhotoFlowOperaion>(operations: draft.images.map{UpdatePostPhotoFlowOperaion(attachment: $0, preset: preset, session: session)})
         op.completionBlock = {[weak self] in
             self?.didUploadImages()
@@ -86,7 +85,7 @@ class SubmitPostOperation: SimpleAsynchronousOperation, FailableOperationType {
     private func didUploadImages() {
         guard !isCancelled else {return}
         let op = uploadImageOperations!
-        if op.success == false {
+        if op.success == true {
             submitDraft()
         } else {
             fail(with: op.error)
@@ -128,7 +127,7 @@ class SubmitPostDraftOperation: AlamofireAPIAccessOperation {
     }
     
     override func prepareDataRequest() throws -> DataRequest {
-        var url = ServiceURLs.base.appendingPathComponent("post")
+        var url = ServiceURLs.base.appendingPathComponent("posts")
         var method = HTTPMethod.post
         if let post = draft.originalPost {
             url.appendPathComponent(post.id)
@@ -144,7 +143,7 @@ class SubmitPostDraftOperation: AlamofireAPIAccessOperation {
         } else {
             images = draft.images.compactMap{$0.progress.imageLocation?.url}
         }
-        return [Keys.caption.rawValue: draft.caption, Keys.imageURLs.rawValue: images]
+        return [Keys.caption.rawValue: draft.caption, Keys.imageURLs.rawValue: images.map{$0.absoluteString}]
     }
 }
 
@@ -208,7 +207,7 @@ class UpdatePostPhotoFlowOperaion: SimpleAsynchronousOperation, FailableOperatio
     private func didUpload() {
         let op = uploadImageOperation!
         if op.success == true {
-            attachment.progress.markAsFinished()
+            attachment.progress.markAsFinished(with: op.finalLocation!)
             runNext()
         } else {
             fail(with: op.error)
@@ -246,16 +245,12 @@ class UploadPostPhotoOperation: AlamofireAPIAccessOperation {
              "Content-Length": String(imageMetadata.size)])
         return Alamofire.upload(imageData,
                                 to: destination.url,
-                                method: .put,
+                                method: .post,
                                 headers: header)
     }
     
-    override func handleClientError(with response: HTTPURLResponse) throws {
-        try super.handleClientError(with: response)
-    }
-    
     override func processHTTPResponseHeader(_ header: [AnyHashable : Any]) throws {
-        guard let url = header["Location"] as? URL else {
+        guard let loc = header["Location"] as? String, let url = URL(string: loc) else {
             throw GenericAppError("Missing image location")
         }
         finalLocation = UploadDestination(taskId: destination.taskId, url: url)

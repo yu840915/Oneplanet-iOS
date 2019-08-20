@@ -70,16 +70,15 @@ class PostEditorViewController: UIViewController, UserSessionDepending, DefaultI
     }
 
     @IBAction func submit(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-//        guard submitOperation == nil else {return}
-//        let op = SubmitPostDraftOperation(draft: postDraft, session: userSession)
-//        op.completionBlock = {[weak self] in
-//            OperationQueue.main.addOperation {
-//                self?.didSubmitPostDraft()
-//            }
-//        }
-//        submitOperation = op
-//        op.start()
+        guard submitOperation == nil else {return}
+        let op = SubmitPostOperation(draft: postDraft, session: userSession)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didSubmitPostDraft()
+            }
+        }
+        submitOperation = op
+        op.start()
     }
     
     // MARK: - Navigation

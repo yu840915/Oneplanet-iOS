@@ -113,7 +113,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="dqr-HF-Ygn">
-                                <rect key="frame" x="36" y="118" width="248" height="401.5"/>
+                                <rect key="frame" x="36" y="82.5" width="248" height="449.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eDq-hL-9Zh">
                                         <rect key="frame" x="0.0" y="0.0" width="248" height="124.5"/>
@@ -131,10 +131,10 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="248" height="44"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_fieldwhite_nor" translatesAutoresizingMaskIntoConstraints="NO" id="seq-Op-lWJ" userLabel="Normal Background">
-                                                                <rect key="frame" x="0.0" y="14" width="248" height="16"/>
+                                                                <rect key="frame" x="0.0" y="1.5" width="248" height="41"/>
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_fieldwhite_fai" translatesAutoresizingMaskIntoConstraints="NO" id="IpR-9q-NLH" userLabel="Rejecting Background">
-                                                                <rect key="frame" x="0.0" y="14" width="248" height="16"/>
+                                                                <rect key="frame" x="0.0" y="1.5" width="248" height="41"/>
                                                             </imageView>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="wFQ-pC-QpR">
                                                                 <rect key="frame" x="16" y="0.0" width="216" height="44"/>
@@ -226,13 +226,13 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="wls-ge-sYw">
-                                        <rect key="frame" x="0.0" y="292.5" width="248" height="56"/>
+                                        <rect key="frame" x="0.0" y="292.5" width="248" height="80"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Wdk-HC-IRg" userLabel="Add Avatart Stack View">
-                                                <rect key="frame" x="0.0" y="0.0" width="248" height="56"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="248" height="80"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hus-NJ-eGq" userLabel="Add Avatar Button">
-                                                        <rect key="frame" x="0.0" y="0.0" width="248" height="17"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="248" height="41"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                         <state key="normal" title="Add Profile Photo" backgroundImage="bt_bigwirewhite_nor">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -243,7 +243,7 @@
                                                         </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a profile photo so your friends know it’s you." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efX-06-3We" userLabel="Add Avatar Prompt Label">
-                                                        <rect key="frame" x="0.0" y="27" width="248" height="29"/>
+                                                        <rect key="frame" x="0.0" y="51" width="248" height="29"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" name="default text"/>
                                                         <nil key="highlightedColor"/>
@@ -278,7 +278,7 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kdf-6d-Qxk" userLabel="Next Button">
-                                        <rect key="frame" x="0.0" y="384.5" width="248" height="17"/>
+                                        <rect key="frame" x="0.0" y="408.5" width="248" height="41"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                         <state key="normal" title="Next" backgroundImage="bt_biggreen_nor">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -347,7 +347,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="SxO-Io-dbn">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="539"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="452"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gD4-jG-zsm" userLabel="Padding">
                                                 <rect key="frame" x="40" y="0.0" width="240" height="6"/>
@@ -436,16 +436,16 @@
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Nix-RW-I45">
-                                                <rect key="frame" x="0.0" y="411" width="320" height="128"/>
+                                                <rect key="frame" x="0.0" y="411" width="320" height="41"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xf-ia-Ylu" userLabel="Color Prompt Label">
-                                                        <rect key="frame" x="114.5" y="0.0" width="91" height="17"/>
+                                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8xf-ia-Ylu" userLabel="Color Prompt Label">
+                                                        <rect key="frame" x="114.5" y="0.0" width="91" height="0.0"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                         <color key="textColor" name="default text"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iFg-VJ-Ejm">
-                                                        <rect key="frame" x="0.0" y="23" width="320" height="44"/>
+                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iFg-VJ-Ejm">
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                                         <subviews>
                                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="goN-GU-A2N">
                                                                 <rect key="frame" x="23" y="0.0" width="274" height="44"/>
@@ -466,15 +466,15 @@
                                                             <constraint firstItem="goN-GU-A2N" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iFg-VJ-Ejm" secondAttribute="leading" id="r1C-Vx-4I2"/>
                                                         </constraints>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iy0-09-aaD">
-                                                        <rect key="frame" x="40" y="73" width="240" height="8"/>
+                                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iy0-09-aaD">
+                                                        <rect key="frame" x="40" y="0.0" width="240" height="8"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="8" id="HjL-2b-iu1"/>
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tGd-kk-e4K" userLabel="Next Button">
-                                                        <rect key="frame" x="36" y="87" width="248" height="41"/>
+                                                        <rect key="frame" x="36" y="0.0" width="248" height="41"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                         <state key="normal" title="Next" backgroundImage="bt_biggreen_nor">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

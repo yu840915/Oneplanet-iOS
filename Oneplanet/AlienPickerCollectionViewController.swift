@@ -117,6 +117,9 @@ class AlienPickerCollectionViewController: UICollectionViewController {
         } else {
             selectedIndex = idx
         }
+        if let cell = collectionView.cellForItem(at: IndexPath(row: selectedIndex, section: 1)) {
+            collectionView.bringSubviewToFront(cell)
+        }
         guard sections.count > 1 else { return }
         let atHead = scrollView.contentOffset.x <= 1
         let atEnd = scrollView.contentOffset.x >= (scrollView.contentSize.width - scrollView.frame.width - 1)

@@ -18,7 +18,8 @@ class PostEditorViewController: UIViewController, UserSessionDepending, DefaultI
     var didPublish: ((Post?)->())?
 
     @IBOutlet weak var okButtonItem: UIBarButtonItem!
-    
+    @IBOutlet weak var closeButtonItem: UIBarButtonItem!
+
     @IBOutlet weak var placeholderLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
@@ -136,6 +137,9 @@ private extension PostEditorViewController {
     }
     
     func updateViewsForDraft() {
+        if postDraft.originalPost == nil && !userSession.isAdmin {
+            navigationItem.leftBarButtonItems = []
+        }
         if let webImage = postDraft.originalPost?.images.first {
             imageView.kf.setImage(with: webImage.url)
         } else {

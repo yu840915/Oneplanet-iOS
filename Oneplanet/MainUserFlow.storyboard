@@ -1851,7 +1851,7 @@
                     <navigationItem key="navigationItem" title="Title" id="ofs-6I-fPD">
                         <barButtonItem key="leftBarButtonItem" image="ic_cancelblack_nor" id="7WQ-yW-Ya0">
                             <connections>
-                                <action selector="exit:" destination="EBC-gf-AMZ" id="ebb-dn-HHK"/>
+                                <action selector="exit:" destination="EBC-gf-AMZ" id="NfS-jj-2KA"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="OK" id="I4V-JK-cNM">
@@ -1863,6 +1863,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="captionTextView" destination="LYi-QJ-Qhq" id="NVk-XE-Xbe"/>
+                        <outlet property="closeButtonItem" destination="7WQ-yW-Ya0" id="5wy-XU-dn2"/>
                         <outlet property="contentScrollView" destination="iIg-FD-nKc" id="5wW-cs-bgz"/>
                         <outlet property="endEditingTap" destination="PKZ-7e-Z4g" id="ih5-W0-e7k"/>
                         <outlet property="imageView" destination="khL-4b-IEk" id="4UD-OW-8Dc"/>

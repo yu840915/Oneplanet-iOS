@@ -17,7 +17,6 @@ class PostCreationFlowViewController: UIViewController, UserSessionDepending {
     var didPublish: ((Post?)->())?
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,7 +85,7 @@ class PostCreationFlowViewController: UIViewController, UserSessionDepending {
 
 private extension PostCreationFlowViewController {
     func showPostEditor(with image: UIImage) {
-        postDraft.images.append(ImageAttachment(image: image))
+        postDraft.images = [ImageAttachment(image: image)]
         let vc = PostEditorViewController.fromDefaultStoryboard()
         vc.userSession = userSession
         vc.postDraft = postDraft

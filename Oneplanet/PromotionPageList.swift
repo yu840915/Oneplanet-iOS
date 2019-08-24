@@ -41,7 +41,9 @@ class GetPromotionPageListOperation: AlamofireAPIAccessOperation {
     }
     
     override func prepareURLRequest() throws -> URLRequest {
-        return session.addingAuthorizationToken(to: URLRequest(url: ServiceURLs.base.appendingPathComponent("collection/popups").addingFirstPageQeury(limit: 20)))
+        var req = session.addingAuthorizationToken(to: URLRequest(url: ServiceURLs.devBase.appendingPathComponent("popup").addingFirstPageQeury(limit: 20)))
+        req.addValue(Localized.languageCode, forHTTPHeaderField: Localized.acceptLanguageKey)
+        return req
     }
     
     override func processData(with data: Data) throws {

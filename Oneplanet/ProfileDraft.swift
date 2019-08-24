@@ -87,6 +87,7 @@ class ProfileDraft {
         nickname = profile.nickname
         username = profile.username
         gender = profile.gender
+        alien = profile.alien
     }
     
     enum Field {

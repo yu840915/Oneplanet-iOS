@@ -58,6 +58,7 @@ class UserSession {
         if op.success == true {
             let draft = op.draft
             profile = MyProfile(id: profile!.id, username: draft.username, nickname: draft.nickname, gender: draft.gender, avatar: profile!.avatar)
+            profile?.alien = draft.alien
         }
         submitProfileCompletion?(op.success ?? false, op.error)
         submitProfileCompletion = nil

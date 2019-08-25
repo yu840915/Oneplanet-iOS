@@ -93,7 +93,6 @@ class ProductDetailViewController: UIViewController, UserSessionDepending {
             vc.product = product!
         }
     }
-
 }
 
 private extension ProductDetailViewController {

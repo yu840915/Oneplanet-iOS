@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import MarkdownKit
 
 class ProductDetailViewController: UIViewController, UserSessionDepending {
 
@@ -34,6 +35,7 @@ class ProductDetailViewController: UIViewController, UserSessionDepending {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailTextView: UITextView!
     @IBOutlet weak var galleryCollectionView: UICollectionView!
+    private var markdownParser: MarkdownParser!
     private var featureCheck: BiddingFeatureAccessCheckOperation?
     private var getDetailOperation: GetProductDetailOperation?
     private var previews: [WebImageInfo] = [] {
@@ -44,6 +46,7 @@ class ProductDetailViewController: UIViewController, UserSessionDepending {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        markdownParser = MarkdownParser()
         localizeTitles()
         if product != nil {
             updateViewsForProductIfNeeded()
@@ -102,7 +105,7 @@ private extension ProductDetailViewController {
         contentContainer.isHidden = false
         previews = prod.images
         titleLabel.text = prod.displayName
-        detailTextView.text = prod.description
+        detailTextView.attributedText = markdownParser.parse(prod.description)
     }
     
     func getProductDetail() {

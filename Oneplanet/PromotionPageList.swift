@@ -21,15 +21,19 @@ class PromotionAd: CollectionItemPreviewing {
     let link: URL?
     let cover: WebImageInfo
     
-    init(id: String, link: URL?) {
+    init(id: String, imageURL: URL, link: URL?) {
         self.link = link
         self.id = id
-        cover = WebImageInfo(url: ServiceURLs.base.appendingPathComponent("ad/\(id).jpg"))
+        cover = WebImageInfo(url: imageURL)
     }
     
     class func from(_ collectionItem: CollectionItem) -> PromotionAd? {
         guard collectionItem.type.lowercased() == "ad" else {return nil}
-        return PromotionAd(id: collectionItem.id, link: collectionItem.link)
+        return PromotionAd(id: collectionItem.id, imageURL: ServiceURLs.base.appendingPathComponent("ad/\(collectionItem.id).jpg"), link: collectionItem.link)
+    }
+    
+    class func from(_ item: PopUpItem) -> PromotionAd {
+        return PromotionAd(id: item.id, imageURL: ServiceURLs.devBase.appendingPathComponent("popup/\(item.imageID)/image.jpg"), link: item.link)
     }
 }
 
@@ -47,8 +51,8 @@ class GetPromotionPageListOperation: AlamofireAPIAccessOperation {
     }
     
     override func processData(with data: Data) throws {
-        let items = try JSONDecoder.default.decode([CollectionItem].self, from: data)
-        list = PromotionPageList(pages: items.compactMap{PromotionAd.from($0)})
+        let items = try JSONDecoder.default.decode([PopUpItem].self, from: data)
+        list = PromotionPageList(pages: items.map{PromotionAd.from($0)})
     }
 }
 
@@ -78,6 +82,18 @@ extension URL {
 
 protocol CollectionItemPreviewing {
     var cover: WebImageInfo {get}
+}
+
+class PopUpItem: Decodable {
+    let id: String
+    let imageID: String
+    let link: URL?
+
+    enum CodingKeys: String, CodingKey {
+        case id
+        case imageID = "image"
+        case link = "url"
+    }
 }
 
 class CollectionItem: Decodable {

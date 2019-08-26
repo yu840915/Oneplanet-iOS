@@ -119,26 +119,26 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f1Q-vV-ogN" customClass="CountDownClockView" customModule="Oneplanet" customModuleProvider="target">
+                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f1Q-vV-ogN" customClass="CountDownClockView" customModule="Oneplanet" customModuleProvider="target">
                                     <rect key="frame" x="10" y="11" width="180" height="48"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_timebg" translatesAutoresizingMaskIntoConstraints="NO" id="Sol-Ru-IwG">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="ui_timebg" translatesAutoresizingMaskIntoConstraints="NO" id="Sol-Ru-IwG">
                                             <rect key="frame" x="0.0" y="0.0" width="180" height="48"/>
                                         </imageView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6Q9-Kp-vjq">
-                                            <rect key="frame" x="10" y="6" width="160" height="36"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6Q9-Kp-vjq">
+                                            <rect key="frame" x="10" y="6" width="160.5" height="36"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MMf-bK-kkZ" userLabel="Day Stack View">
-                                                    <rect key="frame" x="0.0" y="0.0" width="34" height="36"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="34.5" height="36"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sI0-Oc-y2V" userLabel="Value Label">
-                                                            <rect key="frame" x="0.0" y="0.0" width="34" height="24"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="34.5" height="24"/>
                                                             <fontDescription key="fontDescription" name="DS-Digital-BoldItalic" family="DS-Digital" pointSize="24"/>
                                                             <color key="textColor" name="lock red"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DAYS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpx-eW-iZN" userLabel="Unit Label">
-                                                            <rect key="frame" x="0.0" y="24" width="34" height="12"/>
+                                                            <rect key="frame" x="0.0" y="24" width="34.5" height="12"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <color key="textColor" name="lock red"/>
                                                             <nil key="highlightedColor"/>
@@ -149,7 +149,7 @@
                                                     </constraints>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="D6O-nD-vRO" userLabel="Hour Stack View">
-                                                    <rect key="frame" x="42" y="0.0" width="34" height="36"/>
+                                                    <rect key="frame" x="42.5" y="0.0" width="34" height="36"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5RY-oP-dDX" userLabel="Value Label">
                                                             <rect key="frame" x="0.0" y="0.0" width="34" height="24"/>
@@ -169,7 +169,7 @@
                                                     </constraints>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="L21-L0-EzI" userLabel="Minute Stack View">
-                                                    <rect key="frame" x="84" y="0.0" width="34" height="36"/>
+                                                    <rect key="frame" x="84.5" y="0.0" width="34" height="36"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Elj-uT-zXu" userLabel="Value Label">
                                                             <rect key="frame" x="0.0" y="0.0" width="34" height="24"/>
@@ -189,7 +189,7 @@
                                                     </constraints>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ivj-El-aHB" userLabel="Second Stack View">
-                                                    <rect key="frame" x="126" y="0.0" width="34" height="36"/>
+                                                    <rect key="frame" x="126.5" y="0.0" width="34" height="36"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k6H-si-aVr" userLabel="Value Label">
                                                             <rect key="frame" x="0.0" y="0.0" width="34" height="24"/>
@@ -227,8 +227,8 @@
                                         <outlet property="secondValueLabel" destination="k6H-si-aVr" id="p3W-1Y-fad"/>
                                     </connections>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="COUNTDOWN TO BIDDING…" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVm-Rb-9Px" userLabel="Countdown Description Label">
-                                    <rect key="frame" x="206" y="23" width="98" height="24"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" ambiguous="YES" text="COUNTDOWN TO BIDDING…" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVm-Rb-9Px" userLabel="Countdown Description Label">
+                                    <rect key="frame" x="206" y="29" width="98" height="12"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                     <color key="textColor" name="default text"/>
                                     <nil key="highlightedColor"/>
@@ -747,7 +747,7 @@ The winner must check if the Receipt information is filled in to ensure that the
                                 <rect key="frame" x="0.0" y="563.5" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CfZ-d8-Shr" id="fjI-ej-HLH">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="CmJ-17-hAW">
@@ -778,6 +778,7 @@ The winner must check if the Receipt information is filled in to ensure that the
                         <segue destination="Kvw-Xq-bR5" kind="show" identifier="showProductDetail" id="c3P-m4-Ttc"/>
                         <segue destination="XMA-j7-pie" kind="presentation" identifier="enterUnlockFlow" id="TsJ-KW-5Dz"/>
                         <segue destination="apf-73-R3T" kind="presentation" identifier="enterBidFlow" id="p2f-ey-Zn1"/>
+                        <segue destination="nDB-bM-hfJ" kind="presentation" identifier="showFilter" id="7si-dR-6gr"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C8m-K6-lSQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2178,6 +2179,115 @@ The winner must check if the Receipt information is filled in to ensure that the
             </objects>
             <point key="canvasLocation" x="3232" y="96"/>
         </scene>
+        <!--Root View Controller-->
+        <scene sceneID="pwU-BS-oRV">
+            <objects>
+                <tableViewController id="4jn-EZ-SqX" customClass="ProductFilterPickerTableViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="116" id="5ec-FJ-MBj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" name="black background"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="U3L-2S-MS5">
+                            <rect key="frame" x="0.0" y="78" width="320" height="8"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemCell" id="63w-Pi-chz" customClass="PickerItemCell" customModule="Oneplanet" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="320" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="63w-Pi-chz" id="Q69-fp-vFK">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="na5-AA-dhP">
+                                            <rect key="frame" x="20" y="12" width="284" height="20"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="foP-6b-mwM">
+                                                    <rect key="frame" x="0.0" y="0.0" width="258" height="20"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d92-zJ-nRK" userLabel="Main Label">
+                                                            <rect key="frame" x="0.0" y="0.0" width="258" height="20"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                            <color key="textColor" name="default text"/>
+                                                            <color key="highlightedColor" name="button green"/>
+                                                        </label>
+                                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="500" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rmj-SI-GX1" userLabel="Detail Label">
+                                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="20"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" name="default text"/>
+                                                            <color key="highlightedColor" name="button green"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sdv-HN-vFc">
+                                                    <rect key="frame" x="268" y="0.0" width="16" height="20"/>
+                                                    <subviews>
+                                                        <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" image="ic_flitertap_tap" translatesAutoresizingMaskIntoConstraints="NO" id="i4w-6s-etg">
+                                                            <rect key="frame" x="-2" y="0.0" width="20" height="20"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="i4w-6s-etg" firstAttribute="centerY" secondItem="Sdv-HN-vFc" secondAttribute="centerY" id="IBT-cm-Hip"/>
+                                                        <constraint firstItem="i4w-6s-etg" firstAttribute="height" secondItem="Sdv-HN-vFc" secondAttribute="height" id="PaY-dy-hIf"/>
+                                                        <constraint firstItem="i4w-6s-etg" firstAttribute="centerX" secondItem="Sdv-HN-vFc" secondAttribute="centerX" id="bFI-4S-4al"/>
+                                                        <constraint firstItem="i4w-6s-etg" firstAttribute="width" secondItem="Sdv-HN-vFc" secondAttribute="width" constant="4" id="vAD-DJ-b9R"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="na5-AA-dhP" firstAttribute="leading" secondItem="Q69-fp-vFK" secondAttribute="leading" constant="20" id="T0G-rE-WA9"/>
+                                        <constraint firstAttribute="trailing" secondItem="na5-AA-dhP" secondAttribute="trailing" constant="16" id="TqW-4Y-lX8"/>
+                                        <constraint firstItem="na5-AA-dhP" firstAttribute="centerY" secondItem="Q69-fp-vFK" secondAttribute="centerY" id="ytr-5c-DBn"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" name="black background"/>
+                                <connections>
+                                    <outlet property="checkmark" destination="i4w-6s-etg" id="6Br-wG-zF7"/>
+                                    <outlet property="detailLabel" destination="rmj-SI-GX1" id="tLf-1g-YMW"/>
+                                    <outlet property="mainLabel" destination="d92-zJ-nRK" id="kdB-bE-juM"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="4jn-EZ-SqX" id="qJB-nR-OoR"/>
+                            <outlet property="delegate" destination="4jn-EZ-SqX" id="Vm1-3k-TpN"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="eXE-h9-yKb">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="gsP-p6-OxR">
+                            <connections>
+                                <action selector="exit:" destination="4jn-EZ-SqX" id="3Nb-Bs-whT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="exitButtonItem" destination="gsP-p6-OxR" id="SNO-tL-gEm"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ebk-Km-hB5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3230.625" y="-1692.2535211267607"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ARI-dP-buI">
+            <objects>
+                <navigationController id="nDB-bM-hfJ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qLT-Er-uVe">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="4jn-EZ-SqX" kind="relationship" relationship="rootViewController" id="GAC-eP-Rcj"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YQy-bY-BrM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2286" y="-1692"/>
+        </scene>
         <!--PickerTableViewControllerEntry-->
         <scene sceneID="Vh0-Jd-Z6I">
             <objects>
@@ -2212,6 +2322,7 @@ The winner must check if the Receipt information is filled in to ensure that the
         <image name="bt_smallwiregray_nor" width="29" height="28"/>
         <image name="ic_bid_nor" width="64" height="49"/>
         <image name="ic_bid_sel" width="64" height="49"/>
+        <image name="ic_flitertap_tap" width="20" height="20"/>
         <image name="ic_lockoff_nor" width="40" height="40"/>
         <image name="ic_lockon_nor" width="40" height="40"/>
         <image name="im_bgall" width="609" height="812"/>

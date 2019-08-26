@@ -177,9 +177,17 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         if let vc = segue.destination as? UnlockFlowViewController {
             vc.product = (sender as! ProductOverview)
         }
-        if let nav = segue.destination as? UINavigationController,
-            let vc = nav.viewControllers.first as? ShippingInfoEditorViewController {
-            vc.userSession = userSession
+        if let nav = segue.destination as? UINavigationController {
+            if let vc = nav.viewControllers.first as? UserSessionDepending {
+                vc.userSession = userSession
+            }
+            if let vc = nav.viewControllers.first as? ProductFilterPickerTableViewController {
+                vc.currentCategoryName = categoryList?.query
+                vc.didSelectItem = {[weak self] item in
+                    let i = item as! CategoryNameViewModel
+                    self?.updateCategoryList(with: i.categoryName.name)
+                }
+            }
         }
     }
 
@@ -195,7 +203,7 @@ private extension ProductListTableViewController {
     }
     
     func showFilterPicker() {
-        
+        performSegue(withIdentifier: SegueID.showFilter, sender: nil)
     }
     
     func checkAccessAndRunIfAllowed(_ completion: @escaping (()->())) {
@@ -283,6 +291,7 @@ extension ProductListTableViewController {
         static let showProductDetail = "showProductDetail"
         static let enterBidFlow = "enterBidFlow"
         static let enterUnlockFlow = "enterUnlockFlow"
+        static let showFilter = "showFilter"
     }
 }
 

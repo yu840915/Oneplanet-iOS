@@ -188,6 +188,8 @@
 		E0EAEB7D22F2891400C8E7C8 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEB7C22F2891400C8E7C8 /* LoadingCell.swift */; };
 		E0EDD1522305ABCF00F732DE /* PostEditorPhotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EDD1512305ABCF00F732DE /* PostEditorPhotoCollectionViewController.swift */; };
 		E0F2688C231289E100CE5C45 /* MarkdownKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0F2688B231289E100CE5C45 /* MarkdownKit.framework */; };
+		E0F268952313871900CE5C45 /* CategoryNameList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F268942313871900CE5C45 /* CategoryNameList.swift */; };
+		E0F26897231390B300CE5C45 /* ProductFilterPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F26896231390B300CE5C45 /* ProductFilterPickerTableViewController.swift */; };
 		E0FE73AC22F5724D00CE665B /* UserSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FE73AB22F5724D00CE665B /* UserSearchTableViewController.swift */; };
 		E0FE73B022F596C500CE665B /* PushListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FE73AF22F596C500CE665B /* PushListener.swift */; };
 		E0FF797A228C3F6800F61318 /* MyProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FF7979228C3F6800F61318 /* MyProfileTests.swift */; };
@@ -405,6 +407,8 @@
 		E0EAEB7C22F2891400C8E7C8 /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		E0EDD1512305ABCF00F732DE /* PostEditorPhotoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorPhotoCollectionViewController.swift; sourceTree = "<group>"; };
 		E0F2688B231289E100CE5C45 /* MarkdownKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MarkdownKit.framework; path = Carthage/Build/iOS/MarkdownKit.framework; sourceTree = SOURCE_ROOT; };
+		E0F268942313871900CE5C45 /* CategoryNameList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryNameList.swift; sourceTree = "<group>"; };
+		E0F26896231390B300CE5C45 /* ProductFilterPickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductFilterPickerTableViewController.swift; sourceTree = "<group>"; };
 		E0FE73AB22F5724D00CE665B /* UserSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchTableViewController.swift; sourceTree = "<group>"; };
 		E0FE73AF22F596C500CE665B /* PushListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushListener.swift; sourceTree = "<group>"; };
 		E0FF7979228C3F6800F61318 /* MyProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTests.swift; sourceTree = "<group>"; };
@@ -541,6 +545,7 @@
 				E032844422AB6A50001F02E8 /* AuctionMainViewController.swift */,
 				E0D1BBDA22ACEE9400951F19 /* TimeIntervalComponents.swift */,
 				E032844822AB7286001F02E8 /* ProductListTableViewController.swift */,
+				E0F26896231390B300CE5C45 /* ProductFilterPickerTableViewController.swift */,
 				E033F07F2300006E006EB3AE /* ProductListCells.swift */,
 				E0DCD05622B9CC3D008D9C63 /* ProductDetailViewController.swift */,
 				E0A4618122B3D93700D26720 /* ShippingInfoEditorViewController.swift */,
@@ -549,6 +554,7 @@
 				E0A4618922B6347800D26720 /* PhoneNumberBuilder.swift */,
 				E032844A22AB7A90001F02E8 /* BiddingProcessTableViewController.swift */,
 				E05398CE22FF0F5000AAF803 /* Product.swift */,
+				E0F268942313871900CE5C45 /* CategoryNameList.swift */,
 				E0DA389C22C27FC600EC4170 /* Unlock and Bid */,
 			);
 			name = Auction;
@@ -1157,6 +1163,7 @@
 				E081591122A65276007C9776 /* PurpleGemStoreViewController.swift in Sources */,
 				E033F0802300006E006EB3AE /* ProductListCells.swift in Sources */,
 				E0DCD05522B8B620008D9C63 /* ShippingInfoEditorHelpers.swift in Sources */,
+				E0F26897231390B300CE5C45 /* ProductFilterPickerTableViewController.swift in Sources */,
 				E0190F53226DD62200C212D5 /* UserProgressChecklist.swift in Sources */,
 				E0DA389E22C2824500EC4170 /* GemActionPopUpViewController.swift in Sources */,
 				E064A78622E6B0D200636387 /* UserLists.swift in Sources */,
@@ -1171,6 +1178,7 @@
 				E0EDD1522305ABCF00F732DE /* PostEditorPhotoCollectionViewController.swift in Sources */,
 				E0A050C422E16B53002FCFC3 /* ReportReasonPickerTableViewController.swift in Sources */,
 				E0DA38A622C48BC400EC4170 /* UnlockFlowViewController.swift in Sources */,
+				E0F268952313871900CE5C45 /* CategoryNameList.swift in Sources */,
 				E0BDCCEA229FA044006A9D20 /* PromotionPageList.swift in Sources */,
 				E0B57DE322A0FAA3006AEADB /* Toast.swift in Sources */,
 				E0C18E6122FAA56A0086C114 /* PostDraft.swift in Sources */,

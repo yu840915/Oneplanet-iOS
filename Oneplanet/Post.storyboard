@@ -77,19 +77,19 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="pBq-YE-oTS">
-                                            <rect key="frame" x="16" y="17" width="388" height="46"/>
+                                            <rect key="frame" x="16" y="15" width="388" height="50"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pRY-Mx-Z6c">
-                                                    <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <subviews>
                                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0uT-bI-VSh" userLabel="Avatar View" customClass="AvatarView" customModule="Oneplanet" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZIF-Hs-H0n">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                                 </imageView>
                                                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c1d-5z-uqe" userLabel="Avatar Button">
-                                                                    <rect key="frame" x="3" y="3" width="40" height="40"/>
+                                                                    <rect key="frame" x="5" y="5" width="40" height="40"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" secondItem="c1d-5z-uqe" secondAttribute="height" id="2TC-JD-wgi"/>
                                                                     </constraints>
@@ -107,7 +107,7 @@
                                                                 <constraint firstItem="ZIF-Hs-H0n" firstAttribute="centerX" secondItem="0uT-bI-VSh" secondAttribute="centerX" id="SlJ-yV-kR1"/>
                                                                 <constraint firstItem="ZIF-Hs-H0n" firstAttribute="centerY" secondItem="0uT-bI-VSh" secondAttribute="centerY" id="T8Y-Aa-Rfn"/>
                                                                 <constraint firstItem="c1d-5z-uqe" firstAttribute="centerX" secondItem="0uT-bI-VSh" secondAttribute="centerX" id="WBZ-hM-Jgc"/>
-                                                                <constraint firstItem="c1d-5z-uqe" firstAttribute="leading" secondItem="0uT-bI-VSh" secondAttribute="leading" constant="3" id="Xwa-Jc-956"/>
+                                                                <constraint firstItem="c1d-5z-uqe" firstAttribute="leading" secondItem="0uT-bI-VSh" secondAttribute="leading" constant="5" id="Xwa-Jc-956"/>
                                                                 <constraint firstAttribute="width" secondItem="0uT-bI-VSh" secondAttribute="height" id="rUx-9T-cCu"/>
                                                             </constraints>
                                                             <connections>
@@ -121,21 +121,21 @@
                                                         <constraint firstItem="0uT-bI-VSh" firstAttribute="centerY" secondItem="pRY-Mx-Z6c" secondAttribute="centerY" id="APf-qm-5sq"/>
                                                         <constraint firstAttribute="width" secondItem="pRY-Mx-Z6c" secondAttribute="height" id="E38-5k-RUa"/>
                                                         <constraint firstItem="0uT-bI-VSh" firstAttribute="width" secondItem="pRY-Mx-Z6c" secondAttribute="width" id="Src-s9-zoA"/>
-                                                        <constraint firstAttribute="width" constant="46" id="Xs9-6X-1PU"/>
+                                                        <constraint firstAttribute="width" constant="50" id="Xs9-6X-1PU"/>
                                                         <constraint firstItem="0uT-bI-VSh" firstAttribute="centerX" secondItem="pRY-Mx-Z6c" secondAttribute="centerX" id="iUN-17-Rht"/>
                                                     </constraints>
                                                 </view>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Swk-cN-pEB">
-                                                    <rect key="frame" x="56" y="4" width="222" height="38"/>
+                                                    <rect key="frame" x="60" y="6" width="218" height="38"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1B4-dY-Qgt" userLabel="Name Label">
-                                                            <rect key="frame" x="0.0" y="0.0" width="222" height="17"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="218" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                             <color key="textColor" name="default text"/>
                                                             <color key="highlightedColor" name="default text"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Opo-Lr-ODT" userLabel="ID Label">
-                                                            <rect key="frame" x="0.0" y="21" width="222" height="17"/>
+                                                            <rect key="frame" x="0.0" y="21" width="218" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" name="default placeholder"/>
                                                             <color key="highlightedColor" name="default text"/>
@@ -143,7 +143,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R3X-nG-Mim" userLabel="Action Button">
-                                                    <rect key="frame" x="288" y="9" width="100" height="28"/>
+                                                    <rect key="frame" x="288" y="11" width="100" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" priority="900" constant="100" id="f5H-U4-GaO"/>
                                                     </constraints>

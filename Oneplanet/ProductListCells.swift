@@ -113,6 +113,10 @@ class BiddingProductCell: UITableViewCell {
         super.awakeFromNib()
         selectedBackgroundView = CommonViewFactory.shared.makeSelectionBackground()
         previewButton.imageView?.contentMode = .scaleAspectFill
+        avatarView.layer.shadowOffset = .init(width: 0, height: 2)
+        avatarView.layer.shadowOpacity = 1
+        avatarView.layer.shadowColor = UIColor(white: 0, alpha: 0.5).cgColor
+        avatarView.layer.shadowRadius = 4
     }
     
     func tick() {

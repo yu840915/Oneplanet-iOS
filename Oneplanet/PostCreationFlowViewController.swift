@@ -59,8 +59,24 @@ class PostCreationFlowViewController: UIViewController, UserSessionDepending {
         if canProceed {
             performSegue(withIdentifier: SegueID.showPhotoPicker, sender: nil)
         } else {
-            dismiss(animated: true, completion: nil)
+            showAuthorizationPromptAndDismiss()
         }
+    }
+    
+    private func showAuthorizationPromptAndDismiss() {
+        let alert = UIAlertController(title: Localized.errors.noLibraryAccess, message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Localized.phrases.openSettings, style: .default, handler: { (_) in
+            UIApplication.shared.open(ServiceURLs.appSettings, options: [:], completionHandler: nil)
+            OperationQueue.main.addOperation {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: Localized.titles.cancel, style: .cancel, handler: { (_) in
+            OperationQueue.main.addOperation {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }))
+        present(alert, animated: true, completion: nil)
     }
     
     // MARK: - Navigation

@@ -12,10 +12,15 @@ import Alamofire
 
 class CategoryName: Decodable {
     let name: String
+    let id: String
+    let displayName: String
+    let cover: URL?
     let count: Int = 0
     
     enum CodingKeys: String, CodingKey {
-        case name
+        case name, id
+        case displayName = "display_name"
+        case cover = "image"
     }
 }
 

@@ -1704,7 +1704,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ia-Gh-USp">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ia-Gh-USp">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                             </scrollView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CvO-gD-B5B" customClass="ButtonBarView" customModule="XLPagerTabStrip">
@@ -2252,7 +2252,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZcZ-6E-l3h"/>
+        <segue reference="mBp-Z3-Jzn"/>
         <segue reference="Vig-IT-DEU"/>
     </inferredMetricsTieBreakers>
 </document>

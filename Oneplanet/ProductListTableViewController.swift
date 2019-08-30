@@ -120,6 +120,9 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         }
         cell.showDetailAction = {[weak self] in
         }
+        cell.showProfileAction = {[weak self] in
+            
+        }
     }
     
     private func showProductDetailForCell(at indexPath: IndexPath) {
@@ -188,6 +191,9 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
                     self?.updateCategoryList(with: i.categoryName.name)
                 }
             }
+            if let vc = nav.viewControllers.first as? UserProfileViewController {
+                vc.profile = (sender as! User)
+            }
         }
     }
 
@@ -196,6 +202,10 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
 private extension ProductListTableViewController {
     func refreshDynamicViews() {
         countDownView.tick()
+    }
+    
+    func showProfile(for user: User) {
+        performSegue(withIdentifier: SegueID.showProfile, sender: user)
     }
 
     func showShippingInfoEditor() {
@@ -292,6 +302,7 @@ extension ProductListTableViewController {
         static let enterBidFlow = "enterBidFlow"
         static let enterUnlockFlow = "enterUnlockFlow"
         static let showFilter = "showFilter"
+        static let showProfile = "showProfile"
     }
 }
 

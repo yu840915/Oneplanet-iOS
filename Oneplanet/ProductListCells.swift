@@ -85,6 +85,7 @@ class BiddingProductCell: UITableViewCell {
     @IBOutlet var leadIndicators: [UIButton]!
     var bidAction: (()->())?
     var showDetailAction: (()->())?
+    var showProfileAction: (()->())?
     
     private let countdownTimeAttribute: [NSAttributedString.Key: Any] = [.kern: 3.5]
     var deadline = Date() {
@@ -113,10 +114,9 @@ class BiddingProductCell: UITableViewCell {
         super.awakeFromNib()
         selectedBackgroundView = CommonViewFactory.shared.makeSelectionBackground()
         previewButton.imageView?.contentMode = .scaleAspectFill
-        avatarView.layer.shadowOffset = .init(width: 0, height: 2)
-        avatarView.layer.shadowOpacity = 1
-        avatarView.layer.shadowColor = UIColor(white: 0, alpha: 0.5).cgColor
-        avatarView.layer.shadowRadius = 4
+        avatarView.action = {[weak self] in
+            self?.showProfileAction?()
+        }
     }
     
     func tick() {

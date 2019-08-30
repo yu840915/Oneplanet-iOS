@@ -69,6 +69,7 @@
 "tl_library" = "Library";
 "tl_post" = "投稿";
 "tl_share" = "シェアする";
+"tl_discard" = "Discard";
 
 "pl_email" = "メールアドレス";
 "pl_nickname" = "ニックネーム";
@@ -236,6 +237,7 @@
 "warn_logout" = "ログアウト？";
 "warn_character_selection" = "エリアンの種類と色を一度選んだら変更ができません。よろしいですか？";
 "warn_account_banned" = "コミュニティガイドライン違反ということで、コミュニティ機能を停止されました。アカウント復元はこちら";
+"warn_discard_post" = "Discard the draft?";
 
 "warntl_character_selection" = "選択しました。よろしいですか？";
 "warntl_account_banned" = "コミュニティ機能停止";

@@ -69,6 +69,7 @@
 "tl_library" = "Library";
 "tl_post" = "Post";
 "tl_share" = "分享";
+"tl_discard" = "Discard";
 
 "pl_email" = "电子邮件地址";
 "pl_nickname" = "昵称";
@@ -236,6 +237,7 @@
 "warn_logout" = "退出？";
 "warn_character_selection" = "Can't change the group after selection, continue？";
 "warn_account_banned" = "你帐户的社群功能已被停用，因为它违反了我们的使用条款。 了解如何恢复账户";
+"warn_discard_post" = "Discard the draft?";
 
 "warntl_character_selection" = "Determined choice？";
 "warntl_account_banned" = "社群功能停权";

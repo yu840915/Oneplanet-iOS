@@ -69,6 +69,7 @@
 "tl_library" = "圖庫";
 "tl_post" = "貼文";
 "tl_share" = "分享";
+"tl_discard" = "放棄";
 
 "pl_email" = "電子郵件地址";
 "pl_nickname" = "暱稱";
@@ -236,6 +237,7 @@
 "warn_logout" = "登出？";
 "warn_character_selection" = "外星人種類及顏色確定後不可更換，確定選擇？";
 "warn_account_banned" = "你帳戶的社群功能已被停用，因為它違反了我們的使用條款。 了解如何恢復帳戶";
+"warn_discard_post" = "是否放棄該貼文?";
 
 "warntl_character_selection" = "確定選擇？";
 "warntl_account_banned" = "社群功能停權";

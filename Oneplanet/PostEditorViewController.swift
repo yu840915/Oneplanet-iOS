@@ -65,7 +65,16 @@ class PostEditorViewController: UIViewController, UserSessionDepending, DefaultI
     @IBAction func exit(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
+
+    @IBAction func showDiscardAlert(_ sender: Any) {
+        let alert = UIAlertController(title: Localized.warnings.discardPost, message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Localized.titles.discard, style: .destructive, handler: { (_) in
+            self.discardAndPop()
+        }))
+        alert.addAction(UIAlertAction(title: Localized.titles.cancel, style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+
     @IBAction func tapToEndEditing(_ sender: Any) {
         view.endEditing(false)
     }
@@ -111,6 +120,12 @@ class PostEditorViewController: UIViewController, UserSessionDepending, DefaultI
 }
 
 private extension PostEditorViewController {
+    func discardAndPop() {
+        postDraft.caption = ""
+        postDraft.images = []
+        navigationController?.popViewController(animated: true)
+    }
+    
     func didSubmitPostDraft() {
         dismiss(animated: true, completion: nil)
         userSession.broadcastPostPublish(postDraft.updatedPost)
@@ -138,7 +153,8 @@ private extension PostEditorViewController {
     
     func updateViewsForDraft() {
         if postDraft.originalPost == nil && !userSession.isAdmin {
-            navigationItem.leftBarButtonItems = []
+            let item = UIBarButtonItem(image: UIImage(named: "ic_back_nor"), landscapeImagePhone: UIImage(named: "ic_back_nor"), style: .plain, target: self, action: #selector(showDiscardAlert(_:)))
+            navigationItem.leftBarButtonItems = [item]
         }
         if let webImage = postDraft.originalPost?.images.first {
             imageView.kf.setImage(with: webImage.url)

@@ -101,7 +101,7 @@ class PostCreationFlowViewController: UIViewController, UserSessionDepending {
 
 private extension PostCreationFlowViewController {
     func showPostEditor(with image: UIImage) {
-        postDraft.images = [ImageAttachment(image: image)]
+        postDraft.images.append(ImageAttachment(image: image))
         let vc = PostEditorViewController.fromDefaultStoryboard()
         vc.userSession = userSession
         vc.postDraft = postDraft

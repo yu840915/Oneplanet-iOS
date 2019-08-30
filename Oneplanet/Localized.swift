@@ -203,6 +203,9 @@ class LocalizedTitles {//tl_
     var share: String {
         return NSLocalizedString("tl_share", comment: "")
     }
+    var discard: String {
+        return NSLocalizedString("tl_discard", comment: "")
+    }
 }
 
 class Feature {//fx_
@@ -272,6 +275,9 @@ class LocalizedWarnings {//warn_
     }
     var accountBanned: String {
         return NSLocalizedString("warn_account_banned", comment: "")
+    }
+    var discardPost: String {
+        return NSLocalizedString("warn_discard_post", comment: "")
     }
 }
 

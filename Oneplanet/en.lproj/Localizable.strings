@@ -69,6 +69,7 @@
 "tl_library" = "Library";
 "tl_post" = "Post";
 "tl_share" = "Share";
+"tl_discard" = "Discard";
 
 "pl_email" = "Email Address";
 "pl_nickname" = "Nickname";
@@ -236,6 +237,7 @@
 "warn_logout" = "Log Out?";
 "warn_character_selection" = "Alien species and colors must not be more change, to be sure to choose?";
 "warn_account_banned" = "The community feature of your account has been deactivated because it violates our terms of use. Learn how to recover your account";
+"warn_discard_post" = "Discard the draft?";
 
 "warntl_character_selection" = "Confirm?";
 "warntl_account_banned" = "Community function suspension";

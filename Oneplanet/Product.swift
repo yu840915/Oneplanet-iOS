@@ -11,31 +11,39 @@ import ModelBlocks
 import Alamofire
 
 class ProductOverview: Decodable {
-    let description: String
+    let id: String
     let name: String
     let displayName: String
-    var cover: WebImageInfo {
-        return WebImageInfo(url: ServiceURLs.base.appendingPathComponent("product/\(name)"))
+    let coverURLs: [URL]?
+    let imageURLs: [URL]
+    var images: [WebImageInfo] {
+        return imageURLs.map{WebImageInfo(url: $0)}
+    }
+    var cover: WebImageInfo? {
+        if let url = coverURLs?.first ?? imageURLs.first {
+            return WebImageInfo(url: url)
+        }
+        return nil
     }
     
     enum CodingKeys: String, CodingKey {
-        case description, name
+        case name, id
+        case coverURLs = "cover_image"
+        case imageURLs = "images"
         case displayName = "display_name"
     }
 }
 
 class Product: ProductOverview {
-    let id: String
-    let images: [WebImageInfo]
+    let description: String
     
     enum AdditionalKeys: String, CodingKey {
-        case id, images
+        case description
     }
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: AdditionalKeys.self)
-        id = try container.decode(String.self, forKey: .id)
-        images = try container.decode([URL].self, forKey: .images).map{WebImageInfo(url: $0)}
+        description = try container.decodeIfPresent(String.self, forKey: .description) ?? ""
         try super.init(from: decoder)
     }
 }
@@ -54,7 +62,7 @@ class GetProductDetailOperation: AlamofireAPIAccessOperation {
     }
     
     override func prepareURLRequest() throws -> URLRequest {
-        return session.addingAuthorizationToken(to: URLRequest(url: ServiceURLs.base.appendingPathComponent("product/\(query)")))
+        return session.addingAuthorizationToken(to: URLRequest(url: ServiceURLs.devBase.appendingPathComponent("products/\(query)")))
     }
     
     override func processData(with data: Data) throws {
@@ -95,7 +103,11 @@ class GetProductCagegoryPageOperation: AlamofireAPIAccessOperation, PaginatedFet
     private let url: URL
     
     convenience init(session: UserSession, query: String) {
-        self.init(session: session, url: ServiceURLs.base.appendingPathComponent("category/\(query)").addingFirstPageQeury(), isBeginning: true)
+        var comp = URLComponents(url: ServiceURLs.devBase.appendingPathComponent("products"), resolvingAgainstBaseURL: false)!
+        if !query.isEmpty {
+            comp.queryItems = [.init(name: "category", value: query)]
+        }
+        self.init(session: session, url: comp.url!, isBeginning: true)
     }
     
     init(session: UserSession, url: URL, isBeginning: Bool) {

@@ -54,7 +54,7 @@ class ProductOverviewCell: UITableViewCell {
 extension ProductOverviewCell {
     func updateViews(with overview: ProductOverview) {
         titleLabel.text = overview.displayName
-        previewImageView.kf.setImage(with: overview.cover.url)
+        previewImageView.kf.setImage(with: overview.cover?.url)
     }
 }
 

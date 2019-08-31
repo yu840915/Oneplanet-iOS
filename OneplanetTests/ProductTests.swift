@@ -22,16 +22,26 @@ class ProductTests: XCTestCase {
     func testParseProductOverview() {
         let data = """
     {
-        "description": "This is the description of product 1",
-        "display_name": "Product 1",
-        "name": "product-1"
+        "name": "product-name",
+        "banner_image": [
+          "https://storage.googleapis.com/oneplanet-app/hbswa.jpg"
+        ],
+        "cover_image": [
+          "https://storage.googleapis.com/oneplanet-app/bearbrick.jpg"
+        ],
+        "display_name": "product display name",
+        "images": [
+          "https://storage.googleapis.com/oneplanet-app/10341278427650.jpg"
+        ],
+        "id": "5d66b818c4e957c193b9983d"
     }
 """.data(using: .utf8)!
         do {
             let overview = try JSONDecoder.default.decode(ProductOverview.self, from: data)
-            XCTAssertEqual(overview.description, "This is the description of product 1")
-            XCTAssertEqual(overview.displayName, "Product 1")
-            XCTAssertEqual(overview.name, "product-1")
+            XCTAssertEqual(overview.displayName, "product display name")
+            XCTAssertEqual(overview.name, "product-name")
+            XCTAssertNotNil(overview.cover)
+            XCTAssertEqual(overview.id, "5d66b818c4e957c193b9983d")
         } catch let error {
             XCTFail(error.localizedDescription)
         }

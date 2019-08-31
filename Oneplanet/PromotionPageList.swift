@@ -28,12 +28,21 @@ class PromotionAd: CollectionItemPreviewing {
     }
     
     class func from(_ collectionItem: CollectionItem) -> PromotionAd? {
-        guard collectionItem.type.lowercased() == "ad" else {return nil}
-        return PromotionAd(id: collectionItem.id, imageURL: ServiceURLs.base.appendingPathComponent("ad/\(collectionItem.id).jpg"), link: collectionItem.link)
+        guard collectionItem.type?.lowercased() == "ad" else {return nil}
+        return PromotionAd(id: collectionItem.id, imageURL: URL(string: collectionItem.thumbnail.toURLCompatible())!, link: collectionItem.link)
     }
     
     class func from(_ item: PopUpItem) -> PromotionAd {
-        return PromotionAd(id: item.id, imageURL: ServiceURLs.devBase.appendingPathComponent("popup/\(item.imageID)/image.jpg"), link: item.link)
+        return PromotionAd(id: item.id, imageURL: URL(string: item.thumbnail.toURLCompatible())!, link: item.link)
+    }
+}
+
+extension String {
+    func toURLCompatible() -> String {
+        return replacingOccurrences(of: " ", with: "%20")
+    }
+    func toURL() -> URL {
+        return URL(string: toURLCompatible())!
     }
 }
 
@@ -45,7 +54,7 @@ class GetPromotionPageListOperation: AlamofireAPIAccessOperation {
     }
     
     override func prepareURLRequest() throws -> URLRequest {
-        var req = session.addingAuthorizationToken(to: URLRequest(url: ServiceURLs.devBase.appendingPathComponent("popup").addingFirstPageQeury(limit: 20)))
+        var req = session.addingAuthorizationToken(to: URLRequest(url: ServiceURLs.devBase.appendingPathComponent("collection/popups").addingFirstPageQeury(limit: 20)))
         req.addValue(Localized.languageCode, forHTTPHeaderField: Localized.acceptLanguageKey)
         return req
     }
@@ -86,27 +95,35 @@ protocol CollectionItemPreviewing {
 
 class PopUpItem: Decodable {
     let id: String
-    let imageID: String
+    let thumbnail: String
     let link: URL?
 
     enum CodingKeys: String, CodingKey {
-        case id
-        case imageID = "image"
+        case id, thumbnail
         case link = "url"
     }
 }
 
 class CollectionItem: Decodable {
     let id: String
-    let type: String
-    let link: URL?
+    let name: String
+    let type: String?
+    let thumbnail: String
+    var link: URL? {
+        if let url = externalURL {
+            return URL(string: url)
+        }
+        return nil
+    }
+    private let externalURL: String?
     
     enum CodingKeys: String, CodingKey {
-        case id, type
-        case link = "url"
+        case id, type, thumbnail, name
+        case externalURL = "external_url"
     }
     
     var previewable: CollectionItemPreviewing? {
-        return PromotionAd.from(self) ?? CollectionProductItem.from(self) ?? CollectionCategoryItem.from(self)
+        return CollectionCategoryItem.from(self) ??
+            CollectionProductItem.from(self)
     }
 }

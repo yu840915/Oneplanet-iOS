@@ -37,7 +37,7 @@ class GetCollectionPageOperationFactory: PaginatedFetchingOperationFactoryType {
 
 class GetCollectionPageOperation: AlamofireAPIAccessOperation, PaginatedFetchingOperationType, ListingType {
     enum ListName: String {
-        case hot
+        case hot = "main"
         case banners
     }
     
@@ -51,7 +51,7 @@ class GetCollectionPageOperation: AlamofireAPIAccessOperation, PaginatedFetching
     let session: UserSession
     private let url: URL
     convenience init(session: UserSession, name: ListName) {
-        self.init(session: session, url: ServiceURLs.base.appendingPathComponent("collection/\(name.rawValue)").addingFirstPageQeury(), isBeginning: true)
+        self.init(session: session, url: ServiceURLs.devBase.appendingPathComponent("collection/\(name.rawValue)"), isBeginning: true)
     }
     
     init(session: UserSession, url: URL, isBeginning: Bool) {
@@ -86,14 +86,14 @@ class CollectionCategoryItem: CollectionItemPreviewing {
     let id: String
     let cover: WebImageInfo
     
-    init(id: String) {
+    init(id: String, coverURL: URL) {
         self.id = id
-        cover = WebImageInfo(url: ServiceURLs.base.appendingPathComponent("category/\(id)"))
+        cover = WebImageInfo(url: coverURL)
     }
 
     class func from(_ collectionItem: CollectionItem) -> CollectionCategoryItem? {
-        guard collectionItem.type.lowercased() == "category" else {return nil}
-        return CollectionCategoryItem(id: collectionItem.id)
+        guard collectionItem.type?.lowercased() == "category" else {return nil}
+        return CollectionCategoryItem(id: collectionItem.id, coverURL: collectionItem.thumbnail.toURL())
     }
 }
 
@@ -101,13 +101,13 @@ class CollectionProductItem: CollectionItemPreviewing {
     let id: String
     let cover: WebImageInfo
 
-    init(id: String) {
+    init(id: String, coverURL: URL) {
         self.id = id
-        cover = WebImageInfo(url: ServiceURLs.base.appendingPathComponent("product/\(id)"))
+        cover = WebImageInfo(url: coverURL)
     }
     
     class func from(_ collectionItem: CollectionItem) -> CollectionProductItem? {
-        guard collectionItem.type.lowercased() == "product" else {return nil}
-        return CollectionProductItem(id: collectionItem.id)
+        guard collectionItem.type == nil || collectionItem.type!.lowercased() == "product" else {return nil}
+        return CollectionProductItem(id: collectionItem.id, coverURL: collectionItem.thumbnail.toURL())
     }
 }

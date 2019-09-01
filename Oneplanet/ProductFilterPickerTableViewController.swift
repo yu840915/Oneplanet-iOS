@@ -15,6 +15,7 @@ class ProductFilterPickerTableViewController: PickerTableViewController, UserSes
     private var needsCheckPreselection = false
     private var categoryNameList: CategoryNameList!
     private var handles: [Any]?
+    private var getCountsOperation: ConcurrentTaskOperation<GetCategoryCountOperation>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,8 +46,35 @@ class ProductFilterPickerTableViewController: PickerTableViewController, UserSes
             selection = options[index]
             setNeedsPreselect()
         }
+        if options.isEmpty {
+            updateViewsForListUpdate()
+        } else {
+            getCounts()
+        }
+    }
+    
+    private func updateViewsForListUpdate() {
         tableView.reloadData()
         updateBackground()
+    }
+    
+    private func getCounts() {
+        getCountsOperation?.cancel()
+        let ops = categoryNameList.items.map{GetCategoryCountOperation(categoryName: $0, userSession: userSession)}
+        let op = ConcurrentTaskOperation<GetCategoryCountOperation>(operations: ops)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didGetCounts()
+            }
+        }
+        options = categoryNameList.items.map{CategoryNameViewModel($0)}
+        getCountsOperation = op
+        op.start()
+    }
+    
+    private func didGetCounts() {
+        getCountsOperation = nil
+        updateViewsForListUpdate()
     }
     
     private func handleUpdateFailure(_ error: Error?) {

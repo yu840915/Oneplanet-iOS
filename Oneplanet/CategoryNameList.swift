@@ -15,12 +15,33 @@ class CategoryName: Decodable {
     let id: String
     let displayName: String
     let cover: URL?
-    let count: Int = 0
+    var count: Int = 0
     
     enum CodingKeys: String, CodingKey {
         case name, id
         case displayName = "display_name"
         case cover = "image"
+    }
+}
+
+class GetCategoryCountOperation: AlamofireAPIAccessOperation {
+    let categoryName: CategoryName
+    let userSession: UserSession
+    
+    init(categoryName: CategoryName, userSession: UserSession) {
+        self.categoryName = categoryName
+        self.userSession = userSession
+    }
+    override func prepareURLRequest() throws -> URLRequest {
+        var comp = URLComponents(url: ServiceURLs.devBase.appendingPathComponent("products"), resolvingAgainstBaseURL: false)!
+        comp.queryItems = [.init(name: "category", value: categoryName.name)]
+        return userSession.addingAuthorizationToken(to: try URLRequest(url: comp.url!, method: .head))
+    }
+    
+    override func processHTTPResponseHeader(_ header: [AnyHashable : Any]) throws {
+        if let count = header["X-Total-Count"] as? Int {
+            categoryName.count = count
+        }
     }
 }
 

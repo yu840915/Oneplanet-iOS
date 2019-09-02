@@ -39,8 +39,8 @@ class GetCategoryCountOperation: AlamofireAPIAccessOperation {
     }
     
     override func processHTTPResponseHeader(_ header: [AnyHashable : Any]) throws {
-        if let count = header["X-Total-Count"] as? Int {
-            categoryName.count = count
+        if let count = header["X-Total-Count"] as? String {
+            categoryName.count = SharedNumberFormatters.integer.number(from: count)?.intValue ?? 0
         }
     }
 }

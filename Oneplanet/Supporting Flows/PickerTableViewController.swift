@@ -89,7 +89,7 @@ class PickerTableViewController: UITableViewController {
 
 private extension PickerTableViewController {
     func preselectIfNeeded() {
-        guard shouldPreselect else {
+        guard shouldPreselect && tableView.numberOfSections > 0 else {
             return
         }
         shouldPreselect = false

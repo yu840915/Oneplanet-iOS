@@ -14,13 +14,9 @@ class ProductOverview: Decodable {
     let id: String
     let name: String
     let displayName: String
-    let coverURLs: [URL]?
-    let imageURLs: [URL]
-    var images: [WebImageInfo] {
-        return imageURLs.map{WebImageInfo(url: $0)}
-    }
+    private let thumbnailURL: URL?
     var cover: WebImageInfo? {
-        if let url = coverURLs?.first ?? imageURLs.first {
+        if let url = thumbnailURL {
             return WebImageInfo(url: url)
         }
         return nil
@@ -28,22 +24,26 @@ class ProductOverview: Decodable {
     
     enum CodingKeys: String, CodingKey {
         case name, id
-        case coverURLs = "cover_image"
-        case imageURLs = "images"
+        case thumbnailURL = "thumbnail"
         case displayName = "display_name"
     }
 }
 
 class Product: ProductOverview {
     let description: String
+    let images: [WebImageInfo]
+    override var cover: WebImageInfo? {
+        return images.first
+    }
     
     enum AdditionalKeys: String, CodingKey {
-        case description
+        case description, images
     }
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: AdditionalKeys.self)
         description = try container.decodeIfPresent(String.self, forKey: .description) ?? ""
+        images = (try container.decode([URL].self, forKey: .images)).map{WebImageInfo(url: $0)}
         try super.init(from: decoder)
     }
 }

@@ -21,27 +21,19 @@ class ProductTests: XCTestCase {
 
     func testParseProductOverview() {
         let data = """
-    {
-        "name": "product-name",
-        "banner_image": [
-          "https://storage.googleapis.com/oneplanet-app/hbswa.jpg"
-        ],
-        "cover_image": [
-          "https://storage.googleapis.com/oneplanet-app/bearbrick.jpg"
-        ],
-        "display_name": "product display name",
-        "images": [
-          "https://storage.googleapis.com/oneplanet-app/10341278427650.jpg"
-        ],
-        "id": "5d66b818c4e957c193b9983d"
-    }
+{
+        "name":"product-7",
+        "display_name":"Off-White™/Nike® Air Max 90",
+        "id":"5d69423ec4e957c193f2a274",
+        "thumbnail":"https://storage.googleapis.com/oneplanet-app/off90-2.jpg"
+}
 """.data(using: .utf8)!
         do {
             let overview = try JSONDecoder.default.decode(ProductOverview.self, from: data)
-            XCTAssertEqual(overview.displayName, "product display name")
-            XCTAssertEqual(overview.name, "product-name")
+            XCTAssertEqual(overview.displayName, "Off-White™/Nike® Air Max 90")
+            XCTAssertEqual(overview.name, "product-7")
             XCTAssertNotNil(overview.cover)
-            XCTAssertEqual(overview.id, "5d66b818c4e957c193b9983d")
+            XCTAssertEqual(overview.id, "5d69423ec4e957c193f2a274")
         } catch let error {
             XCTFail(error.localizedDescription)
         }

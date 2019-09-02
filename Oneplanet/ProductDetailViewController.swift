@@ -46,7 +46,7 @@ class ProductDetailViewController: UIViewController, UserSessionDepending {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        markdownParser = MarkdownParser()
+        markdownParser = MarkdownParser(font: MarkdownFont.systemFont(ofSize: 14), color: .white, enabledElements: .all)
         localizeTitles()
         if product != nil {
             updateViewsForProductIfNeeded()
@@ -105,7 +105,12 @@ private extension ProductDetailViewController {
         contentContainer.isHidden = false
         previews = prod.images
         titleLabel.text = prod.displayName
-        detailTextView.attributedText = markdownParser.parse(prod.description)
+        let attrDes = markdownParser.parse(prod.description).mutableCopy() as! NSMutableAttributedString
+        let range = NSMakeRange(0, attrDes.length)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        attrDes.addAttribute(.paragraphStyle, value: paragraphStyle, range: range)
+        detailTextView.attributedText = attrDes
     }
     
     func getProductDetail() {

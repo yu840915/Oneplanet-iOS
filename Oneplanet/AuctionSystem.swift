@@ -78,4 +78,20 @@ class GetMyLotPageOperation: AlamofireAPIAccessOperation, PaginatedFetchingOpera
 //    let leadUser: String
 //}
 
-
+class BidProductOperation: AlamofireAPIAccessOperation {
+    let product: ProductOverview
+    let session: UserSession
+    let currency: Currency
+    
+    init(product: ProductOverview, session: UserSession, currency: Currency) {
+        self.product = product
+        self.session = session
+        self.currency = currency
+    }
+    
+    override func prepareDataRequest() throws -> DataRequest {
+        let dict: [String: String] = ["user_id": session.profile!.id]
+        let url = ServiceURLs.devBase.appendingPathComponent("bidding/\(product.id)")
+        return Alamofire.request(url, method: .post, parameters: dict, encoding: JSONEncoding.default, headers: session.authorizationHeader)
+    }
+}

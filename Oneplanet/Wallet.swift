@@ -103,7 +103,7 @@ class Balance {
     
     func refreshIfNeeded() {
         guard (isOutdated || needsRefresh) && refreshOperation == nil else { return }
-        needsRefresh = true
+        needsRefresh = false
         refresh()
     }
     
@@ -120,6 +120,7 @@ class Balance {
     
     private func didRefresh() {
         let op = refreshOperation!
+        refreshOperation = nil
         if let total = op.total {
             isInitialized = true
             self.total = total

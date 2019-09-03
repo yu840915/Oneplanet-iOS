@@ -11,6 +11,7 @@ import UIKit
 class BidFlowViewController: UIViewController, UserSessionDepending {
     var userSession: UserSession!
     var product: ProductOverview!
+    private var bidOperation: BidProductOperation?
 
     var pageViewController: UIPageViewController!
     override func viewDidLoad() {
@@ -39,11 +40,39 @@ class BidFlowViewController: UIViewController, UserSessionDepending {
 
 extension BidFlowViewController {
     func cancelAndExit() {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: false, completion: nil)
     }
     
     func bid(with gem: Currency) {
-        
+        let op = BidProductOperation(product: product, session: userSession, currency: gem)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {[weak self] in
+                self?.didBid()
+            }
+        }
+        bidOperation = op
+        op.start()
+    }
+    
+    func didBid() {
+        let op = bidOperation!
+        bidOperation = nil
+        if op.success == true {
+            if op.currency == .blueGem {
+                userSession.wallet.setNeedsUpdateBlueGem()
+            } else {
+                userSession.wallet.setNeedsUpdatePurpleGem()
+            }
+            dismiss(animated: false, completion: nil)
+        } else if let error = op.error {
+            showFailureAlert(error)
+        }
+    }
+    
+    func showFailureAlert(_ error: Error) {
+        let alert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Localized.phrases.tryAgain, style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
 
     func showBlueGemPopUp() {
@@ -100,6 +129,9 @@ extension BidFlowViewController {
             vc.configuration = InsufficientBlueGemToBidPopUpConfiguration(formattedPrice: price)
             vc.mainAction = {
                 self?.goToCreatePost()
+            }
+            vc.cancelAction = {
+                self?.cancelAndExit()
             }
         }
         pageViewController.setViewControllers([container], direction: .forward, animated: false, completion: nil)

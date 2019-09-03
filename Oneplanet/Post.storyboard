@@ -143,7 +143,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R3X-nG-Mim" userLabel="Action Button">
-                                                    <rect key="frame" x="288" y="16.5" width="100" height="17"/>
+                                                    <rect key="frame" x="288" y="11" width="100" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" priority="900" constant="100" id="f5H-U4-GaO"/>
                                                     </constraints>
@@ -318,7 +318,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="20" height="187"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_120film" translatesAutoresizingMaskIntoConstraints="NO" id="72k-YE-wyW">
-                                                            <rect key="frame" x="2" y="85.5" width="16" height="16"/>
+                                                            <rect key="frame" x="0.0" y="13.5" width="20" height="160"/>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -331,7 +331,7 @@
                                                     <rect key="frame" x="0.0" y="187" width="20" height="187"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_120film" translatesAutoresizingMaskIntoConstraints="NO" id="JsG-s3-DXV">
-                                                            <rect key="frame" x="2" y="85.5" width="16" height="16"/>
+                                                            <rect key="frame" x="0.0" y="13.5" width="20" height="160"/>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -422,9 +422,9 @@
                                                             </subviews>
                                                         </stackView>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jaP-pc-ueI" userLabel="Action Button">
-                                                            <rect key="frame" x="224" y="21.5" width="100" height="17"/>
+                                                            <rect key="frame" x="224" y="16" width="100" height="28"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" priority="900" constant="100" id="iyP-ey-tAG"/>
+                                                                <constraint firstAttribute="width" priority="700" constant="100" id="iyP-ey-tAG"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                             <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="12" maxY="0.0"/>
@@ -625,7 +625,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_flitertap_tap" translatesAutoresizingMaskIntoConstraints="NO" id="zO2-k7-4DZ">
-                                                            <rect key="frame" x="179" y="27" width="16" height="16"/>
+                                                            <rect key="frame" x="177" y="25" width="20" height="20"/>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -759,7 +759,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="70"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_flitertap_tap" translatesAutoresizingMaskIntoConstraints="NO" id="XvP-Hg-YUD">
-                                                                <rect key="frame" x="179" y="27" width="16" height="16"/>
+                                                                <rect key="frame" x="177" y="25" width="20" height="20"/>
                                                             </imageView>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

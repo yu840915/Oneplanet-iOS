@@ -110,7 +110,7 @@
 "msg_thanks_for_reporting_post" = "Your feedback is important in helping us keep the Oneplanet community safe";
 "msg_username_rules" = "ID at least five characters";
 
-"msgf_accept_tos" = "By signing up or login, you agree to our %@.";
+"msgf_accept_tos" = "Sign in means you agree to our %@.";
 "msgf_resend_verification_email" = "You did not receive the email? %@.";
 "msgf_did_copy_my_id" = "My Oneplanet ID [%@] Copied.";
 "msgf_did_copy_id" = "Oneplanet ID [%@] Copied";

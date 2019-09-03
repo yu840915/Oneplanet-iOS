@@ -110,7 +110,7 @@
 "msg_thanks_for_reporting_post" = "您的反馈意见对于帮助我们保持 Oneplanet 社群的安全非常重要";
 "msg_username_rules" = "ID至少5个字符";
 
-"msgf_accept_tos" = "注册或登录即表示你同意我们的%@";
+"msgf_accept_tos" = "登入即表示你同意我们的%@";
 "msgf_resend_verification_email" = "你没有收到电子邮件？%@";
 "msgf_did_copy_my_id" = "我的 Oneplanet ID [%@] 已复制。";
 "msgf_did_copy_id" = "Oneplanet ID [%@] 已复制。";

@@ -43,9 +43,9 @@
 "tl_female" = "女性";
 "tl_private_info" = "個人情報";
 "tl_go" = "Go";
-"tl_blue_gem" = "競標寶";
-"tl_purple_gem" = "紅金寶";
-"tl_green_gem" = "解鎖寶";
+"tl_blue_gem" = "サフリッド";
+"tl_purple_gem" = "ルビッド";
+"tl_green_gem" = "エメキー";
 "tl_delete" = "削除";
 "tl_unlock" = "アンロックします";
 "tl_unlocked" = "アンロックしました";
@@ -169,7 +169,7 @@
 "ph_edit_shipping_info" = "お届け先情報を変更";
 "ph_view_shipping_status" = "配送状況の確認";
 "ph_commodities" = "商品";
-"ph_bidding_process" = "マイオク";
+"ph_bidding_process" = "入札履歴";
 "ph_bid_count" = "入札回数";
 "ph_countdown" = "残り時間";
 "ph_bid_leader" = "入札";
@@ -235,14 +235,14 @@
 "errtl_username_unavailable" = "この ID は使えません";
 
 "warn_logout" = "ログアウト？";
-"warn_character_selection" = "エリアンの種類と色を一度選んだら変更ができません。よろしいですか？";
+"warn_character_selection" = "エリアンの種類を一度選んだら変更ができません。よろしいですか？";
 "warn_account_banned" = "コミュニティガイドライン違反ということで、コミュニティ機能を停止されました。アカウント復元はこちら";
 "warn_discard_post" = "Discard the draft?";
 
 "warntl_character_selection" = "選択しました。よろしいですか？";
 "warntl_account_banned" = "コミュニティ機能停止";
 
-"act_bigging" = "オークション残り時間…";
+"act_bigging" = "入札中...";
 "act_bigging_ended" = "オークションが終了しました！";
 "act_countdown" = "オークション カウントダウン...";
 
@@ -250,7 +250,7 @@
 "pop_green_gem_usage" = "用途：解鎖商品、高效率投標商品。";
 "pop_purple_gem_usage" = "用途：解鎖商品。";
 
-"pop_blue_gem_action" = "今すぐ写真をアップロードします";
+"pop_blue_gem_action" = "写真をアップロードします";
 "pop_green_gem_action" = "%@へ";
 
 "pop_blue_gem_bullet1" = "獲得方式一：上傳照片後，畫面左上角的經驗值會增加，滿格即獲得一顆 競標寶。";

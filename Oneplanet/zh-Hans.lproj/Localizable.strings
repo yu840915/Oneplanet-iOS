@@ -11,11 +11,11 @@
 "fx_hot" = "热门";
 "fx_my" = "我的";
 "fx_life" = "动态";
-"fx_bid" = "投标";
+"fx_bid" = "竞标";
 "fx_notice" = "通知";
 "fx_news" = "新闻";
-"fx_events" = "事件";
-"fx_alien" = "排名";
+"fx_events" = "活动";
+"fx_alien" = "排行榜";
 
 "tl_cancel" = "取消";
 "tl_dismiss" = "关闭";
@@ -41,7 +41,7 @@
 "tl_gender" = "性别";
 "tl_male" = "男";
 "tl_female" = "女";
-"tl_private_info" = "私人信息";
+"tl_private_info" = "私人资讯";
 "tl_go" = "Go";
 "tl_blue_gem" = "竞标宝";
 "tl_purple_gem" = "红金宝";
@@ -52,7 +52,7 @@
 "tl_bid" = "投标";
 "tl_required_input" = "必填";
 "tl_agree" = "我同意";
-"tl_filter" = "筛选";
+"tl_filter" = "商品过滤";
 "tl_bid_state_lost" = "未得标";
 "tl_bid_state_to_ship" = "待出货";
 "tl_bid_state_shipping" = "出货中";
@@ -80,7 +80,7 @@
 "msg_add_avatar_prompt" = "添加个人资料照片，以便你的朋友知道这就是你。";
 "msg_open_mail_app_prompt" = "单击此处打开您的电子邮件";
 "msg_mail_resent" = "已重新发送电子邮件";
-"msg_join_prompt" = "立即前往注册享用更多功能";
+"msg_join_prompt" = "立即登入享用更多功能";
 "msg_alien_description" = "你所选择的外星人会出现在你的个人页面";
 "msg_ongoing_bidding" = "其他商品还在进行竞标，请等待竞标结束。";
 "msg_successful_shipping_info_submission" = "得标商品会寄送到此地址，如地址有变动请记得来此页面更新";
@@ -163,8 +163,8 @@
 "ph_block_list" = "被黑名单的账号";
 "ph_privacy_and_security" = "隐私和安全";
 "ph_not_specified" = "不显示";
-"ph_join_prompt" = "前往注册";
-"ph_shipping_info" = "收件信息";
+"ph_join_prompt" = "立即登入";
+"ph_shipping_info" = "收件资讯";
 "ph_create_shipping_info" = "填写收件信息";
 "ph_edit_shipping_info" = "变更收件信息";
 "ph_view_shipping_status" = "查看出货状况";
@@ -208,7 +208,7 @@
 "phf_followings" = "%@ 关注中";
 "phf_remaining_uploads" = "%@/%@ remain (%@)";
 
-"no_posts" = "还没有贴子";
+"no_posts" = "还没有帖子";
 "no_promo_popups" = "No Promotion Pop-ups Yet";
 "no_unlocked_lots_title" = "你没有参加这次竞标";
 "no_unlocked_lots_message" = "请把握下次竞标！48H 内会公布下一期商品！";
@@ -235,7 +235,7 @@
 "errtl_username_unavailable" = "此ID无效";
 
 "warn_logout" = "退出？";
-"warn_character_selection" = "Can't change the group after selection, continue？";
+"warn_character_selection" = "外星人种类确定后不可更换，确定选择？";
 "warn_account_banned" = "你帐户的社群功能已被停用，因为它违反了我们的使用条款。 了解如何恢复账户";
 "warn_discard_post" = "Discard the draft?";
 

@@ -43,9 +43,9 @@
 "tl_female" = "Female";
 "tl_private_info" = "Private Information";
 "tl_go" = "Go";
-"tl_blue_gem" = "競標寶";
-"tl_purple_gem" = "紅金寶";
-"tl_green_gem" = "解鎖寶";
+"tl_blue_gem" = "Safrid";
+"tl_purple_gem" = "Rubid";
+"tl_green_gem" = "Emerkey";
 "tl_delete" = "Delete";
 "tl_unlock" = "Unlock";
 "tl_unlocked" = "Unlocked";
@@ -80,7 +80,7 @@
 "msg_add_avatar_prompt" = "Add a profile photo so your friends know it’s you";
 "msg_open_mail_app_prompt" = "Click here to open your email address";
 "msg_mail_resent" = "The email has been sent again";
-"msg_join_prompt" = "Go to sign up now for more features";
+"msg_join_prompt" = "Sign in now for more features";
 "msg_alien_description" = "The alien you choose will be on your own page";
 "msg_ongoing_bidding" = "Other items are still bidding, please wait for the bidding to end.";
 "msg_successful_shipping_info_submission" = "The winning items will be sent to this address. If the address changes, please remember to update this page";
@@ -163,7 +163,7 @@
 "ph_block_list" = "Blocked Account";
 "ph_privacy_and_security" = "Privacy and Security";
 "ph_not_specified" = "Not Specified";
-"ph_join_prompt" = "Join now？";
+"ph_join_prompt" = "Sign in now";
 "ph_shipping_info" = "Receipt info";
 "ph_create_shipping_info" = "Fill in the recipient information";
 "ph_edit_shipping_info" = "Change the receipt information";
@@ -235,7 +235,7 @@
 "errtl_username_unavailable" = "This ID is not effective";
 
 "warn_logout" = "Log Out?";
-"warn_character_selection" = "Alien species and colors must not be more change, to be sure to choose?";
+"warn_character_selection" = "Alien species determined after the non-replaceable, determine the choice?";
 "warn_account_banned" = "The community feature of your account has been deactivated because it violates our terms of use. Learn how to recover your account";
 "warn_discard_post" = "Discard the draft?";
 

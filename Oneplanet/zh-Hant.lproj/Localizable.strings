@@ -52,7 +52,7 @@
 "tl_bid" = "投標";
 "tl_required_input" = "必填";
 "tl_agree" = "我同意";
-"tl_filter" = "篩選";
+"tl_filter" = "商品過濾";
 "tl_bid_state_lost" = "未得標";
 "tl_bid_state_to_ship" = "待出貨";
 "tl_bid_state_shipping" = "出貨中";
@@ -80,7 +80,7 @@
 "msg_add_avatar_prompt" = "添加個人資料照片，以便你的朋友知道這就是你。";
 "msg_open_mail_app_prompt" = "按此處開啟你的電子信箱";
 "msg_mail_resent" = "已重新發送電子郵件";
-"msg_join_prompt" = "立即前往註冊享用更多功能";
+"msg_join_prompt" = "立即登入享用更多功能";
 "msg_alien_description" = "你所選擇的外星人會出現在你的個人頁面";
 "msg_ongoing_bidding" = "其他商品仍在競標中，請等待競標結束。";
 "msg_successful_shipping_info_submission" = "得標商品會寄送到此地址，如地址有變動請記得來此頁面更新";
@@ -163,7 +163,7 @@
 "ph_block_list" = "被封鎖的帳號";
 "ph_privacy_and_security" = "隱私和安全";
 "ph_not_specified" = "不顯示";
-"ph_join_prompt" = "前往註冊";
+"ph_join_prompt" = "立即登入";
 "ph_shipping_info" = "收件資訊";
 "ph_create_shipping_info" = "填寫收件資訊";
 "ph_edit_shipping_info" = "變更收件資訊";
@@ -235,7 +235,7 @@
 "errtl_username_unavailable" = "此 ID 無法使用";
 
 "warn_logout" = "登出？";
-"warn_character_selection" = "外星人種類及顏色確定後不可更換，確定選擇？";
+"warn_character_selection" = "外星人種類確定後不可更換，確定選擇？";
 "warn_account_banned" = "你帳戶的社群功能已被停用，因為它違反了我們的使用條款。 了解如何恢復帳戶";
 "warn_discard_post" = "是否放棄該貼文?";
 

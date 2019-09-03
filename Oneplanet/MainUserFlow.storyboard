@@ -1375,7 +1375,7 @@
                                     <constraint firstAttribute="width" constant="44" id="Ven-Rm-sCA"/>
                                     <constraint firstAttribute="width" secondItem="XrJ-FY-mxL" secondAttribute="height" id="r7I-f5-d8V"/>
                                 </constraints>
-                                <state key="normal" image="ic_cancelblack_nor"/>
+                                <state key="normal" image="ic_cancelshadow_nor"/>
                                 <connections>
                                     <action selector="exit:" destination="6Sb-3S-EDd" eventType="touchUpInside" id="L0Y-OH-pHU"/>
                                     <action selector="exit:" destination="Xaq-X4-Ebv" eventType="touchUpInside" id="hDR-yu-Kos"/>
@@ -1595,7 +1595,7 @@
                                     <constraint firstAttribute="width" secondItem="O8Z-Vi-EQG" secondAttribute="height" id="245-DF-5jF"/>
                                     <constraint firstAttribute="width" constant="44" id="MJG-WI-kVW"/>
                                 </constraints>
-                                <state key="normal" image="ic_cancelblack_nor"/>
+                                <state key="normal" image="ic_cancelshadow_nor"/>
                                 <connections>
                                     <action selector="exit:" destination="dL1-HT-YBh" eventType="touchUpInside" id="7OM-Oq-D7e"/>
                                     <action selector="exit:" destination="Xaq-X4-Ebv" eventType="touchUpInside" id="WkU-oh-bb7"/>
@@ -2207,6 +2207,7 @@
         <image name="ic_addfree_nor" width="56" height="56"/>
         <image name="ic_addphoto_nor" width="56" height="56"/>
         <image name="ic_cancelblack_nor" width="17" height="16"/>
+        <image name="ic_cancelshadow_nor" width="40" height="40"/>
         <image name="ic_checkmark_nor" width="20" height="20"/>
         <image name="ic_checkmark_tap" width="20" height="20"/>
         <image name="ic_coin80_nor" width="80" height="80"/>

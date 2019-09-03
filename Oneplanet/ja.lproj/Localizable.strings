@@ -76,7 +76,7 @@
 "pl_report_description" = "報告する理由を入力";
 "pl_caption" = "キャプションを書く";
 
-"msg_email_verification_instruction" = "電子メールに送信しました。ログインするには、こちたのURLをクリックしてください。";
+"msg_email_verification_instruction" = "電子メールを送信しました。ログインするには、お手持ちのスマートフォンから、下記のURLをクリックしてください。";
 "msg_add_avatar_prompt" = "友達があなただとわかるようにプロフィール写真を登録してください";
 "msg_mail_resent" = "メールを再送しました";
 "msg_open_mail_app_prompt" = "メールはこちらをクリック";
@@ -149,7 +149,7 @@
 "ph_change_avatar" = "写真を変更する";
 "ph_take_photo" = "写真を撮る";
 "ph_from_library" = "ライブラリから写真を選択する";
-"ph_open_settings" = "Open Settings";
+"ph_open_settings" = "「設定」を開く";
 "ph_remove_avatar" = "現在の写真を削除";
 "ph_try_again" = "もう一度実行";
 "ph_nickname_rule" = "ニックネームは30字以内で、特殊記号や絵文字は使えません";
@@ -229,7 +229,7 @@
 "err_username_unavailable" = "ほかの ID を使ってください";
 
 "errtl_cannot_capture_photo" = "Cannot Take Photo";
-"errtl_cannot_pick_avatar" = "Cannot Get Profile Image";
+"errtl_cannot_pick_avatar" = "プロフィール画像を取得できません";
 "errtl_generic_failure" = "エラー";
 "errtl_username_too_short" = "ID が短すぎる";
 "errtl_username_unavailable" = "この ID は使えません";

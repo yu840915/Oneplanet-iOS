@@ -76,7 +76,7 @@
 "pl_report_description" = "输入举报原因";
 "pl_caption" = "写些什么...";
 
-"msg_email_verification_instruction" = "电子邮件已发送。请单击电子邮件中的链接完成登录。";
+"msg_email_verification_instruction" = "电子邮件已发送。请使用当前行动装置单击电子邮件中的连接以完成登入。";
 "msg_add_avatar_prompt" = "添加个人资料照片，以便你的朋友知道这就是你。";
 "msg_open_mail_app_prompt" = "单击此处打开您的电子邮件";
 "msg_mail_resent" = "已重新发送电子邮件";
@@ -149,7 +149,7 @@
 "ph_change_avatar" = "更换个人照片";
 "ph_take_photo" = "拍照";
 "ph_from_library" = "从相簿中选取";
-"ph_open_settings" = "开启\"设定\"";
+"ph_open_settings" = "开启「设定」";
 "ph_remove_avatar" = "删除当前照片";
 "ph_try_again" = "再试一次";
 "ph_nickname_rule" = "昵称上限 30 字元，不得包含标点符号或表情符号";

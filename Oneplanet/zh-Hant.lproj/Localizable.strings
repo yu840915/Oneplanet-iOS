@@ -76,7 +76,7 @@
 "pl_report_description" = "輸入檢舉原因";
 "pl_caption" = "寫些什麼...";
 
-"msg_email_verification_instruction" = "電子郵件已發送。請單擊電子郵件中的鏈接以完成登入。";
+"msg_email_verification_instruction" = "電子郵件已發送。請使用當前行動裝置單擊電子郵件中的鏈接以完成登入。";
 "msg_add_avatar_prompt" = "添加個人資料照片，以便你的朋友知道這就是你。";
 "msg_open_mail_app_prompt" = "按此處開啟你的電子信箱";
 "msg_mail_resent" = "已重新發送電子郵件";

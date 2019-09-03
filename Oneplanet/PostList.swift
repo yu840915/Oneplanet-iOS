@@ -9,17 +9,35 @@
 import Foundation
 import ModelBlocks
 
-class Post {
+class Post: Decodable {
     let id: String
-    let author: User = User(id: "123", username: "Mike 123", nickname: "Mike", character: AlienOptions.shared.alien(for: .one, color: .blue))
-    init(id: String) {
-        self.id = id
+    let authorID: String
+    let caption: String
+    let imageURLs: [URL]
+    let createdAt: Date
+    var images: [WebImageInfo] {
+        return imageURLs.map{WebImageInfo(url: $0)}
+    }
+    
+    init(post: Post, caption: String) {
+        id = post.id
+        authorID = post.authorID
+        self.caption = caption
+        imageURLs = post.imageURLs
+        createdAt = post.createdAt
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case id, caption
+        case authorID = "user"
+        case imageURLs = "images"
+        case createdAt = "created_at"
     }
 }
 
 class PostList: PaginatedList<GetPostListOperationFactory> {
     class func postList(with userSession: UserSession) -> PostList {
-        return PostList(operationFactory: GetPostListOperationFactory(session: userSession, url: ServiceURLs.base.appendingPathComponent("posts")))
+        return PostList(operationFactory: GetPostListOperationFactory(session: userSession, url: ServiceURLs.base.appendingPathComponent("posts").addingFirstPageQeury()))
     }
 
     class func myPostList(with userSession: UserSession) -> PostList {
@@ -67,5 +85,24 @@ class GetPostListOperation:  AlamofireAPIAccessOperation, PaginatedFetchingOpera
     init(session: UserSession, url: URL) {
         self.session = session
         self.url = url
+    }
+    
+    override func prepareURLRequest() throws -> URLRequest {
+        return session.addingAuthorizationToken(to: URLRequest(url: url))
+    }
+    
+    override func processData(with data: Data) throws {
+        items = try JSONDecoder.default.decode([Post].self, from: data)
+    }
+}
+
+class DeduplicationHelper {
+    private var ids = Set<String>()
+    func addIfAllowed(_ id: String) -> Bool {
+        if ids.contains(id) {
+            return false
+        }
+        ids.insert(id)
+        return true
     }
 }

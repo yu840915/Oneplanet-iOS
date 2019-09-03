@@ -11,11 +11,11 @@
 "fx_hot" = "热门";
 "fx_my" = "我的";
 "fx_life" = "动态";
-"fx_bid" = "投标";
+"fx_bid" = "竞标";
 "fx_notice" = "通知";
 "fx_news" = "新闻";
-"fx_events" = "事件";
-"fx_alien" = "排名";
+"fx_events" = "活动";
+"fx_alien" = "排行榜";
 
 "tl_cancel" = "取消";
 "tl_dismiss" = "关闭";
@@ -41,18 +41,18 @@
 "tl_gender" = "性别";
 "tl_male" = "男";
 "tl_female" = "女";
-"tl_private_info" = "私人信息";
+"tl_private_info" = "私人资讯";
 "tl_go" = "Go";
 "tl_blue_gem" = "竞标宝";
 "tl_purple_gem" = "红金宝";
 "tl_green_gem" = "解锁宝";
 "tl_delete" = "删除";
-"tl_unlock" = "解锁";
+"tl_unlock" = "解锁商品";
 "tl_unlocked" = "已解锁";
-"tl_bid" = "投标";
+"tl_bid" = "投标一次";
 "tl_required_input" = "必填";
 "tl_agree" = "我同意";
-"tl_filter" = "筛选";
+"tl_filter" = "商品过滤";
 "tl_bid_state_lost" = "未得标";
 "tl_bid_state_to_ship" = "待出货";
 "tl_bid_state_shipping" = "出货中";
@@ -66,20 +66,22 @@
 "tl_send" = "送出";
 "tl_edit" = "编辑";
 "tl_photo" = "照片";
-"tl_library" = "Library";
-"tl_post" = "Post";
+"tl_library" = "相簿";
+"tl_post" = "帖子";
 "tl_share" = "分享";
+"tl_discard" = "放弃";
+"tl_search_id" = "搜寻 ID";
 
 "pl_email" = "电子邮件地址";
 "pl_nickname" = "昵称";
 "pl_report_description" = "输入举报原因";
 "pl_caption" = "写些什么...";
 
-"msg_email_verification_instruction" = "电子邮件已发送。请单击电子邮件中的链接完成登录。";
+"msg_email_verification_instruction" = "电子邮件已发送。请使用当前行动装置单击电子邮件中的连接以完成登入。";
 "msg_add_avatar_prompt" = "添加个人资料照片，以便你的朋友知道这就是你。";
 "msg_open_mail_app_prompt" = "单击此处打开您的电子邮件";
 "msg_mail_resent" = "已重新发送电子邮件";
-"msg_join_prompt" = "立即前往注册享用更多功能";
+"msg_join_prompt" = "立即登入享用更多功能";
 "msg_alien_description" = "你所选择的外星人会出现在你的个人页面";
 "msg_ongoing_bidding" = "其他商品还在进行竞标，请等待竞标结束。";
 "msg_successful_shipping_info_submission" = "得标商品会寄送到此地址，如地址有变动请记得来此页面更新";
@@ -94,22 +96,22 @@
 "msg_race1_monologue" = "我的名字叫法克。";
 "msg_race2_monologue" = "我的名字叫迪克。";
 "msg_race3_monologue" = "我的名字叫壮克。";
-"msg_shipping_info_des" = "“国际运送服务”，请填写英文地址及收件信息，商品才可以成功送达";
+"msg_shipping_info_des" = "请填写与护照相符的英文姓名，并确实填写收件资讯，商品才可以成功送达。\n＊本运送服务免运费，海外配送可能需要缴纳由目的地国家征收的关税＊";
 "msg_report_user_prompt" = "为什么要举报这个账号？";
 "msg_report_post_prompt" = "选择举报这篇帖子的原因：";
-"msg_report_user_caption" = "您举报其他人的贴子时，Oneplanet 不会揭露举报人的身分";
-"msg_report_post_caption" = "您举报其他人的贴子时，Oneplanet 不会揭露举报人的身分";
+"msg_report_user_caption" = "您举报其他人的帖子时，Oneplanet 不会揭露举报人的身分";
+"msg_report_post_caption" = "您举报其他人的帖子时，Oneplanet 不会揭露举报人的身分";
 "msg_thankyou_reporting_user" = "Thanks for reporting this";
-"msg_thankyou_reporting_post" = "谢谢你举报这则贴子";
+"msg_thankyou_reporting_post" = "谢谢你举报这则帖子";
 "msg_unblock_des" = "他们现在可以在Oneplanet上追踪你。Oneplanet不会让他们知道你已将他们解除封锁";
-"msg_block_des" = "他们将无法在 Oneplanet 上找到你的个人资料或贴文。 Oneplanet 不会让他们知道你黑名单了他们";
+"msg_block_des" = "他们将无法在 Oneplanet 上找到你的个人资料或帖子。 Oneplanet 不会让他们知道你黑名单了他们";
 "msg_recover_account_des" = "如果您不同意我们的处理方式，请提供以下信息以帮助我们调查";
 "msg_petition_submitted" = "已将问题回报给 Oneplanet，请等待 Oneplanet 审核过后并回复你";
 "msg_unlock_option_prompt" = "你要使用哪种宝石来解锁？";
 "msg_thanks_for_reporting_post" = "您的反馈意见对于帮助我们保持 Oneplanet 社群的安全非常重要";
 "msg_username_rules" = "ID至少5个字符";
 
-"msgf_accept_tos" = "注册或登录即表示你同意我们的%@";
+"msgf_accept_tos" = "登入即表示你同意我们的%@";
 "msgf_resend_verification_email" = "你没有收到电子邮件？%@";
 "msgf_did_copy_my_id" = "我的 Oneplanet ID [%@] 已复制。";
 "msgf_did_copy_id" = "Oneplanet ID [%@] 已复制。";
@@ -132,9 +134,9 @@
 "msgf_liked_your_post" = "%@ liked your post";
 "msgf_you_received_num_gems" = "You received %@ %@s";
 "msgf_post_reported" = "您的照片被用户举报了，因为%@";
-"msgf_profile_reported" = "您的 Oneplanet 账号 %@ 因为违反 Oneplanet 的%@被用户举报了";
+"msgf_profile_reported" = "您的 Oneplanet 账号 %@被用户举报， 因为违反 Oneplanet 的%@";
 "msgf_liked_your_post_and_gave_gem" = "你的照片被 %@ 喜欢了，恭喜获得一颗 %@";
-"msgf_thankyou_report_user" = "感谢您的帮助，让 Oneplanet 保持安全和有趣。请记住，我们不会透露谁向发布照片或评论的人提交了报告。\n我们的团队将审核该贴文，如果它违反了我们的%@，我们会将它删除。";
+"msgf_thankyou_report_user" = "感谢您的帮助，让 Oneplanet 保持安全和有趣。请记住，我们不会透露谁向发布照片或评论的人提交了报告。\n 我们的团队将审核该帖子，如果它违反了我们的%@，我们会将它删除。";
 "msgf_unblock_user_prompt" = "移除黑名单%@？";
 "msgf_block_user_prompt" = "确定要黑名单%@吗？";
 "msgf_no_search_results" = "No results for \"%@\"";
@@ -148,7 +150,7 @@
 "ph_change_avatar" = "更换个人照片";
 "ph_take_photo" = "拍照";
 "ph_from_library" = "从相簿中选取";
-"ph_open_settings" = "开启\"设定\"";
+"ph_open_settings" = "开启「设定」";
 "ph_remove_avatar" = "删除当前照片";
 "ph_try_again" = "再试一次";
 "ph_nickname_rule" = "昵称上限 30 字元，不得包含标点符号或表情符号";
@@ -162,10 +164,10 @@
 "ph_block_list" = "被黑名单的账号";
 "ph_privacy_and_security" = "隐私和安全";
 "ph_not_specified" = "不显示";
-"ph_join_prompt" = "前往注册";
-"ph_shipping_info" = "收件信息";
-"ph_create_shipping_info" = "填写收件信息";
-"ph_edit_shipping_info" = "变更收件信息";
+"ph_join_prompt" = "立即登入";
+"ph_shipping_info" = "收件资讯";
+"ph_create_shipping_info" = "填写收件资讯";
+"ph_edit_shipping_info" = "变更收件资讯";
 "ph_view_shipping_status" = "查看出货状况";
 "ph_commodities" = "商品";
 "ph_bidding_process" = "竞标历程";
@@ -179,20 +181,20 @@
 "ph_goto_bidding" = "Go bidding page";
 "ph_get_gem" = "领取奖励";
 "ph_has_got_gem" = "已领取奖励";
-"ph_new_notices" = "New Notices";
-"ph_read_notices" = "Read Notices";
+"ph_new_notices" = "新通知";
+"ph_read_notices" = "过去的通知";
 "ph_recover_account" = "恢复账户";
 "ph_petition_submitted" = "回报成功";
 "ph_i_get_it" = "我知道了";
 "ph_unlock_option_prompt" = "选择宝石解锁";
-"ph_latest_posts" = "Latest";
-"ph_best_posts" = "Highest socreds";
+"ph_latest_posts" = "最新";
+"ph_best_posts" = "评分最高";
 "ph_thanks_for_reporting_post" = "Thanks for reporting this post";
-"ph_show_post" = "Show Post";
+"ph_show_post" = "显示帖子";
 "ph_more" = "more";
-"ph_upload_valued_photo" = "Upload photo for rewards";
-"ph_upload_free_photo" = "Upload photo";
-"ph_dont_show_again" = "Never show again";
+"ph_upload_valued_photo" = "上传照片评分";
+"ph_upload_free_photo" = "上传照片";
+"ph_dont_show_again" = "永远不再显示";
 "ph_no_room_for_photo" = "full";
 
 "phf_seconds_ago_short" = "%@ s";
@@ -205,13 +207,13 @@
 "phf_days_ago" = "%@天前";
 "phf_followers" = "%@ 粉丝";
 "phf_followings" = "%@ 关注中";
-"phf_remaining_uploads" = "%@/%@ remain (%@)";
+"phf_remaining_uploads" = "剩馀次数 %@/%@ (%@)";
 
-"no_posts" = "还没有贴子";
+"no_posts" = "还没有帖子";
 "no_promo_popups" = "No Promotion Pop-ups Yet";
 "no_unlocked_lots_title" = "你没有参加这次竞标";
 "no_unlocked_lots_message" = "请把握下次竞标！48H 内会公布下一期商品！";
-"no_notices" = "No Notices";
+"no_notices" = "目前没有通知";
 "no_block_list" = "Empty list";
 "no_follower_list" = "You don't have followers yet";
 "no_following_list" = "You haven't followed others yet";
@@ -234,8 +236,9 @@
 "errtl_username_unavailable" = "此ID无效";
 
 "warn_logout" = "退出？";
-"warn_character_selection" = "Can't change the group after selection, continue？";
+"warn_character_selection" = "外星人种类确定后不可更换，确定选择？";
 "warn_account_banned" = "你帐户的社群功能已被停用，因为它违反了我们的使用条款。 了解如何恢复账户";
+"warn_discard_post" = "是否放弃该帖子？";
 
 "warntl_character_selection" = "Determined choice？";
 "warntl_account_banned" = "社群功能停权";
@@ -263,10 +266,10 @@
 "pop_purple_gem_bullet1" = "红金宝是%@的升级版，有助于竞标时的效率，并减少信用卡或电信商的支付问题。";
 "pop_purple_gem_bullet2" = "使用红金宝可解锁商品或投标一次。";
 
-"pop_post_suspended" = "評分次數用完了";
-"pop_cooldown_time" = "等待時間 (%@)";
-"pop_free_upload_bullet" = "沒有限制上傳照片次數，但不能獲得%@。";
-"pop_cant_upload_bullet" = "請等待時間回復";
+"pop_post_suspended" = "次数用完了";
+"pop_cooldown_time" = "等待时间 (%@)";
+"pop_free_upload_bullet" = "没有限制上传照片次数，但不能获得%@。";
+"pop_cant_upload_bullet" = "请等待时间回复";
 "pop_valued_upload_bullet1" = "上傳照片評分獲得經驗值，當經驗值滿格即獲得一顆 %@";
 "pop_valued_upload_bullet2" = "越符合本次 Oneplanet 提示的顏色主題，收集 %@ 的效率越高。";
 
@@ -289,7 +292,7 @@
 "rp_violance_subtitle" = "露出血淋淋的伤口、非法活动、危险或犯罪组织";
 "rp_dont_like_post_detail" = "不喜欢这则帖子吗？";
 "rp_dnudity_detail" = "举报为露点照或色情内容？";
-"rp_hate_speech_detail" = "Report as hate speech or symbols?";
+"rp_hate_speech_detail" = "检举为仇恨言论或符号？";
 "rp_violance_detail" = "举报暴力或暴力威胁？";
 
 "smb_enum_spliter" = ", ";

@@ -16,6 +16,7 @@ struct ColorPalette {
     static let buttonGreen = UIColor(named: "button green")!
     static let defaultText = UIColor(named: "default text")!
     static let defaultPlaceholder = UIColor(named: "default placeholder")!
+    static let defaultEmptyBackground = UIColor(named: "default empty background")!
     static let blueGem = UIColor(named: "blue gem")!
     static let greenKey = UIColor(named: "green key")!
     static let purpleCoin = UIColor(named: "purple coin")!

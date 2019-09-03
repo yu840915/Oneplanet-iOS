@@ -54,7 +54,7 @@ class ProductOverviewCell: UITableViewCell {
 extension ProductOverviewCell {
     func updateViews(with overview: ProductOverview) {
         titleLabel.text = overview.displayName
-        previewImageView.kf.setImage(with: overview.cover.url)
+        previewImageView.kf.setImage(with: overview.cover?.url)
     }
 }
 
@@ -85,6 +85,7 @@ class BiddingProductCell: UITableViewCell {
     @IBOutlet var leadIndicators: [UIButton]!
     var bidAction: (()->())?
     var showDetailAction: (()->())?
+    var showProfileAction: (()->())?
     
     private let countdownTimeAttribute: [NSAttributedString.Key: Any] = [.kern: 3.5]
     var deadline = Date() {
@@ -113,6 +114,9 @@ class BiddingProductCell: UITableViewCell {
         super.awakeFromNib()
         selectedBackgroundView = CommonViewFactory.shared.makeSelectionBackground()
         previewButton.imageView?.contentMode = .scaleAspectFill
+        avatarView.action = {[weak self] in
+            self?.showProfileAction?()
+        }
     }
     
     func tick() {

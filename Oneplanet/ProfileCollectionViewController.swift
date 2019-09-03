@@ -107,9 +107,7 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
     }
     
     private func updateViews(inPostCell cell: PhotoGalleryPageCell, at indexPath: IndexPath) {
-        let post = posts[indexPath.row]
-        let ds = FakePost()
-        cell.updateViews(with: ds.photos[0])
+        cell.updateViews(with: posts[indexPath.row].images[0])
     }
     
     // MARK: UICollectionViewDelegate
@@ -163,7 +161,6 @@ extension ProfileCollectionViewController {
     func handleListUpdate() {
         refreshControl?.endRefreshing()
         posts = postList.items
-        posts = [Post(id: "1"), Post(id: "2"), Post(id: "3"), Post(id: "4")]
         prepareSections()
     }
 

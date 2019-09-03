@@ -165,7 +165,7 @@ class ProcessImageOperation: Operation {
             [kCGImageSourceShouldAllowFloat: true as AnyObject,
              kCGImageSourceCreateThumbnailWithTransform: true as AnyObject,
              kCGImageSourceCreateThumbnailFromImageAlways: true as AnyObject,
-             kCGImageSourceThumbnailMaxPixelSize: 256 as AnyObject]
+             kCGImageSourceThumbnailMaxPixelSize: preset.maxSize as AnyObject]
         guard let cgImg = CGImageSourceCreateThumbnailAtIndex(src, 0, op as CFDictionary) else {
             return nil
         }
@@ -176,6 +176,7 @@ class ProcessImageOperation: Operation {
 extension ProcessImageOperation {
     struct Preset {
         let compressionQuality: CGFloat
+        let maxSize: CGFloat
     }
 }
 
@@ -245,8 +246,8 @@ class UploadProgress {
         uploadDestination = nil
     }
     
-    func markAsFinished() {
-        imageLocation = uploadDestination
+    func markAsFinished(with finalLocation: UploadDestination? = nil) {
+            imageLocation = finalLocation ?? uploadDestination
     }
     
     var isFinished: Bool {

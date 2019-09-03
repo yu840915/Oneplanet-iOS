@@ -87,6 +87,7 @@ class ProfileDraft {
         nickname = profile.nickname
         username = profile.username
         gender = profile.gender
+        alien = profile.alien
     }
     
     enum Field {
@@ -124,8 +125,9 @@ class UpdateProfileOperation: SimpleAsynchronousOperation, FailableOperationType
     }
     
     override func main() {
+        guard !isCancelled else {return}
         if let attachment = draft.avatar {
-            let updateAvatar = UpdateMyAvatarFlowOperaion(attachment: attachment, preset: ProcessImageOperation.Preset(compressionQuality: 1.0), session: session)
+            let updateAvatar = UpdateMyAvatarFlowOperaion(attachment: attachment, preset: ProcessImageOperation.Preset(compressionQuality: 1.0, maxSize: 256), session: session)
             updateAvatar.completionBlock = {[weak self] in
                 OperationQueue.main.addOperation {
                    self?.didUpdateAvatar()

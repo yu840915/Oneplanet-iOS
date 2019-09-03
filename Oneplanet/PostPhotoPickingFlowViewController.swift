@@ -16,6 +16,8 @@ class PostPhotoPickingFlowViewController: ButtonBarPagerTabStripViewController, 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesBackButton = true
+        navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
+        containerView.bounces = false
         changeCurrentIndexProgressive = {[weak self] (oldCell, newCell, progressPercentage, changeCurrentIndex, animated) in
             self?.updateButtonBarCell(oldCell: oldCell, newCell: newCell, progressPercentage: progressPercentage, changeCurrentIndex: changeCurrentIndex, animated: animated)
         }

@@ -47,12 +47,12 @@
 "tl_purple_gem" = "紅金寶";
 "tl_green_gem" = "解鎖寶";
 "tl_delete" = "刪除";
-"tl_unlock" = "解鎖";
+"tl_unlock" = "解鎖商品";
 "tl_unlocked" = "已解鎖";
-"tl_bid" = "投標";
+"tl_bid" = "投標一次";
 "tl_required_input" = "必填";
 "tl_agree" = "我同意";
-"tl_filter" = "篩選";
+"tl_filter" = "商品過濾";
 "tl_bid_state_lost" = "未得標";
 "tl_bid_state_to_ship" = "待出貨";
 "tl_bid_state_shipping" = "出貨中";
@@ -69,17 +69,19 @@
 "tl_library" = "圖庫";
 "tl_post" = "貼文";
 "tl_share" = "分享";
+"tl_discard" = "放棄";
+"tl_search_id" = "搜尋 ID";
 
 "pl_email" = "電子郵件地址";
 "pl_nickname" = "暱稱";
 "pl_report_description" = "輸入檢舉原因";
 "pl_caption" = "寫些什麼...";
 
-"msg_email_verification_instruction" = "電子郵件已發送。請單擊電子郵件中的鏈接以完成登入。";
+"msg_email_verification_instruction" = "電子郵件已發送。請使用當前行動裝置單擊電子郵件中的鏈接以完成登入。";
 "msg_add_avatar_prompt" = "添加個人資料照片，以便你的朋友知道這就是你。";
 "msg_open_mail_app_prompt" = "按此處開啟你的電子信箱";
 "msg_mail_resent" = "已重新發送電子郵件";
-"msg_join_prompt" = "立即前往註冊享用更多功能";
+"msg_join_prompt" = "立即登入享用更多功能";
 "msg_alien_description" = "你所選擇的外星人會出現在你的個人頁面";
 "msg_ongoing_bidding" = "其他商品仍在競標中，請等待競標結束。";
 "msg_successful_shipping_info_submission" = "得標商品會寄送到此地址，如地址有變動請記得來此頁面更新";
@@ -94,7 +96,7 @@
 "msg_race1_monologue" = "我的名字叫法克。";
 "msg_race2_monologue" = "我的名字叫迪克。";
 "msg_race3_monologue" = "我的名字叫壯克。";
-"msg_shipping_info_des" = "「國際運送服務」，請填寫英文地址及收件資訊，商品才可以成功送達";
+"msg_shipping_info_des" = "請填寫與護照相符的英文姓名，並確實填寫收件資訊，商品才可以成功送達。\n＊本運送服務免運費，海外配送可能需要繳納由目的地國家徵收的關稅＊";
 "msg_report_user_prompt" = "為什麼要檢舉這個帳號？";
 "msg_report_post_prompt" = "選擇檢舉這篇貼文的原因：";
 "msg_report_user_caption" = "您檢舉其他人的貼文時，Oneplanet 不會揭露檢舉人的身分";
@@ -109,7 +111,7 @@
 "msg_thanks_for_reporting_post" = "您的反饋意見對於幫助我們保持 Oneplanet 社群的安全非常重要";
 "msg_username_rules" = "ID 至少五字元";
 
-"msgf_accept_tos" = "註冊或登錄即表示你同意我們的%@";
+"msgf_accept_tos" = "登入即表示你同意我們的%@";
 "msgf_resend_verification_email" = "你沒有收到電子郵件？%@";
 "msgf_did_copy_my_id" = "我的 Oneplanet ID [%@] 已複製。";
 "msgf_did_copy_id" = "Oneplanet ID [%@] 已複製。";
@@ -162,7 +164,7 @@
 "ph_block_list" = "被封鎖的帳號";
 "ph_privacy_and_security" = "隱私和安全";
 "ph_not_specified" = "不顯示";
-"ph_join_prompt" = "前往註冊";
+"ph_join_prompt" = "立即登入";
 "ph_shipping_info" = "收件資訊";
 "ph_create_shipping_info" = "填寫收件資訊";
 "ph_edit_shipping_info" = "變更收件資訊";
@@ -185,8 +187,8 @@
 "ph_petition_submitted" = "回報成功";
 "ph_i_get_it" = "我知道了";
 "ph_unlock_option_prompt" = "選擇寶石解鎖";
-"ph_latest_posts" = "Latest";
-"ph_best_posts" = "Highest socreds";
+"ph_latest_posts" = "最新";
+"ph_best_posts" = "評分最高";
 "ph_thanks_for_reporting_post" = "謝謝你檢舉這則貼文";
 "ph_show_post" = "顯示貼文";
 "ph_more" = "more";
@@ -234,8 +236,9 @@
 "errtl_username_unavailable" = "此 ID 無法使用";
 
 "warn_logout" = "登出？";
-"warn_character_selection" = "外星人種類及顏色確定後不可更換，確定選擇？";
+"warn_character_selection" = "外星人種類確定後不可更換，確定選擇？";
 "warn_account_banned" = "你帳戶的社群功能已被停用，因為它違反了我們的使用條款。 了解如何恢復帳戶";
+"warn_discard_post" = "是否放棄該貼文?";
 
 "warntl_character_selection" = "確定選擇？";
 "warntl_account_banned" = "社群功能停權";
@@ -263,7 +266,7 @@
 "pop_purple_gem_bullet1" = "紅金寶是 %@ 的升級版，有助於競標時的效率，並減少信用卡或電信商的支付問題。";
 "pop_purple_gem_bullet2" = "使用 紅金寶 可解鎖商品或投標一次。";
 
-"pop_post_suspended" = "評分次數用完了";
+"pop_post_suspended" = "次數用完了";
 "pop_cooldown_time" = "等待時間 (%@)";
 "pop_free_upload_bullet" = "沒有限制上傳照片次數，但不能獲得%@。";
 "pop_cant_upload_bullet" = "請等待時間回復";

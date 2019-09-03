@@ -1232,7 +1232,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j8q-U5-kvy">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="166"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_00_insufficient" translatesAutoresizingMaskIntoConstraints="NO" id="p5q-Gr-RJR">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_11_uploadphoto1" translatesAutoresizingMaskIntoConstraints="NO" id="p5q-Gr-RJR">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="166"/>
                                                     </imageView>
                                                 </subviews>
@@ -1375,7 +1375,7 @@
                                     <constraint firstAttribute="width" constant="44" id="Ven-Rm-sCA"/>
                                     <constraint firstAttribute="width" secondItem="XrJ-FY-mxL" secondAttribute="height" id="r7I-f5-d8V"/>
                                 </constraints>
-                                <state key="normal" image="ic_cancelblack_nor"/>
+                                <state key="normal" image="ic_cancelshadow_nor"/>
                                 <connections>
                                     <action selector="exit:" destination="6Sb-3S-EDd" eventType="touchUpInside" id="L0Y-OH-pHU"/>
                                     <action selector="exit:" destination="Xaq-X4-Ebv" eventType="touchUpInside" id="hDR-yu-Kos"/>
@@ -1472,7 +1472,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qET-ij-cyH">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="166"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_00_insufficient" translatesAutoresizingMaskIntoConstraints="NO" id="ndN-AL-25I">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_12_uploadphoto2" translatesAutoresizingMaskIntoConstraints="NO" id="ndN-AL-25I">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="166"/>
                                                     </imageView>
                                                 </subviews>
@@ -1595,7 +1595,7 @@
                                     <constraint firstAttribute="width" secondItem="O8Z-Vi-EQG" secondAttribute="height" id="245-DF-5jF"/>
                                     <constraint firstAttribute="width" constant="44" id="MJG-WI-kVW"/>
                                 </constraints>
-                                <state key="normal" image="ic_cancelblack_nor"/>
+                                <state key="normal" image="ic_cancelshadow_nor"/>
                                 <connections>
                                     <action selector="exit:" destination="dL1-HT-YBh" eventType="touchUpInside" id="7OM-Oq-D7e"/>
                                     <action selector="exit:" destination="Xaq-X4-Ebv" eventType="touchUpInside" id="WkU-oh-bb7"/>
@@ -1704,7 +1704,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ia-Gh-USp">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ia-Gh-USp">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                             </scrollView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CvO-gD-B5B" customClass="ButtonBarView" customModule="XLPagerTabStrip">
@@ -1851,7 +1851,7 @@
                     <navigationItem key="navigationItem" title="Title" id="ofs-6I-fPD">
                         <barButtonItem key="leftBarButtonItem" image="ic_cancelblack_nor" id="7WQ-yW-Ya0">
                             <connections>
-                                <action selector="exit:" destination="EBC-gf-AMZ" id="ebb-dn-HHK"/>
+                                <action selector="exit:" destination="EBC-gf-AMZ" id="NfS-jj-2KA"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="OK" id="I4V-JK-cNM">
@@ -1863,6 +1863,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="captionTextView" destination="LYi-QJ-Qhq" id="NVk-XE-Xbe"/>
+                        <outlet property="closeButtonItem" destination="7WQ-yW-Ya0" id="5wy-XU-dn2"/>
                         <outlet property="contentScrollView" destination="iIg-FD-nKc" id="5wW-cs-bgz"/>
                         <outlet property="endEditingTap" destination="PKZ-7e-Z4g" id="ih5-W0-e7k"/>
                         <outlet property="imageView" destination="khL-4b-IEk" id="4UD-OW-8Dc"/>
@@ -1870,6 +1871,7 @@
                         <outlet property="photoEditorContainer" destination="Kky-6X-r1v" id="LHs-A3-Wi1"/>
                         <outlet property="placeholderLabel" destination="eF6-Sx-4VN" id="MC2-Ui-Ygg"/>
                         <segue destination="kAf-h0-2BB" kind="presentation" identifier="showPhotoPicker" id="bFH-Y6-SfY"/>
+                        <segue destination="rv1-fF-CeN" kind="presentation" identifier="showSubmittingPage" animates="NO" id="fHn-qq-LAB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="isX-N2-afA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1884,7 +1886,7 @@
         <!--Navigation Controller-->
         <scene sceneID="tYW-Fo-Cab">
             <objects>
-                <navigationController id="UGy-Ts-eLl" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="PostEditorEntry" id="UGy-Ts-eLl" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="I6T-42-ZpX">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1914,7 +1916,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iaR-5a-XYH">
                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="166"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_00_insufficient" translatesAutoresizingMaskIntoConstraints="NO" id="ayY-cB-1w0">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_13_uploadphotofail" translatesAutoresizingMaskIntoConstraints="NO" id="ayY-cB-1w0">
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="166"/>
                                                     </imageView>
                                                 </subviews>
@@ -2101,7 +2103,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tUX-X1-msj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3145" y="1777"/>
+            <point key="canvasLocation" x="2674" y="1777"/>
         </scene>
         <!--Post Editor Photo Collection View Controller-->
         <scene sceneID="KQY-rc-x92">
@@ -2166,7 +2168,34 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UNQ-EK-jSA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1761" y="2269"/>
+            <point key="canvasLocation" x="1761" y="2278"/>
+        </scene>
+        <!--Post Submission View Controller-->
+        <scene sceneID="X0h-65-Sys">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="rv1-fF-CeN" customClass="PostSubmissionViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Gy1-8D-vsF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="UC5-ft-Qtz">
+                                <rect key="frame" x="188.5" y="253.5" width="37" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" name="translucent dark background"/>
+                        <constraints>
+                            <constraint firstItem="UC5-ft-Qtz" firstAttribute="centerX" secondItem="XwW-v8-gWE" secondAttribute="centerX" id="mUs-UN-ZzZ"/>
+                            <constraint firstItem="UC5-ft-Qtz" firstAttribute="centerY" secondItem="XwW-v8-gWE" secondAttribute="centerY" multiplier="0.6" id="zqC-mK-nFO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XwW-v8-gWE"/>
+                    </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="UC5-ft-Qtz" id="kXr-e1-256"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UXE-c4-yh9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2674" y="2501"/>
         </scene>
     </scenes>
     <resources>
@@ -2178,6 +2207,7 @@
         <image name="ic_addfree_nor" width="56" height="56"/>
         <image name="ic_addphoto_nor" width="56" height="56"/>
         <image name="ic_cancelblack_nor" width="17" height="16"/>
+        <image name="ic_cancelshadow_nor" width="40" height="40"/>
         <image name="ic_checkmark_nor" width="20" height="20"/>
         <image name="ic_checkmark_tap" width="20" height="20"/>
         <image name="ic_coin80_nor" width="80" height="80"/>
@@ -2186,7 +2216,9 @@
         <image name="ic_gem_nor" width="28" height="28"/>
         <image name="ic_key80_nor" width="80" height="80"/>
         <image name="ic_key_nor" width="28" height="28"/>
-        <image name="im_00_insufficient" width="299" height="133"/>
+        <image name="im_11_uploadphoto1" width="299" height="133"/>
+        <image name="im_12_uploadphoto2" width="299" height="133"/>
+        <image name="im_13_uploadphotofail" width="299" height="133"/>
         <image name="im_160film" width="20" height="160"/>
         <image name="im_bgall" width="609" height="812"/>
         <image name="ui_balloonline_nor" width="10" height="68"/>
@@ -2221,7 +2253,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZcZ-6E-l3h"/>
+        <segue reference="mBp-Z3-Jzn"/>
         <segue reference="Vig-IT-DEU"/>
     </inferredMetricsTieBreakers>
 </document>

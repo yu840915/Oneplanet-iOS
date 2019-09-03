@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import MarkdownKit
 
 class ProductDetailViewController: UIViewController, UserSessionDepending {
 
@@ -34,6 +35,7 @@ class ProductDetailViewController: UIViewController, UserSessionDepending {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var detailTextView: UITextView!
     @IBOutlet weak var galleryCollectionView: UICollectionView!
+    private var markdownParser: MarkdownParser!
     private var featureCheck: BiddingFeatureAccessCheckOperation?
     private var getDetailOperation: GetProductDetailOperation?
     private var previews: [WebImageInfo] = [] {
@@ -44,6 +46,7 @@ class ProductDetailViewController: UIViewController, UserSessionDepending {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        markdownParser = MarkdownParser(font: MarkdownFont.systemFont(ofSize: 14), color: .white, enabledElements: .all)
         localizeTitles()
         if product != nil {
             updateViewsForProductIfNeeded()
@@ -93,7 +96,6 @@ class ProductDetailViewController: UIViewController, UserSessionDepending {
             vc.product = product!
         }
     }
-
 }
 
 private extension ProductDetailViewController {
@@ -103,7 +105,12 @@ private extension ProductDetailViewController {
         contentContainer.isHidden = false
         previews = prod.images
         titleLabel.text = prod.displayName
-        detailTextView.text = prod.description
+        let attrDes = markdownParser.parse(prod.description).mutableCopy() as! NSMutableAttributedString
+        let range = NSMakeRange(0, attrDes.length)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .center
+        attrDes.addAttribute(.paragraphStyle, value: paragraphStyle, range: range)
+        detailTextView.attributedText = attrDes
     }
     
     func getProductDetail() {

@@ -15,9 +15,11 @@ class PostEditorViewController: UIViewController, UserSessionDepending, DefaultI
     }
     var userSession: UserSession!
     var postDraft: PostDraft!
-    
+    var didPublish: ((Post?)->())?
+
     @IBOutlet weak var okButtonItem: UIBarButtonItem!
-    
+    @IBOutlet weak var closeButtonItem: UIBarButtonItem!
+
     @IBOutlet weak var placeholderLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     
@@ -28,7 +30,6 @@ class PostEditorViewController: UIViewController, UserSessionDepending, DefaultI
     @IBOutlet weak var photoEditorContainer: UIView!
     
     var keyboardObserver: KeyboardAppearanceObserver?
-    var submitOperation: SubmitPostDraftOperation?
     var photoEditor: PostEditorPhotoCollectionViewController!
 
     override func viewDidLoad() {
@@ -64,29 +65,29 @@ class PostEditorViewController: UIViewController, UserSessionDepending, DefaultI
     @IBAction func exit(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
+
+    @IBAction func showDiscardAlert(_ sender: Any) {
+        let alert = UIAlertController(title: Localized.warnings.discardPost, message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Localized.titles.discard, style: .destructive, handler: { (_) in
+            self.discardAndPop()
+        }))
+        alert.addAction(UIAlertAction(title: Localized.titles.cancel, style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+
     @IBAction func tapToEndEditing(_ sender: Any) {
         view.endEditing(false)
     }
 
     @IBAction func submit(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-//        guard submitOperation == nil else {return}
-//        let op = SubmitPostDraftOperation(draft: postDraft, session: userSession)
-//        op.completionBlock = {[weak self] in
-//            OperationQueue.main.addOperation {
-//                self?.didSubmitPostDraft()
-//            }
-//        }
-//        submitOperation = op
-//        op.start()
+        performSegue(withIdentifier: SegueID.showSubmittingPage, sender: nil)
     }
     
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? PostEditorPhotoCollectionViewController {
-            vc.isEditable = userSession.isAdmin
+            vc.isEditable = postDraft.originalPost == nil
             vc.photoPickerAction = {[weak self] in
                 self?.showPhotoPicker()
             }
@@ -94,6 +95,19 @@ class PostEditorViewController: UIViewController, UserSessionDepending, DefaultI
                 self?.deleteAttachment(at: index)
             }
             photoEditor = vc
+        } else if let vc = segue.destination as? PostSubmissionViewController {
+            vc.userSession = userSession
+            vc.postDraft = postDraft
+            vc.didPublish = {[weak self] in
+                OperationQueue.main.addOperation {
+                    self?.didSubmitPostDraft()
+                }
+            }
+            vc.didFail = {[weak self] error in
+                OperationQueue.main.addOperation {
+                    self?.didFailSubmission(with: error)
+                }
+            }
         }
         if let nav = segue.destination as? UINavigationController,
             let vc = nav.viewControllers.first as? PostPhotoPickingFlowViewController {
@@ -106,12 +120,20 @@ class PostEditorViewController: UIViewController, UserSessionDepending, DefaultI
 }
 
 private extension PostEditorViewController {
+    func discardAndPop() {
+        postDraft.caption = ""
+        postDraft.images = []
+        navigationController?.popViewController(animated: true)
+    }
+    
     func didSubmitPostDraft() {
-        let op = submitOperation!
-        submitOperation = nil
-        if op.success == true {
-            dismiss(animated: true, completion: nil)
-        } else if let error = op.error {
+        dismiss(animated: true, completion: nil)
+        userSession.broadcastPostPublish(postDraft.updatedPost)
+        didPublish?(postDraft.updatedPost)
+    }
+    
+    func didFailSubmission(with error: Error?) {
+        if let error = error {
             let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: Localized.titles.dismiss, style: .cancel, handler: nil))
             present(alert, animated: true, completion: nil)
@@ -130,7 +152,16 @@ private extension PostEditorViewController {
     }
     
     func updateViewsForDraft() {
-        imageView.image = postDraft.images.first?.localImage
+        if postDraft.originalPost == nil && !userSession.isAdmin {
+            let item = UIBarButtonItem(image: UIImage(named: "ic_back_nor"), landscapeImagePhone: UIImage(named: "ic_back_nor"), style: .plain, target: self, action: #selector(showDiscardAlert(_:)))
+            navigationItem.leftBarButtonItems = [item]
+        }
+        if let webImage = postDraft.originalPost?.images.first {
+            imageView.kf.setImage(with: webImage.url)
+        } else {
+            imageView.image =  postDraft.images.first?.localImage
+        }
+        photoEditor.photos = postDraft.originalPost?.images ?? []
         photoEditor.attachments = postDraft.images
         captionTextView.text = postDraft.caption
         updatePlaceholderAppearance()
@@ -191,5 +222,6 @@ extension PostEditorViewController: UITextViewDelegate {
 extension PostEditorViewController {
     struct SegueID {
         static let showPhotoPicker = "showPhotoPicker"
+        static let showSubmittingPage = "showSubmittingPage"
     }
 }

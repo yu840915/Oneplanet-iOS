@@ -24,11 +24,17 @@ class ProductListHeader: UITableViewHeaderFooterView {
         }
     }
     
+    @IBOutlet weak var titleLabel: UILabel!
     var showFilterAction: (()->())?
     @IBOutlet weak var filterButton: UIButton!
     
     @IBAction func showFilter(_ sender: UIButton) {
         showFilterAction?()
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        titleLabel.text = Localized.titles.filter
     }
     
     private func updateForTitle() {

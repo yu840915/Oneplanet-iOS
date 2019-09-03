@@ -13,6 +13,8 @@ class PostFeedMainViewController: ButtonBarPagerTabStripViewController, UserSess
 
     var userSession: UserSession!
     @IBOutlet weak var buttonBarContainer: UIView!
+    private var pages: [PostFeedTableViewController] = []
+    private var postPublishHandle: Any?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +22,9 @@ class PostFeedMainViewController: ButtonBarPagerTabStripViewController, UserSess
         changeCurrentIndexProgressive = {[weak self] (oldCell, newCell, progressPercentage, changeCurrentIndex, animated) in
             self?.updateButtonBarCell(oldCell: oldCell, newCell: newCell, progressPercentage: progressPercentage, changeCurrentIndex: changeCurrentIndex, animated: animated)
         }
+        postPublishHandle = userSession.postPublishObservers.add({[weak self] (_) in
+            self?.setNeedsRefresh()
+        })
         navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
     }
     
@@ -37,7 +42,12 @@ class PostFeedMainViewController: ButtonBarPagerTabStripViewController, UserSess
         promoted.userSession = userSession
         promoted.title = Localized.phrases.bestPosts
         promoted.postList = PostList.promotedPostList(with: userSession)
-        return [latest, promoted]
+        pages = [latest, promoted]
+        return pages
+    }
+    
+    func setNeedsRefresh() {
+        pages.forEach{ $0.setNeedsRefresh() }
     }
     
     /*

@@ -43,6 +43,10 @@ class PickerTableViewController: UITableViewController {
         preselectIfNeeded()
     }
     
+    func setNeedsPreselect() {
+        shouldPreselect = true
+    }
+    
     @IBAction func exit(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
     }
@@ -85,7 +89,7 @@ class PickerTableViewController: UITableViewController {
 
 private extension PickerTableViewController {
     func preselectIfNeeded() {
-        guard shouldPreselect else {
+        guard shouldPreselect && tableView.numberOfSections > 0 else {
             return
         }
         shouldPreselect = false
@@ -93,7 +97,11 @@ private extension PickerTableViewController {
             let idx = options.firstIndex(where: {$0.isEqual(to: sel)}) else {
             return
         }
-        tableView.selectRow(at: IndexPath(row: idx, section: 0), animated: false, scrollPosition: .middle)
+        let indexPath = IndexPath(row: idx, section: 0)
+        tableView.selectRow(at: indexPath, animated: false, scrollPosition: .middle)
+        if let cell = tableView.cellForRow(at: indexPath) {
+            cell.isSelected = true
+        }
     }
     
     func commitSelection() {
@@ -115,10 +123,25 @@ class PickerItemCell: UITableViewCell {
     @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var checkmark: UIImageView!
+    private var separator: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         selectedBackgroundView = UIView()
+        let view = UIView()
+        view.layer.borderWidth = 0.5
+        view.layer.borderColor = ColorPalette.defaultPlaceholder.cgColor
+        contentView.addSubview(view)
+        separator = view
+    }
+    
+    override func layoutSubviews() {
+        var rect = bounds
+        rect.origin.y = rect.height - 0.5
+        rect.origin.x = 20
+        rect.size.height = 0.5
+        separator.frame = rect
+        super.layoutSubviews()
     }
     
     override var isSelected: Bool {

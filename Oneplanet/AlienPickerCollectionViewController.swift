@@ -54,6 +54,13 @@ class AlienPickerCollectionViewController: UICollectionViewController {
             sections = [.headPadding, .body, .endPadding]
         }
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let cell = collectionView.cellForItem(at: IndexPath(row: selectedIndex, section: 1)) {
+            collectionView.bringSubviewToFront(cell)
+        }
+    }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -116,6 +123,9 @@ class AlienPickerCollectionViewController: UICollectionViewController {
             selectedIndex = 0
         } else {
             selectedIndex = idx
+        }
+        if let cell = collectionView.cellForItem(at: IndexPath(row: selectedIndex, section: 1)) {
+            collectionView.bringSubviewToFront(cell)
         }
         guard sections.count > 1 else { return }
         let atHead = scrollView.contentOffset.x <= 1

@@ -26,6 +26,7 @@ struct IAPProductIdentifiers {
 
 struct ServiceURLs {
     static var base: URL = URL(string: "https://api.oneplanet-official.com")!
+    static var devBase: URL = URL(string: "https://oneplanet-api.herokuapp.com")!
     static let appSettings = URL(string:UIApplication.openSettingsURLString)!
     static let terms = URL(string: "https://oneplanet-9e32a.firebaseapp.com/\(Localized.languageCode).html")!
     static let biddingTerms = URL(string: "https://www.google.com")!
@@ -80,5 +81,9 @@ struct DeepLinks {
 }
 
 extension JSONDecoder {
-    static let `default` = JSONDecoder()
+    static let `default`: JSONDecoder = {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(SharedDateFormatters.serverDate)
+        return decoder
+    }()
 }

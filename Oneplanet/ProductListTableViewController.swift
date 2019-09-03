@@ -120,6 +120,9 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         }
         cell.showDetailAction = {[weak self] in
         }
+        cell.showProfileAction = {[weak self] in
+            
+        }
     }
     
     private func showProductDetailForCell(at indexPath: IndexPath) {
@@ -177,9 +180,20 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         if let vc = segue.destination as? UnlockFlowViewController {
             vc.product = (sender as! ProductOverview)
         }
-        if let nav = segue.destination as? UINavigationController,
-            let vc = nav.viewControllers.first as? ShippingInfoEditorViewController {
-            vc.userSession = userSession
+        if let nav = segue.destination as? UINavigationController {
+            if let vc = nav.viewControllers.first as? UserSessionDepending {
+                vc.userSession = userSession
+            }
+            if let vc = nav.viewControllers.first as? ProductFilterPickerTableViewController {
+                vc.currentCategoryName = categoryList?.query
+                vc.didSelectItem = {[weak self] item in
+                    let i = item as! CategoryNameViewModel
+                    self?.updateCategoryList(with: i.categoryName.name)
+                }
+            }
+            if let vc = nav.viewControllers.first as? UserProfileViewController {
+                vc.profile = (sender as! User)
+            }
         }
     }
 
@@ -189,13 +203,17 @@ private extension ProductListTableViewController {
     func refreshDynamicViews() {
         countDownView.tick()
     }
+    
+    func showProfile(for user: User) {
+        performSegue(withIdentifier: SegueID.showProfile, sender: user)
+    }
 
     func showShippingInfoEditor() {
         performSegue(withIdentifier: SegueID.showShippingInfoEditor, sender: nil)
     }
     
     func showFilterPicker() {
-        
+        performSegue(withIdentifier: SegueID.showFilter, sender: nil)
     }
     
     func checkAccessAndRunIfAllowed(_ completion: @escaping (()->())) {
@@ -283,6 +301,8 @@ extension ProductListTableViewController {
         static let showProductDetail = "showProductDetail"
         static let enterBidFlow = "enterBidFlow"
         static let enterUnlockFlow = "enterUnlockFlow"
+        static let showFilter = "showFilter"
+        static let showProfile = "showProfile"
     }
 }
 

@@ -26,11 +26,15 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
     }
     
     override func viewDidLoad() {
+        if userSession.isGuest {
+            settings.style.selectedBarHeight = 0
+        }
         super.viewDidLoad()
         buttonBarContainer.translatesAutoresizingMaskIntoConstraints = false
         changeCurrentIndexProgressive = {[weak self] (oldCell, newCell, progressPercentage, changeCurrentIndex, animated) in
             self?.updateButtonBarCell(oldCell: oldCell, newCell: newCell, progressPercentage: progressPercentage, changeCurrentIndex: changeCurrentIndex, animated: animated)
         }
+        
         navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
         if let q = initialQuery {
             showCategoryList(with: q)
@@ -46,7 +50,10 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         let productList = ProductListTableViewController.fromDefaultStoryboard()
         productListController = productList
-        let controllers = [productList, BiddingProcessTableViewController.fromDefaultStoryboard()]
+        var controllers: [UIViewController] = [productList]
+        if !userSession.isGuest {
+            controllers.append(BiddingProcessTableViewController.fromDefaultStoryboard())
+        }
         controllers
             .compactMap{$0 as? UserSessionDepending}
             .forEach{$0.userSession = userSession}
@@ -103,7 +110,11 @@ private extension AuctionMainViewController {
         oldCell?.label.textColor = PagerStyleConfigurer.Style.normal.titleColor
         oldCell?.label.font = PagerStyleConfigurer.Style.normal.font
         newCell?.label.textColor = PagerStyleConfigurer.Style.highlighted.titleColor
-        newCell?.label.font = PagerStyleConfigurer.Style.highlighted.font
+        if userSession.isGuest {
+            newCell?.label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        } else {
+            newCell?.label.font = PagerStyleConfigurer.Style.highlighted.font
+        }
     }
 }
 

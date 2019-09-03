@@ -13,6 +13,7 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
     var userSession: UserSession!
     private var contentTabbarController: UITabBarController!
     private var auctionController: AuctionMainViewController!
+    private var postController: PostFeedMainViewController!
     private var treasuryBarController: TreasuryBarViewController!
     fileprivate var getPageListOperaion: GetPromotionPageListOperation?
     fileprivate var appearanceAction: (()->())?
@@ -35,7 +36,10 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        auctionController = contentTabbarController.viewControllers?.compactMap{$0 as? UINavigationController}.compactMap{$0.viewControllers.first as? AuctionMainViewController}.first
+        let contents = contentTabbarController.viewControllers!.compactMap{$0 as? UINavigationController}.compactMap{$0.viewControllers.first}
+        auctionController = contents.compactMap{$0 as? AuctionMainViewController}.first
+        postController = contents.compactMap{$0 as? PostFeedMainViewController}.first
+        
         setUpTabbarBackground()
         getPromoPopupIfNeeded()
         appBecomeActiveHandle = AppLifeCycleObserver.didBecomeActive.observers.add {[weak self] (_) in
@@ -156,6 +160,9 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
             if let vc = nav.viewControllers.first as? PostCreationFlowViewController {
                 vc.userSession = userSession
                 vc.postDraft = (sender as! PostDraft)
+                vc.didPublish = {[weak self] _ in
+                    self?.handleNewPost()
+                }
             } else if let vc = nav.viewControllers.first as? WebViewController {
                 NavigationBarStyle.darkGray.configure(nav.navigationBar)
                 vc.exitTitle = Localized.titles.done
@@ -167,6 +174,10 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
 }
 
 fileprivate extension UserFlowMainViewController {
+    func handleNewPost() {
+        switchToTab(.life)
+    }
+    
     func showCreationPortalIfAllowed() {
         let op = FeatureAccessCheckOperation(userSession: userSession)
         op.start()

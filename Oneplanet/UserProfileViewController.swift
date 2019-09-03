@@ -33,6 +33,13 @@ class UserProfileViewController: UIViewController, UserSessionDepending {
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if view.frame.minY != topPadding {
+            navigationController?.view.setNeedsLayout()
+        }
+    }
+
     private func prepareIDHeaderIfNeeded() {
         guard !userSession.isGuest else { return }
         let header = IDHeaderView.fromDefaultNib()
@@ -120,6 +127,16 @@ class UserProfileViewController: UIViewController, UserSessionDepending {
         }
     }
     
+}
+
+extension UIViewController {
+    var topPadding: CGFloat {
+        var navH: CGFloat = 0
+        if let inset = view.window?.safeAreaInsets {
+            navH = inset.top
+        }
+        return navH + UIApplication.shared.statusBarFrame.height
+    }
 }
 
 private extension UserProfileViewController {

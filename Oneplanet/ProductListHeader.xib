@@ -16,26 +16,39 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="28"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dn-eD-xX2" userLabel="Filter Button">
-                    <rect key="frame" x="10" y="0.0" width="41" height="28"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="12" maxY="0.0"/>
-                    <state key="normal" title="All" backgroundImage="bt_smallwirewhite_nor">
-                        <color key="titleColor" name="default text"/>
-                    </state>
-                    <connections>
-                        <action selector="showFilter:" destination="iN0-l3-epB" eventType="touchUpInside" id="03x-zO-dvA"/>
-                    </connections>
-                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="nrI-Ku-65x">
+                    <rect key="frame" x="10" y="0.0" width="77.5" height="28"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wzr-cD-G9f" userLabel="Title Label">
+                            <rect key="frame" x="0.0" y="5.5" width="32.5" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" name="default text"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dn-eD-xX2" userLabel="Filter Button">
+                            <rect key="frame" x="36.5" y="0.0" width="41" height="28"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="12" maxY="0.0"/>
+                            <state key="normal" title="All" backgroundImage="bt_smallwirewhite_nor">
+                                <color key="titleColor" name="default text"/>
+                            </state>
+                            <connections>
+                                <action selector="showFilter:" destination="iN0-l3-epB" eventType="touchUpInside" id="03x-zO-dvA"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="8dn-eD-xX2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="TZj-Dd-ctO"/>
-                <constraint firstItem="8dn-eD-xX2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="WlW-Qk-iJK"/>
+                <constraint firstItem="nrI-Ku-65x" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="CHI-N3-bhu"/>
+                <constraint firstItem="nrI-Ku-65x" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="Qv5-S7-6Kt"/>
+                <constraint firstItem="nrI-Ku-65x" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="XnR-uw-HsC"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="filterButton" destination="8dn-eD-xX2" id="FhC-Yn-YBa"/>
+                <outlet property="titleLabel" destination="Wzr-cD-G9f" id="U6q-lo-iFF"/>
             </connections>
         </view>
     </objects>

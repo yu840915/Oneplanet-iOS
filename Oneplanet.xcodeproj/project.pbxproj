@@ -56,6 +56,8 @@
 		E03C32B5226D969500C32FD7 /* ColorPalette .swift in Sources */ = {isa = PBXBuildFile; fileRef = E03C32B4226D969500C32FD7 /* ColorPalette .swift */; };
 		E03C32B7226DA39700C32FD7 /* SwiftGif.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E03C32B6226DA39700C32FD7 /* SwiftGif.framework */; };
 		E03C32B9226DA44A00C32FD7 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E03C32B8226DA44A00C32FD7 /* Onboarding.storyboard */; };
+		E03F5135230A82F600F1C794 /* PostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03F5134230A82F600F1C794 /* PostTests.swift */; };
+		E03F5137230BBDE500F1C794 /* PostSubmissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03F5136230BBDE500F1C794 /* PostSubmissionViewController.swift */; };
 		E045BE7722E974640035D08B /* PostFeedMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E045BE7622E974640035D08B /* PostFeedMainViewController.swift */; };
 		E045BE7922E976FE0035D08B /* PostFeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E045BE7822E976FE0035D08B /* PostFeedTableViewController.swift */; };
 		E05398C522FE98AC00AAF803 /* WebLinkingKeyMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05398C422FE98AC00AAF803 /* WebLinkingKeyMap.swift */; };
@@ -185,6 +187,9 @@
 		E0EAEB7B22F1F25600C8E7C8 /* PostList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEB7A22F1F25600C8E7C8 /* PostList.swift */; };
 		E0EAEB7D22F2891400C8E7C8 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEB7C22F2891400C8E7C8 /* LoadingCell.swift */; };
 		E0EDD1522305ABCF00F732DE /* PostEditorPhotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EDD1512305ABCF00F732DE /* PostEditorPhotoCollectionViewController.swift */; };
+		E0F2688C231289E100CE5C45 /* MarkdownKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0F2688B231289E100CE5C45 /* MarkdownKit.framework */; };
+		E0F268952313871900CE5C45 /* CategoryNameList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F268942313871900CE5C45 /* CategoryNameList.swift */; };
+		E0F26897231390B300CE5C45 /* ProductFilterPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F26896231390B300CE5C45 /* ProductFilterPickerTableViewController.swift */; };
 		E0FE73AC22F5724D00CE665B /* UserSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FE73AB22F5724D00CE665B /* UserSearchTableViewController.swift */; };
 		E0FE73B022F596C500CE665B /* PushListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FE73AF22F596C500CE665B /* PushListener.swift */; };
 		E0FF797A228C3F6800F61318 /* MyProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0FF7979228C3F6800F61318 /* MyProfileTests.swift */; };
@@ -258,6 +263,8 @@
 		E03C32B4226D969500C32FD7 /* ColorPalette .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorPalette .swift"; sourceTree = "<group>"; };
 		E03C32B6226DA39700C32FD7 /* SwiftGif.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftGif.framework; path = Carthage/Build/iOS/SwiftGif.framework; sourceTree = SOURCE_ROOT; };
 		E03C32B8226DA44A00C32FD7 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		E03F5134230A82F600F1C794 /* PostTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTests.swift; sourceTree = "<group>"; };
+		E03F5136230BBDE500F1C794 /* PostSubmissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSubmissionViewController.swift; sourceTree = "<group>"; };
 		E045BE7622E974640035D08B /* PostFeedMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFeedMainViewController.swift; sourceTree = "<group>"; };
 		E045BE7822E976FE0035D08B /* PostFeedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFeedTableViewController.swift; sourceTree = "<group>"; };
 		E05398C422FE98AC00AAF803 /* WebLinkingKeyMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebLinkingKeyMap.swift; sourceTree = "<group>"; };
@@ -399,6 +406,9 @@
 		E0EAEB7A22F1F25600C8E7C8 /* PostList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostList.swift; sourceTree = "<group>"; };
 		E0EAEB7C22F2891400C8E7C8 /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		E0EDD1512305ABCF00F732DE /* PostEditorPhotoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorPhotoCollectionViewController.swift; sourceTree = "<group>"; };
+		E0F2688B231289E100CE5C45 /* MarkdownKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MarkdownKit.framework; path = Carthage/Build/iOS/MarkdownKit.framework; sourceTree = SOURCE_ROOT; };
+		E0F268942313871900CE5C45 /* CategoryNameList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryNameList.swift; sourceTree = "<group>"; };
+		E0F26896231390B300CE5C45 /* ProductFilterPickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductFilterPickerTableViewController.swift; sourceTree = "<group>"; };
 		E0FE73AB22F5724D00CE665B /* UserSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchTableViewController.swift; sourceTree = "<group>"; };
 		E0FE73AF22F596C500CE665B /* PushListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushListener.swift; sourceTree = "<group>"; };
 		E0FF7979228C3F6800F61318 /* MyProfileTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfileTests.swift; sourceTree = "<group>"; };
@@ -425,6 +435,7 @@
 				E0BDCCEC229FD3CE006A9D20 /* SwiftMessages.framework in Frameworks */,
 				E06261C8226D640D00A96F55 /* StoreKit.framework in Frameworks */,
 				E032844722AB6F66001F02E8 /* XLPagerTabStrip.framework in Frameworks */,
+				E0F2688C231289E100CE5C45 /* MarkdownKit.framework in Frameworks */,
 				E06F5009227AFC770067DAE4 /* libWeChatSDK.a in Frameworks */,
 				E0A4618822B6328400D26720 /* PhoneNumberKit.framework in Frameworks */,
 				6868F9DB5BA3F9DA5AAF9145 /* Pods_Oneplanet.framework in Frameworks */,
@@ -534,6 +545,7 @@
 				E032844422AB6A50001F02E8 /* AuctionMainViewController.swift */,
 				E0D1BBDA22ACEE9400951F19 /* TimeIntervalComponents.swift */,
 				E032844822AB7286001F02E8 /* ProductListTableViewController.swift */,
+				E0F26896231390B300CE5C45 /* ProductFilterPickerTableViewController.swift */,
 				E033F07F2300006E006EB3AE /* ProductListCells.swift */,
 				E0DCD05622B9CC3D008D9C63 /* ProductDetailViewController.swift */,
 				E0A4618122B3D93700D26720 /* ShippingInfoEditorViewController.swift */,
@@ -542,6 +554,7 @@
 				E0A4618922B6347800D26720 /* PhoneNumberBuilder.swift */,
 				E032844A22AB7A90001F02E8 /* BiddingProcessTableViewController.swift */,
 				E05398CE22FF0F5000AAF803 /* Product.swift */,
+				E0F268942313871900CE5C45 /* CategoryNameList.swift */,
 				E0DA389C22C27FC600EC4170 /* Unlock and Bid */,
 			);
 			name = Auction;
@@ -660,6 +673,7 @@
 				E0DE81B522DEB2CC00F785E3 /* DateFromNowFormatterTests.swift */,
 				E05398C822FEA2A000AAF803 /* CollectionItemTests.swift */,
 				E05398D022FF1C6600AAF803 /* ProductTests.swift */,
+				E03F5134230A82F600F1C794 /* PostTests.swift */,
 				E05BB274226D5D2F00721F20 /* Info.plist */,
 			);
 			path = OneplanetTests;
@@ -696,6 +710,7 @@
 		E06261CC226D6EF900A96F55 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E0F2688B231289E100CE5C45 /* MarkdownKit.framework */,
 				E0A4618722B6328300D26720 /* PhoneNumberKit.framework */,
 				E032844622AB6F66001F02E8 /* XLPagerTabStrip.framework */,
 				E0BDCCEB229FD3CE006A9D20 /* SwiftMessages.framework */,
@@ -803,6 +818,7 @@
 				E0C18E5E22FAA3DE0086C114 /* PostCreationFlowViewController.swift */,
 				E0C18E6322FAEEFD0086C114 /* PostPhotoPickingFlowViewController.swift */,
 				E0C18E6522FC85890086C114 /* PostEditorViewController.swift */,
+				E03F5136230BBDE500F1C794 /* PostSubmissionViewController.swift */,
 				E0EDD1512305ABCF00F732DE /* PostEditorPhotoCollectionViewController.swift */,
 			);
 			name = "Post Creation";
@@ -1071,6 +1087,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftMessages.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/XLPagerTabStrip.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/PhoneNumberKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/MarkdownKit.framework",
 			);
 			name = "Copy Carthage Dependencies";
 			outputPaths = (
@@ -1146,6 +1163,7 @@
 				E081591122A65276007C9776 /* PurpleGemStoreViewController.swift in Sources */,
 				E033F0802300006E006EB3AE /* ProductListCells.swift in Sources */,
 				E0DCD05522B8B620008D9C63 /* ShippingInfoEditorHelpers.swift in Sources */,
+				E0F26897231390B300CE5C45 /* ProductFilterPickerTableViewController.swift in Sources */,
 				E0190F53226DD62200C212D5 /* UserProgressChecklist.swift in Sources */,
 				E0DA389E22C2824500EC4170 /* GemActionPopUpViewController.swift in Sources */,
 				E064A78622E6B0D200636387 /* UserLists.swift in Sources */,
@@ -1160,6 +1178,7 @@
 				E0EDD1522305ABCF00F732DE /* PostEditorPhotoCollectionViewController.swift in Sources */,
 				E0A050C422E16B53002FCFC3 /* ReportReasonPickerTableViewController.swift in Sources */,
 				E0DA38A622C48BC400EC4170 /* UnlockFlowViewController.swift in Sources */,
+				E0F268952313871900CE5C45 /* CategoryNameList.swift in Sources */,
 				E0BDCCEA229FA044006A9D20 /* PromotionPageList.swift in Sources */,
 				E0B57DE322A0FAA3006AEADB /* Toast.swift in Sources */,
 				E0C18E6122FAA56A0086C114 /* PostDraft.swift in Sources */,
@@ -1185,6 +1204,7 @@
 				E06F500F227AFD740067DAE4 /* WeChatLogIn.swift in Sources */,
 				E0DCD05322B7EB67008D9C63 /* PickerTableViewController.swift in Sources */,
 				E0190F57226EDBC900C212D5 /* CameraImagePickerViewController.swift in Sources */,
+				E03F5137230BBDE500F1C794 /* PostSubmissionViewController.swift in Sources */,
 				E08C3129227817680013DD0C /* AuthActions.swift in Sources */,
 				E0B3FBDB22F6895700BD53C9 /* PostCreationPortalViewController.swift in Sources */,
 				E0B57DE122A0FA48006AEADB /* DefaultStyleConfiguration.swift in Sources */,
@@ -1268,6 +1288,7 @@
 				E05398C922FEA2A000AAF803 /* CollectionItemTests.swift in Sources */,
 				E0FF797A228C3F6800F61318 /* MyProfileTests.swift in Sources */,
 				E05BB273226D5D2F00721F20 /* OneplanetTests.swift in Sources */,
+				E03F5135230A82F600F1C794 /* PostTests.swift in Sources */,
 				E08C312B227826850013DD0C /* EmailInputValidatorTests.swift in Sources */,
 				E0190F51226DD1E200C212D5 /* ChecklistItemTests.swift in Sources */,
 				E06F4FFC22782E7D0067DAE4 /* EmailAuthCredentialTests.swift in Sources */,

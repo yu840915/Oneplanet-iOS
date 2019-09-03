@@ -23,6 +23,8 @@ class LibraryImagePickerViewController: UIViewController, DefaultInstanceFactory
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var avatarIndicator: UIImageView!
     @IBOutlet weak var headerButton: UIButton!
+    @IBOutlet weak var bottomPadding: NSLayoutConstraint!
+    
     var onCancel: (()->())?
     var onPickingImage: ((UIImage)->())?
     var photoGridViewController: PhotoGridCollectionViewController!
@@ -63,6 +65,9 @@ class LibraryImagePickerViewController: UIViewController, DefaultInstanceFactory
         renderContext = CIContext(options: nil)
         padding.isHidden = !hasPadding
         avatarIndicator.isHidden = !hasAvatarIndicator
+        if isXgenerationScreen {
+            bottomPadding.constant += 30
+        }
     }
     
     private func updateHeader() {

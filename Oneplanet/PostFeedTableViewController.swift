@@ -22,16 +22,44 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
     var sections: [Section] = [.content, .loading]
     private var listUpdateHandles: [Any]?
     private var expandPostsIDs = Set<String>()
+    private var needsUpdate = false
+    private var isVisible = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         searchButton.layer.cornerRadius = 4
-        posts = [Post(id: "1"), Post(id: "2"), Post(id: "3"), Post(id: "4"), Post(id: "5")]
-//        prepareForList()
+        searchButton.setTitle(Localized.titles.searchID, for: .normal)
+        prepareForList()
     }
 
     @IBAction func reload(_ sender: UIRefreshControl) {
         postList.reload()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        isVisible = true
+        updateIfNeeded()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        isVisible = false
+    }
+    
+    func setNeedsRefresh() {
+        if isVisible {
+            postList.reload()
+        } else {
+            needsUpdate = true
+        }
+    }
+    
+    private func updateIfNeeded() {
+        if needsUpdate {
+            needsUpdate = false
+            postList.reload()
+        }
     }
     
     // MARK: - Table view data source
@@ -61,7 +89,7 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
     private func setUpPostCell(_ cell: PostCardCell, at indexPath: IndexPath) {
         let post = posts[indexPath.row]
         cell.expanded = expandPostsIDs.contains(post.id)
-        cell.updateViews(with: FakePost())
+        cell.updateViews(with: PostCardViewModel(post: post))
         cell.moreActions = {[weak self] in
             self?.showMoreAction(for: post)
         }
@@ -86,16 +114,20 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
     }
     
     private func showMoreAction(for post: Post) {
+        let isMine = post.authorID == userSession.profile?.id
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        sheet.addAction(UIAlertAction(title: Localized.titles.edit, style: .default, handler: { (_) in
+        if isMine {
+            sheet.addAction(UIAlertAction(title: Localized.titles.edit, style: .default, handler: { (_) in
                 self.edit(post)
-        }))
-        sheet.addAction(UIAlertAction(title: Localized.titles.report, style: .destructive, handler: { (_) in
-            self.report(post)
-        }))
-        sheet.addAction(UIAlertAction(title: Localized.phrases.unfollow, style: .destructive, handler: { (_) in
-            self.unfollowAuthor(of: post)
-        }))
+            }))
+        } else {
+            sheet.addAction(UIAlertAction(title: Localized.titles.report, style: .destructive, handler: { (_) in
+                self.report(post)
+            }))
+            sheet.addAction(UIAlertAction(title: Localized.phrases.unfollow, style: .destructive, handler: { (_) in
+                self.unfollowAuthor(of: post)
+            }))
+        }
         sheet.addAction(UIAlertAction(title: Localized.titles.cancel, style: .cancel, handler: nil))
         present(sheet, animated: true, completion: nil)
     }
@@ -129,6 +161,11 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
                 vc.post = (sender as! Post)
             } else if let vc = nav.viewControllers.first as? ReportReasonPickerTableViewController {
                 vc.flowController = (sender as! ReportFlowController)
+            } else if let vc = nav.viewControllers.first as? PostCreationFlowViewController {
+                vc.postDraft = PostDraft(post: (sender as! Post))
+                vc.didPublish = {[weak self] _ in
+                    self?.setNeedsRefresh()
+                }
             }
         }
     }
@@ -154,7 +191,8 @@ private extension PostFeedTableViewController {
     
     func handleListUpdate() {
         refreshControl?.endRefreshing()
-        posts = postList.items
+        let helper = DeduplicationHelper()
+        posts = postList.items.filter{ helper.addIfAllowed($0.id) }
         prepareSections()
         updateBackground()
     }
@@ -199,11 +237,11 @@ private extension PostFeedTableViewController {
     }
     
     func showProfile(for post: Post) {
-        performSegue(withIdentifier: SegueID.showProfile, sender: post.author)
+//        performSegue(withIdentifier: SegueID.showProfile, sender: post.author)
     }
     
     func edit(_ post: Post) {
-        
+        performSegue(withIdentifier: SegueID.showPostEditor, sender: post)
     }
     
     func report(_ post: Post) {
@@ -227,6 +265,7 @@ extension PostFeedTableViewController {
         static let showDetail = "showDetail"
         static let showReportFlow = "showReportFlow"
         static let showProfile = "showProfile"
+        static let showPostEditor = "showPostEditor"
     }
 }
 
@@ -242,11 +281,18 @@ extension UITableViewController: ScrollToTopHandler {
     }
 }
 
-class FakePost: PostDisplayable {
-    var avatar: WebImageInfo?
-    var nickname: String = "Abc 123"
-    var formatedDate: String = "1m ago"
-    var photos: [WebImageInfo] = [WebImageInfo(url: URL(string: "https://i.imgur.com/lytdJKp.png")!), WebImageInfo(url: URL(string: "https://i.imgur.com/lytdJKp.png")!), WebImageInfo(url: URL(string: "https://i.imgur.com/lytdJKp.png")!)]
-    var message: String = "Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content Content iap"
-    var relativeScore: Float? = 1.0
+class PostCardViewModel: PostDisplayable {
+    let avatar: WebImageInfo? = nil
+    let nickname: String = ""
+    let formatedDate: String
+    let photos: [WebImageInfo]
+    let message: String
+    let relativeScore: Float? = nil
+    var alien: Alien? = nil
+    
+    init(post: Post) {
+        photos = post.images
+        formatedDate = SharedSpeciaFormatters.dateFromNowForPosts.string(from: post.createdAt)
+        message = post.caption
+    }
 }

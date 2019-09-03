@@ -20,7 +20,6 @@ class IAPTransactionProcessor: NSObject, SKPaymentTransactionObserver {
     private(set) weak var userSession: UserSession?
     private(set) var waitingInvoice: Invoice?
     
-    
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         transactions.forEach{handleUpdate(of: $0, in: queue) }
     }
@@ -81,6 +80,7 @@ class Invoice {
 }
 
 class BlueGemRelatedIAPProducts {
+    private(set) var priceFormatter: NumberFormatter?
     private(set) var unlockProduct: SKProduct?
     private(set) var bidProduct: SKProduct?
     private var getProductOperation: GetSKProductsOperation?
@@ -112,6 +112,7 @@ class BlueGemRelatedIAPProducts {
                 unlockProduct = $0
             }
         }
+        setUpFormatterIfNeeded()
         if bidProduct == nil || unlockProduct == nil {
             Timer.scheduledTimer(withTimeInterval: TimeInterval(pow(2, Double(retryExpCounter))),
                                  repeats: false) {[weak self] (_) in
@@ -119,6 +120,16 @@ class BlueGemRelatedIAPProducts {
             }
             retryExpCounter += 1
         }
+    }
+    
+    private func setUpFormatterIfNeeded() {
+        guard priceFormatter == nil, let prod = bidProduct ?? unlockProduct else {
+            return
+        }
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currencyISOCode
+        formatter.locale = prod.priceLocale
+        priceFormatter = formatter
     }
 }
 

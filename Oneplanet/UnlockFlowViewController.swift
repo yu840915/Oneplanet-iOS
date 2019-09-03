@@ -91,7 +91,9 @@ private extension UnlockFlowViewController {
     func showBlueGemPopUp(animated: Bool) {
         let product = self.product!
         let container = prepareActionPopUp{[weak self] vc in
-            vc.configuration = UnlockWithBlueGemPopUpConfiguration(productName: product.displayName, formattedPrice: "$1.99")
+            let iap = IAPTransactionProcessor.shared.blueGemRelatedProducts.unlockProduct!
+            let price = IAPTransactionProcessor.shared.blueGemRelatedProducts.priceFormatter!.string(for: iap.price)!
+            vc.configuration = UnlockWithBlueGemPopUpConfiguration(productName: product.displayName, formattedPrice: price)
             vc.mainAction = {
                 self?.unlock(with: .blueGem)
             }
@@ -120,7 +122,9 @@ private extension UnlockFlowViewController {
     
     func showInsufficientGemPopUp() {
         let container = prepareActionPopUp{[weak self] vc in
-            vc.configuration = InsufficientBlueGemToUnlockPopUpConfiguration(formattedPrice: "$1.99")
+            let iap = IAPTransactionProcessor.shared.blueGemRelatedProducts.unlockProduct!
+            let price = IAPTransactionProcessor.shared.blueGemRelatedProducts.priceFormatter!.string(for: iap.price)!
+            vc.configuration = InsufficientBlueGemToUnlockPopUpConfiguration(formattedPrice: price)
             vc.mainAction = {
                 self?.goToCreatePost()
             }

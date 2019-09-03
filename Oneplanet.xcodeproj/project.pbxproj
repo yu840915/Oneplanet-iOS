@@ -187,6 +187,7 @@
 		E0EAEB7B22F1F25600C8E7C8 /* PostList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEB7A22F1F25600C8E7C8 /* PostList.swift */; };
 		E0EAEB7D22F2891400C8E7C8 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEB7C22F2891400C8E7C8 /* LoadingCell.swift */; };
 		E0EAF965231E61BB009C8624 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAF964231E61BB009C8624 /* Wallet.swift */; };
+		E0EAF967231E9758009C8624 /* AuctionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAF966231E9758009C8624 /* AuctionSystem.swift */; };
 		E0EDD1522305ABCF00F732DE /* PostEditorPhotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EDD1512305ABCF00F732DE /* PostEditorPhotoCollectionViewController.swift */; };
 		E0F2688C231289E100CE5C45 /* MarkdownKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0F2688B231289E100CE5C45 /* MarkdownKit.framework */; };
 		E0F268952313871900CE5C45 /* CategoryNameList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F268942313871900CE5C45 /* CategoryNameList.swift */; };
@@ -407,6 +408,7 @@
 		E0EAEB7A22F1F25600C8E7C8 /* PostList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostList.swift; sourceTree = "<group>"; };
 		E0EAEB7C22F2891400C8E7C8 /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		E0EAF964231E61BB009C8624 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
+		E0EAF966231E9758009C8624 /* AuctionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionSystem.swift; sourceTree = "<group>"; };
 		E0EDD1512305ABCF00F732DE /* PostEditorPhotoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorPhotoCollectionViewController.swift; sourceTree = "<group>"; };
 		E0F2688B231289E100CE5C45 /* MarkdownKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MarkdownKit.framework; path = Carthage/Build/iOS/MarkdownKit.framework; sourceTree = SOURCE_ROOT; };
 		E0F268942313871900CE5C45 /* CategoryNameList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryNameList.swift; sourceTree = "<group>"; };
@@ -646,6 +648,7 @@
 				E05BB25F226D5D2A00721F20 /* RootViewController.swift */,
 				E0190F4C226DCCFB00C212D5 /* UserSession.swift */,
 				E0EAF964231E61BB009C8624 /* Wallet.swift */,
+				E0EAF966231E9758009C8624 /* AuctionSystem.swift */,
 				E05BB261226D5D2A00721F20 /* Main.storyboard */,
 				E0190F54226EC82500C212D5 /* UserFlowRootViewController.swift */,
 				E0814FAF22864D5D002F1C02 /* Main User Flow */,
@@ -1141,6 +1144,7 @@
 			files = (
 				E055ACA72293D114000B7B31 /* ProfileEditorTableViewController.swift in Sources */,
 				E06F5011227B34880067DAE4 /* ProfileDraft.swift in Sources */,
+				E0EAF967231E9758009C8624 /* AuctionSystem.swift in Sources */,
 				E030E4D4228AB1ED0084D383 /* IDHeaderView.swift in Sources */,
 				E0814E3522DC2BBF002D0E32 /* NoticeTableViewController.swift in Sources */,
 				E0837EF5228022C400B13BAF /* TwitterLogIn.swift in Sources */,

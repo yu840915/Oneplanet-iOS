@@ -10,12 +10,18 @@ import UIKit
 
 class BidFlowViewController: UIViewController, UserSessionDepending {
     var userSession: UserSession!
-    var product: Product!
+    var product: ProductOverview!
 
     var pageViewController: UIPageViewController!
     override func viewDidLoad() {
         super.viewDidLoad()
-        showBidTooLatePopUp()
+        if userSession.wallet.purpleGem.total > 0 {
+            showPurpleGemPopUp(animated: false)
+        } else if userSession.wallet.blueGem.total > 0 {
+            showBlueGemPopUp()
+        } else {
+            showInsufficientGemPopUp()
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -43,8 +49,10 @@ extension BidFlowViewController {
     func showBlueGemPopUp() {
         let product = self.product!
         let container = prepareActionPopUp{[weak self] vc in
+            let iap = IAPTransactionProcessor.shared.blueGemRelatedProducts.bidProduct!
+            let price = IAPTransactionProcessor.shared.blueGemRelatedProducts.priceFormatter!.string(for: iap.price)!
             vc.configuration =
-                BidWithBlueGemPopUpConfiguration(productName: product.displayName, formattedPrice: "$1.99")
+                BidWithBlueGemPopUpConfiguration(productName: product.displayName, formattedPrice: price)
             vc.mainAction = {
                 self?.bid(with: .blueGem)
             }
@@ -56,7 +64,7 @@ extension BidFlowViewController {
         let product = self.product!
         let container = prepareActionPopUp{[weak self] vc in
             vc.configuration =
-                BidWithPurpleGemPopUpConfiguration(productName: product.name)
+                BidWithPurpleGemPopUpConfiguration(productName: product.displayName)
             vc.mainAction = {
                 self?.bid(with: .purpleGem)
             }
@@ -78,7 +86,7 @@ extension BidFlowViewController {
     }
 
     func showBidSucceededAlert() {
-        let alert = UIAlertController(title: String(format: Localized.messageFormats.bidSucceeded, product.name), message: Localized.messages.bidSucceeded, preferredStyle: .alert)
+        let alert = UIAlertController(title: String(format: Localized.messageFormats.bidSucceeded, product.displayName), message: Localized.messages.bidSucceeded, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: Localized.titles.ok, style: .default, handler: { (_) in
             self.dismiss(animated: false, completion: nil)
         }))
@@ -87,7 +95,9 @@ extension BidFlowViewController {
     
     func showInsufficientGemPopUp() {
         let container = prepareActionPopUp{[weak self] vc in
-            vc.configuration = InsufficientBlueGemToBidPopUpConfiguration(formattedPrice: "$1.99")
+            let iap = IAPTransactionProcessor.shared.blueGemRelatedProducts.bidProduct!
+            let price = IAPTransactionProcessor.shared.blueGemRelatedProducts.priceFormatter!.string(for: iap.price)!
+            vc.configuration = InsufficientBlueGemToBidPopUpConfiguration(formattedPrice: price)
             vc.mainAction = {
                 self?.goToCreatePost()
             }

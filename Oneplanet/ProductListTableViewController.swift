@@ -19,8 +19,11 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
     private var refreshClock: UpdateClock!
     private var featureCheck: BiddingFeatureAccessCheckOperation?
     private(set) var categoryList: CategoryList?
+    private var myLotList: MyLotList?
     private var productOverviews: [ProductOverview] = []
+    private var lots: [ProductOverview] = []
     private var categoryListHandles: [Any]?
+    private var lotListDidUpdateHandles: [Any]?
     
     class func fromDefaultStoryboard() -> ProductListTableViewController {
         return UIStoryboard(name: "Auction", bundle: nil).instantiateViewController(withIdentifier: "ProductListTableViewController") as! ProductListTableViewController
@@ -28,6 +31,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        prepareLotList()
         tableView.register(ProductListHeader.defaultNib(), forHeaderFooterViewReuseIdentifier: ReuseID.productListHeader)
         tableView.register(BiddingListHeader.defaultNib(), forHeaderFooterViewReuseIdentifier: ReuseID.biddingListHeader)
         navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
@@ -72,7 +76,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         case .productList:
             return productOverviews.count
         case .bidList:
-            return 10
+            return lots.count
         }
     }
     
@@ -113,6 +117,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
     }
     
     private func configureBiddingCell(_ cell: BiddingProductCell, at indexPath: IndexPath) {
+        cell.updateViews(with: lots[indexPath.row])
         cell.bidAction = {[weak self] in
             self?.checkAccessAndRunIfAllowed {
                 self?.bidProductIfAllowed(at: indexPath)
@@ -167,6 +172,21 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         default: break
         }
     }
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        switch sections[indexPath.section] {
+        case .productList:
+            let isLast = indexPath.row == (productOverviews.count - 1)
+            if isLast {
+                categoryList?.loadMoreIfAllowed()
+            }
+        case .bidList:
+            let isLast = indexPath.row == (lots.count - 1)
+            if isLast {
+                myLotList?.loadMoreIfAllowed()
+            }
+        default: break
+        }
+    }
 
     // MARK: - Navigation
 
@@ -180,6 +200,10 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         if let vc = segue.destination as? UnlockFlowViewController {
             vc.product = (sender as! ProductOverview)
         }
+        if let vc = segue.destination as? BidFlowViewController {
+            vc.product = (sender as! ProductOverview)
+        }
+
         if let nav = segue.destination as? UINavigationController {
             if let vc = nav.viewControllers.first as? UserSessionDepending {
                 vc.userSession = userSession
@@ -200,6 +224,27 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
 }
 
 private extension ProductListTableViewController {
+    func prepareLotList() {
+        let list = MyLotList(session: userSession)
+        var handles: [Any] = []
+        handles.append(list.addItemDidFetchHandler {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.lotListDidUpdate()
+            }
+        })
+        handles.append(list.addFetchingFailureHandler({[weak self] (error) in
+            
+        }))
+        lotListDidUpdateHandles = handles
+        list.reload()
+        myLotList = list
+    }
+    
+    func lotListDidUpdate() {
+        lots = myLotList!.items
+        tableView.reloadData()
+    }
+    
     func refreshDynamicViews() {
         countDownView.tick()
     }
@@ -240,7 +285,7 @@ private extension ProductListTableViewController {
     }
     
     func bidProductIfAllowed(at indexPath: IndexPath) {
-        performSegue(withIdentifier: SegueID.enterBidFlow, sender: nil)
+        performSegue(withIdentifier: SegueID.enterBidFlow, sender: lots[indexPath.row])
     }
 }
 
@@ -256,7 +301,6 @@ private extension ProductListTableViewController {
     }
     
     func handleCategoryListUpdateFailure(with error: Error?) {
-        
     }
     
     func setUpEmptyViewForEmptyRunningBidList() {

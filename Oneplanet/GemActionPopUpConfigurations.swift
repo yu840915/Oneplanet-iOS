@@ -39,6 +39,9 @@ class GemActionPopUpConfiguration {
     var shouldShowTitle: Bool {
         return true
     }
+    var animatedTransition: Bool {
+        return true
+    }
     var mainAction: (()->())?
 }
 

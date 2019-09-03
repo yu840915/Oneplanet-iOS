@@ -138,6 +138,12 @@ class BiddingProductCell: UITableViewCell {
     }
 }
 
+extension BiddingProductCell {
+    func updateViews(with product: ProductOverview) {
+        previewButton.kf.setImage(with: product.cover?.url, for: .normal)
+    }
+}
+
 class CountDownClockView: UIView {
     @IBOutlet weak var dayValueLabel: UILabel!
     @IBOutlet weak var hourValueLabel: UILabel!

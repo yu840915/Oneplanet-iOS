@@ -47,9 +47,9 @@
 "tl_purple_gem" = "ルビッド";
 "tl_green_gem" = "エメキー";
 "tl_delete" = "削除";
-"tl_unlock" = "アンロックします";
+"tl_unlock" = "商品をアンロックします";
 "tl_unlocked" = "アンロックしました";
-"tl_bid" = "入札";
+"tl_bid" = "一回入札する";
 "tl_required_input" = "必須項目";
 "tl_agree" = "同意する";
 "tl_filter" = "検索フィルタ";
@@ -66,10 +66,11 @@
 "tl_send" = "送信";
 "tl_edit" = "編集する";
 "tl_photo" = "写真";
-"tl_library" = "Library";
+"tl_library" = "ライブラリ";
 "tl_post" = "投稿";
 "tl_share" = "シェアする";
-"tl_discard" = "Discard";
+"tl_discard" = "破棄";
+"tl_search_id" = "ID検索";
 
 "pl_email" = "メールアドレス";
 "pl_nickname" = "ニックネーム";
@@ -95,7 +96,7 @@
 "msg_race1_monologue" = "ファッカーです。";
 "msg_race2_monologue" = "ディカーです。";
 "msg_race3_monologue" = "ドランカーです。";
-"msg_shipping_info_des" = "「国際配送サービス」、英語アドレスとお届け先情報を記入してください";
+"msg_shipping_info_des" = "商品を無事に配送するために、パスポートと同じローマ字氏名表示、また配送先の情報を確実に記入ください。\n＊本サービスは運賃免除です。ただし、海外配送の場合は、相手国に徴収される関税を支払う可能性があります。";
 "msg_report_user_prompt" = "このアカウントを報告する理由?";
 "msg_report_post_prompt" = "この投稿を報告する理由を選択してください。";
 "msg_report_user_caption" = "報告された投稿に関して、Oneplanetが投稿者に報告した人の情報を開示することはありません";
@@ -133,7 +134,7 @@
 "msgf_liked_your_post" = "%@ liked your post";
 "msgf_you_received_num_gems" = "You received %@ %@s";
 "msgf_post_reported" = "%@の原因で投稿が報告されました";
-"msgf_profile_reported" = "Your account %@ has been reported for %@";
+"msgf_profile_reported" = "あなたのアカウント%@はOneplanet%@に違反しているので、アカウントが報告されました";
 "msgf_liked_your_post_and_gave_gem" = "Your photo was liked by %@, congratulations to get a %@.";
 "msgf_thankyou_report_user" = "Oneplanetの安全の維持にご協力いただきありがとうございます。報告を受けた写真やコメントの投稿者には、報告した人についての情報は開示されません。\n審査により%@に違反していると判断された場合、この投稿は削除されます。";
 "msgf_unblock_user_prompt" = "%@さんのブロックを解除しますか？";
@@ -180,20 +181,20 @@
 "ph_goto_bidding" = "Go bidding page";
 "ph_get_gem" = "Get it";
 "ph_has_got_gem" = "Has got it";
-"ph_new_notices" = "New Notices";
-"ph_read_notices" = "Read Notices";
+"ph_new_notices" = "新通知";
+"ph_read_notices" = "過去の通知";
 "ph_recover_account" = "アカウント復元";
 "ph_petition_submitted" = "報告成功";
 "ph_i_get_it" = "分かりました";
 "ph_unlock_option_prompt" = "アンロックするジェムを選択します";
-"ph_latest_posts" = "Latest";
-"ph_best_posts" = "Highest socreds";
+"ph_latest_posts" = "最新";
+"ph_best_posts" = "最好評";
 "ph_thanks_for_reporting_post" = "ご報告ありがとうございました";
 "ph_show_post" = "投稿を見る";
 "ph_more" = "more";
-"ph_upload_valued_photo" = "Upload photo for rewards";
-"ph_upload_free_photo" = "Upload photo";
-"ph_dont_show_again" = "Never show again";
+"ph_upload_valued_photo" = "写真をアップロードして評価される";
+"ph_upload_free_photo" = "写真をアップロードする";
+"ph_dont_show_again" = "二度とこのメッセージを表示しない";
 "ph_no_room_for_photo" = "full";
 
 "phf_seconds_ago_short" = "%@ s";
@@ -206,13 +207,13 @@
 "phf_days_ago" = "%@天前";
 "phf_followers" = "%@ フォロワー";
 "phf_followings" = "%@ フォロー中";
-"phf_remaining_uploads" = "%@/%@ remain (%@)";
+"phf_remaining_uploads" = "残り回数%@/%@ (%@)";
 
 "no_posts" = "投稿がありません";
 "no_promo_popups" = "No Promotion Pop-ups Yet";
 "no_unlocked_lots_title" = "あなたは今回のオークションに参加していません";
 "no_unlocked_lots_message" = "請把握下次競標！48H 內會公布下一期競標品！";
-"no_notices" = "No Notices";
+"no_notices" = "通知なし";
 "no_block_list" = "Empty list";
 "no_follower_list" = "You don't have followers yet";
 "no_following_list" = "You haven't followed others yet";
@@ -237,7 +238,7 @@
 "warn_logout" = "ログアウト？";
 "warn_character_selection" = "エリアンの種類を一度選んだら変更ができません。よろしいですか？";
 "warn_account_banned" = "コミュニティガイドライン違反ということで、コミュニティ機能を停止されました。アカウント復元はこちら";
-"warn_discard_post" = "Discard the draft?";
+"warn_discard_post" = "編集内容を破棄しますか？";
 
 "warntl_character_selection" = "選択しました。よろしいですか？";
 "warntl_account_banned" = "コミュニティ機能停止";
@@ -265,10 +266,10 @@
 "pop_purple_gem_bullet1" = "紅金寶是 %@ 的升級版，有助於競標時的效率，並減少信用卡或電信商的支付問題。";
 "pop_purple_gem_bullet2" = "使用 紅金寶 可解鎖商品或投標一次。";
 
-"pop_post_suspended" = "評分次數用完了";
-"pop_cooldown_time" = "等待時間 (%@)";
-"pop_free_upload_bullet" = "沒有限制上傳照片次數，但不能獲得%@。";
-"pop_cant_upload_bullet" = "請等待時間回復";
+"pop_post_suspended" = "回数制限が切れました";
+"pop_cooldown_time" = "待ち時間 (%@)";
+"pop_free_upload_bullet" = "写真アップロードの回数は限られていませんけど、%@を獲得できません。";
+"pop_cant_upload_bullet" = "時間復元するまでしばらくお待ちください";
 "pop_valued_upload_bullet1" = "上傳照片評分獲得經驗值，當經驗值滿格即獲得一顆 %@";
 "pop_valued_upload_bullet2" = "越符合本次 Oneplanet 提示的顏色主題，收集 %@ 的效率越高。";
 

@@ -206,6 +206,9 @@ class LocalizedTitles {//tl_
     var discard: String {
         return NSLocalizedString("tl_discard", comment: "")
     }
+    var searchID: String {
+        return NSLocalizedString("tl_search_id", comment: "")
+    }
 }
 
 class Feature {//fx_

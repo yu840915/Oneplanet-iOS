@@ -28,6 +28,7 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
     override func viewDidLoad() {
         super.viewDidLoad()
         searchButton.layer.cornerRadius = 4
+        searchButton.setTitle(Localized.titles.searchID, for: .normal)
         prepareForList()
     }
 

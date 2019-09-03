@@ -475,7 +475,7 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="371"/>
                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                         <subviews>
-                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_first1" translatesAutoresizingMaskIntoConstraints="NO" id="jjk-kc-qNZ">
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jjk-kc-qNZ">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="374" height="371"/>
                                                                             </imageView>
                                                                         </subviews>

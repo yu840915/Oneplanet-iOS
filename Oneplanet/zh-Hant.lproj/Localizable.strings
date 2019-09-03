@@ -47,9 +47,9 @@
 "tl_purple_gem" = "紅金寶";
 "tl_green_gem" = "解鎖寶";
 "tl_delete" = "刪除";
-"tl_unlock" = "解鎖";
+"tl_unlock" = "解鎖商品";
 "tl_unlocked" = "已解鎖";
-"tl_bid" = "投標";
+"tl_bid" = "投標一次";
 "tl_required_input" = "必填";
 "tl_agree" = "我同意";
 "tl_filter" = "商品過濾";
@@ -70,6 +70,7 @@
 "tl_post" = "貼文";
 "tl_share" = "分享";
 "tl_discard" = "放棄";
+"tl_search_id" = "搜尋 ID";
 
 "pl_email" = "電子郵件地址";
 "pl_nickname" = "暱稱";
@@ -95,7 +96,7 @@
 "msg_race1_monologue" = "我的名字叫法克。";
 "msg_race2_monologue" = "我的名字叫迪克。";
 "msg_race3_monologue" = "我的名字叫壯克。";
-"msg_shipping_info_des" = "「國際運送服務」，請填寫英文地址及收件資訊，商品才可以成功送達";
+"msg_shipping_info_des" = "請填寫與護照相符的英文姓名，並確實填寫收件資訊，商品才可以成功送達。\n＊本運送服務免運費，海外配送可能需要繳納由目的地國家徵收的關稅＊";
 "msg_report_user_prompt" = "為什麼要檢舉這個帳號？";
 "msg_report_post_prompt" = "選擇檢舉這篇貼文的原因：";
 "msg_report_user_caption" = "您檢舉其他人的貼文時，Oneplanet 不會揭露檢舉人的身分";
@@ -186,8 +187,8 @@
 "ph_petition_submitted" = "回報成功";
 "ph_i_get_it" = "我知道了";
 "ph_unlock_option_prompt" = "選擇寶石解鎖";
-"ph_latest_posts" = "Latest";
-"ph_best_posts" = "Highest socreds";
+"ph_latest_posts" = "最新";
+"ph_best_posts" = "評分最高";
 "ph_thanks_for_reporting_post" = "謝謝你檢舉這則貼文";
 "ph_show_post" = "顯示貼文";
 "ph_more" = "more";
@@ -265,7 +266,7 @@
 "pop_purple_gem_bullet1" = "紅金寶是 %@ 的升級版，有助於競標時的效率，並減少信用卡或電信商的支付問題。";
 "pop_purple_gem_bullet2" = "使用 紅金寶 可解鎖商品或投標一次。";
 
-"pop_post_suspended" = "評分次數用完了";
+"pop_post_suspended" = "次數用完了";
 "pop_cooldown_time" = "等待時間 (%@)";
 "pop_free_upload_bullet" = "沒有限制上傳照片次數，但不能獲得%@。";
 "pop_cant_upload_bullet" = "請等待時間回復";

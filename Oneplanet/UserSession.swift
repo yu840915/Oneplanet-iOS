@@ -25,6 +25,7 @@ class UserSession {
     let profileDidUpdate = MulticastCallbackNode<()->()>()
     let loginType: LoginType
     let postPublishObservers = MulticastCallbackNode<(Post?)->()>()
+    private(set) var wallet: Wallet!
     private(set) var profile: MyProfile? {
         didSet {
             profileDidUpdate.invokeEach{$0()}
@@ -39,6 +40,7 @@ class UserSession {
     init(token: String, loginType: LoginType) {
         self.bearerToken = token
         self.loginType = loginType
+        wallet = Wallet(userSession: self)
     }
     
     func submitProfileChanges(with draft: ProfileDraft, completion: ((Bool, Error?)->())? = nil) {

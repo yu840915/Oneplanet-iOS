@@ -26,6 +26,16 @@ struct SharedNumberFormatters {
         return result
     }()
     static let roughNumber = RoughNumberFormatter()
+    static let wallet: NumberFormatter = {
+        let value = NumberFormatter()
+        value.numberStyle = .decimal
+        value.maximumFractionDigits = 0
+        value.maximumIntegerDigits = 4
+        value.minimumIntegerDigits = 4
+        value.roundingMode = .up
+        value.groupingSeparator = ""
+        return value
+    }()
 }
 
 struct SharedDateFormatters {

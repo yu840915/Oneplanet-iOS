@@ -561,8 +561,11 @@
                         <viewLayoutGuide key="safeArea" id="5J8-aA-pND"/>
                     </view>
                     <connections>
+                        <outlet property="blueGemButton" destination="wVJ-lV-SXm" id="0VN-7h-w5p"/>
                         <outlet property="blueGemIcon" destination="4KU-1Q-gV5" id="ebI-0y-pID"/>
+                        <outlet property="greenGemButton" destination="PWD-vp-jYx" id="auh-Eu-8Vm"/>
                         <outlet property="greenGemIcon" destination="yhx-EA-UYd" id="kVJ-G8-zAc"/>
+                        <outlet property="purpleGemButton" destination="I92-QH-Ey3" id="awJ-R3-JNy"/>
                         <outlet property="purpleGemIcon" destination="LTp-Ww-PTN" id="BLC-W3-osG"/>
                         <outlet property="scoreMaskView" destination="hz6-xI-wR4" id="Ltg-Sf-5Lc"/>
                         <outlet property="scorebarBackImage" destination="Vez-Nh-4Ua" id="BHF-Ky-GAC"/>

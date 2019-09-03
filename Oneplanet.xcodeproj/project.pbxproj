@@ -186,6 +186,7 @@
 		E0DE81B622DEB2CC00F785E3 /* DateFromNowFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DE81B522DEB2CC00F785E3 /* DateFromNowFormatterTests.swift */; };
 		E0EAEB7B22F1F25600C8E7C8 /* PostList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEB7A22F1F25600C8E7C8 /* PostList.swift */; };
 		E0EAEB7D22F2891400C8E7C8 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEB7C22F2891400C8E7C8 /* LoadingCell.swift */; };
+		E0EAF965231E61BB009C8624 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAF964231E61BB009C8624 /* Wallet.swift */; };
 		E0EDD1522305ABCF00F732DE /* PostEditorPhotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EDD1512305ABCF00F732DE /* PostEditorPhotoCollectionViewController.swift */; };
 		E0F2688C231289E100CE5C45 /* MarkdownKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0F2688B231289E100CE5C45 /* MarkdownKit.framework */; };
 		E0F268952313871900CE5C45 /* CategoryNameList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F268942313871900CE5C45 /* CategoryNameList.swift */; };
@@ -405,6 +406,7 @@
 		E0DE81B522DEB2CC00F785E3 /* DateFromNowFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFromNowFormatterTests.swift; sourceTree = "<group>"; };
 		E0EAEB7A22F1F25600C8E7C8 /* PostList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostList.swift; sourceTree = "<group>"; };
 		E0EAEB7C22F2891400C8E7C8 /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
+		E0EAF964231E61BB009C8624 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		E0EDD1512305ABCF00F732DE /* PostEditorPhotoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorPhotoCollectionViewController.swift; sourceTree = "<group>"; };
 		E0F2688B231289E100CE5C45 /* MarkdownKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MarkdownKit.framework; path = Carthage/Build/iOS/MarkdownKit.framework; sourceTree = SOURCE_ROOT; };
 		E0F268942313871900CE5C45 /* CategoryNameList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryNameList.swift; sourceTree = "<group>"; };
@@ -643,6 +645,7 @@
 				E03C32B1226D902F00C32FD7 /* Shared Configurations */,
 				E05BB25F226D5D2A00721F20 /* RootViewController.swift */,
 				E0190F4C226DCCFB00C212D5 /* UserSession.swift */,
+				E0EAF964231E61BB009C8624 /* Wallet.swift */,
 				E05BB261226D5D2A00721F20 /* Main.storyboard */,
 				E0190F54226EC82500C212D5 /* UserFlowRootViewController.swift */,
 				E0814FAF22864D5D002F1C02 /* Main User Flow */,
@@ -1190,6 +1193,7 @@
 				E06589BB227001F300C9E4E6 /* AskForAuthorizationOperation.swift in Sources */,
 				E03C329A226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift in Sources */,
 				E0C18E5D22F97C8D0086C114 /* UnavailableValuedPhotoViewController.swift in Sources */,
+				E0EAF965231E61BB009C8624 /* Wallet.swift in Sources */,
 				E045BE7922E976FE0035D08B /* PostFeedTableViewController.swift in Sources */,
 				E0125F9C22EAEA7F00AFF763 /* PostCardCell.swift in Sources */,
 				E0C18E6422FAEEFD0086C114 /* PostPhotoPickingFlowViewController.swift in Sources */,

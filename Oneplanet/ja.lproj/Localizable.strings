@@ -49,7 +49,7 @@
 "tl_delete" = "削除";
 "tl_unlock" = "アンロックします";
 "tl_unlocked" = "アンロックしました";
-"tl_bid" = "オークション";
+"tl_bid" = "入札";
 "tl_required_input" = "必須項目";
 "tl_agree" = "同意する";
 "tl_filter" = "検索フィルタ";
@@ -90,7 +90,7 @@
 "msg_lot_being_bid" = " This commodity is being bid";
 "msg_lot_being_bid_des" = "ただいま入札中です。48時間以内次回の入札商品を公表します。お見逃しなく！";
 "msg_lot_closed" = "アンロックできる時間を超えてしまいました";
-"msg_lot_closed_des" = "オークションが終了しました。次回の商品が48時間以内に発表されます。お見逃しなく！";
+"msg_lot_closed_des" = "オークションが終了しました。48時間以内次回の入札商品を公表します。お見逃しなく！";
 "msg_bid_payment_too_late" = "支払いが成功しましたが、入札時間を超えました";
 "msg_race1_monologue" = "ファッカーです。";
 "msg_race2_monologue" = "ディカーです。";
@@ -171,8 +171,8 @@
 "ph_commodities" = "商品";
 "ph_bidding_process" = "入札履歴";
 "ph_bid_count" = "入札回数";
-"ph_countdown" = "残り時間";
-"ph_bid_leader" = "入札";
+"ph_countdown" = "終了時間";
+"ph_bid_leader" = "予定落札者";
 "ph_product_name" = "商品名";
 "ph_bid_outcome" = "入札結果";
 "ph_bid_lot" = "Commodity";

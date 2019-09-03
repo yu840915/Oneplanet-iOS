@@ -165,7 +165,7 @@
 "ph_not_specified" = "不显示";
 "ph_join_prompt" = "立即登入";
 "ph_shipping_info" = "收件资讯";
-"ph_create_shipping_info" = "填写收件信息";
+"ph_create_shipping_info" = "填写收件资讯";
 "ph_edit_shipping_info" = "变更收件信息";
 "ph_view_shipping_status" = "查看出货状况";
 "ph_commodities" = "商品";

@@ -130,7 +130,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         cell.showDetailAction = {[weak self] in
         }
         cell.showProfileAction = {[weak self] in
-            
+            self?.showLeadUserForBid(at: indexPath)
         }
     }
     
@@ -308,6 +308,13 @@ private extension ProductListTableViewController {
     
     func bidProductIfAllowed(at indexPath: IndexPath) {
         performSegue(withIdentifier: SegueID.enterBidFlow, sender: lots[indexPath.row])
+    }
+    
+    func showLeadUserForBid(at indexPath: IndexPath) {
+        guard let user = bidProcesses[indexPath.row].lead else {
+            return
+        }
+        performSegue(withIdentifier: SegueID.showProfile, sender: user)
     }
 }
 

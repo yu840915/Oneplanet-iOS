@@ -61,7 +61,6 @@ class TreasuryBarViewController: UIViewController, UserSessionDepending {
         let wallet = userSession.wallet!
         let new = BalanceSnapshot(blueGem: wallet.blueGem.total, purpleGem: wallet.purpleGem.total, greenGem: wallet.greenGem.total, score: wallet.score.total)
         scoreProgress = min(CGFloat(new.score) / 100, 1)
-        debugPrint("Score \(new.score)")
 
         if let old = snapshot, allowAnimation {
             var plan = AnimationPlan()

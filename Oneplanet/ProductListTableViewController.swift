@@ -22,6 +22,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
     private var myLotList: MyLotList?
     private var productOverviews: [ProductOverview] = []
     private var lots: [ProductOverview] = []
+    private var bidProcesses: [BidProcess] = []
     private var categoryListHandles: [Any]?
     private var lotListDidUpdateHandles: [Any]?
     
@@ -118,6 +119,9 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
     
     private func configureBiddingCell(_ cell: BiddingProductCell, at indexPath: IndexPath) {
         cell.updateViews(with: lots[indexPath.row])
+        let process = bidProcesses[indexPath.row]
+        process.leadFetcher?.initializeIfNeeded()
+        cell.updateViews(with: process)
         cell.bidAction = {[weak self] in
             self?.checkAccessAndRunIfAllowed {
                 self?.bidProductIfAllowed(at: indexPath)
@@ -242,11 +246,29 @@ private extension ProductListTableViewController {
     
     func lotListDidUpdate() {
         lots = myLotList!.items
+        bidProcesses = lots.map{userSession.bidEventProcessManager.process(for: $0)}
         tableView.reloadData()
     }
     
     func refreshDynamicViews() {
         countDownView.tick()
+        updateBidCells()
+    }
+    
+    func updateBidCells() {
+        guard let indeices = tableView.indexPathsForVisibleRows?.filter({sections[$0.section] == .bidList}) else {
+            return
+        }
+        indeices.forEach{
+            updateBidCell(at: $0)
+        }
+    }
+    
+    func updateBidCell(at indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? BiddingProductCell else {
+            return
+        }
+        cell.updateViews(with: bidProcesses[indexPath.row])
     }
     
     func showProfile(for user: User) {

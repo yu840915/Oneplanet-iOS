@@ -83,12 +83,17 @@ class BiddingProductCell: UITableViewCell {
     @IBOutlet weak var digitLabel: UILabel!
     @IBOutlet weak var coverView: UIView!
     @IBOutlet var leadIndicators: [UIButton]!
+    @IBOutlet weak var outcomeView: UIView!
+    @IBOutlet weak var winLabel: UILabel!
+    @IBOutlet weak var loseLabel: UILabel!
+    private var color: UIColor = ColorPalette.bidRed
+    
     var bidAction: (()->())?
     var showDetailAction: (()->())?
     var showProfileAction: (()->())?
     
     private let countdownTimeAttribute: [NSAttributedString.Key: Any] = [.kern: 3.5]
-    var deadline = Date() {
+    var deadline: Date? {
         didSet {
             tick()
         }
@@ -120,13 +125,16 @@ class BiddingProductCell: UITableViewCell {
     }
     
     func tick() {
-        let i = deadline.timeIntervalSinceNow
+        guard let deadline = self.deadline else { return }
+        let i = max(deadline.timeIntervalSinceNow, 0)
         let comps = TimeIntervalComponents(extractor.extract(from: i))
         let min = formatter.string(for: comps.minutes) ?? "00"
         let sec = formatter.string(for: comps.seconds) ?? "00"
         var attr = countdownTimeAttribute
-        attr[.foregroundColor] =  i < .minute ? ColorPalette.bidRed : ColorPalette.bidGreen
-        countdownLabel.attributedText = NSAttributedString(string: min + ":" + sec, attributes: countdownTimeAttribute)
+        if i < .minute {
+            attr[.foregroundColor] = color
+        }
+        countdownLabel.attributedText = NSAttributedString(string: min + ":" + sec, attributes: attr)
     }
     
     @IBAction func invokeDetailAction(_ sender: Any) {
@@ -141,6 +149,54 @@ class BiddingProductCell: UITableViewCell {
 extension BiddingProductCell {
     func updateViews(with product: ProductOverview) {
         previewButton.kf.setImage(with: product.cover?.url, for: .normal)
+    }
+    
+    func updateViews(with process: BidProcess) {
+        if process.isInitialized {
+            updateViewsWithValidProcess(process)
+        } else {
+            updateViewsForInitialState()
+        }
+    }
+    
+    func updateViewsForInitialState() {
+        bidButton.isHidden = true
+        runningIndicator.isHidden = true
+        countdownLabel.isHidden = true
+        outcomeView.isHidden = true
+        avatarView.isHidden = true
+        
+        bidButton.isHidden = false
+        bidButton.isEnabled = true
+    }
+    
+    func updateViewsWithValidProcess(_ process: BidProcess) {
+        runningIndicator.isHidden = true
+        countdownLabel.isHidden = true
+        outcomeView.isHidden = true
+        bidButton.isHidden = true
+        avatarView.isHidden = true
+        coverView.isHidden = !process.isEnded
+        if process.isEnded {
+            outcomeView.isHidden = false
+            winLabel.isHidden = !process.isWinning
+            loseLabel.isHidden = process.isWinning
+        } else if let date = process.endDate {
+            if date.timeIntervalSinceNow.magnitude > 1 {
+                deadline = process.endDate
+                countdownLabel.isHidden = false
+                bidButton.isHidden = false
+                bidButton.isEnabled = !process.isWinning
+            } else {
+                runningIndicator.isHidden = false
+                runningIndicator.startAnimating()
+            }
+        }
+        color = process.isWinning ? ColorPalette.bidGreen : ColorPalette.bidRed
+        if let avatar = process.lead?.avatar {
+            avatarView.isHidden = false
+            avatarView.avatar = avatar
+        }
     }
 }
 

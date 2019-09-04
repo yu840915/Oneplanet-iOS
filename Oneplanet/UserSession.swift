@@ -25,7 +25,9 @@ class UserSession {
     let profileDidUpdate = MulticastCallbackNode<()->()>()
     let loginType: LoginType
     let postPublishObservers = MulticastCallbackNode<(Post?)->()>()
+    let userFetcherRepo = UserFetcherRepository()
     private(set) var wallet: Wallet!
+    private(set) var bidEventProcessManager: BidProcessManager!
     private(set) var profile: MyProfile? {
         didSet {
             profileDidUpdate.invokeEach{$0()}
@@ -41,6 +43,7 @@ class UserSession {
         self.bearerToken = token
         self.loginType = loginType
         wallet = Wallet(userSession: self)
+        bidEventProcessManager = BidProcessManager(userSession: self)
     }
     
     func submitProfileChanges(with draft: ProfileDraft, completion: ((Bool, Error?)->())? = nil) {
@@ -236,6 +239,12 @@ class GetMyProfileOperation: AlamofireAPIAccessOperation {
     
     override func processData(with data: Data) throws {
         profile = try JSONDecoder.default.decode(MyProfile.self, from: data)
+    }
+    
+    override func handleClientError(with response: HTTPURLResponse) throws {
+        if response.statusCode == 401 {
+            session.deactivate()
+        }
     }
 }
 

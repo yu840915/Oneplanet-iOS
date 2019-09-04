@@ -23,6 +23,7 @@ struct SharedNumberFormatters {
         result.numberStyle = .decimal
         result.minimumIntegerDigits = 2
         result.maximumFractionDigits = 0
+        result.groupingSeparator = ""
         return result
     }()
     static let roughNumber = RoughNumberFormatter()

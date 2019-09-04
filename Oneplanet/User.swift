@@ -37,14 +37,68 @@ class User: Decodable, UserProfileDisplayable {
     }
 }
 
+class UserFetcherRepository {
+    private var fetchers: [String: UserFetcher] = [:]
+    
+    func fetcher(for userID: String, user: User? = nil) -> UserFetcher {
+        if let fetcher = fetchers[userID] {
+            return fetcher
+        }
+        let fetcher = UserFetcher(id: userID, user: user)
+        fetchers[userID] = fetcher
+        return fetcher
+    }
+}
+
 class UserFetcher {
     let id: String
     private(set) var user: User?
-//    private var getUserOperation: 
+    private var getUserOperation: GetUserOperation?
     
     init(id: String, user: User?) {
         self.id = id
         self.user = user
+    }
+    
+    func initializeIfNeeded() {
+        guard user == nil else { return }
+        fetchIfAllows()
+    }
+    
+    func fetchIfAllows() {
+        guard getUserOperation == nil else { return }
+        let op = GetUserOperation(userID: id)
+        op.completionBlock = {[weak self] in
+            self?.didFetchUser()
+        }
+        getUserOperation = op
+        op.start()
+    }
+    
+    private func didFetchUser() {
+        let op = getUserOperation!
+        getUserOperation = nil
+        if let user = op.user {
+            self.user = user
+        } else {
+            logger.error("Cannot fetch user of \(id)", context: op.error)
+        }
+    }
+}
+
+class GetUserOperation: AlamofireAPIAccessOperation {
+    private(set) var user: User?
+    let userID: String
+    init(userID: String) {
+        self.userID = userID
+    }
+    
+    override func prepareURLRequest() throws -> URLRequest {
+        return URLRequest(url: ServiceURLs.base.appendingPathComponent("users/\(userID)"))
+    }
+    
+    override func processData(with data: Data) throws {
+        user = try JSONDecoder.default.decode(User.self, from: data)
     }
 }
 

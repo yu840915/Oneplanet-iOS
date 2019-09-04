@@ -15,7 +15,18 @@ class UnlockFlowViewController: UIViewController, UserSessionDepending {
     var pageViewController: UIPageViewController!
     override func viewDidLoad() {
         super.viewDidLoad()
-        showGemPicker()
+        if userSession.wallet.greenGem.total > 0 {
+            showGreenGemPopUp()
+            showPurpleGemPopUp(animated: false)
+        } else if userSession.wallet.blueGem.total > 0 && userSession.wallet.purpleGem.total > 0 {
+            showGemPicker()
+        } else if userSession.wallet.blueGem.total > 0 {
+            showBlueGemPopUp(animated: false)
+        } else if userSession.wallet.purpleGem.total > 0 {
+            showPurpleGemPopUp(animated: false)
+        } else {
+            showInsufficientGemPopUp()
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

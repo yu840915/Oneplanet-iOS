@@ -165,9 +165,6 @@ extension BiddingProductCell {
         countdownLabel.isHidden = true
         outcomeView.isHidden = true
         avatarView.isHidden = true
-        
-        bidButton.isHidden = false
-        bidButton.isEnabled = true
     }
     
     func updateViewsWithValidProcess(_ process: BidProcess) {
@@ -193,9 +190,9 @@ extension BiddingProductCell {
             }
         }
         color = process.isWinning ? ColorPalette.bidGreen : ColorPalette.bidRed
-        if let avatar = process.lead?.avatar {
+        if process.leadFetcher != nil {
             avatarView.isHidden = false
-            avatarView.avatar = avatar
+            avatarView.avatar = process.lead?.avatar
         }
     }
 }

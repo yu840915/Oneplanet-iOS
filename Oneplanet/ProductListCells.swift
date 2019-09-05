@@ -15,6 +15,8 @@ class ProductOverviewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var lockButton: UIButton!
     @IBOutlet weak var lockLabel: UILabel!
+    @IBOutlet weak var tutorialBubble: ChatBubbleView!
+    
     var isLocked = true {
         didSet {
             if oldValue != isLocked {
@@ -36,6 +38,7 @@ class ProductOverviewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         updateViewsForLockState()
+        tutorialBubble.titleLabel.text = Localized.tutorial.unlock
         selectedBackgroundView = CommonViewFactory.shared.makeSelectionBackground()
     }
     
@@ -87,7 +90,8 @@ class BiddingProductCell: UITableViewCell {
     @IBOutlet weak var winLabel: UILabel!
     @IBOutlet weak var loseLabel: UILabel!
     private var color: UIColor = ColorPalette.bidRed
-    
+    @IBOutlet weak var tutorialBubble: ChatBubbleView!
+
     var bidAction: (()->())?
     var showDetailAction: (()->())?
     var showProfileAction: (()->())?

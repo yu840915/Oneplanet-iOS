@@ -296,3 +296,7 @@
 "rp_violance_detail" = "檢舉暴力或暴力威脅？";
 
 "smb_enum_spliter" = "、";
+
+"tut_unlock" = "解鎖參加競標";
+"tut_wait_for_bid" = "等待競標開始！";
+"tut_bid" = "開始投標吧！";

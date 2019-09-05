@@ -29,8 +29,8 @@ class Localized {
     static let shippingInfoTerms = LocalizedShippingInfoTerms()
     static let phraseFormats = LocalizedPhraseFormats()
     static let reportReasons = LocalizedReportReasons()
-    static let symbols = LocalizedSimbols()
-    
+    static let symbols = LocalizedSymbols()
+    static let tutorial = LocalizedTutorial()
 }
 
 class LocalizedTitles {//tl_
@@ -916,9 +916,20 @@ class LocalizedReportReasons { //rp_
     }
 }
 
-
-class LocalizedSimbols { //smb_
+class LocalizedSymbols { //smb_
     var enumSpliter: String {
         return NSLocalizedString("smb_enum_spliter", comment: "")
+    }
+}
+
+class LocalizedTutorial { //tut_
+    var unlock: String {
+        return NSLocalizedString("tut_unlock", comment: "")
+    }
+    var waitForBid: String {
+        return NSLocalizedString("tut_wait_for_bid", comment: "")
+    }
+    var bid: String {
+        return NSLocalizedString("tut_bid", comment: "")
     }
 }

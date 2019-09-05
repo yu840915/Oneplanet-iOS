@@ -27,6 +27,7 @@ class ProductListHeader: UITableViewHeaderFooterView {
     @IBOutlet weak var titleLabel: UILabel!
     var showFilterAction: (()->())?
     @IBOutlet weak var filterButton: UIButton!
+    @IBOutlet weak var bubbleView: ChatBubbleView!
     
     @IBAction func showFilter(_ sender: UIButton) {
         showFilterAction?()
@@ -35,6 +36,7 @@ class ProductListHeader: UITableViewHeaderFooterView {
     override func awakeFromNib() {
         super.awakeFromNib()
         titleLabel.text = Localized.titles.filter
+        bubbleView.titleLabel.text = Localized.tutorial.waitForBid
     }
     
     private func updateForTitle() {

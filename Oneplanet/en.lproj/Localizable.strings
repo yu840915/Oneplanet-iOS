@@ -296,3 +296,7 @@
 "rp_violance_detail" = "Report as violence or threat of violence?";
 
 "smb_enum_spliter" = ", ";
+
+"tut_unlock" = "Unlock to join the bidding";
+"tut_wait_for_bid" = "Waiting for the bid to start!";
+"tut_bid" = "Start bidding!";

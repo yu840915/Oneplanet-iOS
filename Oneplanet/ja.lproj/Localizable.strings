@@ -296,3 +296,7 @@
 "rp_violance_detail" = "暴力または暴力的脅威として報告しますか？";
 
 "smb_enum_spliter" = ", ";
+
+"tut_unlock" = "アンロックして、オークションに参加しよう";
+"tut_wait_for_bid" = "オークションが開始するまでしばらくお待ちください！";
+"tut_bid" = "入札しよう！";

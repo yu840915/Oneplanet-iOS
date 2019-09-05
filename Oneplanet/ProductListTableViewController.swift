@@ -394,3 +394,15 @@ extension ProductListTableViewController: IndicatorInfoProvider {
     }
 }
 
+class ChatBubbleView: UIView {
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowRadius = 10
+        layer.shadowOpacity = 1.0
+        layer.shadowOffset = CGSize(width: 0, height: 2)
+    }
+}

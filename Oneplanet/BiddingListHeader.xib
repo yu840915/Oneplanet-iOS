@@ -108,18 +108,50 @@
                         </view>
                     </subviews>
                 </stackView>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hbX-ay-NK7" userLabel="Bubble View" customClass="ChatBubbleView" customModule="Oneplanet" customModuleProvider="target">
+                    <rect key="frame" x="292.5" y="-9.5" width="73.5" height="41"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_bubbleup_nor" translatesAutoresizingMaskIntoConstraints="NO" id="c6y-hi-y3p">
+                            <rect key="frame" x="0.0" y="0.0" width="77.5" height="45"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1G-rd-cqa">
+                            <rect key="frame" x="15" y="10.5" width="43.5" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="c6y-hi-y3p" secondAttribute="bottom" constant="-4" id="Aka-sU-sEL"/>
+                        <constraint firstItem="h1G-rd-cqa" firstAttribute="centerX" secondItem="hbX-ay-NK7" secondAttribute="centerX" id="Re7-24-53l"/>
+                        <constraint firstItem="c6y-hi-y3p" firstAttribute="top" secondItem="hbX-ay-NK7" secondAttribute="top" id="VdD-U0-z1w"/>
+                        <constraint firstItem="h1G-rd-cqa" firstAttribute="width" secondItem="hbX-ay-NK7" secondAttribute="width" constant="-30" id="Wlu-yq-Ef3"/>
+                        <constraint firstItem="h1G-rd-cqa" firstAttribute="centerY" secondItem="hbX-ay-NK7" secondAttribute="centerY" id="fu2-b3-3px"/>
+                        <constraint firstItem="c6y-hi-y3p" firstAttribute="leading" secondItem="hbX-ay-NK7" secondAttribute="leading" id="hQN-mX-vNT"/>
+                        <constraint firstItem="h1G-rd-cqa" firstAttribute="height" secondItem="hbX-ay-NK7" secondAttribute="height" constant="-20" id="x1B-XB-bz4"/>
+                        <constraint firstAttribute="trailing" secondItem="c6y-hi-y3p" secondAttribute="trailing" constant="-4" id="zyD-uS-rsl"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="c6y-hi-y3p" id="hcm-EM-OgP"/>
+                        <outlet property="titleLabel" destination="h1G-rd-cqa" id="j50-zq-9Ng"/>
+                    </connections>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="t8q-9X-IN3" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="21r-N8-fDO"/>
                 <constraint firstItem="t8q-9X-IN3" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="M9g-VU-ag3"/>
+                <constraint firstAttribute="trailing" secondItem="hbX-ay-NK7" secondAttribute="trailing" constant="48" id="X1Y-qZ-oEo"/>
                 <constraint firstItem="t8q-9X-IN3" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="adB-2w-KTq"/>
+                <constraint firstItem="hbX-ay-NK7" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="dAe-4H-jO5"/>
                 <constraint firstItem="t8q-9X-IN3" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="sLU-oQ-hMk"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="bidCountLabel" destination="ME9-xu-ZZP" id="2c6-t2-WIa"/>
                 <outlet property="bidLabel" destination="wuV-Do-OmJ" id="Uec-TW-3Qw"/>
+                <outlet property="bubbleView" destination="hbX-ay-NK7" id="jZ7-Wk-Rwz"/>
                 <outlet property="countdownLabel" destination="obv-IQ-UfY" id="k3e-L6-0cH"/>
                 <outlet property="leaderLabel" destination="d03-Vf-JNk" id="7v3-uc-Hr7"/>
                 <outlet property="productLabel" destination="gm3-1h-Xwc" id="Vf7-Qo-mO8"/>
@@ -127,6 +159,7 @@
         </view>
     </objects>
     <resources>
+        <image name="ui_bubbleup_nor" width="34" height="33"/>
         <namedColor name="dark gray">
             <color red="0.29019607843137257" green="0.29019607843137257" blue="0.29019607843137257" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

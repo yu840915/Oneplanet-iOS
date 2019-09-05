@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import ModelBlocks
 
 class ProductOverviewCell: UITableViewCell {
     @IBOutlet weak var contentBackgroundView: UIView!
@@ -16,6 +17,7 @@ class ProductOverviewCell: UITableViewCell {
     @IBOutlet weak var lockButton: UIButton!
     @IBOutlet weak var lockLabel: UILabel!
     @IBOutlet weak var tutorialBubble: ChatBubbleView!
+    private var fadeInFadeOutOperation: FadeInFadeOutOperation?
     
     var isLocked = true {
         didSet {
@@ -51,6 +53,30 @@ class ProductOverviewCell: UITableViewCell {
     
     @IBAction func invokeUnlockAction(_ sender: UIButton) {
         unlockAction?()
+    }
+    
+    func showTutorial() {
+        fadeInFadeOutOperation?.cancel()
+        clipsToBounds = false
+        superview?.bringSubviewToFront(self)
+        let op = FadeInFadeOutOperation(view: tutorialBubble)
+        op.completionBlock = {[weak self] in
+            self?.restoreFromTutorial()
+        }
+        fadeInFadeOutOperation = op
+        op.start()
+    }
+    
+    override func prepareForReuse() {
+        if let op = fadeInFadeOutOperation {
+            op.cancel()
+            fadeInFadeOutOperation = nil
+            restoreFromTutorial()
+        }
+    }
+    
+    private func restoreFromTutorial() {
+        clipsToBounds = true
     }
 }
 
@@ -273,5 +299,66 @@ class BiddingEndIndicationCell: BiddingStateIndicationCell {
         super.awakeFromNib()
         stateLabel.text = Localized.activity.biddingEnded
         descriptionTextView.attributedText = prepareWinnerNotice()
+    }
+}
+
+class ChatBubbleView: UIView {
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowRadius = 10
+        layer.shadowOpacity = 1.0
+        layer.shadowOffset = CGSize(width: 0, height: 2)
+    }
+}
+
+class FadeInFadeOutOperation: SimpleAsynchronousOperation {
+    let view: UIView
+    private weak var fadeOutTimer: Timer?
+    init(view: UIView) {
+        self.view = view
+    }
+    
+    override func main() {
+        guard !isCancelled else { return }
+        view.isHidden = false
+        view.alpha = 0.0
+        UIView.animate(withDuration: 0.2, animations: {
+            self.view.alpha = 1.0
+        }) { (_) in
+            self.didFadeIn()
+        }
+    }
+    
+    private func didFadeIn() {
+        guard !isCancelled else {
+            view.isHidden = true
+            return
+        }
+        scheduleFadeOut()
+    }
+    
+    private func scheduleFadeOut() {
+        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) {[weak self] (_) in
+            self?.fadeOut()
+        }
+    }
+    
+    private func fadeOut() {
+        guard !isCancelled else { return }
+        UIView.animate(withDuration: 0.2, animations: {
+            self.view.alpha = 0.0
+        }) { (_) in
+            self.view.isHidden = true
+            self.finish()
+        }
+    }
+    
+    override func onCancel() {
+        fadeOutTimer?.invalidate()
+        view.isHidden = true
     }
 }

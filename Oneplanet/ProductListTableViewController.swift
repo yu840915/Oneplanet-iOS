@@ -128,6 +128,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
             }
         }
         cell.showDetailAction = {[weak self] in
+            self?.showProductDetailForCell(at: indexPath)
         }
         cell.showProfileAction = {[weak self] in
             self?.showLeadUserForBid(at: indexPath)
@@ -135,7 +136,11 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
     }
     
     private func showProductDetailForCell(at indexPath: IndexPath) {
-        performSegue(withIdentifier: SegueID.showProductDetail, sender: productOverviews[indexPath.row])
+        if sections[indexPath.section] == .productList {
+            performSegue(withIdentifier: SegueID.showProductDetail, sender: productOverviews[indexPath.row])
+        } else if sections[indexPath.section] == .bidList {
+            performSegue(withIdentifier: SegueID.showProductDetail, sender: lots[indexPath.row])
+        }
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -391,18 +396,5 @@ extension ProductListTableViewController: UITextViewDelegate {
 extension ProductListTableViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: Localized.phrases.commodities)
-    }
-}
-
-class ChatBubbleView: UIView {
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var backgroundImageView: UIImageView!
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowRadius = 10
-        layer.shadowOpacity = 1.0
-        layer.shadowOffset = CGSize(width: 0, height: 2)
     }
 }

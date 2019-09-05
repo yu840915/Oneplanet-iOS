@@ -16,6 +16,7 @@ class BiddingListHeader: UITableViewHeaderFooterView {
     @IBOutlet weak var countdownLabel: UILabel!
     @IBOutlet weak var bidLabel: UILabel!
     @IBOutlet weak var bubbleView: ChatBubbleView!
+    private var fadeInFadeOutOperation: FadeInFadeOutOperation?
     
     class func defaultNib() -> UINib {
         return UINib(nibName: "BiddingListHeader", bundle: nil)
@@ -32,5 +33,29 @@ class BiddingListHeader: UITableViewHeaderFooterView {
         countdownLabel.text = Localized.phrases.countdown
         bidLabel.text = Localized.titles.bid
         bubbleView.titleLabel.text = Localized.tutorial.bid
+    }
+    
+    func showTutorial() {
+        fadeInFadeOutOperation?.cancel()
+        clipsToBounds = false
+        superview?.bringSubviewToFront(self)
+        let op = FadeInFadeOutOperation(view: bubbleView)
+        op.completionBlock = {[weak self] in
+            self?.restoreFromTutorial()
+        }
+        fadeInFadeOutOperation = op
+        op.start()
+    }
+    
+    private func restoreFromTutorial() {
+        fadeInFadeOutOperation = nil
+    }
+    
+    override func prepareForReuse() {
+        if let op = fadeInFadeOutOperation {
+            op.cancel()
+            fadeInFadeOutOperation = nil
+            restoreFromTutorial()
+        }
     }
 }

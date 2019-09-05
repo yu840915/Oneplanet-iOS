@@ -28,7 +28,7 @@ class ProductListHeader: UITableViewHeaderFooterView {
     var showFilterAction: (()->())?
     @IBOutlet weak var filterButton: UIButton!
     @IBOutlet weak var bubbleView: ChatBubbleView!
-    
+    private var fadeInFadeOutOperation: FadeInFadeOutOperation?
     @IBAction func showFilter(_ sender: UIButton) {
         showFilterAction?()
     }
@@ -43,5 +43,29 @@ class ProductListHeader: UITableViewHeaderFooterView {
         let attrStr = NSMutableAttributedString(string: title + " ", attributes: [.foregroundColor : ColorPalette.defaultText])
         attrStr.append(NSAttributedString(attachment: TextAttachmentFactory.shared.arrowDown()))
         filterButton.setAttributedTitle(attrStr, for: .normal)
+    }
+    
+    func showTutorial() {
+        fadeInFadeOutOperation?.cancel()
+        clipsToBounds = false
+        superview?.bringSubviewToFront(self)
+        let op = FadeInFadeOutOperation(view: bubbleView)
+        op.completionBlock = {[weak self] in
+            self?.restoreFromTutorial()
+        }
+        fadeInFadeOutOperation = op
+        op.start()
+    }
+    
+    private func restoreFromTutorial() {
+        fadeInFadeOutOperation = nil
+    }
+    
+    override func prepareForReuse() {
+        if let op = fadeInFadeOutOperation {
+            op.cancel()
+            fadeInFadeOutOperation = nil
+            restoreFromTutorial()
+        }
     }
 }

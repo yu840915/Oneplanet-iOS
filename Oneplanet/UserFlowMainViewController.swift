@@ -363,6 +363,9 @@ extension UserFlowMainViewController: UITabBarControllerDelegate {
         coord.balloonAppearanceHandler = {[weak self] in
             self?.updateBalloonAppearance()
         }
+        if let vc = nav.viewControllers.first as? AuctionMainViewController {
+            vc.setWantsTutorial()
+        }
         balloonNavigationCoordinator = coord
         updateBalloonAppearance()
     }

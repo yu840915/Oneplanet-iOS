@@ -13,6 +13,8 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
     
     var userSession: UserSession!
     var sections: [Section] = [.runningBiddingIndicator, .biddingEndedIndicator, .productList, .bidList]
+    private var wantsTutorial = false
+    private var tutorialPlan: TutorialPlan?
 
     @IBOutlet weak var countdownDescriptionLabel: UILabel!
     @IBOutlet weak var countDownView: CountDownClockView!
@@ -64,6 +66,10 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         list.reload()
     }
     
+    func setWantsTutorial() {
+        wantsTutorial = true
+    }
+
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -193,6 +199,14 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
             if isLast {
                 myLotList?.loadMoreIfAllowed()
             }
+        default: break
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        switch sections[section] {
+        case .bidList: break
+        case .productList: break
         default: break
         }
     }
@@ -396,5 +410,13 @@ extension ProductListTableViewController: UITextViewDelegate {
 extension ProductListTableViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: Localized.phrases.commodities)
+    }
+}
+
+extension ProductListTableViewController {
+    struct TutorialPlan {
+        let unlock: Bool
+        let waitForBid: Bool
+        let bid: Bool
     }
 }

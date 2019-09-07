@@ -49,6 +49,7 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         let productList = ProductListTableViewController.fromDefaultStoryboard()
+        productList.setWantsTutorial()
         productListController = productList
         var controllers: [UIViewController] = [productList]
         if !userSession.isGuest {
@@ -70,7 +71,7 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
     }
     
     func setWantsTutorial() {
-        productListController.setWantsTutorial()
+        productListController?.setWantsTutorial()
     }
     
     // MARK: - Navigation

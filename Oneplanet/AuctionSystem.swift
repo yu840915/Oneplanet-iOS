@@ -206,7 +206,7 @@ class GetBidNewsOperation: AlamofireAPIAccessOperation {
     }
     
     override func prepareURLRequest() throws -> URLRequest {
-        return userSession.addingAuthorizationToken(to: URLRequest(url: ServiceURLs.devBase.appendingPathComponent("bidding/\(product.id)/winner")))
+        return userSession.addingAuthorizationToken(to: URLRequest(url: ServiceURLs.devBase.appendingPathComponent("bidding/\(product.id)/state")))
     }
     
     override func processData(with data: Data) throws {
@@ -219,7 +219,7 @@ class BidNews: Decodable {
     let endDate: Date
     
     enum CodingKeys: String, CodingKey {
-        case userID = "user_id"
+        case userID = "winner"
         case endDate = "until"
     }
     
@@ -228,7 +228,7 @@ class BidNews: Decodable {
             return nil
         }
         guard let ts = dict[CodingKeys.endDate.rawValue] as? Int,
-            let id = dict[CodingKeys.userID.rawValue] as? String else {
+            let id = dict["user_id"] as? String else {
             return nil
         }
         endDate = Date(timeIntervalSince1970: TimeInterval(ts))

@@ -26,18 +26,18 @@ class PurpleGemStoreViewController: UIViewController {
     private func localizeTitles() {
         nameLabel.text = Localized.titles.purpleGem
         usageLabel.text = Localized.gemStonePopUp.purpleGemUsage
-        bulletTextView2.text = Localized.gemStonePopUp.purpleGemBullet2
+        bulletTextView1.text = Localized.gemStonePopUp.purpleGemBullet1
         prepareActionBullet()
     }
 
     private func prepareActionBullet() {
-        let text = String(format: Localized.gemStonePopUp.purpleGemBullet1, Localized.titles.blueGem)
+        let text = String(format: Localized.gemStonePopUp.purpleGemBullet2, Localized.titles.blueGem)
         let linkRange = (text as NSString).range(of: Localized.titles.blueGem)
         let attrStr = NSMutableAttributedString(string: text, attributes: [.font:  UIFont.systemFont(ofSize: 12)])
         attrStr.addAttributes([.link : DeepLinks.blueGemPopUp, .font: UIFont.systemFont(ofSize: 12, weight: .semibold)], range: linkRange)
-        bulletTextView1.delegate = self
-        bulletTextView1.attributedText = attrStr
-        bulletTextView1.linkTextAttributes = [
+        bulletTextView2.delegate = self
+        bulletTextView2.attributedText = attrStr
+        bulletTextView2.linkTextAttributes = [
             .foregroundColor : ColorPalette.buttonGreen,
             .font: UIFont.systemFont(ofSize: 12, weight: .semibold)]
     }

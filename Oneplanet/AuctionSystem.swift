@@ -228,7 +228,7 @@ class BidNews: Decodable {
             return nil
         }
         guard let ts = dict[CodingKeys.endDate.rawValue] as? Int,
-            let id = dict["user_id"] as? String else {
+            let id = dict[CodingKeys.userID.rawValue] as? String else {
             return nil
         }
         endDate = Date(timeIntervalSince1970: TimeInterval(ts))

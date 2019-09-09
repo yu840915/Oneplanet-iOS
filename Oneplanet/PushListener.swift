@@ -11,11 +11,12 @@ import PusherSwift
 import ModelBlocks
 
 class PushListener {
-    #if DEBUG
     static let key = "72a9204d5eb8a13b6fa2"
-    #else
-    static let key = "85ab0484af04d39e9d3b"
-    #endif
+//    #if DEBUG
+//    static let key = "72a9204d5eb8a13b6fa2"
+//    #else
+//    static let key = "85ab0484af04d39e9d3b"
+//    #endif
     
     let pusher: Pusher
     

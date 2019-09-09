@@ -247,24 +247,24 @@
 "act_bigging_ended" = "オークションが終了しました！";
 "act_countdown" = "オークション カウントダウン...";
 
-"pop_blue_gem_usage" = "用途：解鎖商品、投標商品。";
+"pop_blue_gem_usage" = "使いみち：商品のアンロック、入札。";
 "pop_green_gem_usage" = "用途：解鎖商品、高效率投標商品。";
-"pop_purple_gem_usage" = "用途：解鎖商品。";
+"pop_purple_gem_usage" = "使いみち：商品のアンロック、高効率の商品入札。";
 
 "pop_blue_gem_action" = "写真をアップロードします";
 "pop_green_gem_action" = "%@へ";
 
-"pop_blue_gem_bullet1" = "獲得方式一：上傳照片後，畫面左上角的經驗值會增加，滿格即獲得一顆 競標寶。";
-"pop_blue_gem_bullet2" = "使用一顆 競標寶 + %@，可解鎖商品或投標一次。";
-"pop_blue_gem_bullet3" = "將 競標寶 升級成 %@，有助於競標時的效率，並減少信用卡或電信商的支付問題。";
+"pop_blue_gem_bullet1" = "%@＋%@を1コ使用したら、商品をアンロックすること、または商品への入札することができます。";
+"pop_blue_gem_bullet2" = "獲得方法：写真をアップロードして評価されて経験値が満タンになると即に%@を1コ獲得します。";
+"pop_blue_gem_bullet3" = "%@を%@にアップグレードすることは、入札時の効率に、またクレジットカード又はキャリア決済の支払問題の減少に役立ちます。";
 
 "pop_green_gem_bullet1" = "獲得方式ㄧ：Supreme.AI (官方) 喜歡你的相片。";
 "pop_green_gem_bullet2" = "獲得方式二：該週排行榜冠軍族群的用戶。";
 "pop_green_gem_bullet3" = "獲得方式三：不定期舉辦 %@，請密切關注！";
 "pop_green_gem_bullet4" = "使用一顆 解鎖寶 即可解鎖一項商品。";
 
-"pop_purple_gem_bullet1" = "紅金寶是 %@ 的升級版，有助於競標時的效率，並減少信用卡或電信商的支付問題。";
-"pop_purple_gem_bullet2" = "使用 紅金寶 可解鎖商品或投標一次。";
+"pop_purple_gem_bullet1" = "ルビッドを1コ使用したら、直接に商品へのアンロック、または入札することが一回できます。（高効率入札に達するため、商品への入札に使用のがお勧め。）";
+"pop_purple_gem_bullet2" = "ルビッドは%@のアップグレードバージョン。入札時の効率に、またクレジットカード又はキャリア決済の支払問題の減少に役立ちます。";
 
 "pop_post_suspended" = "回数制限が切れました";
 "pop_cooldown_time" = "待ち時間 (%@)";

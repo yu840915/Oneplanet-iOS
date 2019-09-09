@@ -124,7 +124,8 @@ fileprivate class SubmitFacebookTokenOperation: LogInOperation {
     }
     
     override func prepareDataRequest() throws -> DataRequest {
-        return Alamofire.request(ServiceURLs.base.appendingPathComponent("login/facebook-app"), method: .post, parameters: ["access_token": fbAccessToken.authenticationToken], encoding: JSONEncoding(), headers: nil)
+        return Alamofire.request(URL(string: "https://3299d72a.ngrok.io/login/facebook-app")!, method: .post, parameters: ["access_token": fbAccessToken.authenticationToken], encoding: URLEncoding(), headers: nil)
+//        return Alamofire.request(ServiceURLs.base.appendingPathComponent("login/facebook-app"), method: .post, parameters: ["access_token": fbAccessToken.authenticationToken], encoding: JSONEncoding(), headers: nil)
     }
 }
 

@@ -65,7 +65,7 @@ protocol NormalNoticeItemDisplayable: NoticeItemDisplayable {
 class LikeFromOfficialNoticeViewModel: NoticeViewModel, NormalNoticeItemDisplayable {
     override var attributedMessage: NSAttributedString {
         let official = "Suprem.AI"
-        let text = String(format: Localized.messageFormats.likedYourPost, official)
+        let text = String(format: Localized.messageFormats.likedYourPost, official, Localized.titles.greenGem)
         let attrStr = NSMutableAttributedString(string: text, attributes: [.font:  UIFont.systemFont(ofSize: 12)])
         let range = (text as NSString).range(of: official)
         attrStr.addAttributes([.font: UIFont.systemFont(ofSize: 12, weight: .semibold)], range: range)

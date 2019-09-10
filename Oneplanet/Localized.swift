@@ -663,6 +663,9 @@ class LocalizedPhrase { //ph_
     var biddingBegins: String {
         return NSLocalizedString("ph_bidding_begins", comment: "")
     }
+    var purpleGem: String {
+        return NSLocalizedString("ph_purple_gem", comment: "")
+    }
 }
 
 class LocalizedPhraseFormats {//phf_

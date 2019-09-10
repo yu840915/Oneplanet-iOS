@@ -128,14 +128,14 @@
 "msgf_insufficient_gem_bid_des" = "每投標一次需要使用一顆 %@ + %@。";
 "msgf_earn_blue_gem_instruction" = "再加把勁上傳照片獲得 %@！";
 "msgf_received_gem" = "獲得 %@ 1 顆";
-"msgf_unlock_succeeded" = "已解鎖 %@!";
+"msgf_unlock_succeeded" = "投標需要使用到 %@!";
 "msgf_bid_succeeded" = "Successfully qualified for %@ bidding";
 "msgf_start_following_you" = "%@ 追蹤你";
-"msgf_liked_your_post" = "%@ 喜歡你的照片";
+"msgf_liked_your_post" = "你的照片被 %@ 喜歡了，恭喜獲得一顆 %@。";
 "msgf_you_received_num_gems" = "官方贈送 %@ 顆 %@。";
 "msgf_post_reported" = "您的照片被用戶檢舉了，因為%@";
 "msgf_profile_reported" = "您的 Oneplanet 帳號 %@ 被用戶檢舉，原因是 違反了 Oneplanet 的%@";
-"msgf_liked_your_post_and_gave_gem" = "你的照片被 %@ 喜歡了，恭喜獲得一顆 %@";
+"msgf_liked_your_post_and_gave_gem" = "%@ 喜歡你的照片，獲得 1 顆 %@。";
 "msgf_thankyou_report_user" = "感謝您的幫助，讓 Oneplanet 保持安全和有趣。請記住，我們不會透露誰向發布照片或評論的人提交了報告。\n我們的團隊將審核該貼文，如果它違反了我們的%@，我們會將它刪除。";
 "msgf_unblock_user_prompt" = "解鎖封鎖%@嗎？";
 "msgf_block_user_prompt" = "確定要封鎖%@嗎？";
@@ -198,6 +198,7 @@
 "ph_no_room_for_photo" = "full";
 "ph_category_unlocked" = "我解鎖的";
 "ph_bidding_begins" = "競標開始！";
+"ph_purple_gem" = "紅金寶（建議投標時使用）";
 
 "phf_seconds_ago_short" = "%@ s";
 "phf_minutes_ago_short" = "%@ m";
@@ -273,7 +274,7 @@
 "pop_cooldown_time" = "等待時間 (%@)";
 "pop_free_upload_bullet" = "沒有限制上傳照片次數，但不能獲得%@。";
 "pop_cant_upload_bullet" = "請等待時間回復";
-"pop_valued_upload_bullet1" = "上傳照片評分獲得經驗值，當經驗值滿格即獲得一顆 %@";
+"pop_valued_upload_bullet1" = "上傳照片經過 AI 評分獲得經驗值，當經驗值滿格即獲得一顆 %@。";
 "pop_valued_upload_bullet2" = "越符合本次 Oneplanet 提示的顏色主題，收集 %@ 的效率越高。";
 
 "ship_first_name" = "名字";

@@ -128,14 +128,14 @@
 "msgf_insufficient_gem_bid_des" = "You need to use one %@ + %@ for each bid.";
 "msgf_earn_blue_gem_instruction" = "Upload more photos to get %@!";
 "msgf_received_gem" = "Get a %@";
-"msgf_unlock_succeeded" = "Unlocked %@!";
+"msgf_unlock_succeeded" = "The bidding needs to use %@. ";
 "msgf_bid_succeeded" = "Successfully qualified for %@ bidding";
 "msgf_start_following_you" = "%@ started following you";
-"msgf_liked_your_post" = "%@ liked your post";
+"msgf_liked_your_post" = "Congratulaions! %@ has liked your photo. You have acquired one %@.";
 "msgf_you_received_num_gems" = "The official gift %@ %@s";
 "msgf_post_reported" = "Your photo was reported by the user because of %@";
 "msgf_profile_reported" = "Your Oneplanet account %@ was reported by the user because of the violation of Oneplanet %@";
-"msgf_liked_your_post_and_gave_gem" = "Your photo was liked by %@, congratulations to get a %@.";
+"msgf_liked_your_post_and_gave_gem" = "%@ liked your post! get 1 %@";
 "msgf_thankyou_report_user" = "Thank you for helping keep the Oneplanet safe and fun for everyone. Remember, we don’t reveal who submitted reports to the person who posted the photo or comment.\n\nOur team will review the post and if it vidolates our %@, we’ll remove it.";
 "msgf_unblock_user_prompt" = "Unblock %@?";
 "msgf_block_user_prompt" = "Block %@?";
@@ -198,6 +198,7 @@
 "ph_no_room_for_photo" = "full";
 "ph_category_unlocked" = "The items I unlocked";
 "ph_bidding_begins" = "The bidding begins!";
+"ph_purple_gem" = "Rubid (Suggest for bidding)";
 
 "phf_seconds_ago_short" = "%@s";
 "phf_minutes_ago_short" = "%@m";
@@ -273,8 +274,8 @@
 "pop_cooldown_time" = "Waiting for recovery (%@)";
 "pop_free_upload_bullet" = "There is no frequency limitation of uploads here, but no %@ will be given";
 "pop_cant_upload_bullet" = "Please waiting for recovery";
-"pop_valued_upload_bullet1" = "上傳照片評分獲得經驗值，當經驗值滿格即獲得一顆 %@";
-"pop_valued_upload_bullet2" = "越符合本次 Oneplanet 提示的顏色主題，收集 %@ 的效率越高。";
+"pop_valued_upload_bullet1" = "Upload photos with AI scores to gain EXP points. When you hit full EXP, you will get one %@.";
+"pop_valued_upload_bullet2" = "The more you match with the Oneplanet color theme, the higher chance you could collect %@.";
 
 "ship_first_name" = "First Name";
 "ship_last_name" = "Last Name";

@@ -81,6 +81,41 @@ class UnlockWithPurpleGemPopUpConfiguration: UnlockPopUpConfiguration {
     }
 }
 
+class UnlockSuccessPopUpConfiguration: GemActionPopUpConfiguration {
+    override var attributedTitle: NSAttributedString {
+        return NSAttributedString(string: Localized.messages.unlockSucceeded, attributes: boldTitleAttributes)
+    }
+    
+    override var attributedSubtitle: NSAttributedString {
+        let result = NSMutableAttributedString(attributedString: descriptionPart)
+        result.append(instructionPart)
+        return result
+    }
+    
+    private var descriptionPart: NSAttributedString {
+        let text = String(format: Localized.messageFormats.unlockSucceeded, Localized.titles.blueGem)
+        let range = (text as NSString).range(of: Localized.titles.blueGem)
+        let result = NSMutableAttributedString(string: text, attributes: subtitleAttributes)
+        result.addAttributes([.link : DeepLinks.blueGemPopUp], range: range)
+        return result
+    }
+    
+    private var instructionPart: NSAttributedString {
+        let text = String(format: Localized.messageFormats.earnBlueGemInstruction, Localized.titles.blueGem)
+        let range = (text as NSString).range(of: Localized.titles.blueGem)
+        let result = NSMutableAttributedString(string: text, attributes: subtitleAttributes)
+        result.addAttributes([.link : DeepLinks.blueGemPopUp], range: range)
+        return result
+    }
+    override var cancelTitle: String {
+        return Localized.titles.ok
+    }
+    
+    override var actionTitle: String {
+        return Localized.gemStonePopUp.blueGemAction
+    }
+}
+
 class UnlockWithBlueGemPopUpConfiguration: UnlockPopUpConfiguration {
     let formattedPrice: String
     init(productName: String, formattedPrice: String) {

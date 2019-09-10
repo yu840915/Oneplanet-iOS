@@ -124,11 +124,16 @@ private extension UnlockFlowViewController {
     }
     
     func showUnlockSucceededAlert() {
-        let alert = UIAlertController(title: String(format: Localized.messageFormats.unlockSucceeded, product.displayName), message: Localized.messages.unlockSucceeded, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: Localized.titles.ok, style: .default, handler: { (_) in
-            self.dismiss(animated: false, completion: nil)
-        }))
-        present(alert, animated: true, completion: nil)
+        let container = prepareActionPopUp{[weak self] vc in
+            vc.configuration = UnlockSuccessPopUpConfiguration()
+            vc.mainAction = {
+                self?.unlock(with: .purpleGem)
+            }
+            vc.cancelAction = {
+                self?.cancelAndExit()
+            }
+        }
+        pageViewController.setViewControllers([container], direction: .forward, animated: true, completion: nil)
     }
     
     func showInsufficientGemPopUp() {

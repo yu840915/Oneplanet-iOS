@@ -128,14 +128,14 @@
 "msgf_insufficient_gem_bid_des" = "毎回入札するごとに、 1 %@ + %@が必要です。";
 "msgf_earn_blue_gem_instruction" = "写真をアップロードして、%@ をゲットしよう！";
 "msgf_received_gem" = "%@をゲットしました";
-"msgf_unlock_succeeded" = "%@でアンロックに成功しました";
+"msgf_unlock_succeeded" = "入札するには %@ が必要です!";
 "msgf_bid_succeeded" = "Successfully qualified for %@ bidding";
-"msgf_start_following_you" = "%@ started following you";
-"msgf_liked_your_post" = "%@ liked your post";
+"msgf_start_following_you" = "%@さんがあなたをファローしました。";
+"msgf_liked_your_post" = "おめでとうございます！あなたの写真が%@にLIKEされましたので、%@を1コ獲得しました。";
 "msgf_you_received_num_gems" = "You received %@ %@s";
 "msgf_post_reported" = "%@の原因で投稿が報告されました";
 "msgf_profile_reported" = "あなたのアカウント%@はOneplanet%@に違反しているので、アカウントが報告されました";
-"msgf_liked_your_post_and_gave_gem" = "Your photo was liked by %@, congratulations to get a %@.";
+"msgf_liked_your_post_and_gave_gem" = "めでとうございます！あなたの写真が%@にLIKEされましたので、%@を1コ獲得しました。";
 "msgf_thankyou_report_user" = "Oneplanetの安全の維持にご協力いただきありがとうございます。報告を受けた写真やコメントの投稿者には、報告した人についての情報は開示されません。\n審査により%@に違反していると判断された場合、この投稿は削除されます。";
 "msgf_unblock_user_prompt" = "%@さんのブロックを解除しますか？";
 "msgf_block_user_prompt" = "%@さんをブロックしますか？";
@@ -179,8 +179,8 @@
 "ph_bid_lot" = "Commodity";
 "ph_successful_shipping_info_submission" = "入力完了";
 "ph_goto_bidding" = "Go bidding page";
-"ph_get_gem" = "Get it";
-"ph_has_got_gem" = "Has got it";
+"ph_get_gem" = "報酬を受け取りしましょう";
+"ph_has_got_gem" = "報酬を受け取りました";
 "ph_new_notices" = "新通知";
 "ph_read_notices" = "過去の通知";
 "ph_recover_account" = "アカウント復元";
@@ -198,6 +198,7 @@
 "ph_no_room_for_photo" = "full";
 "ph_category_unlocked" = "私がアンロックした商品";
 "ph_bidding_begins" = "オークション スタート";
+"ph_purple_gem" = "ルビッド（入札する時にオススメ）";
 
 "phf_seconds_ago_short" = "%@ s";
 "phf_minutes_ago_short" = "%@ m";
@@ -273,8 +274,8 @@
 "pop_cooldown_time" = "待ち時間 (%@)";
 "pop_free_upload_bullet" = "写真アップロードの回数は限られていませんけど、%@を獲得できません。";
 "pop_cant_upload_bullet" = "時間復元するまでしばらくお待ちください";
-"pop_valued_upload_bullet1" = "上傳照片評分獲得經驗值，當經驗值滿格即獲得一顆 %@";
-"pop_valued_upload_bullet2" = "越符合本次 Oneplanet 提示的顏色主題，收集 %@ 的效率越高。";
+"pop_valued_upload_bullet1" = "写真をアップロードして評価されて経験値を獲得して、経験値が満タンになると即に%@を1コ獲得します。";
+"pop_valued_upload_bullet2" = "今回Oneplanetが提示したカラーテーマに該当するほど、%@の収集効率が高くなります。";
 
 "ship_first_name" = "名前";
 "ship_last_name" = "苗字";

@@ -18,7 +18,7 @@ class SendEmailLinkOperation: AlamofireAPIAccessOperation {
     
     override func prepareURLRequest() throws -> URLRequest {
         try InputValidators.email.validate(email)
-        var comp = URLComponents(url: ServiceURLs.base.appendingPathComponent("verify/email"), resolvingAgainstBaseURL: false)!
+        var comp = URLComponents(url: ServiceURLs.devBase.appendingPathComponent("verify/email"), resolvingAgainstBaseURL: false)!
         comp.queryItems = [URLQueryItem(name: "email", value: email)]
         return try URLRequest(url: try comp.asURL(), method: .post)
     }
@@ -48,7 +48,7 @@ class EmailLinkLogInOperarion: LogInOperation {
 
     override func prepareDataRequest() throws -> DataRequest {
         try credential.validate()
-        return Alamofire.request(ServiceURLs.base.appendingPathComponent("login/email"), method: .post, parameters: ["email": credential.email, "code": credential.code!], encoding: JSONEncoding(), headers: Localized.acceptLanguageHeader)
+        return Alamofire.request(ServiceURLs.devBase.appendingPathComponent("login/email"), method: .post, parameters: ["email": credential.email, "code": credential.code!], encoding: JSONEncoding(), headers: Localized.acceptLanguageHeader)
     }
 }
 

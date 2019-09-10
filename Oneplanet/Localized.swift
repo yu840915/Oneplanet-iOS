@@ -657,6 +657,12 @@ class LocalizedPhrase { //ph_
     var noRoomForPhoto: String {
         return NSLocalizedString("ph_no_room_for_photo", comment: "")
     }
+    var categoryUnlocked: String {
+        return NSLocalizedString("ph_category_unlocked", comment: "")
+    }
+    var biddingBegins: String {
+        return NSLocalizedString("ph_bidding_begins", comment: "")
+    }
 }
 
 class LocalizedPhraseFormats {//phf_
@@ -723,6 +729,12 @@ class EmptyMessages {//no_
     }
     var generic: String {
         return NSLocalizedString("no_generic", comment: "")
+    }
+    var unlocked: String {
+        return NSLocalizedString("no_unlocked", comment: "")
+    }
+    var unlockedDetail: String {
+        return NSLocalizedString("no_unlocked_detail", comment: "")
     }
 }
 

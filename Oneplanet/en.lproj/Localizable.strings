@@ -126,7 +126,7 @@
 "msgf_bid_with_gem" = "Use %@ to bid once?";
 "msgf_insufficient_gem_unlock_des" = "To unlock a items you need to use a %@ + %@。";
 "msgf_insufficient_gem_bid_des" = "You need to use one %@ + %@ for each bid.";
-"msgf_earn_blue_gem_instruction" = "Take and upload a photo to get the %@!";
+"msgf_earn_blue_gem_instruction" = "Upload more photos to get %@!";
 "msgf_received_gem" = "Get a %@";
 "msgf_unlock_succeeded" = "Unlocked %@!";
 "msgf_bid_succeeded" = "Successfully qualified for %@ bidding";
@@ -196,6 +196,8 @@
 "ph_upload_free_photo" = "Upload photo";
 "ph_dont_show_again" = "Never show again";
 "ph_no_room_for_photo" = "full";
+"ph_category_unlocked" = "The items I unlocked";
+"ph_bidding_begins" = "The bidding begins!";
 
 "phf_seconds_ago_short" = "%@s";
 "phf_minutes_ago_short" = "%@m";
@@ -218,6 +220,8 @@
 "no_follower_list" = "You don't have followers yet";
 "no_following_list" = "You haven't followed others yet";
 "no_generic" = "No Items";
+"no_unlocked" = "You have not unlocked any items yet.";
+"no_unlocked_detail" = "Unlock items to participate in the bidding! Go and unlock it!";
 
 "err_no_camera_access" = "Enable Camera Access";
 "err_no_library_access" = "Enable Library Access";

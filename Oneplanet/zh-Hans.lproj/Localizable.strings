@@ -126,7 +126,7 @@
 "msgf_bid_with_gem" = "使用一颗 %@ 投标一次？";
 "msgf_insufficient_gem_unlock_des" = "解锁一次需要使用一颗 %@ + %@。";
 "msgf_insufficient_gem_bid_des" = "每投标一次需要使用一颗 %@ + %@。";
-"msgf_earn_blue_gem_instruction" = "拍照上传照片就能获得 %@，赶紧去拍照！";
+"msgf_earn_blue_gem_instruction" = "再加把劲上传照片获得%@！";
 "msgf_received_gem" = "获得 %@ 1 颗";
 "msgf_unlock_succeeded" = "已解锁 %@!";
 "msgf_bid_succeeded" = "Successfully qualified for %@ bidding";
@@ -196,6 +196,8 @@
 "ph_upload_free_photo" = "上传照片";
 "ph_dont_show_again" = "永远不再显示";
 "ph_no_room_for_photo" = "full";
+"ph_category_unlocked" = "我解锁的";
+"ph_bidding_begins" = "竞标开始！";
 
 "phf_seconds_ago_short" = "%@ s";
 "phf_minutes_ago_short" = "%@ m";
@@ -218,6 +220,8 @@
 "no_follower_list" = "You don't have followers yet";
 "no_following_list" = "You haven't followed others yet";
 "no_generic" = "No Items";
+"no_unlocked" = "你还没解锁任何商品";
+"no_unlocked_detail" = "解锁商品就可以参加竞标喔！赶紧去解锁吧！";
 
 "err_no_camera_access" = "启用摄像头访问";
 "err_no_library_access" = "启用图库访问";

@@ -118,8 +118,8 @@
 "msgf_winner_notice" = "得標者請檢查是否填寫%@，以確保商品能夠送達。";
 "msgf_unlock_lot" = "解鎖 %@？";
 "msgf_did_unlock_lot" = "%@解鎖成功!";
-"msgf_unlock_with_gem_iap" = "使用一顆 %@ + %@？";
-"msgf_unlock_with_gem" = "使用一顆 %@ 解鎖？";
+"msgf_unlock_with_gem_iap" = "使用一顆 %@ + %@ 解鎖此商品？";
+"msgf_unlock_with_gem" = "使用一顆 %@ 解鎖此商品？";
 "msgf_insufficient_gem" = "你的 %@ 不足";
 "msgf_bid_prompt" = "投標 %@ 一次";
 "msgf_bid_with_gem_iap" = "使用一顆 %@ + %@ 投標一次?";
@@ -252,7 +252,7 @@
 "act_countdown" = "競標倒數...";
 
 "pop_blue_gem_usage" = "用途：解鎖商品、投標商品。";
-"pop_green_gem_usage" = "用途：解鎖商品、高效率投標商品。";
+"pop_green_gem_usage" = "用途：解鎖商品。";
 "pop_purple_gem_usage" = "用途：解鎖商品、高效率投標商品。";
 
 "pop_blue_gem_action" = "立即前往 上傳照片";
@@ -262,10 +262,9 @@
 "pop_blue_gem_bullet2" = "獲得方式：上傳照片評分獲得經驗值，當經驗值滿格即獲得一顆 %@。";
 "pop_blue_gem_bullet3" = "將 %@ 升級成 %@，有助於競標時的效率，並減少信用卡或電信商的支付問題。";
 
-"pop_green_gem_bullet1" = "獲得方式ㄧ：Supreme.AI (官方) 喜歡你的相片。";
-"pop_green_gem_bullet2" = "獲得方式二：該週排行榜冠軍族群的用戶。";
-"pop_green_gem_bullet3" = "獲得方式三：不定期舉辦 %@，請密切關注！";
-"pop_green_gem_bullet4" = "使用一顆 解鎖寶 即可解鎖一項商品。";
+"pop_green_gem_bullet1" = "使用一顆 %@ 可以直接解鎖一件商品。";
+"pop_green_gem_bullet2" = "獲得方式ㄧ：Supreme.AI (官方) 喜歡你的相片。";
+"pop_green_gem_bullet3" = "獲得方式二：配合活動贈送";
 
 "pop_purple_gem_bullet1" = "使用一顆 紅金寶 可以直接解鎖一件商品或投標一次（建議使用在投標，以達到高效率投標之效果）。";
 "pop_purple_gem_bullet2" = "紅金寶 是 %@ 的升級版，有助於競標時的效率，並減少信用卡或電信商的支付問題。";

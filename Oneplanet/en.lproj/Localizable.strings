@@ -118,12 +118,12 @@
 "msgf_winner_notice" = "The winner must check if the %@ is filled in to ensure that the items can be delivered.";
 "msgf_unlock_lot" = "Unlock %@?";
 "msgf_did_unlock_lot" = "%@ Unlocked!";
-"msgf_unlock_with_gem_iap" = "Use a %@ + %@ to unlock?";
-"msgf_unlock_with_gem" = "Use a %@ to unlock?";
+"msgf_unlock_with_gem_iap" = "Would you like to unlock this item with one %@ + %@?";
+"msgf_unlock_with_gem" = "Would you like to unlock this item with one %@?";
 "msgf_insufficient_gem" = "Your %@ is not enough";
 "msgf_bid_prompt" = "Bid %@ once";
-"msgf_bid_with_gem_iap" = "Use a %@ + %@ to bid once?";
-"msgf_bid_with_gem" = "Use %@ to bid once?";
+"msgf_bid_with_gem_iap" = "Would you like to place a bid with one %@ + %@?";
+"msgf_bid_with_gem" = "Would you like to place a bid with one %@?";
 "msgf_insufficient_gem_unlock_des" = "To unlock a items you need to use a %@ + %@。";
 "msgf_insufficient_gem_bid_des" = "You need to use one %@ + %@ for each bid.";
 "msgf_earn_blue_gem_instruction" = "Upload more photos to get %@!";
@@ -252,7 +252,7 @@
 "act_countdown" = "COUNTDOWN TO BIDDING…";
 
 "pop_blue_gem_usage" = "The use: Unlock items, bidding.";
-"pop_green_gem_usage" = "用途：解鎖商品、高效率投標商品。";
+"pop_green_gem_usage" = "The use: Unlock items.";
 "pop_purple_gem_usage" = "The use: Unlock items, high-efficiency bidding.";
 
 "pop_blue_gem_action" = "Go to upload photos";
@@ -262,10 +262,9 @@
 "pop_blue_gem_bullet2" = "How to gain Safrid: Upload photos to get EXP, when you hit full EXP, you get one %@.";
 "pop_blue_gem_bullet3" = "By upgrading %@ to %@, you will experience higher efficiency at bidding, and possibly reduce payment issues from credit card/telecom company.";
 
-"pop_green_gem_bullet1" = "獲得方式ㄧ：Supreme.AI (官方) 喜歡你的相片。";
-"pop_green_gem_bullet2" = "獲得方式二：該週排行榜冠軍族群的用戶。";
-"pop_green_gem_bullet3" = "獲得方式三：不定期舉辦 %@，請密切關注！";
-"pop_green_gem_bullet4" = "使用一顆 解鎖寶 即可解鎖一項商品。";
+"pop_green_gem_bullet1" = "You can unlock an item by using one %@.";
+"pop_green_gem_bullet2" = "How to gain 1. If Supreme.AI official account likes your photo.";
+"pop_green_gem_bullet3" = "How to gain 2. Gaining through events give-aways.";
 
 "pop_purple_gem_bullet1" = "You can unlock or bid for an item straight away by using one Rubid.";
 "pop_purple_gem_bullet2" = "The Rubid is an upgrade of %@. Rubid improves bidding efficiency, and possibly reduce payment issues from credit card/telecom company.";

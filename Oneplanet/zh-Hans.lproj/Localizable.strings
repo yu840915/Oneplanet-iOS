@@ -118,8 +118,8 @@
 "msgf_winner_notice" = "得标者请检查是否填写%@，以确保商品能够送达。";
 "msgf_unlock_lot" = "解锁 %@？";
 "msgf_did_unlock_lot" = "已解锁 %@！";
-"msgf_unlock_with_gem_iap" = "使用一颗 %@ + %@？";
-"msgf_unlock_with_gem" = "使用一颗 %@ 解锁？";
+"msgf_unlock_with_gem_iap" = "使用一颗 %@ + %@ 解锁此商品？";
+"msgf_unlock_with_gem" = "使用一颗 %@ 解锁此商品？";
 "msgf_insufficient_gem" = "你的 %@ 数量不足";
 "msgf_bid_prompt" = "投标 %@ 一次";
 "msgf_bid_with_gem_iap" = "使用一颗 %@ + %@ 投标一次?";
@@ -252,7 +252,7 @@
 "act_countdown" = "竞标倒数...";
 
 "pop_blue_gem_usage" = "用途：解锁商品、投标商品。";
-"pop_green_gem_usage" = "用途：解锁商品、高效率投标商品。";
+"pop_green_gem_usage" = "用途：解锁商品。";
 "pop_purple_gem_usage" = "用途：解锁商品、高效率投标商品。";
 
 "pop_blue_gem_action" = "立即前往 上传照片";
@@ -262,10 +262,9 @@
 "pop_blue_gem_bullet2" = "获得方式：上传照片评分获得经验值，当经验值满格即获得一颗 %@。";
 "pop_blue_gem_bullet3" = "将 %@ 升级成 %@，有助于竞标时的效率，并减少信用卡或电信商的支付问题。";
 
-"pop_green_gem_bullet1" = "获得方式ㄧ：Supreme.AI（官方）喜欢你的相片。";
-"pop_green_gem_bullet2" = "获得方式二：该周排行榜冠军族群的用户。";
-"pop_green_gem_bullet3" = "获得方式三：不定期举办%@，请密切关注！";
-"pop_green_gem_bullet4" = "使用一颗解锁宝即可解锁一项商品。";
+"pop_green_gem_bullet1" = "使用一颗%@可以直接解锁一件商品。";
+"pop_green_gem_bullet2" = "获得方式ㄧ：Supreme.AI（官方）喜欢你的相片。";
+"pop_green_gem_bullet3" = "获得方式二：配合活动赠送";
 
 "pop_purple_gem_bullet1" = "使用一颗 红金宝 可以直接解锁一件商品或投标一次。（建议使用在投标，以达到高效率投标之效果）";
 "pop_purple_gem_bullet2" = "红金宝 是 %@ 的升级版，有助于竞标时的效率，并减少信用卡或电信商的支付问题。";

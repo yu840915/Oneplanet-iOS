@@ -845,9 +845,6 @@ class GemStonePopUp { //pop
     var greenGemBullet3: String {
         return NSLocalizedString("pop_green_gem_bullet3", comment: "")
     }
-    var greenGemBullet4: String {
-        return NSLocalizedString("pop_green_gem_bullet4", comment: "")
-    }
     var purpleGemBullet1: String {
         return NSLocalizedString("pop_purple_gem_bullet1", comment: "")
     }

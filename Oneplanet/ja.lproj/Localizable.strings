@@ -118,12 +118,12 @@
 "msgf_winner_notice" = "確実にお届けするために、落札者は%@が正しく入力されていることをよくご確認下さい。";
 "msgf_unlock_lot" = "Unlock %@?";
 "msgf_did_unlock_lot" = "%@ でアンロックに成功しました";
-"msgf_unlock_with_gem_iap" = "1 %@ + %@ 使って、アンロックしますか？";
-"msgf_unlock_with_gem" = "1 %@ を使って、アンロックしますか？";
+"msgf_unlock_with_gem_iap" = "1 %@1コ + %@を使用してアンロックしますか？";
+"msgf_unlock_with_gem" = "1 %@ でアンロックしますか？";
 "msgf_insufficient_gem" = "%@が不足しています";
 "msgf_bid_prompt" = "%@ に一回入札しますか？";
-"msgf_bid_with_gem_iap" = "1 %@ + %@ 使って、一回入札しますか？ ";
-"msgf_bid_with_gem" = "1 %@ 使って、一回入札しますか？";
+"msgf_bid_with_gem_iap" = "1 %@1コ + %@を使用して一回入札しますか？";
+"msgf_bid_with_gem" = "%@を1コ使用して一回入札しますか？";
 "msgf_insufficient_gem_unlock_des" = "一つ商品をアンロックするごとに、1 %@ + %@が必要です。";
 "msgf_insufficient_gem_bid_des" = "毎回入札するごとに、 1 %@ + %@が必要です。";
 "msgf_earn_blue_gem_instruction" = "写真をアップロードして、%@ をゲットしよう！";
@@ -186,7 +186,7 @@
 "ph_recover_account" = "アカウント復元";
 "ph_petition_submitted" = "報告成功";
 "ph_i_get_it" = "分かりました";
-"ph_unlock_option_prompt" = "アンロックするジェムを選択します";
+"ph_unlock_option_prompt" = "アンロックするジェムを選択しましょう";
 "ph_latest_posts" = "最新";
 "ph_best_posts" = "最好評";
 "ph_thanks_for_reporting_post" = "ご報告ありがとうございました";
@@ -252,7 +252,7 @@
 "act_countdown" = "オークション カウントダウン...";
 
 "pop_blue_gem_usage" = "使いみち：商品のアンロック、入札。";
-"pop_green_gem_usage" = "用途：解鎖商品、高效率投標商品。";
+"pop_green_gem_usage" = "使いみち：商品のアンロック。";
 "pop_purple_gem_usage" = "使いみち：商品のアンロック、高効率の商品入札。";
 
 "pop_blue_gem_action" = "写真をアップロードします";
@@ -262,10 +262,9 @@
 "pop_blue_gem_bullet2" = "獲得方法：写真をアップロードして評価されて経験値が満タンになると即に%@を1コ獲得します。";
 "pop_blue_gem_bullet3" = "%@を%@にアップグレードすることは、入札時の効率に、またクレジットカード又はキャリア決済の支払問題の減少に役立ちます。";
 
-"pop_green_gem_bullet1" = "獲得方式ㄧ：Supreme.AI (官方) 喜歡你的相片。";
-"pop_green_gem_bullet2" = "獲得方式二：該週排行榜冠軍族群的用戶。";
-"pop_green_gem_bullet3" = "獲得方式三：不定期舉辦 %@，請密切關注！";
-"pop_green_gem_bullet4" = "使用一顆 解鎖寶 即可解鎖一項商品。";
+"pop_green_gem_bullet1" = "%@を1コ使用したら、直接に商品をアンロックできます。";
+"pop_green_gem_bullet2" = "獲得方法1：Supreme.AIがあなたの写真にLIKEされます。";
+"pop_green_gem_bullet3" = "獲得方法2：イベントに合わせて贈ります。";
 
 "pop_purple_gem_bullet1" = "ルビッドを1コ使用したら、直接に商品へのアンロック、または入札することが一回できます。（高効率入札に達するため、商品への入札に使用のがお勧め。）";
 "pop_purple_gem_bullet2" = "ルビッドは%@のアップグレードバージョン。入札時の効率に、またクレジットカード又はキャリア決済の支払問題の減少に役立ちます。";

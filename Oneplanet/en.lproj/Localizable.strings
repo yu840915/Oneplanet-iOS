@@ -92,7 +92,9 @@
 "msg_lot_being_bid_des" = "The bidding is in progress and the next issue will be announced within 48H, so stay tuned!";
 "msg_lot_closed" = "Unlock time was ended";
 "msg_lot_closed_des" = "The bidding has ended. The next issue will be announced within 48H, so stay tuned!";
+"msg_bid_too_late" = "Exceeds the biding time limit";
 "msg_bid_payment_too_late" = "Payment is successful but exceeding the biding time limit";
+"msg_gem_unchanged" = "Transaction doesn't occurred";
 "msg_race1_monologue" = "My name is Focker.";
 "msg_race2_monologue" = "My name is Dicker.";
 "msg_race3_monologue" = "My name is Drunker.";

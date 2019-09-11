@@ -92,7 +92,9 @@
 "msg_lot_being_bid_des" = "竞标正在进行中，48H内会公布下一期商品，敬请期待！";
 "msg_lot_closed" = "已超过解锁时间";
 "msg_lot_closed_des" = "本期竞标已结束，48H内会公布下一期商品，敬请期待！";
+"msg_bid_too_late" = "超过了下标时限";
 "msg_bid_payment_too_late" = "付款成功但超过了下标时限";
+"msg_gem_unchanged" = "Transaction doesn't occurred";
 "msg_race1_monologue" = "我的名字叫法克。";
 "msg_race2_monologue" = "我的名字叫迪克。";
 "msg_race3_monologue" = "我的名字叫壮克。";

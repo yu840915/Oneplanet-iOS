@@ -78,7 +78,11 @@ extension BidFlowViewController {
     }
     
     func showTimeOutAlert() {
-        
+        let alert = UIAlertController(title: Localized.messages.bidTooLate, message: Localized.messages.gemUnchanged, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Localized.titles.ok, style: .cancel, handler: { (_) in
+            self.cancelAndExit()
+        }))
+        present(alert, animated: true, completion: nil)
     }
     
     func showFailureAlert(_ error: Error) {

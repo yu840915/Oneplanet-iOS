@@ -92,7 +92,9 @@
 "msg_lot_being_bid_des" = "競標正在進行中，48H 內會公布下一期商品，敬請期待！";
 "msg_lot_closed" = "已超過解鎖時間";
 "msg_lot_closed_des" = "本期競標已結束，48H 內會公布下一期商品，敬請期待！";
+"msg_bid_too_late" = "該商品已超過下標時限";
 "msg_bid_payment_too_late" = "付款成功但超過了下標時限";
+"msg_gem_unchanged" = "此狀況不會扣寶石";
 "msg_race1_monologue" = "我的名字叫法克。";
 "msg_race2_monologue" = "我的名字叫迪克。";
 "msg_race3_monologue" = "我的名字叫壯克。";

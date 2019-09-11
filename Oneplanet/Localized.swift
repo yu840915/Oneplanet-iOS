@@ -340,8 +340,14 @@ class LocalizedMessages {//msg_
     var lotClosedDescription: String {
         return NSLocalizedString("msg_lot_closed_des", comment: "")
     }
+    var bidTooLate: String {
+        return NSLocalizedString("msg_bid_too_late", comment: "")
+    }
     var bidPaymentTooLate: String {
         return NSLocalizedString("msg_bid_payment_too_late", comment: "")
+    }
+    var gemUnchanged: String {
+        return NSLocalizedString("msg_gem_unchanged", comment: "")
     }
     var race1Monologue: String {
         return NSLocalizedString("msg_race1_monologue", comment: "")

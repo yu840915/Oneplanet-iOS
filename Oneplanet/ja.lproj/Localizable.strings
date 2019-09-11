@@ -92,7 +92,9 @@
 "msg_lot_being_bid_des" = "ただいま入札中です。48時間以内次回の入札商品を公表します。お見逃しなく！";
 "msg_lot_closed" = "アンロックできる時間を超えてしまいました";
 "msg_lot_closed_des" = "オークションが終了しました。48時間以内次回の入札商品を公表します。お見逃しなく！";
+"msg_bid_too_late" = "入札時間を超えました";
 "msg_bid_payment_too_late" = "支払いが成功しましたが、入札時間を超えました";
+"msg_gem_unchanged" = "Transaction doesn't occurred";
 "msg_race1_monologue" = "ファッカーです。";
 "msg_race2_monologue" = "ディカーです。";
 "msg_race3_monologue" = "ドランカーです。";

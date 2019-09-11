@@ -70,7 +70,6 @@ class UserSession {
     }
     
     func updateProfile(_ profile: MyProfile) {
-        profile.avatar = WebImageInfo(url: ServiceURLs.base.appendingPathComponent("me/avatar.jpg"), accessToken: bearerToken)
         self.profile = profile
     }
     
@@ -148,15 +147,19 @@ class MyProfile: Decodable, UserProfileDisplayable {
     let id: String
     let nickname: String
     let username: String
-    fileprivate(set) var avatar: WebImageInfo?
+    let avatar: WebImageInfo?
     var alien: Alien?
     let gender: Gender
+    var isEmpty: Bool {
+        return username.isEmpty
+    }
     enum CodingKeys: String, CodingKey {
-        case id
+        case id = "_id"
         case nickname = "display_name"
         case username
         case gender
         case alien
+        case avatar
     }
     
     init(id: String, username: String, nickname: String, gender: Gender, avatar: WebImageInfo?) {
@@ -174,6 +177,11 @@ class MyProfile: Decodable, UserProfileDisplayable {
         username = try container.decodeIfPresent(String.self, forKey: .username) ?? ""
         gender = Gender.from(try container.decodeIfPresent(String.self, forKey: .gender))
         alien = try container.decodeIfPresent(Alien.self, forKey: .alien)
+        if let url = try container.decodeIfPresent(URL.self, forKey: .avatar) {
+            avatar = WebImageInfo(url: url)
+        } else {
+            avatar = nil
+        }
     }
     
     func updating(with draft: ProfileDraft) -> MyProfile {
@@ -233,7 +241,7 @@ class GetMyProfileOperation: AlamofireAPIAccessOperation {
     }
     
     override func prepareURLRequest() throws -> URLRequest {
-        let req = URLRequest(url: ServiceURLs.base.appendingPathComponent("me"))
+        let req = URLRequest(url: ServiceURLs.devBase.appendingPathComponent("me"))
         return session.addingAuthorizationToken(to: req)
     }
     

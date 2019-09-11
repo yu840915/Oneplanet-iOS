@@ -124,8 +124,8 @@
 "msgf_bid_prompt" = "Bid %@ once";
 "msgf_bid_with_gem_iap" = "Would you like to place a bid with one %@ + %@?";
 "msgf_bid_with_gem" = "Would you like to place a bid with one %@?";
-"msgf_insufficient_gem_unlock_des" = "To unlock a items you need to use a %@ + %@。";
-"msgf_insufficient_gem_bid_des" = "You need to use one %@ + %@ for each bid.";
+"msgf_insufficient_gem_unlock_des" = "You need one %@ + %@ to unlock an item. ";
+"msgf_insufficient_gem_bid_des" = "You need one %@ + %@ to place a bid. ";
 "msgf_earn_blue_gem_instruction" = "Upload more photos to get %@!";
 "msgf_received_gem" = "Get a %@";
 "msgf_unlock_succeeded" = "The bidding needs to use %@. ";

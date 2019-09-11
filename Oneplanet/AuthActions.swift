@@ -20,7 +20,9 @@ class SendEmailLinkOperation: AlamofireAPIAccessOperation {
         try InputValidators.email.validate(email)
         var comp = URLComponents(url: ServiceURLs.devBase.appendingPathComponent("verify/email"), resolvingAgainstBaseURL: false)!
         comp.queryItems = [URLQueryItem(name: "email", value: email)]
-        return try URLRequest(url: try comp.asURL(), method: .post)
+        var req = try URLRequest(url: try comp.asURL(), method: .post)
+        req.addValue(Localized.languageCode, forHTTPHeaderField: Localized.acceptLanguageKey)
+        return req
     }
 }
 
@@ -45,10 +47,13 @@ class EmailLinkLogInOperarion: LogInOperation {
     init(credential: EmailAuthCredential) {
         self.credential = credential
     }
-
-    override func prepareDataRequest() throws -> DataRequest {
+    
+    override func prepareURLRequest() throws -> URLRequest {
         try credential.validate()
-        return Alamofire.request(ServiceURLs.devBase.appendingPathComponent("login/email"), method: .post, parameters: ["email": credential.email, "code": credential.code!], encoding: JSONEncoding(), headers: Localized.acceptLanguageHeader)
+        var comp = URLComponents(url: ServiceURLs.devBase.appendingPathComponent("login/email"), resolvingAgainstBaseURL: false)!
+        comp.queryItems = [URLQueryItem(name: "email", value: credential.email),
+                           URLQueryItem(name: "code", value: credential.code!)]
+        return try URLRequest(url: try comp.asURL(), method: .post)
     }
 }
 

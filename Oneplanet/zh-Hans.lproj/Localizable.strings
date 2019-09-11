@@ -124,8 +124,8 @@
 "msgf_bid_prompt" = "投标 %@ 一次";
 "msgf_bid_with_gem_iap" = "使用一颗 %@ + %@ 投标一次?";
 "msgf_bid_with_gem" = "使用一颗 %@ 投标一次？";
-"msgf_insufficient_gem_unlock_des" = "解锁一次需要使用一颗 %@ + %@。";
-"msgf_insufficient_gem_bid_des" = "每投标一次需要使用一颗 %@ + %@。";
+"msgf_insufficient_gem_unlock_des" = "解锁一件商品需要使用一颗 %@ + %@。";
+"msgf_insufficient_gem_bid_des" = "每投标一次需要使用一颗%@ + %@。";
 "msgf_earn_blue_gem_instruction" = "再加把劲上传照片获得%@！";
 "msgf_received_gem" = "获得 %@ 1 颗";
 "msgf_unlock_succeeded" = "投标需要使用到 %@!";

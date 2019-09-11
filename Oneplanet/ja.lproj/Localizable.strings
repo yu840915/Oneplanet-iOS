@@ -124,7 +124,7 @@
 "msgf_bid_prompt" = "%@ に一回入札しますか？";
 "msgf_bid_with_gem_iap" = "1 %@1コ + %@を使用して一回入札しますか？";
 "msgf_bid_with_gem" = "%@を1コ使用して一回入札しますか？";
-"msgf_insufficient_gem_unlock_des" = "一つ商品をアンロックするごとに、1 %@ + %@が必要です。";
+"msgf_insufficient_gem_unlock_des" = "一つ商品をアンロックするごとに、1 %@ + %@ が必要です。";
 "msgf_insufficient_gem_bid_des" = "毎回入札するごとに、 1 %@ + %@が必要です。";
 "msgf_earn_blue_gem_instruction" = "写真をアップロードして、%@ をゲットしよう！";
 "msgf_received_gem" = "%@をゲットしました";

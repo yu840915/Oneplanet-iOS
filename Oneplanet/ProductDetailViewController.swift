@@ -43,6 +43,7 @@ class ProductDetailViewController: UIViewController, UserSessionDepending {
             updateViewsForPreviews()
         }
     }
+    private var handles: [Any]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +54,22 @@ class ProductDetailViewController: UIViewController, UserSessionDepending {
         } else {
             getProductDetail()
         }
+        setUpHandles()
+        updateViewsForBidPhase()
+    }
+    
+    private func setUpHandles() {
+        var handles: [Any] = []
+        handles.append(userSession.bidPhaseIndicator.updateObservers.add {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.updateViewsForBidPhase()
+            }
+        })
+        self.handles = handles
+    }
+    
+    private func updateViewsForBidPhase() {
+        lockView.isHidden = userSession.bidPhaseIndicator.biddingHasStarted
     }
     
     override func viewWillAppear(_ animated: Bool) {

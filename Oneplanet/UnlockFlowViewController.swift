@@ -17,7 +17,6 @@ class UnlockFlowViewController: UIViewController, UserSessionDepending {
         super.viewDidLoad()
         if userSession.wallet.greenGem.total > 0 {
             showGreenGemPopUp()
-            showPurpleGemPopUp(animated: false)
         } else if userSession.wallet.blueGem.total > 0 && userSession.wallet.purpleGem.total > 0 {
             showGemPicker()
         } else if userSession.wallet.blueGem.total > 0 {

@@ -12,6 +12,9 @@ import XLPagerTabStrip
 class ProductListTableViewController: UITableViewController, DefaultInstanceFactory, UserSessionDepending {
     
     var userSession: UserSession!
+    var bidPhaseIndicator: BidPhaseIndicator {
+        return userSession.bidPhaseIndicator
+    }
     var sections: [Section] = [.runningBiddingIndicator, .biddingEndedIndicator, .productList, .bidList]
     private var wantsTutorial = false
     private var tutorialPlan: TutorialPlan?
@@ -27,6 +30,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
     private var bidProcesses: [BidProcess] = []
     private var categoryListHandles: [Any]?
     private var lotListDidUpdateHandles: [Any]?
+    private var bidPhaseUpdateHandle: Any?
     
     class func fromDefaultStoryboard() -> ProductListTableViewController {
         return UIStoryboard(name: "Auction", bundle: nil).instantiateViewController(withIdentifier: "ProductListTableViewController") as! ProductListTableViewController
@@ -34,15 +38,62 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        prepareLotList()
         tableView.register(ProductListHeader.defaultNib(), forHeaderFooterViewReuseIdentifier: ReuseID.productListHeader)
         tableView.register(BiddingListHeader.defaultNib(), forHeaderFooterViewReuseIdentifier: ReuseID.biddingListHeader)
         navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
         refreshClock = UpdateClock(preferredFrameRate: 15, onTick: {[weak self] in
             self?.refreshDynamicViews()
         })
-        countdownDescriptionLabel.text = Localized.activity.countdown
-        updateCategoryList(with: "all")
+        prepareListForBidPhase()
+        bidPhaseUpdateHandle = bidPhaseIndicator.updateObservers.add {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.prepareListForBidPhase()
+                self?.updateViewsForBidPhase()
+            }
+        }
+        updateViewsForBidPhase()
+    }
+    
+    private func prepareListForBidPhase() {
+        if userSession.bidPhaseIndicator.biddingHasStarted {
+            if myLotList == nil {
+                prepareLotList()
+            }
+            categoryList = nil
+        } else {
+            if categoryList == nil {
+                updateCategoryList(with: "other")
+            }
+            myLotList = nil
+        }
+    }
+    
+    private func updateViewsForBidPhase() {
+        switch bidPhaseIndicator.phase {
+        case .unlock:
+            countdownDescriptionLabel.text = Localized.activity.countdown
+            countDownView.deadline = userSession.bidPhaseIndicator.startDate
+        case .running, .spectator:
+            countdownDescriptionLabel.text = Localized.activity.bidding
+        case .ended:
+            countdownDescriptionLabel.text = nil
+        }
+        updateSectionsForBidPhase()
+    }
+    private func updateSectionsForBidPhase() {
+        var values: [Section] = []
+        if bidPhaseIndicator.biddingHasStarted {
+            switch bidPhaseIndicator.phase {
+            case .ended: values.append(.biddingEndedIndicator)
+            case .spectator: values.append(.runningBiddingIndicator)
+            default: break
+            }
+            values.append(.bidList)
+        } else {
+            values = [.productList]
+        }
+        sections = values
+        tableView.reloadData()
     }
     
     func updateCategoryList(with query: String) {
@@ -166,7 +217,10 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
             return nil
         case .productList:
             let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReuseID.productListHeader) as! ProductListHeader
-            view.title = "All"
+            view.title = categoryList?.query ?? "–"
+            if view.title.lowercased() == "unlocked" {
+                view.title = Localized.phrases.categoryUnlocked
+            }
             view.showFilterAction = {[weak self] in
                 self?.showFilterPicker()
             }

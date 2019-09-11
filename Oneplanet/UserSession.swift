@@ -34,6 +34,7 @@ class UserSession {
         }
     }
     var socialProfile: PublicProfile?
+    private(set) var bidPhaseIndicator: BidPhaseIndicator!
     private(set) var isActive = true
     let sessionBecomeInactiveObservers = MulticastCallbackNode<()->()>()
     private(set) var updateProfileOperation: UpdateProfileOperation?
@@ -44,6 +45,7 @@ class UserSession {
         self.loginType = loginType
         wallet = Wallet(userSession: self)
         bidEventProcessManager = BidProcessManager(userSession: self)
+        bidPhaseIndicator = BidPhaseIndicator(currentPhase: .unlock, bidProcessManager: bidEventProcessManager)
     }
     
     func submitProfileChanges(with draft: ProfileDraft, completion: ((Bool, Error?)->())? = nil) {

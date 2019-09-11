@@ -167,6 +167,7 @@
 		E0C18E6622FC85890086C114 /* PostEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C18E6522FC85890086C114 /* PostEditorViewController.swift */; };
 		E0C98E232328ADB600B0BF00 /* UploadPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C98E222328ADB600B0BF00 /* UploadPhotoOperation.swift */; };
 		E0C98E252328EB3700B0BF00 /* FullscreenLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C98E242328EB3700B0BF00 /* FullscreenLoadingViewController.swift */; };
+		E0C98E272328F5EF00B0BF00 /* BidPhaseIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C98E262328F5EF00B0BF00 /* BidPhaseIndicator.swift */; };
 		E0CB5E11228F0B4A00C0C010 /* TreasuryBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CB5E10228F0B4A00C0C010 /* TreasuryBarViewController.swift */; };
 		E0CB5E15228F0E5F00C0C010 /* DS-DIGIB.TTF in Resources */ = {isa = PBXBuildFile; fileRef = E0CB5E14228F0E5F00C0C010 /* DS-DIGIB.TTF */; };
 		E0D1BBD922ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D1BBD822ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift */; };
@@ -390,6 +391,7 @@
 		E0C18E6522FC85890086C114 /* PostEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorViewController.swift; sourceTree = "<group>"; };
 		E0C98E222328ADB600B0BF00 /* UploadPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPhotoOperation.swift; sourceTree = "<group>"; };
 		E0C98E242328EB3700B0BF00 /* FullscreenLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullscreenLoadingViewController.swift; sourceTree = "<group>"; };
+		E0C98E262328F5EF00B0BF00 /* BidPhaseIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidPhaseIndicator.swift; sourceTree = "<group>"; };
 		E0CB5E10228F0B4A00C0C010 /* TreasuryBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreasuryBarViewController.swift; sourceTree = "<group>"; };
 		E0CB5E14228F0E5F00C0C010 /* DS-DIGIB.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DS-DIGIB.TTF"; sourceTree = "<group>"; };
 		E0D1BBD822ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalComponentExtractorTests.swift; sourceTree = "<group>"; };
@@ -554,6 +556,7 @@
 				E032844422AB6A50001F02E8 /* AuctionMainViewController.swift */,
 				E0D1BBDA22ACEE9400951F19 /* TimeIntervalComponents.swift */,
 				E032844822AB7286001F02E8 /* ProductListTableViewController.swift */,
+				E0C98E262328F5EF00B0BF00 /* BidPhaseIndicator.swift */,
 				E0F26896231390B300CE5C45 /* ProductFilterPickerTableViewController.swift */,
 				E033F07F2300006E006EB3AE /* ProductListCells.swift */,
 				E0DCD05622B9CC3D008D9C63 /* ProductDetailViewController.swift */,
@@ -1225,6 +1228,7 @@
 				E0B3FBDB22F6895700BD53C9 /* PostCreationPortalViewController.swift in Sources */,
 				E0B57DE122A0FA48006AEADB /* DefaultStyleConfiguration.swift in Sources */,
 				E00611F22294F5680032AE30 /* HotCollectionViewController.swift in Sources */,
+				E0C98E272328F5EF00B0BF00 /* BidPhaseIndicator.swift in Sources */,
 				E0DCD05B22B9D960008D9C63 /* EmptyLotListView.swift in Sources */,
 				E02F49CF22E595010014DEBE /* FollowingListTableViewController.swift in Sources */,
 				E03C32B0226D8E8F00C32FD7 /* NavigationBarStyle.swift in Sources */,

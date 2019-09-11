@@ -39,7 +39,7 @@ class GemPickerTableViewController: UITableViewController {
         subtitleLabel.text = Localized.messages.unlockOptionPrompt
         cancelButton.setTitle(Localized.titles.cancel, for: .normal)
         blueGemLabel.text = Localized.titles.blueGem
-        purpleGemLabel.text = Localized.titles.purpleGem
+        purpleGemLabel.text = Localized.phrases.purpleGem
     }
     
     @IBAction func cancel(_ sender: Any) {

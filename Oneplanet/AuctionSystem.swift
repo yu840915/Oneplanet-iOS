@@ -93,6 +93,9 @@ class BidProcessManager {
     lazy var pushListener: PushListener = PushListener()
     private weak var userSession: UserSession!
     private var processes: [String: BidProcess] = [:]
+    var isEnded: Bool {
+        return !processes.contains{$0.value.isEnded == false}
+    }
     
     init(userSession: UserSession) {
         self.userSession = userSession

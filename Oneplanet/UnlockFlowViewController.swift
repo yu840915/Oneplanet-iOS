@@ -15,6 +15,10 @@ class UnlockFlowViewController: UIViewController, UserSessionDepending {
     var pageViewController: UIPageViewController!
     override func viewDidLoad() {
         super.viewDidLoad()
+        if userSession.bidPhaseIndicator.biddingHasStarted {
+            showTooLatePopUp(animated: false)
+            return
+        }
         if userSession.wallet.greenGem.total > 0 {
             showGreenGemPopUp()
         } else if userSession.wallet.blueGem.total > 0 && userSession.wallet.purpleGem.total > 0 {
@@ -48,6 +52,10 @@ private extension UnlockFlowViewController {
     }
     
     func unlock(with gemType: Currency) {
+        if userSession.bidPhaseIndicator.biddingHasStarted {
+            showTooLatePopUp(animated: true)
+            return
+        }
         
     }
     
@@ -151,6 +159,16 @@ private extension UnlockFlowViewController {
         dismiss(animated: true) {
             router.handle(DeepLinks.postEditor)
         }
+    }
+    
+    func showTooLatePopUp(animated: Bool) {
+        let container = prepareActionPopUp {[weak self] (vc) in
+            vc.configuration = UnlockTooLateConfiguration()
+            vc.mainAction = {
+                self?.cancelAndExit()
+            }
+        }
+        pageViewController.setViewControllers([container], direction: .forward, animated: animated, completion: nil)
     }
 }
 

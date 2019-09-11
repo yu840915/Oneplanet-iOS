@@ -146,7 +146,7 @@ class BidPopUpConfiguration: GemActionPopUpConfiguration {
     }
 }
 
-class BidWithPurpleGemPopUpConfiguration: UnlockPopUpConfiguration {
+class BidWithPurpleGemPopUpConfiguration: BidPopUpConfiguration {
     override var icon: UIImage {
         return #imageLiteral(resourceName: "im_08_rubidbid")
     }
@@ -157,7 +157,7 @@ class BidWithPurpleGemPopUpConfiguration: UnlockPopUpConfiguration {
     }
 }
 
-class BidWithBlueGemPopUpConfiguration: UnlockPopUpConfiguration {
+class BidWithBlueGemPopUpConfiguration: BidPopUpConfiguration {
     let formattedPrice: String
     init(productName: String, formattedPrice: String) {
         self.formattedPrice = formattedPrice
@@ -168,7 +168,7 @@ class BidWithBlueGemPopUpConfiguration: UnlockPopUpConfiguration {
     }
     override var attributedSubtitle: NSAttributedString {
         return NSAttributedString(
-            string: String(format: Localized.messageFormats.bidWithGemAndIAP, Localized.titles.purpleGem, formattedPrice),
+            string: String(format: Localized.messageFormats.bidWithGemAndIAP, Localized.titles.blueGem, formattedPrice),
             attributes: subtitleAttributes)
     }
 }

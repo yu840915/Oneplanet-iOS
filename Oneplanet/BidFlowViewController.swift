@@ -11,6 +11,7 @@ import UIKit
 class BidFlowViewController: UIViewController, UserSessionDepending {
     var userSession: UserSession!
     var product: ProductOverview!
+    var bidProcess: BidProcess!
     private var bidOperation: BidProductOperation?
 
     var pageViewController: UIPageViewController!
@@ -44,6 +45,12 @@ extension BidFlowViewController {
     }
     
     func bid(with gem: Currency) {
+        guard bidProcess.isInitialized && !bidProcess.isEnded else {
+            showTimeOutAlert()
+            return
+        }
+        let loading = FullscreenLoadingViewController.fromDefaultStoryboard()
+        present(loading, animated: false, completion: nil)
         let op = BidProductOperation(product: product, session: userSession, currency: gem)
         op.completionBlock = {[weak self] in
             OperationQueue.main.addOperation {[weak self] in
@@ -55,6 +62,7 @@ extension BidFlowViewController {
     }
     
     func didBid() {
+        presentedViewController?.dismiss(animated: false, completion: nil)
         let op = bidOperation!
         bidOperation = nil
         if op.success == true {
@@ -67,6 +75,10 @@ extension BidFlowViewController {
         } else if let error = op.error {
             showFailureAlert(error)
         }
+    }
+    
+    func showTimeOutAlert() {
+        
     }
     
     func showFailureAlert(_ error: Error) {

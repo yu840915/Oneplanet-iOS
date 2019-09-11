@@ -166,6 +166,7 @@
 		E0C18E6422FAEEFD0086C114 /* PostPhotoPickingFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C18E6322FAEEFD0086C114 /* PostPhotoPickingFlowViewController.swift */; };
 		E0C18E6622FC85890086C114 /* PostEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C18E6522FC85890086C114 /* PostEditorViewController.swift */; };
 		E0C98E232328ADB600B0BF00 /* UploadPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C98E222328ADB600B0BF00 /* UploadPhotoOperation.swift */; };
+		E0C98E252328EB3700B0BF00 /* FullscreenLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C98E242328EB3700B0BF00 /* FullscreenLoadingViewController.swift */; };
 		E0CB5E11228F0B4A00C0C010 /* TreasuryBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CB5E10228F0B4A00C0C010 /* TreasuryBarViewController.swift */; };
 		E0CB5E15228F0E5F00C0C010 /* DS-DIGIB.TTF in Resources */ = {isa = PBXBuildFile; fileRef = E0CB5E14228F0E5F00C0C010 /* DS-DIGIB.TTF */; };
 		E0D1BBD922ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D1BBD822ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift */; };
@@ -388,6 +389,7 @@
 		E0C18E6322FAEEFD0086C114 /* PostPhotoPickingFlowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPhotoPickingFlowViewController.swift; sourceTree = "<group>"; };
 		E0C18E6522FC85890086C114 /* PostEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorViewController.swift; sourceTree = "<group>"; };
 		E0C98E222328ADB600B0BF00 /* UploadPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPhotoOperation.swift; sourceTree = "<group>"; };
+		E0C98E242328EB3700B0BF00 /* FullscreenLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullscreenLoadingViewController.swift; sourceTree = "<group>"; };
 		E0CB5E10228F0B4A00C0C010 /* TreasuryBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreasuryBarViewController.swift; sourceTree = "<group>"; };
 		E0CB5E14228F0E5F00C0C010 /* DS-DIGIB.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DS-DIGIB.TTF"; sourceTree = "<group>"; };
 		E0D1BBD822ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalComponentExtractorTests.swift; sourceTree = "<group>"; };
@@ -488,6 +490,7 @@
 			isa = PBXGroup;
 			children = (
 				E0190F59226EDD1100C212D5 /* SupportingFlows.storyboard */,
+				E0C98E242328EB3700B0BF00 /* FullscreenLoadingViewController.swift */,
 				E0DCD05222B7EB67008D9C63 /* PickerTableViewController.swift */,
 				E0DCD05022B7E86B008D9C63 /* PickerConfirmButtonFooter.swift */,
 				E0DCD04E22B7E77D008D9C63 /* PickerConfirmButtonFooter.xib */,
@@ -1197,6 +1200,7 @@
 				E089F70D228E9ECB003E77DF /* AvatarView.swift in Sources */,
 				E07276E322731334001239C0 /* EmailVerificationViewController.swift in Sources */,
 				E05BB260226D5D2A00721F20 /* RootViewController.swift in Sources */,
+				E0C98E252328EB3700B0BF00 /* FullscreenLoadingViewController.swift in Sources */,
 				E0D7DCDB229CE65C00B40D76 /* PromoPopUpFlowViewController.swift in Sources */,
 				E06589BB227001F300C9E4E6 /* AskForAuthorizationOperation.swift in Sources */,
 				E03C329A226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift in Sources */,

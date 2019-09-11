@@ -538,6 +538,33 @@
             </objects>
             <point key="canvasLocation" x="-516" y="3419"/>
         </scene>
+        <!--Fullscreen Loading View Controller-->
+        <scene sceneID="t8n-7K-2h6">
+            <objects>
+                <viewController storyboardIdentifier="FullscreenLoadingViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overFullScreen" id="7am-61-pfq" customClass="FullscreenLoadingViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TV3-7r-sKy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="53K-PG-qzW">
+                                <rect key="frame" x="188.5" y="253.5" width="37" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" name="translucent dark background"/>
+                        <constraints>
+                            <constraint firstItem="53K-PG-qzW" firstAttribute="centerX" secondItem="eKu-eD-CZI" secondAttribute="centerX" id="K7y-dR-cGk"/>
+                            <constraint firstItem="53K-PG-qzW" firstAttribute="centerY" secondItem="eKu-eD-CZI" secondAttribute="centerY" multiplier="0.6" id="pEl-L9-ULx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="eKu-eD-CZI"/>
+                    </view>
+                    <connections>
+                        <outlet property="loadingIndicator" destination="53K-PG-qzW" id="VOF-lH-USy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IRJ-NA-IqP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-499" y="4170"/>
+        </scene>
         <!--Bidding Terms View Controller-->
         <scene sceneID="LxQ-lY-i51">
             <objects>

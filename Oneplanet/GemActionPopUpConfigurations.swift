@@ -127,7 +127,7 @@ class UnlockWithBlueGemPopUpConfiguration: UnlockPopUpConfiguration {
     }
     override var attributedSubtitle: NSAttributedString {
         return NSAttributedString(
-            string: String(format: Localized.messageFormats.unlockWithGemAndIAP, Localized.titles.purpleGem, formattedPrice),
+            string: String(format: Localized.messageFormats.unlockWithGemAndIAP, Localized.titles.blueGem, formattedPrice),
             attributes: subtitleAttributes)
     }
 }

@@ -224,7 +224,9 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
             vc.product = (sender as! ProductOverview)
         }
         if let vc = segue.destination as? BidFlowViewController {
-            vc.product = (sender as! ProductOverview)
+            let product = (sender as! ProductOverview)
+            vc.product = product
+            vc.bidProcess = userSession.bidEventProcessManager.process(for: product)
         }
 
         if let nav = segue.destination as? UINavigationController {

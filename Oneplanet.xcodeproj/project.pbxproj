@@ -165,6 +165,7 @@
 		E0C18E6122FAA56A0086C114 /* PostDraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C18E6022FAA56A0086C114 /* PostDraft.swift */; };
 		E0C18E6422FAEEFD0086C114 /* PostPhotoPickingFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C18E6322FAEEFD0086C114 /* PostPhotoPickingFlowViewController.swift */; };
 		E0C18E6622FC85890086C114 /* PostEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C18E6522FC85890086C114 /* PostEditorViewController.swift */; };
+		E0C98E232328ADB600B0BF00 /* UploadPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C98E222328ADB600B0BF00 /* UploadPhotoOperation.swift */; };
 		E0CB5E11228F0B4A00C0C010 /* TreasuryBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CB5E10228F0B4A00C0C010 /* TreasuryBarViewController.swift */; };
 		E0CB5E15228F0E5F00C0C010 /* DS-DIGIB.TTF in Resources */ = {isa = PBXBuildFile; fileRef = E0CB5E14228F0E5F00C0C010 /* DS-DIGIB.TTF */; };
 		E0D1BBD922ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D1BBD822ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift */; };
@@ -386,6 +387,7 @@
 		E0C18E6022FAA56A0086C114 /* PostDraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDraft.swift; sourceTree = "<group>"; };
 		E0C18E6322FAEEFD0086C114 /* PostPhotoPickingFlowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPhotoPickingFlowViewController.swift; sourceTree = "<group>"; };
 		E0C18E6522FC85890086C114 /* PostEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorViewController.swift; sourceTree = "<group>"; };
+		E0C98E222328ADB600B0BF00 /* UploadPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPhotoOperation.swift; sourceTree = "<group>"; };
 		E0CB5E10228F0B4A00C0C010 /* TreasuryBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreasuryBarViewController.swift; sourceTree = "<group>"; };
 		E0CB5E14228F0E5F00C0C010 /* DS-DIGIB.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DS-DIGIB.TTF"; sourceTree = "<group>"; };
 		E0D1BBD822ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalComponentExtractorTests.swift; sourceTree = "<group>"; };
@@ -647,6 +649,7 @@
 				E03C32B1226D902F00C32FD7 /* Shared Configurations */,
 				E05BB25F226D5D2A00721F20 /* RootViewController.swift */,
 				E0190F4C226DCCFB00C212D5 /* UserSession.swift */,
+				E0C98E222328ADB600B0BF00 /* UploadPhotoOperation.swift */,
 				E0EAF964231E61BB009C8624 /* Wallet.swift */,
 				E0EAF966231E9758009C8624 /* AuctionSystem.swift */,
 				E05BB261226D5D2A00721F20 /* Main.storyboard */,
@@ -1152,6 +1155,7 @@
 				E05398CF22FF0F5000AAF803 /* Product.swift in Sources */,
 				E0125F9A22EADD8900AFF763 /* PostDetailViewController.swift in Sources */,
 				E07276FD2277424E001239C0 /* URLRouter.swift in Sources */,
+				E0C98E232328ADB600B0BF00 /* UploadPhotoOperation.swift in Sources */,
 				E0B7B9CA22E1D8580005DF77 /* BlockListTableViewController.swift in Sources */,
 				E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */,
 				E081590D22A63616007C9776 /* BlueGemPopUpViewController.swift in Sources */,

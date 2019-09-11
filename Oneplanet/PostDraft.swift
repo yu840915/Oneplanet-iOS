@@ -173,7 +173,7 @@ class UpdatePostPhotoFlowOperaion: SimpleAsynchronousOperation, FailableOperatio
     let preset: ProcessImageOperation.Preset
     let session: UserSession
     
-    private var uploadImageOperation: UploadPostPhotoOperation?
+    private var uploadImageOperation: UploadPhotoOperation?
     
     init(attachment: ImageAttachment, preset: ProcessImageOperation.Preset, session: UserSession) {
         self.session = session
@@ -206,7 +206,6 @@ class UpdatePostPhotoFlowOperaion: SimpleAsynchronousOperation, FailableOperatio
         op.start()
         if let data = op.data, let meta = op.metadata {
             attachment.progress.didProcessImage(to: data, metadata: meta)
-            
             attachment.progress.didGenerateDestination(UploadDestination(taskId: "", url: ServiceURLs.base.appendingPathComponent("images")))
             runNext()
         } else {
@@ -215,7 +214,7 @@ class UpdatePostPhotoFlowOperaion: SimpleAsynchronousOperation, FailableOperatio
     }
     
     private func uploadImageData(_ data: Data, withMetadata metadata: FileMetadata, to destination: UploadDestination) {
-        let op = UploadPostPhotoOperation(destination: destination, imageData: data, imageMetadata: metadata, session: session)
+        let op = UploadPhotoOperation(destination: destination, imageData: data, imageMetadata: metadata, session: session)
         op.completionBlock = {[weak self] in
             self?.didUpload()
         }

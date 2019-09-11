@@ -14,6 +14,14 @@ class MyLotList: PaginatedList<GetMyLotPageOperationFactory> {
     init(session: UserSession) {
         super.init(operationFactory: GetMyLotPageOperationFactory(session: session))
     }
+    
+    func contains(_ product: ProductOverview) -> Bool {
+        return items.contains{$0.id == product.id}
+    }
+    
+    func isLocked(_ product: ProductOverview) -> Bool {
+        return !contains(product)
+    }
 }
 
 class GetMyLotPageOperationFactory: PaginatedFetchingOperationFactoryType {
@@ -38,9 +46,7 @@ class GetMyLotPageOperation: AlamofireAPIAccessOperation, PaginatedFetchingOpera
     private let url: URL
     
     convenience init(session: UserSession) {
-        var comp = URLComponents(url: ServiceURLs.devBase.appendingPathComponent("products"), resolvingAgainstBaseURL: false)!
-        comp.queryItems = [.init(name: "category", value: "shoes")]
-        self.init(session: session, url: comp.url!, isBeginning: true)
+        self.init(session: session, url: ServiceURLs.devBase.appendingPathComponent("products/unlocks"), isBeginning: true)
     }
     
     init(session: UserSession, url: URL, isBeginning: Bool) {
@@ -71,6 +77,28 @@ class GetMyLotPageOperation: AlamofireAPIAccessOperation, PaginatedFetchingOpera
     }
 }
 
+class UnlockProductOperation: AlamofireAPIAccessOperation {
+    let product: ProductOverview
+    let session: UserSession
+    let currency: Currency
+
+    init(product: ProductOverview, session: UserSession, currency: Currency) {
+        self.product = product
+        self.session = session
+        self.currency = currency
+    }
+    
+    override func prepareDataRequest() throws -> DataRequest {
+        let dict: [String: String] = ["currency": currency.apiName]
+        let url = ServiceURLs.devBase.appendingPathComponent("products/\(product.id)/unlock")
+        return Alamofire.request(url, method: .post, parameters: dict, encoding: JSONEncoding.default, headers: session.authorizationHeader)
+    }
+    
+    override func willFinishProcess() throws {
+        session.lotList.reload()
+    }
+}
+
 class BidProductOperation: AlamofireAPIAccessOperation {
     let product: ProductOverview
     let session: UserSession
@@ -83,7 +111,7 @@ class BidProductOperation: AlamofireAPIAccessOperation {
     }
     
     override func prepareDataRequest() throws -> DataRequest {
-        let dict: [String: String] = ["user_id": session.profile!.id]
+        let dict: [String: String] = ["currency": currency.apiName]
         let url = ServiceURLs.devBase.appendingPathComponent("bidding/\(product.id)")
         return Alamofire.request(url, method: .post, parameters: dict, encoding: JSONEncoding.default, headers: session.authorizationHeader)
     }

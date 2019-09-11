@@ -171,7 +171,10 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
                 self?.unlockProductIfAllowed(at: indexPath)
             }
         }
-        cell.updateViews(with: productOverviews[indexPath.row])
+        let product = productOverviews[indexPath.row]
+        cell.updateViews(with: product)
+        cell.isLocked = userSession.lotList.isLocked(product)
+
     }
     
     private func configureBiddingCell(_ cell: BiddingProductCell, at indexPath: IndexPath) {
@@ -217,9 +220,10 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
             return nil
         case .productList:
             let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReuseID.productListHeader) as! ProductListHeader
-            view.title = categoryList?.query ?? "–"
-            if view.title.lowercased() == "unlocked" {
+            if categoryList?.isUnlockLlist == true {
                 view.title = Localized.phrases.categoryUnlocked
+            } else {
+                view.title = categoryList?.query ?? "–"
             }
             view.showFilterAction = {[weak self] in
                 self?.showFilterPicker()
@@ -241,6 +245,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         default: break
         }
     }
+    
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         switch sections[indexPath.section] {
         case .productList:
@@ -299,35 +304,16 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
             }
         }
     }
-
 }
 
 private extension ProductListTableViewController {
-    func prepareLotList() {
-        let list = MyLotList(session: userSession)
-        var handles: [Any] = []
-        handles.append(list.addItemDidFetchHandler {[weak self] in
-            OperationQueue.main.addOperation {
-                self?.lotListDidUpdate()
-            }
-        })
-        handles.append(list.addFetchingFailureHandler({[weak self] (error) in
-            
-        }))
-        lotListDidUpdateHandles = handles
-        list.reload()
-        myLotList = list
-    }
-    
-    func lotListDidUpdate() {
-        lots = myLotList!.items
-        bidProcesses = lots.map{userSession.bidEventProcessManager.process(for: $0)}
-        tableView.reloadData()
-    }
-    
     func refreshDynamicViews() {
         countDownView.tick()
-        updateBidCells()
+        if bidPhaseIndicator.biddingHasStarted {
+            updateBidCells()
+        } else {
+            updateProductCells()
+        }
     }
     
     func updateBidCells() {
@@ -345,6 +331,23 @@ private extension ProductListTableViewController {
         }
         cell.updateViews(with: bidProcesses[indexPath.row])
     }
+    
+    func updateProductCells() {
+        guard let indeices = tableView.indexPathsForVisibleRows?.filter({sections[$0.section] == .productList}) else {
+            return
+        }
+        indeices.forEach{
+            updateProductCell(at: $0)
+        }
+    }
+    
+    func updateProductCell(at indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? ProductOverviewCell else {
+            return
+        }
+        cell.isLocked = userSession.lotList.isLocked(productOverviews[indexPath.row])
+    }
+
     
     func showProfile(for user: User) {
         performSegue(withIdentifier: SegueID.showProfile, sender: user)
@@ -394,21 +397,78 @@ private extension ProductListTableViewController {
 }
 
 private extension ProductListTableViewController {
-    func updateSectionsAndReload() {
-        tableView.reloadData()
-    }
-    
     func handleCategoryListUpdate() {
         guard let list = categoryList else {return}
         productOverviews = list.items
-        updateSectionsAndReload()
+        updateBackgroundForCategoryList(with: nil)
+        tableView.reloadData()
     }
     
     func handleCategoryListUpdateFailure(with error: Error?) {
+        updateBackgroundForCategoryList(with: error)
+    }
+
+    func updateBackgroundForCategoryList(with error: Error? = nil) {
+        if !productOverviews.isEmpty {
+            tableView.tableFooterView = UIView()
+        } else {
+            let view = CommonViewFactory.shared.makeSimpleEmptyView()
+            if categoryList?.isUnlockLlist == true {
+                view.titleLabel.text = Localized.emptyMessages.unlocked
+                view.detailLabel.text = Localized.emptyMessages.unlockedDetail
+            } else {
+                view.titleLabel.text = Localized.emptyMessages.generic
+                if let error = error {
+                    view.detailLabel.text = error.localizedDescription
+                }
+            }
+            view.frame = CGRect(origin: .zero, size: CGSize(width: tableView.frame.width, height: 300))
+            tableView.tableFooterView = view
+        }
+    }
+
+    func prepareLotList() {
+        let list = userSession.lotList!
+        var handles: [Any] = []
+        handles.append(list.addItemDidFetchHandler {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.lotListDidUpdate()
+            }
+        })
+        handles.append(list.addFetchingFailureHandler({[weak self] (error) in
+            OperationQueue.main.addOperation {
+                self?.updateBackgroundForLotList(with: error)
+            }
+        }))
+        lotListDidUpdateHandles = handles
+        list.reload()
+        myLotList = list
     }
     
+    func lotListDidUpdate() {
+        lots = myLotList!.items
+        bidProcesses = lots.map{userSession.bidEventProcessManager.process(for: $0)}
+        updateBackgroundForLotList(with: nil)
+        tableView.reloadData()
+    }
+    
+    func updateBackgroundForLotList(with error: Error? = nil) {
+        if !lots.isEmpty {
+            tableView.tableFooterView = UIView()
+        } else {
+            let view = EmptyLotListView.fromDefaultNib()
+            view.titleLabel.text = Localized.emptyMessages.unlockedLotsTitle
+            if bidPhaseIndicator.phase == .ended {
+                view.detailLabel.text = Localized.messages.lotClosedDescription
+            } else {
+                view.titleLabel.text = Localized.emptyMessages.unlockedLotsMessage
+            }
+            tableView.tableFooterView = view
+        }
+    }
     func setUpEmptyViewForEmptyRunningBidList() {
         let view = EmptyLotListView.fromDefaultNib()
+        
         tableView.tableFooterView = view
     }
 }

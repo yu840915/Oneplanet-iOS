@@ -18,7 +18,7 @@ class BidPhaseIndicator {
         }
     }
     let updateObservers = MulticastCallbackNode<()->()>()
-    let startDate: Date = Date(timeIntervalSinceNow: 20 * .second)
+    let startDate: Date = Date(timeIntervalSinceNow: 10 * .minute)
     let bidProcessManager: BidProcessManager
     private var updateClock: UpdateClock!
     var biddingHasStarted: Bool {

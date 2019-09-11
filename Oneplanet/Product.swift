@@ -71,6 +71,9 @@ class GetProductDetailOperation: AlamofireAPIAccessOperation {
 }
 
 class CategoryList: PaginatedList<GetProductCagegoryPageOperationFactory> {
+    var isUnlockLlist: Bool {
+        return query == "unlocked"
+    }
     let query: String
     init(session: UserSession, query: String) {
         self.query = query
@@ -103,11 +106,7 @@ class GetProductCagegoryPageOperation: AlamofireAPIAccessOperation, PaginatedFet
     private let url: URL
     
     convenience init(session: UserSession, query: String) {
-        var comp = URLComponents(url: ServiceURLs.devBase.appendingPathComponent("products"), resolvingAgainstBaseURL: false)!
-        if !query.isEmpty {
-            comp.queryItems = [.init(name: "category", value: query)]
-        }
-        self.init(session: session, url: comp.url!, isBeginning: true)
+        self.init(session: session, url: ServiceURLs.devBase.appendingPathComponent("products/category/\(query)"), isBeginning: true)
     }
     
     init(session: UserSession, url: URL, isBeginning: Bool) {

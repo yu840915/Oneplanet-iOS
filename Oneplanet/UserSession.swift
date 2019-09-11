@@ -33,6 +33,7 @@ class UserSession {
             profileDidUpdate.invokeEach{$0()}
         }
     }
+    private(set) var lotList: MyLotList!
     var socialProfile: PublicProfile?
     private(set) var bidPhaseIndicator: BidPhaseIndicator!
     private(set) var isActive = true
@@ -46,6 +47,8 @@ class UserSession {
         wallet = Wallet(userSession: self)
         bidEventProcessManager = BidProcessManager(userSession: self)
         bidPhaseIndicator = BidPhaseIndicator(currentPhase: .unlock, bidProcessManager: bidEventProcessManager)
+        lotList = MyLotList(session: self)
+        lotList.reload()
     }
     
     func submitProfileChanges(with draft: ProfileDraft, completion: ((Bool, Error?)->())? = nil) {

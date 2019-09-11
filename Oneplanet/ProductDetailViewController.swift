@@ -44,6 +44,7 @@ class ProductDetailViewController: UIViewController, UserSessionDepending {
         }
     }
     private var handles: [Any]?
+    private var updateClock: UpdateClock!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +55,9 @@ class ProductDetailViewController: UIViewController, UserSessionDepending {
         } else {
             getProductDetail()
         }
+        updateClock = UpdateClock(preferredFrameRate: 5, onTick: {[weak self] in
+            self?.updateViewsForLockState()
+        })
         setUpHandles()
         updateViewsForBidPhase()
     }
@@ -66,10 +70,6 @@ class ProductDetailViewController: UIViewController, UserSessionDepending {
             }
         })
         self.handles = handles
-    }
-    
-    private func updateViewsForBidPhase() {
-        lockView.isHidden = userSession.bidPhaseIndicator.biddingHasStarted
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -128,8 +128,14 @@ private extension ProductDetailViewController {
         paragraphStyle.alignment = .center
         attrDes.addAttribute(.paragraphStyle, value: paragraphStyle, range: range)
         detailTextView.attributedText = attrDes
+        updateViewsForLockState()
     }
     
+    func updateViewsForBidPhase() {
+        guard product == nil else { return }
+        lockView.isHidden = userSession.bidPhaseIndicator.biddingHasStarted
+    }
+
     func getProductDetail() {
         guard getDetailOperation == nil else {return}
         accessoryContainer.isHidden = false
@@ -200,7 +206,8 @@ private extension ProductDetailViewController {
     }
     
     func updateViewsForLockState() {
-        let isLocked = true
+        guard let prod = product else { return }
+        let isLocked = userSession.lotList.isLocked(prod)
         let appearance = isLocked ? LockAppearance.forLocked : LockAppearance.forUnlocked
         lockLabel.text = appearance.title
         lockLabel.textColor = appearance.color

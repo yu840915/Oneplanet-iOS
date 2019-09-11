@@ -11,6 +11,7 @@ import UIKit
 class UnlockFlowViewController: UIViewController, UserSessionDepending {
     var userSession: UserSession!
     var product: ProductOverview!
+    var unlockOperation: UnlockProductOperation?
     
     var pageViewController: UIPageViewController!
     override func viewDidLoad() {
@@ -56,9 +57,43 @@ private extension UnlockFlowViewController {
             showTooLatePopUp(animated: true)
             return
         }
-        
+        guard unlockOperation == nil else {
+            return
+        }
+        let loading = FullscreenLoadingViewController.fromDefaultStoryboard()
+        present(loading, animated: false, completion: nil)
+        let op = UnlockProductOperation(product: product, session: userSession, currency: gemType)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didUnlock()
+            }
+        }
+        unlockOperation = op
+        op.start()
     }
     
+    func didUnlock() {
+        presentedViewController?.dismiss(animated: false, completion: nil)
+        let op = unlockOperation!
+        unlockOperation = nil
+        if op.success == true {
+            switch op.currency {
+            case .blueGem: userSession.wallet.setNeedsUpdateBlueGem()
+            case .purpleGem: userSession.wallet.setNeedsUpdatePurpleGem()
+            case .greenGem: userSession.wallet.setNeedsUpdateGreenGem()
+            }
+            dismiss(animated: false, completion: nil)
+        } else if let error = op.error {
+            showFailureAlert(error)
+        }
+    }
+    
+    func showFailureAlert(_ error: Error) {
+        let alert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Localized.phrases.tryAgain, style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+
     func showGreenGemPopUp() {
         let product = self.product!
         let container = prepareActionPopUp{[weak self] vc in

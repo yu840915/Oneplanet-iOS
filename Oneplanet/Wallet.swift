@@ -168,6 +168,14 @@ enum Currency {
 }
 
 extension Currency {
+    var apiName: String {
+        switch self {
+        case .blueGem: return "blue"
+        case .purpleGem: return "red"
+        case .greenGem: return "green"
+        }
+    }
+    
     var largeIcon: UIImage {
         switch self {
         case .blueGem: return #imageLiteral(resourceName: "ic_gem80_nor")

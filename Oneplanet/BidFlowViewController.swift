@@ -49,6 +49,9 @@ extension BidFlowViewController {
             showTimeOutAlert()
             return
         }
+        guard bidOperation == nil else {
+            return
+        }
         let loading = FullscreenLoadingViewController.fromDefaultStoryboard()
         present(loading, animated: false, completion: nil)
         let op = BidProductOperation(product: product, session: userSession, currency: gem)

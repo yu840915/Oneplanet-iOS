@@ -61,6 +61,7 @@ class ProductBidProcess {
     private(set) var leadFetcher: UserFetcher?
     private(set) var endDate: Date?
     private(set) var myBid: Int = 0
+    private(set) var getBidCountOperation: GetMyBidCountOperation?
     
     init(product: ProductOverview, pushListener: PushListener, userSession: UserSession) {
         self.product = product
@@ -68,6 +69,7 @@ class ProductBidProcess {
         self.userSession = userSession
         getNews()
         prepareChannel()
+        reloadBidCount()
     }
     
     private func getNews() {
@@ -117,7 +119,44 @@ class ProductBidProcess {
     }
     
     private func reloadBidCount() {
-        
+        guard getBidCountOperation == nil else  {
+            return
+        }
+        let op = GetMyBidCountOperation(product: product, userSession: userSession)
+        op.completionBlock = {[weak self] in
+            self?.didGetBidCount()
+        }
+        getBidCountOperation = op
+        op.start()
+    }
+    
+    private func didGetBidCount() {
+        let op = getBidCountOperation!
+        getBidCountOperation = nil
+        if let count = op.count {
+            myBid = count
+        }
+    }
+}
+
+class GetMyBidCountOperation: AlamofireAPIAccessOperation {
+    let product: ProductOverview
+    let userSession: UserSession
+    private(set) var count: Int?
+    
+    init(product: ProductOverview, userSession: UserSession) {
+        self.product = product
+        self.userSession = userSession
+    }
+
+    override func prepareURLRequest() throws -> URLRequest {
+        return userSession.addingAuthorizationToken(to: try URLRequest(url: ServiceURLs.base.appendingPathComponent("bidding/\(product.id)/bidded"), method: .head))
+    }
+    
+    override func processHTTPResponseHeader(_ header: [AnyHashable : Any]) throws {
+        if let count = header["X-Total-Count"] as? String {
+            self.count = SharedNumberFormatters.integer.number(from: count)?.intValue
+        }
     }
 }
 

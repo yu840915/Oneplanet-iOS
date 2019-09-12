@@ -58,6 +58,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         super.viewDidAppear(animated)
         if wantsTutorial {
             wantsTutorial = false
+            if bidPhaseIndicator.phase == .ended { return }
             if bidPhaseIndicator.biddingHasStarted {
                 tutorialPlan = TutorialPlan(unlock: false, waitForBid: false, bid: true)
             } else {

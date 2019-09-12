@@ -101,7 +101,7 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
     private func didLogInWithEmailLink() {
         let op = authOperation as! EmailLinkLogInOperarion
         authOperation = nil
-        if let token = op.token {
+        if op.success == true, let token = op.token {
             let session = UserSession(token: token, loginType: .fromEmail(op.credential.email))
             session.updateProfile(op.profile!)
             StoreUserSessionOperation(session: session).start()

@@ -171,7 +171,7 @@ class MyProfile: Decodable, UserProfileDisplayable {
         return username.isEmpty
     }
     enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id
         case nickname = "display_name"
         case username
         case gender

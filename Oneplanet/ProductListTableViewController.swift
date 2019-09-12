@@ -97,7 +97,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
     }
     
     func updateCategoryList(with query: String) {
-        if query == categoryList?.query {
+        if bidPhaseIndicator.biddingHasStarted || query == categoryList?.query {
             return
         }
         let list = CategoryList(session: userSession, query: query)

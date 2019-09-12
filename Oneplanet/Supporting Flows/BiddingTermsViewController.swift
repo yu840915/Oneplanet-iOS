@@ -41,7 +41,9 @@ class BiddingTermsViewController: UIViewController {
     }
     
     private func recordConsent() {
-        
+        if let last = appConfiguration.biddingTermVersion.value  {
+            Preferences.lastAgreedBiddingTermVersion.value = last
+        }
     }
     
     private func updateSubmitButton() {
@@ -69,9 +71,17 @@ class BiddingFeatureAccessCheckOperation: SimpleAsynchronousOperation {
     let userSession: UserSession
     private(set) var isAccessible = false
     private var popUpController: UIViewController?
+    private var needsConsent: Bool
     
     init(userSession: UserSession) {
         self.userSession = userSession
+        if Preferences.lastAgreedBiddingTermVersion.hasValue,
+            let version = Preferences.lastAgreedBiddingTermVersion.value,
+            let last = appConfiguration.biddingTermVersion.value {
+            needsConsent = last > version
+        } else {
+            needsConsent = true
+        }
     }
     
     override func main() {
@@ -114,6 +124,4 @@ class BiddingFeatureAccessCheckOperation: SimpleAsynchronousOperation {
             self.finish()
         })
     }
-    
-    private var needsConsent: Bool = false
 }

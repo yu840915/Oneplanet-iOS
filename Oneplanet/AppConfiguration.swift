@@ -15,10 +15,12 @@ let appConfiguration: AppConfiguration = AppConfiguration()
 class AppConfiguration {
     let didUpdateObservers = MulticastCallbackNode<()->()>()
     let promoPopUpCoolDownInterval: TimeInterval = 30 * .minute
+    let biddingTermVersion: AppConfigurationIntItem
     
     private let source: RemoteConfig
     fileprivate init() {
         source = RemoteConfig.remoteConfig()
+        biddingTermVersion = AppConfigurationIntItem(key: "bidding_terms_version", source: source)
         update()
     }
     
@@ -65,6 +67,11 @@ class AppConfigurationItem<ValueType>: CustomDebugStringConvertible {
 class AppConfigurationStringItem: AppConfigurationItem<String> {
     override var value: String? {
         return configValue.stringValue
+    }
+}
+class AppConfigurationIntItem: AppConfigurationItem<Int> {
+    override var value: Int? {
+        return configValue.numberValue?.intValue
     }
 }
 

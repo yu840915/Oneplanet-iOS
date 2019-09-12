@@ -68,6 +68,29 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
                 }
             }
         }
+        showTutorialIfNeeded()
+    }
+    
+    private func showTutorialIfNeeded() {
+        guard let plan = tutorialPlan else {
+            return
+        }
+        if plan.unlock,
+            let indexPath = tableView.indexPathsForVisibleRows?.first(where: { sections[$0.section] == .productList }),
+            let cell = tableView.cellForRow(at: indexPath) as? ProductOverviewCell {
+            tutorialPlan = nil
+            cell.showTutorial()
+        } else if plan.bid,
+            let index = sections.firstIndex(where: {$0 == .bidList}),
+            let header = tableView.headerView(forSection: index) as? BiddingListHeader {
+            tutorialPlan = nil
+            header.showTutorial()
+        } else if plan.waitForBid,
+            let index = sections.firstIndex(where: {$0 == .productList}),
+            let header = tableView.headerView(forSection: index) as? ProductListHeader {
+            tutorialPlan = nil
+            header.showTutorial()
+        }
     }
     
     private func prepareListForBidPhase() {
@@ -318,6 +341,12 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         }
         if let vc = segue.destination as? UnlockFlowViewController {
             vc.product = (sender as! ProductOverview)
+            if userSession.lotList.items.isEmpty {
+                vc.successHandler = {[weak self] in
+                    self?.tutorialPlan = TutorialPlan(unlock: false, waitForBid: true, bid: false)
+                    self?.showTutorialIfNeeded()
+                }
+            }
         }
         if let vc = segue.destination as? BidFlowViewController {
             let product = (sender as! ProductOverview)

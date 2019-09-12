@@ -12,6 +12,7 @@ class UnlockFlowViewController: UIViewController, UserSessionDepending {
     var userSession: UserSession!
     var product: ProductOverview!
     var unlockOperation: UnlockProductOperation?
+    var successHandler: (()->())?
     
     var pageViewController: UIPageViewController!
     override func viewDidLoad() {
@@ -82,7 +83,7 @@ private extension UnlockFlowViewController {
             case .purpleGem: userSession.wallet.setNeedsUpdatePurpleGem()
             case .greenGem: userSession.wallet.setNeedsUpdateGreenGem()
             }
-            dismiss(animated: false, completion: nil)
+            dismiss(animated: false, completion: successHandler)
         } else if let error = op.error {
             showFailureAlert(error)
         }

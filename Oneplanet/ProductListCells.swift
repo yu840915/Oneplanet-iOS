@@ -61,7 +61,9 @@ class ProductOverviewCell: UITableViewCell {
         superview?.bringSubviewToFront(self)
         let op = FadeInFadeOutOperation(view: tutorialBubble)
         op.completionBlock = {[weak self] in
-            self?.restoreFromTutorial()
+            OperationQueue.main.addOperation {
+                self?.restoreFromTutorial()
+            }
         }
         fadeInFadeOutOperation = op
         op.start()
@@ -71,7 +73,7 @@ class ProductOverviewCell: UITableViewCell {
         if let op = fadeInFadeOutOperation {
             op.cancel()
             fadeInFadeOutOperation = nil
-            restoreFromTutorial()
+            self.restoreFromTutorial()
         }
     }
     

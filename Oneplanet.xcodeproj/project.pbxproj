@@ -170,6 +170,7 @@
 		E0C98E272328F5EF00B0BF00 /* BidPhaseIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C98E262328F5EF00B0BF00 /* BidPhaseIndicator.swift */; };
 		E0C98E292329D77400B0BF00 /* MyLotList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C98E282329D77400B0BF00 /* MyLotList.swift */; };
 		E0C98E2B2329D7F000B0BF00 /* ProductBidProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C98E2A2329D7F000B0BF00 /* ProductBidProcess.swift */; };
+		E0C98E2E2329E7DC00B0BF00 /* BidOutcomeHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C98E2D2329E7DC00B0BF00 /* BidOutcomeHistory.swift */; };
 		E0CB5E11228F0B4A00C0C010 /* TreasuryBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CB5E10228F0B4A00C0C010 /* TreasuryBarViewController.swift */; };
 		E0CB5E15228F0E5F00C0C010 /* DS-DIGIB.TTF in Resources */ = {isa = PBXBuildFile; fileRef = E0CB5E14228F0E5F00C0C010 /* DS-DIGIB.TTF */; };
 		E0D1BBD922ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D1BBD822ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift */; };
@@ -396,6 +397,7 @@
 		E0C98E262328F5EF00B0BF00 /* BidPhaseIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidPhaseIndicator.swift; sourceTree = "<group>"; };
 		E0C98E282329D77400B0BF00 /* MyLotList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLotList.swift; sourceTree = "<group>"; };
 		E0C98E2A2329D7F000B0BF00 /* ProductBidProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductBidProcess.swift; sourceTree = "<group>"; };
+		E0C98E2D2329E7DC00B0BF00 /* BidOutcomeHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidOutcomeHistory.swift; sourceTree = "<group>"; };
 		E0CB5E10228F0B4A00C0C010 /* TreasuryBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreasuryBarViewController.swift; sourceTree = "<group>"; };
 		E0CB5E14228F0E5F00C0C010 /* DS-DIGIB.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DS-DIGIB.TTF"; sourceTree = "<group>"; };
 		E0D1BBD822ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalComponentExtractorTests.swift; sourceTree = "<group>"; };
@@ -568,6 +570,7 @@
 				E0A4618322B5405700D26720 /* ShippingInfoDraft.swift */,
 				E0A4618922B6347800D26720 /* PhoneNumberBuilder.swift */,
 				E032844A22AB7A90001F02E8 /* BiddingProcessTableViewController.swift */,
+				E0C98E2D2329E7DC00B0BF00 /* BidOutcomeHistory.swift */,
 				E05398CE22FF0F5000AAF803 /* Product.swift */,
 				E0F268942313871900CE5C45 /* CategoryNameList.swift */,
 				E0DA389C22C27FC600EC4170 /* Unlock and Bid */,
@@ -1228,6 +1231,7 @@
 				E0125F9C22EAEA7F00AFF763 /* PostCardCell.swift in Sources */,
 				E0C18E6422FAEEFD0086C114 /* PostPhotoPickingFlowViewController.swift in Sources */,
 				E077A73022DDF63500A2245E /* NoticeUIHelpers.swift in Sources */,
+				E0C98E2E2329E7DC00B0BF00 /* BidOutcomeHistory.swift in Sources */,
 				E03C32AE226D8E6800C32FD7 /* SharedFormatters.swift in Sources */,
 				E0DA38A222C31E3800EC4170 /* GemActionPopUpConfigurations.swift in Sources */,
 				E0EAEB7D22F2891400C8E7C8 /* LoadingCell.swift in Sources */,

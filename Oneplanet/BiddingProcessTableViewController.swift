@@ -13,7 +13,11 @@ import Kingfisher
 class BiddingProcessTableViewController: UITableViewController, DefaultInstanceFactory, UserSessionDepending {
     
     var userSession: UserSession!
+    var bidOutcomeHistory: BidOutcomeHistory!
     var sections: [Section] = [.shippingInfoPrompt, .items]
+    var products: [ProductOverview] = []
+    private var updateClock: UpdateClock!
+    private var handles: [Any]?
     class func fromDefaultStoryboard() -> BiddingProcessTableViewController {
         return UIStoryboard(name: "Auction", bundle: nil).instantiateViewController(withIdentifier: "BiddingLiveTableViewController") as! BiddingProcessTableViewController
     }
@@ -22,8 +26,12 @@ class BiddingProcessTableViewController: UITableViewController, DefaultInstanceF
         super.viewDidLoad()
         tableView.register(BiddingProcessHeader.defaultNib(), forHeaderFooterViewReuseIdentifier: ReuseID.biddingItemHeader)
         navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
+        prepareHistory()
+        updateClock = UpdateClock(onTick: {[weak self] in
+            self?.updateItemCells()
+        })
     }
-
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -35,7 +43,7 @@ class BiddingProcessTableViewController: UITableViewController, DefaultInstanceF
         case .shippingInfo, .shippingInfoPrompt:
             return 1
         case .items:
-            return 10
+            return products.count
         }
     }
     
@@ -67,6 +75,9 @@ class BiddingProcessTableViewController: UITableViewController, DefaultInstanceF
     }
     
     private func prepareItemCell(_ cell: BidOutcomeCell, at indexPath: IndexPath) {
+        let product = products[indexPath.row]
+        cell.updateViews(with: product)
+        cell.updateViews(with: userSession.bidProcessManager.process(for: product))
         cell.detailAction = {[weak self] in
             self?.showShippingStatusDetail()
         }
@@ -121,11 +132,70 @@ class BiddingProcessTableViewController: UITableViewController, DefaultInstanceF
 }
 
 fileprivate extension BiddingProcessTableViewController {
+    func updateItemCells() {
+        guard let indeices = tableView.indexPathsForVisibleRows?.filter({sections[$0.section] == .items}) else {
+            return
+        }
+        indeices.forEach{
+            updateItemCell(at: $0)
+        }
+    }
+    
+    func updateItemCell(at indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? BidOutcomeCell else {
+            return
+        }
+        cell.updateViews(with: userSession.bidProcessManager.process(for: products[indexPath.row]))
+    }
+    
     func showShippingInfoEditor() {
         performSegue(withIdentifier: SegueID.showShippingInfoEditor, sender: nil)
     }
     
     func showShippingStatusDetail() {
+    }
+    
+    func prepareHistory() {
+        let history = BidOutcomeHistory(session: userSession)
+        var handles: [Any] = []
+        handles.append(history.addItemDidFetchHandler {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.handleHistoryUpdate()
+            }
+        })
+        handles.append(history.addFetchingFailureHandler({[weak self] (error) in
+            OperationQueue.main.addOperation {
+                self?.handleFetchFailure(with: error)
+            }
+        }))
+        bidOutcomeHistory = history
+        self.handles = handles
+        history.reload()
+    }
+    
+    func handleHistoryUpdate() {
+        products = bidOutcomeHistory.items
+        updateBackground(with: nil)
+        tableView.reloadData()
+    }
+    
+    func handleFetchFailure(with error: Error?) {
+        updateBackground(with: error)
+    }
+    
+    func updateBackground(with error: Error? = nil) {
+        if !products.isEmpty {
+            tableView.tableFooterView = UIView()
+        } else {
+            let view = CommonViewFactory.shared.makeSimpleEmptyView()
+            view.titleLabel.text = Localized.emptyMessages.unlocked
+            view.detailLabel.text = Localized.emptyMessages.unlockedDetail
+            if let error = error {
+                view.detailLabel.text = error.localizedDescription
+            }
+            view.frame = CGRect(origin: .zero, size: CGSize(width: tableView.frame.width, height: 300))
+            tableView.tableFooterView = view
+        }
     }
 }
 
@@ -161,13 +231,6 @@ extension BiddingProcessTableViewController: IndicatorInfoProvider {
     }
 }
 
-protocol BidOutcomeOverviewDisplayable: AnyObject {
-    var hasWon: Bool {get}
-    var productThumnail: WebImageInfo? {get}
-    var productName: String {get}
-    var localizedShippingState: String? {get}
-}
-
 class BidOutcomeCell: UITableViewCell {
     var detailAction: (()->())?
     @IBOutlet weak var outcomIndicator: UIView!
@@ -185,15 +248,14 @@ class BidOutcomeCell: UITableViewCell {
         detailAction?()
     }
     
-    func updateViews(with ds: BidOutcomeOverviewDisplayable) {
-        previewImageView.kf.setImage(with: ds.productThumnail?.url)
-        titleLabel.text = ds.productName
-        outcomIndicator.backgroundColor = ds.hasWon ? ColorPalette.bidGreen : ColorPalette.bidRed
-        if let state = ds.localizedShippingState {
-            stateLabel.text = state
-        } else {
-            stateLabel.text = ds.hasWon ? "Miss" : "Preparing"
-        }
+    func updateViews(with process: ProductBidProcess) {
+        outcomIndicator.backgroundColor = process.isWinning ? ColorPalette.bidGreen : ColorPalette.bidRed
+        inspectButton.isHidden = !process.isWinning
+    }
+    
+    func updateViews(with product: ProductOverview) {
+        previewImageView.kf.setImage(with: product.cover?.url)
+        titleLabel.text = product.displayName
     }
 }
 

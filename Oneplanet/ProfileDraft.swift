@@ -163,7 +163,7 @@ class UpdateProfileOperation: SimpleAsynchronousOperation, FailableOperationType
     }
     
     private func didUpdateContent() {
-        let op = updateAvatarOperation!
+        let op = updateContentOperation!
         success = op.success
         error = op.error
         finish()

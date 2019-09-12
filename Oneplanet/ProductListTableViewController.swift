@@ -269,10 +269,10 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
                 categoryList?.loadMoreIfAllowed()
             }
             if let plan = tutorialPlan, plan.unlock,
-                let cell = tableView.cellForRow(at: indexPath) as? ProductOverviewCell {
+                let productCell = cell as? ProductOverviewCell {
                 tutorialPlan = nil
                 OperationQueue.main.addOperation {
-                    cell.showTutorial()
+                    productCell.showTutorial()
                 }
             }
         case .bidList:
@@ -288,7 +288,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         switch sections[section] {
         case .bidList:
             if let plan = tutorialPlan, plan.bid,
-                let header = tableView.headerView(forSection: section) as? BiddingListHeader {
+                let header = view as? BiddingListHeader {
                 tutorialPlan = nil
                 OperationQueue.main.addOperation {
                     header.showTutorial()
@@ -296,7 +296,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
             }
         case .productList:
             if let plan = tutorialPlan, plan.waitForBid,
-                let header = tableView.headerView(forSection: section) as? ProductListHeader {
+                let header = view as? ProductListHeader {
                 tutorialPlan = nil
                 OperationQueue.main.addOperation {
                     header.showTutorial()

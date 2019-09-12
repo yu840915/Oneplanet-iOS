@@ -74,8 +74,13 @@ class UserSession {
         updateProfileOperation = nil
         if op.success == true {
             let draft = op.draft
-            profile = MyProfile(id: profile!.id, username: draft.username, nickname: draft.nickname, gender: draft.gender, avatar: profile!.avatar)
-            profile?.alien = draft.alien
+            var avatar: WebImageInfo?
+            if let url = draft.avatar?.progress.imageLocation?.url {
+                avatar = WebImageInfo(url: url)
+            }
+            let profile = MyProfile(id: self.profile!.id, username: draft.username, nickname: draft.nickname, gender: draft.gender, avatar: avatar)
+            profile.alien = draft.alien
+            self.profile = profile
         }
         submitProfileCompletion?(op.success ?? false, op.error)
         submitProfileCompletion = nil

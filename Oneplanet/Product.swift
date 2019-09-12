@@ -106,7 +106,8 @@ class GetProductCagegoryPageOperation: AlamofireAPIAccessOperation, PaginatedFet
     private let url: URL
     
     convenience init(session: UserSession, query: String) {
-        self.init(session: session, url: ServiceURLs.devBase.appendingPathComponent("products/category/\(query)"), isBeginning: true)
+        let url = query == "unlocked" ? ServiceURLs.devBase.appendingPathComponent("products/unlocks") : ServiceURLs.devBase.appendingPathComponent("products/category/\(query)")
+        self.init(session: session, url: url, isBeginning: true)
     }
     
     init(session: UserSession, url: URL, isBeginning: Bool) {

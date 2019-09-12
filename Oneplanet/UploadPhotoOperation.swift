@@ -41,7 +41,7 @@ class UploadPhotoOperation: SimpleAsynchronousOperation, FailableOperationType {
     }
     
     private func prepareFormdata(_ formdata: MultipartFormData) {
-        formdata.append(imageData, withName: "images", mimeType: imageMetadata.mimeType)
+        formdata.append(imageData, withName: "images", fileName: "images.jpg" , mimeType: imageMetadata.mimeType)
     }
     
     private func startUploadRequest(_ request: UploadRequest) {

@@ -197,8 +197,8 @@ class UpdateProfileContentOperation: AlamofireAPIAccessOperation {
         if let alien = draft.alien {
             result["alien"] = ["avatar": alien.race.rawValue, "color": alien.color.rawValue]
         }
-        if let avatarURL = draft.avatar?.progress.uploadDestination {
-            result["avatar"] = avatarURL
+        if let avatarURL = draft.avatar?.progress.imageLocation {
+            result["avatar"] = avatarURL.url.absoluteString
         }
         return result
     }
@@ -263,7 +263,7 @@ class UpdateMyAvatarFlowOperaion: SimpleAsynchronousOperation, FailableOperation
     private func didUpload() {
         let op = uploadImageOperation!
         if op.success == true {
-            attachment.progress.markAsFinished()
+            attachment.progress.markAsFinished(with: op.finalLocation!)
             runNext()
         } else {
             fail(with: op.error)

@@ -206,7 +206,7 @@ class UpdatePostPhotoFlowOperaion: SimpleAsynchronousOperation, FailableOperatio
         op.start()
         if let data = op.data, let meta = op.metadata {
             attachment.progress.didProcessImage(to: data, metadata: meta)
-            attachment.progress.didGenerateDestination(UploadDestination(taskId: "", url: ServiceURLs.base.appendingPathComponent("images")))
+            attachment.progress.didGenerateDestination(UploadDestination(taskId: "", url: ServiceURLs.base.appendingPathComponent("image/upload")))
             runNext()
         } else {
             fail(with: op.error)

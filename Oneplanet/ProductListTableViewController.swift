@@ -54,6 +54,22 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         updateViewsForBidPhase()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if wantsTutorial {
+            wantsTutorial = false
+            if bidPhaseIndicator.biddingHasStarted {
+                tutorialPlan = TutorialPlan(unlock: false, waitForBid: false, bid: true)
+            } else {
+                if userSession.lotList.items.isEmpty {
+                    tutorialPlan = TutorialPlan(unlock: true, waitForBid: false, bid: false)
+                } else {
+                    tutorialPlan = TutorialPlan(unlock: false, waitForBid: true, bid: false)
+                }
+            }
+        }
+    }
+    
     private func prepareListForBidPhase() {
         if userSession.bidPhaseIndicator.biddingHasStarted {
             if myLotList == nil {
@@ -174,7 +190,6 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         let product = productOverviews[indexPath.row]
         cell.updateViews(with: product)
         cell.isLocked = userSession.lotList.isLocked(product)
-
     }
     
     private func configureBiddingCell(_ cell: BiddingProductCell, at indexPath: IndexPath) {
@@ -253,6 +268,13 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
             if isLast {
                 categoryList?.loadMoreIfAllowed()
             }
+            if let plan = tutorialPlan, plan.unlock,
+                let cell = tableView.cellForRow(at: indexPath) as? ProductOverviewCell {
+                tutorialPlan = nil
+                OperationQueue.main.addOperation {
+                    cell.showTutorial()
+                }
+            }
         case .bidList:
             let isLast = indexPath.row == (lots.count - 1)
             if isLast {
@@ -264,8 +286,23 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
     
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         switch sections[section] {
-        case .bidList: break
-        case .productList: break
+        case .bidList:
+            if let plan = tutorialPlan, plan.bid,
+                let header = tableView.headerView(forSection: section) as? BiddingListHeader {
+                tutorialPlan = nil
+                OperationQueue.main.addOperation {
+                    header.showTutorial()
+                }
+            }
+        case .productList:
+            if let plan = tutorialPlan, plan.waitForBid,
+                let header = tableView.headerView(forSection: section) as? ProductListHeader {
+                tutorialPlan = nil
+                OperationQueue.main.addOperation {
+                    header.showTutorial()
+                }
+            }
+
         default: break
         }
     }

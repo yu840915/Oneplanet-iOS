@@ -1,0 +1,168 @@
+//
+//  ProductBidProcess.swift
+//  Oneplanet
+//
+//  Created by 立宣于 on 2019/9/12.
+//  Copyright © 2019 何一品居. All rights reserved.
+//
+
+import Foundation
+import ModelBlocks
+import Alamofire
+
+class ProductBidProcessManager {
+    lazy var pushListener: PushListener = PushListener()
+    private weak var userSession: UserSession!
+    private var processes: [String: ProductBidProcess] = [:]
+    var isEnded: Bool {
+        return !processes.contains{$0.value.isEnded == false}
+    }
+    
+    init(userSession: UserSession) {
+        self.userSession = userSession
+    }
+    
+    func process(for product: ProductOverview) -> ProductBidProcess {
+        if let process = processes[product.id] {
+            return process
+        }
+        let process = ProductBidProcess(product: product, pushListener: pushListener, userSession: userSession)
+        processes[product.id] = process
+        return process
+    }
+}
+
+class ProductBidProcess {
+    let product: ProductOverview
+    let userSession: UserSession
+    let pushListener: PushListener
+    var isInitialized: Bool {
+        return news != nil
+    }
+    private var news: BidNews?
+    private var getNewsOperation: GetBidNewsOperation?
+    private var newsChannel: PushChannel!
+    private var chennelID: Any!
+    var lead: User? {
+        return leadFetcher?.user
+    }
+    var isEnded: Bool {
+        if let date = endDate {
+            return date.timeIntervalSinceNow <= 0
+        }
+        return false
+    }
+    var isWinning: Bool {
+        if leadFetcher?.id == userSession.profile?.id {
+            return true
+        }
+        return false
+    }
+    private(set) var leadFetcher: UserFetcher?
+    private(set) var endDate: Date?
+    private(set) var myBid: Int = 0
+    
+    init(product: ProductOverview, pushListener: PushListener, userSession: UserSession) {
+        self.product = product
+        self.pushListener = pushListener
+        self.userSession = userSession
+        getNews()
+        prepareChannel()
+    }
+    
+    private func getNews() {
+        let op = GetBidNewsOperation(product: product, userSession: userSession)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didGetNews()
+            }
+        }
+        getNewsOperation = op
+        op.start()
+    }
+    
+    private func prepareChannel() {
+        let channel = pushListener.subscribeChannel(ofName: product.id)
+        chennelID = channel.addEventHandler(for: "bid") {[weak self] (data) in
+            OperationQueue.main.addOperation {
+                self?.handleBidEvent(data)
+            }
+        }
+        newsChannel = channel
+    }
+    
+    private func didGetNews() {
+        let op = getNewsOperation!
+        getNewsOperation = nil
+        if let news = op.news {
+            update(with: news)
+        }
+    }
+    
+    private func handleBidEvent(_ data: Any?) {
+        if let news = BidNews(data) {
+            update(with: news)
+        }
+    }
+    
+    private func update(with news: BidNews) {
+        if let userID = news.userID {
+            leadFetcher = userSession.userFetcherRepo.fetcher(for: userID)
+        }
+        endDate = news.endDate
+        self.news = news
+        if userSession.isAdmin || userSession.profile?.id == news.userID {
+            reloadBidCount()
+        }
+    }
+    
+    private func reloadBidCount() {
+        
+    }
+}
+
+class GetBidNewsOperation: AlamofireAPIAccessOperation {
+    let product: ProductOverview
+    let userSession: UserSession
+    private(set) var news: BidNews?
+    
+    init(product: ProductOverview, userSession: UserSession) {
+        self.product = product
+        self.userSession = userSession
+    }
+    
+    override func prepareURLRequest() throws -> URLRequest {
+        return userSession.addingAuthorizationToken(to: URLRequest(url: ServiceURLs.devBase.appendingPathComponent("bidding/\(product.id)/state")))
+    }
+    
+    override func processData(with data: Data) throws {
+        news = try JSONDecoder.default.decode(BidNews.self, from: data)
+    }
+}
+
+class BidNews: Decodable {
+    let userID: String?
+    let endDate: Date
+    
+    enum CodingKeys: String, CodingKey {
+        case userID = "winner"
+        case endDate = "until"
+    }
+    
+    init?(_ data: Any?) {
+        guard let dict = data as? [AnyHashable: Any] else {
+            return nil
+        }
+        guard let ts = dict[CodingKeys.endDate.rawValue] as? Int,
+            let id = dict[CodingKeys.userID.rawValue] as? String else {
+                return nil
+        }
+        endDate = Date(timeIntervalSince1970: TimeInterval(ts))
+        userID = id
+    }
+    
+    init(userID: String, endDate: Date) {
+        self.userID = userID
+        self.endDate = endDate
+    }
+}

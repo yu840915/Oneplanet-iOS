@@ -27,7 +27,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
     private var myLotList: MyLotList?
     private var productOverviews: [ProductOverview] = []
     private var lots: [ProductOverview] = []
-    private var bidProcesses: [BidProcess] = []
+    private var bidProcesses: [ProductBidProcess] = []
     private var categoryListHandles: [Any]?
     private var lotListDidUpdateHandles: [Any]?
     private var bidPhaseUpdateHandle: Any?
@@ -285,7 +285,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         if let vc = segue.destination as? BidFlowViewController {
             let product = (sender as! ProductOverview)
             vc.product = product
-            vc.bidProcess = userSession.bidEventProcessManager.process(for: product)
+            vc.bidProcess = userSession.bidProcessManager.process(for: product)
         }
 
         if let nav = segue.destination as? UINavigationController {
@@ -447,7 +447,7 @@ private extension ProductListTableViewController {
     
     func lotListDidUpdate() {
         lots = myLotList!.items
-        bidProcesses = lots.map{userSession.bidEventProcessManager.process(for: $0)}
+        bidProcesses = lots.map{userSession.bidProcessManager.process(for: $0)}
         updateBackgroundForLotList(with: nil)
         tableView.reloadData()
     }

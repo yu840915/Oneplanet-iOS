@@ -17,6 +17,11 @@ class PreflightCheckFlowViewController: UIViewController, UserSessionDepending {
     @IBOutlet weak var errorView: UIStackView!
     @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var retryButton: UIButton!
+    private var getBidSessionTimeframeOperation: GetBidSessionTimeframeOperation? {
+        didSet {
+            updateViewsForRunningOperations()
+        }
+    }
     
     private var getProfileOperation: GetMyProfileOperation? {
         didSet {
@@ -27,6 +32,7 @@ class PreflightCheckFlowViewController: UIViewController, UserSessionDepending {
     override func viewDidLoad() {
         super.viewDidLoad()
         retryButton.setTitle(Localized.phrases.tryAgain, for: .normal)
+        startPreflightCheck()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,20 +41,45 @@ class PreflightCheckFlowViewController: UIViewController, UserSessionDepending {
         navigationController!.navigationBar.barStyle = .blackTranslucent
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        startPreflightCheck()
-    }
-    
     private func updateViewsForRunningOperations() {
-        let isRunning = getProfileOperation != nil
+        let isRunning = getProfileOperation != nil || getBidSessionTimeframeOperation != nil
         loadingIndicator.isHidden = !isRunning
         if isRunning {
             errorView.isHidden = true
         }
     }
     
+    private func getBidSessionTimeframe() {
+        let op = GetBidSessionTimeframeOperation()
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didGetTimeframe()
+            }
+        }
+        getBidSessionTimeframeOperation = op
+        op.start()
+    }
+    
+    private func didGetTimeframe() {
+        let op = getBidSessionTimeframeOperation!
+        getBidSessionTimeframeOperation = nil
+        if let timeframe = op.timeframe {
+            userSession.updateBidPhaseIndicator(with: timeframe)
+            startPreflightCheck()
+        } else {
+            notifyFailure(with: op.error)
+        }
+    }
+    
     private func startPreflightCheck() {
+        if userSession.bidPhaseIndicator == nil {
+            getBidSessionTimeframe()
+        } else {
+            startProfileCheck()
+        }
+    }
+    
+    private func startProfileCheck() {
         if userSession.isGuest {
             didFinishPreflightCheck?()
             return

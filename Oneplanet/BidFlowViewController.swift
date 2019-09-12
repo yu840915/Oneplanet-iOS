@@ -11,7 +11,7 @@ import UIKit
 class BidFlowViewController: UIViewController, UserSessionDepending {
     var userSession: UserSession!
     var product: ProductOverview!
-    var bidProcess: BidProcess!
+    var bidProcess: ProductBidProcess!
     private var bidOperation: BidProductOperation?
 
     var pageViewController: UIPageViewController!

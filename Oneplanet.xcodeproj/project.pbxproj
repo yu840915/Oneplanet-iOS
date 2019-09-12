@@ -168,6 +168,8 @@
 		E0C98E232328ADB600B0BF00 /* UploadPhotoOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C98E222328ADB600B0BF00 /* UploadPhotoOperation.swift */; };
 		E0C98E252328EB3700B0BF00 /* FullscreenLoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C98E242328EB3700B0BF00 /* FullscreenLoadingViewController.swift */; };
 		E0C98E272328F5EF00B0BF00 /* BidPhaseIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C98E262328F5EF00B0BF00 /* BidPhaseIndicator.swift */; };
+		E0C98E292329D77400B0BF00 /* MyLotList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C98E282329D77400B0BF00 /* MyLotList.swift */; };
+		E0C98E2B2329D7F000B0BF00 /* ProductBidProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C98E2A2329D7F000B0BF00 /* ProductBidProcess.swift */; };
 		E0CB5E11228F0B4A00C0C010 /* TreasuryBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CB5E10228F0B4A00C0C010 /* TreasuryBarViewController.swift */; };
 		E0CB5E15228F0E5F00C0C010 /* DS-DIGIB.TTF in Resources */ = {isa = PBXBuildFile; fileRef = E0CB5E14228F0E5F00C0C010 /* DS-DIGIB.TTF */; };
 		E0D1BBD922ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D1BBD822ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift */; };
@@ -392,6 +394,8 @@
 		E0C98E222328ADB600B0BF00 /* UploadPhotoOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPhotoOperation.swift; sourceTree = "<group>"; };
 		E0C98E242328EB3700B0BF00 /* FullscreenLoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullscreenLoadingViewController.swift; sourceTree = "<group>"; };
 		E0C98E262328F5EF00B0BF00 /* BidPhaseIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidPhaseIndicator.swift; sourceTree = "<group>"; };
+		E0C98E282329D77400B0BF00 /* MyLotList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLotList.swift; sourceTree = "<group>"; };
+		E0C98E2A2329D7F000B0BF00 /* ProductBidProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductBidProcess.swift; sourceTree = "<group>"; };
 		E0CB5E10228F0B4A00C0C010 /* TreasuryBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreasuryBarViewController.swift; sourceTree = "<group>"; };
 		E0CB5E14228F0E5F00C0C010 /* DS-DIGIB.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DS-DIGIB.TTF"; sourceTree = "<group>"; };
 		E0D1BBD822ACE68F00951F19 /* TimeIntervalComponentExtractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalComponentExtractorTests.swift; sourceTree = "<group>"; };
@@ -556,7 +560,6 @@
 				E032844422AB6A50001F02E8 /* AuctionMainViewController.swift */,
 				E0D1BBDA22ACEE9400951F19 /* TimeIntervalComponents.swift */,
 				E032844822AB7286001F02E8 /* ProductListTableViewController.swift */,
-				E0C98E262328F5EF00B0BF00 /* BidPhaseIndicator.swift */,
 				E0F26896231390B300CE5C45 /* ProductFilterPickerTableViewController.swift */,
 				E033F07F2300006E006EB3AE /* ProductListCells.swift */,
 				E0DCD05622B9CC3D008D9C63 /* ProductDetailViewController.swift */,
@@ -656,8 +659,7 @@
 				E05BB25F226D5D2A00721F20 /* RootViewController.swift */,
 				E0190F4C226DCCFB00C212D5 /* UserSession.swift */,
 				E0C98E222328ADB600B0BF00 /* UploadPhotoOperation.swift */,
-				E0EAF964231E61BB009C8624 /* Wallet.swift */,
-				E0EAF966231E9758009C8624 /* AuctionSystem.swift */,
+				E0C98E2C2329D87200B0BF00 /* Bid Subsystem */,
 				E05BB261226D5D2A00721F20 /* Main.storyboard */,
 				E0190F54226EC82500C212D5 /* UserFlowRootViewController.swift */,
 				E0814FAF22864D5D002F1C02 /* Main User Flow */,
@@ -837,6 +839,18 @@
 				E0EDD1512305ABCF00F732DE /* PostEditorPhotoCollectionViewController.swift */,
 			);
 			name = "Post Creation";
+			sourceTree = "<group>";
+		};
+		E0C98E2C2329D87200B0BF00 /* Bid Subsystem */ = {
+			isa = PBXGroup;
+			children = (
+				E0EAF964231E61BB009C8624 /* Wallet.swift */,
+				E0EAF966231E9758009C8624 /* AuctionSystem.swift */,
+				E0C98E262328F5EF00B0BF00 /* BidPhaseIndicator.swift */,
+				E0C98E2A2329D7F000B0BF00 /* ProductBidProcess.swift */,
+				E0C98E282329D77400B0BF00 /* MyLotList.swift */,
+			);
+			name = "Bid Subsystem";
 			sourceTree = "<group>";
 		};
 		E0DA389C22C27FC600EC4170 /* Unlock and Bid */ = {
@@ -1162,6 +1176,7 @@
 				E0125F9A22EADD8900AFF763 /* PostDetailViewController.swift in Sources */,
 				E07276FD2277424E001239C0 /* URLRouter.swift in Sources */,
 				E0C98E232328ADB600B0BF00 /* UploadPhotoOperation.swift in Sources */,
+				E0C98E2B2329D7F000B0BF00 /* ProductBidProcess.swift in Sources */,
 				E0B7B9CA22E1D8580005DF77 /* BlockListTableViewController.swift in Sources */,
 				E08F1490226EED8000937352 /* LibraryImagePickerViewController.swift in Sources */,
 				E081590D22A63616007C9776 /* BlueGemPopUpViewController.swift in Sources */,
@@ -1286,6 +1301,7 @@
 				E076729C22E70C8800A3939A /* PetitionViewController.swift in Sources */,
 				E032844522AB6A50001F02E8 /* AuctionMainViewController.swift in Sources */,
 				E045BE7722E974640035D08B /* PostFeedMainViewController.swift in Sources */,
+				E0C98E292329D77400B0BF00 /* MyLotList.swift in Sources */,
 				E0190F4D226DCCFB00C212D5 /* UserSession.swift in Sources */,
 				E02F49D122E5A9A00014DEBE /* UserProfileViewController.swift in Sources */,
 				E0DCD05122B7E86B008D9C63 /* PickerConfirmButtonFooter.swift in Sources */,

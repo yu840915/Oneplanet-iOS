@@ -27,7 +27,7 @@ class UserSession {
     let postPublishObservers = MulticastCallbackNode<(Post?)->()>()
     let userFetcherRepo = UserFetcherRepository()
     private(set) var wallet: Wallet!
-    private(set) var bidEventProcessManager: BidProcessManager!
+    private(set) var bidProcessManager: ProductBidProcessManager!
     private(set) var profile: MyProfile? {
         didSet {
             profileDidUpdate.invokeEach{$0()}
@@ -45,10 +45,17 @@ class UserSession {
         self.bearerToken = token
         self.loginType = loginType
         wallet = Wallet(userSession: self)
-        bidEventProcessManager = BidProcessManager(userSession: self)
-        bidPhaseIndicator = BidPhaseIndicator(currentPhase: .unlock, bidProcessManager: bidEventProcessManager)
+        bidProcessManager = ProductBidProcessManager(userSession: self)
         lotList = MyLotList(session: self)
         lotList.reload()
+    }
+    
+    func updateBidPhaseIndicator(with timeframe: SessionTimeframe) {
+        if let indicator = bidPhaseIndicator {
+            indicator.update(with: timeframe)
+        } else {
+            bidPhaseIndicator = BidPhaseIndicator(sessionTimeframe: timeframe, bidProcessManager: bidProcessManager)
+        }
     }
     
     func submitProfileChanges(with draft: ProfileDraft, completion: ((Bool, Error?)->())? = nil) {

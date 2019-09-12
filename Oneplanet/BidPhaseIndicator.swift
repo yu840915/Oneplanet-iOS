@@ -18,25 +18,31 @@ class BidPhaseIndicator {
         }
     }
     let updateObservers = MulticastCallbackNode<()->()>()
-    let startDate: Date = Date(timeIntervalSinceNow: 10 * .minute)
-    let bidProcessManager: BidProcessManager
+    private(set) var startDate: Date
+    private(set) var endDate: Date
+    let bidProcessManager: ProductBidProcessManager
     private var updateClock: UpdateClock!
     var biddingHasStarted: Bool {
         return phase != .unlock
     }
-    init(currentPhase: Phase, bidProcessManager: BidProcessManager) {
+    init(sessionTimeframe: SessionTimeframe, bidProcessManager: ProductBidProcessManager) {
         self.bidProcessManager = bidProcessManager
-        phase = currentPhase
+        startDate = sessionTimeframe.start
+        endDate = sessionTimeframe.end
+        phase = .unlock
         updateClock = UpdateClock(preferredFrameRate: 5, onTick: {[weak self] in
             self?.updatePhaseIfNeeded()
         })
+        updatePhaseIfNeeded()
     }
     
-    func updateStartDate(_ date: Date) {
-        guard date != startDate else {
+    func update(with timeframe: SessionTimeframe) {
+        guard timeframe.start != startDate else {
             return
         }
-        if date.timeIntervalSinceNow > 0 {
+        startDate = timeframe.start
+        endDate = timeframe.end
+        if startDate.timeIntervalSinceNow > 0 {
             phase = .unlock
         }
     }
@@ -63,5 +69,27 @@ extension BidPhaseIndicator {
         case running
         case spectator
         case ended
+    }
+}
+
+class GetBidSessionTimeframeOperation: AlamofireAPIAccessOperation {
+    private(set) var timeframe: SessionTimeframe?
+    
+    override func prepareURLRequest() throws -> URLRequest {
+        return URLRequest(url: ServiceURLs.base.appendingPathComponent("bidding/schedule_time"))
+    }
+    
+    override func processData(with data: Data) throws {
+        timeframe = try JSONDecoder.default.decode(SessionTimeframe.self, from: data)
+    }
+}
+
+struct SessionTimeframe: Decodable {
+    let start: Date
+    let end: Date
+    
+    enum CodingKeys: String, CodingKey {
+        case start = "start_bid_at"
+        case end = "close_bid_at"
     }
 }

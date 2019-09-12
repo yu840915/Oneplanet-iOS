@@ -181,7 +181,7 @@ extension BiddingProductCell {
         previewButton.kf.setImage(with: product.cover?.url, for: .normal)
     }
     
-    func updateViews(with process: BidProcess) {
+    func updateViews(with process: ProductBidProcess) {
         if process.isInitialized {
             updateViewsWithValidProcess(process)
         } else {
@@ -197,7 +197,7 @@ extension BiddingProductCell {
         avatarView.isHidden = true
     }
     
-    func updateViewsWithValidProcess(_ process: BidProcess) {
+    func updateViewsWithValidProcess(_ process: ProductBidProcess) {
         runningIndicator.isHidden = true
         countdownLabel.isHidden = true
         outcomeView.isHidden = true

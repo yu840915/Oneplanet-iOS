@@ -104,7 +104,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
             categoryList = nil
         } else {
             if categoryList == nil {
-                updateCategoryList(with: "other")
+                updateCategoryList(with: "ALL")
             }
             myLotList = nil
         }

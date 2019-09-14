@@ -192,11 +192,17 @@ class BidNews: Decodable {
         guard let dict = data as? [AnyHashable: Any] else {
             return nil
         }
-        guard let ts = dict[CodingKeys.endDate.rawValue] as? Int,
+        var date: Date?
+        if let ts = dict[CodingKeys.endDate.rawValue] as? Int {
+            date = Date(timeIntervalSince1970: TimeInterval(ts))
+        } else if let dtStr = dict[CodingKeys.endDate.rawValue] as? String {
+            date = SharedDateFormatters.serverDate.date(from: dtStr)
+        }
+        guard let dt = date,
             let id = dict[CodingKeys.userID.rawValue] as? String else {
                 return nil
         }
-        endDate = Date(timeIntervalSince1970: TimeInterval(ts))
+        endDate = dt
         userID = id
     }
     

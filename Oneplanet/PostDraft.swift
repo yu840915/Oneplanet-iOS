@@ -31,7 +31,7 @@ class PostDraft {
     
     init(post: Post) {
         originalPost = post
-        isValued = false
+        isValued = post.type == PostType.valued.rawValue
         caption = post.caption
     }
 
@@ -146,12 +146,15 @@ class SubmitPostDraftOperation: AlamofireAPIAccessOperation {
     
     private func prepareParameters() throws -> Parameters {
         var images: [URL] = []
+        
         if let post = draft.originalPost {
             images = post.imageURLs
         } else {
             images = draft.images.compactMap{$0.progress.imageLocation?.url}
         }
-        return [Keys.caption.rawValue: draft.caption, Keys.imageURLs.rawValue: images.map{$0.absoluteString}]
+        return [Keys.caption.rawValue: draft.caption,
+                Keys.imageURLs.rawValue: images.map{$0.absoluteString},
+                Keys.type.rawValue: draft.isValued ? PostType.valued.rawValue : PostType.free.rawValue]
     }
     
     override func processData(with data: Data) throws {

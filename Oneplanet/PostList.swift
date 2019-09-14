@@ -15,6 +15,7 @@ class Post: Decodable {
     let caption: String
     let imageURLs: [URL]
     let createdAt: Date
+    let type: String
     var images: [WebImageInfo] {
         return imageURLs.map{WebImageInfo(url: $0)}
     }
@@ -25,6 +26,7 @@ class Post: Decodable {
         self.caption = caption
         imageURLs = post.imageURLs
         createdAt = post.createdAt
+        type = post.type
     }
     
     enum CodingKeys: String, CodingKey {
@@ -32,7 +34,13 @@ class Post: Decodable {
         case authorID = "user"
         case imageURLs = "images"
         case createdAt = "created_at"
+        case type
     }
+}
+
+enum PostType: String {
+    case valued = "score"
+    case free
 }
 
 class PostList: PaginatedList<GetPostListOperationFactory> {

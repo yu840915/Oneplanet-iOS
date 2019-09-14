@@ -26,22 +26,31 @@ class IAPTransactionProcessor: NSObject, SKPaymentTransactionObserver {
     
     private func handleUpdate(of transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
         switch transaction.transactionState {
-        case .deferred: break
+        case .deferred:
+            if waitingInvoice?.setTransactionIfAllowed(transaction) == true {
+                waitingInvoice?.notifyStateChange()
+            }
         case .failed:
-            if waitingInvoice?.mayBeRelated(to: transaction) == true {
+            if waitingInvoice?.isRelated(to: transaction) == true {
                 waitingInvoice = nil
+                waitingInvoice?.notifyStateChange()
             }
         case .purchasing:
-            break
+            if waitingInvoice?.isRelated(to: transaction) == true {
+                waitingInvoice?.notifyStateChange()
+            }
         case .purchased:
-            break
+            if waitingInvoice?.isRelated(to: transaction) == true {
+                waitingInvoice = nil
+                waitingInvoice?.notifyStateChange()
+            }
         case .restored:
             break
         }
     }
     
     var canPlaceOrder: Bool {
-        if userSession == nil && waitingInvoice == nil {
+        if userSession == nil || waitingInvoice != nil {
             return false
         }
         return true
@@ -60,7 +69,8 @@ class Invoice {
     let iapProduct: SKProduct
     let iapType: IAPProductType
     let associatedProductID: String?
-    var transaction: SKPaymentTransaction?
+    private(set) var transaction: SKPaymentTransaction?
+    let updateObservers = MulticastCallbackNode<()->()>()
     
     init?(iapProduct: SKProduct, associatedProductID: String?) {
         guard let type = IAPProductType.from(iapProduct.productIdentifier) else {
@@ -71,11 +81,28 @@ class Invoice {
         self.iapProduct = iapProduct
     }
     
-    func mayBeRelated(to transaction: SKPaymentTransaction) -> Bool {
+    @discardableResult func setTransactionIfAllowed(_ transaction: SKPaymentTransaction) -> Bool {
+        if self.transaction === transaction {
+            return true
+        }
+        guard self.transaction == nil && isRelated(to: transaction) else {
+            return false
+        }
+        self.transaction = transaction
+        return true
+    }
+    
+    func isRelated(to transaction: SKPaymentTransaction) -> Bool {
         guard transaction.payment.productIdentifier == iapProduct.productIdentifier else {
             return false
         }
         return true
+    }
+    
+    func notifyStateChange() {
+        if transaction != nil {
+            updateObservers.invokeEach{$0()}
+        }
     }
 }
 

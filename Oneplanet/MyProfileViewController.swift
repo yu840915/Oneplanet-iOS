@@ -29,6 +29,10 @@ class MyProfileViewController: UIViewController, UserSessionDepending {
         updateViewsForProfile()
     }
     
+    func setNeedsRefresh() {
+        profileController?.setNeedsRefresh()
+    }
+    
     private func prepareIDHeaderIfNeeded() {
         guard !userSession.isGuest else { return }
         let header = IDHeaderView.fromDefaultNib()

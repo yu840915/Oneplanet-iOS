@@ -84,8 +84,10 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         } else if plan.bid,
             let index = sections.firstIndex(where: {$0 == .bidList}),
             let header = tableView.headerView(forSection: index) as? BiddingListHeader {
-            tutorialPlan = nil
-            header.showTutorial()
+            if !lots.isEmpty {
+                tutorialPlan = nil
+                header.showTutorial()
+            }
         } else if plan.waitForBid,
             let index = sections.firstIndex(where: {$0 == .productList}),
             let header = tableView.headerView(forSection: index) as? ProductListHeader {
@@ -312,7 +314,8 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         switch sections[section] {
         case .bidList:
             if let plan = tutorialPlan, plan.bid,
-                let header = view as? BiddingListHeader {
+                let header = view as? BiddingListHeader,
+                !lots.isEmpty {
                 tutorialPlan = nil
                 OperationQueue.main.addOperation {
                     header.showTutorial()

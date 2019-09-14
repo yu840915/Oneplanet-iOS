@@ -36,6 +36,8 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
         }
     }
     private var listUpdateHandles: [Any]?
+    private var isVisible = false
+    private var needsUpdate = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +49,27 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
         prepareForList()
     }
 
+    func setNeedsRefresh() {
+        if isVisible {
+            postList.reload()
+        } else {
+            needsUpdate = true
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        isVisible = true
+        if needsUpdate {
+            needsUpdate = false
+            postList.reload()
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        isVisible = false
+    }
 
     @IBAction func reload(_ sender: UIRefreshControl) {
         postList.reload()

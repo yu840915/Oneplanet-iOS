@@ -161,12 +161,6 @@ class SubmitPostDraftOperation: AlamofireAPIAccessOperation {
         if data.isEmpty { return }
         post = try JSONDecoder.default.decode(Post.self, from: data)
     }
-    
-    override func willFinishProcess() throws {
-        if post == nil {
-            
-        }
-    }
 }
 
 class UpdatePostPhotoFlowOperaion: SimpleAsynchronousOperation, FailableOperationType {

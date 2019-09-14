@@ -15,7 +15,7 @@ class Post: Decodable {
     let caption: String
     let imageURLs: [URL]
     let createdAt: Date
-    let type: String
+    let type: String?
     var images: [WebImageInfo] {
         return imageURLs.map{WebImageInfo(url: $0)}
     }

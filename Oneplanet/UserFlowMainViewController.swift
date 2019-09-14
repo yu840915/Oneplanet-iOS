@@ -14,6 +14,7 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
     private var contentTabbarController: UITabBarController!
     private var auctionController: AuctionMainViewController!
     private var postController: PostFeedMainViewController!
+    private var profileController: MyProfileViewController!
     private var treasuryBarController: TreasuryBarViewController!
     fileprivate var getPageListOperaion: GetPromotionPageListOperation?
     fileprivate var appearanceAction: (()->())?
@@ -37,9 +38,15 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
     override func viewDidLoad() {
         super.viewDidLoad()
         let contents = contentTabbarController.viewControllers!.compactMap{$0 as? UINavigationController}.compactMap{$0.viewControllers.first}
-        auctionController = contents.compactMap{$0 as? AuctionMainViewController}.first
-        postController = contents.compactMap{$0 as? PostFeedMainViewController}.first
-        
+        contents.forEach {
+            if let vc = $0 as? AuctionMainViewController {
+                auctionController = vc
+            } else if let vc = $0 as? PostFeedMainViewController {
+                postController = vc
+            } else if let vc = $0 as? MyProfileViewController {
+                profileController = vc
+            }
+        }
         setUpTabbarBackground()
         getPromoPopupIfNeeded()
         appBecomeActiveHandle = AppLifeCycleObserver.didBecomeActive.observers.add {[weak self] (_) in
@@ -170,12 +177,13 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
             }
         }
     }
-
 }
 
 fileprivate extension UserFlowMainViewController {
     func handleNewPost() {
         switchToTab(.life)
+        postController.setNeedsRefresh()
+        profileController.setNeedsRefresh()
     }
     
     func showCreationPortalIfAllowed() {

@@ -16,7 +16,7 @@ class UserSession {
         return bearerToken.isEmpty
     }
     var isBanned: Bool {
-        return true
+        return false
     }
     var isAdmin: Bool {
         return false

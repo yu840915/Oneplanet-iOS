@@ -128,6 +128,15 @@ extension PostCardCell {
         ds.pageControl = pageControl
     }
     
+    func updateViews(with userFetcher: UserFetcher) {
+        avatarView.update(with: userFetcher.user)
+        guard let user = userFetcher.user else {
+            userFetcher.initializeIfNeeded()
+            return
+        }
+        nameLabel.text = user.nickname
+    }
+    
     private func setUpContentSection(with dataSource: PostDisplayable) {
         contentTextView.isHidden = !dataSource.shouldShowContentSection || expanded
         expandedContentTextView.isHidden = !dataSource.shouldShowContentSection || !expanded

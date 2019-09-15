@@ -93,7 +93,6 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
     
     private func updateViewsForProfile() {
         guard let profile = self.profile else { return }
-        avatarView.backgrondImage = profile.alien?.race.frameImage
         nicknameLabel.text = profile.nickname
         if let image = profile.alien?.avatar {
             raceImageView.image = image
@@ -102,6 +101,7 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
         countsTextView.isHidden = !configuration.detailLabel
         avatarView.avatar = nil
         avatarView.avatar = profile.avatar
+        avatarView.backgrondImage = profile.alien?.frameImage
     }
     
     private func updateViewsForFollowCounts() {

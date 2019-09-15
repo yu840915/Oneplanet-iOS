@@ -102,6 +102,12 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
         cell.showProfileAction = {[weak self] in
             self?.showProfile(for: post)
         }
+        updateCell(cell, at: indexPath)
+    }
+    
+    private func updateCell(_ cell: PostCardCell, at indexPath: IndexPath) {
+        let fetcher = userSession.userFetcherRepo.fetcher(for: posts[indexPath.row].authorID)
+        cell.updateViews(with: fetcher)
     }
     
     private func expendCell(at indexPath: IndexPath) {
@@ -237,7 +243,10 @@ private extension PostFeedTableViewController {
     }
     
     func showProfile(for post: Post) {
-//        performSegue(withIdentifier: SegueID.showProfile, sender: post.author)
+        guard let user = userSession.userFetcherRepo.fetcher(for: post.authorID).user else {
+            return
+        }
+        performSegue(withIdentifier: SegueID.showProfile, sender: user)
     }
     
     func edit(_ post: Post) {

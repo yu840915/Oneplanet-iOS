@@ -224,17 +224,17 @@ extension BiddingProductCell {
         color = process.isWinning ? ColorPalette.bidGreen : ColorPalette.bidRed
         if process.leadFetcher != nil {
             avatarView.isHidden = false
-            avatarView.avatar = process.lead?.avatar
+            avatarView.update(with: process.lead)
         }
         updateCountLabel(process.myBid)
     }
     
     func updateCountLabel(_ count: Int) {
         let digits = SharedNumberFormatters.integer.string(for: count)!
-        let reversed = Array(digits.components(separatedBy: "").reversed())
+        let reversed = digits.reversed().map{String($0)}
         let labels = [digitLabel, tensLabel, hundredLabel]
         labels.forEach{ $0?.text = "0" }
-        for i in 0..<reversed.count {
+        for i in 0..<min(reversed.count, labels.count) {
             labels[i]?.text = reversed[i]
         }
     }

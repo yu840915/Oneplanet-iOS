@@ -105,6 +105,9 @@ class GetUserOperation: AlamofireAPIAccessOperation {
 class Alien: Decodable {
     let race: Race
     let color: AlienColor
+    var frameImage: UIImage {
+        return race.frameImage
+    }
     var avatar: UIImage {
         return AlienAvatars.shared.avatar(for: race, color: color)
     }

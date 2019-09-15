@@ -71,6 +71,7 @@ class PostDetailViewController: UIViewController, UserSessionDepending {
     func updateViews(with dataSource: PostDisplayable) {
         pageControl.isHidden = !dataSource.shouldShowPageControl
         avatarView.avatar = dataSource.avatar
+        avatarView.backgrondImage = dataSource.alien?.race.frameImage
         nameLabel.text = dataSource.nickname
         dateLabel.text = dataSource.formatedDate
         if let score = dataSource.relativeScore {
@@ -133,8 +134,9 @@ private extension PostDetailViewController {
     }
     
     func showProfileForAuthor() {
-        if canShowAuthorProfile {
-//            performSegue(withIdentifier: SegueID.showProfile, sender: post.author)
+        if canShowAuthorProfile,
+            let user = userSession.userFetcherRepo.fetcher(for: post.authorID).user {
+            performSegue(withIdentifier: SegueID.showProfile, sender: user)
         }
     }
     
@@ -149,8 +151,6 @@ private extension PostDetailViewController {
     func reportPost() {
         performSegue(withIdentifier: SegueID.showReportFlow, sender: PostReportFlowController())
     }
-    
-
 }
 
 extension PostDetailViewController {

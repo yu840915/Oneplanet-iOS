@@ -56,6 +56,7 @@ class ProductBidProcess: Equatable, Comparable {
     var isInitialized: Bool {
         return news != nil
     }
+    var extensionDuration: TimeInterval = .minute
     private var news: BidNews?
     private var getNewsOperation: GetBidNewsOperation?
     private var newsChannel: PushChannel!
@@ -134,6 +135,9 @@ class ProductBidProcess: Equatable, Comparable {
         if userSession.isAdmin || userSession.profile?.id == news.userID {
             reloadBidCount()
         }
+        if let ext = news.extensionDuration {
+            extensionDuration = ext
+        }
     }
     
     private func reloadBidCount() {
@@ -200,10 +204,12 @@ class GetBidNewsOperation: AlamofireAPIAccessOperation {
 class BidNews: Decodable {
     let userID: String?
     let endDate: Date
+    let extensionDuration: TimeInterval?
     
     enum CodingKeys: String, CodingKey {
         case userID = "winner"
         case endDate = "until"
+        case extensionDuration = "extension"
     }
     
     init?(_ data: Any?) {
@@ -222,10 +228,16 @@ class BidNews: Decodable {
         }
         endDate = dt
         userID = id
+        if let ext = dict[CodingKeys.extensionDuration.rawValue] as? Int {
+            extensionDuration = TimeInterval(ext)
+        } else {
+            extensionDuration = nil
+        }
     }
     
-    init(userID: String, endDate: Date) {
+    init(userID: String, endDate: Date, extesion: TimeInterval?) {
         self.userID = userID
         self.endDate = endDate
+        extensionDuration = extesion
     }
 }

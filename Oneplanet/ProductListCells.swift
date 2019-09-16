@@ -119,6 +119,7 @@ class BiddingProductCell: UITableViewCell {
     @IBOutlet weak var loseLabel: UILabel!
     private var color: UIColor = ColorPalette.bidRed
     @IBOutlet weak var tutorialBubble: ChatBubbleView!
+    private(set) var extensionDuration: TimeInterval = .minute
 
     var bidAction: (()->())?
     var showDetailAction: (()->())?
@@ -163,7 +164,7 @@ class BiddingProductCell: UITableViewCell {
         let min = formatter.string(for: comps.minutes) ?? "00"
         let sec = formatter.string(for: comps.seconds) ?? "00"
         var attr = countdownTimeAttribute
-        if i < .minute {
+        if i < extensionDuration {
             attr[.foregroundColor] = color
         }
         countdownLabel.attributedText = NSAttributedString(string: min + ":" + sec, attributes: attr)
@@ -184,6 +185,7 @@ extension BiddingProductCell {
     }
     
     func updateViews(with process: ProductBidProcess) {
+        extensionDuration = process.extensionDuration
         if process.isInitialized {
             updateViewsWithValidProcess(process)
         } else {

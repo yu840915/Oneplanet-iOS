@@ -133,7 +133,7 @@ private extension ProductDetailViewController {
     
     func updateViewsForBidPhase() {
         guard product == nil else { return }
-        lockView.isHidden = userSession.bidPhaseIndicator.biddingHasStarted
+        lockView.isHidden = userSession.bidPhaseIndicator.phase == .ended
     }
 
     func getProductDetail() {

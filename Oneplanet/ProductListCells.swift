@@ -226,6 +226,7 @@ extension BiddingProductCell {
             avatarView.isHidden = false
             avatarView.update(with: process.lead)
         }
+        leadIndicators.forEach{$0.isSelected = process.isWinning}
         updateCountLabel(process.myBid)
     }
     

@@ -84,6 +84,14 @@ class GetBidSessionTimeframeOperation: AlamofireAPIAccessOperation {
     override func processData(with data: Data) throws {
         timeframe = try JSONDecoder.default.decode(SessionTimeframe.self, from: data)
     }
+    
+    override func handleClientError(with response: HTTPURLResponse) throws {
+        if response.statusCode == 404 {
+            timeframe = SessionTimeframe(start: Date(), end: Date())
+        } else {
+            try super.handleClientError(with: response)
+        }
+    }
 }
 
 struct SessionTimeframe: Decodable {

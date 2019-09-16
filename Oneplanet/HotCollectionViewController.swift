@@ -185,6 +185,7 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
         vc.showDetailAction = {[weak self] item in
             self?.showDetail(for: item)
         }
+        vc.items = bannerList.items.compactMap{$0.previewable}
         headerController = vc
     }
 

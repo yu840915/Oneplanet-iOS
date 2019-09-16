@@ -15,7 +15,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
     var bidPhaseIndicator: BidPhaseIndicator {
         return userSession.bidPhaseIndicator
     }
-    var sections: [Section] = [.runningBiddingIndicator, .biddingEndedIndicator, .productList, .bidList]
+    var sections: [Section] = []
     private var wantsTutorial = false
     private var tutorialPlan: TutorialPlan?
 
@@ -26,8 +26,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
     private(set) var categoryList: CategoryList?
     private var myLotList: MyLotList?
     private var productOverviews: [ProductOverview] = []
-    private var lots: [ProductOverview] = []
-    private var bidProcesses: [ProductBidProcess] = []
+    private var sortedLots: [ProductBidProcess] = []
     private var categoryListHandles: [Any]?
     private var lotListDidUpdateHandles: [Any]?
     private var bidPhaseUpdateHandle: Any?
@@ -84,7 +83,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         } else if plan.bid,
             let index = sections.firstIndex(where: {$0 == .bidList}),
             let header = tableView.headerView(forSection: index) as? BiddingListHeader {
-            if !lots.isEmpty {
+            if !sortedLots.isEmpty {
                 tutorialPlan = nil
                 header.showTutorial()
             }
@@ -122,6 +121,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         }
         updateSectionsForBidPhase()
     }
+    
     private func updateSectionsForBidPhase() {
         var values: [Section] = []
         if bidPhaseIndicator.biddingHasStarted {
@@ -176,7 +176,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         case .productList:
             return productOverviews.count
         case .bidList:
-            return lots.count
+            return sortedLots.count
         }
     }
     
@@ -219,8 +219,8 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
     }
     
     private func configureBiddingCell(_ cell: BiddingProductCell, at indexPath: IndexPath) {
-        cell.updateViews(with: lots[indexPath.row])
-        let process = bidProcesses[indexPath.row]
+        cell.updateViews(with: sortedLots[indexPath.row].product)
+        let process = sortedLots[indexPath.row]
         process.leadFetcher?.initializeIfNeeded()
         cell.updateViews(with: process)
         cell.bidAction = {[weak self] in
@@ -240,7 +240,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         if sections[indexPath.section] == .productList {
             performSegue(withIdentifier: SegueID.showProductDetail, sender: productOverviews[indexPath.row])
         } else if sections[indexPath.section] == .bidList {
-            performSegue(withIdentifier: SegueID.showProductDetail, sender: lots[indexPath.row])
+            performSegue(withIdentifier: SegueID.showProductDetail, sender: sortedLots[indexPath.row].product)
         }
     }
 
@@ -302,7 +302,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
                 }
             }
         case .bidList:
-            let isLast = indexPath.row == (lots.count - 1)
+            let isLast = indexPath.row == (sortedLots.count - 1)
             if isLast {
                 myLotList?.loadMoreIfAllowed()
             }
@@ -315,7 +315,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         case .bidList:
             if let plan = tutorialPlan, plan.bid,
                 let header = view as? BiddingListHeader,
-                !lots.isEmpty {
+                !sortedLots.isEmpty {
                 tutorialPlan = nil
                 OperationQueue.main.addOperation {
                     header.showTutorial()
@@ -387,6 +387,12 @@ private extension ProductListTableViewController {
     }
     
     func updateBidCells() {
+        let new = sortedLots.reversed().sorted()
+        if new != sortedLots {
+            sortedLots = new.reversed()
+            tableView.reloadData()
+            return
+        }
         guard let indeices = tableView.indexPathsForVisibleRows?.filter({sections[$0.section] == .bidList}) else {
             return
         }
@@ -399,7 +405,7 @@ private extension ProductListTableViewController {
         guard let cell = tableView.cellForRow(at: indexPath) as? BiddingProductCell else {
             return
         }
-        cell.updateViews(with: bidProcesses[indexPath.row])
+        cell.updateViews(with: sortedLots[indexPath.row])
     }
     
     func updateProductCells() {
@@ -455,11 +461,11 @@ private extension ProductListTableViewController {
     }
     
     func bidProductIfAllowed(at indexPath: IndexPath) {
-        performSegue(withIdentifier: SegueID.enterBidFlow, sender: lots[indexPath.row])
+        performSegue(withIdentifier: SegueID.enterBidFlow, sender: sortedLots[indexPath.row].product)
     }
     
     func showLeadUserForBid(at indexPath: IndexPath) {
-        guard let user = bidProcesses[indexPath.row].lead else {
+        guard let user = sortedLots[indexPath.row].lead else {
             return
         }
         performSegue(withIdentifier: SegueID.showProfile, sender: user)
@@ -516,14 +522,13 @@ private extension ProductListTableViewController {
     }
     
     func lotListDidUpdate() {
-        lots = myLotList!.items
-        bidProcesses = lots.map{userSession.bidProcessManager.process(for: $0)}
+        sortedLots = myLotList!.items.map{userSession.bidProcessManager.process(for: $0)}.sorted(by: >)
         updateBackgroundForLotList(with: nil)
         tableView.reloadData()
     }
     
     func updateBackgroundForLotList(with error: Error? = nil) {
-        if !lots.isEmpty {
+        if !sortedLots.isEmpty {
             tableView.tableFooterView = UIView()
         } else {
             let view = EmptyLotListView.fromDefaultNib()

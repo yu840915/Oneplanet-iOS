@@ -32,7 +32,24 @@ class ProductBidProcessManager {
     }
 }
 
-class ProductBidProcess {
+class ProductBidProcess: Equatable, Comparable {
+    static func < (lhs: ProductBidProcess, rhs: ProductBidProcess) -> Bool {
+        if lhs.endDate != nil, rhs.endDate != nil {
+            if lhs.isEnded == rhs.isEnded {
+                return true
+            }
+            return lhs.isEnded
+        }
+        if lhs.endDate == nil && rhs.endDate == nil {
+            return lhs.product.displayName < rhs.product.displayName
+        }
+        return lhs.endDate == nil
+    }
+    
+    static func == (lhs: ProductBidProcess, rhs: ProductBidProcess) -> Bool {
+        return lhs.product.id == rhs.product.id
+    }
+    
     let product: ProductOverview
     let userSession: UserSession
     let pushListener: PushListener
@@ -110,6 +127,7 @@ class ProductBidProcess {
     private func update(with news: BidNews) {
         if let userID = news.userID {
             leadFetcher = userSession.userFetcherRepo.fetcher(for: userID)
+            leadFetcher?.initializeIfNeeded()
         }
         endDate = news.endDate
         self.news = news

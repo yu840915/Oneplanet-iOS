@@ -54,7 +54,9 @@ class BidPhaseIndicator {
         if startDate.timeIntervalSinceNow > 0 {
             phase = .unlock
         } else {
-            if bidProcessManager.isEnded {
+            if endDate.timeIntervalSinceNow < 0 {
+                phase = .ended
+            } else if bidProcessManager.isEnded {
                 phase = .spectator
             } else {
                 phase = .running

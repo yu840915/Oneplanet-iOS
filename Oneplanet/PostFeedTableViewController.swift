@@ -296,12 +296,18 @@ class PostCardViewModel: PostDisplayable {
     let formatedDate: String
     let photos: [WebImageInfo]
     let message: String
-    let relativeScore: Float? = nil
+    let relativeScore: Float?
     var alien: Alien? = nil
     
     init(post: Post) {
         photos = post.images
         formatedDate = SharedSpeciaFormatters.dateFromNowForPosts.string(from: post.createdAt)
         message = post.caption
+        if let score = post.score,
+            post.type == PostType.valued.rawValue {
+            relativeScore = Float(score) / 100
+        } else {
+            relativeScore = nil
+        }
     }
 }

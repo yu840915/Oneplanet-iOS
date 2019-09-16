@@ -74,7 +74,7 @@ class PostCardCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        if expanded {
+        if expanded || contentTextView.isHidden {
             moreButton.isHidden = true
             return
         }

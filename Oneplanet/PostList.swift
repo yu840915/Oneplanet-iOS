@@ -19,6 +19,7 @@ class Post: Decodable {
     var images: [WebImageInfo] {
         return imageURLs.map{WebImageInfo(url: $0)}
     }
+    let score: Int?
     
     init(post: Post, caption: String) {
         id = post.id
@@ -27,6 +28,7 @@ class Post: Decodable {
         imageURLs = post.imageURLs
         createdAt = post.createdAt
         type = post.type
+        score = post.score
     }
     
     enum CodingKeys: String, CodingKey {
@@ -35,6 +37,7 @@ class Post: Decodable {
         case imageURLs = "images"
         case createdAt = "created_at"
         case type
+        case score
     }
 }
 

@@ -15,7 +15,7 @@ class ValuedPhotoSuspensionInformationViewController: UIViewController {
     @IBOutlet weak var bulletTextView1: UITextView!
     @IBOutlet weak var okButton: UIButton!
     var dismissAction: (()->())?
-    var capacity: PhotoUploadCapacity?
+    var quota: ValuedPostQuota!
     private var refreshClock: UpdateClock!
     private var cooldownTimeFormatter: PostCooldownTimeFormatter!
     
@@ -35,11 +35,17 @@ class ValuedPhotoSuspensionInformationViewController: UIViewController {
     }
 
     func updateTimerLabel() {
-        guard let cap = capacity else {
+        guard let cap = quota.lastState else {
             timerLabel.text = "–"
             return
         }
-        timerLabel.text = String(format: Localized.uploadPopUp.cooldownTime, cooldownTimeFormatter.string(for: cap.nextRefillTime)!)
+        var dateStr = ""
+        if cap.isFull {
+            dateStr = Localized.phrases.noRoomForPhoto
+        } else if let date = cap.nextChargeDate {
+            dateStr = cooldownTimeFormatter.string(for: date)
+        }
+        timerLabel.text = String(format: Localized.uploadPopUp.cooldownTime, dateStr)
     }
 
     @IBAction func next(_ sender: Any) {

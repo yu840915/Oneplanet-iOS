@@ -11,6 +11,7 @@ import UIKit
 class PostCreationPortalViewController: UIViewController, UserSessionDepending {
     
     var userSession: UserSession!
+    var quota: ValuedPostQuota?
     var didPublish: ((Post?)->())?
     @IBOutlet weak var controlContainer: UIStackView!
     @IBOutlet weak var valuedPhotoLabel: UILabel!
@@ -20,7 +21,6 @@ class PostCreationPortalViewController: UIViewController, UserSessionDepending {
     @IBOutlet weak var valuedPostCell: UIStackView!
     
     var startPostCreationFlow: ((PostDraft)->())?
-    private var capacity: PhotoUploadCapacity? = PhotoUploadCapacity()
     private var refreshClock: UpdateClock!
     private var cooldownTimeFormatter: PostCooldownTimeFormatter!
 
@@ -34,24 +34,39 @@ class PostCreationPortalViewController: UIViewController, UserSessionDepending {
             self?.updatePhotoCapacityLabel()
         })
         valuedPostCell.isHidden = userSession.isAdmin
+        if !userSession.isAdmin {
+            let q = ValuedPostQuota(userSession: userSession)
+            quota = q
+            q.refresh()
+        }
     }
     
     func updatePhotoCapacityLabel() {
-        guard let cap = capacity else {
+        guard let cap = quota?.lastState else {
             valuedPhotoCapacityLabel.text = "–"
+            valuedPostCell.isHidden = true
             return
         }
+        valuedPostCell.isHidden = false
         let formatter = SharedNumberFormatters.integer
-        valuedPhotoCapacityLabel.text = String(format: Localized.phraseFormats.remainingUploads, formatter.string(for: cap.available)!, formatter.string(for: cap.total)!, cooldownTimeFormatter.string(for: cap.nextRefillTime)!)
+        var dateStr = ""
+        if cap.isFull {
+            dateStr = Localized.phrases.noRoomForPhoto
+        } else if let date = cap.nextChargeDate {
+            dateStr = cooldownTimeFormatter.string(for: date)
+        }
+        valuedPhotoCapacityLabel.text = String(format: Localized.phraseFormats.remainingUploads, formatter.string(for: cap.remain)!, formatter.string(for: cap.quota)!, dateStr)
     }
     
     @IBAction func selectValuedPhoto(_ sender: Any) {
-        performSegue(withIdentifier: SegueID.showValuedPhotoInfo, sender: nil)
-//        if Preferences.shouldHideValuedPhotoInfo.value == true {
-//            //repor
-//        } else {
-//            performSegue(withIdentifier: SegueID.showValuedPhotoInfo, sender: nil)
-//        }
+        guard let q = quota?.lastState else {
+            return
+        }
+        if q.remain > 0 {
+            performSegue(withIdentifier: SegueID.showValuedPhotoInfo, sender: nil)
+        } else {
+            performSegue(withIdentifier: SegueID.showCantUploadInfo, sender: nil)
+        }
     }
     
     
@@ -94,7 +109,7 @@ class PostCreationPortalViewController: UIViewController, UserSessionDepending {
         } else if let vc = popUp as? FreePhotoInformationPopUpViewController {
             prepareFreePhotoPopUp(vc)
         } else if let vc = popUp as? ValuedPhotoSuspensionInformationViewController {
-            prepareSuspensionPopUp(vc)
+            prepareSuspenssionPopUp(vc)
         }
     }
     
@@ -131,8 +146,8 @@ class PostCreationPortalViewController: UIViewController, UserSessionDepending {
         }
     }
     
-    func prepareSuspensionPopUp(_ popUp: ValuedPhotoSuspensionInformationViewController) {
-        popUp.capacity = capacity
+    func prepareSuspenssionPopUp(_ popUp: ValuedPhotoSuspensionInformationViewController) {
+        popUp.quota = quota!
         popUp.dismissAction = {[weak self] in
             self?.dismissPopUp()
         }
@@ -150,12 +165,6 @@ extension PostCreationPortalViewController {
         static let showFreePhotoInfo = "showFreePhotoInfo"
         static let showCantUploadInfo = "showCantUploadInfo"
     }
-}
-
-class PhotoUploadCapacity {
-    let available: Int = 9
-    let total: Int = 10
-    let nextRefillTime: Date? = Date(timeIntervalSinceNow: .hour)
 }
 
 class PostCooldownTimeFormatter: Formatter {

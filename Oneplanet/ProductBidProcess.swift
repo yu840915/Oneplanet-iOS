@@ -32,20 +32,7 @@ class ProductBidProcessManager {
     }
 }
 
-class ProductBidProcess: Equatable, Comparable {
-    static func < (lhs: ProductBidProcess, rhs: ProductBidProcess) -> Bool {
-        if lhs.endDate != nil, rhs.endDate != nil {
-            if lhs.isEnded == rhs.isEnded {
-                return true
-            }
-            return lhs.isEnded
-        }
-        if lhs.endDate == nil && rhs.endDate == nil {
-            return lhs.product.displayName < rhs.product.displayName
-        }
-        return lhs.endDate == nil
-    }
-    
+class ProductBidProcess: Equatable {
     static func == (lhs: ProductBidProcess, rhs: ProductBidProcess) -> Bool {
         return lhs.product.id == rhs.product.id
     }
@@ -80,6 +67,7 @@ class ProductBidProcess: Equatable, Comparable {
     private(set) var endDate: Date?
     private(set) var myBid: Int = 0
     private(set) var getBidCountOperation: GetMyBidCountOperation?
+    private(set) weak var checkFinalStateTimer: Timer?
     
     init(product: ProductOverview, pushListener: PushListener, userSession: UserSession) {
         self.product = product
@@ -90,7 +78,24 @@ class ProductBidProcess: Equatable, Comparable {
         reloadBidCount()
     }
     
+    func checkFinalStateIfNeeded() {
+        guard let date = endDate, date.timeIntervalSinceNow < 0, date.timeIntervalSinceNow > -1 else {
+            return
+        }
+        guard checkFinalStateTimer == nil && getBidCountOperation == nil else {
+            return
+        }
+        if !isWinning { return }
+        let timer = Timer(timeInterval: 0.5, repeats: false) {[weak self] (_) in
+            self?.getNews()
+        }
+        timer.tolerance = 0.1
+        RunLoop.main.add(timer, forMode: .common)
+        checkFinalStateTimer = timer
+    }
+    
     private func getNews() {
+        guard getNewsOperation == nil else { return }
         let op = GetBidNewsOperation(product: product, userSession: userSession)
         op.completionBlock = {[weak self] in
             OperationQueue.main.addOperation {
@@ -126,6 +131,7 @@ class ProductBidProcess: Equatable, Comparable {
     }
     
     private func update(with news: BidNews) {
+        checkFinalStateTimer?.invalidate()
         if let userID = news.userID {
             leadFetcher = userSession.userFetcherRepo.fetcher(for: userID)
             leadFetcher?.initializeIfNeeded()

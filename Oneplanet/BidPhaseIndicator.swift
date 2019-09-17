@@ -18,17 +18,21 @@ class BidPhaseIndicator {
         }
     }
     let updateObservers = MulticastCallbackNode<()->()>()
-    private(set) var startDate: Date
-    private(set) var endDate: Date
+    private(set) var bidStartDate: Date
+    private(set) var bidEndDate: Date
+    private(set) var sessionEndDate: Date
     let bidProcessManager: ProductBidProcessManager
+    private var refreshTimer: Timer?
+    private var refreshOperation: GetBidSessionTimeframeOperation?
     private var updateClock: UpdateClock!
     var biddingHasStarted: Bool {
         return phase != .unlock
     }
     init(sessionTimeframe: SessionTimeframe, bidProcessManager: ProductBidProcessManager) {
         self.bidProcessManager = bidProcessManager
-        startDate = sessionTimeframe.start
-        endDate = sessionTimeframe.end
+        bidStartDate = sessionTimeframe.bidStart
+        bidEndDate = sessionTimeframe.bidEnd
+        sessionEndDate = sessionTimeframe.end
         phase = .unlock
         updateClock = UpdateClock(preferredFrameRate: 5, onTick: {[weak self] in
             self?.updatePhaseIfNeeded()
@@ -37,30 +41,71 @@ class BidPhaseIndicator {
     }
     
     func update(with timeframe: SessionTimeframe) {
-        guard timeframe.start != startDate else {
+        guard timeframe.bidStart != bidStartDate else {
             return
         }
-        startDate = timeframe.start
-        endDate = timeframe.end
-        if startDate.timeIntervalSinceNow > 0 {
+        bidStartDate = timeframe.bidStart
+        bidEndDate = timeframe.bidEnd
+        if bidStartDate.timeIntervalSinceNow > 0 {
+            refreshTimer?.invalidate()
             phase = .unlock
         }
     }
     
     private func updatePhaseIfNeeded() {
         guard phase != .ended else {
+            setUpRefreshTimerIfNeeded()
             return
         }
-        if startDate.timeIntervalSinceNow > 0 {
+        refreshTimer?.invalidate()
+        refreshOperation?.cancel()
+        refreshOperation = nil
+        if bidStartDate.timeIntervalSinceNow > 0 {
             phase = .unlock
         } else {
-            if endDate.timeIntervalSinceNow < 0 {
+            if bidEndDate.timeIntervalSinceNow < 0 {
                 phase = .ended
             } else if bidProcessManager.isEnded {
                 phase = .spectator
             } else {
                 phase = .running
             }
+        }
+    }
+    
+    private func setUpRefreshTimerIfNeeded() {
+        guard refreshTimer == nil
+            && sessionEndDate.timeIntervalSinceNow < 0 else {
+            return
+        }
+        let timer = Timer(timeInterval: 10 * .minute, repeats: true) { (_) in
+            
+        }
+        timer.tolerance = 1
+        refreshTimer = timer
+        RunLoop.main.add(timer, forMode: .common)
+        refreshIfNeeded()
+    }
+    
+    private func refreshIfNeeded() {
+        guard refreshOperation == nil else {
+            return
+        }
+        let op = GetBidSessionTimeframeOperation()
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didRefresh()
+            }
+        }
+        refreshOperation = op
+        op.start()
+    }
+    
+    private func didRefresh() {
+        let op = refreshOperation!
+        refreshOperation = nil
+        if let tf = op.timeframe {
+            update(with: tf)
         }
     }
 }
@@ -87,7 +132,7 @@ class GetBidSessionTimeframeOperation: AlamofireAPIAccessOperation {
     
     override func handleClientError(with response: HTTPURLResponse) throws {
         if response.statusCode == 404 {
-            timeframe = SessionTimeframe(start: Date(), end: Date())
+            timeframe = SessionTimeframe(bidStart: Date(), bidEnd: Date(), end: Date())
         } else {
             try super.handleClientError(with: response)
         }
@@ -95,11 +140,13 @@ class GetBidSessionTimeframeOperation: AlamofireAPIAccessOperation {
 }
 
 struct SessionTimeframe: Decodable {
-    let start: Date
+    let bidStart: Date
+    let bidEnd: Date
     let end: Date
     
     enum CodingKeys: String, CodingKey {
-        case start = "start_bid_at"
-        case end = "close_bid_at"
+        case bidStart = "start_bid_at"
+        case bidEnd = "close_bid_at"
+        case end = "close_at"
     }
 }

@@ -124,6 +124,6 @@ class CollectionItem: Decodable {
     
     var previewable: CollectionItemPreviewing? {
         return CollectionCategoryItem.from(self) ??
-            CollectionProductItem.from(self)
+            CollectionProductItem.from(self) ?? PromotionAd.from(self)
     }
 }

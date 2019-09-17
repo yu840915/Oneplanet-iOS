@@ -122,7 +122,8 @@ private extension ProductDetailViewController {
         contentContainer.isHidden = false
         previews = prod.images
         titleLabel.text = prod.displayName
-        let attrDes = markdownParser.parse(prod.description).mutableCopy() as! NSMutableAttributedString
+        let des = prod.description.replacingOccurrences(of: "\\n", with: "\n")
+        let attrDes = markdownParser.parse(des).mutableCopy() as! NSMutableAttributedString
         let range = NSMakeRange(0, attrDes.length)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
@@ -132,7 +133,7 @@ private extension ProductDetailViewController {
     }
     
     func updateViewsForBidPhase() {
-        guard product == nil else { return }
+        guard let prod = product, prod.allowsUnlock else { return }
         lockView.isHidden = userSession.bidPhaseIndicator.phase == .ended
     }
 
@@ -206,7 +207,7 @@ private extension ProductDetailViewController {
     }
     
     func updateViewsForLockState() {
-        guard let prod = product else { return }
+        guard let prod = product, prod.allowsUnlock else { return }
         let isLocked = userSession.lotList.isLocked(prod)
         let appearance = isLocked ? LockAppearance.forLocked : LockAppearance.forUnlocked
         lockLabel.text = appearance.title

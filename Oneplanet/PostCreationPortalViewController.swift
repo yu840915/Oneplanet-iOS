@@ -30,9 +30,9 @@ class PostCreationPortalViewController: UIViewController, UserSessionDepending {
         cooldownTimeFormatter = PostCooldownTimeFormatter()
         valuedPhotoLabel.text = Localized.phrases.uploadValuedPhoto
         freePhotoLabel.text = Localized.phrases.uploadFreePhoto
-        refreshClock = UpdateClock(onTick: {[weak self] in
+        refreshClock = UpdateClock(preferredFrameRate: 10) {[weak self] in
             self?.updatePhotoCapacityLabel()
-        })
+        }
         valuedPostCell.isHidden = userSession.isAdmin
         if !userSession.isAdmin {
             let q = ValuedPostQuota(userSession: userSession)

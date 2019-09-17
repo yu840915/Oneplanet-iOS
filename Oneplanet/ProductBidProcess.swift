@@ -66,7 +66,7 @@ class ProductBidProcess: Equatable, Comparable {
     }
     var isEnded: Bool {
         if let date = endDate {
-            return date.timeIntervalSinceNow <= 0
+            return date.timeIntervalSinceNow <= -5
         }
         return false
     }

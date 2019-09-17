@@ -113,7 +113,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         switch bidPhaseIndicator.phase {
         case .unlock:
             countdownDescriptionLabel.text = Localized.activity.countdown
-            countDownView.deadline = userSession.bidPhaseIndicator.startDate
+            countDownView.deadline = userSession.bidPhaseIndicator.bidStartDate
         case .running, .spectator:
             countdownDescriptionLabel.text = Localized.activity.bidding
         case .ended:
@@ -387,9 +387,9 @@ private extension ProductListTableViewController {
     }
     
     func updateBidCells() {
-        let new = sortedLots.reversed().sorted()
+        let new = sortBidProcesses(sortedLots)
         if new != sortedLots {
-            sortedLots = new.reversed()
+            sortedLots = new
             tableView.reloadData()
             return
         }
@@ -517,14 +517,28 @@ private extension ProductListTableViewController {
             }
         }))
         lotListDidUpdateHandles = handles
-        list.reload()
         myLotList = list
+        list.reload()
     }
     
     func lotListDidUpdate() {
-        sortedLots = myLotList!.items.map{userSession.bidProcessManager.process(for: $0)}.sorted(by: >)
+        guard let list = myLotList else { return }
+        sortedLots = sortBidProcesses(list.items.map{userSession.bidProcessManager.process(for: $0)})
         updateBackgroundForLotList(with: nil)
         tableView.reloadData()
+    }
+    
+    func sortBidProcesses(_ processes: [ProductBidProcess]) -> [ProductBidProcess] {
+        var running: [ProductBidProcess] = []
+        var ended: [ProductBidProcess] = []
+        processes.forEach{
+            if $0.isEnded {
+                ended.append($0)
+            } else {
+                running.append($0)
+            }
+        }
+        return running + ended
     }
     
     func updateBackgroundForLotList(with error: Error? = nil) {

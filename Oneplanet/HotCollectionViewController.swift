@@ -148,7 +148,7 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
             vc.userSession = userSession
         }
         if let vc = segue.destination as? ProductDetailViewController {
-            vc.productQuery = (sender as! CollectionProductItem).id
+            vc.productQuery = (sender as! String)
         }
     }
 
@@ -214,12 +214,14 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
 private extension HotCollectionViewController {
     func showDetail(for item: CollectionItemPreviewing) {
         if let product = item as? CollectionProductItem {
-            performSegue(withIdentifier: SegueID.showProductDetail, sender: product)
+            performSegue(withIdentifier: SegueID.showProductDetail, sender: product.id)
         } else if let category = item as? CollectionCategoryItem {
             router.handle(DeepLinks.categoryList.appendingPathComponent(category.id))
         } else if let ad = item as? PromotionAd {
             if let link = ad.link {
                 router.handle(link)
+            } else {
+                performSegue(withIdentifier: SegueID.showProductDetail, sender: ad.id)
             }
         }
     }

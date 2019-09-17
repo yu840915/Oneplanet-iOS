@@ -32,18 +32,21 @@ class ProductOverview: Decodable {
 class Product: ProductOverview {
     let description: String
     let images: [WebImageInfo]
+    let allowsUnlock: Bool
     override var cover: WebImageInfo? {
         return images.first
     }
     
     enum AdditionalKeys: String, CodingKey {
         case description, images
+        case allowsUnlock = "is_locked"
     }
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: AdditionalKeys.self)
         description = try container.decodeIfPresent(String.self, forKey: .description) ?? ""
         images = (try container.decode([URL].self, forKey: .images)).map{WebImageInfo(url: $0)}
+        allowsUnlock = try container.decode(Bool.self, forKey: .allowsUnlock)
         try super.init(from: decoder)
     }
 }

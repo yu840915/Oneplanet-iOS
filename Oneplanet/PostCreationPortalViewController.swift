@@ -34,11 +34,6 @@ class PostCreationPortalViewController: UIViewController, UserSessionDepending {
             self?.updatePhotoCapacityLabel()
         }
         valuedPostCell.isHidden = userSession.isAdmin
-        if !userSession.isAdmin {
-            let q = ValuedPostQuota(userSession: userSession)
-            quota = q
-            q.refresh()
-        }
     }
     
     func updatePhotoCapacityLabel() {

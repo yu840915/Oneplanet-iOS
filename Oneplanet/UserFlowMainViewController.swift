@@ -26,6 +26,7 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
     @IBOutlet weak var balloonButton: UIButton!
     var balloonNavigationCoordinator: BalloonNavigationCoordinator?
     var statusBarHandle: Any?
+    private var postQuota: ValuedPostQuota?
     
     class func fromDefaultStoryboard() -> UserFlowMainViewController {
         return UIStoryboard(name: "MainUserFlow", bundle: nil).instantiateInitialViewController() as! UserFlowMainViewController
@@ -60,6 +61,11 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
             $0?.layer.shadowOpacity = 1.0
             $0?.layer.shadowRadius = 4
             $0?.layer.shadowOffset = .init(width: -2, height: 4)
+        }
+        if !userSession.isAdmin {
+            let q = ValuedPostQuota(userSession: userSession)
+            postQuota = q
+            q.refresh()
         }
     }
     
@@ -163,6 +169,7 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
                     self?.showPostComposer(with: draft)
                 })
             }
+            vc.quota = postQuota
         } else if let nav = segue.destination as? UINavigationController {
             if let vc = nav.viewControllers.first as? PostCreationFlowViewController {
                 vc.userSession = userSession
@@ -184,6 +191,8 @@ fileprivate extension UserFlowMainViewController {
         switchToTab(.life)
         postController.setNeedsRefresh()
         profileController.setNeedsRefresh()
+        userSession.wallet.setNeedsUpdateBlueGem()
+        postQuota?.refresh()
     }
     
     func showCreationPortalIfAllowed() {

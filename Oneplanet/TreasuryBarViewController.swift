@@ -64,9 +64,9 @@ class TreasuryBarViewController: UIViewController, UserSessionDepending {
 
         if let old = snapshot, allowAnimation {
             var plan = AnimationPlan()
-            plan.blueGem = new.blueGem > old.blueGem
-            plan.greenGem = new.greenGem > old.greenGem
-            plan.purpleGem = new.purpleGem > old.purpleGem
+            plan.blueGem = new.blueGem != old.blueGem
+            plan.greenGem = new.greenGem != old.greenGem
+            plan.purpleGem = new.purpleGem != old.purpleGem
             plan.scoreBar = (new.score != new.score) || plan.blueGem
             animationPlan = plan
         } else {
@@ -95,6 +95,7 @@ class TreasuryBarViewController: UIViewController, UserSessionDepending {
         let colors = [ColorPalette.blueGem, ColorPalette.purpleCoin, ColorPalette.greenKey]
         for i in 0...2 {
             let button = treasuryButtons[i]
+            button.titleLabel?.lineBreakMode = .byWordWrapping
             button.imageView?.layer.shadowColor = colors[i].cgColor
             button.imageView?.layer.shadowRadius = 10
             button.imageView?.layer.shadowOffset = .zero

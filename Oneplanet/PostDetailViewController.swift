@@ -141,7 +141,8 @@ private extension PostDetailViewController {
     }
     
     func editPost() {
-        performSegue(withIdentifier: SegueID.showPostEditor, sender: nil)
+        guard post.authorID == userSession.profile?.id else { return }
+        performSegue(withIdentifier: SegueID.showPostEditor, sender: post)
     }
     
     func deletePost() {

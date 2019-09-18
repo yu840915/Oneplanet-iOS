@@ -296,7 +296,7 @@
                                     <outlet property="activityIndicator" destination="T2N-x1-f6l" id="5yZ-nq-71S"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="postCell" rowHeight="600" id="C2V-pE-YM6" customClass="PostCardCell" customModule="Oneplanet" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="postCell" rowHeight="600" id="C2V-pE-YM6" customClass="PostCardCell" customModule="Oneplanet" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="134" width="414" height="600"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="C2V-pE-YM6" id="soz-19-S1s">

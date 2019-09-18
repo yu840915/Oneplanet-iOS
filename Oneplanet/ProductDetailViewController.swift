@@ -64,11 +64,13 @@ class ProductDetailViewController: UIViewController, UserSessionDepending {
     
     private func setUpHandles() {
         var handles: [Any] = []
-        handles.append(userSession.bidPhaseIndicator.updateObservers.add {[weak self] in
-            OperationQueue.main.addOperation {
-                self?.updateViewsForBidPhase()
-            }
-        })
+        if let bidIndicator = userSession.bidPhaseIndicator {
+            handles.append(bidIndicator.updateObservers.add {[weak self] in
+                OperationQueue.main.addOperation {
+                    self?.updateViewsForBidPhase()
+                }
+            })
+        }
         self.handles = handles
     }
     

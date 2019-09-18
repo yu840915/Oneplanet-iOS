@@ -57,17 +57,21 @@ class PostCreationPortalViewController: UIViewController, UserSessionDepending {
         guard let q = quota?.lastState else {
             return
         }
-        if q.remain > 0 {
-            performSegue(withIdentifier: SegueID.showValuedPhotoInfo, sender: nil)
-        } else {
+        if q.remain == 0 {
             performSegue(withIdentifier: SegueID.showCantUploadInfo, sender: nil)
+            return
+        }
+        if Preferences.shouldHideValuedPhotoInfo.value == true {
+            startPostCreationFlow?(PostDraft(isValued: true))
+        } else {
+            performSegue(withIdentifier: SegueID.showValuedPhotoInfo, sender: nil)
         }
     }
     
     
     @IBAction func selectFreePhoto(_ sender: Any) {
         if Preferences.shouldHideFreePhotoInfo.value == true {
-            
+            startPostCreationFlow?(PostDraft(isValued: false))
         } else {
             performSegue(withIdentifier: SegueID.showFreePhotoInfo, sender: nil)
         }

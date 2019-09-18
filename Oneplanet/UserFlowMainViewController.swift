@@ -315,6 +315,9 @@ extension UserFlowMainViewController {
 fileprivate extension UserFlowMainViewController {
     func getPromoPopupIfNeeded() {
         guard !userSession.isGuest else { return }
+        if userSession.bidPhaseIndicator.biddingHasStarted && userSession.bidPhaseIndicator.phase != .ended {
+            return
+        }
         if let lastDate = Preferences.lastPromoPopUpShowUpDate.value,
             Date().timeIntervalSince(lastDate) < appConfiguration.promoPopUpCoolDownInterval {
             return

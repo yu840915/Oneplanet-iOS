@@ -17,11 +17,11 @@ class IAPTransactionProcessor: NSObject, SKPaymentTransactionObserver {
     
     private override init() {}
     
-    private(set) weak var userSession: UserSession?
+    weak var userSession: UserSession?
     private(set) var waitingInvoice: Invoice?
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        transactions.forEach{handleUpdate(of: $0, in: queue) }
+        transactions.forEach{ handleUpdate(of: $0, in: queue) }
     }
     
     private func handleUpdate(of transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
@@ -35,6 +35,7 @@ class IAPTransactionProcessor: NSObject, SKPaymentTransactionObserver {
                 waitingInvoice = nil
                 waitingInvoice?.notifyStateChange()
             }
+            queue.finishTransaction(transaction)
         case .purchasing:
             if waitingInvoice?.isRelated(to: transaction) == true {
                 waitingInvoice?.notifyStateChange()
@@ -50,7 +51,11 @@ class IAPTransactionProcessor: NSObject, SKPaymentTransactionObserver {
     }
     
     var canPlaceOrder: Bool {
-        if userSession == nil || waitingInvoice != nil {
+        guard let session = userSession,
+            !session.isAdmin && !session.isGuest else {
+            return false
+        }
+        if waitingInvoice != nil {
             return false
         }
         return true
@@ -62,6 +67,18 @@ class IAPTransactionProcessor: NSObject, SKPaymentTransactionObserver {
         }
         waitingInvoice = invoice
         SKPaymentQueue.default().add(SKPayment(product: invoice.iapProduct))
+    }
+    
+    func readReceipt() -> Data? {
+        guard let url = Bundle.main.appStoreReceiptURL else {
+            return nil
+        }
+        do {
+            return try Data(contentsOf: url)
+        } catch let error {
+            logger.error("Cannot read receipt \(error)")
+            return nil
+        }
     }
 }
 
@@ -110,6 +127,7 @@ class BlueGemRelatedIAPProducts {
     private(set) var priceFormatter: NumberFormatter?
     private(set) var unlockProduct: SKProduct?
     private(set) var bidProduct: SKProduct?
+    private(set) var rubyProduct: SKProduct?
     private var getProductOperation: GetSKProductsOperation?
     private var retryExpCounter = 0
     
@@ -121,7 +139,7 @@ class BlueGemRelatedIAPProducts {
         guard getProductOperation == nil else {
             return
         }
-        let op = GetSKProductsOperation(productIDs: [IAPProductIdentifiers.bid, IAPProductIdentifiers.unlock])
+        let op = GetSKProductsOperation(productIDs: [IAPProductIdentifiers.bid, IAPProductIdentifiers.unlock, "ruby"])
         op.completionBlock = {[weak self] in
             self?.didGetProduct()
         }
@@ -137,6 +155,9 @@ class BlueGemRelatedIAPProducts {
                 bidProduct = $0
             } else if $0.productIdentifier == IAPProductIdentifiers.unlock {
                 unlockProduct = $0
+            }
+            if $0.productIdentifier == "ruby" {
+                rubyProduct = $0
             }
         }
         setUpFormatterIfNeeded()

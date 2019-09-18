@@ -50,6 +50,9 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
         news.action = {[weak self] in
             self?.showPromoPopUp()
         }
+        alien.action = {[weak self] in
+            self?.performSegue(withIdentifier: "iap", sender: nil)
+        }
         navigationItem.rightBarButtonItems = [
             .init(customView: alien),
             .init(customView: events),

@@ -16,11 +16,19 @@ class UserProfileViewController: UIViewController, UserSessionDepending {
     private var isMe: Bool = false
     private var idHeader: IDHeaderView?
     private var profileController: ProfileCollectionViewController!
+    private var relationship: SocialRelationship?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
         isMe = profile.id == userSession.profile?.id
+        let rel = userSession.socialRelationshipRepo.relationship(with: profile)
+        rel?.updateObservers.add {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.updateViewsForProfile()
+            }
+        }
+        relationship = rel
         prepareIDHeaderIfNeeded()
         updateViewsForProfile()
         getFollowCounts()
@@ -57,6 +65,9 @@ class UserProfileViewController: UIViewController, UserSessionDepending {
         profileController.profile = profile
         if isMe {
             profileController.followCounts = userSession.followCounts.counts
+        }
+        if let states = relationship?.states {
+            profileController.relationshipState = states
         }
     }
     

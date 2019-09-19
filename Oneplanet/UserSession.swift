@@ -26,6 +26,7 @@ class UserSession {
     let loginType: LoginType
     let postPublishObservers = MulticastCallbackNode<(Post?)->()>()
     let userFetcherRepo = UserFetcherRepository()
+    private(set) var socialRelationshipRepo: SocialRelationshipRepository!
     private(set) var followCounts: MyFollowCounts!
     private(set) var wallet: Wallet!
     private(set) var bidProcessManager: ProductBidProcessManager!
@@ -50,6 +51,7 @@ class UserSession {
         lotList = MyLotList(session: self)
         lotList.reload()
         followCounts = MyFollowCounts(userSession: self)
+        socialRelationshipRepo = SocialRelationshipRepository(userSession: self)
         followCounts.updateHandler = {[weak self] in
             self?.profileDidUpdate.invokeEach{$0()}
         }

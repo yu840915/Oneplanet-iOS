@@ -291,13 +291,13 @@
 
 "rp_terms_violation" = "我認為此帳戶違反了 Oneplanet 的使用條款";
 "rp_dont_like_post_title" = "我不喜歡這則貼文";
-"rp_dnudity_title" = "露點照或色情內容";
+"rp_nudity_title" = "露點照或色情內容";
 "rp_hate_speech_title" = "仇恨言論或符號";
 "rp_violance_title" = "暴力或暴力威脅";
 "rp_hate_speech_subtitle" = "種族歧視、恐同症或性別主義毀謗";
 "rp_violance_subtitle" = "露出血淋淋的傷口、非法活動、危險或犯罪組織";
 "rp_dont_like_post_detail" = "不喜歡這則貼文嗎？";
-"rp_dnudity_detail" = "檢舉為露點照或色情內容？";
+"rp_nudity_detail" = "檢舉為露點照或色情內容？";
 "rp_hate_speech_detail" = "檢舉為仇恨言論或符號？";
 "rp_violance_detail" = "檢舉暴力或暴力威脅？";
 

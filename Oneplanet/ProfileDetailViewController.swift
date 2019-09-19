@@ -32,6 +32,13 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
             }
         }
     }
+    var relationshipState: SocialRelationshipStates? {
+        didSet {
+            if isViewLoaded {
+                updateViewsForProfile()
+            }
+        }
+    }
     var shouldShowWarning = false {
         didSet {
             if isViewLoaded {
@@ -86,11 +93,15 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
         if let image = profile.alien?.avatar {
             raceImageView.image = image
         }
-        actionButton.isHidden = !configuration.actionButton
+        actionButton.isHidden = !configuration.actionButton || relationshipState == nil
         countsTextView.isHidden = !configuration.detailLabel
         avatarView.avatar = nil
         avatarView.avatar = profile.avatar
         avatarView.backgrondImage = profile.alien?.frameImage
+        if let rel = relationshipState {
+            let title = rel.isFollowing ? Localized.phrases.following : Localized.phrases.follow
+            actionButton.setTitle(title, for: .normal)
+        }
     }
     
     private func updateViewsForFollowCounts() {

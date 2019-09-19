@@ -291,13 +291,13 @@
 
 "rp_terms_violation" = "このアカウントはOneplanet利用規約に違反しているよ思う";
 "rp_dont_like_post_title" = "単に気に入らない";
-"rp_dnudity_title" = "ヌードまたはわいせつコンテンツ";
+"rp_nudity_title" = "ヌードまたはわいせつコンテンツ";
 "rp_hate_speech_title" = "ヘイトスピーチや差別的なシンボル";
 "rp_violance_title" = "暴力または暴力的脅威";
 "rp_hate_speech_subtitle" = "人種差別、同性愛嫌悪、性差別";
 "rp_violance_subtitle" = "生々しい傷、違法行為、危険な团体、犯罪組織";
 "rp_dont_like_post_detail" = "この投稿が気に入らない場合";
-"rp_dnudity_detail" = "ヌードまたはわいせつコンテンツとして報告しますか？";
+"rp_nudity_detail" = "ヌードまたはわいせつコンテンツとして報告しますか？";
 "rp_hate_speech_detail" = "ヘイトスピーチや差別的なシンボルとして報告しますか？";
 "rp_violance_detail" = "暴力または暴力的脅威として報告しますか？";
 

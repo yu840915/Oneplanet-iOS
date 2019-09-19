@@ -21,6 +21,13 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
             }
         }
     }
+    var relationshipState: SocialRelationshipStates? {
+        didSet {
+            if isViewLoaded {
+                detailController?.relationshipState = relationshipState
+            }
+        }
+    }
     fileprivate var sections: [Section] = [.detail]
     fileprivate var posts: [Post] = []
     private var detailController: ProfileDetailViewController?

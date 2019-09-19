@@ -291,13 +291,13 @@
 
 "rp_terms_violation" = "I believe this account violates Oneplanet’s Terms";
 "rp_dont_like_post_title" = "I just don’t like it";
-"rp_dnudity_title" = "Nudity or pornography";
+"rp_nudity_title" = "Nudity or pornography";
 "rp_hate_speech_title" = "Hate speech or symbols";
 "rp_violance_title" = "Violence or threat of violence";
 "rp_hate_speech_subtitle" = "Racist, homophobic or sexist slurs";
 "rp_violance_subtitle" = "Graphic injury, unlawful activity, dangerous or criminal organizations";
 "rp_dont_like_post_detail" = "Don’t like this post?";
-"rp_dnudity_detail" = "Report as nudity or pornography?";
+"rp_nudity_detail" = "Report as nudity or pornography?";
 "rp_hate_speech_detail" = "Report as hate speech or symbols?";
 "rp_violance_detail" = "Report as violence or threat of violence?";
 

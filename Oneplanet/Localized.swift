@@ -909,10 +909,10 @@ class LocalizedReportReasons { //rp_
         return NSLocalizedString("rp_dont_like_post_detail", comment: "")
     }
     var nudityTitle: String {
-        return NSLocalizedString("rp_dnudity_title", comment: "")
+        return NSLocalizedString("rp_nudity_title", comment: "")
     }
     var nudityDetail: String {
-        return NSLocalizedString("rp_dnudity_detail", comment: "")
+        return NSLocalizedString("rp_nudity_detail", comment: "")
     }
     var hateSpeechTitle: String {
         return NSLocalizedString("rp_hate_speech_title", comment: "")

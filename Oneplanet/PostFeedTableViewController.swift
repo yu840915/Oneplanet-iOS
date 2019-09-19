@@ -24,12 +24,16 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
     private var expandPostsIDs = Set<String>()
     private var needsUpdate = false
     private var isVisible = false
+    private var updateClock: UpdateClock!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         searchButton.layer.cornerRadius = 4
         searchButton.setTitle(Localized.titles.searchID, for: .normal)
         prepareForList()
+        updateClock = UpdateClock(preferredFrameRate: 5, onTick: {[weak self] in
+            self?.updateVisibleRows()
+        })
     }
 
     @IBAction func reload(_ sender: UIRefreshControl) {
@@ -106,8 +110,13 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
     }
     
     private func updateCell(_ cell: PostCardCell, at indexPath: IndexPath) {
-        let fetcher = userSession.userFetcherRepo.fetcher(for: posts[indexPath.row].authorID)
-        cell.updateViews(with: fetcher)
+        let post = posts[indexPath.row]
+        cell.updateViews(with: userSession.userFetcherRepo.fetcher(for: post.authorID))
+        if let rel = userSession.socialRelationshipRepo.relationshipWithUser(of: post.authorID)?.states {
+            cell.actionButton.isHidden = rel.isFollowing
+        } else {
+            cell.actionButton.isHidden = true
+        }
     }
     
     private func expendCell(at indexPath: IndexPath) {
@@ -126,13 +135,22 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
             sheet.addAction(UIAlertAction(title: Localized.titles.edit, style: .default, handler: { (_) in
                 self.edit(post)
             }))
-        } else {
+        } else  {
             sheet.addAction(UIAlertAction(title: Localized.titles.report, style: .destructive, handler: { (_) in
                 self.report(post)
             }))
-            sheet.addAction(UIAlertAction(title: Localized.phrases.unfollow, style: .destructive, handler: { (_) in
-                self.unfollowAuthor(of: post)
-            }))
+            if let rel = userSession.socialRelationshipRepo.relationshipWithUser(of: post.authorID)?.states {
+                if rel.isFollowing {
+                    sheet.addAction(UIAlertAction(title: Localized.phrases.unfollow, style: .destructive, handler: { (_) in
+                        self.unfollowAuthor(of: post)
+                    }))
+                } else {
+                    sheet.addAction(UIAlertAction(title: Localized.phrases.follow, style: .destructive, handler: { (_) in
+                        self.followAuthor(of: post)
+                    }))
+                }
+
+            }
         }
         sheet.addAction(UIAlertAction(title: Localized.titles.cancel, style: .cancel, handler: nil))
         present(sheet, animated: true, completion: nil)
@@ -231,15 +249,31 @@ private extension PostFeedTableViewController {
             tableView.backgroundView = view
         }
     }
+    
+    func updateVisibleRows() {
+        guard let indexPaths = tableView.indexPathsForVisibleRows else { return }
+        indexPaths.forEach{
+            if sections[$0.section] == .content,
+                let cell = tableView.cellForRow(at: $0) as? PostCardCell {
+                updateCell(cell, at: $0)
+            }
+        }
+    }
 }
 
 private extension PostFeedTableViewController {
     func followAuthor(of post: Post) {
-        
+        guard let rel = userSession.socialRelationshipRepo.relationshipWithUser(of: post.authorID) else {
+            return
+        }
+        rel.follow()
     }
     
     func unfollowAuthor(of post: Post) {
-        
+        guard let rel = userSession.socialRelationshipRepo.relationshipWithUser(of: post.authorID) else {
+            return
+        }
+        rel.unfollow()
     }
     
     func showProfile(for post: Post) {

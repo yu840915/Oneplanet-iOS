@@ -21,18 +21,23 @@ class SocialRelationshipRepository {
     }
     
     func relationship(with user: User) -> SocialRelationship? {
-        if user.id == userSession.profile?.id { return nil }
-        if let rel = relationships[user.id] {
+        return relationshipWithUser(of: user.id)
+    }
+    
+    func relationshipWithUser(of id: String) -> SocialRelationship? {
+        if id == userSession.profile?.id { return nil }
+        if let rel = relationships[id] {
             rel.initializeIfNeeded()
             return rel
         }
-        let value = SocialRelationship(userID: user.id, userSession: userSession)
-        relationships[user.id] = value
+        let value = SocialRelationship(userID: id, userSession: userSession)
+        relationships[id] = value
         updateHandles.append(value.updateObservers.add {[weak self] in
             self?.relationUpdateObservers.invokeEach{$0()}
         })
         value.initializeIfNeeded()
         return value
+
     }
 }
 

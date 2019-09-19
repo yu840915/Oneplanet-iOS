@@ -16,16 +16,21 @@ class MyProfileViewController: UIViewController, UserSessionDepending {
     
     private var profileController: ProfileCollectionViewController!
     private var idHeader: IDHeaderView?
-    private var profileUpdateHandle: Any?
+    private var updateHandles: [Any]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareIDHeaderIfNeeded()
-        profileUpdateHandle = userSession.profileDidUpdate.add {[weak self] in
+        var handles: [Any] = []
+        handles.append(userSession.profileDidUpdate.add {[weak self] in
             OperationQueue.main.addOperation {
                 self?.updateViewsForProfile()
             }
-        }
+        })
+        handles.append(userSession.myPostDidUpdate.add{[weak self] _ in
+            self?.setNeedsRefresh()
+        })
+        updateHandles = handles
         updateViewsForProfile()
         userSession.followCounts.refreshIfNeeded()
     }

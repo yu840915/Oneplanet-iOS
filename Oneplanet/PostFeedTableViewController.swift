@@ -25,6 +25,7 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
     private var needsUpdate = false
     private var isVisible = false
     private var updateClock: UpdateClock!
+    private var deletePostOperation: DeletePostOperation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -135,6 +136,11 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
             sheet.addAction(UIAlertAction(title: Localized.titles.edit, style: .default, handler: { (_) in
                 self.edit(post)
             }))
+            if post.type == PostType.free.rawValue {
+                sheet.addAction(UIAlertAction(title: Localized.titles.delete, style: .destructive, handler: { (_) in
+                    self.deletePost(post)
+                }))
+            }
         } else  {
             sheet.addAction(UIAlertAction(title: Localized.titles.report, style: .destructive, handler: { (_) in
                 self.report(post)
@@ -283,6 +289,28 @@ private extension PostFeedTableViewController {
         performSegue(withIdentifier: SegueID.showProfile, sender: user)
     }
     
+    func deletePost(_ post: Post) {
+        guard deletePostOperation == nil else { return }
+        let op = DeletePostOperation(post: post, session: userSession)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didDeletePost()
+            }
+        }
+        deletePostOperation = op
+        op.start()
+    }
+    
+    func didDeletePost() {
+        let op = deletePostOperation!
+        deletePostOperation = nil
+        if let error = op.error {
+            let alert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: Localized.titles.ok, style: .cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
+    }
+
     func edit(_ post: Post) {
         performSegue(withIdentifier: SegueID.showPostEditor, sender: post)
     }

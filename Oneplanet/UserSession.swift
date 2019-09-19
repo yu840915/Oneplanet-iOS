@@ -23,8 +23,8 @@ class UserSession {
     }
     let bearerToken: String
     let profileDidUpdate = MulticastCallbackNode<()->()>()
+    let myPostDidUpdate = MulticastCallbackNode<(Post?)->()>()
     let loginType: LoginType
-    let postPublishObservers = MulticastCallbackNode<(Post?)->()>()
     let userFetcherRepo = UserFetcherRepository()
     private(set) var socialRelationshipRepo: SocialRelationshipRepository!
     private(set) var followCounts: MyFollowCounts!
@@ -123,7 +123,11 @@ class UserSession {
     }
     
     func broadcastPostPublish(_ post: Post?) {
-        postPublishObservers.invokeEach{$0(post)}
+        myPostDidUpdate.invokeEach{$0(post)}
+    }
+    
+    func notifyPostDidDelete(_ post: Post?) {
+        myPostDidUpdate.invokeEach{$0(post)}
     }
 }
 

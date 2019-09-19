@@ -23,6 +23,7 @@ class PostDetailViewController: UIViewController, UserSessionDepending {
     @IBOutlet weak var scorebarView: ScoreBarView!
     
     private var galleryDataSource: PostPhotoGalleryDataSource?
+    private var deletePostOperation: DeletePostOperation?
     var canShowAuthorProfile = true
     
     override func viewDidLoad() {
@@ -56,9 +57,11 @@ class PostDetailViewController: UIViewController, UserSessionDepending {
             sheet.addAction(UIAlertAction(title: Localized.titles.edit, style: .default, handler: { (_) in
                 self.editPost()
             }))
-            sheet.addAction(UIAlertAction(title: Localized.titles.delete, style: .destructive, handler: { (_) in
-                self.deletePost()
-            }))
+            if post.type == PostType.free.rawValue {
+                sheet.addAction(UIAlertAction(title: Localized.titles.delete, style: .destructive, handler: { (_) in
+                    self.deletePost()
+                }))
+            }
         } else {
             sheet.addAction(UIAlertAction(title: Localized.titles.report, style: .destructive, handler: { (_) in
                 self.reportPost()
@@ -146,7 +149,32 @@ private extension PostDetailViewController {
     }
     
     func deletePost() {
-        
+        guard deletePostOperation == nil else { return }
+        let op = DeletePostOperation(post: post, session: userSession)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didDeletePost()
+            }
+        }
+        deletePostOperation = op
+        op.start()
+    }
+    
+    func didDeletePost() {
+        let op = deletePostOperation!
+        deletePostOperation = nil
+        if op.success == true {
+            if let nav = navigationController,
+                nav.viewControllers.count > 1 {
+                nav.popViewController(animated: true)
+            } else {
+                dismiss(animated: true, completion: nil)
+            }
+        } else if let error = op.error {
+            let alert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: Localized.titles.ok, style: .cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
     }
     
     func reportPost() {

@@ -189,10 +189,14 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
 fileprivate extension UserFlowMainViewController {
     func handleNewPost() {
         switchToTab(.life)
-        postController.setNeedsRefresh()
-        profileController.setNeedsRefresh()
         userSession.wallet.setNeedsUpdateBlueGem()
         postQuota?.refresh()
+        handlePostUpdate()
+    }
+    
+    func handlePostUpdate() {
+        postController.setNeedsRefresh()
+        profileController.setNeedsRefresh()
     }
     
     func showCreationPortalIfAllowed() {

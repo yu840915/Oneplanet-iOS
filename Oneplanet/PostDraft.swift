@@ -312,3 +312,29 @@ class ConcurrentTaskOperation<TaskType>: SimpleAsynchronousOperation, FailableOp
         finish()
     }
 }
+
+class DeletePostOperation: AlamofireAPIAccessOperation {
+    let post: Post
+    let session: UserSession
+    
+    init(post: Post, session: UserSession) {
+        self.post = post
+        self.session = session
+    }
+    
+    override func prepareURLRequest() throws -> URLRequest {
+        guard post.authorID == session.profile?.id else {
+            throw GenericAppError("You can only delete your post")
+        }
+        guard post.type != PostType.valued.rawValue else {
+            throw GenericAppError("You cannot delete valued post")
+        }
+        return session.addingAuthorizationToken(to: try URLRequest(url: ServiceURLs.base.appendingPathComponent("posts/\(post.id)"), method: .delete))
+    }
+    
+    override func willFinishProcess() throws {
+        OperationQueue.main.addOperation {[session, post] in
+            session.notifyPostDidDelete(post)
+        }
+    }
+}

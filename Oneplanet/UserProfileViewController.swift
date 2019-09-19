@@ -17,14 +17,16 @@ class UserProfileViewController: UIViewController, UserSessionDepending {
     private var idHeader: IDHeaderView?
     private var profileController: ProfileCollectionViewController!
     private var relationship: SocialRelationship?
+    private var updateHandle: Any?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
         isMe = profile.id == userSession.profile?.id
         let rel = userSession.socialRelationshipRepo.relationship(with: profile)
-        rel?.updateObservers.add {[weak self] in
+        updateHandle = rel?.updateObservers.add {[weak self] in
             OperationQueue.main.addOperation {
+                self?.getFollowCounts()
                 self?.updateViewsForProfile()
             }
         }
@@ -80,21 +82,31 @@ class UserProfileViewController: UIViewController, UserSessionDepending {
         sheet.addAction(UIAlertAction(title: Localized.phrases.copyID, style: .default, handler: { (_) in
             self.copyID()
         }))
-        sheet.addAction(UIAlertAction(title: Localized.phrases.follow, style: .default, handler: { (_) in
-            self.followUser()
-        }))
-        sheet.addAction(UIAlertAction(title: Localized.phrases.unfollow, style: .destructive, handler: { (_) in
-            self.followUser()
-        }))
-        sheet.addAction(UIAlertAction(title: Localized.titles.block, style: .destructive, handler: { (_) in
-            self.showBlockAlert()
-        }))
-        sheet.addAction(UIAlertAction(title: Localized.titles.unblock, style: .destructive, handler: { (_) in
-            self.showUnblockAlert()
-        }))
-        sheet.addAction(UIAlertAction(title: Localized.titles.report, style: .destructive, handler: { (_) in
-            self.startReportFlow()
-        }))
+        if let rel = relationship?.states {
+            if rel.isFollowing {
+                sheet.addAction(UIAlertAction(title: Localized.phrases.unfollow, style: .destructive, handler: { (_) in
+                    self.unfollowUser()
+                }))
+            } else {
+                sheet.addAction(UIAlertAction(title: Localized.phrases.follow, style: .default, handler: { (_) in
+                    self.followUser()
+                }))
+            }
+            if rel.isBlocking {
+                sheet.addAction(UIAlertAction(title: Localized.titles.unblock, style: .destructive, handler: { (_) in
+                    self.showUnblockAlert()
+                }))
+            } else {
+                sheet.addAction(UIAlertAction(title: Localized.titles.block, style: .destructive, handler: { (_) in
+                    self.showBlockAlert()
+                }))
+            }
+        }
+        if !isMe {
+            sheet.addAction(UIAlertAction(title: Localized.titles.report, style: .destructive, handler: { (_) in
+                self.startReportFlow()
+            }))
+        }
         sheet.addAction(UIAlertAction(title: Localized.titles.cancel, style: .cancel, handler: nil))
         present(sheet, animated: true, completion: nil)
     }
@@ -109,6 +121,9 @@ class UserProfileViewController: UIViewController, UserSessionDepending {
             vc.profile = profile
             vc.postList = PostList.userPostList(with: userSession, for: profile)
             vc.configuration = isMe ? .forMe: .forOther
+            vc.relationshipAction = {[weak self] in
+                self?.performRelastionActionIfAllowed()
+            }
             vc.showFollowListAction = {[weak self] url in
                 self?.showFollowList(with: url)
             }
@@ -155,6 +170,17 @@ extension UIViewController {
 }
 
 private extension UserProfileViewController {
+    func performRelastionActionIfAllowed() {
+        guard let states = relationship?.states else { return }
+        if states.isBlocking {
+            showUnblockAlert()
+        } else if states.isFollowing {
+            unfollowUser()
+        } else {
+            followUser()
+        }
+    }
+
     func getFollowCounts() {
         guard !isMe && getFollowCountsOperation == nil else { return }
         let op = GetUserFollowCountsOperation(user: profile, session: userSession)
@@ -170,7 +196,9 @@ private extension UserProfileViewController {
     func didGetFollowCounts() {
         let op = getFollowCountsOperation!
         getFollowCountsOperation = nil
-        profileController.followCounts = op.counts
+        if let counts = op.counts {
+            profileController.followCounts = counts
+        }
     }
     
     func showFollowList(with url: URL) {
@@ -183,9 +211,11 @@ private extension UserProfileViewController {
     }
     
     func followUser() {
+        relationship?.follow()
     }
     
     func unfollowUser() {
+        relationship?.unfollow()
     }
     
     func showBlockAlert() {

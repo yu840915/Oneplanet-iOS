@@ -32,6 +32,7 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
     fileprivate var posts: [Post] = []
     private var detailController: ProfileDetailViewController?
     var refreshControl: UIRefreshControl!
+    var relationshipAction: (()->())?
     var showFollowListAction: ((URL)->())?
     var showPostDetailAction: ((Post)->())?
     var profile: UserProfileDisplayable! {
@@ -127,6 +128,7 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
             prepareContentViewController(for: cell)
         }
         cell.contentViewController?.profile = profile
+        cell.contentViewController?.relationshipState = relationshipState
         cell.contentViewController?.shouldShowWarning = shouldShowWarning
         cell.contentViewController?.configuration = configuration
     }
@@ -134,6 +136,9 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
     private func prepareContentViewController(for cell: ProfileContainerCell) {
         let vc = ProfileDetailViewController.fromDefaultStoryboard()
         vc.userSession = userSession
+        vc.relationshipAction = {[weak self] in
+            self?.relationshipAction?()
+        }
         vc.showFollowListAction = {[weak self] url in
             self?.showFollowListAction?(url)
         }

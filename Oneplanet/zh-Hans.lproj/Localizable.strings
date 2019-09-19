@@ -159,7 +159,7 @@
 "ph_copy_id" = "复制 ID";
 "ph_follow" = "关注";
 "ph_unfollow" = "取消关注";
-"ph_following" = "Following";
+"ph_following" = "关注中";
 "ph_choose_role" = "选择外星人种类";
 "ph_choose_color" = "选择颜色";
 "ph_edit_profile" = "编辑个人资料";

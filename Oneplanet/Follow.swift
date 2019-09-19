@@ -130,7 +130,7 @@ struct SocialRelationshipStates {
 fileprivate class GetFollowStateOperation: AlamofireAPIAccessOperation {
     let userID: String
     let session: UserSession
-    private(set) var isFollowing: Bool?
+    private(set) var isFollowing: Bool? = false
     init(userID: String, session: UserSession) {
         self.userID = userID
         self.session = session
@@ -152,8 +152,8 @@ fileprivate class FollowUserOperation: AlamofireAPIAccessOperation {
         self.willFollow = willFollow
     }
     
-    override func prepareURLRequest() throws -> URLRequest {
-        return session.addingAuthorizationToken(to: try URLRequest(url: ServiceURLs.base.appendingPathComponent("users/\(userID)/follow"), method: willFollow ? .put : .delete))
+    override func prepareDataRequest() throws -> DataRequest {
+        return Alamofire.request(ServiceURLs.base.appendingPathComponent("users/\(userID)/follow"), method: willFollow ? .put : .delete, parameters: ["id": userID], encoding: JSONEncoding(), headers: session.authorizationHeader)
     }
 }
 

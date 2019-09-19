@@ -25,6 +25,7 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
 
     var userSession: UserSession!
     var showFollowListAction: ((URL)->())?
+    var relationshipAction: (()->())?
     var followCountsProvider: FollowCounts? {
         didSet {
             if isViewLoaded {
@@ -99,7 +100,10 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
         avatarView.avatar = profile.avatar
         avatarView.backgrondImage = profile.alien?.frameImage
         if let rel = relationshipState {
-            let title = rel.isFollowing ? Localized.phrases.following : Localized.phrases.follow
+            var title = rel.isFollowing ? Localized.phrases.following : Localized.phrases.follow
+            if rel.isBlocking {
+                title = Localized.titles.unblock
+            }
             actionButton.setTitle(title, for: .normal)
         }
     }
@@ -116,7 +120,7 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
         let text = [follower, followings].joined(separator: Localized.symbols.enumSpliter)
         let followerCountRange = (text as NSString).range(of: followerCount)
         let followerRange = (text as NSString).range(of: follower)
-        let followingsCountRange = (text as NSString).range(of: followingsCount)
+        let followingsCountRange = (text as NSString).range(of: followingsCount, options: .backwards)
         let followingRange = (text as NSString).range(of: followings)
         let attrStr = NSMutableAttributedString(string: text, attributes: [.foregroundColor : ColorPalette.defaultText])
         attrStr.addAttributes([.link : DeepLinks.followerList], range: followerRange)
@@ -130,6 +134,7 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
     }
     
     @IBAction func performAction(_ sender: UIButton) {
+        relationshipAction?()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -36,6 +36,15 @@ class UserOverviewCell: UITableViewCell {
         actionButton.setTitleColor(ColorPalette.defaultPlaceholder, for: [.selected, .highlighted])
         actionButton.setBackgroundImage(UIImage(named: "bt_smallwiregray_nor"), for: [.selected, .highlighted])
     }
+    
+    func updateViews(with relationship: SocialRelationship?) {
+        guard let states = relationship?.states else {
+            actionButton.isHidden = true
+            return
+        }
+        actionButton.isHidden = false
+        actionButton.isSelected = states.isFollowing
+    }
 }
 
 protocol UserOverviewDisplayable {

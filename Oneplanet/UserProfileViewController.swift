@@ -109,7 +109,7 @@ class UserProfileViewController: UIViewController, UserSessionDepending {
         if let vc = segue.destination as? FriendListsViewController {
             vc.profile = profile
             vc.followerList = UserList.followerList(for: profile, userSession: userSession)
-            vc.followingList = UserList.followerList(for: profile, userSession: userSession)
+            vc.followingList = UserList.followingList(for: profile, userSession: userSession)
             if let url = sender as? URL, url == DeepLinks.followingList {
                 vc.preselectedTab = .following
             }

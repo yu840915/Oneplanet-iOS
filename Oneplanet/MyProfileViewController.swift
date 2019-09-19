@@ -87,7 +87,7 @@ class MyProfileViewController: UIViewController, UserSessionDepending {
                 vc.userSession = userSession
                 vc.profile = profile
                 vc.followerList = UserList.followerList(with: userSession)
-                vc.followingList = UserList.followerList(with: userSession)
+                vc.followingList = UserList.followingList(with: userSession)
                 if let url = sender as? URL, url == DeepLinks.followingList {
                     vc.preselectedTab = .following
                 }

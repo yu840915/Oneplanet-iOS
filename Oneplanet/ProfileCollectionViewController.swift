@@ -14,6 +14,13 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
     
     var userSession: UserSession!
     var postList: PostList!
+    var followCounts: FollowCounts? {
+        didSet {
+            if isViewLoaded {
+                detailController?.followCountsProvider = followCounts
+            }
+        }
+    }
     fileprivate var sections: [Section] = [.detail]
     fileprivate var posts: [Post] = []
     private var detailController: ProfileDetailViewController?
@@ -126,6 +133,7 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
         addChild(vc)
         cell.setUp(vc)
         vc.didMove(toParent: self)
+        vc.followCountsProvider = followCounts
         detailController = vc
     }
     

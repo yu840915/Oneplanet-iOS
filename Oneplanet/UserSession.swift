@@ -26,6 +26,7 @@ class UserSession {
     let loginType: LoginType
     let postPublishObservers = MulticastCallbackNode<(Post?)->()>()
     let userFetcherRepo = UserFetcherRepository()
+    private(set) var followCounts: MyFollowCounts!
     private(set) var wallet: Wallet!
     private(set) var bidProcessManager: ProductBidProcessManager!
     private(set) var profile: MyProfile? {
@@ -48,6 +49,10 @@ class UserSession {
         bidProcessManager = ProductBidProcessManager(userSession: self)
         lotList = MyLotList(session: self)
         lotList.reload()
+        followCounts = MyFollowCounts(userSession: self)
+        followCounts.updateHandler = {[weak self] in
+            self?.profileDidUpdate.invokeEach{$0()}
+        }
     }
     
     func updateBidPhaseIndicator(with timeframe: SessionTimeframe) {
@@ -88,6 +93,7 @@ class UserSession {
     
     func updateProfile(_ profile: MyProfile) {
         self.profile = profile
+        followCounts.refreshIfNeeded()
     }
     
     func addingAuthorizationToken(to headers: [String: String]) -> [String: String] {
@@ -161,6 +167,9 @@ enum LoginType {
 }
 
 class MyProfile: Decodable, UserProfileDisplayable {
+    var user: User {
+        return User(id: id, username: username, nickname: nickname, character: alien)
+    }
     let id: String
     let nickname: String
     let username: String
@@ -358,4 +367,3 @@ class FeatureAccessCheckOperation: Operation {
         presenter.present(alert, animated: true, completion: nil)
     }
 }
-

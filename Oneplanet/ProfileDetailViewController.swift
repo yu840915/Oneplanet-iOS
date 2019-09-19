@@ -15,16 +15,6 @@ protocol UserProfileDisplayable {
     var alien: Alien? {get}
 }
 
-protocol FollowCountsProvider {
-    var followers: Int {get}
-    var followings: Int {get}
-}
-
-struct FakeCount: FollowCountsProvider {
-    var followers: Int = 1000
-    var followings: Int = 1530
-}
-
 class ProfileDetailViewController: UIViewController, UserSessionDepending, DefaultInstanceFactory {
     class var baseHeight: CGFloat {
         return 90 + UIScreen.main.bounds.width
@@ -35,7 +25,7 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
 
     var userSession: UserSession!
     var showFollowListAction: ((URL)->())?
-    var followCountsProvider: FollowCountsProvider? {
+    var followCountsProvider: FollowCounts? {
         didSet {
             if isViewLoaded {
                 updateViewsForFollowCounts()
@@ -81,7 +71,6 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
         localizeTitles()
         updateViewsForProfile()
         updateViewsForFollowCounts()
-        followCountsProvider = FakeCount()
         warningView.isHidden = !shouldShowWarning
     }
     
@@ -105,7 +94,10 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
     }
     
     private func updateViewsForFollowCounts() {
-        guard let provider = followCountsProvider else { return }
+        guard let provider = followCountsProvider else {
+            countsTextView.text = nil
+            return
+        }
         let followerCount = SharedNumberFormatters.roughNumber.string(for: provider.followers)
         let follower = String(format: Localized.phraseFormats.followers, followerCount)
         let followingsCount = SharedNumberFormatters.roughNumber.string(for: provider.followings)

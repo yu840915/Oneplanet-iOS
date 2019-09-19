@@ -12,16 +12,18 @@ class UserProfileViewController: UIViewController, UserSessionDepending {
     
     var userSession: UserSession!
     var profile: User!
+    private var getFollowCountsOperation: GetUserFollowCountsOperation?
     private var isMe: Bool = false
     private var idHeader: IDHeaderView?
-
     private var profileController: ProfileCollectionViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
+        isMe = profile.id == userSession.profile?.id
         prepareIDHeaderIfNeeded()
         updateViewsForProfile()
+        getFollowCounts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,6 +55,9 @@ class UserProfileViewController: UIViewController, UserSessionDepending {
     private func updateViewsForProfile() {
         idHeader?.idLabel.text = profile.username
         profileController.profile = profile
+        if isMe {
+            profileController.followCounts = userSession.followCounts.counts
+        }
     }
     
     @IBAction func exit(_ sender: Any) {
@@ -126,7 +131,6 @@ class UserProfileViewController: UIViewController, UserSessionDepending {
             }
         }
     }
-    
 }
 
 extension UIViewController {
@@ -140,6 +144,24 @@ extension UIViewController {
 }
 
 private extension UserProfileViewController {
+    func getFollowCounts() {
+        guard !isMe && getFollowCountsOperation == nil else { return }
+        let op = GetUserFollowCountsOperation(user: profile, session: userSession)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didGetFollowCounts()
+            }
+        }
+        op.start()
+        getFollowCountsOperation = op
+    }
+    
+    func didGetFollowCounts() {
+        let op = getFollowCountsOperation!
+        getFollowCountsOperation = nil
+        profileController.followCounts = op.counts
+    }
+    
     func showFollowList(with url: URL) {
         performSegue(withIdentifier: SegueID.showFriendLists, sender: url)
     }

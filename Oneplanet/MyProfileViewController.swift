@@ -27,6 +27,12 @@ class MyProfileViewController: UIViewController, UserSessionDepending {
             }
         }
         updateViewsForProfile()
+        userSession.followCounts.refreshIfNeeded()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        userSession.followCounts.refreshIfNeeded()
     }
     
     func setNeedsRefresh() {
@@ -46,7 +52,9 @@ class MyProfileViewController: UIViewController, UserSessionDepending {
     private func updateViewsForProfile() {
         idHeader?.idLabel.text = profile.username
         profileController.profile = profile
+        profileController.followCounts = userSession.followCounts.counts
     }
+    
     private func copyID() {
         UIPasteboard.general.string = profile.username
         Toast.show(with: String(format: Localized.messageFormats.didCopyMyId, profile.username))
@@ -59,6 +67,7 @@ class MyProfileViewController: UIViewController, UserSessionDepending {
             vc.userSession = userSession
             vc.postList = PostList.myPostList(with: userSession)
             vc.profile = profile
+            vc.followCounts = userSession.followCounts.counts
             vc.configuration = userSession.isGuest ? .forGuest: .forMe
             vc.showFollowListAction = {[weak self] url in
                 self?.showFollowList(with: url)

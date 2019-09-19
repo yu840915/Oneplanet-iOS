@@ -134,6 +134,7 @@
 		E093935422DF031D004F045A /* SimpleEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E093935322DF031D004F045A /* SimpleEmptyView.xib */; };
 		E0952B8B232FB7E80091AEEF /* ValuedPostQuota.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0952B8A232FB7E80091AEEF /* ValuedPostQuota.swift */; };
 		E0952B8D2331DC5A0091AEEF /* IAPTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0952B8C2331DC5A0091AEEF /* IAPTestViewController.swift */; };
+		E0952B8F23332E020091AEEF /* Follow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0952B8E23332E020091AEEF /* Follow.swift */; };
 		E0A050C422E16B53002FCFC3 /* ReportReasonPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A050C322E16B53002FCFC3 /* ReportReasonPickerTableViewController.swift */; };
 		E0A050C622E17067002FCFC3 /* ReportDescriptionInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A050C522E17067002FCFC3 /* ReportDescriptionInputViewController.swift */; };
 		E0A050C822E17607002FCFC3 /* ReportHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A050C722E17607002FCFC3 /* ReportHelpers.swift */; };
@@ -363,6 +364,7 @@
 		E093935322DF031D004F045A /* SimpleEmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleEmptyView.xib; sourceTree = "<group>"; };
 		E0952B8A232FB7E80091AEEF /* ValuedPostQuota.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValuedPostQuota.swift; sourceTree = "<group>"; };
 		E0952B8C2331DC5A0091AEEF /* IAPTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPTestViewController.swift; sourceTree = "<group>"; };
+		E0952B8E23332E020091AEEF /* Follow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follow.swift; sourceTree = "<group>"; };
 		E0A050C322E16B53002FCFC3 /* ReportReasonPickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportReasonPickerTableViewController.swift; sourceTree = "<group>"; };
 		E0A050C522E17067002FCFC3 /* ReportDescriptionInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDescriptionInputViewController.swift; sourceTree = "<group>"; };
 		E0A050C722E17607002FCFC3 /* ReportHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportHelpers.swift; sourceTree = "<group>"; };
@@ -666,6 +668,7 @@
 				E03C32B1226D902F00C32FD7 /* Shared Configurations */,
 				E05BB25F226D5D2A00721F20 /* RootViewController.swift */,
 				E0190F4C226DCCFB00C212D5 /* UserSession.swift */,
+				E0952B8E23332E020091AEEF /* Follow.swift */,
 				E0C98E222328ADB600B0BF00 /* UploadPhotoOperation.swift */,
 				E0C98E2C2329D87200B0BF00 /* Bid Subsystem */,
 				E05BB261226D5D2A00721F20 /* Main.storyboard */,
@@ -1294,6 +1297,7 @@
 				E032844922AB7286001F02E8 /* ProductListTableViewController.swift in Sources */,
 				E03C329E226D772400C32FD7 /* Logger.swift in Sources */,
 				E03C32B3226D925100C32FD7 /* ServiceConstants.swift in Sources */,
+				E0952B8F23332E020091AEEF /* Follow.swift in Sources */,
 				E0A050C822E17607002FCFC3 /* ReportHelpers.swift in Sources */,
 				E0FE73B022F596C500CE665B /* PushListener.swift in Sources */,
 				E081590F22A63628007C9776 /* GreenGemPopUpViewController.swift in Sources */,

@@ -42,6 +42,7 @@ class UserSession {
     let sessionBecomeInactiveObservers = MulticastCallbackNode<()->()>()
     private(set) var updateProfileOperation: UpdateProfileOperation?
     private var submitProfileCompletion: ((Bool, Error?)->())?
+    let hiddenPosts = HiddenPosts()
     
     init(token: String, loginType: LoginType) {
         self.bearerToken = token
@@ -371,5 +372,29 @@ class FeatureAccessCheckOperation: Operation {
         }))
         alert.addAction(UIAlertAction(title: Localized.titles.cancel, style: .cancel, handler: nil))
         presenter.present(alert, animated: true, completion: nil)
+    }
+}
+
+class HiddenPosts {
+    let didUpdateHandlers = MulticastCallbackNode<()->()>()
+    
+    private(set) var postIDs = Set<String>() {
+        didSet {
+            if oldValue != postIDs {
+                didUpdateHandlers.invokeEach{$0()}
+            }
+        }
+    }
+    
+    func hide(_ post: Post) {
+        postIDs.insert(post.id)
+    }
+    
+    func unhide(_ post: Post) {
+        postIDs.remove(post.id)
+    }
+    
+    func isHidden(_ post: Post) -> Bool {
+        return postIDs.contains(post.id)
     }
 }

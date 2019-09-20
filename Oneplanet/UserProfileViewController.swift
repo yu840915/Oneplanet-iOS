@@ -245,7 +245,7 @@ private extension UserProfileViewController {
     }
     
     func startReportFlow() {
-        performSegue(withIdentifier: SegueID.showReportFlow, sender: UserReportFlowController())
+        performSegue(withIdentifier: SegueID.showReportFlow, sender: UserReportFlowController(user: profile, session: userSession))
     }
 }
 

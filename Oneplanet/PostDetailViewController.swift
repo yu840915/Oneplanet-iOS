@@ -21,10 +21,12 @@ class PostDetailViewController: UIViewController, UserSessionDepending {
     @IBOutlet weak var moreButtonItem: UIBarButtonItem!
     @IBOutlet weak var reportedPostView: ReportedPostView!
     @IBOutlet weak var scorebarView: ScoreBarView!
+    @IBOutlet weak var contentView: UIScrollView!
     
     private var galleryDataSource: PostPhotoGalleryDataSource?
     private var deletePostOperation: DeletePostOperation?
     var canShowAuthorProfile = true
+    private var hidingUpdateHandle: Any?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +37,12 @@ class PostDetailViewController: UIViewController, UserSessionDepending {
             self?.showProfileForAuthor()
         }
         updateViews(with: PostCardViewModel(post: post))
+        hidingUpdateHandle = userSession.hiddenPosts.didUpdateHandlers.add {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.updateViewsForIsHidden()
+            }
+        }
+        updateViewsForIsHidden()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,6 +51,16 @@ class PostDetailViewController: UIViewController, UserSessionDepending {
             NavigationBarStyle.darkGray.configure(nav.navigationBar)
         } else {
             navigationItem.leftBarButtonItem = nil
+        }
+    }
+    
+    func updateViewsForIsHidden() {
+        if userSession.hiddenPosts.isHidden(post) {
+            reportedPostView.isHidden = false
+            contentView.isHidden = true
+        } else {
+            reportedPostView.isHidden = true
+            contentView.isHidden = false
         }
     }
     
@@ -69,6 +87,10 @@ class PostDetailViewController: UIViewController, UserSessionDepending {
         }
         sheet.addAction(UIAlertAction(title: Localized.titles.cancel, style: .cancel, handler: nil))
         present(sheet, animated: true, completion: nil)
+    }
+    
+    @IBAction func unhidePost(_ sender: Any) {
+        userSession.hiddenPosts.unhide(post)
     }
     
     func updateViews(with dataSource: PostDisplayable) {
@@ -178,7 +200,7 @@ private extension PostDetailViewController {
     }
     
     func reportPost() {
-        performSegue(withIdentifier: SegueID.showReportFlow, sender: PostReportFlowController())
+        performSegue(withIdentifier: SegueID.showReportFlow, sender: PostReportFlowController(post: post, session: userSession))
     }
 }
 

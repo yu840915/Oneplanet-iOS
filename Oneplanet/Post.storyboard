@@ -823,6 +823,9 @@
                                                 <state key="normal" title="Show Post">
                                                     <color key="titleColor" name="button green"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="unhidePost:" destination="OGY-9S-l3i" eventType="touchUpInside" id="GYn-z4-iNU"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -1078,6 +1081,7 @@
                     <connections>
                         <outlet property="avatarView" destination="Zpl-VX-XQ0" id="rm3-0S-Qpd"/>
                         <outlet property="contentTextView" destination="j5w-IG-QqI" id="5Vg-Ez-Lv5"/>
+                        <outlet property="contentView" destination="9jL-yL-Bn4" id="LVB-sk-9iK"/>
                         <outlet property="dateLabel" destination="2Hc-Hj-oNJ" id="Nda-OX-2hK"/>
                         <outlet property="galleryCollectionView" destination="NTa-Xb-1MK" id="Ot4-zY-FRh"/>
                         <outlet property="moreButtonItem" destination="xRW-a7-bap" id="YD9-Zk-ra8"/>
@@ -1238,7 +1242,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="aNy-aY-wjN"/>
-        <segue reference="HoG-Gy-8of"/>
-        <segue reference="IHc-2l-Dfz"/>
+        <segue reference="h1E-Fs-afE"/>
+        <segue reference="H9R-mZ-s12"/>
     </inferredMetricsTieBreakers>
 </document>

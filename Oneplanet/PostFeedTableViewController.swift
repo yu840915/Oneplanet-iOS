@@ -83,9 +83,18 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch sections[indexPath.section] {
         case .content:
-            let cell = tableView.dequeueReusableCell(withIdentifier: ReuseID.postCell, for: indexPath) as! PostCardCell
-            setUpPostCell(cell, at: indexPath)
-            return cell
+            let post = posts[indexPath.row]
+            if userSession.hiddenPosts.isHidden(post) {
+                let cell = tableView.dequeueReusableCell(withIdentifier: ReuseID.reportedPostCell, for: indexPath) as! ReportedPostCell
+                cell.showPostAction = {[weak self] in
+                    self?.unhide(post)
+                }
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: ReuseID.postCell, for: indexPath) as! PostCardCell
+                setUpPostCell(cell, at: indexPath)
+                return cell
+            }
         case .loading:
             return tableView.dequeueReusableCell(withIdentifier: ReuseID.loadingCell, for: indexPath)
         }
@@ -175,6 +184,10 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard sections[indexPath.section] == .content &&
+            !userSession.hiddenPosts.isHidden(posts[indexPath.row]) else {
+            return
+        }
         expendCell(at: indexPath)
     }
 
@@ -215,6 +228,11 @@ private extension PostFeedTableViewController {
                 self?.handleFetchFailure(with: error)
             }
         }))
+        handles.append(userSession.hiddenPosts.didUpdateHandlers.add{[weak self] in
+            OperationQueue.main.addOperation {
+                self?.tableView.reloadData()
+            }
+        })
         listUpdateHandles = handles
         postList.reload()
     }
@@ -268,6 +286,10 @@ private extension PostFeedTableViewController {
 }
 
 private extension PostFeedTableViewController {
+    func unhide(_ post: Post) {
+        userSession.hiddenPosts.unhide(post)
+    }
+    
     func followAuthor(of post: Post) {
         guard let rel = userSession.socialRelationshipRepo.relationshipWithUser(of: post.authorID) else {
             return
@@ -316,7 +338,7 @@ private extension PostFeedTableViewController {
     }
     
     func report(_ post: Post) {
-        performSegue(withIdentifier: SegueID.showReportFlow, sender: PostReportFlowController())
+        performSegue(withIdentifier: SegueID.showReportFlow, sender: PostReportFlowController(post: post, session: userSession))
     }
 }
 

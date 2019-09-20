@@ -75,11 +75,9 @@ class PostDetailViewController: UIViewController, UserSessionDepending {
             sheet.addAction(UIAlertAction(title: Localized.titles.edit, style: .default, handler: { (_) in
                 self.editPost()
             }))
-            if post.type == PostType.free.rawValue {
-                sheet.addAction(UIAlertAction(title: Localized.titles.delete, style: .destructive, handler: { (_) in
-                    self.deletePost()
-                }))
-            }
+            sheet.addAction(UIAlertAction(title: Localized.titles.delete, style: .destructive, handler: { (_) in
+                self.deletePost()
+            }))
         } else {
             sheet.addAction(UIAlertAction(title: Localized.titles.report, style: .destructive, handler: { (_) in
                 self.reportPost()

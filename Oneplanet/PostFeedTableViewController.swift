@@ -145,11 +145,9 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
             sheet.addAction(UIAlertAction(title: Localized.titles.edit, style: .default, handler: { (_) in
                 self.edit(post)
             }))
-            if post.type == PostType.free.rawValue {
-                sheet.addAction(UIAlertAction(title: Localized.titles.delete, style: .destructive, handler: { (_) in
-                    self.deletePost(post)
-                }))
-            }
+            sheet.addAction(UIAlertAction(title: Localized.titles.delete, style: .destructive, handler: { (_) in
+                self.deletePost(post)
+            }))
         } else  {
             sheet.addAction(UIAlertAction(title: Localized.titles.report, style: .destructive, handler: { (_) in
                 self.report(post)

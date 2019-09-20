@@ -200,6 +200,10 @@ fileprivate extension UserFlowMainViewController {
     }
     
     func showCreationPortalIfAllowed() {
+        if userSession.isBanned {
+            switchToTab(.my)
+            return
+        }
         let op = FeatureAccessCheckOperation(userSession: userSession)
         op.start()
         if op.isAccessible {
@@ -262,6 +266,12 @@ fileprivate extension UserFlowMainViewController {
     }
 
     func checkAccess(forTab tab: TabFeature) -> Bool {
+        if tab == .life && userSession.isBanned {
+            OperationQueue.main.addOperation {
+                self.switchToTab(.my)
+            }
+            return false
+        }
         switch tab {
         case .hot, .bid:
             return true

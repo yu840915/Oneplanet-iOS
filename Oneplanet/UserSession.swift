@@ -16,7 +16,7 @@ class UserSession {
         return bearerToken.isEmpty
     }
     var isBanned: Bool {
-        return false
+        return profile?.isBanned ?? false
     }
     var isAdmin: Bool {
         return false
@@ -88,7 +88,7 @@ class UserSession {
             if let url = draft.avatar?.progress.imageLocation?.url {
                 avatar = WebImageInfo(url: url)
             }
-            let profile = MyProfile(id: self.profile!.id, username: draft.username, nickname: draft.nickname, gender: draft.gender, avatar: avatar)
+            let profile = MyProfile(id: self.profile!.id, username: draft.username, nickname: draft.nickname, gender: draft.gender, avatar: avatar, isBanned: self.profile!.isBanned)
             profile.alien = draft.alien
             self.profile = profile
         }
@@ -194,6 +194,7 @@ class MyProfile: Decodable, UserProfileDisplayable {
     var isEmpty: Bool {
         return username.isEmpty
     }
+    let isBanned: Bool
     enum CodingKeys: String, CodingKey {
         case id
         case nickname = "display_name"
@@ -201,14 +202,16 @@ class MyProfile: Decodable, UserProfileDisplayable {
         case gender
         case alien
         case avatar
+        case isBanned
     }
     
-    init(id: String, username: String, nickname: String, gender: Gender, avatar: WebImageInfo?) {
+    fileprivate init(id: String, username: String, nickname: String, gender: Gender, avatar: WebImageInfo?, isBanned: Bool) {
         self.id = id
         self.nickname = nickname
         self.avatar = avatar
         self.gender = gender
         self.username = username
+        self.isBanned = isBanned
     }
     
     required init(from decoder: Decoder) throws {
@@ -218,6 +221,7 @@ class MyProfile: Decodable, UserProfileDisplayable {
         username = try container.decodeIfPresent(String.self, forKey: .username) ?? ""
         gender = Gender.from(try container.decodeIfPresent(String.self, forKey: .gender))
         alien = try container.decodeIfPresent(Alien.self, forKey: .alien)
+        isBanned = try container.decodeIfPresent(Bool.self, forKey: .isBanned) ?? false
         if let url = try container.decodeIfPresent(URL.self, forKey: .avatar) {
             avatar = WebImageInfo(url: url)
         } else {
@@ -230,7 +234,8 @@ class MyProfile: Decodable, UserProfileDisplayable {
                                 username: draft.username,
                                 nickname: draft.nickname,
                                 gender: draft.gender,
-                                avatar: avatar)
+                                avatar: avatar,
+                                isBanned: isBanned)
         profile.alien = draft.alien
         return profile
     }
@@ -266,7 +271,7 @@ enum Gender {
 
 class GuestProfile: MyProfile {
     init() {
-        super.init(id: "", username: "guest", nickname: "Guest", gender: .unknown, avatar: nil)
+        super.init(id: "", username: "guest", nickname: "Guest", gender: .unknown, avatar: nil, isBanned: false)
     }
     
     required init(from decoder: Decoder) throws {

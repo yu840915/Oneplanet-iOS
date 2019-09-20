@@ -50,8 +50,9 @@ class SocialRelationship {
         }
     }
     private(set) weak var userSession: UserSession!
-    private var getStateOperation: GetFollowStateOperation?
+    private var getStateOperation: GetSocialRelationshipStatesOperation?
     private var followOperation: FollowUserOperation?
+    private var blockOperation: BlockUserOperation?
     
     init(userID: String, userSession: UserSession) {
         self.userID = userID
@@ -59,25 +60,26 @@ class SocialRelationship {
     }
     
     func initializeIfNeeded() {
-        guard states == nil && getStateOperation == nil else {
-            return
-        }
-        let op = GetFollowStateOperation(userID: userID, session: userSession)
+        guard states == nil else { return }
+        refresh()
+    }
+    
+    func refresh() {
+        guard getStateOperation == nil else { return }
+        let op = GetSocialRelationshipStatesOperation(userID: userID, session: userSession)
         op.completionBlock = {[weak self] in
             OperationQueue.main.addOperation {
-                self?.didGetFollowStates()
+                self?.didGetStates()
             }
         }
         getStateOperation = op
         op.start()
     }
     
-    private func didGetFollowStates() {
+    private func didGetStates() {
         let op = getStateOperation!
         getStateOperation = nil
-        if let isFollowing = op.isFollowing {
-            var states = self.states ?? SocialRelationshipStates(isFollowing: false, isBlocking: false)
-            states.isFollowing = isFollowing
+        if let states = op.states {
             self.states = states
         }
     }
@@ -88,6 +90,14 @@ class SocialRelationship {
     
     func unfollow() {
         changeFollowState(false)
+    }
+    
+    func block() {
+        changeBlockState(true)
+    }
+    
+    func unblock() {
+        changeBlockState(false)
     }
     
     private func changeFollowState(_ willFollow: Bool) {
@@ -125,11 +135,113 @@ class SocialRelationship {
             }
         }
     }
+    
+    private func changeBlockState(_ willBlock: Bool) {
+        if let states = self.states, states.isBlocking == willBlock {
+            return
+        }
+        if blockOperation?.willBlock == willBlock {
+            return
+        }
+        blockOperation?.cancel()
+        let op = BlockUserOperation(userID: userID, session: userSession, willBlock: willBlock)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didChangeFollowState()
+            }
+        }
+        blockOperation = op
+        op.start()
+    }
+
+    private func didChangeBlockState() {
+        let op = blockOperation!
+        blockOperation = nil
+        if op.success == true {
+            if var states = self.states {
+                states.isBlocking = op.willBlock
+                self.states = states
+                if op.willBlock {
+                    refresh()
+                }
+            } else {
+                initializeIfNeeded()
+            }
+            if op.willBlock {
+                userSession.followCounts.refresh()
+            }
+        }
+    }
 }
 
 struct SocialRelationshipStates {
     var isFollowing: Bool
     var isBlocking: Bool
+}
+
+fileprivate class GetSocialRelationshipStatesOperation: SimpleAsynchronousOperation, FailableOperationType {
+    var success: Bool?
+    var error: Error?
+    private var getBlock: GetBlockStateOperation
+    private var getFollow: GetFollowStateOperation
+    private var taskOperation: ConcurrentTaskOperation<AlamofireAPIAccessOperation>?
+    private(set) var states: SocialRelationshipStates?
+    
+    init(userID: String, session: UserSession) {
+        getBlock = GetBlockStateOperation(userID: userID, session: session)
+        getFollow = GetFollowStateOperation(userID: userID, session: session)
+    }
+    
+    override func main() {
+        guard !isCancelled else { return }
+        let op = ConcurrentTaskOperation<AlamofireAPIAccessOperation>(operations: [getBlock, getFollow])
+        op.completionBlock = {[weak self] in
+            self?.handleCompletion()
+        }
+        taskOperation = op
+        op.start()
+    }
+    
+    private func handleCompletion() {
+        guard !isCancelled else { return }
+        let op = taskOperation!
+        if let isFollowing = getFollow.isFollowing, let isBlocking = getBlock.isBlocking {
+            states = SocialRelationshipStates(isFollowing: isFollowing, isBlocking: isBlocking)
+            success = true
+        } else {
+            success = false
+            error = op.error
+        }
+        finish()
+    }
+}
+
+fileprivate class GetBlockStateOperation: AlamofireAPIAccessOperation {
+    let userID: String
+    let session: UserSession
+    private(set) var isBlocking: Bool?
+    init(userID: String, session: UserSession) {
+        self.userID = userID
+        self.session = session
+    }
+    
+    override func prepareURLRequest() throws -> URLRequest {
+        return session.addingAuthorizationToken(to: try URLRequest(url: ServiceURLs.base.appendingPathComponent("/me/block/\(userID)"), method: .head))
+    }
+    
+    override func handleClientError(with response: HTTPURLResponse) throws {
+        if response.statusCode == 404 {
+            isBlocking = false
+        } else {
+            try super.handleClientError(with: response)
+        }
+    }
+    
+    override func willFinishProcess() throws {
+        if isBlocking == nil {
+            isBlocking = true
+        }
+    }
 }
 
 fileprivate class GetFollowStateOperation: AlamofireAPIAccessOperation {
@@ -157,6 +269,22 @@ fileprivate class GetFollowStateOperation: AlamofireAPIAccessOperation {
         if isFollowing == nil {
             isFollowing = true
         }
+    }
+}
+
+fileprivate class BlockUserOperation: AlamofireAPIAccessOperation {
+    let userID: String
+    let session: UserSession
+    let willBlock: Bool
+
+    init(userID: String, session: UserSession, willBlock: Bool) {
+        self.userID = userID
+        self.session = session
+        self.willBlock = willBlock
+    }
+    
+    override func prepareDataRequest() throws -> DataRequest {
+        return Alamofire.request(ServiceURLs.base.appendingPathComponent("users/block/\(userID)"), method: willBlock ? .put : .delete, parameters: ["id": userID], encoding: JSONEncoding(), headers: session.authorizationHeader)
     }
 }
 

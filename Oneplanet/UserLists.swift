@@ -24,7 +24,7 @@ class UserList: PaginatedList<GetUserListOperationFactory> {
     }
     
     class func blockList(with userSession: UserSession) -> UserList {
-        return UserList(operationFactory: GetUserListOperationFactory(session: userSession, url: ServiceURLs.base.appendingPathComponent("me/blocking")))
+        return UserList(operationFactory: GetUserListOperationFactory(session: userSession, url: ServiceURLs.base.appendingPathComponent("me/blocks")))
     }
     
     class func followerList(for user: User, userSession: UserSession) -> UserList {

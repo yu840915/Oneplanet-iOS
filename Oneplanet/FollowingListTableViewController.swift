@@ -171,7 +171,7 @@ private extension FollowingListTableViewController {
             return
         }
         if states.isBlocking {
-            
+            rel.unblock()
         } else if states.isFollowing {
             rel.unfollow()
         } else {

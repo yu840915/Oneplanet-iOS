@@ -202,6 +202,10 @@ class UpdateProfileContentOperation: AlamofireAPIAccessOperation {
         }
         return result
     }
+
+    override func handleUnauthorizedError(with response: HTTPURLResponse) throws {
+        session.deactivate()
+    }
 }
 
 class UpdateMyAvatarFlowOperaion: SimpleAsynchronousOperation, FailableOperationType {
@@ -306,6 +310,10 @@ class UploadMyAvatarOperation: AlamofireAPIAccessOperation {
     
     override func handleClientError(with response: HTTPURLResponse) throws {
         try super.handleClientError(with: response)
+    }
+
+    override func handleUnauthorizedError(with response: HTTPURLResponse) throws {
+        session.deactivate()
     }
 }
 

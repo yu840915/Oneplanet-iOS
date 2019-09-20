@@ -59,6 +59,12 @@ class SocialRelationship {
         self.userSession = userSession
     }
     
+    deinit {
+        getStateOperation?.cancel()
+        followOperation?.cancel()
+        blockOperation?.cancel()
+    }
+    
     func initializeIfNeeded() {
         guard states == nil else { return }
         refresh()
@@ -147,7 +153,7 @@ class SocialRelationship {
         let op = BlockUserOperation(userID: userID, session: userSession, willBlock: willBlock)
         op.completionBlock = {[weak self] in
             OperationQueue.main.addOperation {
-                self?.didChangeFollowState()
+                self?.didChangeBlockState()
             }
         }
         blockOperation = op
@@ -170,6 +176,7 @@ class SocialRelationship {
             if op.willBlock {
                 userSession.followCounts.refresh()
             }
+            userSession.notifyPostListUpdate()
         }
     }
 }
@@ -242,6 +249,10 @@ fileprivate class GetBlockStateOperation: AlamofireAPIAccessOperation {
             isBlocking = true
         }
     }
+
+    override func handleUnauthorizedError(with response: HTTPURLResponse) throws {
+        session.deactivate()
+    }
 }
 
 fileprivate class GetFollowStateOperation: AlamofireAPIAccessOperation {
@@ -270,6 +281,10 @@ fileprivate class GetFollowStateOperation: AlamofireAPIAccessOperation {
             isFollowing = true
         }
     }
+
+    override func handleUnauthorizedError(with response: HTTPURLResponse) throws {
+        session.deactivate()
+    }
 }
 
 fileprivate class BlockUserOperation: AlamofireAPIAccessOperation {
@@ -284,7 +299,11 @@ fileprivate class BlockUserOperation: AlamofireAPIAccessOperation {
     }
     
     override func prepareDataRequest() throws -> DataRequest {
-        return Alamofire.request(ServiceURLs.base.appendingPathComponent("users/block/\(userID)"), method: willBlock ? .put : .delete, parameters: ["id": userID], encoding: JSONEncoding(), headers: session.authorizationHeader)
+        return Alamofire.request(ServiceURLs.base.appendingPathComponent("me/block/\(userID)"), method: willBlock ? .put : .delete, parameters: ["id": userID], encoding: JSONEncoding(), headers: session.authorizationHeader)
+    }
+
+    override func handleUnauthorizedError(with response: HTTPURLResponse) throws {
+        session.deactivate()
     }
 }
 
@@ -301,6 +320,10 @@ fileprivate class FollowUserOperation: AlamofireAPIAccessOperation {
     
     override func prepareDataRequest() throws -> DataRequest {
         return Alamofire.request(ServiceURLs.base.appendingPathComponent("users/\(userID)/follow"), method: willFollow ? .put : .delete, parameters: ["id": userID], encoding: JSONEncoding(), headers: session.authorizationHeader)
+    }
+
+    override func handleUnauthorizedError(with response: HTTPURLResponse) throws {
+        session.deactivate()
     }
 }
 

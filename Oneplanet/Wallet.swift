@@ -97,6 +97,10 @@ class Balance {
         self.account = account
     }
     
+    deinit {
+        refreshOperation?.cancel()
+    }
+    
     func setNeedsRefresh() {
         needsRefresh = true
     }
@@ -153,6 +157,10 @@ class GetBalanceOperation: AlamofireAPIAccessOperation {
     
     override func processData(with data: Data) throws {
         total = (try JSONDecoder.default.decode(Total.self, from: data)).total
+    }
+    
+    override func handleUnauthorizedError(with response: HTTPURLResponse) throws {
+        userSession.deactivate()
     }
     
     struct Total: Decodable {

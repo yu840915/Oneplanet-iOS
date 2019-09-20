@@ -161,6 +161,10 @@ class SubmitPostDraftOperation: AlamofireAPIAccessOperation {
         if data.isEmpty { return }
         post = try JSONDecoder.default.decode(Post.self, from: data)
     }
+    
+    override func handleUnauthorizedError(with response: HTTPURLResponse) throws {
+        session.deactivate()
+    }
 }
 
 class UpdatePostPhotoFlowOperaion: SimpleAsynchronousOperation, FailableOperationType {

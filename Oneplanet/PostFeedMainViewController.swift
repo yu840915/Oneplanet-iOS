@@ -23,7 +23,7 @@ class PostFeedMainViewController: ButtonBarPagerTabStripViewController, UserSess
         changeCurrentIndexProgressive = {[weak self] (oldCell, newCell, progressPercentage, changeCurrentIndex, animated) in
             self?.updateButtonBarCell(oldCell: oldCell, newCell: newCell, progressPercentage: progressPercentage, changeCurrentIndex: changeCurrentIndex, animated: animated)
         }
-        postPublishHandle = userSession.myPostDidUpdate.add({[weak self] (_) in
+        postPublishHandle = userSession.postListDidUpdate.add({[weak self] (_) in
             self?.setNeedsRefresh()
         })
         navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()

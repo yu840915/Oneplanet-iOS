@@ -49,6 +49,7 @@ class TreasuryBarViewController: UIViewController, UserSessionDepending {
     }
     
     private func prepareForWallet() {
+        guard !userSession.isGuest else { return }
         updateHandle = userSession.wallet.updateObservers.add {[weak self] in
             OperationQueue.main.addOperation {
                 self?.handleWalletUpdate()

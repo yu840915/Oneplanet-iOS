@@ -186,6 +186,10 @@ class GetMyBidCountOperation: AlamofireAPIAccessOperation {
             self.count = SharedNumberFormatters.integer.number(from: count)?.intValue
         }
     }
+
+    override func handleUnauthorizedError(with response: HTTPURLResponse) throws {
+        userSession.deactivate()
+    }
 }
 
 class GetBidNewsOperation: AlamofireAPIAccessOperation {
@@ -204,6 +208,10 @@ class GetBidNewsOperation: AlamofireAPIAccessOperation {
     
     override func processData(with data: Data) throws {
         news = try JSONDecoder.default.decode(BidNews.self, from: data)
+    }
+
+    override func handleUnauthorizedError(with response: HTTPURLResponse) throws {
+        userSession.deactivate()
     }
 }
 

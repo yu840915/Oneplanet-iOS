@@ -23,7 +23,7 @@ class UserSession {
     }
     let bearerToken: String
     let profileDidUpdate = MulticastCallbackNode<()->()>()
-    let myPostDidUpdate = MulticastCallbackNode<(Post?)->()>()
+    let postListDidUpdate = MulticastCallbackNode<(Post?)->()>()
     let loginType: LoginType
     let userFetcherRepo = UserFetcherRepository()
     private(set) var socialRelationshipRepo: SocialRelationshipRepository!
@@ -47,14 +47,16 @@ class UserSession {
     init(token: String, loginType: LoginType) {
         self.bearerToken = token
         self.loginType = loginType
-        wallet = Wallet(userSession: self)
-        bidProcessManager = ProductBidProcessManager(userSession: self)
         lotList = MyLotList(session: self)
-        lotList.reload()
-        followCounts = MyFollowCounts(userSession: self)
-        socialRelationshipRepo = SocialRelationshipRepository(userSession: self)
-        followCounts.updateHandler = {[weak self] in
-            self?.profileDidUpdate.invokeEach{$0()}
+        bidProcessManager = ProductBidProcessManager(userSession: self)
+        if !isGuest {
+            lotList.reload()
+            wallet = Wallet(userSession: self)
+            followCounts = MyFollowCounts(userSession: self)
+            socialRelationshipRepo = SocialRelationshipRepository(userSession: self)
+            followCounts.updateHandler = {[weak self] in
+                self?.profileDidUpdate.invokeEach{$0()}
+            }
         }
     }
     
@@ -96,7 +98,9 @@ class UserSession {
     
     func updateProfile(_ profile: MyProfile) {
         self.profile = profile
-        followCounts.refreshIfNeeded()
+        if !isGuest {
+            followCounts.refreshIfNeeded()
+        }
     }
     
     func addingAuthorizationToken(to headers: [String: String]) -> [String: String] {
@@ -124,11 +128,15 @@ class UserSession {
     }
     
     func broadcastPostPublish(_ post: Post?) {
-        myPostDidUpdate.invokeEach{$0(post)}
+        postListDidUpdate.invokeEach{$0(post)}
     }
     
     func notifyPostDidDelete(_ post: Post?) {
-        myPostDidUpdate.invokeEach{$0(post)}
+        postListDidUpdate.invokeEach{$0(post)}
+    }
+    
+    func notifyPostListUpdate() {
+        postListDidUpdate.invokeEach{$0(nil)}
     }
 }
 
@@ -281,11 +289,9 @@ class GetMyProfileOperation: AlamofireAPIAccessOperation {
     override func processData(with data: Data) throws {
         profile = try JSONDecoder.default.decode(MyProfile.self, from: data)
     }
-    
-    override func handleClientError(with response: HTTPURLResponse) throws {
-        if response.statusCode == 401 {
-            session.deactivate()
-        }
+
+    override func handleUnauthorizedError(with response: HTTPURLResponse) throws {
+        session.deactivate()
     }
 }
 

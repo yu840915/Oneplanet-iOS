@@ -18,8 +18,8 @@ class ValuedPostQuota {
     
     init(userSession: UserSession) {
         self.userSession = userSession
-        updateClock = UpdateClock(preferredFrameRate: 5, onTick: {
-            self.refreshIfChargeDateDued()
+        updateClock = UpdateClock(preferredFrameRate: 5, onTick: {[weak self] in
+            self?.refreshIfChargeDateDued()
         })
     }
     
@@ -68,6 +68,10 @@ class GetValuedPostQuotaStateOperation: AlamofireAPIAccessOperation {
     
     override func processData(with data: Data) throws {
         state = try JSONDecoder.default.decode(ValuedPostQuotaState.self, from: data)
+    }
+    
+    override func handleUnauthorizedError(with response: HTTPURLResponse) throws {
+        userSession.deactivate()
     }
 }
 

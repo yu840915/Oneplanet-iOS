@@ -302,11 +302,12 @@ class LogInViewController: UIViewController, EmailAuthFlowStep, AuthorizationFlo
     }
     
     private func didLogInAsGuest() {
-        let op = authOperation!
+        let op = authOperation as! GuestLogInOperation
         authOperation = nil
-        if let token = op.token {
+        if let token = op.token, let tf = op.timeframe {
             let session = UserSession(token: token, loginType: .unknown)
             session.updateProfile(op.profile!)
+            session.updateBidPhaseIndicator(with: tf)
             authorizationCompletion?(session)
         } else if let error = op.error {
             showAlert(with: error)

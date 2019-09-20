@@ -116,6 +116,9 @@ class GetPostListOperation:  AlamofireAPIAccessOperation, PaginatedFetchingOpera
         nextPageFetchingOperation = GetPostListOperation(session: session, url: url, isBeginning: false)
     }
 
+    override func handleUnauthorizedError(with response: HTTPURLResponse) throws {
+        session.deactivate()
+    }
 }
 
 class DeduplicationHelper {

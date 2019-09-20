@@ -105,6 +105,13 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
                 title = Localized.titles.unblock
             }
             actionButton.setTitle(title, for: .normal)
+            if rel.isBlocking {
+                countsTextView.alpha = 0.8
+                countsTextView.isUserInteractionEnabled = false
+            } else {
+                countsTextView.alpha = 1.0
+                countsTextView.isUserInteractionEnabled = true
+            }
         }
     }
     

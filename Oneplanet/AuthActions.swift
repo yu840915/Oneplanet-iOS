@@ -95,11 +95,35 @@ class EmailAuthCredential {
     }
 }
 
-class GuestLogInOperation: Operation, AuthenticationOperationType {
-    let success: Bool? = true
-    let error: Error? = nil
+class GuestLogInOperation: SimpleAsynchronousOperation, AuthenticationOperationType {
+    private(set) var success: Bool?
+    private(set) var error: Error?
     let token: String? = ""
     let profile: MyProfile? = GuestProfile()
+    private(set) var timeframe: SessionTimeframe?
+    private var getBidTimeframeOperation: GetBidSessionTimeframeOperation?
+    
+    override func main() {
+        let op = GetBidSessionTimeframeOperation()
+        op.completionBlock = {[weak self] in
+            self?.didGetTimeframe()
+        }
+        getBidTimeframeOperation = op
+        op.start()
+    }
+    
+    private func didGetTimeframe() {
+        let op = getBidTimeframeOperation!
+        if let tf = op.timeframe {
+            timeframe = tf
+            success = true
+        } else {
+            error = op.error
+            success = false
+        }
+        finish()
+    }
+    
 }
 
 protocol AuthenticationOperationType: FailableOperationType {

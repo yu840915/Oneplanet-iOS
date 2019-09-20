@@ -178,7 +178,11 @@ extension BlockListTableViewController {
     }
     
     func unblock(_ user: User) {
-        
+        guard let rel = userSession.socialRelationshipRepo.relationship(with: user),
+            rel.states?.isBlocking == true else {
+            return
+        }
+        rel.unblock()
     }
 }
 

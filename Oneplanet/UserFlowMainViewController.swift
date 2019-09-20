@@ -62,7 +62,7 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
             $0?.layer.shadowRadius = 4
             $0?.layer.shadowOffset = .init(width: -2, height: 4)
         }
-        if !userSession.isAdmin {
+        if !userSession.isAdmin && !userSession.isGuest {
             let q = ValuedPostQuota(userSession: userSession)
             postQuota = q
             q.refresh()

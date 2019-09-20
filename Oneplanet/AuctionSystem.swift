@@ -30,6 +30,10 @@ class UnlockProductOperation: AlamofireAPIAccessOperation {
     override func willFinishProcess() throws {
         session.lotList.reload()
     }
+    
+    override func handleUnauthorizedError(with response: HTTPURLResponse) throws {
+        session.deactivate()
+    }
 }
 
 class BidProductOperation: AlamofireAPIAccessOperation {
@@ -47,5 +51,9 @@ class BidProductOperation: AlamofireAPIAccessOperation {
         let dict: [String: String] = ["currency": currency.apiName]
         let url = ServiceURLs.devBase.appendingPathComponent("bidding/\(product.id)")
         return Alamofire.request(url, method: .post, parameters: dict, encoding: JSONEncoding.default, headers: session.authorizationHeader)
+    }
+    
+    override func handleUnauthorizedError(with response: HTTPURLResponse) throws {
+        session.deactivate()
     }
 }

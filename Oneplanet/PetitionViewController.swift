@@ -109,4 +109,8 @@ class SubmitPetitionOperation: AlamofireAPIAccessOperation {
         self.petition = petition
         self.session = session
     }
+    
+    override func handleUnauthorizedError(with response: HTTPURLResponse) throws {
+        session.deactivate()
+    }
 }

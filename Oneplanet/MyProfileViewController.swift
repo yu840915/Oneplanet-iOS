@@ -27,7 +27,7 @@ class MyProfileViewController: UIViewController, UserSessionDepending {
                 self?.updateViewsForProfile()
             }
         })
-        handles.append(userSession.myPostDidUpdate.add{[weak self] _ in
+        handles.append(userSession.postListDidUpdate.add{[weak self] _ in
             self?.setNeedsRefresh()
         })
         updateHandles = handles

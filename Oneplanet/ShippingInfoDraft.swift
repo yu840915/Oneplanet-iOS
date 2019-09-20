@@ -237,4 +237,8 @@ class SubmitShippingInfoOperation: AlamofireAPIAccessOperation {
         try draft.validate()
         return Alamofire.request(ServiceURLs.base.appendingPathComponent("me/shipping"), method: .put, parameters: [:], encoding: JSONEncoding.default, headers: session.authorizationHeader)
     }
+    
+    override func handleUnauthorizedError(with response: HTTPURLResponse) throws {
+        session.deactivate()
+    }
 }

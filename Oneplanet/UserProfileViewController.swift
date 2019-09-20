@@ -18,6 +18,7 @@ class UserProfileViewController: UIViewController, UserSessionDepending {
     private var profileController: ProfileCollectionViewController!
     private var relationship: SocialRelationship?
     private var updateHandle: Any?
+    private var needsReloadForRelationChange = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +71,10 @@ class UserProfileViewController: UIViewController, UserSessionDepending {
         }
         if let states = relationship?.states {
             profileController.relationshipState = states
+        }
+        if needsReloadForRelationChange {
+           needsReloadForRelationChange = false
+            profileController.postList.reload()
         }
     }
     
@@ -228,7 +233,12 @@ private extension UserProfileViewController {
     }
     
     func blockUser() {
-        
+        guard let rel = relationship,
+            rel.states?.isBlocking == false else {
+                return
+        }
+        needsReloadForRelationChange = true
+        rel.block()
     }
     
     func showUnblockAlert() {
@@ -241,7 +251,12 @@ private extension UserProfileViewController {
     }
     
     func unblockUser() {
-        
+        guard let rel = relationship,
+            rel.states?.isBlocking == true else {
+                return
+        }
+        needsReloadForRelationChange = true
+        rel.unblock()
     }
     
     func startReportFlow() {

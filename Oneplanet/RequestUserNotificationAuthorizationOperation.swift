@@ -34,15 +34,29 @@ class UserNotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        //Forward url to router here
+        if let url = getClickActionURL(from: response) {
+            router.handle(url)
+        }
         completionHandler()
+    }
+    
+    private func getClickActionURL(from response: UNNotificationResponse) -> URL? {
+        let userInfo = response.notification.request.content.userInfo
+        debugPrint(userInfo)
+        if let urlStr = userInfo["clickAction"] as? String, let url = URL(string: urlStr) {
+            return url
+        }
+        if let url = userInfo["clickAction"] as? URL {
+            return url
+        }
+        return nil
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         if UIApplication.shared.applicationState == .active {
-            completionHandler([])
+            completionHandler([.alert, .sound])
         } else {
-            completionHandler(.alert)
+            completionHandler([.alert, .sound, .badge])
         }
     }
 }

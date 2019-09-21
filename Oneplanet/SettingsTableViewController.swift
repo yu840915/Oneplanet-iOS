@@ -29,6 +29,7 @@ class SettingsTableViewController: UITableViewController, UserSessionDepending {
         let mail = UIButton(frame: CGRect(origin: .zero, size: CGSize(width: 30, height: 30)))
         mail.setImage(navigationItem.rightBarButtonItems?[0].image, for: .normal)
         youtube.setImage(navigationItem.rightBarButtonItems?[1].image, for: .normal)
+        youtube.addTarget(self, action: #selector(showYoutubePage(_:)), for: .touchUpInside)
         mail.addTarget(self, action: #selector(showEmailComposer(_:)), for: .touchUpInside)
         navigationItem.rightBarButtonItems = [
             UIBarButtonItem(customView: mail),

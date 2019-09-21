@@ -9,6 +9,9 @@
 import Foundation
 
 class Localized {
+    class func lookUp(_ key: String) -> String {
+        return NSLocalizedString(key, comment: "")
+    }
     static let feature = Feature()
     static let acceptLanguageHeader: [String: String] = [acceptLanguageKey: languageCode]
     static let acceptLanguageKey = "Accept-Language"
@@ -678,6 +681,9 @@ class LocalizedPhrase { //ph_
     var purpleGem: String {
         return NSLocalizedString("ph_purple_gem", comment: "")
     }
+    var purchaseSuccess: String {
+        return NSLocalizedString("ph_purchase_success", comment: "")
+    }
 }
 
 class LocalizedPhraseFormats {//phf_
@@ -714,6 +720,15 @@ class LocalizedPhraseFormats {//phf_
     }
     var remainingUploads: String {
         return NSLocalizedString("phf_remaining_uploads", comment: "")
+    }
+    var buySome: String {
+        return NSLocalizedString("phf_buy_some", comment: "")
+    }
+    var buySomeGetSomeFree: String {
+        return NSLocalizedString("phf_buy_some_get_some_free", comment: "")
+    }
+    var purchaseSuccess: String {
+        return NSLocalizedString("phf_purchase_success", comment: "")
     }
 }
 

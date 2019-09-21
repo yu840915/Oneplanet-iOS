@@ -203,6 +203,7 @@
 "ph_category_unlocked" = "The items I unlocked";
 "ph_bidding_begins" = "The bidding begins!";
 "ph_purple_gem" = "Rubid (Suggest for bidding)";
+"ph_purchase_success" = "Purchase success";
 
 "phf_seconds_ago_short" = "%@s";
 "phf_minutes_ago_short" = "%@m";
@@ -215,6 +216,9 @@
 "phf_followers" = "%@ followers";
 "phf_followings" = "%@ following";
 "phf_remaining_uploads" = "remaining times %@/%@ (%@)";
+"phf_buy_some" = "Buy %@";
+"phf_buy_some_get_some_free" = "Buy %@ get %@ free";
+"phf_purchase_success" = "You have successfully purchased %@ x %@";
 
 "no_posts" = "No Posts Yet";
 "no_promo_popups" = "No Promotion Pop-ups Yet";

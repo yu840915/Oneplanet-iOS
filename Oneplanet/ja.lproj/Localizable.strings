@@ -203,6 +203,7 @@
 "ph_category_unlocked" = "私がアンロックした商品";
 "ph_bidding_begins" = "オークション スタート";
 "ph_purple_gem" = "ルビッド（入札する時にオススメ）";
+"ph_purchase_success" = "購入が成功しました";
 
 "phf_seconds_ago_short" = "%@ s";
 "phf_minutes_ago_short" = "%@ m";
@@ -215,6 +216,9 @@
 "phf_followers" = "%@ フォロワー";
 "phf_followings" = "%@ フォロー中";
 "phf_remaining_uploads" = "残り回数%@/%@ (%@)";
+"phf_buy_some" = "%@ つ購入";
+"phf_buy_some_get_some_free" = "%@ つ購入すると %@ つが無料";
+"phf_purchase_success" = "%@を %@ つを購入しました。";
 
 "no_posts" = "投稿がありません";
 "no_promo_popups" = "No Promotion Pop-ups Yet";

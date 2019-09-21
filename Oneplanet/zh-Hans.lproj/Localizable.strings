@@ -203,6 +203,7 @@
 "ph_category_unlocked" = "我解锁的";
 "ph_bidding_begins" = "竞标开始！";
 "ph_purple_gem" = "红金宝（建议投标时使用）";
+"ph_purchase_success" = "购买成功";
 
 "phf_seconds_ago_short" = "%@ s";
 "phf_minutes_ago_short" = "%@ m";
@@ -215,6 +216,9 @@
 "phf_followers" = "%@ 粉丝";
 "phf_followings" = "%@ 关注中";
 "phf_remaining_uploads" = "剩馀次数 %@/%@ (%@)";
+"phf_buy_some" = "购买 %@ 颗";
+"phf_buy_some_get_some_free" = "购买 %@ 颗，送 %@ 颗";
+"phf_purchase_success" = "你已购买成功  %@ x %@。";
 
 "no_posts" = "还没有帖子";
 "no_promo_popups" = "No Promotion Pop-ups Yet";

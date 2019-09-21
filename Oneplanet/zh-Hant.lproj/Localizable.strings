@@ -203,6 +203,7 @@
 "ph_category_unlocked" = "我解鎖的";
 "ph_bidding_begins" = "競標開始！";
 "ph_purple_gem" = "紅金寶（建議投標時使用）";
+"ph_purchase_success" = "購買成功";
 
 "phf_seconds_ago_short" = "%@ s";
 "phf_minutes_ago_short" = "%@ m";
@@ -215,6 +216,9 @@
 "phf_followers" = "%@ 粉絲";
 "phf_followings" = "%@ 追蹤中";
 "phf_remaining_uploads" = "剩餘次數 %@/%@ (%@)";
+"phf_buy_some" = "購買 %@ 顆";
+"phf_buy_some_get_some_free" = "購買 %@ 顆，送 %@ 顆";
+"phf_purchase_success" = "你已購買成功 %@ x %@";
 
 "no_posts" = "還沒有貼文";
 "no_promo_popups" = "No Promotion Pop-ups Yet";

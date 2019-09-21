@@ -94,7 +94,7 @@
 "msg_lot_closed_des" = "本期竞标已结束，48H内会公布下一期商品，敬请期待！";
 "msg_bid_too_late" = "超过了下标时限";
 "msg_bid_payment_too_late" = "付款成功但超过了下标时限";
-"msg_gem_unchanged" = "Transaction doesn't occurred";
+"msg_gem_unchanged" = "此状况不会扣宝石";
 "msg_race1_monologue" = "我的名字叫法克。";
 "msg_race2_monologue" = "我的名字叫迪克。";
 "msg_race3_monologue" = "我的名字叫壮克。";
@@ -129,12 +129,12 @@
 "msgf_insufficient_gem_unlock_des" = "解锁一件商品需要使用一颗 %@ + %@。";
 "msgf_insufficient_gem_bid_des" = "每投标一次需要使用一颗%@ + %@。";
 "msgf_earn_blue_gem_instruction" = "再加把劲上传照片获得%@！";
-"msgf_received_gem" = "获得 %@ 1 颗";
+"msgf_received_gem" = "获得 %@ %@ 颗";
 "msgf_unlock_succeeded" = "投标需要使用到 %@!";
 "msgf_bid_succeeded" = "Successfully qualified for %@ bidding";
 "msgf_start_following_you" = "%@ started following you";
 "msgf_liked_your_post" = "你的照片被 %@ 喜欢了，恭喜获得一颗 %@。";
-"msgf_you_received_num_gems" = "You received %@ %@s";
+"msgf_you_received_num_gems" = "%@ 赠送 %@ x %@";
 "msgf_post_reported" = "您的照片被用户举报了，因为%@";
 "msgf_profile_reported" = "您的 Oneplanet 账号 %@被用户举报， 因为违反 Oneplanet 的%@";
 "msgf_liked_your_post_and_gave_gem" = "%@喜欢你的照片，获得1颗%@。";
@@ -142,6 +142,8 @@
 "msgf_unblock_user_prompt" = "移除黑名单%@？";
 "msgf_block_user_prompt" = "确定要黑名单%@吗？";
 "msgf_no_search_results" = "No results for \"%@\"";
+"msgf_daily_login_reward" = "每日登入，赠送1颗%@";
+"msgf_copied_order_number" = "已复制货单编号";
 
 "ph_guest_login" = "访客进入";
 "ph_email_login" = "或通过电子邮件登录";
@@ -300,9 +302,20 @@
 "rp_nudity_detail" = "举报为露点照或色情内容？";
 "rp_hate_speech_detail" = "检举为仇恨言论或符号？";
 "rp_violance_detail" = "举报暴力或暴力威胁？";
+"rp_dont_like_post" = "内容令人反感";
+"rp_nudity" = "内容包含色情或暴力";
+"rp_violance" = "内容包含仇恨言论或不当图案";
+"rp_hate_speech" = "内容包含暴力或暴力威胁";
 
 "smb_enum_spliter" = ", ";
 
 "tut_unlock" = "解锁参加竞标";
 "tut_wait_for_bid" = "等待竞标开始！";
 "tut_bid" = "开始投标吧！";
+
+"pn_session_start" = "本期竞标商品已经公布，请把握时间解锁商品！";
+"pn_1hr_to_bid" = "距离竞标开始还剩一小时，请把握时间解锁商品！";
+"pn_win_a_lot" = "你得标了%@！";
+"pn_winner_notice" = "本期你有得标！查看竞标历程。";
+"pn_loser_notice" = "本期你没有得标。48H 内会公布下一期商品！";
+"pn_prerelease_login_reward" = "恭喜你完成了事前登录，宝石已发送，赶快去解锁吧！"

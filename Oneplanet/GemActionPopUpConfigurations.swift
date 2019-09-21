@@ -308,7 +308,8 @@ class BidTooLateConfiguration: GemActionPopUpConfiguration {
         return #imageLiteral(resourceName: "im_07_rubid")
     }
     override var attributedSubtitle: NSAttributedString {
-        return NSAttributedString(string: String(format: Localized.messageFormats.receivedGem, Localized.titles.greenGem), attributes: subtitleAttributes)
+        let num = "1"
+        return NSAttributedString(string: String(format: Localized.messageFormats.receivedGem, Localized.titles.greenGem, num), attributes: subtitleAttributes)
     }
     override var shouldShowCancel: Bool {
         return false

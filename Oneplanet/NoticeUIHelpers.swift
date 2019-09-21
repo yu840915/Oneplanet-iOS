@@ -79,9 +79,10 @@ class LikeFromOfficialNoticeViewModel: NoticeViewModel, NormalNoticeItemDisplaya
 
 class GiftFromOfficialNoticeViewModel: NoticeViewModel, NormalNoticeItemDisplayable {
     override var attributedMessage: NSAttributedString {
+        let name = "Supreme.AI"
         let num = "3"
         let gem = Localized.titles.blueGem
-        let text = String(format: Localized.messageFormats.gaveYouNumberGems, num, gem)
+        let text = String(format: Localized.messageFormats.gaveYouNumberGems, name, gem, num)
         let attrStr = NSMutableAttributedString(string: text, attributes: [.font:  UIFont.systemFont(ofSize: 12)])
         let numRange = (text as NSString).range(of: num)
         let gemRange = (text as NSString).range(of: gem)

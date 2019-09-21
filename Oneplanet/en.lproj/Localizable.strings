@@ -94,7 +94,7 @@
 "msg_lot_closed_des" = "The bidding has ended. The next issue will be announced within 48H, so stay tuned!";
 "msg_bid_too_late" = "Exceeds the biding time limit";
 "msg_bid_payment_too_late" = "Payment is successful but exceeding the biding time limit";
-"msg_gem_unchanged" = "Transaction doesn't occurred";
+"msg_gem_unchanged" = "This condition does not buckle the gems";
 "msg_race1_monologue" = "My name is Focker.";
 "msg_race2_monologue" = "My name is Dicker.";
 "msg_race3_monologue" = "My name is Drunker.";
@@ -129,12 +129,12 @@
 "msgf_insufficient_gem_unlock_des" = "You need one %@ + %@ to unlock an item. ";
 "msgf_insufficient_gem_bid_des" = "You need one %@ + %@ to place a bid. ";
 "msgf_earn_blue_gem_instruction" = "Upload more photos to get %@!";
-"msgf_received_gem" = "Get a %@";
+"msgf_received_gem" = "You have acquired %@ x %@";
 "msgf_unlock_succeeded" = "The bidding needs to use %@. ";
 "msgf_bid_succeeded" = "Successfully qualified for %@ bidding";
 "msgf_start_following_you" = "%@ started following you";
 "msgf_liked_your_post" = "Congratulaions! %@ has liked your photo. You have acquired one %@.";
-"msgf_you_received_num_gems" = "The official gift %@ %@s";
+"msgf_you_received_num_gems" = "%@ gifted you %@ x %@";
 "msgf_post_reported" = "Your photo was reported by the user because of %@";
 "msgf_profile_reported" = "Your Oneplanet account %@ was reported by the user because of the violation of Oneplanet %@";
 "msgf_liked_your_post_and_gave_gem" = "%@ liked your post! get 1 %@";
@@ -142,6 +142,8 @@
 "msgf_unblock_user_prompt" = "Unblock %@?";
 "msgf_block_user_prompt" = "Block %@?";
 "msgf_no_search_results" = "No results for \"%@\"";
+"msgf_daily_login_reward" = "Sign in daily, give 1 %@";
+"msgf_copied_order_number" = "Copyed order number";
 
 "ph_guest_login" = "Guest";
 "ph_email_login" = "Or Login With Email";
@@ -300,9 +302,20 @@
 "rp_nudity_detail" = "Report as nudity or pornography?";
 "rp_hate_speech_detail" = "Report as hate speech or symbols?";
 "rp_violance_detail" = "Report as violence or threat of violence?";
+"rp_dont_like_post" = "I don’t like it";
+"rp_nudity" = "nip slip or pornography";
+"rp_violance" = "the hate speech or sign";
+"rp_hate_speech" = "the violent or violent threats";
 
 "smb_enum_spliter" = ", ";
 
 "tut_unlock" = "Unlock to join the bidding";
 "tut_wait_for_bid" = "Waiting for the bid to start!";
 "tut_bid" = "Start bidding!";
+
+"pn_session_start" = "This issue has been published bid items, please take the time to unlock items!";
+"pn_1hr_to_bid" = "There is one hour left before the bidding starts, please take the time to unlock the items!";
+"pn_win_a_lot" = "You win the %@!";
+"pn_winner_notice" = "You have won the bid in this week! View the history.";
+"pn_loser_notice" = "You have not won the bid in this week. The next issue will be announced in 48H!";
+"pn_prerelease_login_reward" = "Congratulations, you have completed the login beforehand, the gem has been sent, hurry to unlock it!"

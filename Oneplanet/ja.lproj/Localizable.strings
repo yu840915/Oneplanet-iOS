@@ -94,7 +94,7 @@
 "msg_lot_closed_des" = "オークションが終了しました。48時間以内次回の入札商品を公表します。お見逃しなく！";
 "msg_bid_too_late" = "入札時間を超えました";
 "msg_bid_payment_too_late" = "支払いが成功しましたが、入札時間を超えました";
-"msg_gem_unchanged" = "Transaction doesn't occurred";
+"msg_gem_unchanged" = "この状況でジェムは減らしません";
 "msg_race1_monologue" = "ファッカーです。";
 "msg_race2_monologue" = "ディカーです。";
 "msg_race3_monologue" = "ドランカーです。";
@@ -129,12 +129,12 @@
 "msgf_insufficient_gem_unlock_des" = "一つ商品をアンロックするごとに、1 %@ + %@ が必要です。";
 "msgf_insufficient_gem_bid_des" = "毎回入札するごとに、 1 %@ + %@が必要です。";
 "msgf_earn_blue_gem_instruction" = "写真をアップロードして、%@ をゲットしよう！";
-"msgf_received_gem" = "%@をゲットしました";
+"msgf_received_gem" = "%@を%@コ 獲得しました。";
 "msgf_unlock_succeeded" = "入札するには %@ が必要です!";
 "msgf_bid_succeeded" = "Successfully qualified for %@ bidding";
 "msgf_start_following_you" = "%@さんがあなたをファローしました。";
 "msgf_liked_your_post" = "おめでとうございます！あなたの写真が%@にLIKEされましたので、%@を1コ獲得しました。";
-"msgf_you_received_num_gems" = "You received %@ %@s";
+"msgf_you_received_num_gems" = "%@から%@を%@コ贈りました。";
 "msgf_post_reported" = "%@の原因で投稿が報告されました";
 "msgf_profile_reported" = "あなたのアカウント%@はOneplanet%@に違反しているので、アカウントが報告されました";
 "msgf_liked_your_post_and_gave_gem" = "めでとうございます！あなたの写真が%@にLIKEされましたので、%@を1コ獲得しました。";
@@ -142,6 +142,8 @@
 "msgf_unblock_user_prompt" = "%@さんのブロックを解除しますか？";
 "msgf_block_user_prompt" = "%@さんをブロックしますか？";
 "msgf_no_search_results" = "No results for \"%@\"";
+"msgf_daily_login_reward" = "毎日ログインして、$@をもらおう！";
+"msgf_copied_order_number" = "追跡番号をコピーしました";
 
 "ph_guest_login" = "ゲスト登録";
 "ph_email_login" = "またはメールアドレスでログイン";
@@ -300,9 +302,20 @@
 "rp_nudity_detail" = "ヌードまたはわいせつコンテンツとして報告しますか？";
 "rp_hate_speech_detail" = "ヘイトスピーチや差別的なシンボルとして報告しますか？";
 "rp_violance_detail" = "暴力または暴力的脅威として報告しますか？";
+"rp_dont_like_post" = "単に気に入らない";
+"rp_nudity" = "わいせつコンテンツまたは暴力";
+"rp_violance" = "ヘイトスピーチや差別的なシンボル";
+"rp_hate_speech" = "暴力または暴力的脅威";
 
 "smb_enum_spliter" = ", ";
 
 "tut_unlock" = "アンロックして、オークションに参加しよう";
 "tut_wait_for_bid" = "オークションが開始するまでしばらくお待ちください！";
 "tut_bid" = "入札しよう！";
+
+"pn_session_start" = "今回の入札商品を公表しました。商品をアンロックする時間をお見逃しなく！";
+"pn_1hr_to_bid" = "オークションが開始するまであと1時間、商品をアンロックする時間をお見逃しなく！";
+"pn_win_a_lot" = "%@を落札しました！";
+"pn_winner_notice" = "今回のオークションで落札しました！マイオクから落札分で確認します。";
+"pn_loser_notice" = "今回のオークションで落札できませんでした。次回の商品が48時間以内に発表されます！";
+"pn_prerelease_login_reward" = "事前登録完了、ジェムを獲得できました。商品をアンロックしよう！"

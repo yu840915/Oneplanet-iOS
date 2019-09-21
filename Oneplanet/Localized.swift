@@ -494,6 +494,12 @@ class LocalizedMessageFormats {//msgf_
     var noSearchResults: String {
         return NSLocalizedString("msgf_no_search_results", comment: "")
     }
+    var dailyLoginReward: String {
+        return NSLocalizedString("msgf_daily_login_reward", comment: "")
+    }
+    var copiedOrderNumber: String {
+        return NSLocalizedString("msgf_copied_order_number", comment: "")
+    }
 }
 
 class LocalizedPhrase { //ph_

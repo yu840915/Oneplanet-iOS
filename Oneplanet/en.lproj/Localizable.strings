@@ -55,7 +55,7 @@
 "tl_filter" = "Filter";
 "tl_bid_state_lost" = "Lose";
 "tl_bid_state_to_ship" = "Waiting for shipment";
-"tl_bid_state_shipping" = "In shipment";
+"tl_bid_state_shipping" = "Shipped";
 "tl_bid_state_delivered" = "Received";
 "tl_report" = "Report";
 "tl_block" = "Block";
@@ -112,6 +112,7 @@
 "msg_unlock_option_prompt" = "Which gem do you want to use to unlock?";
 "msg_thanks_for_reporting_post" = "Your feedback is important in helping us keep the Oneplanet community safe";
 "msg_username_rules" = "ID at least five characters";
+"msg_copied_order_number" = "Copyed order number";
 
 "msgf_accept_tos" = "Sign in means you agree to our %@.";
 "msgf_resend_verification_email" = "You did not receive the email? %@.";
@@ -143,7 +144,6 @@
 "msgf_block_user_prompt" = "Block %@?";
 "msgf_no_search_results" = "No results for \"%@\"";
 "msgf_daily_login_reward" = "Sign in daily, give 1 %@";
-"msgf_copied_order_number" = "Copyed order number";
 
 "ph_guest_login" = "Guest";
 "ph_email_login" = "Or Login With Email";

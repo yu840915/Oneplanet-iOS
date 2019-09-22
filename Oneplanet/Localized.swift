@@ -403,6 +403,9 @@ class LocalizedMessages {//msg_
     var usernameRules: String {
         return NSLocalizedString("msg_username_rules", comment: "")
     }
+    var copiedOrderNumber: String {
+        return NSLocalizedString("msg_copied_order_number", comment: "")
+    }
 }
 
 class LocalizedMessageFormats {//msgf_
@@ -499,9 +502,6 @@ class LocalizedMessageFormats {//msgf_
     }
     var dailyLoginReward: String {
         return NSLocalizedString("msgf_daily_login_reward", comment: "")
-    }
-    var copiedOrderNumber: String {
-        return NSLocalizedString("msgf_copied_order_number", comment: "")
     }
 }
 

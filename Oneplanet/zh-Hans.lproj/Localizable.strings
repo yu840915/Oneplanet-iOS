@@ -55,7 +55,7 @@
 "tl_filter" = "商品过滤";
 "tl_bid_state_lost" = "未得标";
 "tl_bid_state_to_ship" = "待出货";
-"tl_bid_state_shipping" = "出货中";
+"tl_bid_state_shipping" = "已出货";
 "tl_bid_state_delivered" = "已领收";
 "tl_report" = "举报";
 "tl_block" = "黑名单";
@@ -112,6 +112,7 @@
 "msg_unlock_option_prompt" = "你要使用哪种宝石来解锁？";
 "msg_thanks_for_reporting_post" = "您的反馈意见对于帮助我们保持 Oneplanet 社群的安全非常重要";
 "msg_username_rules" = "ID至少5个字符";
+"msg_copied_order_number" = "已复制货单编号";
 
 "msgf_accept_tos" = "登入即表示你同意我们的%@";
 "msgf_resend_verification_email" = "你没有收到电子邮件？%@";
@@ -143,7 +144,6 @@
 "msgf_block_user_prompt" = "确定要黑名单%@吗？";
 "msgf_no_search_results" = "No results for \"%@\"";
 "msgf_daily_login_reward" = "每日登入，赠送1颗%@";
-"msgf_copied_order_number" = "已复制货单编号";
 
 "ph_guest_login" = "访客进入";
 "ph_email_login" = "或通过电子邮件登录";

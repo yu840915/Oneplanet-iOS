@@ -21,6 +21,7 @@ class ProductDetailViewController: UIViewController, UserSessionDepending {
         }
     }
     var productQuery: String?
+    var isLockVisible = true
 
     @IBOutlet weak var accessoryContainer: UIStackView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
@@ -136,7 +137,7 @@ private extension ProductDetailViewController {
     
     func updateViewsForBidPhase() {
         guard let prod = product, prod.allowsUnlock else { return }
-        lockView.isHidden = userSession.bidPhaseIndicator.phase == .ended
+        lockView.isHidden = (userSession.bidPhaseIndicator.phase == .ended) || !isLockVisible
     }
 
     func getProductDetail() {

@@ -22,7 +22,7 @@ class MyProfileTests: XCTestCase {
     func testDecoding() {
         let data = """
 {
-    "_id": "AD123FDF13",
+    "id": "AD123FDF13",
     "username": "zcjwmsj168",
     "display_name": "Mike 123",
     "avatar": "https://www.google.com"
@@ -42,7 +42,7 @@ class MyProfileTests: XCTestCase {
     func testDecodeMissingOptionalValues() {
         let data = """
 {
-    "_id": "AD123FDF13",
+    "id": "AD123FDF13",
     "username": "zcjwmsj168",
     "avatar": "https://www.google.com"
 }

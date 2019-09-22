@@ -103,7 +103,7 @@ class GetProductCagegoryPageOperation: AlamofireAPIAccessOperation, PaginatedFet
     var retryOperation: PaginatedFetchingOperationType? {
         return GetProductCagegoryPageOperation(session: session, url: url, isBeginning: isBeginning)
     }
-    private(set) var items: [ProductOverview] = []
+    var items: [ProductOverview] = []
 
     let session: UserSession
     private let url: URL

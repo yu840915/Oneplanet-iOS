@@ -55,7 +55,7 @@
 "tl_filter" = "検索フィルタ";
 "tl_bid_state_lost" = "落札できませんでした";
 "tl_bid_state_to_ship" = "出荷待ち";
-"tl_bid_state_shipping" = "出荷中";
+"tl_bid_state_shipping" = "発送済み";
 "tl_bid_state_delivered" = "受け取りました";
 "tl_report" = "報告する";
 "tl_block" = "ブロック";
@@ -112,6 +112,7 @@
 "msg_unlock_option_prompt" = "どのジェムでアンロックしますか？";
 "msg_thanks_for_reporting_post" = "いただいた情報は、Oneplanet コミュニティをより安全なものにするために使用されます";
 "msg_username_rules" = "ID は5文字以上";
+"msg_copied_order_number" = "追跡番号をコピーしました";
 
 "msgf_accept_tos" = "ログインすることによって、%@に同意することになります";
 "msgf_resend_verification_email" = "電子メールがみつかりませんか？%@";
@@ -143,7 +144,6 @@
 "msgf_block_user_prompt" = "%@さんをブロックしますか？";
 "msgf_no_search_results" = "No results for \"%@\"";
 "msgf_daily_login_reward" = "毎日ログインして、$@をもらおう！";
-"msgf_copied_order_number" = "追跡番号をコピーしました";
 
 "ph_guest_login" = "ゲスト登録";
 "ph_email_login" = "またはメールアドレスでログイン";

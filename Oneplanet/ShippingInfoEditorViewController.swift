@@ -12,6 +12,7 @@ import ModelBlocks
 class ShippingInfoEditorViewController: UIViewController, UserSessionDepending {
     
     var userSession: UserSession!
+    var shippingAddressHolder: ShippingAddressHolder!
     @IBOutlet weak var informationLabel: UILabel!
     
     @IBOutlet weak var exitButtonItem: UIBarButtonItem!
@@ -164,7 +165,11 @@ fileprivate extension ShippingInfoEditorViewController {
     }
     
     func prepareForDraft() {
-        draft = ShippingInfoDraft()
+        if let info = shippingAddressHolder.shippingAddress {
+            draft = ShippingInfoDraft(info)
+        } else {
+            draft = ShippingInfoDraft()
+        }
         let fields: [ShippingInfoDraft.Field] = [.email, .firstName, .lastName, .address1, .address2, .city, .region, .postalCode, .phoneNumber]
         fields.forEach{prepareFieldBlock(for: $0)}
         draft.requiredFields.compactMap{fieldMap[$0]}.forEach{
@@ -233,6 +238,7 @@ fileprivate extension ShippingInfoEditorViewController {
         if let error = op.error {
             handleSubmissionError(error)
         } else {
+            shippingAddressHolder.refreshIfAllowed()
             showSuccessMessageAndDismiss()
         }
     }

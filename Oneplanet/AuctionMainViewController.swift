@@ -8,10 +8,17 @@
 
 import UIKit
 import XLPagerTabStrip
+import ModelBlocks
 
 class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessionDepending {
     
-    var userSession: UserSession!
+    var userSession: UserSession! {
+        didSet {
+            shippingAddressHolder = ShippingAddressHolder(session: userSession)
+            shippingAddressHolder.refreshIfAllowed()
+        }
+    }
+    var shippingAddressHolder: ShippingAddressHolder!
     @IBOutlet weak var buttonBarContainer: UIView!
     private var shouldAddBadgeViews = true
     private var productListBadge: BadgeView!
@@ -50,10 +57,13 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         let productList = ProductListTableViewController.fromDefaultStoryboard()
         productList.setWantsTutorial()
+        productList.shippingAddressHolder = shippingAddressHolder
         productListController = productList
         var controllers: [UIViewController] = [productList]
         if !userSession.isGuest {
-            controllers.append(BiddingProcessTableViewController.fromDefaultStoryboard())
+            let vc = BiddingProcessTableViewController.fromDefaultStoryboard()
+            vc.shippingAddressHolder = shippingAddressHolder
+            controllers.append(vc)
         }
         controllers
             .compactMap{$0 as? UserSessionDepending}
@@ -151,5 +161,38 @@ class PagerStyleConfigurer {
         }
         static let normal = Style(titleColor: ColorPalette.defaultPlaceholder, font: .systemFont(ofSize: 12))
         static let highlighted = Style(titleColor: ColorPalette.defaultText, font: .systemFont(ofSize: 12, weight: .semibold))
+    }
+}
+
+class ShippingAddressHolder {
+    private(set) var shippingAddress: ShippingAddress?
+    let session: UserSession
+    private var getAddressOperation: GetShippingAddressOperation? {
+        didSet {
+            updateHandlers.invokeEach{$0()}
+        }
+    }
+    let updateHandlers = MulticastCallbackNode<()->()>()
+    
+    init(session: UserSession) {
+        self.session = session
+    }
+    
+    func refreshIfAllowed() {
+        guard !session.isGuest && getAddressOperation == nil else { return }
+        let op = GetShippingAddressOperation(session: session)
+        op.completionBlock = {[weak self] in
+            self?.didRefresh()
+        }
+        getAddressOperation = op
+        op.start()
+    }
+    
+    private func didRefresh() {
+        let op = getAddressOperation!
+        getAddressOperation = nil
+        if op.success == true {
+            shippingAddress = op.shippingAddress
+        }
     }
 }

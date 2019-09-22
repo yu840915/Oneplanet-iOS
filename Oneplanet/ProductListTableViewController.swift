@@ -12,6 +12,7 @@ import XLPagerTabStrip
 class ProductListTableViewController: UITableViewController, DefaultInstanceFactory, UserSessionDepending {
     
     var userSession: UserSession!
+    var shippingAddressHolder: ShippingAddressHolder!
     var bidPhaseIndicator: BidPhaseIndicator {
         return userSession.bidPhaseIndicator
     }
@@ -371,6 +372,9 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
             }
             if let vc = nav.viewControllers.first as? UserProfileViewController {
                 vc.profile = (sender as! User)
+            }
+            if let vc = nav.viewControllers.first as? ShippingInfoEditorViewController {
+                vc.shippingAddressHolder = shippingAddressHolder
             }
         }
     }

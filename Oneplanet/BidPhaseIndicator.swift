@@ -127,6 +127,7 @@ class GetBidSessionTimeframeOperation: AlamofireAPIAccessOperation {
     }
     
     override func processData(with data: Data) throws {
+        guard !data.isEmpty && timeframe == nil else {return}
         timeframe = try JSONDecoder.default.decode(SessionTimeframe.self, from: data)
     }
     

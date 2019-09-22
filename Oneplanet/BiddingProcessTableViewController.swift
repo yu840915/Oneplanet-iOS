@@ -13,6 +13,7 @@ import Kingfisher
 class BiddingProcessTableViewController: UITableViewController, DefaultInstanceFactory, UserSessionDepending {
     
     var userSession: UserSession!
+    var shippingAddressHolder: ShippingAddressHolder!
     var bidOutcomeHistory: BidOutcomeHistory!
     var sections: [Section] = [.shippingInfoPrompt, .items]
     var products: [ProductOverview] = []
@@ -30,6 +31,10 @@ class BiddingProcessTableViewController: UITableViewController, DefaultInstanceF
         updateClock = UpdateClock(onTick: {[weak self] in
             self?.updateItemCells()
         })
+        if shippingAddressHolder.shippingAddress != nil {
+            sections = [.shippingInfo, .items]
+        }
+        
     }
     
     // MARK: - Table view data source
@@ -60,8 +65,10 @@ class BiddingProcessTableViewController: UITableViewController, DefaultInstanceF
         let section = sections[indexPath.section]
         let cell = tableView.dequeueReusableCell(withIdentifier: section.reuseID, for: indexPath)
         switch section {
-        case .shippingInfo, .shippingInfoPrompt:
+        case .shippingInfoPrompt:
             prepareShippingInfoCell(cell as! ShippingInfoCell)
+        case .shippingInfo:
+            prepareConfiguredShippingInfoCell(cell as! ConfiguredShippingInfoCell)
         case .items:
             prepareItemCell(cell as! BidOutcomeCell, at: indexPath)
         }
@@ -73,7 +80,67 @@ class BiddingProcessTableViewController: UITableViewController, DefaultInstanceF
             self?.showShippingInfoEditor()
         }
     }
+
+    private func prepareConfiguredShippingInfoCell(_ cell: ConfiguredShippingInfoCell) {
+        cell.action = {[weak self] in
+            self?.showShippingInfoEditor()
+        }
+        if let address = shippingAddressHolder.shippingAddress {
+            cell.addressLabel.text = formatAddress(from: address)
+        } else {
+            cell.addressLabel.text = nil
+        }
+    }
     
+    private func formatAddress(from addr: ShippingAddress) -> String {
+        var value = ""
+        var newline = false
+        if let first = addr.firstName, !first.isEmpty {
+            value += first
+            newline = true
+        }
+        if let last = addr.lastName, !last.isEmpty {
+            if newline {
+                value += " "
+            }
+            value += "***"
+            newline = true
+        }
+        if let phone = addr.phone, !phone.isEmpty {
+            if newline {
+                value += "\n"
+            }
+            if let code = addr.country, let country = PhoneNumberBuilder(countryCode: nil).countries.first(where: {$0.isoCountryCode.lowercased() == code.lowercased()}) {
+                
+                value += "(\(country.cellPhoneContryCode))"
+            }
+            if phone.count <= 3 {
+                value += Array(repeating: "*", count: phone.count).joined()
+            } else {
+                let num = (phone.count - 3) / 2
+                let extra = (phone.count - 3) % 2
+                let prefix = phone.prefix(num + extra)
+                let suffix = phone.suffix(num)
+                value += prefix + "***" + suffix
+            }
+            newline = true
+        }
+        if let addr1 = addr.addressLine1, !addr1.isEmpty {
+            if newline {
+                value += "\n"
+            }
+            value += addr1
+            newline = true
+        }
+        if let addr2 = addr.addressLine2, !addr2.isEmpty {
+            if newline {
+                value += "\n"
+            }
+            value += addr2
+        }
+        return value
+    }
+
     private func prepareItemCell(_ cell: BidOutcomeCell, at indexPath: IndexPath) {
         let product = products[indexPath.row]
         cell.updateViews(with: product)
@@ -123,9 +190,13 @@ class BiddingProcessTableViewController: UITableViewController, DefaultInstanceF
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let nav = segue.destination as? UINavigationController,
-            let vc = nav.viewControllers.first as? ShippingInfoEditorViewController {
-            vc.userSession = userSession
+        if let nav = segue.destination as? UINavigationController {
+            if let vc = nav.viewControllers.first as? ShippingInfoEditorViewController {
+                vc.userSession = userSession
+            }
+            if let vc = nav.viewControllers.first as? ShippingInfoEditorViewController {
+                vc.shippingAddressHolder = shippingAddressHolder
+            }
         }
     }
 
@@ -168,9 +239,23 @@ fileprivate extension BiddingProcessTableViewController {
                 self?.handleFetchFailure(with: error)
             }
         }))
+        handles.append(shippingAddressHolder.updateHandlers.add {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.updateViewsForShippingAddressChange()
+            }
+        })
         bidOutcomeHistory = history
         self.handles = handles
         history.reload()
+    }
+    
+    func updateViewsForShippingAddressChange() {
+        if shippingAddressHolder.shippingAddress != nil {
+            sections = [.shippingInfo, .items]
+        } else {
+            sections = [.shippingInfoPrompt, .items]
+        }
+        tableView.reloadData()
     }
     
     func handleHistoryUpdate() {

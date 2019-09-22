@@ -19,7 +19,7 @@ class UserSession {
         return profile?.isBanned ?? false
     }
     var isAdmin: Bool {
-        return false
+        return profile?.isAdmin ?? false
     }
     let bearerToken: String
     let profileDidUpdate = MulticastCallbackNode<()->()>()
@@ -43,6 +43,8 @@ class UserSession {
     private(set) var updateProfileOperation: UpdateProfileOperation?
     private var submitProfileCompletion: ((Bool, Error?)->())?
     let hiddenPosts = HiddenPosts()
+    private var submitPushTokenOperation: SubmitPushTokenOperation?
+    private var fcmUpdatehandle: Any?
     
     init(token: String, loginType: LoginType) {
         self.bearerToken = token
@@ -57,6 +59,29 @@ class UserSession {
             followCounts.updateHandler = {[weak self] in
                 self?.profileDidUpdate.invokeEach{$0()}
             }
+            fcmUpdatehandle = FirebaseMessagingSession.current.didUpdateToken.add {[weak self] (_) in
+                self?.submitFCMToken()
+            }
+        }
+        submitFCMToken()
+    }
+    
+    func submitFCMToken() {
+        guard submitPushTokenOperation == nil && !isGuest else { return }
+        guard let token = FirebaseMessagingSession.current.token else { return }
+        let op = SubmitPushTokenOperation(token: token, authHeader: authorizationHeader)
+        op.completionBlock = {[weak self] in
+            self?.didSubmitFCMToken()
+        }
+        submitPushTokenOperation = op
+        op.start()
+    }
+    
+    func didSubmitFCMToken() {
+        let op = submitPushTokenOperation!
+        submitPushTokenOperation = nil
+        if let error = op.error {
+            logger.error("Submit FCM token failed, error: \(error)")
         }
     }
     
@@ -88,7 +113,7 @@ class UserSession {
             if let url = draft.avatar?.progress.imageLocation?.url {
                 avatar = WebImageInfo(url: url)
             }
-            let profile = MyProfile(id: self.profile!.id, username: draft.username, nickname: draft.nickname, gender: draft.gender, avatar: avatar, isBanned: self.profile!.isBanned)
+            let profile = MyProfile(id: self.profile!.id, username: draft.username, nickname: draft.nickname, gender: draft.gender, avatar: avatar, isBanned: self.profile!.isBanned, isAdmin: self.profile!.isAdmin)
             profile.alien = draft.alien
             self.profile = profile
         }
@@ -121,9 +146,11 @@ class UserSession {
     
     func deactivate() {
         guard isActive else { return }
+        fcmUpdatehandle = nil
         isActive = false
         updateProfileOperation?.cancel()
         updateProfileOperation = nil
+        submitPushTokenOperation?.cancel()
         sessionBecomeInactiveObservers.invokeEach{$0()}
     }
     
@@ -195,6 +222,7 @@ class MyProfile: Decodable, UserProfileDisplayable {
         return username.isEmpty
     }
     let isBanned: Bool
+    let isAdmin: Bool
     enum CodingKeys: String, CodingKey {
         case id
         case nickname = "display_name"
@@ -202,16 +230,17 @@ class MyProfile: Decodable, UserProfileDisplayable {
         case gender
         case alien
         case avatar
-        case isBanned
+        case tags
     }
     
-    fileprivate init(id: String, username: String, nickname: String, gender: Gender, avatar: WebImageInfo?, isBanned: Bool) {
+    fileprivate init(id: String, username: String, nickname: String, gender: Gender, avatar: WebImageInfo?, isBanned: Bool, isAdmin: Bool) {
         self.id = id
         self.nickname = nickname
         self.avatar = avatar
         self.gender = gender
         self.username = username
         self.isBanned = isBanned
+        self.isAdmin = isAdmin
     }
     
     required init(from decoder: Decoder) throws {
@@ -221,12 +250,14 @@ class MyProfile: Decodable, UserProfileDisplayable {
         username = try container.decodeIfPresent(String.self, forKey: .username) ?? ""
         gender = Gender.from(try container.decodeIfPresent(String.self, forKey: .gender))
         alien = try container.decodeIfPresent(Alien.self, forKey: .alien)
-        isBanned = try container.decodeIfPresent(Bool.self, forKey: .isBanned) ?? false
+        let tags = try container.decodeIfPresent([String].self, forKey: .tags) ?? []
         if let url = try container.decodeIfPresent(URL.self, forKey: .avatar) {
             avatar = WebImageInfo(url: url)
         } else {
             avatar = nil
         }
+        isBanned = tags.contains("banned")
+        isAdmin = tags.contains("admin")
     }
     
     func updating(with draft: ProfileDraft) -> MyProfile {
@@ -235,7 +266,8 @@ class MyProfile: Decodable, UserProfileDisplayable {
                                 nickname: draft.nickname,
                                 gender: draft.gender,
                                 avatar: avatar,
-                                isBanned: isBanned)
+                                isBanned: isBanned,
+                                isAdmin: isAdmin)
         profile.alien = draft.alien
         return profile
     }
@@ -271,7 +303,7 @@ enum Gender {
 
 class GuestProfile: MyProfile {
     init() {
-        super.init(id: "", username: "guest", nickname: "Guest", gender: .unknown, avatar: nil, isBanned: false)
+        super.init(id: "", username: "guest", nickname: "Guest", gender: .unknown, avatar: nil, isBanned: false, isAdmin: false)
     }
     
     required init(from decoder: Decoder) throws {
@@ -359,6 +391,19 @@ class LogOutOperation: Operation {
         Preferences.profileAvatarURL.value = nil
         Preferences.profileNickname.value = nil
         FacebookLoginOperation.logOutIfNeeded()
+    }
+}
+
+class SubmitPushTokenOperation: AlamofireAPIAccessOperation {
+    let authHeader: [String: String]
+    let token: String
+    init(token: String, authHeader: [String: String]) {
+        self.token = token
+        self.authHeader = authHeader
+    }
+    
+    override func prepareDataRequest() throws -> DataRequest {
+        return Alamofire.request(ServiceURLs.base.appendingPathComponent("me/push_token"), method: .put, parameters: ["push_token": token], encoding: JSONEncoding.default, headers: authHeader)
     }
 }
 

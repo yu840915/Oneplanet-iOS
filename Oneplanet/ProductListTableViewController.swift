@@ -31,7 +31,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
     private var categoryListHandles: [Any]?
     private var lotListDidUpdateHandles: [Any]?
     private var bidPhaseUpdateHandle: Any?
-    
+
     class func fromDefaultStoryboard() -> ProductListTableViewController {
         return UIStoryboard(name: "Auction", bundle: nil).instantiateViewController(withIdentifier: "ProductListTableViewController") as! ProductListTableViewController
     }
@@ -47,10 +47,19 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         prepareListForBidPhase()
         bidPhaseUpdateHandle = bidPhaseIndicator.updateObservers.add {[weak self] in
             OperationQueue.main.addOperation {
-                self?.prepareListForBidPhase()
-                self?.updateViewsForBidPhase()
+                self?.updateForBidPhaseChange()
             }
         }
+        updateViewsForBidPhase()
+    }
+    
+    private func updateForBidPhaseChange() {
+        if !userSession.isGuest
+            && bidPhaseIndicator.phase == .ended
+            && !userSession.bidProcessManager.winningProcesses.isEmpty {
+            Preferences.shouldShowBadgeOnHistory.value = true
+        }
+        prepareListForBidPhase()
         updateViewsForBidPhase()
     }
     

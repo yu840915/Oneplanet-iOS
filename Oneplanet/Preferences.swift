@@ -19,6 +19,7 @@ class Preferences {
     static let shouldHideFreePhotoInfo = BoolPreferencesItem(key: "OPNShouldHideFreePhotoInfo")
     static let shouldHideValuedPhotoInfo = BoolPreferencesItem(key: "OPNShouldHideValuedPhotoInfo")
     static let lastAgreedBiddingTermVersion = IntPreferenceItem(key: "OPNLastAgreedBiddingTermVersion")
+    static let shouldShowBadgeOnHistory = BoolPreferencesItem(key: "OPNShouldShowBadgeOnHistory")
 }
 
 class PreferencesItem<T> {

@@ -40,6 +40,6 @@ class BadgeView: UIView, DefaultViewInstanceFactory {
     }
     
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: UIView.noIntrinsicMetric, height: 20)
+        return CGSize(width: UIView.noIntrinsicMetric, height: 16)
     }
 }

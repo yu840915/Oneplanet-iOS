@@ -32,6 +32,11 @@ class BiddingProcessTableViewController: UITableViewController, DefaultInstanceF
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        Preferences.shouldShowBadgeOnHistory.value = false
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

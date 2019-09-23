@@ -26,6 +26,7 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
     private var biddingFeatureCheckOperation: BiddingFeatureAccessCheckOperation?
     private var productListController: ProductListTableViewController!
     private var initialQuery: String?
+    private var updateClock: UpdateClock!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -37,6 +38,9 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
             settings.style.selectedBarHeight = 0
         }
         super.viewDidLoad()
+        updateClock = UpdateClock(onTick: {[weak self] in
+            self?.updateHistoryBadgeIfNeeded()
+        })
         buttonBarContainer.translatesAutoresizingMaskIntoConstraints = false
         changeCurrentIndexProgressive = {[weak self] (oldCell, newCell, progressPercentage, changeCurrentIndex, animated) in
             self?.updateButtonBarCell(oldCell: oldCell, newCell: newCell, progressPercentage: progressPercentage, changeCurrentIndex: changeCurrentIndex, animated: animated)
@@ -69,6 +73,14 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
             .compactMap{$0 as? UserSessionDepending}
             .forEach{$0.userSession = userSession}
         return controllers
+    }
+    
+    private func updateHistoryBadgeIfNeeded() {
+        if Preferences.shouldShowBadgeOnHistory.value == true {
+            biddingProcessBadge.value = 1
+        } else {
+            biddingProcessBadge.value = 0
+        }
     }
     
     func showCategoryList(with query: String) {
@@ -116,7 +128,7 @@ private extension AuctionMainViewController {
         cell.addSubview(badge)
         let label = cell.label!
         cell.addConstraint(NSLayoutConstraint(item: label, attribute: .right, relatedBy: .equal, toItem: badge, attribute: .centerX, multiplier: 1, constant: -5))
-        cell.addConstraint(NSLayoutConstraint(item: label, attribute: .top, relatedBy: .equal, toItem: badge, attribute: .centerY, multiplier: 1, constant: 2))
+        cell.addConstraint(NSLayoutConstraint(item: label, attribute: .top, relatedBy: .equal, toItem: badge, attribute: .centerY, multiplier: 1, constant: 0))
         return badge
     }
     

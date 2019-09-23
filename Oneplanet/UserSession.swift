@@ -390,6 +390,7 @@ class LogOutOperation: Operation {
         Preferences.accessToken.value = nil
         Preferences.profileAvatarURL.value = nil
         Preferences.profileNickname.value = nil
+        Preferences.shouldShowBadgeOnHistory.value = false
         FacebookLoginOperation.logOutIfNeeded()
     }
 }

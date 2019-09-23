@@ -17,6 +17,9 @@ class ProductBidProcessManager {
     var isEnded: Bool {
         return !processes.contains{$0.value.isEnded == false}
     }
+    var winningProcesses: [ProductBidProcess] {
+        return processes.map{$0.value}.filter{$0.isWinning}
+    }
     
     init(userSession: UserSession) {
         self.userSession = userSession

@@ -330,9 +330,6 @@ class DeletePostOperation: AlamofireAPIAccessOperation {
         guard post.authorID == session.profile?.id else {
             throw GenericAppError("You can only delete your post")
         }
-        guard post.type != PostType.valued.rawValue else {
-            throw GenericAppError("You cannot delete valued post")
-        }
         return session.addingAuthorizationToken(to: try URLRequest(url: ServiceURLs.base.appendingPathComponent("posts/\(post.id)"), method: .delete))
     }
     

@@ -213,7 +213,7 @@ extension BiddingProductCell {
             winLabel.isHidden = !process.isWinning
             loseLabel.isHidden = process.isWinning
         } else if let date = process.endDate {
-            if date.timeIntervalSinceNow.magnitude > 1 {
+            if date.timeIntervalSinceNow > 1 {
                 deadline = process.endDate
                 countdownLabel.isHidden = false
                 bidButton.isHidden = false

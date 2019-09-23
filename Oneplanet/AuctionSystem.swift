@@ -28,6 +28,7 @@ class UnlockProductOperation: AlamofireAPIAccessOperation {
     }
     
     override func willFinishProcess() throws {
+        session.lotList.markAsUnlocked(product)
         session.lotList.reload()
     }
     

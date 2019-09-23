@@ -158,7 +158,7 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
                         self.unfollowAuthor(of: post)
                     }))
                 } else {
-                    sheet.addAction(UIAlertAction(title: Localized.phrases.follow, style: .destructive, handler: { (_) in
+                    sheet.addAction(UIAlertAction(title: Localized.phrases.follow, style: .default, handler: { (_) in
                         self.followAuthor(of: post)
                     }))
                 }

@@ -1212,8 +1212,8 @@ The winner must check if the Receipt information is filled in to ensure that the
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7cT-au-rbZ">
                                                         <rect key="frame" x="0.0" y="320" width="320" height="40"/>
                                                         <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5QL-eJ-FCI" userLabel="Lock Stack View">
-                                                                <rect key="frame" x="10" y="0.0" width="67.5" height="40"/>
+                                                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5QL-eJ-FCI" userLabel="Lock Stack View">
+                                                                <rect key="frame" x="10" y="0.0" width="90" height="40"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Low-rR-min" userLabel="Lock Button">
                                                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -1223,8 +1223,8 @@ The winner must check if the Receipt information is filled in to ensure that the
                                                                             <action selector="unlockIfAllowed:" destination="Kvw-Xq-bR5" eventType="touchUpInside" id="ScK-aR-ok8"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nHQ-w0-Ye0" userLabel="Lock Label">
-                                                                        <rect key="frame" x="40" y="0.0" width="27.5" height="40"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nHQ-w0-Ye0" userLabel="Lock Label">
+                                                                        <rect key="frame" x="40" y="0.0" width="50" height="40"/>
                                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
                                                                         <color key="textColor" name="lock red"/>
                                                                         <nil key="highlightedColor"/>

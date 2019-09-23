@@ -11,6 +11,8 @@ import ModelBlocks
 import Alamofire
 
 class MyLotList: PaginatedList<GetMyLotPageOperationFactory> {
+    private var additionalUnlockedProductIDs = Set<String>()
+    
     init(session: UserSession) {
         super.init(operationFactory: GetMyLotPageOperationFactory(session: session))
     }
@@ -20,7 +22,11 @@ class MyLotList: PaginatedList<GetMyLotPageOperationFactory> {
     }
     
     func isLocked(_ product: ProductOverview) -> Bool {
-        return !contains(product)
+        return !contains(product) && additionalUnlockedProductIDs.contains(product.id)
+    }
+    
+    func markAsUnlocked(_ product: ProductOverview) {
+        additionalUnlockedProductIDs.insert(product.id)
     }
 }
 

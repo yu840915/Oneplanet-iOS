@@ -12,7 +12,7 @@ import Alamofire
 
 class UserList: PaginatedList<GetUserListOperationFactory> {
     class func searchList(with userSession: UserSession, query: String) -> UserList {
-        let url = ServiceURLs.base.appendingPathComponent("user").addingQ(query)
+        let url = ServiceURLs.base.appendingPathComponent("users/search").addingQ(query)
         return UserList(operationFactory: GetUserListOperationFactory(session: userSession, url: url))
     }
     class func followerList(with userSession: UserSession) -> UserList {

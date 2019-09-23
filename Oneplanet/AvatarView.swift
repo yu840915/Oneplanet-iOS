@@ -88,7 +88,8 @@ class AvatarView: UIView {
             op.start()
         } else {
             cancelDownload()
-            avatarButton.kf.setBackgroundImage(with: info.url, for: .normal)
+            avatarButton.kf.setBackgroundImage(with: info.url, for: .normal, placeholder: #imageLiteral(resourceName: "im_userphotodefault_nor"))
+//            avatarButton.kf.setBackgroundImage(with: info.url, for: .normal)
         }
     }
     

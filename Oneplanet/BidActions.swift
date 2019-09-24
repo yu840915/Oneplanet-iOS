@@ -1,8 +1,8 @@
 //
-//  AuctionSystem.swift
+//  BidActions.swift
 //  Oneplanet
 //
-//  Created by 立宣于 on 2019/9/3.
+//  Created by 立宣于 on 2019/9/24.
 //  Copyright © 2019 何一品居. All rights reserved.
 //
 
@@ -14,7 +14,7 @@ class UnlockProductOperation: AlamofireAPIAccessOperation {
     let product: ProductOverview
     let session: UserSession
     let currency: Currency
-
+    
     init(product: ProductOverview, session: UserSession, currency: Currency) {
         self.product = product
         self.session = session

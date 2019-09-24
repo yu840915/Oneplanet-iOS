@@ -180,6 +180,7 @@
 		E0D1BBDB22ACEE9500951F19 /* TimeIntervalComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D1BBDA22ACEE9400951F19 /* TimeIntervalComponents.swift */; };
 		E0D7DCDB229CE65C00B40D76 /* PromoPopUpFlowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D7DCDA229CE65C00B40D76 /* PromoPopUpFlowViewController.swift */; };
 		E0D7DCDD229CE82300B40D76 /* PromoPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D7DCDC229CE82300B40D76 /* PromoPopUpViewController.swift */; };
+		E0D97601233A293C001295FA /* BidActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D97600233A293C001295FA /* BidActions.swift */; };
 		E0DA389722C0744E00EC4170 /* Unlock.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0DA389622C0744E00EC4170 /* Unlock.storyboard */; };
 		E0DA389E22C2824500EC4170 /* GemActionPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DA389D22C2824500EC4170 /* GemActionPopUpViewController.swift */; };
 		E0DA38A022C282EC00EC4170 /* GemPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DA389F22C282EC00EC4170 /* GemPickerTableViewController.swift */; };
@@ -196,7 +197,6 @@
 		E0EAEB7B22F1F25600C8E7C8 /* PostList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEB7A22F1F25600C8E7C8 /* PostList.swift */; };
 		E0EAEB7D22F2891400C8E7C8 /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAEB7C22F2891400C8E7C8 /* LoadingCell.swift */; };
 		E0EAF965231E61BB009C8624 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAF964231E61BB009C8624 /* Wallet.swift */; };
-		E0EAF967231E9758009C8624 /* AuctionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAF966231E9758009C8624 /* AuctionSystem.swift */; };
 		E0EDD1522305ABCF00F732DE /* PostEditorPhotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EDD1512305ABCF00F732DE /* PostEditorPhotoCollectionViewController.swift */; };
 		E0F2688C231289E100CE5C45 /* MarkdownKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0F2688B231289E100CE5C45 /* MarkdownKit.framework */; };
 		E0F268952313871900CE5C45 /* CategoryNameList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F268942313871900CE5C45 /* CategoryNameList.swift */; };
@@ -410,6 +410,7 @@
 		E0D1BBDA22ACEE9400951F19 /* TimeIntervalComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalComponents.swift; sourceTree = "<group>"; };
 		E0D7DCDA229CE65C00B40D76 /* PromoPopUpFlowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoPopUpFlowViewController.swift; sourceTree = "<group>"; };
 		E0D7DCDC229CE82300B40D76 /* PromoPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoPopUpViewController.swift; sourceTree = "<group>"; };
+		E0D97600233A293C001295FA /* BidActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidActions.swift; sourceTree = "<group>"; };
 		E0DA389622C0744E00EC4170 /* Unlock.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Unlock.storyboard; sourceTree = "<group>"; };
 		E0DA389D22C2824500EC4170 /* GemActionPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemActionPopUpViewController.swift; sourceTree = "<group>"; };
 		E0DA389F22C282EC00EC4170 /* GemPickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GemPickerTableViewController.swift; sourceTree = "<group>"; };
@@ -426,7 +427,6 @@
 		E0EAEB7A22F1F25600C8E7C8 /* PostList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostList.swift; sourceTree = "<group>"; };
 		E0EAEB7C22F2891400C8E7C8 /* LoadingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		E0EAF964231E61BB009C8624 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
-		E0EAF966231E9758009C8624 /* AuctionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuctionSystem.swift; sourceTree = "<group>"; };
 		E0EDD1512305ABCF00F732DE /* PostEditorPhotoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEditorPhotoCollectionViewController.swift; sourceTree = "<group>"; };
 		E0F2688B231289E100CE5C45 /* MarkdownKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MarkdownKit.framework; path = Carthage/Build/iOS/MarkdownKit.framework; sourceTree = SOURCE_ROOT; };
 		E0F268942313871900CE5C45 /* CategoryNameList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryNameList.swift; sourceTree = "<group>"; };
@@ -857,7 +857,7 @@
 			isa = PBXGroup;
 			children = (
 				E0EAF964231E61BB009C8624 /* Wallet.swift */,
-				E0EAF966231E9758009C8624 /* AuctionSystem.swift */,
+				E0D97600233A293C001295FA /* BidActions.swift */,
 				E0C98E262328F5EF00B0BF00 /* BidPhaseIndicator.swift */,
 				E0C98E2A2329D7F000B0BF00 /* ProductBidProcess.swift */,
 				E0C98E282329D77400B0BF00 /* MyLotList.swift */,
@@ -1179,7 +1179,6 @@
 			files = (
 				E055ACA72293D114000B7B31 /* ProfileEditorTableViewController.swift in Sources */,
 				E06F5011227B34880067DAE4 /* ProfileDraft.swift in Sources */,
-				E0EAF967231E9758009C8624 /* AuctionSystem.swift in Sources */,
 				E030E4D4228AB1ED0084D383 /* IDHeaderView.swift in Sources */,
 				E0814E3522DC2BBF002D0E32 /* NoticeTableViewController.swift in Sources */,
 				E0837EF5228022C400B13BAF /* TwitterLogIn.swift in Sources */,
@@ -1276,6 +1275,7 @@
 				E05BB25E226D5D2A00721F20 /* AppDelegate.swift in Sources */,
 				E0DA38A022C282EC00EC4170 /* GemPickerTableViewController.swift in Sources */,
 				E00611F6229500FA0032AE30 /* HotNavigationItemView.swift in Sources */,
+				E0D97601233A293C001295FA /* BidActions.swift in Sources */,
 				E02F49CB22E5948A0014DEBE /* FriendListsViewController.swift in Sources */,
 				E05398CD22FEB24D00AAF803 /* HotPageLists.swift in Sources */,
 				E05398C722FE9D8400AAF803 /* WebLinking.swift in Sources */,

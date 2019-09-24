@@ -38,7 +38,11 @@ class BiddingProcessTableViewController: UITableViewController, DefaultInstanceF
     }
     
     @IBAction func refresh(_ sender: UIRefreshControl) {
-        bidOutcomeHistory.reload()
+        refresh()
+    }
+    
+    func refresh() {
+        bidOutcomeHistory?.reload()
     }
     
     // MARK: - Table view data source

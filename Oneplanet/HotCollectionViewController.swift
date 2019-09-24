@@ -26,6 +26,8 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
     var hotItems: [CollectionItemPreviewing] = []
     var refreshControl: UIRefreshControl!
     var statusBarHandle: Any?
+    private var needsRefresh = false
+    private var isVisible = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +64,11 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        isVisible = true
+        if needsRefresh {
+            needsRefresh = false
+            refresh()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -88,11 +95,24 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
         super.viewDidDisappear(animated)
         hidingSignalProducer = nil
         statusBarHandle = nil
+        isVisible = false
     }
     
     @IBAction func reload(_ sender: UIRefreshControl) {
-        hotList.reload()
-        bannerList.reload()
+        refresh()
+    }
+    
+    func refresh() {
+        hotList?.reload()
+        bannerList?.reload()
+    }
+    
+    func setNeedsRefresh() {
+        if isVisible {
+            refresh()
+        } else {
+            needsRefresh = true
+        }
     }
     
     private func moveTabbar() {

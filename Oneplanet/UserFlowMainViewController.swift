@@ -15,17 +15,19 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
     private var auctionController: AuctionMainViewController!
     private var postController: PostFeedMainViewController!
     private var profileController: MyProfileViewController!
+    private var hotPageController: HotCollectionViewController!
     private var treasuryBarController: TreasuryBarViewController!
     fileprivate var getPageListOperaion: GetPromotionPageListOperation?
     fileprivate var appearanceAction: (()->())?
     fileprivate var hasViewBeenVisible = false
-    private var appBecomeActiveHandle: Any?
+    private var appActivityHandles: [Any]?
     private var userActionRounter: URLRouter!
     @IBOutlet weak var balloonString: UIImageView!
     @IBOutlet weak var balloonRightPadding: NSLayoutConstraint!
     @IBOutlet weak var balloonButton: UIButton!
     var balloonNavigationCoordinator: BalloonNavigationCoordinator?
     var statusBarHandle: Any?
+    var currentSessionEndTime: Date?
     private var postQuota: ValuedPostQuota?
     
     class func fromDefaultStoryboard() -> UserFlowMainViewController {
@@ -50,11 +52,6 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
         }
         setUpTabbarBackground()
         getPromoPopupIfNeeded()
-        appBecomeActiveHandle = AppLifeCycleObserver.didBecomeActive.observers.add {[weak self] (_) in
-            OperationQueue.main.addOperation {
-                self?.getPromoPopupIfNeeded()
-            }
-        }
         prepareRouter()
         [balloonButton, balloonString].forEach{
             $0?.layer.shadowColor = UIColor.black.cgColor
@@ -67,6 +64,37 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
             postQuota = q
             q.refresh()
         }
+        prepareAppActivityHandlers()
+    }
+    
+    private func prepareAppActivityHandlers() {
+        var handles = [Any]()
+        handles.append(AppLifeCycleObserver.didBecomeActive.observers.add {[weak self] (_) in
+            OperationQueue.main.addOperation {
+                self?.getPromoPopupIfNeeded()
+                self?.refreshIfSessionEndedOnWaking()
+            }
+        })
+        handles.append(AppLifeCycleObserver.willEnterForeground.observers.add({[weak self] (_) in
+            self?.recordBidSessionEndTime()
+        }))
+        appActivityHandles = handles
+    }
+    
+    private func recordBidSessionEndTime() {
+        currentSessionEndTime = userSession.bidPhaseIndicator.sessionEndDate
+    }
+    
+    private func refreshIfSessionEndedOnWaking() {
+        guard let date = currentSessionEndTime,
+            date.timeIntervalSinceNow < 0 else {
+            currentSessionEndTime = nil
+            return
+        }
+        currentSessionEndTime = nil
+        userSession.lotList.reload()
+        hotPageController.setNeedsRefresh()
+        auctionController.setNeedsRefresh()
     }
     
     private func setUpTabbarBackground() {
@@ -78,6 +106,7 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
         contentTabbarController.tabBar.addSubview(imageView)
         contentTabbarController.tabBar.sendSubviewToBack(imageView)
         let hot = contentTabbarController.viewControllers?.compactMap{$0 as? UINavigationController}.compactMap{$0.viewControllers.first as? HotCollectionViewController}.first
+        hotPageController = hot
         hot?.balloonString = balloonString
     }
     

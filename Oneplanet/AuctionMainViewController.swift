@@ -25,9 +25,12 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
     private var biddingProcessBadge: BadgeView!
     private var biddingFeatureCheckOperation: BiddingFeatureAccessCheckOperation?
     private var productListController: ProductListTableViewController!
+    private var historyController: BiddingProcessTableViewController?
     private var initialQuery: String?
     private var updateClock: UpdateClock!
-    
+    private var needsRefresh = false
+    private var isVisible = false
+
     override func awakeFromNib() {
         super.awakeFromNib()
         PagerStyleConfigurer().configure(self)
@@ -52,11 +55,39 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        isVisible = true
+        if needsRefresh {
+            needsRefresh = false
+            refresh()
+        }
+    }
+    
+    private func refresh() {
+        productListController.categoryList?.reload()
+        historyController?.refresh()
+    }
+    
+    func setNeedsRefresh() {
+        if isVisible {
+            refresh()
+        } else {
+            needsRefresh = true
+        }
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setUpBadgeViewIfNeeded()
         checkBiddingFeatureOnEntryIfNeeded()
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        isVisible = false
+    }
+
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         let productList = ProductListTableViewController.fromDefaultStoryboard()
@@ -67,6 +98,7 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
         if !userSession.isGuest {
             let vc = BiddingProcessTableViewController.fromDefaultStoryboard()
             vc.shippingAddressHolder = shippingAddressHolder
+            historyController = vc
             controllers.append(vc)
         }
         controllers

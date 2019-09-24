@@ -1101,6 +1101,12 @@ The winner must check if the Receipt information is filled in to ensure that the
                             <outlet property="delegate" destination="N0x-I6-uS2" id="05I-Y0-Qdv"/>
                         </connections>
                     </tableView>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="VPq-hr-TbL">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refresh:" destination="N0x-I6-uS2" eventType="valueChanged" id="P4A-dx-9us"/>
+                        </connections>
+                    </refreshControl>
                     <connections>
                         <segue destination="K1B-0s-WCJ" kind="presentation" identifier="showShippingInfoEditor" id="Scs-0i-F1U"/>
                     </connections>
@@ -2425,6 +2431,6 @@ The winner must check if the Receipt information is filled in to ensure that the
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="c3P-m4-Ttc"/>
-        <segue reference="8pF-Y6-fub"/>
+        <segue reference="Scs-0i-F1U"/>
     </inferredMetricsTieBreakers>
 </document>

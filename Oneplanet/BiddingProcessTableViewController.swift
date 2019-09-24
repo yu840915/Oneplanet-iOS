@@ -37,6 +37,10 @@ class BiddingProcessTableViewController: UITableViewController, DefaultInstanceF
         Preferences.shouldShowBadgeOnHistory.value = false
     }
     
+    @IBAction func refresh(_ sender: UIRefreshControl) {
+        bidOutcomeHistory.reload()
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -257,12 +261,14 @@ fileprivate extension BiddingProcessTableViewController {
     }
     
     func handleHistoryUpdate() {
+        refreshControl?.endRefreshing()
         products = bidOutcomeHistory.items
         updateBackground(with: nil)
         tableView.reloadData()
     }
     
     func handleFetchFailure(with error: Error?) {
+        refreshControl?.endRefreshing()
         updateBackground(with: error)
     }
     

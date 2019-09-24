@@ -125,6 +125,7 @@ class UserSession {
         self.profile = profile
         if !isGuest {
             followCounts.refreshIfNeeded()
+            userFetcherRepo.fetcher(for: profile.id, user: profile.user).fetchIfAllows()
         }
     }
     

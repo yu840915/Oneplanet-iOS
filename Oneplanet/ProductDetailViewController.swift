@@ -138,7 +138,7 @@ private extension ProductDetailViewController {
     
     func updateViewsForBidPhase() {
         guard let prod = product, prod.allowsUnlock else { return }
-        lockView.isHidden = (userSession.bidPhaseIndicator.phase == .ended) || !isLockVisible
+        lockView.isHidden = !isLockVisible
     }
 
     func getProductDetail() {

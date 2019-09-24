@@ -36,7 +36,7 @@ class PostDetailViewController: UIViewController, UserSessionDepending {
         avatarView.action = {[weak self] in
             self?.showProfileForAuthor()
         }
-        updateViews(with: PostCardViewModel(post: post))
+        updateViews(with: PostCardViewModel(post: post, userSession: userSession))
         hidingUpdateHandle = userSession.hiddenPosts.didUpdateHandlers.add {[weak self] in
             OperationQueue.main.addOperation {
                 self?.updateViewsForIsHidden()
@@ -152,7 +152,7 @@ private extension PostDetailViewController {
     func handlePostUpdate(_ post: Post?) {
         if let post = post {
             self.post = post
-            updateViews(with: PostCardViewModel(post: post))
+            updateViews(with: PostCardViewModel(post: post, userSession: userSession))
         }
     }
     

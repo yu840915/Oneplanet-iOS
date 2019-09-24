@@ -198,8 +198,11 @@ private extension UnlockFlowViewController {
     }
     
     func showTooLatePopUp(animated: Bool) {
+        let subtitle = userSession.bidPhaseIndicator.phase == .ended ? Localized.messages.lotClosedDescription : Localized.messages.lotBeingBidDescription
         let container = prepareActionPopUp {[weak self] (vc) in
-            vc.configuration = UnlockTooLateConfiguration()
+            let config = UnlockTooLateConfiguration()
+            config.subtitle = subtitle
+            vc.configuration = config
             vc.mainAction = {
                 self?.cancelAndExit()
             }

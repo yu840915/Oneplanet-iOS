@@ -283,6 +283,7 @@ class LotClosedPopUpConfiguration: UnlockPopUpConfiguration {
 }
 
 class UnlockTooLateConfiguration: GemActionPopUpConfiguration {
+    var subtitle: String = ""
     override var attributedTitle: NSAttributedString {
         return NSAttributedString(string: Localized.messages.lotClosed, attributes: titleAttributes)
     }
@@ -290,7 +291,7 @@ class UnlockTooLateConfiguration: GemActionPopUpConfiguration {
         return #imageLiteral(resourceName: "im_01_timeended")
     }
     override var attributedSubtitle: NSAttributedString {
-        return NSAttributedString(string: String(format: Localized.messages.lotBeingBidDescription), attributes: subtitleAttributes)
+        return NSAttributedString(string: String(format: subtitle), attributes: subtitleAttributes)
     }
     override var shouldShowCancel: Bool {
         return false

@@ -103,7 +103,7 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
     private func setUpPostCell(_ cell: PostCardCell, at indexPath: IndexPath) {
         let post = posts[indexPath.row]
         cell.expanded = expandPostsIDs.contains(post.id)
-        cell.updateViews(with: PostCardViewModel(post: post))
+        cell.updateViews(with: PostCardViewModel(post: post, userSession: userSession))
         cell.moreActions = {[weak self] in
             self?.showMoreAction(for: post)
         }
@@ -373,15 +373,15 @@ extension UITableViewController: ScrollToTopHandler {
 }
 
 class PostCardViewModel: PostDisplayable {
-    let avatar: WebImageInfo? = nil
-    let nickname: String = ""
+    let avatar: WebImageInfo?
+    let nickname: String
     let formatedDate: String
     let photos: [WebImageInfo]
     let message: String
     let relativeScore: Float?
-    var alien: Alien? = nil
+    let alien: Alien?
     
-    init(post: Post) {
+    init(post: Post, userSession: UserSession) {
         photos = post.images
         formatedDate = SharedSpeciaFormatters.dateFromNowForPosts.string(from: post.createdAt)
         message = post.caption
@@ -390,6 +390,15 @@ class PostCardViewModel: PostDisplayable {
             relativeScore = Float(score) / 100
         } else {
             relativeScore = nil
+        }
+        if let user = userSession.userFetcherRepo.fetcher(for: post.authorID).user {
+            alien = user.alien
+            avatar = user.avatar
+            nickname = user.nickname
+        } else {
+            alien = nil
+            avatar = nil
+            nickname = ""
         }
     }
 }

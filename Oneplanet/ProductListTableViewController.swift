@@ -31,6 +31,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
     private var categoryListHandles: [Any]?
     private var lotListDidUpdateHandles: [Any]?
     private var bidPhaseUpdateHandle: Any?
+    private var reservedRefreshControl: UIRefreshControl!
 
     class func fromDefaultStoryboard() -> ProductListTableViewController {
         return UIStoryboard(name: "Auction", bundle: nil).instantiateViewController(withIdentifier: "ProductListTableViewController") as! ProductListTableViewController
@@ -38,6 +39,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        reservedRefreshControl = refreshControl
         tableView.register(ProductListHeader.defaultNib(), forHeaderFooterViewReuseIdentifier: ReuseID.productListHeader)
         tableView.register(BiddingListHeader.defaultNib(), forHeaderFooterViewReuseIdentifier: ReuseID.biddingListHeader)
         navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
@@ -111,11 +113,14 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
                 prepareLotList()
             }
             categoryList = nil
+            reservedRefreshControl.endRefreshing()
+            refreshControl = nil
         } else {
             if categoryList == nil {
                 updateCategoryList(with: "ALL")
             }
             myLotList = nil
+            refreshControl = reservedRefreshControl
         }
     }
     
@@ -173,6 +178,10 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         wantsTutorial = true
     }
 
+    @IBAction func refreshIfNeeded(_ sender: UIRefreshControl) {
+        categoryList?.reload()
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -487,6 +496,7 @@ private extension ProductListTableViewController {
 
 private extension ProductListTableViewController {
     func handleCategoryListUpdate() {
+        refreshControl?.endRefreshing()
         guard let list = categoryList else {return}
         productOverviews = list.items
         updateBackgroundForCategoryList(with: nil)
@@ -494,6 +504,7 @@ private extension ProductListTableViewController {
     }
     
     func handleCategoryListUpdateFailure(with error: Error?) {
+        refreshControl?.endRefreshing()
         updateBackgroundForCategoryList(with: error)
     }
 

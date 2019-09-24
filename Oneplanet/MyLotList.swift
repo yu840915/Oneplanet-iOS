@@ -22,7 +22,7 @@ class MyLotList: PaginatedList<GetMyLotPageOperationFactory> {
     }
     
     func isLocked(_ product: ProductOverview) -> Bool {
-        return !contains(product) && additionalUnlockedProductIDs.contains(product.id)
+        return !(contains(product) || additionalUnlockedProductIDs.contains(product.id))
     }
     
     func markAsUnlocked(_ product: ProductOverview) {

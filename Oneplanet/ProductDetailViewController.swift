@@ -121,6 +121,7 @@ class ProductDetailViewController: UIViewController, UserSessionDepending {
 private extension ProductDetailViewController {
     func updateViewsForProductIfNeeded() {
         guard let prod = product else { return }
+        updateViewsForBidPhase()
         accessoryContainer.isHidden = true
         contentContainer.isHidden = false
         previews = prod.images

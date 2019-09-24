@@ -45,7 +45,7 @@ extension BidFlowViewController {
     }
     
     func bid(with gem: Currency) {
-        guard bidProcess.isInitialized && !bidProcess.isEnded else {
+        guard bidProcess.isInitialized && !bidProcess.shouldBeEnded else {
             showTimeOutAlert()
             return
         }

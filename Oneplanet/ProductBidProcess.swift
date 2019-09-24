@@ -20,9 +20,17 @@ class ProductBidProcessManager {
     var winningProcesses: [ProductBidProcess] {
         return processes.map{$0.value}.filter{$0.isWinning}
     }
+    private var updateClock: UpdateClock!
     
     init(userSession: UserSession) {
         self.userSession = userSession
+        updateClock = UpdateClock(preferredFrameRate: 10, onTick: {[weak self] in
+            self?.invokeCheck()
+        })
+    }
+    
+    private func invokeCheck() {
+        processes.forEach{$0.value.checkFinalStateIfNeeded()}
     }
     
     func process(for product: ProductOverview) -> ProductBidProcess {
@@ -57,6 +65,12 @@ class ProductBidProcess: Equatable {
     var isEnded: Bool {
         if let date = endDate {
             return date.timeIntervalSinceNow <= -5
+        }
+        return false
+    }
+    var shouldBeEnded: Bool {
+        if let date = endDate {
+            return date.timeIntervalSinceNow < 0
         }
         return false
     }
@@ -134,6 +148,9 @@ class ProductBidProcess: Equatable {
     }
     
     private func update(with news: BidNews) {
+        if let end = endDate, news.endDate < end {
+            return
+        }
         checkFinalStateTimer?.invalidate()
         if let userID = news.userID {
             leadFetcher = userSession.userFetcherRepo.fetcher(for: userID)
@@ -239,10 +256,10 @@ class BidNews: Decodable {
         } else if let dtStr = dict[CodingKeys.endDate.rawValue] as? String {
             date = SharedDateFormatters.serverDate.date(from: dtStr)
         }
-        guard let dt = date,
-            let id = dict[CodingKeys.userID.rawValue] as? String else {
+        guard let dt = date else {
                 return nil
         }
+        let id = dict[CodingKeys.userID.rawValue] as! String
         endDate = dt
         userID = id
         if let ext = dict[CodingKeys.extensionDuration.rawValue] as? Int {

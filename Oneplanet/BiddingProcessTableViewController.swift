@@ -155,6 +155,9 @@ class BiddingProcessTableViewController: UITableViewController, DefaultInstanceF
         cell.detailAction = {[weak self] in
             self?.showShippingStatusDetailForProduct(at: indexPath)
         }
+        cell.productDetailAction = {[weak self] in
+            self?.showDetailForProduct(at: indexPath)
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -205,6 +208,11 @@ class BiddingProcessTableViewController: UITableViewController, DefaultInstanceF
                 vc.shippingAddressHolder = shippingAddressHolder
             }
         }
+        if let vc = segue.destination as? ProductDetailViewController {
+            vc.userSession = userSession
+            vc.isLockVisible = false
+            vc.productQuery = (sender as! ProductOverview).id
+        }
     }
 
 }
@@ -214,6 +222,10 @@ fileprivate extension BiddingProcessTableViewController {
         performSegue(withIdentifier: SegueID.showShippingInfoEditor, sender: nil)
     }
     
+    func showDetailForProduct(at indexPath: IndexPath) {
+        performSegue(withIdentifier: SegueID.showProductDetail, sender: products[indexPath.row])
+    }
+
     func showShippingStatusDetailForProduct(at indexPath: IndexPath) {
         guard let states = products[indexPath.row].shippingStates,
             let number = states.trackingNumber else {
@@ -315,6 +327,7 @@ extension BiddingProcessTableViewController {
 
     struct SegueID {
         static let showShippingInfoEditor = "showShippingInfoEditor"
+        static let showProductDetail = "showProductDetail"
     }
 }
 
@@ -326,23 +339,31 @@ extension BiddingProcessTableViewController: IndicatorInfoProvider {
 
 class BidOutcomeCell: UITableViewCell {
     var detailAction: (()->())?
+    var productDetailAction: (()->())?
     @IBOutlet weak var outcomIndicator: UIView!
-    @IBOutlet weak var previewImageView: UIImageView!
+    
+    @IBOutlet weak var previewButton: UIButton!
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var stateLabel: UILabel!
     @IBOutlet weak var inspectButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        previewButton.imageView?.contentMode = .scaleAspectFill
         inspectButton.setTitle(Localized.phrases.viewShippingStatus, for: .normal)
     }
     
     @IBAction func invokeDetailAction(_ sender: Any) {
         detailAction?()
     }
-    
+
+    @IBAction func invokeProductDetailAction(_ sender: Any) {
+        productDetailAction?()
+    }
+
     func updateViews(with product: BidProductOverview) {
-        previewImageView.kf.setImage(with: product.cover?.url)
+        previewButton.kf.setImage(with: product.cover?.url, for: .normal)
         titleLabel.text = product.displayName
         if let shippingStates = product.shippingStates {
             outcomIndicator.backgroundColor = ColorPalette.bidGreen

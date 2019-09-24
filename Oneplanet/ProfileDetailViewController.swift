@@ -17,7 +17,7 @@ protocol UserProfileDisplayable {
 
 class ProfileDetailViewController: UIViewController, UserSessionDepending, DefaultInstanceFactory {
     class var baseHeight: CGFloat {
-        return 90 + UIScreen.main.bounds.width
+        return 116 + UIScreen.main.bounds.width
     }
     class var warningHeight: CGFloat {
         return 184 + baseHeight

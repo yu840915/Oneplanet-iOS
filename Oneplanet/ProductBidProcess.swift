@@ -31,6 +31,7 @@ class ProductBidProcessManager {
     
     private func invokeCheck() {
         processes.forEach{$0.value.checkFinalStateIfNeeded()}
+        processes.forEach{$0.value.intervalRefreshNewsIfNeeded()}
     }
     
     func process(for product: ProductOverview) -> ProductBidProcess {
@@ -66,12 +67,7 @@ class ProductBidProcess: Equatable {
     var lead: User? {
         return leadFetcher?.user
     }
-    var isEnded: Bool {
-        if let date = endDate {
-            return date.timeIntervalSinceNow <= -5
-        }
-        return false
-    }
+    private(set) var isEnded: Bool = false
     var shouldBeEnded: Bool {
         if let date = endDate {
             return date.timeIntervalSinceNow < 0
@@ -90,6 +86,7 @@ class ProductBidProcess: Equatable {
     private(set) var getBidCountOperation: GetMyBidCountOperation?
     private(set) weak var checkFinalStateTimer: Timer?
     private var lastUpdateDate = Date()
+    private var checkOutcomeOperation: CheckBidOutcomeOperation?
     
     init(product: ProductOverview, pushListener: PushListener, userSession: UserSession) {
         self.product = product
@@ -100,6 +97,13 @@ class ProductBidProcess: Equatable {
         reloadBidCount()
     }
     
+    deinit {
+        getNewsOperation?.cancel()
+        getBidCountOperation?.cancel()
+        checkFinalStateTimer?.invalidate()
+        checkOutcomeOperation?.cancel()
+    }
+    
     func refreshIfChannelNotConnected() {
         if newsChannel.isConnected {
             return
@@ -108,8 +112,15 @@ class ProductBidProcess: Equatable {
         reloadBidCount()
     }
     
-    func intervalRefreshIfNeeded() {
-        
+    func intervalRefreshNewsIfNeeded() {
+        if isEnded || newsChannel.isConnected { return }
+        let d = lastUpdateDate.timeIntervalSinceNow.magnitude
+        let winningCase = isWinning && d > 1
+        let losingCase = !isWinning && d > 5
+        if winningCase || losingCase {
+            logger.debug("[Bid] Start polling state of \(product.displayName) - \(product.id)")
+            getNews()
+        }
     }
 
     private func prepareChannel() {
@@ -123,19 +134,40 @@ class ProductBidProcess: Equatable {
     }
     
     func checkFinalStateIfNeeded() {
-        guard let date = endDate, date.timeIntervalSinceNow < 0, date.timeIntervalSinceNow > -1 else {
-            return
+        guard shouldBeEnded && !isEnded else {  return }
+        guard checkFinalStateTimer == nil && checkOutcomeOperation == nil else { return }
+        var delay: TimeInterval = 0.5
+        if !isWinning {
+            let extra = TimeInterval(Int.random(in: 0...50)) / 10
+            delay = 1.0 + extra
         }
-        guard checkFinalStateTimer == nil && getBidCountOperation == nil else {
-            return
-        }
-        if !isWinning { return }
-        let timer = Timer(timeInterval: 0.5, repeats: false) {[weak self] (_) in
-            self?.getNews()
+        let timer = Timer(timeInterval: delay, repeats: false) {[weak self] (_) in
+            self?.checkFinalOutcome()
         }
         timer.tolerance = 0.1
         RunLoop.main.add(timer, forMode: .common)
         checkFinalStateTimer = timer
+    }
+    
+    private func checkFinalOutcome() {
+        guard checkOutcomeOperation == nil else { return }
+        let op = CheckBidOutcomeOperation(product: product, userSession: userSession)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didCheckOutcome()
+            }
+        }
+        checkOutcomeOperation = op
+        op.start()
+    }
+    
+    private func didCheckOutcome() {
+        let op = checkOutcomeOperation!
+        checkOutcomeOperation = nil
+        if let news = op.outcome {
+            update(with: news)
+            isEnded = op.isFinal
+        }
     }
     
     private func getNews() {
@@ -154,7 +186,11 @@ class ProductBidProcess: Equatable {
         let op = getNewsOperation!
         getNewsOperation = nil
         if let news = op.news {
-            update(with: news)
+            OperationQueue.main.addOperation {[weak self] in
+                self?.update(with: news)
+            }
+        } else {
+            lastUpdateDate = lastUpdateDate.addingTimeInterval(1)
         }
     }
     
@@ -165,8 +201,13 @@ class ProductBidProcess: Equatable {
     }
     
     private func update(with news: BidNews) {
-        if let end = endDate, news.endDate < end {
+        if let currentEnd = endDate, currentEnd > news.endDate {
             return
+        }
+        if let currentBid = self.news?.bidTimeMs {
+            if let newBid = news.bidTimeMs, currentBid > newBid {
+                return
+            }
         }
         lastUpdateDate = Date()
         checkFinalStateTimer?.invalidate()
@@ -202,6 +243,74 @@ class ProductBidProcess: Equatable {
         if let count = op.count {
             myBid = count
         }
+    }
+}
+
+class CheckBidOutcomeOperation: SimpleAsynchronousOperation {
+    private(set) var outcome: BidNews?
+    private(set) var isFinal = false
+    
+    let product: ProductOverview
+    private weak var userSession: UserSession!
+    private var checkOperation: GetBidNewsOperation?
+    private weak var retryTimer: Timer?
+    private var retryDelay = TimeInterval(1)
+    
+    init(product: ProductOverview, userSession: UserSession) {
+        self.product = product
+        self.userSession = userSession
+    }
+    
+    override func main() {
+        check()
+    }
+    
+    private func check() {
+        guard !isCancelled else {return}
+        guard let session = userSession else {
+            finish()
+            return
+        }
+        let op = GetBidNewsOperation(product: product, userSession: session)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.handleCheckComplete()
+            }
+        }
+        checkOperation = op
+        op.start()
+    }
+    
+    private func handleCheckComplete() {
+        guard !isCancelled else {return}
+        let op = checkOperation!
+        if let news = op.news {
+            checkIsFinal(from: news)
+        } else {
+            scheduleRetry()
+        }
+    }
+    
+    private func checkIsFinal(from news: BidNews) {
+        outcome = news
+        isFinal = news.endDate.timeIntervalSinceNow < 0
+        finish()
+    }
+    
+    private func scheduleRetry() {
+        let timer = Timer(timeInterval: retryDelay, repeats: false) {[weak self] (_) in
+            self?.check()
+        }
+        retryDelay *= retryDelay
+        retryDelay = min(retryDelay, 60)
+        timer.tolerance = 0.1
+        RunLoop.main.add(timer, forMode: .common)
+        retryTimer = timer
+    }
+    
+    override func onCancel() {
+        checkOperation?.cancel()
+        retryTimer?.invalidate()
     }
 }
 
@@ -255,12 +364,17 @@ class GetBidNewsOperation: AlamofireAPIAccessOperation {
 
 class BidNews: Decodable {
     let userID: String?
-    let endDate: Date
+    let bidTimeMs: Int?
+    let endDateMs: Int
     let extensionDuration: TimeInterval?
+    var endDate: Date {
+        return Date(timeIntervalSince1970: TimeInterval(endDateMs) / 1000)
+    }
     
     enum CodingKeys: String, CodingKey {
         case userID = "winner"
-        case endDate = "until"
+        case bidTimeMs = "created_at"
+        case endDateMs = "until"
         case extensionDuration = "extension"
     }
     
@@ -268,18 +382,9 @@ class BidNews: Decodable {
         guard let dict = data as? [AnyHashable: Any] else {
             return nil
         }
-        var date: Date?
-        if let ts = dict[CodingKeys.endDate.rawValue] as? Int {
-            date = Date(timeIntervalSince1970: TimeInterval(ts))
-        } else if let dtStr = dict[CodingKeys.endDate.rawValue] as? String {
-            date = SharedDateFormatters.serverDate.date(from: dtStr)
-        }
-        guard let dt = date else {
-                return nil
-        }
-        let id = dict[CodingKeys.userID.rawValue] as! String
-        endDate = dt
-        userID = id
+        endDateMs = dict[CodingKeys.endDateMs.rawValue] as! Int
+        bidTimeMs =  (dict[CodingKeys.bidTimeMs.rawValue] as! Int)
+        userID = (dict[CodingKeys.userID.rawValue] as! String)
         if let ext = dict[CodingKeys.extensionDuration.rawValue] as? Int {
             extensionDuration = TimeInterval(ext)
         } else {
@@ -287,9 +392,10 @@ class BidNews: Decodable {
         }
     }
     
-    init(userID: String, endDate: Date, extesion: TimeInterval?) {
+    init(userID: String, endDate: Date, bidTimeMs: Int?, extesion: TimeInterval?) {
         self.userID = userID
-        self.endDate = endDate
+        self.endDateMs = Int(endDate.timeIntervalSince1970 * 1000)
+        self.bidTimeMs = bidTimeMs
         extensionDuration = extesion
     }
 }

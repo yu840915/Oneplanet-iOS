@@ -80,6 +80,7 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
     private func updateViewsForReachability() {
         guard let r = reachability else { return }
         if r.isReachable {
+            userSession.bidProcessManager.refreshIfChannelNotConnected()
         } else {
         }
     }

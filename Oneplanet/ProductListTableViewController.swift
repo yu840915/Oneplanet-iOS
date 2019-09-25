@@ -360,7 +360,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
             vc.userSession = userSession
         }
         if let vc = segue.destination as? ProductDetailViewController {
-            vc.productQuery = (sender as! ProductOverview).name
+            vc.productQuery = (sender as! ProductOverview).id
         }
         if let vc = segue.destination as? UnlockFlowViewController {
             vc.product = (sender as! ProductOverview)

@@ -9,6 +9,7 @@
 import UIKit
 import XLPagerTabStrip
 import ModelBlocks
+import Reachability
 
 class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessionDepending {
     
@@ -30,6 +31,7 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
     private var updateClock: UpdateClock!
     private var needsRefresh = false
     private var isVisible = false
+    private var reachability: Reachability?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -52,6 +54,33 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
         navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
         if let q = initialQuery {
             showCategoryList(with: q)
+        }
+        prepareReachability()
+        updateViewsForReachability()
+    }
+    
+    private func prepareReachability() {
+        guard let r = Reachability(hostname: ServiceURLs.base.host!) else {
+            return
+        }
+        r.whenReachable = {[weak self] _ in
+            self?.updateViewsForReachability()
+        }
+        r.whenUnreachable =  {[weak self] _ in
+            self?.updateViewsForReachability()
+        }
+        do {
+            try r.startNotifier()
+            reachability = r
+        } catch let error {
+            logger.error("Cannot start Reachability, error: \(error)")
+        }
+    }
+    
+    private func updateViewsForReachability() {
+        guard let r = reachability else { return }
+        if r.isReachable {
+        } else {
         }
     }
     

@@ -89,6 +89,7 @@ class ProductBidProcess: Equatable {
     private(set) var myBid: Int = 0
     private(set) var getBidCountOperation: GetMyBidCountOperation?
     private(set) weak var checkFinalStateTimer: Timer?
+    private var lastUpdateDate = Date()
     
     init(product: ProductOverview, pushListener: PushListener, userSession: UserSession) {
         self.product = product
@@ -105,6 +106,10 @@ class ProductBidProcess: Equatable {
         }
         getNews()
         reloadBidCount()
+    }
+    
+    func intervalRefreshIfNeeded() {
+        
     }
 
     private func prepareChannel() {
@@ -163,6 +168,7 @@ class ProductBidProcess: Equatable {
         if let end = endDate, news.endDate < end {
             return
         }
+        lastUpdateDate = Date()
         checkFinalStateTimer?.invalidate()
         if let userID = news.userID {
             leadFetcher = userSession.userFetcherRepo.fetcher(for: userID)

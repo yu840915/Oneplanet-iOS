@@ -109,4 +109,12 @@ class SubmitPetitionOperation: AlamofireAPIAccessOperation {
         self.petition = petition
         self.session = session
     }
+    
+    override func prepareDataRequest() throws -> DataRequest {
+        return Alamofire.request(ServiceURLs.base.appendingPathComponent("me/apply/unbanned"), method: .post, parameters: ["message": petition], encoding: JSONEncoding.default, headers: session.authorizationHeader)
+    }
+    
+    override func handleUnauthorizedError(with response: HTTPURLResponse) throws {
+        session.deactivate()
+    }
 }

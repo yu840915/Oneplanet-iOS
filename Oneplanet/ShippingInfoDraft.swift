@@ -115,6 +115,22 @@ class ShippingInfoDraft {
         validator.phoneNumberBuilder = builder
     }
     
+    convenience init(_ shipping: ShippingAddress) {
+        self.init()
+        email = shipping.email ?? ""
+        firstName = shipping.firstName ?? ""
+        lastName = shipping.lastName ?? ""
+        address1 = shipping.addressLine1 ?? ""
+        address2 = shipping.addressLine2 ?? ""
+        if let countryCode = shipping.country {
+            country = phoneNumberBuilder.countries.first{$0.isoCountryCode.lowercased() == countryCode.lowercased()}
+        }
+        region = shipping.region ?? ""
+        city = shipping.city ?? ""
+        postalCode = shipping.postalCode ?? ""
+        phoneNumber = shipping.phone ?? ""
+    }
+    
     private func notifyChange() {
         updateObservers.invokeEach{$0()}
     }
@@ -226,6 +242,7 @@ class PhoneNumberValidator: TextInputValidator {
 }
 
 class SubmitShippingInfoOperation: AlamofireAPIAccessOperation {
+    typealias CodingKeys = ShippingAddress.CodingKeys
     let draft: ShippingInfoDraft
     let session: UserSession
     init(draft: ShippingInfoDraft, session: UserSession) {
@@ -235,6 +252,73 @@ class SubmitShippingInfoOperation: AlamofireAPIAccessOperation {
     
     override func prepareDataRequest() throws -> DataRequest {
         try draft.validate()
-        return Alamofire.request(ServiceURLs.base.appendingPathComponent("me/shipping"), method: .put, parameters: [:], encoding: JSONEncoding.default, headers: session.authorizationHeader)
+        var params: Parameters = [
+            CodingKeys.email.rawValue: draft.email,
+            CodingKeys.firstName.rawValue: draft.firstName,
+            CodingKeys.lastName.rawValue: draft.lastName,
+            CodingKeys.addressLine1.rawValue: draft.address1,
+            CodingKeys.addressLine2.rawValue: draft.address2,
+            CodingKeys.city.rawValue: draft.city,
+            CodingKeys.region.rawValue: draft.region,
+            CodingKeys.phone.rawValue: draft.phoneNumber,
+            CodingKeys.postalCode.rawValue: draft.postalCode
+        ]
+        if let country = draft.country {
+            params[CodingKeys.country.rawValue] = country.isoCountryCode
+        }
+        return Alamofire.request(ServiceURLs.base.appendingPathComponent("me/shipping"), method: .put, parameters: params, encoding: JSONEncoding.default, headers: session.authorizationHeader)
+    }
+    
+    override func handleUnauthorizedError(with response: HTTPURLResponse) throws {
+        session.deactivate()
+    }
+}
+
+class GetShippingAddressOperation: AlamofireAPIAccessOperation {
+    let session: UserSession
+    private(set) var shippingAddress: ShippingAddress?
+    
+    init(session: UserSession) {
+        self.session = session
+    }
+    
+    override func prepareURLRequest() throws -> URLRequest {
+        return session.addingAuthorizationToken(to: URLRequest(url: ServiceURLs.base.appendingPathComponent("me/shipping")))
+    }
+    
+    override func processData(with data: Data) throws {
+        guard !data.isEmpty else { return }
+        shippingAddress = try! JSONDecoder.default.decode(ShippingAddress.self, from: data)
+    }
+    
+    override func handleHTTPResponse(_ response: HTTPURLResponse) throws {
+        if response.statusCode == 404 { return }
+        try super.handleHTTPResponse(response)
+    }
+}
+
+class ShippingAddress: Decodable {
+    let email: String?
+    let firstName: String?
+    let lastName: String?
+    let addressLine1: String?
+    let addressLine2: String?
+    let city: String?
+    let region: String?
+    let postalCode: String?
+    let country: String?
+    let phone: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case email
+        case firstName = "first_name"
+        case lastName = "last_name"
+        case addressLine1 = "address_line1"
+        case addressLine2 = "address_line2"
+        case city
+        case region
+        case postalCode = "postal_code"
+        case country
+        case phone = "phone_number"
     }
 }

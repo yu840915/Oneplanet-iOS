@@ -12,34 +12,149 @@ import XLPagerTabStrip
 class ProductListTableViewController: UITableViewController, DefaultInstanceFactory, UserSessionDepending {
     
     var userSession: UserSession!
-    var sections: [Section] = [.runningBiddingIndicator, .biddingEndedIndicator, .productList, .bidList]
+    var shippingAddressHolder: ShippingAddressHolder!
+    var bidPhaseIndicator: BidPhaseIndicator {
+        return userSession.bidPhaseIndicator
+    }
+    var sections: [Section] = []
+    private var wantsTutorial = false
+    private var tutorialPlan: TutorialPlan?
 
     @IBOutlet weak var countdownDescriptionLabel: UILabel!
     @IBOutlet weak var countDownView: CountDownClockView!
     private var refreshClock: UpdateClock!
     private var featureCheck: BiddingFeatureAccessCheckOperation?
     private(set) var categoryList: CategoryList?
+    private var myLotList: MyLotList?
     private var productOverviews: [ProductOverview] = []
+    private var sortedLots: [ProductBidProcess] = []
     private var categoryListHandles: [Any]?
-    
+    private var lotListDidUpdateHandles: [Any]?
+    private var bidPhaseUpdateHandle: Any?
+    private var reservedRefreshControl: UIRefreshControl!
+
     class func fromDefaultStoryboard() -> ProductListTableViewController {
         return UIStoryboard(name: "Auction", bundle: nil).instantiateViewController(withIdentifier: "ProductListTableViewController") as! ProductListTableViewController
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        reservedRefreshControl = refreshControl
         tableView.register(ProductListHeader.defaultNib(), forHeaderFooterViewReuseIdentifier: ReuseID.productListHeader)
         tableView.register(BiddingListHeader.defaultNib(), forHeaderFooterViewReuseIdentifier: ReuseID.biddingListHeader)
         navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
         refreshClock = UpdateClock(preferredFrameRate: 15, onTick: {[weak self] in
             self?.refreshDynamicViews()
         })
-        countdownDescriptionLabel.text = Localized.activity.countdown
-        updateCategoryList(with: "all")
+        prepareListForBidPhase()
+        bidPhaseUpdateHandle = bidPhaseIndicator.updateObservers.add {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.updateForBidPhaseChange()
+            }
+        }
+        updateViewsForBidPhase()
+    }
+    
+    private func updateForBidPhaseChange() {
+        if !userSession.isGuest
+            && bidPhaseIndicator.phase == .ended
+            && !userSession.bidProcessManager.winningProcesses.isEmpty {
+            Preferences.shouldShowBadgeOnHistory.value = true
+        }
+        prepareListForBidPhase()
+        updateViewsForBidPhase()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if wantsTutorial {
+            wantsTutorial = false
+            if bidPhaseIndicator.phase == .ended { return }
+            if bidPhaseIndicator.biddingHasStarted {
+                tutorialPlan = TutorialPlan(unlock: false, waitForBid: false, bid: true)
+            } else {
+                if userSession.lotList.items.isEmpty {
+                    tutorialPlan = TutorialPlan(unlock: true, waitForBid: false, bid: false)
+                } else {
+                    tutorialPlan = TutorialPlan(unlock: false, waitForBid: true, bid: false)
+                }
+            }
+        }
+        showTutorialIfNeeded()
+    }
+    
+    private func showTutorialIfNeeded() {
+        guard let plan = tutorialPlan else {
+            return
+        }
+        if plan.unlock,
+            let indexPath = tableView.indexPathsForVisibleRows?.first(where: { sections[$0.section] == .productList }),
+            let cell = tableView.cellForRow(at: indexPath) as? ProductOverviewCell {
+            tutorialPlan = nil
+            cell.showTutorial()
+        } else if plan.bid,
+            let index = sections.firstIndex(where: {$0 == .bidList}),
+            let header = tableView.headerView(forSection: index) as? BiddingListHeader {
+            if !sortedLots.isEmpty {
+                tutorialPlan = nil
+                header.showTutorial()
+            }
+        } else if plan.waitForBid,
+            let index = sections.firstIndex(where: {$0 == .productList}),
+            let header = tableView.headerView(forSection: index) as? ProductListHeader {
+            tutorialPlan = nil
+            header.showTutorial()
+        }
+    }
+    
+    private func prepareListForBidPhase() {
+        if userSession.bidPhaseIndicator.biddingHasStarted {
+            if myLotList == nil {
+                prepareLotList()
+            }
+            categoryList = nil
+            reservedRefreshControl.endRefreshing()
+            refreshControl = nil
+        } else {
+            if categoryList == nil {
+                updateCategoryList(with: "ALL")
+            }
+            myLotList = nil
+            refreshControl = reservedRefreshControl
+        }
+    }
+    
+    private func updateViewsForBidPhase() {
+        switch bidPhaseIndicator.phase {
+        case .unlock:
+            countdownDescriptionLabel.text = Localized.activity.countdown
+            countDownView.deadline = userSession.bidPhaseIndicator.bidStartDate
+        case .running, .spectator:
+            countdownDescriptionLabel.text = Localized.activity.bidding
+        case .ended:
+            countdownDescriptionLabel.text = nil
+        }
+        updateSectionsForBidPhase()
+    }
+    
+    private func updateSectionsForBidPhase() {
+        var values: [Section] = []
+        if bidPhaseIndicator.biddingHasStarted {
+            switch bidPhaseIndicator.phase {
+            case .ended: values.append(.biddingEndedIndicator)
+            case .spectator: values.append(.runningBiddingIndicator)
+            default: break
+            }
+            values.append(.bidList)
+        } else {
+            values = [.productList]
+        }
+        sections = values
+        tableView.reloadData()
     }
     
     func updateCategoryList(with query: String) {
-        if query == categoryList?.query {
+        if bidPhaseIndicator.biddingHasStarted || query == categoryList?.query {
             return
         }
         let list = CategoryList(session: userSession, query: query)
@@ -59,6 +174,14 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         list.reload()
     }
     
+    func setWantsTutorial() {
+        wantsTutorial = true
+    }
+
+    @IBAction func refreshIfNeeded(_ sender: UIRefreshControl) {
+        categoryList?.reload()
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -72,7 +195,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         case .productList:
             return productOverviews.count
         case .bidList:
-            return 10
+            return sortedLots.count
         }
     }
     
@@ -109,24 +232,35 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
                 self?.unlockProductIfAllowed(at: indexPath)
             }
         }
-        cell.updateViews(with: productOverviews[indexPath.row])
+        let product = productOverviews[indexPath.row]
+        cell.updateViews(with: product)
+        cell.isLocked = userSession.lotList.isLocked(product)
     }
     
     private func configureBiddingCell(_ cell: BiddingProductCell, at indexPath: IndexPath) {
+        cell.updateViews(with: sortedLots[indexPath.row].product)
+        let process = sortedLots[indexPath.row]
+        process.leadFetcher?.initializeIfNeeded()
+        cell.updateViews(with: process)
         cell.bidAction = {[weak self] in
             self?.checkAccessAndRunIfAllowed {
                 self?.bidProductIfAllowed(at: indexPath)
             }
         }
         cell.showDetailAction = {[weak self] in
+            self?.showProductDetailForCell(at: indexPath)
         }
         cell.showProfileAction = {[weak self] in
-            
+            self?.showLeadUserForBid(at: indexPath)
         }
     }
     
     private func showProductDetailForCell(at indexPath: IndexPath) {
-        performSegue(withIdentifier: SegueID.showProductDetail, sender: productOverviews[indexPath.row])
+        if sections[indexPath.section] == .productList {
+            performSegue(withIdentifier: SegueID.showProductDetail, sender: productOverviews[indexPath.row])
+        } else if sections[indexPath.section] == .bidList {
+            performSegue(withIdentifier: SegueID.showProductDetail, sender: sortedLots[indexPath.row].product)
+        }
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -146,7 +280,11 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
             return nil
         case .productList:
             let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReuseID.productListHeader) as! ProductListHeader
-            view.title = "All"
+            if categoryList?.isUnlockLlist == true {
+                view.title = Localized.phrases.categoryUnlocked
+            } else {
+                view.title = categoryList?.query ?? "–"
+            }
             view.showFilterAction = {[weak self] in
                 self?.showFilterPicker()
             }
@@ -167,6 +305,53 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         default: break
         }
     }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        switch sections[indexPath.section] {
+        case .productList:
+            let isLast = indexPath.row == (productOverviews.count - 1)
+            if isLast {
+                categoryList?.loadMoreIfAllowed()
+            }
+            if let plan = tutorialPlan, plan.unlock,
+                let productCell = cell as? ProductOverviewCell {
+                tutorialPlan = nil
+                OperationQueue.main.addOperation {
+                    productCell.showTutorial()
+                }
+            }
+        case .bidList:
+            let isLast = indexPath.row == (sortedLots.count - 1)
+            if isLast {
+                myLotList?.loadMoreIfAllowed()
+            }
+        default: break
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        switch sections[section] {
+        case .bidList:
+            if let plan = tutorialPlan, plan.bid,
+                let header = view as? BiddingListHeader,
+                !sortedLots.isEmpty {
+                tutorialPlan = nil
+                OperationQueue.main.addOperation {
+                    header.showTutorial()
+                }
+            }
+        case .productList:
+            if let plan = tutorialPlan, plan.waitForBid,
+                let header = view as? ProductListHeader {
+                tutorialPlan = nil
+                OperationQueue.main.addOperation {
+                    header.showTutorial()
+                }
+            }
+
+        default: break
+        }
+    }
 
     // MARK: - Navigation
 
@@ -179,7 +364,19 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         }
         if let vc = segue.destination as? UnlockFlowViewController {
             vc.product = (sender as! ProductOverview)
+            if userSession.lotList.items.isEmpty {
+                vc.successHandler = {[weak self] in
+                    self?.tutorialPlan = TutorialPlan(unlock: false, waitForBid: true, bid: false)
+                    self?.showTutorialIfNeeded()
+                }
+            }
         }
+        if let vc = segue.destination as? BidFlowViewController {
+            let product = (sender as! ProductOverview)
+            vc.product = product
+            vc.bidProcess = userSession.bidProcessManager.process(for: product)
+        }
+
         if let nav = segue.destination as? UINavigationController {
             if let vc = nav.viewControllers.first as? UserSessionDepending {
                 vc.userSession = userSession
@@ -194,15 +391,61 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
             if let vc = nav.viewControllers.first as? UserProfileViewController {
                 vc.profile = (sender as! User)
             }
+            if let vc = nav.viewControllers.first as? ShippingInfoEditorViewController {
+                vc.shippingAddressHolder = shippingAddressHolder
+            }
         }
     }
-
 }
 
 private extension ProductListTableViewController {
     func refreshDynamicViews() {
         countDownView.tick()
+        if bidPhaseIndicator.biddingHasStarted {
+            updateBidCells()
+        } else {
+            updateProductCells()
+        }
     }
+    
+    func updateBidCells() {
+        let new = sortBidProcesses(sortedLots)
+        if new != sortedLots {
+            sortedLots = new
+            tableView.reloadData()
+            return
+        }
+        guard let indeices = tableView.indexPathsForVisibleRows?.filter({sections[$0.section] == .bidList}) else {
+            return
+        }
+        indeices.forEach{
+            updateBidCell(at: $0)
+        }
+    }
+    
+    func updateBidCell(at indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? BiddingProductCell else {
+            return
+        }
+        cell.updateViews(with: sortedLots[indexPath.row])
+    }
+    
+    func updateProductCells() {
+        guard let indeices = tableView.indexPathsForVisibleRows?.filter({sections[$0.section] == .productList}) else {
+            return
+        }
+        indeices.forEach{
+            updateProductCell(at: $0)
+        }
+    }
+    
+    func updateProductCell(at indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? ProductOverviewCell else {
+            return
+        }
+        cell.isLocked = userSession.lotList.isLocked(productOverviews[indexPath.row])
+    }
+
     
     func showProfile(for user: User) {
         performSegue(withIdentifier: SegueID.showProfile, sender: user)
@@ -240,27 +483,105 @@ private extension ProductListTableViewController {
     }
     
     func bidProductIfAllowed(at indexPath: IndexPath) {
-        performSegue(withIdentifier: SegueID.enterBidFlow, sender: nil)
+        performSegue(withIdentifier: SegueID.enterBidFlow, sender: sortedLots[indexPath.row].product)
+    }
+    
+    func showLeadUserForBid(at indexPath: IndexPath) {
+        guard let user = sortedLots[indexPath.row].lead else {
+            return
+        }
+        performSegue(withIdentifier: SegueID.showProfile, sender: user)
     }
 }
 
 private extension ProductListTableViewController {
-    func updateSectionsAndReload() {
+    func handleCategoryListUpdate() {
+        refreshControl?.endRefreshing()
+        guard let list = categoryList else {return}
+        productOverviews = list.items
+        updateBackgroundForCategoryList(with: nil)
         tableView.reloadData()
     }
     
-    func handleCategoryListUpdate() {
-        guard let list = categoryList else {return}
-        productOverviews = list.items
-        updateSectionsAndReload()
-    }
-    
     func handleCategoryListUpdateFailure(with error: Error?) {
-        
+        refreshControl?.endRefreshing()
+        updateBackgroundForCategoryList(with: error)
+    }
+
+    func updateBackgroundForCategoryList(with error: Error? = nil) {
+        if !productOverviews.isEmpty {
+            tableView.tableFooterView = UIView()
+        } else {
+            let view = CommonViewFactory.shared.makeSimpleEmptyView()
+            if categoryList?.isUnlockLlist == true {
+                view.titleLabel.text = Localized.emptyMessages.unlocked
+                view.detailLabel.text = Localized.emptyMessages.unlockedDetail
+            } else {
+                view.titleLabel.text = Localized.emptyMessages.generic
+                if let error = error {
+                    view.detailLabel.text = error.localizedDescription
+                }
+            }
+            view.frame = CGRect(origin: .zero, size: CGSize(width: tableView.frame.width, height: 300))
+            tableView.tableFooterView = view
+        }
+    }
+
+    func prepareLotList() {
+        let list = userSession.lotList!
+        var handles: [Any] = []
+        handles.append(list.addItemDidFetchHandler {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.lotListDidUpdate()
+            }
+        })
+        handles.append(list.addFetchingFailureHandler({[weak self] (error) in
+            OperationQueue.main.addOperation {
+                self?.updateBackgroundForLotList(with: error)
+            }
+        }))
+        lotListDidUpdateHandles = handles
+        myLotList = list
+        list.reload()
     }
     
+    func lotListDidUpdate() {
+        guard let list = myLotList else { return }
+        sortedLots = sortBidProcesses(list.items.map{userSession.bidProcessManager.process(for: $0)})
+        updateBackgroundForLotList(with: nil)
+        tableView.reloadData()
+    }
+    
+    func sortBidProcesses(_ processes: [ProductBidProcess]) -> [ProductBidProcess] {
+        var running: [ProductBidProcess] = []
+        var ended: [ProductBidProcess] = []
+        processes.forEach{
+            if $0.isEnded {
+                ended.append($0)
+            } else {
+                running.append($0)
+            }
+        }
+        return running + ended
+    }
+    
+    func updateBackgroundForLotList(with error: Error? = nil) {
+        if !sortedLots.isEmpty {
+            tableView.tableFooterView = UIView()
+        } else {
+            let view = EmptyLotListView.fromDefaultNib()
+            view.titleLabel.text = Localized.emptyMessages.unlockedLotsTitle
+            if bidPhaseIndicator.phase == .ended {
+                view.detailLabel.text = Localized.messages.lotClosedDescription
+            } else {
+                view.titleLabel.text = Localized.emptyMessages.unlockedLotsMessage
+            }
+            tableView.tableFooterView = view
+        }
+    }
     func setUpEmptyViewForEmptyRunningBidList() {
         let view = EmptyLotListView.fromDefaultNib()
+        
         tableView.tableFooterView = view
     }
 }
@@ -321,3 +642,10 @@ extension ProductListTableViewController: IndicatorInfoProvider {
     }
 }
 
+extension ProductListTableViewController {
+    struct TutorialPlan {
+        let unlock: Bool
+        let waitForBid: Bool
+        let bid: Bool
+    }
+}

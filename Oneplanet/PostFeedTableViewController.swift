@@ -24,12 +24,17 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
     private var expandPostsIDs = Set<String>()
     private var needsUpdate = false
     private var isVisible = false
+    private var updateClock: UpdateClock!
+    private var deletePostOperation: DeletePostOperation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         searchButton.layer.cornerRadius = 4
         searchButton.setTitle(Localized.titles.searchID, for: .normal)
         prepareForList()
+        updateClock = UpdateClock(preferredFrameRate: 5, onTick: {[weak self] in
+            self?.updateVisibleRows()
+        })
     }
 
     @IBAction func reload(_ sender: UIRefreshControl) {
@@ -78,9 +83,18 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch sections[indexPath.section] {
         case .content:
-            let cell = tableView.dequeueReusableCell(withIdentifier: ReuseID.postCell, for: indexPath) as! PostCardCell
-            setUpPostCell(cell, at: indexPath)
-            return cell
+            let post = posts[indexPath.row]
+            if userSession.hiddenPosts.isHidden(post) {
+                let cell = tableView.dequeueReusableCell(withIdentifier: ReuseID.reportedPostCell, for: indexPath) as! ReportedPostCell
+                cell.showPostAction = {[weak self] in
+                    self?.unhide(post)
+                }
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: ReuseID.postCell, for: indexPath) as! PostCardCell
+                setUpPostCell(cell, at: indexPath)
+                return cell
+            }
         case .loading:
             return tableView.dequeueReusableCell(withIdentifier: ReuseID.loadingCell, for: indexPath)
         }
@@ -89,7 +103,7 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
     private func setUpPostCell(_ cell: PostCardCell, at indexPath: IndexPath) {
         let post = posts[indexPath.row]
         cell.expanded = expandPostsIDs.contains(post.id)
-        cell.updateViews(with: PostCardViewModel(post: post))
+        cell.updateViews(with: PostCardViewModel(post: post, userSession: userSession))
         cell.moreActions = {[weak self] in
             self?.showMoreAction(for: post)
         }
@@ -101,6 +115,17 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
         }
         cell.showProfileAction = {[weak self] in
             self?.showProfile(for: post)
+        }
+        updateCell(cell, at: indexPath)
+    }
+    
+    private func updateCell(_ cell: PostCardCell, at indexPath: IndexPath) {
+        let post = posts[indexPath.row]
+        cell.updateViews(with: userSession.userFetcherRepo.fetcher(for: post.authorID))
+        if let rel = userSession.socialRelationshipRepo.relationshipWithUser(of: post.authorID)?.states {
+            cell.actionButton.isHidden = rel.isFollowing
+        } else {
+            cell.actionButton.isHidden = true
         }
     }
     
@@ -120,13 +145,25 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
             sheet.addAction(UIAlertAction(title: Localized.titles.edit, style: .default, handler: { (_) in
                 self.edit(post)
             }))
-        } else {
+            sheet.addAction(UIAlertAction(title: Localized.titles.delete, style: .destructive, handler: { (_) in
+                self.deletePost(post)
+            }))
+        } else  {
             sheet.addAction(UIAlertAction(title: Localized.titles.report, style: .destructive, handler: { (_) in
                 self.report(post)
             }))
-            sheet.addAction(UIAlertAction(title: Localized.phrases.unfollow, style: .destructive, handler: { (_) in
-                self.unfollowAuthor(of: post)
-            }))
+            if let rel = userSession.socialRelationshipRepo.relationshipWithUser(of: post.authorID)?.states {
+                if rel.isFollowing {
+                    sheet.addAction(UIAlertAction(title: Localized.phrases.unfollow, style: .destructive, handler: { (_) in
+                        self.unfollowAuthor(of: post)
+                    }))
+                } else {
+                    sheet.addAction(UIAlertAction(title: Localized.phrases.follow, style: .default, handler: { (_) in
+                        self.followAuthor(of: post)
+                    }))
+                }
+
+            }
         }
         sheet.addAction(UIAlertAction(title: Localized.titles.cancel, style: .cancel, handler: nil))
         present(sheet, animated: true, completion: nil)
@@ -145,6 +182,10 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard sections[indexPath.section] == .content &&
+            !userSession.hiddenPosts.isHidden(posts[indexPath.row]) else {
+            return
+        }
         expendCell(at: indexPath)
     }
 
@@ -185,6 +226,11 @@ private extension PostFeedTableViewController {
                 self?.handleFetchFailure(with: error)
             }
         }))
+        handles.append(userSession.hiddenPosts.didUpdateHandlers.add{[weak self] in
+            OperationQueue.main.addOperation {
+                self?.tableView.reloadData()
+            }
+        })
         listUpdateHandles = handles
         postList.reload()
     }
@@ -225,27 +271,72 @@ private extension PostFeedTableViewController {
             tableView.backgroundView = view
         }
     }
+    
+    func updateVisibleRows() {
+        guard let indexPaths = tableView.indexPathsForVisibleRows else { return }
+        indexPaths.forEach{
+            if sections[$0.section] == .content,
+                let cell = tableView.cellForRow(at: $0) as? PostCardCell {
+                updateCell(cell, at: $0)
+            }
+        }
+    }
 }
 
 private extension PostFeedTableViewController {
+    func unhide(_ post: Post) {
+        userSession.hiddenPosts.unhide(post)
+    }
+    
     func followAuthor(of post: Post) {
-        
+        guard let rel = userSession.socialRelationshipRepo.relationshipWithUser(of: post.authorID) else {
+            return
+        }
+        rel.follow()
     }
     
     func unfollowAuthor(of post: Post) {
-        
+        guard let rel = userSession.socialRelationshipRepo.relationshipWithUser(of: post.authorID) else {
+            return
+        }
+        rel.unfollow()
     }
     
     func showProfile(for post: Post) {
-//        performSegue(withIdentifier: SegueID.showProfile, sender: post.author)
+        guard let user = userSession.userFetcherRepo.fetcher(for: post.authorID).user else {
+            return
+        }
+        performSegue(withIdentifier: SegueID.showProfile, sender: user)
     }
     
+    func deletePost(_ post: Post) {
+        guard deletePostOperation == nil else { return }
+        let op = DeletePostOperation(post: post, session: userSession)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didDeletePost()
+            }
+        }
+        deletePostOperation = op
+        op.start()
+    }
+    
+    func didDeletePost() {
+        let op = deletePostOperation!
+        deletePostOperation = nil
+        if let error = op.error {
+            let alert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: Localized.titles.ok, style: .cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
+    }
+
     func edit(_ post: Post) {
         performSegue(withIdentifier: SegueID.showPostEditor, sender: post)
     }
     
     func report(_ post: Post) {
-        performSegue(withIdentifier: SegueID.showReportFlow, sender: PostReportFlowController())
+        performSegue(withIdentifier: SegueID.showReportFlow, sender: PostReportFlowController(post: post, session: userSession))
     }
 }
 
@@ -282,17 +373,32 @@ extension UITableViewController: ScrollToTopHandler {
 }
 
 class PostCardViewModel: PostDisplayable {
-    let avatar: WebImageInfo? = nil
-    let nickname: String = ""
+    let avatar: WebImageInfo?
+    let nickname: String
     let formatedDate: String
     let photos: [WebImageInfo]
     let message: String
-    let relativeScore: Float? = nil
-    var alien: Alien? = nil
+    let relativeScore: Float?
+    let alien: Alien?
     
-    init(post: Post) {
+    init(post: Post, userSession: UserSession) {
         photos = post.images
         formatedDate = SharedSpeciaFormatters.dateFromNowForPosts.string(from: post.createdAt)
         message = post.caption
+        if let score = post.score,
+            post.type == PostType.valued.rawValue {
+            relativeScore = Float(score) / 100
+        } else {
+            relativeScore = nil
+        }
+        if let user = userSession.userFetcherRepo.fetcher(for: post.authorID).user {
+            alien = user.alien
+            avatar = user.avatar
+            nickname = user.nickname
+        } else {
+            alien = nil
+            avatar = nil
+            nickname = ""
+        }
     }
 }

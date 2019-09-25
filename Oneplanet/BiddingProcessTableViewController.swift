@@ -13,7 +13,11 @@ import Kingfisher
 class BiddingProcessTableViewController: UITableViewController, DefaultInstanceFactory, UserSessionDepending {
     
     var userSession: UserSession!
+    var shippingAddressHolder: ShippingAddressHolder!
+    var bidOutcomeHistory: BidOutcomeHistory!
     var sections: [Section] = [.shippingInfoPrompt, .items]
+    var products: [BidProductOverview] = []
+    private var handles: [Any]?
     class func fromDefaultStoryboard() -> BiddingProcessTableViewController {
         return UIStoryboard(name: "Auction", bundle: nil).instantiateViewController(withIdentifier: "BiddingLiveTableViewController") as! BiddingProcessTableViewController
     }
@@ -22,8 +26,25 @@ class BiddingProcessTableViewController: UITableViewController, DefaultInstanceF
         super.viewDidLoad()
         tableView.register(BiddingProcessHeader.defaultNib(), forHeaderFooterViewReuseIdentifier: ReuseID.biddingItemHeader)
         navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
+        prepareHistory()
+        if shippingAddressHolder.shippingAddress != nil {
+            sections = [.shippingInfo, .items]
+        }
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        Preferences.shouldShowBadgeOnHistory.value = false
+    }
+    
+    @IBAction func refresh(_ sender: UIRefreshControl) {
+        refresh()
+    }
+    
+    func refresh() {
+        bidOutcomeHistory?.reload()
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -35,7 +56,7 @@ class BiddingProcessTableViewController: UITableViewController, DefaultInstanceF
         case .shippingInfo, .shippingInfoPrompt:
             return 1
         case .items:
-            return 10
+            return products.count
         }
     }
     
@@ -52,8 +73,10 @@ class BiddingProcessTableViewController: UITableViewController, DefaultInstanceF
         let section = sections[indexPath.section]
         let cell = tableView.dequeueReusableCell(withIdentifier: section.reuseID, for: indexPath)
         switch section {
-        case .shippingInfo, .shippingInfoPrompt:
+        case .shippingInfoPrompt:
             prepareShippingInfoCell(cell as! ShippingInfoCell)
+        case .shippingInfo:
+            prepareConfiguredShippingInfoCell(cell as! ConfiguredShippingInfoCell)
         case .items:
             prepareItemCell(cell as! BidOutcomeCell, at: indexPath)
         }
@@ -65,10 +88,75 @@ class BiddingProcessTableViewController: UITableViewController, DefaultInstanceF
             self?.showShippingInfoEditor()
         }
     }
+
+    private func prepareConfiguredShippingInfoCell(_ cell: ConfiguredShippingInfoCell) {
+        cell.action = {[weak self] in
+            self?.showShippingInfoEditor()
+        }
+        if let address = shippingAddressHolder.shippingAddress {
+            cell.addressLabel.text = formatAddress(from: address)
+        } else {
+            cell.addressLabel.text = nil
+        }
+    }
     
+    private func formatAddress(from addr: ShippingAddress) -> String {
+        var value = ""
+        var newline = false
+        if let first = addr.firstName, !first.isEmpty {
+            value += first
+            newline = true
+        }
+        if let last = addr.lastName, !last.isEmpty {
+            if newline {
+                value += " "
+            }
+            value += "***"
+            newline = true
+        }
+        if let phone = addr.phone, !phone.isEmpty {
+            if newline {
+                value += "\n"
+            }
+            if let code = addr.country, let country = PhoneNumberBuilder(countryCode: nil).countries.first(where: {$0.isoCountryCode.lowercased() == code.lowercased()}) {
+                
+                value += "(\(country.cellPhoneContryCode))"
+            }
+            if phone.count <= 3 {
+                value += Array(repeating: "*", count: phone.count).joined()
+            } else {
+                let num = (phone.count - 3) / 2
+                let extra = (phone.count - 3) % 2
+                let prefix = phone.prefix(num + extra)
+                let suffix = phone.suffix(num)
+                value += prefix + "***" + suffix
+            }
+            newline = true
+        }
+        if let addr1 = addr.addressLine1, !addr1.isEmpty {
+            if newline {
+                value += "\n"
+            }
+            value += addr1
+            newline = true
+        }
+        if let addr2 = addr.addressLine2, !addr2.isEmpty {
+            if newline {
+                value += "\n"
+            }
+            value += addr2
+        }
+        return value
+    }
+
     private func prepareItemCell(_ cell: BidOutcomeCell, at indexPath: IndexPath) {
+        let product = products[indexPath.row]
+        cell.updateViews(with: product)
         cell.detailAction = {[weak self] in
-            self?.showShippingStatusDetail()
+            self?.showShippingStatusDetailForProduct(at: indexPath)
+        }
+        cell.productDetailAction = {[weak self] in
+            self?.showDetailForProduct(at: indexPath)
         }
     }
     
@@ -112,9 +200,18 @@ class BiddingProcessTableViewController: UITableViewController, DefaultInstanceF
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let nav = segue.destination as? UINavigationController,
-            let vc = nav.viewControllers.first as? ShippingInfoEditorViewController {
+        if let nav = segue.destination as? UINavigationController {
+            if let vc = nav.viewControllers.first as? ShippingInfoEditorViewController {
+                vc.userSession = userSession
+            }
+            if let vc = nav.viewControllers.first as? ShippingInfoEditorViewController {
+                vc.shippingAddressHolder = shippingAddressHolder
+            }
+        }
+        if let vc = segue.destination as? ProductDetailViewController {
             vc.userSession = userSession
+            vc.isLockVisible = false
+            vc.productQuery = (sender as! ProductOverview).id
         }
     }
 
@@ -125,7 +222,85 @@ fileprivate extension BiddingProcessTableViewController {
         performSegue(withIdentifier: SegueID.showShippingInfoEditor, sender: nil)
     }
     
-    func showShippingStatusDetail() {
+    func showDetailForProduct(at indexPath: IndexPath) {
+        performSegue(withIdentifier: SegueID.showProductDetail, sender: products[indexPath.row])
+    }
+
+    func showShippingStatusDetailForProduct(at indexPath: IndexPath) {
+        guard let states = products[indexPath.row].shippingStates,
+            let number = states.trackingNumber else {
+                return
+        }
+        UIPasteboard.general.string = number
+        if let url = states.trackingURL {
+            let alert = UIAlertController(title: Localized.phrases.viewShippingStatus, message: Localized.messages.copiedOrderNumber, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: Localized.titles.go, style: .default, handler: { (_) in
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }))
+            alert.addAction(UIAlertAction(title: Localized.titles.cancel, style: .cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
+        } else {
+            Toast.show(with: String(format: Localized.messages.copiedOrderNumber))
+        }
+    }
+    
+    func prepareHistory() {
+        let history = BidOutcomeHistory(session: userSession)
+        var handles: [Any] = []
+        handles.append(history.addItemDidFetchHandler {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.handleHistoryUpdate()
+            }
+        })
+        handles.append(history.addFetchingFailureHandler({[weak self] (error) in
+            OperationQueue.main.addOperation {
+                self?.handleFetchFailure(with: error)
+            }
+        }))
+        handles.append(shippingAddressHolder.updateHandlers.add {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.updateViewsForShippingAddressChange()
+            }
+        })
+        bidOutcomeHistory = history
+        self.handles = handles
+        history.reload()
+    }
+    
+    func updateViewsForShippingAddressChange() {
+        if shippingAddressHolder.shippingAddress != nil {
+            sections = [.shippingInfo, .items]
+        } else {
+            sections = [.shippingInfoPrompt, .items]
+        }
+        tableView.reloadData()
+    }
+    
+    func handleHistoryUpdate() {
+        refreshControl?.endRefreshing()
+        products = bidOutcomeHistory.items
+        updateBackground(with: nil)
+        tableView.reloadData()
+    }
+    
+    func handleFetchFailure(with error: Error?) {
+        refreshControl?.endRefreshing()
+        updateBackground(with: error)
+    }
+    
+    func updateBackground(with error: Error? = nil) {
+        if !products.isEmpty {
+            tableView.tableFooterView = UIView()
+        } else {
+            let view = CommonViewFactory.shared.makeSimpleEmptyView()
+            view.titleLabel.text = Localized.emptyMessages.unlocked
+            view.detailLabel.text = Localized.emptyMessages.unlockedDetail
+            if let error = error {
+                view.detailLabel.text = error.localizedDescription
+            }
+            view.frame = CGRect(origin: .zero, size: CGSize(width: tableView.frame.width, height: 300))
+            tableView.tableFooterView = view
+        }
     }
 }
 
@@ -152,6 +327,7 @@ extension BiddingProcessTableViewController {
 
     struct SegueID {
         static let showShippingInfoEditor = "showShippingInfoEditor"
+        static let showProductDetail = "showProductDetail"
     }
 }
 
@@ -161,38 +337,48 @@ extension BiddingProcessTableViewController: IndicatorInfoProvider {
     }
 }
 
-protocol BidOutcomeOverviewDisplayable: AnyObject {
-    var hasWon: Bool {get}
-    var productThumnail: WebImageInfo? {get}
-    var productName: String {get}
-    var localizedShippingState: String? {get}
-}
-
 class BidOutcomeCell: UITableViewCell {
     var detailAction: (()->())?
+    var productDetailAction: (()->())?
     @IBOutlet weak var outcomIndicator: UIView!
-    @IBOutlet weak var previewImageView: UIImageView!
+    
+    @IBOutlet weak var previewButton: UIButton!
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var stateLabel: UILabel!
     @IBOutlet weak var inspectButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        previewButton.imageView?.contentMode = .scaleAspectFill
         inspectButton.setTitle(Localized.phrases.viewShippingStatus, for: .normal)
     }
     
     @IBAction func invokeDetailAction(_ sender: Any) {
         detailAction?()
     }
-    
-    func updateViews(with ds: BidOutcomeOverviewDisplayable) {
-        previewImageView.kf.setImage(with: ds.productThumnail?.url)
-        titleLabel.text = ds.productName
-        outcomIndicator.backgroundColor = ds.hasWon ? ColorPalette.bidGreen : ColorPalette.bidRed
-        if let state = ds.localizedShippingState {
-            stateLabel.text = state
+
+    @IBAction func invokeProductDetailAction(_ sender: Any) {
+        productDetailAction?()
+    }
+
+    func updateViews(with product: BidProductOverview) {
+        previewButton.kf.setImage(with: product.cover?.url, for: .normal)
+        titleLabel.text = product.displayName
+        if let shippingStates = product.shippingStates {
+            outcomIndicator.backgroundColor = ColorPalette.bidGreen
+
+            stateLabel.isHidden = false
+            stateLabel.text = shippingStates.isShipped ? Localized.titles.bidStateShipping : Localized.titles.bidStateToShip
+            if let num = shippingStates.trackingNumber, !num.isEmpty {
+                inspectButton.isHidden = false
+            } else {
+                inspectButton.isHidden = true
+            }
         } else {
-            stateLabel.text = ds.hasWon ? "Miss" : "Preparing"
+            outcomIndicator.backgroundColor = ColorPalette.bidRed
+            inspectButton.isHidden = true
+            stateLabel.text = Localized.titles.bidStateLose
         }
     }
 }

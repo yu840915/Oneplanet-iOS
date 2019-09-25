@@ -92,8 +92,9 @@ class CollectionCategoryItem: CollectionItemPreviewing {
     }
 
     class func from(_ collectionItem: CollectionItem) -> CollectionCategoryItem? {
-        guard collectionItem.type?.lowercased() == "category" else {return nil}
-        return CollectionCategoryItem(id: collectionItem.id, coverURL: collectionItem.thumbnail.toURL())
+        guard collectionItem.type?.lowercased() == "category",
+            let url = collectionItem.thumbnail?.toURL() else {return nil}
+        return CollectionCategoryItem(id: collectionItem.id, coverURL: url)
     }
 }
 
@@ -107,7 +108,8 @@ class CollectionProductItem: CollectionItemPreviewing {
     }
     
     class func from(_ collectionItem: CollectionItem) -> CollectionProductItem? {
-        guard collectionItem.type == nil || collectionItem.type!.lowercased() == "product" else {return nil}
-        return CollectionProductItem(id: collectionItem.id, coverURL: collectionItem.thumbnail.toURL())
+        guard collectionItem.type == nil || collectionItem.type!.lowercased() == "product",
+            let url = collectionItem.thumbnail?.toURL() else {return nil}
+        return CollectionProductItem(id: collectionItem.id, coverURL: url)
     }
 }

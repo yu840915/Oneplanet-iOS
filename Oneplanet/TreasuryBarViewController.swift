@@ -24,6 +24,11 @@ class TreasuryBarViewController: UIViewController, UserSessionDepending {
     @IBOutlet weak var scorebarButton: UIButton!
     @IBOutlet var treasuryButtons: [UIButton]!
     @IBOutlet weak var scorebarBackImage: UIImageView!
+    
+    @IBOutlet weak var blueGemButton: UIButton!
+    @IBOutlet weak var purpleGemButton: UIButton!
+    @IBOutlet weak var greenGemButton: UIButton!
+    
     @IBOutlet weak var scoreMaskView: UIView!
     private var greenGemLevelUpAnimation: LevelUpAnimationOperation?
     private var purpleGemLevelUpAnimation: LevelUpAnimationOperation?
@@ -32,12 +37,66 @@ class TreasuryBarViewController: UIViewController, UserSessionDepending {
     fileprivate var userActionRounter: URLRouter!
     fileprivate var animationPlan: AnimationPlan?
     private(set) var scoreProgress: CGFloat = 0
+    private var snapshot: BalanceSnapshot?
+    private var updateHandle: Any?
+    private var allowAnimation = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setUpViews()
+        prepareRouter()
+        prepareForWallet()
+    }
+    
+    private func prepareForWallet() {
+        guard !userSession.isGuest else { return }
+        updateHandle = userSession.wallet.updateObservers.add {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.handleWalletUpdate()
+            }
+        }
+        handleWalletUpdate()
+    }
+    
+    private func handleWalletUpdate() {
+        let wallet = userSession.wallet!
+        let new = BalanceSnapshot(blueGem: wallet.blueGem.total, purpleGem: wallet.purpleGem.total, greenGem: wallet.greenGem.total, score: wallet.score.total)
+        scoreProgress = min(CGFloat(new.score) / 100, 1)
+
+        if let old = snapshot, allowAnimation {
+            var plan = AnimationPlan()
+            plan.blueGem = new.blueGem != old.blueGem
+            plan.greenGem = new.greenGem != old.greenGem
+            plan.purpleGem = new.purpleGem != old.purpleGem
+            plan.scoreBar = (new.score != new.score) || plan.blueGem
+            animationPlan = plan
+        } else {
+            visibleScorebarWidth.constant = scoreProgress * scorebarContainer.frame.width
+            scorebarContainer.setNeedsLayout()
+        }
+        snapshot = new
+        updateViewsForBalance()
+        animateUpdateIfNeeded()
+        if wallet.isFullyInitialized {
+            allowAnimation = true
+        }
+    }
+    
+    private func updateViewsForBalance() {
+        guard let source = snapshot else {
+            return
+        }
+        let formatter = SharedNumberFormatters.wallet
+        blueGemButton.setTitle(formatter.string(for: source.blueGem), for: .normal)
+        purpleGemButton.setTitle(formatter.string(for: source.purpleGem), for: .normal)
+        greenGemButton.setTitle(formatter.string(for: source.greenGem), for: .normal)
+    }
+    
+    private func setUpViews() {
         let colors = [ColorPalette.blueGem, ColorPalette.purpleCoin, ColorPalette.greenKey]
         for i in 0...2 {
             let button = treasuryButtons[i]
+            button.titleLabel?.lineBreakMode = .byWordWrapping
             button.imageView?.layer.shadowColor = colors[i].cgColor
             button.imageView?.layer.shadowRadius = 10
             button.imageView?.layer.shadowOffset = .zero
@@ -49,7 +108,6 @@ class TreasuryBarViewController: UIViewController, UserSessionDepending {
         scorebarButton.layer.shadowOffset = .zero
         scorebarButton.layer.shadowOpacity = 1.0
         scoreMaskView.layer.cornerRadius = 5.0
-        prepareRouter()
     }
 
     deinit {
@@ -117,6 +175,13 @@ fileprivate extension TreasuryBarViewController {
         var shouldAnimate: Bool {
             return scoreBar || blueGem || purpleGem || greenGem
         }
+    }
+    
+    struct BalanceSnapshot {
+        let blueGem: Int
+        let purpleGem: Int
+        let greenGem: Int
+        let score: Int
     }
 }
 

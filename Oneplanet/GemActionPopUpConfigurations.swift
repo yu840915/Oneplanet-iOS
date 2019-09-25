@@ -39,6 +39,9 @@ class GemActionPopUpConfiguration {
     var shouldShowTitle: Bool {
         return true
     }
+    var animatedTransition: Bool {
+        return true
+    }
     var mainAction: (()->())?
 }
 
@@ -78,6 +81,41 @@ class UnlockWithPurpleGemPopUpConfiguration: UnlockPopUpConfiguration {
     }
 }
 
+class UnlockSuccessPopUpConfiguration: GemActionPopUpConfiguration {
+    override var attributedTitle: NSAttributedString {
+        return NSAttributedString(string: Localized.messages.unlockSucceeded, attributes: boldTitleAttributes)
+    }
+    
+    override var attributedSubtitle: NSAttributedString {
+        let result = NSMutableAttributedString(attributedString: descriptionPart)
+        result.append(instructionPart)
+        return result
+    }
+    
+    private var descriptionPart: NSAttributedString {
+        let text = String(format: Localized.messageFormats.unlockSucceeded, Localized.titles.blueGem)
+        let range = (text as NSString).range(of: Localized.titles.blueGem)
+        let result = NSMutableAttributedString(string: text, attributes: subtitleAttributes)
+        result.addAttributes([.link : DeepLinks.blueGemPopUp], range: range)
+        return result
+    }
+    
+    private var instructionPart: NSAttributedString {
+        let text = String(format: Localized.messageFormats.earnBlueGemInstruction, Localized.titles.blueGem)
+        let range = (text as NSString).range(of: Localized.titles.blueGem)
+        let result = NSMutableAttributedString(string: text, attributes: subtitleAttributes)
+        result.addAttributes([.link : DeepLinks.blueGemPopUp], range: range)
+        return result
+    }
+    override var cancelTitle: String {
+        return Localized.titles.ok
+    }
+    
+    override var actionTitle: String {
+        return Localized.gemStonePopUp.blueGemAction
+    }
+}
+
 class UnlockWithBlueGemPopUpConfiguration: UnlockPopUpConfiguration {
     let formattedPrice: String
     init(productName: String, formattedPrice: String) {
@@ -89,7 +127,7 @@ class UnlockWithBlueGemPopUpConfiguration: UnlockPopUpConfiguration {
     }
     override var attributedSubtitle: NSAttributedString {
         return NSAttributedString(
-            string: String(format: Localized.messageFormats.unlockWithGemAndIAP, Localized.titles.purpleGem, formattedPrice),
+            string: String(format: Localized.messageFormats.unlockWithGemAndIAP, Localized.titles.blueGem, formattedPrice),
             attributes: subtitleAttributes)
     }
 }
@@ -108,7 +146,7 @@ class BidPopUpConfiguration: GemActionPopUpConfiguration {
     }
 }
 
-class BidWithPurpleGemPopUpConfiguration: UnlockPopUpConfiguration {
+class BidWithPurpleGemPopUpConfiguration: BidPopUpConfiguration {
     override var icon: UIImage {
         return #imageLiteral(resourceName: "im_08_rubidbid")
     }
@@ -119,7 +157,7 @@ class BidWithPurpleGemPopUpConfiguration: UnlockPopUpConfiguration {
     }
 }
 
-class BidWithBlueGemPopUpConfiguration: UnlockPopUpConfiguration {
+class BidWithBlueGemPopUpConfiguration: BidPopUpConfiguration {
     let formattedPrice: String
     init(productName: String, formattedPrice: String) {
         self.formattedPrice = formattedPrice
@@ -130,7 +168,7 @@ class BidWithBlueGemPopUpConfiguration: UnlockPopUpConfiguration {
     }
     override var attributedSubtitle: NSAttributedString {
         return NSAttributedString(
-            string: String(format: Localized.messageFormats.bidWithGemAndIAP, Localized.titles.purpleGem, formattedPrice),
+            string: String(format: Localized.messageFormats.bidWithGemAndIAP, Localized.titles.blueGem, formattedPrice),
             attributes: subtitleAttributes)
     }
 }
@@ -244,6 +282,25 @@ class LotClosedPopUpConfiguration: UnlockPopUpConfiguration {
     }
 }
 
+class UnlockTooLateConfiguration: GemActionPopUpConfiguration {
+    var subtitle: String = ""
+    override var attributedTitle: NSAttributedString {
+        return NSAttributedString(string: Localized.messages.lotClosed, attributes: titleAttributes)
+    }
+    override var icon: UIImage {
+        return #imageLiteral(resourceName: "im_01_timeended")
+    }
+    override var attributedSubtitle: NSAttributedString {
+        return NSAttributedString(string: String(format: subtitle), attributes: subtitleAttributes)
+    }
+    override var shouldShowCancel: Bool {
+        return false
+    }
+    override var actionTitle: String {
+        return Localized.titles.ok
+    }
+}
+
 class BidTooLateConfiguration: GemActionPopUpConfiguration {
     override var attributedTitle: NSAttributedString {
         return NSAttributedString(string: Localized.messages.bidPaymentTooLate, attributes: titleAttributes)
@@ -252,7 +309,8 @@ class BidTooLateConfiguration: GemActionPopUpConfiguration {
         return #imageLiteral(resourceName: "im_07_rubid")
     }
     override var attributedSubtitle: NSAttributedString {
-        return NSAttributedString(string: String(format: Localized.messageFormats.receivedGem, Localized.titles.greenGem), attributes: subtitleAttributes)
+        let num = "1"
+        return NSAttributedString(string: String(format: Localized.messageFormats.receivedGem, Localized.titles.greenGem, num), attributes: subtitleAttributes)
     }
     override var shouldShowCancel: Bool {
         return false

@@ -8,6 +8,7 @@
 
 import Foundation
 import ModelBlocks
+import UIKit
 
 class WeChatLogInOperation: SimpleAsynchronousOperation, SocialAuthenticationOperationType, WXApiDelegate {
     static weak var runningLogIn: WeChatLogInOperation?

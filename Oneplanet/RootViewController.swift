@@ -53,7 +53,6 @@ class RootViewController: UIViewController {
     }
     
     private func handleSessionRestoration() {
-//        startUserFlow(with: UserSession(token: "123"), needsPreflightCheck: false)
         let op = restoreUserSessionOperation!
         if let session = op.session {
             startUserFlow(with: session, needsPreflightCheck: true)
@@ -66,6 +65,7 @@ class RootViewController: UIViewController {
         endUserFlow()
         LogOutOperation().start()
         startLoginFlow()
+        IAPTransactionProcessor.shared.userSession = nil
     }
     
     private func startUserFlow(with session: UserSession, needsPreflightCheck: Bool) {
@@ -73,6 +73,7 @@ class RootViewController: UIViewController {
             assertionFailure("User flow already exists")
             return
         }
+        IAPTransactionProcessor.shared.userSession = session
         let vc = storyboard!.instantiateViewController(withIdentifier: UserFlowRootViewController.defaultStoryboardID) as! UserFlowRootViewController
         vc.userSession = session
         vc.needsPreflightCheck = needsPreflightCheck

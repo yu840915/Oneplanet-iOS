@@ -18,9 +18,11 @@ class SendEmailLinkOperation: AlamofireAPIAccessOperation {
     
     override func prepareURLRequest() throws -> URLRequest {
         try InputValidators.email.validate(email)
-        var comp = URLComponents(url: ServiceURLs.base.appendingPathComponent("verify/email"), resolvingAgainstBaseURL: false)!
+        var comp = URLComponents(url: ServiceURLs.devBase.appendingPathComponent("verify/email"), resolvingAgainstBaseURL: false)!
         comp.queryItems = [URLQueryItem(name: "email", value: email)]
-        return try URLRequest(url: try comp.asURL(), method: .post)
+        var req = try URLRequest(url: try comp.asURL(), method: .post)
+        req.addValue(Localized.languageCode, forHTTPHeaderField: Localized.acceptLanguageKey)
+        return req
     }
 }
 
@@ -45,10 +47,13 @@ class EmailLinkLogInOperarion: LogInOperation {
     init(credential: EmailAuthCredential) {
         self.credential = credential
     }
-
-    override func prepareDataRequest() throws -> DataRequest {
+    
+    override func prepareURLRequest() throws -> URLRequest {
         try credential.validate()
-        return Alamofire.request(ServiceURLs.base.appendingPathComponent("login/email"), method: .post, parameters: ["email": credential.email, "code": credential.code!], encoding: JSONEncoding(), headers: Localized.acceptLanguageHeader)
+        var comp = URLComponents(url: ServiceURLs.devBase.appendingPathComponent("login/email"), resolvingAgainstBaseURL: false)!
+        comp.queryItems = [URLQueryItem(name: "email", value: credential.email),
+                           URLQueryItem(name: "code", value: credential.code!)]
+        return try URLRequest(url: try comp.asURL(), method: .post)
     }
 }
 
@@ -90,11 +95,35 @@ class EmailAuthCredential {
     }
 }
 
-class GuestLogInOperation: Operation, AuthenticationOperationType {
-    let success: Bool? = true
-    let error: Error? = nil
+class GuestLogInOperation: SimpleAsynchronousOperation, AuthenticationOperationType {
+    private(set) var success: Bool?
+    private(set) var error: Error?
     let token: String? = ""
     let profile: MyProfile? = GuestProfile()
+    private(set) var timeframe: SessionTimeframe?
+    private var getBidTimeframeOperation: GetBidSessionTimeframeOperation?
+    
+    override func main() {
+        let op = GetBidSessionTimeframeOperation()
+        op.completionBlock = {[weak self] in
+            self?.didGetTimeframe()
+        }
+        getBidTimeframeOperation = op
+        op.start()
+    }
+    
+    private func didGetTimeframe() {
+        let op = getBidTimeframeOperation!
+        if let tf = op.timeframe {
+            timeframe = tf
+            success = true
+        } else {
+            error = op.error
+            success = false
+        }
+        finish()
+    }
+    
 }
 
 protocol AuthenticationOperationType: FailableOperationType {

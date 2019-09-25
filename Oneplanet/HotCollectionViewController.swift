@@ -26,6 +26,8 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
     var hotItems: [CollectionItemPreviewing] = []
     var refreshControl: UIRefreshControl!
     var statusBarHandle: Any?
+    private var needsRefresh = false
+    private var isVisible = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +52,9 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
         news.action = {[weak self] in
             self?.showPromoPopUp()
         }
+        alien.action = {[weak self] in
+            self?.performSegue(withIdentifier: "iap", sender: nil)
+        }
         navigationItem.rightBarButtonItems = [
             .init(customView: alien),
             .init(customView: events),
@@ -59,6 +64,11 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        isVisible = true
+        if needsRefresh {
+            needsRefresh = false
+            refresh()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -85,11 +95,24 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
         super.viewDidDisappear(animated)
         hidingSignalProducer = nil
         statusBarHandle = nil
+        isVisible = false
     }
     
     @IBAction func reload(_ sender: UIRefreshControl) {
-        hotList.reload()
-        bannerList.reload()
+        refresh()
+    }
+    
+    func refresh() {
+        hotList?.reload()
+        bannerList?.reload()
+    }
+    
+    func setNeedsRefresh() {
+        if isVisible {
+            refresh()
+        } else {
+            needsRefresh = true
+        }
     }
     
     private func moveTabbar() {
@@ -148,7 +171,7 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
             vc.userSession = userSession
         }
         if let vc = segue.destination as? ProductDetailViewController {
-            vc.productQuery = (sender as! CollectionProductItem).id
+            vc.productQuery = (sender as! String)
         }
     }
 
@@ -185,6 +208,7 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
         vc.showDetailAction = {[weak self] item in
             self?.showDetail(for: item)
         }
+        vc.items = bannerList.items.compactMap{$0.previewable}
         headerController = vc
     }
 
@@ -213,12 +237,14 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
 private extension HotCollectionViewController {
     func showDetail(for item: CollectionItemPreviewing) {
         if let product = item as? CollectionProductItem {
-            performSegue(withIdentifier: SegueID.showProductDetail, sender: product)
+            performSegue(withIdentifier: SegueID.showProductDetail, sender: product.id)
         } else if let category = item as? CollectionCategoryItem {
             router.handle(DeepLinks.categoryList.appendingPathComponent(category.id))
         } else if let ad = item as? PromotionAd {
             if let link = ad.link {
                 router.handle(link)
+            } else {
+                performSegue(withIdentifier: SegueID.showProductDetail, sender: ad.id)
             }
         }
     }

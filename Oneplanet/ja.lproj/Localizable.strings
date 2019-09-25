@@ -55,7 +55,7 @@
 "tl_filter" = "検索フィルタ";
 "tl_bid_state_lost" = "落札できませんでした";
 "tl_bid_state_to_ship" = "出荷待ち";
-"tl_bid_state_shipping" = "出荷中";
+"tl_bid_state_shipping" = "発送済み";
 "tl_bid_state_delivered" = "受け取りました";
 "tl_report" = "報告する";
 "tl_block" = "ブロック";
@@ -92,7 +92,9 @@
 "msg_lot_being_bid_des" = "ただいま入札中です。48時間以内次回の入札商品を公表します。お見逃しなく！";
 "msg_lot_closed" = "アンロックできる時間を超えてしまいました";
 "msg_lot_closed_des" = "オークションが終了しました。48時間以内次回の入札商品を公表します。お見逃しなく！";
+"msg_bid_too_late" = "入札時間を超えました";
 "msg_bid_payment_too_late" = "支払いが成功しましたが、入札時間を超えました";
+"msg_gem_unchanged" = "この状況でジェムは減らしません";
 "msg_race1_monologue" = "ファッカーです。";
 "msg_race2_monologue" = "ディカーです。";
 "msg_race3_monologue" = "ドランカーです。";
@@ -110,6 +112,7 @@
 "msg_unlock_option_prompt" = "どのジェムでアンロックしますか？";
 "msg_thanks_for_reporting_post" = "いただいた情報は、Oneplanet コミュニティをより安全なものにするために使用されます";
 "msg_username_rules" = "ID は5文字以上";
+"msg_copied_order_number" = "追跡番号をコピーしました";
 
 "msgf_accept_tos" = "ログインすることによって、%@に同意することになります";
 "msgf_resend_verification_email" = "電子メールがみつかりませんか？%@";
@@ -118,28 +121,29 @@
 "msgf_winner_notice" = "確実にお届けするために、落札者は%@が正しく入力されていることをよくご確認下さい。";
 "msgf_unlock_lot" = "Unlock %@?";
 "msgf_did_unlock_lot" = "%@ でアンロックに成功しました";
-"msgf_unlock_with_gem_iap" = "1 %@ + %@ 使って、アンロックしますか？";
-"msgf_unlock_with_gem" = "1 %@ を使って、アンロックしますか？";
+"msgf_unlock_with_gem_iap" = "1 %@1コ + %@を使用してアンロックしますか？";
+"msgf_unlock_with_gem" = "1 %@ でアンロックしますか？";
 "msgf_insufficient_gem" = "%@が不足しています";
 "msgf_bid_prompt" = "%@ に一回入札しますか？";
-"msgf_bid_with_gem_iap" = "1 %@ + %@ 使って、一回入札しますか？ ";
-"msgf_bid_with_gem" = "1 %@ 使って、一回入札しますか？";
-"msgf_insufficient_gem_unlock_des" = "一つ商品をアンロックするごとに、1 %@ + %@が必要です。";
+"msgf_bid_with_gem_iap" = "1 %@1コ + %@を使用して一回入札しますか？";
+"msgf_bid_with_gem" = "%@を1コ使用して一回入札しますか？";
+"msgf_insufficient_gem_unlock_des" = "一つ商品をアンロックするごとに、1 %@ + %@ が必要です。";
 "msgf_insufficient_gem_bid_des" = "毎回入札するごとに、 1 %@ + %@が必要です。";
 "msgf_earn_blue_gem_instruction" = "写真をアップロードして、%@ をゲットしよう！";
-"msgf_received_gem" = "%@をゲットしました";
-"msgf_unlock_succeeded" = "%@でアンロックに成功しました";
+"msgf_received_gem" = "%@を%@コ 獲得しました。";
+"msgf_unlock_succeeded" = "入札するには %@ が必要です!";
 "msgf_bid_succeeded" = "Successfully qualified for %@ bidding";
-"msgf_start_following_you" = "%@ started following you";
-"msgf_liked_your_post" = "%@ liked your post";
-"msgf_you_received_num_gems" = "You received %@ %@s";
+"msgf_start_following_you" = "%@さんがあなたをファローしました。";
+"msgf_liked_your_post" = "おめでとうございます！あなたの写真が%@にLIKEされましたので、%@を1コ獲得しました。";
+"msgf_you_received_num_gems" = "%@から%@を%@コ贈りました。";
 "msgf_post_reported" = "%@の原因で投稿が報告されました";
 "msgf_profile_reported" = "あなたのアカウント%@はOneplanet%@に違反しているので、アカウントが報告されました";
-"msgf_liked_your_post_and_gave_gem" = "Your photo was liked by %@, congratulations to get a %@.";
+"msgf_liked_your_post_and_gave_gem" = "めでとうございます！あなたの写真が%@にLIKEされましたので、%@を1コ獲得しました。";
 "msgf_thankyou_report_user" = "Oneplanetの安全の維持にご協力いただきありがとうございます。報告を受けた写真やコメントの投稿者には、報告した人についての情報は開示されません。\n審査により%@に違反していると判断された場合、この投稿は削除されます。";
 "msgf_unblock_user_prompt" = "%@さんのブロックを解除しますか？";
 "msgf_block_user_prompt" = "%@さんをブロックしますか？";
 "msgf_no_search_results" = "No results for \"%@\"";
+"msgf_daily_login_reward" = "毎日ログインして、$@をもらおう！";
 
 "ph_guest_login" = "ゲスト登録";
 "ph_email_login" = "またはメールアドレスでログイン";
@@ -157,7 +161,7 @@
 "ph_copy_id" = "ID をコピー";
 "ph_follow" = "フォローする";
 "ph_unfollow" = "フォローをやめる";
-"ph_following" = "Following";
+"ph_following" = "フォロー中";
 "ph_choose_role" = "エリアンの選択";
 "ph_choose_color" = "色を選んでください";
 "ph_edit_profile" = "プロフィールを編集";
@@ -179,14 +183,14 @@
 "ph_bid_lot" = "Commodity";
 "ph_successful_shipping_info_submission" = "入力完了";
 "ph_goto_bidding" = "Go bidding page";
-"ph_get_gem" = "Get it";
-"ph_has_got_gem" = "Has got it";
+"ph_get_gem" = "報酬を受け取りしましょう";
+"ph_has_got_gem" = "報酬を受け取りました";
 "ph_new_notices" = "新通知";
 "ph_read_notices" = "過去の通知";
 "ph_recover_account" = "アカウント復元";
 "ph_petition_submitted" = "報告成功";
 "ph_i_get_it" = "分かりました";
-"ph_unlock_option_prompt" = "アンロックするジェムを選択します";
+"ph_unlock_option_prompt" = "アンロックするジェムを選択しましょう";
 "ph_latest_posts" = "最新";
 "ph_best_posts" = "最好評";
 "ph_thanks_for_reporting_post" = "ご報告ありがとうございました";
@@ -196,6 +200,10 @@
 "ph_upload_free_photo" = "写真をアップロードする";
 "ph_dont_show_again" = "二度とこのメッセージを表示しない";
 "ph_no_room_for_photo" = "full";
+"ph_category_unlocked" = "私がアンロックした商品";
+"ph_bidding_begins" = "オークション スタート";
+"ph_purple_gem" = "ルビッド（入札する時にオススメ）";
+"ph_purchase_success" = "購入が成功しました";
 
 "phf_seconds_ago_short" = "%@ s";
 "phf_minutes_ago_short" = "%@ m";
@@ -208,6 +216,9 @@
 "phf_followers" = "%@ フォロワー";
 "phf_followings" = "%@ フォロー中";
 "phf_remaining_uploads" = "残り回数%@/%@ (%@)";
+"phf_buy_some" = "%@ つ購入";
+"phf_buy_some_get_some_free" = "%@ つ購入すると %@ つが無料";
+"phf_purchase_success" = "%@を %@ つを購入しました。";
 
 "no_posts" = "投稿がありません";
 "no_promo_popups" = "No Promotion Pop-ups Yet";
@@ -218,6 +229,8 @@
 "no_follower_list" = "You don't have followers yet";
 "no_following_list" = "You haven't followed others yet";
 "no_generic" = "No Items";
+"no_unlocked" = "まだ商品をアンロックしていません。";
+"no_unlocked_detail" = "オークションに参加するには商品をアンロックしてください。急いでアンロックしよう！";
 
 "err_no_camera_access" = "カメラへのリクセルを求めています";
 "err_no_library_access" = "写真をライブラリに追加しようとしています";
@@ -247,31 +260,30 @@
 "act_bigging_ended" = "オークションが終了しました！";
 "act_countdown" = "オークション カウントダウン...";
 
-"pop_blue_gem_usage" = "用途：解鎖商品、投標商品。";
-"pop_green_gem_usage" = "用途：解鎖商品、高效率投標商品。";
-"pop_purple_gem_usage" = "用途：解鎖商品。";
+"pop_blue_gem_usage" = "使いみち：商品のアンロック、入札。";
+"pop_green_gem_usage" = "使いみち：商品のアンロック。";
+"pop_purple_gem_usage" = "使いみち：商品のアンロック、高効率の商品入札。";
 
 "pop_blue_gem_action" = "写真をアップロードします";
 "pop_green_gem_action" = "%@へ";
 
-"pop_blue_gem_bullet1" = "獲得方式一：上傳照片後，畫面左上角的經驗值會增加，滿格即獲得一顆 競標寶。";
-"pop_blue_gem_bullet2" = "使用一顆 競標寶 + %@，可解鎖商品或投標一次。";
-"pop_blue_gem_bullet3" = "將 競標寶 升級成 %@，有助於競標時的效率，並減少信用卡或電信商的支付問題。";
+"pop_blue_gem_bullet1" = "%@＋%@を1コ使用したら、商品をアンロックすること、または商品への入札することができます。";
+"pop_blue_gem_bullet2" = "獲得方法：写真をアップロードして評価されて経験値が満タンになると即に%@を1コ獲得します。";
+"pop_blue_gem_bullet3" = "%@を%@にアップグレードすることは、入札時の効率に、またクレジットカード又はキャリア決済の支払問題の減少に役立ちます。";
 
-"pop_green_gem_bullet1" = "獲得方式ㄧ：Supreme.AI (官方) 喜歡你的相片。";
-"pop_green_gem_bullet2" = "獲得方式二：該週排行榜冠軍族群的用戶。";
-"pop_green_gem_bullet3" = "獲得方式三：不定期舉辦 %@，請密切關注！";
-"pop_green_gem_bullet4" = "使用一顆 解鎖寶 即可解鎖一項商品。";
+"pop_green_gem_bullet1" = "%@を1コ使用したら、直接に商品をアンロックできます。";
+"pop_green_gem_bullet2" = "獲得方法1：Supreme.AIがあなたの写真にLIKEされます。";
+"pop_green_gem_bullet3" = "獲得方法2：イベントに合わせて贈ります。";
 
-"pop_purple_gem_bullet1" = "紅金寶是 %@ 的升級版，有助於競標時的效率，並減少信用卡或電信商的支付問題。";
-"pop_purple_gem_bullet2" = "使用 紅金寶 可解鎖商品或投標一次。";
+"pop_purple_gem_bullet1" = "ルビッドを1コ使用したら、直接に商品へのアンロック、または入札することが一回できます。（高効率入札に達するため、商品への入札に使用のがお勧め。）";
+"pop_purple_gem_bullet2" = "ルビッドは%@のアップグレードバージョン。入札時の効率に、またクレジットカード又はキャリア決済の支払問題の減少に役立ちます。";
 
 "pop_post_suspended" = "回数制限が切れました";
 "pop_cooldown_time" = "待ち時間 (%@)";
 "pop_free_upload_bullet" = "写真アップロードの回数は限られていませんけど、%@を獲得できません。";
 "pop_cant_upload_bullet" = "時間復元するまでしばらくお待ちください";
-"pop_valued_upload_bullet1" = "上傳照片評分獲得經驗值，當經驗值滿格即獲得一顆 %@";
-"pop_valued_upload_bullet2" = "越符合本次 Oneplanet 提示的顏色主題，收集 %@ 的效率越高。";
+"pop_valued_upload_bullet1" = "写真をアップロードして評価されて経験値を獲得して、経験値が満タンになると即に%@を1コ獲得します。";
+"pop_valued_upload_bullet2" = "今回Oneplanetが提示したカラーテーマに該当するほど、%@の収集効率が高くなります。";
 
 "ship_first_name" = "名前";
 "ship_last_name" = "苗字";
@@ -285,14 +297,29 @@
 
 "rp_terms_violation" = "このアカウントはOneplanet利用規約に違反しているよ思う";
 "rp_dont_like_post_title" = "単に気に入らない";
-"rp_dnudity_title" = "ヌードまたはわいせつコンテンツ";
+"rp_nudity_title" = "ヌードまたはわいせつコンテンツ";
 "rp_hate_speech_title" = "ヘイトスピーチや差別的なシンボル";
 "rp_violance_title" = "暴力または暴力的脅威";
 "rp_hate_speech_subtitle" = "人種差別、同性愛嫌悪、性差別";
 "rp_violance_subtitle" = "生々しい傷、違法行為、危険な团体、犯罪組織";
 "rp_dont_like_post_detail" = "この投稿が気に入らない場合";
-"rp_dnudity_detail" = "ヌードまたはわいせつコンテンツとして報告しますか？";
+"rp_nudity_detail" = "ヌードまたはわいせつコンテンツとして報告しますか？";
 "rp_hate_speech_detail" = "ヘイトスピーチや差別的なシンボルとして報告しますか？";
 "rp_violance_detail" = "暴力または暴力的脅威として報告しますか？";
+"rp_dont_like_post" = "単に気に入らない";
+"rp_nudity" = "わいせつコンテンツまたは暴力";
+"rp_violance" = "ヘイトスピーチや差別的なシンボル";
+"rp_hate_speech" = "暴力または暴力的脅威";
 
 "smb_enum_spliter" = ", ";
+
+"tut_unlock" = "アンロックして、オークションに参加しよう";
+"tut_wait_for_bid" = "オークションが開始するまでしばらくお待ちください！";
+"tut_bid" = "入札しよう！";
+
+"pn_session_start" = "今回の入札商品を公表しました。商品をアンロックする時間をお見逃しなく！";
+"pn_1hr_to_bid" = "オークションが開始するまであと1時間、商品をアンロックする時間をお見逃しなく！";
+"pn_win_a_lot" = "%@を落札しました！";
+"pn_winner_notice" = "今回のオークションで落札しました！マイオクから落札分で確認します。";
+"pn_loser_notice" = "今回のオークションで落札できませんでした。次回の商品が48時間以内に発表されます！";
+"pn_prerelease_login_reward" = "事前登録完了、ジェムを獲得できました。商品をアンロックしよう！";

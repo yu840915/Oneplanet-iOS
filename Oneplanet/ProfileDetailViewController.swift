@@ -15,19 +15,9 @@ protocol UserProfileDisplayable {
     var alien: Alien? {get}
 }
 
-protocol FollowCountsProvider {
-    var followers: Int {get}
-    var followings: Int {get}
-}
-
-struct FakeCount: FollowCountsProvider {
-    var followers: Int = 1000
-    var followings: Int = 1530
-}
-
 class ProfileDetailViewController: UIViewController, UserSessionDepending, DefaultInstanceFactory {
     class var baseHeight: CGFloat {
-        return 90 + UIScreen.main.bounds.width
+        return 116 + UIScreen.main.bounds.width
     }
     class var warningHeight: CGFloat {
         return 184 + baseHeight
@@ -35,10 +25,18 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
 
     var userSession: UserSession!
     var showFollowListAction: ((URL)->())?
-    var followCountsProvider: FollowCountsProvider? {
+    var relationshipAction: (()->())?
+    var followCountsProvider: FollowCounts? {
         didSet {
             if isViewLoaded {
                 updateViewsForFollowCounts()
+            }
+        }
+    }
+    var relationshipState: SocialRelationshipStates? {
+        didSet {
+            if isViewLoaded {
+                updateViewsForProfile()
             }
         }
     }
@@ -81,7 +79,6 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
         localizeTitles()
         updateViewsForProfile()
         updateViewsForFollowCounts()
-        followCountsProvider = FakeCount()
         warningView.isHidden = !shouldShowWarning
     }
     
@@ -93,19 +90,36 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
     
     private func updateViewsForProfile() {
         guard let profile = self.profile else { return }
-        avatarView.backgrondImage = profile.alien?.race.frameImage
         nicknameLabel.text = profile.nickname
         if let image = profile.alien?.avatar {
             raceImageView.image = image
         }
-        actionButton.isHidden = !configuration.actionButton
+        actionButton.isHidden = !configuration.actionButton || relationshipState == nil
         countsTextView.isHidden = !configuration.detailLabel
         avatarView.avatar = nil
         avatarView.avatar = profile.avatar
+        avatarView.backgrondImage = profile.alien?.frameImage
+        if let rel = relationshipState {
+            var title = rel.isFollowing ? Localized.phrases.following : Localized.phrases.follow
+            if rel.isBlocking {
+                title = Localized.titles.unblock
+            }
+            actionButton.setTitle(title, for: .normal)
+            if rel.isBlocking {
+                countsTextView.alpha = 0.8
+                countsTextView.isUserInteractionEnabled = false
+            } else {
+                countsTextView.alpha = 1.0
+                countsTextView.isUserInteractionEnabled = true
+            }
+        }
     }
     
     private func updateViewsForFollowCounts() {
-        guard let provider = followCountsProvider else { return }
+        guard let provider = followCountsProvider else {
+            countsTextView.text = nil
+            return
+        }
         let followerCount = SharedNumberFormatters.roughNumber.string(for: provider.followers)
         let follower = String(format: Localized.phraseFormats.followers, followerCount)
         let followingsCount = SharedNumberFormatters.roughNumber.string(for: provider.followings)
@@ -113,7 +127,7 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
         let text = [follower, followings].joined(separator: Localized.symbols.enumSpliter)
         let followerCountRange = (text as NSString).range(of: followerCount)
         let followerRange = (text as NSString).range(of: follower)
-        let followingsCountRange = (text as NSString).range(of: followingsCount)
+        let followingsCountRange = (text as NSString).range(of: followingsCount, options: .backwards)
         let followingRange = (text as NSString).range(of: followings)
         let attrStr = NSMutableAttributedString(string: text, attributes: [.foregroundColor : ColorPalette.defaultText])
         attrStr.addAttributes([.link : DeepLinks.followerList], range: followerRange)
@@ -127,6 +141,7 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
     }
     
     @IBAction func performAction(_ sender: UIButton) {
+        relationshipAction?()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

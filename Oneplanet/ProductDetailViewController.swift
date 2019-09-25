@@ -21,6 +21,7 @@ class ProductDetailViewController: UIViewController, UserSessionDepending {
         }
     }
     var productQuery: String?
+    var isLockVisible = true
 
     @IBOutlet weak var accessoryContainer: UIStackView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
@@ -43,6 +44,8 @@ class ProductDetailViewController: UIViewController, UserSessionDepending {
             updateViewsForPreviews()
         }
     }
+    private var handles: [Any]?
+    private var updateClock: UpdateClock!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +56,23 @@ class ProductDetailViewController: UIViewController, UserSessionDepending {
         } else {
             getProductDetail()
         }
+        updateClock = UpdateClock(preferredFrameRate: 5, onTick: {[weak self] in
+            self?.updateViewsForLockState()
+        })
+        setUpHandles()
+        updateViewsForBidPhase()
+    }
+    
+    private func setUpHandles() {
+        var handles: [Any] = []
+        if let bidIndicator = userSession.bidPhaseIndicator {
+            handles.append(bidIndicator.updateObservers.add {[weak self] in
+                OperationQueue.main.addOperation {
+                    self?.updateViewsForBidPhase()
+                }
+            })
+        }
+        self.handles = handles
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -101,18 +121,26 @@ class ProductDetailViewController: UIViewController, UserSessionDepending {
 private extension ProductDetailViewController {
     func updateViewsForProductIfNeeded() {
         guard let prod = product else { return }
+        updateViewsForBidPhase()
         accessoryContainer.isHidden = true
         contentContainer.isHidden = false
         previews = prod.images
         titleLabel.text = prod.displayName
-        let attrDes = markdownParser.parse(prod.description).mutableCopy() as! NSMutableAttributedString
+        let des = prod.description.replacingOccurrences(of: "\\n", with: "\n")
+        let attrDes = markdownParser.parse(des).mutableCopy() as! NSMutableAttributedString
         let range = NSMakeRange(0, attrDes.length)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = .center
         attrDes.addAttribute(.paragraphStyle, value: paragraphStyle, range: range)
         detailTextView.attributedText = attrDes
+        updateViewsForLockState()
     }
     
+    func updateViewsForBidPhase() {
+        guard let prod = product, prod.allowsUnlock else { return }
+        lockView.isHidden = !isLockVisible
+    }
+
     func getProductDetail() {
         guard getDetailOperation == nil else {return}
         accessoryContainer.isHidden = false
@@ -183,7 +211,8 @@ private extension ProductDetailViewController {
     }
     
     func updateViewsForLockState() {
-        let isLocked = true
+        guard let prod = product, prod.allowsUnlock else { return }
+        let isLocked = userSession.lotList.isLocked(prod)
         let appearance = isLocked ? LockAppearance.forLocked : LockAppearance.forUnlocked
         lockLabel.text = appearance.title
         lockLabel.textColor = appearance.color

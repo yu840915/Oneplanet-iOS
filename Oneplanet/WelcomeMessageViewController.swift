@@ -22,6 +22,7 @@ class WelcomeMessageViewController: UIViewController, AuthorizationFlowEntryPoin
         navigationController!.navigationBar.barStyle = .blackTranslucent
         updatePageControl()
         showSkipIfNeeded()
+        UserProgressChecklist.watchWelcomeMessage.markAsFinished()
     }
     
     private func updatePageControl() {

@@ -18,6 +18,8 @@ class Preferences {
     static let lastPromoPopUpShowUpDate = DatePreferencesItem(key: "OPNLastPromoShowUpDate")
     static let shouldHideFreePhotoInfo = BoolPreferencesItem(key: "OPNShouldHideFreePhotoInfo")
     static let shouldHideValuedPhotoInfo = BoolPreferencesItem(key: "OPNShouldHideValuedPhotoInfo")
+    static let lastAgreedBiddingTermVersion = IntPreferenceItem(key: "OPNLastAgreedBiddingTermVersion")
+    static let shouldShowBadgeOnHistory = BoolPreferencesItem(key: "OPNShouldShowBadgeOnHistory")
 }
 
 class PreferencesItem<T> {
@@ -58,6 +60,17 @@ class StringPreferencesItem: PreferencesItem<String> {
         }
         get {
             return UserDefaults.standard.string(forKey: key)
+        }
+    }
+}
+
+class IntPreferenceItem: PreferencesItem<Int> {
+    override var value: Int? {
+        set {
+            UserDefaults.standard.set(newValue, forKey: key)
+        }
+        get {
+            return UserDefaults.standard.integer(forKey: key)
         }
     }
 }

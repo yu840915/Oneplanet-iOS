@@ -11,11 +11,27 @@ import UIKit
 class UnlockFlowViewController: UIViewController, UserSessionDepending {
     var userSession: UserSession!
     var product: ProductOverview!
+    var unlockOperation: UnlockProductOperation?
+    var successHandler: (()->())?
     
     var pageViewController: UIPageViewController!
     override func viewDidLoad() {
         super.viewDidLoad()
-        showGemPicker()
+        if userSession.bidPhaseIndicator.biddingHasStarted {
+            showTooLatePopUp(animated: false)
+            return
+        }
+        if userSession.wallet.greenGem.total > 0 {
+            showGreenGemPopUp()
+        } else if userSession.wallet.blueGem.total > 0 && userSession.wallet.purpleGem.total > 0 {
+            showGemPicker()
+        } else if userSession.wallet.blueGem.total > 0 {
+            showBlueGemPopUp(animated: false)
+        } else if userSession.wallet.purpleGem.total > 0 {
+            showPurpleGemPopUp(animated: false)
+        } else {
+            showInsufficientGemPopUp()
+        }
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -38,9 +54,47 @@ private extension UnlockFlowViewController {
     }
     
     func unlock(with gemType: Currency) {
-        
+        if userSession.bidPhaseIndicator.biddingHasStarted {
+            showTooLatePopUp(animated: true)
+            return
+        }
+        guard unlockOperation == nil else {
+            return
+        }
+        let loading = FullscreenLoadingViewController.fromDefaultStoryboard()
+        present(loading, animated: false, completion: nil)
+        let op = UnlockProductOperation(product: product, session: userSession, currency: gemType)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didUnlock()
+            }
+        }
+        unlockOperation = op
+        op.start()
     }
     
+    func didUnlock() {
+        presentedViewController?.dismiss(animated: false, completion: nil)
+        let op = unlockOperation!
+        unlockOperation = nil
+        if op.success == true {
+            switch op.currency {
+            case .blueGem: userSession.wallet.setNeedsUpdateBlueGem()
+            case .purpleGem: userSession.wallet.setNeedsUpdatePurpleGem()
+            case .greenGem: userSession.wallet.setNeedsUpdateGreenGem()
+            }
+            dismiss(animated: false, completion: successHandler)
+        } else if let error = op.error {
+            showFailureAlert(error)
+        }
+    }
+    
+    func showFailureAlert(_ error: Error) {
+        let alert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Localized.phrases.tryAgain, style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+
     func showGreenGemPopUp() {
         let product = self.product!
         let container = prepareActionPopUp{[weak self] vc in
@@ -91,7 +145,9 @@ private extension UnlockFlowViewController {
     func showBlueGemPopUp(animated: Bool) {
         let product = self.product!
         let container = prepareActionPopUp{[weak self] vc in
-            vc.configuration = UnlockWithBlueGemPopUpConfiguration(productName: product.displayName, formattedPrice: "$1.99")
+            let iap = IAPTransactionProcessor.shared.blueGemRelatedProducts.unlockProduct!
+            let price = IAPTransactionProcessor.shared.blueGemRelatedProducts.priceFormatter!.string(for: iap.price)!
+            vc.configuration = UnlockWithBlueGemPopUpConfiguration(productName: product.displayName, formattedPrice: price)
             vc.mainAction = {
                 self?.unlock(with: .blueGem)
             }
@@ -111,16 +167,23 @@ private extension UnlockFlowViewController {
     }
     
     func showUnlockSucceededAlert() {
-        let alert = UIAlertController(title: String(format: Localized.messageFormats.unlockSucceeded, product.displayName), message: Localized.messages.unlockSucceeded, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: Localized.titles.ok, style: .default, handler: { (_) in
-            self.dismiss(animated: false, completion: nil)
-        }))
-        present(alert, animated: true, completion: nil)
+        let container = prepareActionPopUp{[weak self] vc in
+            vc.configuration = UnlockSuccessPopUpConfiguration()
+            vc.mainAction = {
+                self?.unlock(with: .purpleGem)
+            }
+            vc.cancelAction = {
+                self?.cancelAndExit()
+            }
+        }
+        pageViewController.setViewControllers([container], direction: .forward, animated: true, completion: nil)
     }
     
     func showInsufficientGemPopUp() {
         let container = prepareActionPopUp{[weak self] vc in
-            vc.configuration = InsufficientBlueGemToUnlockPopUpConfiguration(formattedPrice: "$1.99")
+            let iap = IAPTransactionProcessor.shared.blueGemRelatedProducts.unlockProduct!
+            let price = IAPTransactionProcessor.shared.blueGemRelatedProducts.priceFormatter!.string(for: iap.price)!
+            vc.configuration = InsufficientBlueGemToUnlockPopUpConfiguration(formattedPrice: price)
             vc.mainAction = {
                 self?.goToCreatePost()
             }
@@ -132,6 +195,19 @@ private extension UnlockFlowViewController {
         dismiss(animated: true) {
             router.handle(DeepLinks.postEditor)
         }
+    }
+    
+    func showTooLatePopUp(animated: Bool) {
+        let subtitle = userSession.bidPhaseIndicator.phase == .ended ? Localized.messages.lotClosedDescription : Localized.messages.lotBeingBidDescription
+        let container = prepareActionPopUp {[weak self] (vc) in
+            let config = UnlockTooLateConfiguration()
+            config.subtitle = subtitle
+            vc.configuration = config
+            vc.mainAction = {
+                self?.cancelAndExit()
+            }
+        }
+        pageViewController.setViewControllers([container], direction: .forward, animated: animated, completion: nil)
     }
 }
 

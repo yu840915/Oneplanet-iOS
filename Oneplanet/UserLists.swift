@@ -12,19 +12,19 @@ import Alamofire
 
 class UserList: PaginatedList<GetUserListOperationFactory> {
     class func searchList(with userSession: UserSession, query: String) -> UserList {
-        let url = ServiceURLs.base.appendingPathComponent("user").addingQ(query)
+        let url = ServiceURLs.base.appendingPathComponent("users/search").addingQ(query)
         return UserList(operationFactory: GetUserListOperationFactory(session: userSession, url: url))
     }
     class func followerList(with userSession: UserSession) -> UserList {
-        return UserList(operationFactory: GetUserListOperationFactory(session: userSession, url: ServiceURLs.base.appendingPathComponent("me/followers")))
+        return followerList(for: userSession.profile!.user, userSession: userSession)
     }
     
     class func followingList(with userSession: UserSession) -> UserList {
-        return UserList(operationFactory: GetUserListOperationFactory(session: userSession, url: ServiceURLs.base.appendingPathComponent("me/followings")))
+        return followingList(for: userSession.profile!.user, userSession: userSession)
     }
     
     class func blockList(with userSession: UserSession) -> UserList {
-        return UserList(operationFactory: GetUserListOperationFactory(session: userSession, url: ServiceURLs.base.appendingPathComponent("me/blocking")))
+        return UserList(operationFactory: GetUserListOperationFactory(session: userSession, url: ServiceURLs.base.appendingPathComponent("me/blocks")))
     }
     
     class func followerList(for user: User, userSession: UserSession) -> UserList {
@@ -32,7 +32,7 @@ class UserList: PaginatedList<GetUserListOperationFactory> {
     }
     
     class func followingList(for user: User, userSession: UserSession) -> UserList {
-        return UserList(operationFactory: GetUserListOperationFactory(session: userSession, url: ServiceURLs.base.appendingPathComponent("users/\(user.id)/followings")))
+        return UserList(operationFactory: GetUserListOperationFactory(session: userSession, url: ServiceURLs.base.appendingPathComponent("users/\(user.id)/following")))
     }
 }
 
@@ -46,7 +46,7 @@ class GetUserListOperationFactory: PaginatedFetchingOperationFactoryType {
     }
     
     func makeInitialOperation() -> GetUserListOperation {
-        return GetUserListOperation(session: session, url: initialURL)
+        return GetUserListOperation(session: session, url: initialURL.addingFirstPageQeury())
     }
 }
 

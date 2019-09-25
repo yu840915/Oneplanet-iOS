@@ -15,11 +15,16 @@ class BlockListTableViewController: UITableViewController, UserSessionDepending 
     var users: [User] = []
     var sections: [Section] = []
     private var listUpdateHandles: [Any]?
+    var updateClock: UpdateClock!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
         title = Localized.phrases.blockList
         prepareList()
+        updateClock = UpdateClock(preferredFrameRate: 5, onTick: {[weak self] in
+            self?.updateVisibleContentCells()
+        })
     }
     
     @IBAction func reload(_ sender: UIRefreshControl) {
@@ -58,6 +63,25 @@ class BlockListTableViewController: UITableViewController, UserSessionDepending 
         cell.actionButton.isSelected = true
     }
     
+    func updateVisibleContentCells() {
+        guard let indexPaths = tableView.indexPathsForVisibleRows else { return }
+        indexPaths.forEach{
+            if sections[$0.section] == .content,
+                let cell = tableView.cellForRow(at: $0) as? UserOverviewCell {
+                updateContentCell(cell, at: $0)
+            }
+        }
+    }
+    
+    func updateContentCell(_ cell: UserOverviewCell, at indexPath: IndexPath) {
+        if let states = userSession.socialRelationshipRepo.relationshipWithUser(of: users[indexPath.row].id)?.states, states.isBlocking {
+            cell.actionButton.isHidden = false
+            cell.actionButton.isSelected = true
+        } else {
+            cell.actionButton.isHidden = true
+        }
+    }
+
     private func showUnblockAlertForUser(at indexPath: IndexPath) {
         let user = users[indexPath.row]
         let alert = UIAlertController(title: String(format: Localized.messageFormats.unblockUserPrompt, user.nickname), message: Localized.messages.unblockDescription, preferredStyle: .alert)
@@ -154,7 +178,11 @@ extension BlockListTableViewController {
     }
     
     func unblock(_ user: User) {
-        
+        guard let rel = userSession.socialRelationshipRepo.relationship(with: user),
+            rel.states?.isBlocking == true else {
+            return
+        }
+        rel.unblock()
     }
 }
 

@@ -74,7 +74,7 @@ class PostCardCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        if expanded {
+        if expanded || contentTextView.isHidden {
             moreButton.isHidden = true
             return
         }
@@ -126,6 +126,15 @@ extension PostCardCell {
         galleryCollectionView.contentOffset = .zero
         galleryCollectionView.reloadData()
         ds.pageControl = pageControl
+    }
+    
+    func updateViews(with userFetcher: UserFetcher) {
+        avatarView.update(with: userFetcher.user)
+        guard let user = userFetcher.user else {
+            userFetcher.initializeIfNeeded()
+            return
+        }
+        nameLabel.text = user.nickname
     }
     
     private func setUpContentSection(with dataSource: PostDisplayable) {

@@ -28,14 +28,19 @@ class BlueGemPopUpViewController: UIViewController {
     private func localizeTitles() {
         nameLabel.text = Localized.titles.blueGem
         usageLabel.text = Localized.gemStonePopUp.blueGemUsage
-        bulletTextView1.text = Localized.gemStonePopUp.blueGemBullet1
-        bulletTextView2.text = String(format: Localized.gemStonePopUp.blueGemBullet2, "$1.99")
+        var price = ""
+        if let prodcut = IAPTransactionProcessor.shared.blueGemRelatedProducts.unlockProduct,
+            let formatter = IAPTransactionProcessor.shared.blueGemRelatedProducts.priceFormatter {
+            price = formatter.string(for: prodcut.price) ?? ""
+        }
+        bulletTextView1.text = String(format: Localized.gemStonePopUp.blueGemBullet1, Localized.titles.blueGem, price)
+        bulletTextView2.text = String(format: Localized.gemStonePopUp.blueGemBullet2, Localized.titles.blueGem)
         goButton.setTitle(Localized.gemStonePopUp.blueGemAction, for: .normal)
         prepareActionBullet()
     }
     
     private func prepareActionBullet() {
-        let text = String(format: Localized.gemStonePopUp.blueGemBullet3, Localized.titles.purpleGem)
+        let text = String(format: Localized.gemStonePopUp.blueGemBullet3, Localized.titles.blueGem, Localized.titles.purpleGem)
         let linkRange = (text as NSString).range(of: Localized.titles.purpleGem)
         let attrStr = NSMutableAttributedString(string: text, attributes: [.font:  UIFont.systemFont(ofSize: 12)])
         attrStr.addAttributes([.link : DeepLinks.purpleGemPopUp, .font: UIFont.systemFont(ofSize: 12, weight: .semibold)], range: linkRange)

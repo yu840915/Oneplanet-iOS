@@ -68,4 +68,50 @@ class ProductTests: XCTestCase {
             XCTFail(error.localizedDescription)
         }
     }
+    
+    func testParseBidProductOverview() {
+        let data = """
+{
+        "name":"product-7",
+        "display_name":"Off-White™/Nike® Air Max 90",
+        "id":"5d69423ec4e957c193f2a274",
+        "thumbnail":"https://storage.googleapis.com/oneplanet-app/off90-2.jpg",
+        "shipped": true,
+        "shipping_state": "ready_to_ship",
+        "shipping_no": "11111111",
+        "track_shipment_url": "https://www.fedex.com/en-us/tracking.html"
+}
+""".data(using: .utf8)!
+
+        do {
+            let overview = try JSONDecoder.default.decode(BidProductOverview.self, from: data)
+            XCTAssertEqual(overview.shippingStates?.isShipped, true)
+            XCTAssertEqual(overview.shippingStates?.shippingState, "ready_to_ship")
+            XCTAssertEqual(overview.shippingStates?.trackingURL, URL(string: "https://www.fedex.com/en-us/tracking.html")!)
+            XCTAssertEqual(overview.shippingStates?.trackingNumber, "11111111")
+            XCTAssertEqual(overview.id, "5d69423ec4e957c193f2a274")
+        } catch let error {
+            XCTFail(error.localizedDescription)
+        }
+    }
+    
+    func testParseBidProductOverviewWithoutShippingInfo() {
+        let data = """
+{
+        "name":"product-7",
+        "display_name":"Off-White™/Nike® Air Max 90",
+        "id":"5d69423ec4e957c193f2a274",
+        "thumbnail":"https://storage.googleapis.com/oneplanet-app/off90-2.jpg",
+}
+""".data(using: .utf8)!
+        
+        do {
+            let overview = try JSONDecoder.default.decode(BidProductOverview.self, from: data)
+            XCTAssertNil(overview.shippingStates)
+            XCTAssertEqual(overview.id, "5d69423ec4e957c193f2a274")
+        } catch let error {
+            XCTFail(error.localizedDescription)
+        }
+    }
+
 }

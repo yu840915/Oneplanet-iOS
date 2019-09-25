@@ -22,31 +22,28 @@ class PostTests: XCTestCase {
     func testParsePost() {
         let data = """
 {
-    "id": "5d4f0e6e841fa8edbf790ca3",
-    "created_at":"2019-08-19T10:27:46.629000+00:00",
-    "title": "qwe",
-    "user": "5cf93b87a261e132018adbbf",
-    "caption": "hello",
-    "images": [
-      "https://example.com/image-1.jpg",
-      "https://example.com/image-2.jpg",
-      "https://example.com/image-3.jpg"
-    ]
+    "caption":"this is caption",
+    "created_at":"2019-09-10T19:13:30.691Z",
+    "images":["https://storage.googleapis.com/oneplanet-app-images/hpfo.jpg"],
+    "title":"this is title",
+    "type":"score",
+    "user":"5d77754f4b9d042edcc6f4e4",
+    "id":"5d77f5da2dbef8480f23607e"
 }
 """.data(using: .utf8)!
         do {
             let post = try JSONDecoder.default.decode(Post.self, from: data)
-            XCTAssertEqual(post.id, "5d4f0e6e841fa8edbf790ca3")
-            XCTAssertEqual(post.authorID, "5cf93b87a261e132018adbbf")
-            XCTAssertEqual(post.caption, "hello")
-            XCTAssertEqual(post.imageURLs.count, 3)
-            XCTAssertEqual(post.createdAt, SharedDateFormatters.serverDate.date(from: "2019-08-19T10:27:46.629000+00:00"))
+            XCTAssertEqual(post.id, "5d77f5da2dbef8480f23607e")
+            XCTAssertEqual(post.authorID, "5d77754f4b9d042edcc6f4e4")
+            XCTAssertEqual(post.caption, "this is caption")
+            XCTAssertEqual(post.imageURLs.count, 1)
+            XCTAssertEqual(post.createdAt, SharedDateFormatters.serverDate.date(from: "2019-09-10T19:13:30.691Z"))
         } catch let error {
             XCTFail(error.localizedDescription)
         }
     }
     
     func testParseServerDate() {
-        XCTAssertNotNil(SharedDateFormatters.serverDate.date(from: "2019-08-19T10:27:46.629000+00:00"))
+        XCTAssertNotNil(SharedDateFormatters.serverDate.date(from: "2019-09-10T19:13:30.691Z"))
     }
 }

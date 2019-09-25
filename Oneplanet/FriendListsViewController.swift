@@ -104,6 +104,4 @@ class FriendshipOverviewModel: UserOverviewDisplayable {
     init(profile: UserProfileDisplayable) {
         self.profile = profile
     }
-
-    
 }

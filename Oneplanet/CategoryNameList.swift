@@ -33,9 +33,7 @@ class GetCategoryCountOperation: AlamofireAPIAccessOperation {
         self.userSession = userSession
     }
     override func prepareURLRequest() throws -> URLRequest {
-        var comp = URLComponents(url: ServiceURLs.devBase.appendingPathComponent("products"), resolvingAgainstBaseURL: false)!
-        comp.queryItems = [.init(name: "category", value: categoryName.name)]
-        return userSession.addingAuthorizationToken(to: try URLRequest(url: comp.url!, method: .head))
+        return userSession.addingAuthorizationToken(to: try URLRequest(url: ServiceURLs.devBase.appendingPathComponent("products/category/\(categoryName.name)"), method: .head))
     }
     
     override func processHTTPResponseHeader(_ header: [AnyHashable : Any]) throws {

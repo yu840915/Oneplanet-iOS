@@ -126,19 +126,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="180" height="48"/>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6Q9-Kp-vjq">
-                                            <rect key="frame" x="10" y="6" width="160" height="36"/>
+                                            <rect key="frame" x="10" y="4" width="160" height="40"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MMf-bK-kkZ" userLabel="Day Stack View">
-                                                    <rect key="frame" x="0.0" y="0.0" width="34" height="36"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="34" height="40"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sI0-Oc-y2V" userLabel="Value Label">
-                                                            <rect key="frame" x="0.0" y="0.0" width="34" height="24"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="34" height="28"/>
                                                             <fontDescription key="fontDescription" name="DS-Digital-BoldItalic" family="DS-Digital" pointSize="24"/>
                                                             <color key="textColor" name="lock red"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DAYS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpx-eW-iZN" userLabel="Unit Label">
-                                                            <rect key="frame" x="0.0" y="24" width="34" height="12"/>
+                                                            <rect key="frame" x="0.0" y="28" width="34" height="12"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <color key="textColor" name="lock red"/>
                                                             <nil key="highlightedColor"/>
@@ -149,16 +149,16 @@
                                                     </constraints>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="D6O-nD-vRO" userLabel="Hour Stack View">
-                                                    <rect key="frame" x="42" y="0.0" width="34" height="36"/>
+                                                    <rect key="frame" x="42" y="0.0" width="34" height="40"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5RY-oP-dDX" userLabel="Value Label">
-                                                            <rect key="frame" x="0.0" y="0.0" width="34" height="24"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="34" height="28"/>
                                                             <fontDescription key="fontDescription" name="DS-Digital-BoldItalic" family="DS-Digital" pointSize="24"/>
                                                             <color key="textColor" name="lock red"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HRS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07z-hF-uep" userLabel="Unit Label">
-                                                            <rect key="frame" x="0.0" y="24" width="34" height="12"/>
+                                                            <rect key="frame" x="0.0" y="28" width="34" height="12"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <color key="textColor" name="lock red"/>
                                                             <nil key="highlightedColor"/>
@@ -169,16 +169,16 @@
                                                     </constraints>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="L21-L0-EzI" userLabel="Minute Stack View">
-                                                    <rect key="frame" x="84" y="0.0" width="34" height="36"/>
+                                                    <rect key="frame" x="84" y="0.0" width="34" height="40"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Elj-uT-zXu" userLabel="Value Label">
-                                                            <rect key="frame" x="0.0" y="0.0" width="34" height="24"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="34" height="28"/>
                                                             <fontDescription key="fontDescription" name="DS-Digital-BoldItalic" family="DS-Digital" pointSize="24"/>
                                                             <color key="textColor" name="lock red"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MINS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePP-8v-a0e" userLabel="Unit Label">
-                                                            <rect key="frame" x="0.0" y="24" width="34" height="12"/>
+                                                            <rect key="frame" x="0.0" y="28" width="34" height="12"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <color key="textColor" name="lock red"/>
                                                             <nil key="highlightedColor"/>
@@ -189,16 +189,16 @@
                                                     </constraints>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ivj-El-aHB" userLabel="Second Stack View">
-                                                    <rect key="frame" x="126" y="0.0" width="34" height="36"/>
+                                                    <rect key="frame" x="126" y="0.0" width="34" height="40"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k6H-si-aVr" userLabel="Value Label">
-                                                            <rect key="frame" x="0.0" y="0.0" width="34" height="24"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="34" height="28"/>
                                                             <fontDescription key="fontDescription" name="DS-Digital-BoldItalic" family="DS-Digital" pointSize="24"/>
                                                             <color key="textColor" name="lock red"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SECS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBP-by-CbP" userLabel="Unit Label">
-                                                            <rect key="frame" x="0.0" y="24" width="34" height="12"/>
+                                                            <rect key="frame" x="0.0" y="28" width="34" height="12"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <color key="textColor" name="lock red"/>
                                                             <nil key="highlightedColor"/>
@@ -330,12 +330,43 @@
                                                 <constraint firstItem="CdV-uI-hYT" firstAttribute="centerX" secondItem="Jq4-ZX-0hE" secondAttribute="centerX" id="yfr-Wf-yNQ"/>
                                             </constraints>
                                         </view>
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ub-Br-hdO" userLabel="Bubble View" customClass="ChatBubbleView" customModule="Oneplanet" customModuleProvider="target">
+                                            <rect key="frame" x="191.5" y="-34.5" width="73.5" height="40.5"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_bubbleup_nor" translatesAutoresizingMaskIntoConstraints="NO" id="nWv-Fs-pPh">
+                                                    <rect key="frame" x="0.0" y="0.0" width="77.5" height="44.5"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9V-4H-B4u">
+                                                    <rect key="frame" x="15" y="10" width="43.5" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="nWv-Fs-pPh" secondAttribute="bottom" constant="-4" id="2dl-64-zOW"/>
+                                                <constraint firstItem="nWv-Fs-pPh" firstAttribute="leading" secondItem="8Ub-Br-hdO" secondAttribute="leading" id="75g-NO-zeO"/>
+                                                <constraint firstItem="i9V-4H-B4u" firstAttribute="width" secondItem="8Ub-Br-hdO" secondAttribute="width" constant="-30" id="Fbj-wu-n1p"/>
+                                                <constraint firstItem="i9V-4H-B4u" firstAttribute="centerX" secondItem="8Ub-Br-hdO" secondAttribute="centerX" id="LFR-Ek-5dg"/>
+                                                <constraint firstAttribute="trailing" secondItem="nWv-Fs-pPh" secondAttribute="trailing" constant="-4" id="V5q-yC-Txf"/>
+                                                <constraint firstItem="nWv-Fs-pPh" firstAttribute="top" secondItem="8Ub-Br-hdO" secondAttribute="top" id="eda-vO-OrC"/>
+                                                <constraint firstItem="i9V-4H-B4u" firstAttribute="height" secondItem="8Ub-Br-hdO" secondAttribute="height" constant="-20" id="gjV-eQ-Dut"/>
+                                                <constraint firstItem="i9V-4H-B4u" firstAttribute="centerY" secondItem="8Ub-Br-hdO" secondAttribute="centerY" id="uUM-oD-a24"/>
+                                            </constraints>
+                                            <connections>
+                                                <outlet property="backgroundImageView" destination="nWv-Fs-pPh" id="r3p-ME-hMh"/>
+                                                <outlet property="titleLabel" destination="i9V-4H-B4u" id="Ms7-Dd-E7D"/>
+                                            </connections>
+                                        </view>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="nWv-Fs-pPh" firstAttribute="bottom" secondItem="nUg-8I-Sdp" secondAttribute="top" constant="5" id="0g9-nz-VKM"/>
                                         <constraint firstItem="Jq4-ZX-0hE" firstAttribute="centerX" secondItem="Vrd-5h-xiF" secondAttribute="centerX" id="GDr-Zf-JfI"/>
                                         <constraint firstItem="Jq4-ZX-0hE" firstAttribute="centerY" secondItem="Vrd-5h-xiF" secondAttribute="centerY" id="PdR-Vn-mXf"/>
                                         <constraint firstItem="Jq4-ZX-0hE" firstAttribute="top" secondItem="Vrd-5h-xiF" secondAttribute="top" constant="3" id="czn-4E-PIc"/>
                                         <constraint firstItem="Jq4-ZX-0hE" firstAttribute="leading" secondItem="Vrd-5h-xiF" secondAttribute="leading" constant="10" id="gaa-Hg-3ff"/>
+                                        <constraint firstItem="nUg-8I-Sdp" firstAttribute="leading" secondItem="nWv-Fs-pPh" secondAttribute="trailing" constant="-12" id="qHz-NG-FaQ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -345,6 +376,7 @@
                                     <outlet property="lockLabel" destination="6GH-Dy-bwX" id="2dM-LK-pW5"/>
                                     <outlet property="previewImageView" destination="j0D-0h-2uy" id="qOn-3P-Nw4"/>
                                     <outlet property="titleLabel" destination="Uf8-xS-jFW" id="AH6-vi-OWF"/>
+                                    <outlet property="tutorialBubble" destination="8Ub-Br-hdO" id="Zdk-UL-rB4"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="biddingItemCell" id="igu-hV-zLQ" customClass="BiddingProductCell" customModule="Oneplanet" customModuleProvider="target">
@@ -482,10 +514,10 @@
                                                                 <constraint firstAttribute="width" constant="30" id="xZF-l3-TQS"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L1U-rM-8Nz">
+                                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="L1U-rM-8Nz">
                                                             <rect key="frame" x="160" y="0.0" width="32" height="56"/>
                                                             <subviews>
-                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d32-hI-8d7" userLabel="Avatar View" customClass="AvatarView" customModule="Oneplanet" customModuleProvider="target">
+                                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d32-hI-8d7" userLabel="Avatar View" customClass="AvatarView" customModule="Oneplanet" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="12" width="32" height="32"/>
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uYf-Qh-0cd">
@@ -527,37 +559,37 @@
                                                                 <constraint firstItem="d32-hI-8d7" firstAttribute="width" secondItem="L1U-rM-8Nz" secondAttribute="width" priority="750" id="df2-zD-0fw"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bIS-q9-31b">
+                                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bIS-q9-31b">
                                                             <rect key="frame" x="192" y="0.0" width="5" height="56"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="750" constant="5" id="4Kf-uz-egw"/>
                                                             </constraints>
                                                         </view>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tgj-da-2TG">
-                                                            <rect key="frame" x="197" y="0.0" width="37" height="56"/>
+                                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tgj-da-2TG">
+                                                            <rect key="frame" x="197" y="0.0" width="39" height="56"/>
                                                             <subviews>
-                                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="vsX-eB-LJM">
+                                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="vsX-eB-LJM">
                                                                     <rect key="frame" x="0.0" y="9.5" width="37" height="37"/>
                                                                     <color key="color" name="default placeholder"/>
                                                                 </activityIndicatorView>
-                                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zfw-7n-PSp" userLabel="Countdown Label">
-                                                                    <rect key="frame" x="0.0" y="19" width="37" height="18"/>
+                                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="15:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zfw-7n-PSp" userLabel="Countdown Label">
+                                                                    <rect key="frame" x="0.0" y="17.5" width="37" height="21"/>
                                                                     <fontDescription key="fontDescription" name="DS-Digital-BoldItalic" family="DS-Digital" pointSize="18"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zab-2B-r2s">
-                                                                    <rect key="frame" x="0.0" y="19" width="37" height="18"/>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zab-2B-r2s">
+                                                                    <rect key="frame" x="0.0" y="17.5" width="46.5" height="21"/>
                                                                     <subviews>
                                                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WIN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0m-7T-DfP" userLabel="Win Label">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="18"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="21"/>
                                                                             <fontDescription key="fontDescription" name="DS-Digital-BoldItalic" family="DS-Digital" pointSize="18"/>
                                                                             <color key="textColor" name="lock green"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOSE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kwi-2u-U8Z" userLabel="Lose Label">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="37" height="18"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="46.5" height="21"/>
                                                                             <fontDescription key="fontDescription" name="DS-Digital-BoldItalic" family="DS-Digital" pointSize="18"/>
                                                                             <color key="textColor" name="lock red"/>
                                                                             <nil key="highlightedColor"/>
@@ -577,7 +609,7 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gmi-sy-dW8">
-                                                            <rect key="frame" x="234" y="0.0" width="2" height="56"/>
+                                                            <rect key="frame" x="236" y="0.0" width="0.0" height="56"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" priority="500" constant="10" id="bOg-3s-JjD"/>
@@ -629,9 +661,12 @@
                                     <outlet property="coverView" destination="y8G-GU-5Ef" id="Xu8-WO-1Nh"/>
                                     <outlet property="digitLabel" destination="0B3-rb-Fks" id="QEj-KK-skq"/>
                                     <outlet property="hundredLabel" destination="uYP-qT-2ca" id="1Dc-DV-zpN"/>
+                                    <outlet property="loseLabel" destination="kwi-2u-U8Z" id="krD-6m-AOP"/>
+                                    <outlet property="outcomeView" destination="Zab-2B-r2s" id="huy-Pw-uj2"/>
                                     <outlet property="previewButton" destination="XFG-xk-T82" id="WNs-5n-MgF"/>
                                     <outlet property="runningIndicator" destination="vsX-eB-LJM" id="5bp-Es-td6"/>
                                     <outlet property="tensLabel" destination="NpE-Kd-97a" id="k6s-4G-j87"/>
+                                    <outlet property="winLabel" destination="N0m-7T-DfP" id="Cql-OV-oTl"/>
                                     <outletCollection property="leadIndicators" destination="Qc9-Jx-66z" collectionClass="NSMutableArray" id="U5o-dr-8R2"/>
                                     <outletCollection property="leadIndicators" destination="qZb-sd-0Oy" collectionClass="NSMutableArray" id="6Ya-1w-wlH"/>
                                     <outletCollection property="leadIndicators" destination="udO-bU-1Iy" collectionClass="NSMutableArray" id="GRF-gP-aXa"/>
@@ -771,13 +806,19 @@ The winner must check if the Receipt information is filled in to ensure that the
                             <outlet property="delegate" destination="GKE-yx-ygO" id="QRA-4F-jXa"/>
                         </connections>
                     </tableView>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Mgf-2j-MeW">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refreshIfNeeded:" destination="GKE-yx-ygO" eventType="valueChanged" id="iDB-nh-PqV"/>
+                        </connections>
+                    </refreshControl>
                     <connections>
                         <outlet property="countDownView" destination="f1Q-vV-ogN" id="B5p-fF-fLi"/>
                         <outlet property="countdownDescriptionLabel" destination="FVm-Rb-9Px" id="zIR-Y2-j6J"/>
                         <segue destination="K1B-0s-WCJ" kind="presentation" identifier="showShippingInfoEditor" id="8pF-Y6-fub"/>
                         <segue destination="Kvw-Xq-bR5" kind="show" identifier="showProductDetail" id="c3P-m4-Ttc"/>
                         <segue destination="XMA-j7-pie" kind="presentation" identifier="enterUnlockFlow" id="TsJ-KW-5Dz"/>
-                        <segue destination="apf-73-R3T" kind="presentation" identifier="enterBidFlow" id="p2f-ey-Zn1"/>
+                        <segue destination="apf-73-R3T" kind="presentation" identifier="enterBidFlow" animates="NO" id="p2f-ey-Zn1"/>
                         <segue destination="nDB-bM-hfJ" kind="presentation" identifier="showFilter" id="7si-dR-6gr"/>
                         <segue destination="uEV-Dg-8VA" kind="presentation" identifier="showProfile" id="jnK-LK-6yu"/>
                     </connections>
@@ -941,48 +982,51 @@ The winner must check if the Receipt information is filled in to ensure that the
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="OOA-ZS-TWC">
                                             <rect key="frame" x="12" y="10" width="296" height="41"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wcn-mx-TWC">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r1M-LW-XqJ" userLabel="Preview Button">
                                                     <rect key="frame" x="0.0" y="0.0" width="41" height="41"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="Wcn-mx-TWC" secondAttribute="height" id="D3A-4G-Qxc"/>
+                                                        <constraint firstAttribute="width" secondItem="r1M-LW-XqJ" secondAttribute="height" id="bZK-Zh-aWg"/>
                                                     </constraints>
-                                                </imageView>
+                                                    <connections>
+                                                        <action selector="invokeProductDetailAction:" destination="A9n-ZS-IXs" eventType="touchUpInside" id="zuN-dU-jDs"/>
+                                                    </connections>
+                                                </button>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="K77-VI-RyF">
-                                                    <rect key="frame" x="51" y="0.0" width="146" height="41"/>
+                                                    <rect key="frame" x="51" y="0.0" width="95" height="41"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ecG-zO-7kk" userLabel="Padding">
-                                                            <rect key="frame" x="0.0" y="0.0" width="146" height="8"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="95" height="8"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="8" id="5HO-Ve-r9G"/>
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CNw-M9-dcm" userLabel="Title Label">
-                                                            <rect key="frame" x="0.0" y="8" width="146" height="14.5"/>
+                                                            <rect key="frame" x="0.0" y="8" width="95" height="14.5"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                                                             <color key="textColor" name="default text"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z25-Yq-Bca" userLabel="Padding">
-                                                            <rect key="frame" x="0.0" y="22.5" width="146" height="18.5"/>
+                                                            <rect key="frame" x="0.0" y="22.5" width="95" height="18.5"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </view>
                                                     </subviews>
                                                 </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9gV-lE-jGe">
-                                                    <rect key="frame" x="207" y="0.0" width="78" height="41"/>
+                                                    <rect key="frame" x="156" y="0.0" width="129" height="41"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="-6" translatesAutoresizingMaskIntoConstraints="NO" id="nyK-mS-597">
-                                                            <rect key="frame" x="0.0" y="5.5" width="78" height="30"/>
+                                                            <rect key="frame" x="0.0" y="5.5" width="129" height="30"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7u-aV-iLX" userLabel="State Label">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="78" height="12"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="129" height="12"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
                                                                     <color key="textColor" name="default placeholder"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WAT-Rl-wi4" userLabel="Inspect Button">
-                                                                    <rect key="frame" x="0.0" y="6" width="78" height="24"/>
+                                                                    <rect key="frame" x="0.0" y="6" width="129" height="24"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
                                                                     <state key="normal" title="Check shipping">
                                                                         <color key="titleColor" name="button green"/>
@@ -1010,7 +1054,7 @@ The winner must check if the Receipt information is filled in to ensure that the
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Wcn-mx-TWC" firstAttribute="height" secondItem="OOA-ZS-TWC" secondAttribute="height" id="JV8-p7-uNC"/>
+                                                <constraint firstItem="r1M-LW-XqJ" firstAttribute="height" secondItem="OOA-ZS-TWC" secondAttribute="height" id="ijx-DH-P9k"/>
                                             </constraints>
                                         </stackView>
                                     </subviews>
@@ -1033,7 +1077,7 @@ The winner must check if the Receipt information is filled in to ensure that the
                                 <connections>
                                     <outlet property="inspectButton" destination="WAT-Rl-wi4" id="Qou-pK-jMW"/>
                                     <outlet property="outcomIndicator" destination="dLl-yl-w7W" id="xPv-7w-JcZ"/>
-                                    <outlet property="previewImageView" destination="Wcn-mx-TWC" id="BQ8-nv-Ygx"/>
+                                    <outlet property="previewButton" destination="r1M-LW-XqJ" id="Lf3-Gp-jZv"/>
                                     <outlet property="stateLabel" destination="E7u-aV-iLX" id="hl8-zd-ey3"/>
                                     <outlet property="titleLabel" destination="CNw-M9-dcm" id="H9O-Lq-iKE"/>
                                 </connections>
@@ -1066,8 +1110,16 @@ The winner must check if the Receipt information is filled in to ensure that the
                             <outlet property="delegate" destination="N0x-I6-uS2" id="05I-Y0-Qdv"/>
                         </connections>
                     </tableView>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="VPq-hr-TbL">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refresh:" destination="N0x-I6-uS2" eventType="valueChanged" id="P4A-dx-9us"/>
+                        </connections>
+                    </refreshControl>
                     <connections>
                         <segue destination="K1B-0s-WCJ" kind="presentation" identifier="showShippingInfoEditor" id="Scs-0i-F1U"/>
+                        <segue destination="Kvw-Xq-bR5" kind="show" identifier="showProductDetail" id="vUd-e2-3sT"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MgV-qn-nUW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1177,8 +1229,8 @@ The winner must check if the Receipt information is filled in to ensure that the
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7cT-au-rbZ">
                                                         <rect key="frame" x="0.0" y="320" width="320" height="40"/>
                                                         <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5QL-eJ-FCI" userLabel="Lock Stack View">
-                                                                <rect key="frame" x="10" y="0.0" width="67.5" height="40"/>
+                                                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5QL-eJ-FCI" userLabel="Lock Stack View">
+                                                                <rect key="frame" x="10" y="0.0" width="90" height="40"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Low-rR-min" userLabel="Lock Button">
                                                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -1188,8 +1240,8 @@ The winner must check if the Receipt information is filled in to ensure that the
                                                                             <action selector="unlockIfAllowed:" destination="Kvw-Xq-bR5" eventType="touchUpInside" id="ScK-aR-ok8"/>
                                                                         </connections>
                                                                     </button>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nHQ-w0-Ye0" userLabel="Lock Label">
-                                                                        <rect key="frame" x="40" y="0.0" width="27.5" height="40"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nHQ-w0-Ye0" userLabel="Lock Label">
+                                                                        <rect key="frame" x="40" y="0.0" width="50" height="40"/>
                                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
                                                                         <color key="textColor" name="lock red"/>
                                                                         <nil key="highlightedColor"/>
@@ -1224,7 +1276,7 @@ The winner must check if the Receipt information is filled in to ensure that the
                                                         <color key="textColor" name="default text"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="detail" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gvk-tN-Wxe" userLabel="Detail Text View">
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="detail" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="gvk-tN-Wxe" userLabel="Detail Text View">
                                                         <rect key="frame" x="16" y="26.5" width="288" height="33"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="textColor" name="default text"/>
@@ -2356,6 +2408,7 @@ The winner must check if the Receipt information is filled in to ensure that the
         <image name="im_userphotodefault_nor" width="179" height="179"/>
         <image name="ui_bids_green" width="5" height="44"/>
         <image name="ui_bids_red" width="5" height="44"/>
+        <image name="ui_bubbleup_nor" width="34" height="33"/>
         <image name="ui_fieldwhite_fai" width="35" height="41"/>
         <image name="ui_fieldwhite_nor" width="35" height="41"/>
         <image name="ui_timebg" width="180" height="48"/>
@@ -2388,7 +2441,7 @@ The winner must check if the Receipt information is filled in to ensure that the
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="c3P-m4-Ttc"/>
+        <segue reference="vUd-e2-3sT"/>
         <segue reference="Scs-0i-F1U"/>
     </inferredMetricsTieBreakers>
 </document>

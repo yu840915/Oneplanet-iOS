@@ -21,9 +21,12 @@ class PostDetailViewController: UIViewController, UserSessionDepending {
     @IBOutlet weak var moreButtonItem: UIBarButtonItem!
     @IBOutlet weak var reportedPostView: ReportedPostView!
     @IBOutlet weak var scorebarView: ScoreBarView!
+    @IBOutlet weak var contentView: UIScrollView!
     
     private var galleryDataSource: PostPhotoGalleryDataSource?
+    private var deletePostOperation: DeletePostOperation?
     var canShowAuthorProfile = true
+    private var hidingUpdateHandle: Any?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +36,13 @@ class PostDetailViewController: UIViewController, UserSessionDepending {
         avatarView.action = {[weak self] in
             self?.showProfileForAuthor()
         }
-        updateViews(with: PostCardViewModel(post: post))
+        updateViews(with: PostCardViewModel(post: post, userSession: userSession))
+        hidingUpdateHandle = userSession.hiddenPosts.didUpdateHandlers.add {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.updateViewsForIsHidden()
+            }
+        }
+        updateViewsForIsHidden()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,6 +51,16 @@ class PostDetailViewController: UIViewController, UserSessionDepending {
             NavigationBarStyle.darkGray.configure(nav.navigationBar)
         } else {
             navigationItem.leftBarButtonItem = nil
+        }
+    }
+    
+    func updateViewsForIsHidden() {
+        if userSession.hiddenPosts.isHidden(post) {
+            reportedPostView.isHidden = false
+            contentView.isHidden = true
+        } else {
+            reportedPostView.isHidden = true
+            contentView.isHidden = false
         }
     }
     
@@ -68,9 +87,14 @@ class PostDetailViewController: UIViewController, UserSessionDepending {
         present(sheet, animated: true, completion: nil)
     }
     
+    @IBAction func unhidePost(_ sender: Any) {
+        userSession.hiddenPosts.unhide(post)
+    }
+    
     func updateViews(with dataSource: PostDisplayable) {
         pageControl.isHidden = !dataSource.shouldShowPageControl
         avatarView.avatar = dataSource.avatar
+        avatarView.backgrondImage = dataSource.alien?.race.frameImage
         nameLabel.text = dataSource.nickname
         dateLabel.text = dataSource.formatedDate
         if let score = dataSource.relativeScore {
@@ -128,29 +152,54 @@ private extension PostDetailViewController {
     func handlePostUpdate(_ post: Post?) {
         if let post = post {
             self.post = post
-            updateViews(with: PostCardViewModel(post: post))
+            updateViews(with: PostCardViewModel(post: post, userSession: userSession))
         }
     }
     
     func showProfileForAuthor() {
-        if canShowAuthorProfile {
-//            performSegue(withIdentifier: SegueID.showProfile, sender: post.author)
+        if canShowAuthorProfile,
+            let user = userSession.userFetcherRepo.fetcher(for: post.authorID).user {
+            performSegue(withIdentifier: SegueID.showProfile, sender: user)
         }
     }
     
     func editPost() {
-        performSegue(withIdentifier: SegueID.showPostEditor, sender: nil)
+        guard post.authorID == userSession.profile?.id else { return }
+        performSegue(withIdentifier: SegueID.showPostEditor, sender: post)
     }
     
     func deletePost() {
-        
+        guard deletePostOperation == nil else { return }
+        let op = DeletePostOperation(post: post, session: userSession)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didDeletePost()
+            }
+        }
+        deletePostOperation = op
+        op.start()
+    }
+    
+    func didDeletePost() {
+        let op = deletePostOperation!
+        deletePostOperation = nil
+        if op.success == true {
+            if let nav = navigationController,
+                nav.viewControllers.count > 1 {
+                nav.popViewController(animated: true)
+            } else {
+                dismiss(animated: true, completion: nil)
+            }
+        } else if let error = op.error {
+            let alert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: Localized.titles.ok, style: .cancel, handler: nil))
+            present(alert, animated: true, completion: nil)
+        }
     }
     
     func reportPost() {
-        performSegue(withIdentifier: SegueID.showReportFlow, sender: PostReportFlowController())
+        performSegue(withIdentifier: SegueID.showReportFlow, sender: PostReportFlowController(post: post, session: userSession))
     }
-    
-
 }
 
 extension PostDetailViewController {

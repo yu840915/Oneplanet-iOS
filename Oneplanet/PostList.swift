@@ -15,9 +15,11 @@ class Post: Decodable {
     let caption: String
     let imageURLs: [URL]
     let createdAt: Date
+    let type: String?
     var images: [WebImageInfo] {
         return imageURLs.map{WebImageInfo(url: $0)}
     }
+    let score: Int?
     
     init(post: Post, caption: String) {
         id = post.id
@@ -25,6 +27,8 @@ class Post: Decodable {
         self.caption = caption
         imageURLs = post.imageURLs
         createdAt = post.createdAt
+        type = post.type
+        score = post.score
     }
     
     enum CodingKeys: String, CodingKey {
@@ -32,7 +36,14 @@ class Post: Decodable {
         case authorID = "user"
         case imageURLs = "images"
         case createdAt = "created_at"
+        case type
+        case score
     }
+}
+
+enum PostType: String {
+    case valued = "score"
+    case free
 }
 
 class PostList: PaginatedList<GetPostListOperationFactory> {
@@ -68,12 +79,8 @@ class GetPostListOperationFactory: PaginatedFetchingOperationFactoryType {
 }
 
 class GetPostListOperation:  AlamofireAPIAccessOperation, PaginatedFetchingOperationType, ListingType {
-    var isBeginning: Bool {
-        return true
-    }
-    var nextPageFetchingOperation: PaginatedFetchingOperationType? {
-        return nil
-    }
+    var isBeginning: Bool
+    private(set) var nextPageFetchingOperation: PaginatedFetchingOperationType?
     var retryOperation: PaginatedFetchingOperationType? {
         return GetPostListOperation(session: session, url: url)
     }
@@ -82,9 +89,10 @@ class GetPostListOperation:  AlamofireAPIAccessOperation, PaginatedFetchingOpera
     let session: UserSession
     private let url: URL
     
-    init(session: UserSession, url: URL) {
+    init(session: UserSession, url: URL, isBeginning: Bool = true) {
         self.session = session
         self.url = url
+        self.isBeginning = isBeginning
     }
     
     override func prepareURLRequest() throws -> URLRequest {
@@ -93,6 +101,23 @@ class GetPostListOperation:  AlamofireAPIAccessOperation, PaginatedFetchingOpera
     
     override func processData(with data: Data) throws {
         items = try JSONDecoder.default.decode([Post].self, from: data)
+    }
+    
+    override func handleHTTPResponse(_ response: HTTPURLResponse) throws {
+        try super.handleHTTPResponse(response)
+        prepareNextPage(from: response)
+    }
+    
+    private func prepareNextPage(from response: HTTPURLResponse) {
+        let finder = WebLinkingKeyMap(links: response.links)
+        guard let url = finder.findLink(in: response, for: PageRelation.next) else  {
+            return
+        }
+        nextPageFetchingOperation = GetPostListOperation(session: session, url: url, isBeginning: false)
+    }
+
+    override func handleUnauthorizedError(with response: HTTPURLResponse) throws {
+        session.deactivate()
     }
 }
 

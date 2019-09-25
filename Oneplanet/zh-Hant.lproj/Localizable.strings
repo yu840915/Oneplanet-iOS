@@ -55,7 +55,7 @@
 "tl_filter" = "商品過濾";
 "tl_bid_state_lost" = "未得標";
 "tl_bid_state_to_ship" = "待出貨";
-"tl_bid_state_shipping" = "出貨中";
+"tl_bid_state_shipping" = "已出貨";
 "tl_bid_state_delivered" = "已領收";
 "tl_report" = "檢舉";
 "tl_block" = "封鎖";
@@ -92,7 +92,9 @@
 "msg_lot_being_bid_des" = "競標正在進行中，48H 內會公布下一期商品，敬請期待！";
 "msg_lot_closed" = "已超過解鎖時間";
 "msg_lot_closed_des" = "本期競標已結束，48H 內會公布下一期商品，敬請期待！";
+"msg_bid_too_late" = "該商品已超過下標時限";
 "msg_bid_payment_too_late" = "付款成功但超過了下標時限";
+"msg_gem_unchanged" = "此狀況不會扣寶石";
 "msg_race1_monologue" = "我的名字叫法克。";
 "msg_race2_monologue" = "我的名字叫迪克。";
 "msg_race3_monologue" = "我的名字叫壯克。";
@@ -110,6 +112,7 @@
 "msg_unlock_option_prompt" = "你要使用哪種寶石來解鎖?";
 "msg_thanks_for_reporting_post" = "您的反饋意見對於幫助我們保持 Oneplanet 社群的安全非常重要";
 "msg_username_rules" = "ID 至少五字元";
+"msg_copied_order_number" = "已複製貨單編號";
 
 "msgf_accept_tos" = "登入即表示你同意我們的%@";
 "msgf_resend_verification_email" = "你沒有收到電子郵件？%@";
@@ -118,28 +121,29 @@
 "msgf_winner_notice" = "得標者請檢查是否填寫%@，以確保商品能夠送達。";
 "msgf_unlock_lot" = "解鎖 %@？";
 "msgf_did_unlock_lot" = "%@解鎖成功!";
-"msgf_unlock_with_gem_iap" = "使用一顆 %@ + %@？";
-"msgf_unlock_with_gem" = "使用一顆 %@ 解鎖？";
+"msgf_unlock_with_gem_iap" = "使用一顆 %@ + %@ 解鎖此商品？";
+"msgf_unlock_with_gem" = "使用一顆 %@ 解鎖此商品？";
 "msgf_insufficient_gem" = "你的 %@ 不足";
 "msgf_bid_prompt" = "投標 %@ 一次";
 "msgf_bid_with_gem_iap" = "使用一顆 %@ + %@ 投標一次?";
 "msgf_bid_with_gem" = "使用一顆 %@ 投標一次？";
-"msgf_insufficient_gem_unlock_des" = "解鎖一次需要使用一顆 %@ + %@。";
+"msgf_insufficient_gem_unlock_des" = "解鎖一件商品需要使用一顆 %@ + %@。";
 "msgf_insufficient_gem_bid_des" = "每投標一次需要使用一顆 %@ + %@。";
-"msgf_earn_blue_gem_instruction" = "拍照上傳照片就能獲得 %@，趕緊去拍照！";
-"msgf_received_gem" = "獲得 %@ 1 顆";
-"msgf_unlock_succeeded" = "已解鎖 %@!";
+"msgf_earn_blue_gem_instruction" = "再加把勁上傳照片獲得 %@！";
+"msgf_received_gem" = "獲得 %@ %@ 顆";
+"msgf_unlock_succeeded" = "投標需要使用到 %@!";
 "msgf_bid_succeeded" = "Successfully qualified for %@ bidding";
 "msgf_start_following_you" = "%@ 追蹤你";
-"msgf_liked_your_post" = "%@ 喜歡你的照片";
-"msgf_you_received_num_gems" = "官方贈送 %@ 顆 %@。";
+"msgf_liked_your_post" = "你的照片被 %@ 喜歡了，恭喜獲得一顆 %@。";
+"msgf_you_received_num_gems" = "%@ 贈送 %@ x %@。";
 "msgf_post_reported" = "您的照片被用戶檢舉了，因為%@";
 "msgf_profile_reported" = "您的 Oneplanet 帳號 %@ 被用戶檢舉，原因是 違反了 Oneplanet 的%@";
-"msgf_liked_your_post_and_gave_gem" = "你的照片被 %@ 喜歡了，恭喜獲得一顆 %@";
+"msgf_liked_your_post_and_gave_gem" = "%@ 喜歡你的照片，獲得 1 顆 %@。";
 "msgf_thankyou_report_user" = "感謝您的幫助，讓 Oneplanet 保持安全和有趣。請記住，我們不會透露誰向發布照片或評論的人提交了報告。\n我們的團隊將審核該貼文，如果它違反了我們的%@，我們會將它刪除。";
 "msgf_unblock_user_prompt" = "解鎖封鎖%@嗎？";
 "msgf_block_user_prompt" = "確定要封鎖%@嗎？";
 "msgf_no_search_results" = "No results for \"%@\"";
+"msgf_daily_login_reward" = "每日登入，贈送 1 顆 %@";
 
 "ph_guest_login" = "訪客進入";
 "ph_email_login" = "或使用電子郵件登入";
@@ -157,7 +161,7 @@
 "ph_copy_id" = "複製 ID";
 "ph_follow" = "追蹤";
 "ph_unfollow" = "取消追蹤";
-"ph_following" = "Following";
+"ph_following" = "追蹤中";
 "ph_choose_role" = "選擇外星人種類";
 "ph_choose_color" = "選擇顏色";
 "ph_edit_profile" = "編輯個人資料";
@@ -196,6 +200,10 @@
 "ph_upload_free_photo" = "上傳照片";
 "ph_dont_show_again" = "永遠不再顯示";
 "ph_no_room_for_photo" = "full";
+"ph_category_unlocked" = "我解鎖的";
+"ph_bidding_begins" = "競標開始！";
+"ph_purple_gem" = "紅金寶（建議投標時使用）";
+"ph_purchase_success" = "購買成功";
 
 "phf_seconds_ago_short" = "%@ s";
 "phf_minutes_ago_short" = "%@ m";
@@ -208,6 +216,9 @@
 "phf_followers" = "%@ 粉絲";
 "phf_followings" = "%@ 追蹤中";
 "phf_remaining_uploads" = "剩餘次數 %@/%@ (%@)";
+"phf_buy_some" = "購買 %@ 顆";
+"phf_buy_some_get_some_free" = "購買 %@ 顆，送 %@ 顆";
+"phf_purchase_success" = "你已購買成功 %@ x %@";
 
 "no_posts" = "還沒有貼文";
 "no_promo_popups" = "No Promotion Pop-ups Yet";
@@ -218,6 +229,8 @@
 "no_follower_list" = "You don't have followers yet";
 "no_following_list" = "You haven't followed others yet";
 "no_generic" = "No Items";
+"no_unlocked" = "你還沒解鎖任何商品";
+"no_unlocked_detail" = "解鎖商品就可以參加競標喔！趕緊去解鎖吧！";
 
 "err_no_camera_access" = "啟用相機權限";
 "err_no_library_access" = "啟用圖庫存取權限";
@@ -248,29 +261,28 @@
 "act_countdown" = "競標倒數...";
 
 "pop_blue_gem_usage" = "用途：解鎖商品、投標商品。";
-"pop_green_gem_usage" = "用途：解鎖商品、高效率投標商品。";
-"pop_purple_gem_usage" = "用途：解鎖商品。";
+"pop_green_gem_usage" = "用途：解鎖商品。";
+"pop_purple_gem_usage" = "用途：解鎖商品、高效率投標商品。";
 
 "pop_blue_gem_action" = "立即前往 上傳照片";
 "pop_green_gem_action" = "前往%@";
 
-"pop_blue_gem_bullet1" = "獲得方式一：上傳照片後，畫面左上角的經驗值會增加，滿格即獲得一顆 競標寶。";
-"pop_blue_gem_bullet2" = "使用一顆 競標寶 + %@，可解鎖商品或投標一次。";
-"pop_blue_gem_bullet3" = "將 競標寶 升級成 %@，有助於競標時的效率，並減少信用卡或電信商的支付問題。";
+"pop_blue_gem_bullet1" = "使用一顆 %@ + %@，可以解鎖一件商品或投標一次。";
+"pop_blue_gem_bullet2" = "獲得方式：上傳照片評分獲得經驗值，當經驗值滿格即獲得一顆 %@。";
+"pop_blue_gem_bullet3" = "將 %@ 升級成 %@，有助於競標時的效率，並減少信用卡或電信商的支付問題。";
 
-"pop_green_gem_bullet1" = "獲得方式ㄧ：Supreme.AI (官方) 喜歡你的相片。";
-"pop_green_gem_bullet2" = "獲得方式二：該週排行榜冠軍族群的用戶。";
-"pop_green_gem_bullet3" = "獲得方式三：不定期舉辦 %@，請密切關注！";
-"pop_green_gem_bullet4" = "使用一顆 解鎖寶 即可解鎖一項商品。";
+"pop_green_gem_bullet1" = "使用一顆 %@ 可以直接解鎖一件商品。";
+"pop_green_gem_bullet2" = "獲得方式ㄧ：Supreme.AI (官方) 喜歡你的相片。";
+"pop_green_gem_bullet3" = "獲得方式二：配合活動贈送";
 
-"pop_purple_gem_bullet1" = "紅金寶是 %@ 的升級版，有助於競標時的效率，並減少信用卡或電信商的支付問題。";
-"pop_purple_gem_bullet2" = "使用 紅金寶 可解鎖商品或投標一次。";
+"pop_purple_gem_bullet1" = "使用一顆 紅金寶 可以直接解鎖一件商品或投標一次（建議使用在投標，以達到高效率投標之效果）。";
+"pop_purple_gem_bullet2" = "紅金寶 是 %@ 的升級版，有助於競標時的效率，並減少信用卡或電信商的支付問題。";
 
 "pop_post_suspended" = "次數用完了";
 "pop_cooldown_time" = "等待時間 (%@)";
 "pop_free_upload_bullet" = "沒有限制上傳照片次數，但不能獲得%@。";
 "pop_cant_upload_bullet" = "請等待時間回復";
-"pop_valued_upload_bullet1" = "上傳照片評分獲得經驗值，當經驗值滿格即獲得一顆 %@";
+"pop_valued_upload_bullet1" = "上傳照片經過 AI 評分獲得經驗值，當經驗值滿格即獲得一顆 %@。";
 "pop_valued_upload_bullet2" = "越符合本次 Oneplanet 提示的顏色主題，收集 %@ 的效率越高。";
 
 "ship_first_name" = "名字";
@@ -285,14 +297,29 @@
 
 "rp_terms_violation" = "我認為此帳戶違反了 Oneplanet 的使用條款";
 "rp_dont_like_post_title" = "我不喜歡這則貼文";
-"rp_dnudity_title" = "露點照或色情內容";
+"rp_nudity_title" = "露點照或色情內容";
 "rp_hate_speech_title" = "仇恨言論或符號";
 "rp_violance_title" = "暴力或暴力威脅";
 "rp_hate_speech_subtitle" = "種族歧視、恐同症或性別主義毀謗";
 "rp_violance_subtitle" = "露出血淋淋的傷口、非法活動、危險或犯罪組織";
 "rp_dont_like_post_detail" = "不喜歡這則貼文嗎？";
-"rp_dnudity_detail" = "檢舉為露點照或色情內容？";
+"rp_nudity_detail" = "檢舉為露點照或色情內容？";
 "rp_hate_speech_detail" = "檢舉為仇恨言論或符號？";
 "rp_violance_detail" = "檢舉暴力或暴力威脅？";
+"rp_dont_like_post" = "內容令人反感";
+"rp_nudity" = "內容包含色情或暴力";
+"rp_violance" = "內容包含仇恨言論或不當圖案";
+"rp_hate_speech" = "內容包含暴力或暴力威脅";
 
 "smb_enum_spliter" = "、";
+
+"tut_unlock" = "解鎖參加競標";
+"tut_wait_for_bid" = "等待競標開始！";
+"tut_bid" = "開始投標吧！";
+
+"pn_session_start" = "本期競標商品已經公佈，請把握時間解鎖商品！";
+"pn_1hr_to_bid" = "距離競標開始還剩一小時，請把握時間解鎖商品！";
+"pn_win_a_lot" = "你得標了 %@！";
+"pn_winner_notice" = "本期你有得標！查看競標歷程。";
+"pn_loser_notice" = "本期你沒有得標。48H 內會公布下一期商品！";
+"pn_prerelease_login_reward" = "恭喜你完成了事前登錄，寶石已發送，趕快去解鎖吧！";

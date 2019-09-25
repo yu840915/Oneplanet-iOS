@@ -28,8 +28,9 @@ class PromotionAd: CollectionItemPreviewing {
     }
     
     class func from(_ collectionItem: CollectionItem) -> PromotionAd? {
-        guard collectionItem.type?.lowercased() == "ad" else {return nil}
-        return PromotionAd(id: collectionItem.id, imageURL: URL(string: collectionItem.thumbnail.toURLCompatible())!, link: collectionItem.link)
+        guard collectionItem.type?.lowercased() == "ad",
+            let url = collectionItem.thumbnail?.toURL() else {return nil}
+        return PromotionAd(id: collectionItem.id, imageURL: url, link: collectionItem.link)
     }
     
     class func from(_ item: PopUpItem) -> PromotionAd {
@@ -108,7 +109,7 @@ class CollectionItem: Decodable {
     let id: String
     let name: String
     let type: String?
-    let thumbnail: String
+    let thumbnail: String?
     var link: URL? {
         if let url = externalURL {
             return URL(string: url)
@@ -124,6 +125,6 @@ class CollectionItem: Decodable {
     
     var previewable: CollectionItemPreviewing? {
         return CollectionCategoryItem.from(self) ??
-            CollectionProductItem.from(self)
+            CollectionProductItem.from(self) ?? PromotionAd.from(self)
     }
 }

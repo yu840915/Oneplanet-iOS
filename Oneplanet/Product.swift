@@ -32,18 +32,21 @@ class ProductOverview: Decodable {
 class Product: ProductOverview {
     let description: String
     let images: [WebImageInfo]
+    let allowsUnlock: Bool
     override var cover: WebImageInfo? {
         return images.first
     }
     
     enum AdditionalKeys: String, CodingKey {
         case description, images
+        case allowsUnlock = "is_locked"
     }
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: AdditionalKeys.self)
         description = try container.decodeIfPresent(String.self, forKey: .description) ?? ""
         images = (try container.decode([URL].self, forKey: .images)).map{WebImageInfo(url: $0)}
+        allowsUnlock = try container.decode(Bool.self, forKey: .allowsUnlock)
         try super.init(from: decoder)
     }
 }
@@ -71,6 +74,9 @@ class GetProductDetailOperation: AlamofireAPIAccessOperation {
 }
 
 class CategoryList: PaginatedList<GetProductCagegoryPageOperationFactory> {
+    var isUnlockLlist: Bool {
+        return query == "unlocked"
+    }
     let query: String
     init(session: UserSession, query: String) {
         self.query = query
@@ -97,17 +103,14 @@ class GetProductCagegoryPageOperation: AlamofireAPIAccessOperation, PaginatedFet
     var retryOperation: PaginatedFetchingOperationType? {
         return GetProductCagegoryPageOperation(session: session, url: url, isBeginning: isBeginning)
     }
-    private(set) var items: [ProductOverview] = []
+    var items: [ProductOverview] = []
 
     let session: UserSession
     private let url: URL
     
     convenience init(session: UserSession, query: String) {
-        var comp = URLComponents(url: ServiceURLs.devBase.appendingPathComponent("products"), resolvingAgainstBaseURL: false)!
-        if !query.isEmpty {
-            comp.queryItems = [.init(name: "category", value: query)]
-        }
-        self.init(session: session, url: comp.url!, isBeginning: true)
+        let url = query == "unlocked" ? ServiceURLs.devBase.appendingPathComponent("products/unlocks") : ServiceURLs.devBase.appendingPathComponent("products/category/\(query)")
+        self.init(session: session, url: url, isBeginning: true)
     }
     
     init(session: UserSession, url: URL, isBeginning: Bool) {

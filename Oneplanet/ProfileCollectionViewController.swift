@@ -14,10 +14,25 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
     
     var userSession: UserSession!
     var postList: PostList!
+    var followCounts: FollowCounts? {
+        didSet {
+            if isViewLoaded {
+                detailController?.followCountsProvider = followCounts
+            }
+        }
+    }
+    var relationshipState: SocialRelationshipStates? {
+        didSet {
+            if isViewLoaded {
+                detailController?.relationshipState = relationshipState
+            }
+        }
+    }
     fileprivate var sections: [Section] = [.detail]
     fileprivate var posts: [Post] = []
     private var detailController: ProfileDetailViewController?
     var refreshControl: UIRefreshControl!
+    var relationshipAction: (()->())?
     var showFollowListAction: ((URL)->())?
     var showPostDetailAction: ((Post)->())?
     var profile: UserProfileDisplayable! {
@@ -36,6 +51,8 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
         }
     }
     private var listUpdateHandles: [Any]?
+    private var isVisible = false
+    private var needsUpdate = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +64,27 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
         prepareForList()
     }
 
+    func setNeedsRefresh() {
+        if isVisible {
+            postList.reload()
+        } else {
+            needsUpdate = true
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        isVisible = true
+        if needsUpdate {
+            needsUpdate = false
+            postList.reload()
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        isVisible = false
+    }
 
     @IBAction func reload(_ sender: UIRefreshControl) {
         postList.reload()
@@ -90,6 +128,7 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
             prepareContentViewController(for: cell)
         }
         cell.contentViewController?.profile = profile
+        cell.contentViewController?.relationshipState = relationshipState
         cell.contentViewController?.shouldShowWarning = shouldShowWarning
         cell.contentViewController?.configuration = configuration
     }
@@ -97,12 +136,16 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
     private func prepareContentViewController(for cell: ProfileContainerCell) {
         let vc = ProfileDetailViewController.fromDefaultStoryboard()
         vc.userSession = userSession
+        vc.relationshipAction = {[weak self] in
+            self?.relationshipAction?()
+        }
         vc.showFollowListAction = {[weak self] url in
             self?.showFollowListAction?(url)
         }
         addChild(vc)
         cell.setUp(vc)
         vc.didMove(toParent: self)
+        vc.followCountsProvider = followCounts
         detailController = vc
     }
     

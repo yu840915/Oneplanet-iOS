@@ -31,7 +31,7 @@ class PostDraft {
     
     init(post: Post) {
         originalPost = post
-        isValued = false
+        isValued = post.type == PostType.valued.rawValue
         caption = post.caption
     }
 
@@ -135,7 +135,7 @@ class SubmitPostDraftOperation: AlamofireAPIAccessOperation {
     }
     
     override func prepareDataRequest() throws -> DataRequest {
-        var url = ServiceURLs.base.appendingPathComponent("posts")
+        var url = ServiceURLs.devBase.appendingPathComponent("posts")
         var method = HTTPMethod.post
         if let post = draft.originalPost {
             url.appendPathComponent(post.id)
@@ -146,12 +146,15 @@ class SubmitPostDraftOperation: AlamofireAPIAccessOperation {
     
     private func prepareParameters() throws -> Parameters {
         var images: [URL] = []
+        
         if let post = draft.originalPost {
             images = post.imageURLs
         } else {
             images = draft.images.compactMap{$0.progress.imageLocation?.url}
         }
-        return [Keys.caption.rawValue: draft.caption, Keys.imageURLs.rawValue: images.map{$0.absoluteString}]
+        return [Keys.caption.rawValue: draft.caption,
+                Keys.imageURLs.rawValue: images.map{$0.absoluteString},
+                Keys.type.rawValue: draft.isValued ? PostType.valued.rawValue : PostType.free.rawValue]
     }
     
     override func processData(with data: Data) throws {
@@ -159,10 +162,8 @@ class SubmitPostDraftOperation: AlamofireAPIAccessOperation {
         post = try JSONDecoder.default.decode(Post.self, from: data)
     }
     
-    override func willFinishProcess() throws {
-        if post == nil {
-            
-        }
+    override func handleUnauthorizedError(with response: HTTPURLResponse) throws {
+        session.deactivate()
     }
 }
 
@@ -173,7 +174,7 @@ class UpdatePostPhotoFlowOperaion: SimpleAsynchronousOperation, FailableOperatio
     let preset: ProcessImageOperation.Preset
     let session: UserSession
     
-    private var uploadImageOperation: UploadPostPhotoOperation?
+    private var uploadImageOperation: UploadPhotoOperation?
     
     init(attachment: ImageAttachment, preset: ProcessImageOperation.Preset, session: UserSession) {
         self.session = session
@@ -206,8 +207,7 @@ class UpdatePostPhotoFlowOperaion: SimpleAsynchronousOperation, FailableOperatio
         op.start()
         if let data = op.data, let meta = op.metadata {
             attachment.progress.didProcessImage(to: data, metadata: meta)
-            
-            attachment.progress.didGenerateDestination(UploadDestination(taskId: "", url: ServiceURLs.base.appendingPathComponent("images")))
+            attachment.progress.didGenerateDestination(UploadDestination(taskId: "", url: ServiceURLs.base.appendingPathComponent("image/upload")))
             runNext()
         } else {
             fail(with: op.error)
@@ -215,7 +215,7 @@ class UpdatePostPhotoFlowOperaion: SimpleAsynchronousOperation, FailableOperatio
     }
     
     private func uploadImageData(_ data: Data, withMetadata metadata: FileMetadata, to destination: UploadDestination) {
-        let op = UploadPostPhotoOperation(destination: destination, imageData: data, imageMetadata: metadata, session: session)
+        let op = UploadPhotoOperation(destination: destination, imageData: data, imageMetadata: metadata, session: session)
         op.completionBlock = {[weak self] in
             self?.didUpload()
         }
@@ -314,5 +314,28 @@ class ConcurrentTaskOperation<TaskType>: SimpleAsynchronousOperation, FailableOp
             return
         }
         finish()
+    }
+}
+
+class DeletePostOperation: AlamofireAPIAccessOperation {
+    let post: Post
+    let session: UserSession
+    
+    init(post: Post, session: UserSession) {
+        self.post = post
+        self.session = session
+    }
+    
+    override func prepareURLRequest() throws -> URLRequest {
+        guard post.authorID == session.profile?.id else {
+            throw GenericAppError("You can only delete your post")
+        }
+        return session.addingAuthorizationToken(to: try URLRequest(url: ServiceURLs.base.appendingPathComponent("posts/\(post.id)"), method: .delete))
+    }
+    
+    override func willFinishProcess() throws {
+        OperationQueue.main.addOperation {[session, post] in
+            session.notifyPostDidDelete(post)
+        }
     }
 }

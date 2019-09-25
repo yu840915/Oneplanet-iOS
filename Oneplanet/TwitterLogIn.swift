@@ -125,7 +125,7 @@ fileprivate class SubmitTwitterTokenOperation: LogInOperation {
     }
 
     override func prepareDataRequest() throws -> DataRequest {
-        return Alamofire.request(ServiceURLs.base.appendingPathComponent("login/twitter-app"), method: .post, parameters: ["access_token_key": session.authToken, "access_token_secret": session.authTokenSecret], encoding: JSONEncoding(), headers: nil)
+        return Alamofire.request(ServiceURLs.devBase.appendingPathComponent("login/twitter-app"), method: .post, parameters: ["oauth_token": session.authToken, "oauth_token_secret": session.authTokenSecret], encoding: URLEncoding(), headers: nil)
     }
 }
 

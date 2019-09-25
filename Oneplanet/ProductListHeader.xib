@@ -38,15 +38,47 @@
                         </button>
                     </subviews>
                 </stackView>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ROe-sv-XVf" userLabel="Bubble View" customClass="ChatBubbleView" customModule="Oneplanet" customModuleProvider="target">
+                    <rect key="frame" x="105" y="4" width="150" height="45"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_bubbledown_nor" translatesAutoresizingMaskIntoConstraints="NO" id="gtK-1q-HCb">
+                            <rect key="frame" x="0.0" y="-8" width="150" height="53"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M5e-iJ-85a">
+                            <rect key="frame" x="15" y="10" width="120" height="25"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="gtK-1q-HCb" secondAttribute="bottom" id="FLu-OO-Ks8"/>
+                        <constraint firstItem="M5e-iJ-85a" firstAttribute="width" secondItem="ROe-sv-XVf" secondAttribute="width" constant="-30" id="WCU-dM-nbp"/>
+                        <constraint firstItem="M5e-iJ-85a" firstAttribute="height" secondItem="ROe-sv-XVf" secondAttribute="height" constant="-20" id="eZj-ik-iv8"/>
+                        <constraint firstItem="M5e-iJ-85a" firstAttribute="centerY" secondItem="ROe-sv-XVf" secondAttribute="centerY" id="kFn-Qi-uwE"/>
+                        <constraint firstItem="gtK-1q-HCb" firstAttribute="leading" secondItem="ROe-sv-XVf" secondAttribute="leading" id="nay-hQ-987"/>
+                        <constraint firstAttribute="trailing" secondItem="gtK-1q-HCb" secondAttribute="trailing" id="qmz-eT-mEK"/>
+                        <constraint firstItem="gtK-1q-HCb" firstAttribute="top" secondItem="ROe-sv-XVf" secondAttribute="top" constant="-8" id="wYQ-gj-M66"/>
+                        <constraint firstItem="M5e-iJ-85a" firstAttribute="centerX" secondItem="ROe-sv-XVf" secondAttribute="centerX" id="ymS-Pc-1XH"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="backgroundImageView" destination="gtK-1q-HCb" id="oKy-hH-a3j"/>
+                        <outlet property="titleLabel" destination="M5e-iJ-85a" id="ufK-wV-dg3"/>
+                    </connections>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="nrI-Ku-65x" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="CHI-N3-bhu"/>
                 <constraint firstItem="nrI-Ku-65x" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="Qv5-S7-6Kt"/>
                 <constraint firstItem="nrI-Ku-65x" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="XnR-uw-HsC"/>
+                <constraint firstItem="gtK-1q-HCb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="-4" id="Z3X-bn-E66"/>
+                <constraint firstItem="ROe-sv-XVf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="105" id="dR3-jU-f2Y"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="bubbleView" destination="ROe-sv-XVf" id="J4F-HH-bny"/>
                 <outlet property="filterButton" destination="8dn-eD-xX2" id="FhC-Yn-YBa"/>
                 <outlet property="titleLabel" destination="Wzr-cD-G9f" id="U6q-lo-iFF"/>
             </connections>
@@ -54,6 +86,7 @@
     </objects>
     <resources>
         <image name="bt_smallwirewhite_nor" width="29" height="28"/>
+        <image name="ui_bubbledown_nor" width="150" height="53"/>
         <namedColor name="default text">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

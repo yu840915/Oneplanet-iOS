@@ -18,7 +18,6 @@ class GreenGemPopUpViewController: UIViewController {
     @IBOutlet weak var bulletTextView1: UITextView!
     @IBOutlet weak var bulletTextView2: UITextView!
     @IBOutlet weak var bulletTextView3: UITextView!
-    @IBOutlet weak var bulletTextView4: UITextView!
 
     @IBOutlet weak var goButton: UIButton!
     
@@ -31,11 +30,10 @@ class GreenGemPopUpViewController: UIViewController {
     private func localizeTitles() {
         nameLabel.text = Localized.titles.greenGem
         usageLabel.text = Localized.gemStonePopUp.greenGemUsage
-        bulletTextView1.text = Localized.gemStonePopUp.greenGemBullet1
+        bulletTextView1.text = String(format: Localized.gemStonePopUp.greenGemBullet1, Localized.titles.greenGem)
         bulletTextView2.text = Localized.gemStonePopUp.greenGemBullet2
-        bulletTextView4.text = Localized.gemStonePopUp.greenGemBullet4
+        bulletTextView3.text = Localized.gemStonePopUp.greenGemBullet3
         prepareGoButton()
-        prepareActionBullet()
     }
     
     private func prepareGoButton() {
@@ -44,18 +42,6 @@ class GreenGemPopUpViewController: UIViewController {
         let attrStr = NSMutableAttributedString(string: text, attributes: [.font:  UIFont.systemFont(ofSize: 14), .foregroundColor: ColorPalette.defaultText])
         attrStr.addAttributes([.font: UIFont.systemFont(ofSize: 14, weight: .semibold)], range: range)
         goButton.setAttributedTitle(attrStr, for: .normal)
-    }
-    
-    private func prepareActionBullet() {
-        let text = String(format: Localized.gemStonePopUp.greenGemBullet3, Localized.feature.events)
-        let linkRange = (text as NSString).range(of: Localized.feature.events)
-        let attrStr = NSMutableAttributedString(string: text, attributes: [.font:  UIFont.systemFont(ofSize: 12)])
-        attrStr.addAttributes([.link : DeepLinks.modalEventsPage, .font: UIFont.systemFont(ofSize: 12, weight: .semibold)], range: linkRange)
-        bulletTextView3.delegate = self
-        bulletTextView3.attributedText = attrStr
-        bulletTextView3.linkTextAttributes = [
-            .foregroundColor : ColorPalette.buttonGreen,
-            .font: UIFont.systemFont(ofSize: 12, weight: .semibold)]
     }
     
     @IBAction func exit(_ sender: Any) {

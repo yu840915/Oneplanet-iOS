@@ -20,12 +20,16 @@ class FollowingListTableViewController: UITableViewController, DefaultInstanceFa
     var users: [User] = []
     var sections: [Section] = []
     var configuration: Configuration = Configuration()
+    var updateClock: UpdateClock!
     
     private var listUpdateHandles: [Any]?
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
         prepareForList()
+        updateClock = UpdateClock(preferredFrameRate: 5, onTick: {[weak self] in
+            self?.updateVisibleContentCells()
+        })
     }
 
     @IBAction func reload(_ sender: UIRefreshControl) {
@@ -61,6 +65,20 @@ class FollowingListTableViewController: UITableViewController, DefaultInstanceFa
         cell.action = {[weak self] in
             self?.changeFriendship(for: user)
         }
+    }
+    
+    func updateVisibleContentCells() {
+        guard let indexPaths = tableView.indexPathsForVisibleRows else { return }
+        indexPaths.forEach{
+            if sections[$0.section] == .content,
+                let cell = tableView.cellForRow(at: $0) as? UserOverviewCell {
+                updateContentCell(cell, at: $0)
+            }
+        }
+    }
+    
+    func updateContentCell(_ cell: UserOverviewCell, at indexPath: IndexPath) {
+        cell.updateViews(with: userSession.socialRelationshipRepo.relationshipWithUser(of: users[indexPath.row].id))
     }
     
     override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
@@ -148,7 +166,17 @@ private extension FollowingListTableViewController {
     }
     
     func changeFriendship(for user: User) {
-        
+        guard let rel = userSession.socialRelationshipRepo.relationshipWithUser(of: user.id),
+            let states = rel.states else {
+            return
+        }
+        if states.isBlocking {
+            rel.unblock()
+        } else if states.isFollowing {
+            rel.unfollow()
+        } else {
+            rel.follow()
+        }
     }
 }
 

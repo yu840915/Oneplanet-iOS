@@ -47,6 +47,16 @@ class HotHeaderCollectionViewController: UICollectionViewController, UserSession
         setUpAutoScrollTimerIfNeeded()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setUpAutoScrollTimerIfNeeded()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        autoScrollTimer?.invalidate()
+    }
+    
     private func setUpAutoScrollTimerIfNeeded() {
         autoScrollTimer?.invalidate()
         guard items.count > 1 else { return }

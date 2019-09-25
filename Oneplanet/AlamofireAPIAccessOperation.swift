@@ -65,7 +65,13 @@ class AlamofireAPIAccessOperation: SimpleAsynchronousOperation, FailableOperatio
     open func processHTTPResponseHeader(_ header: [AnyHashable: Any]) throws {}
     
     open func handleClientError(with response: HTTPURLResponse) throws {
+        if response.statusCode == 401 {
+            try handleUnauthorizedError(with: response)
+        }
         throw GenericHTTPResponseError(response: response)
+    }
+    
+    open func handleUnauthorizedError(with response: HTTPURLResponse) throws {
     }
     
     open func handleServiceError(with response: HTTPURLResponse) throws {

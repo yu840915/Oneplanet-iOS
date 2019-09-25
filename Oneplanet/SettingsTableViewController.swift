@@ -29,6 +29,7 @@ class SettingsTableViewController: UITableViewController, UserSessionDepending {
         let mail = UIButton(frame: CGRect(origin: .zero, size: CGSize(width: 30, height: 30)))
         mail.setImage(navigationItem.rightBarButtonItems?[0].image, for: .normal)
         youtube.setImage(navigationItem.rightBarButtonItems?[1].image, for: .normal)
+        youtube.addTarget(self, action: #selector(showYoutubePage(_:)), for: .touchUpInside)
         mail.addTarget(self, action: #selector(showEmailComposer(_:)), for: .touchUpInside)
         navigationItem.rightBarButtonItems = [
             UIBarButtonItem(customView: mail),
@@ -111,7 +112,7 @@ class SettingsTableViewController: UITableViewController, UserSessionDepending {
         case .blockList:
             performSegue(withIdentifier: SegueID.showBlockedList, sender: nil)
         case .biddingTerms:
-            performSegue(withIdentifier: SegueID.showBiddingTerms, sender: nil)
+            performSegue(withIdentifier: SegueID.showBiddingTerms, sender: ServiceURLs.biddingTerms)
         case .terms:
             performSegue(withIdentifier: SegueID.showTerms, sender: nil)
         case .logOut:
@@ -134,7 +135,7 @@ class SettingsTableViewController: UITableViewController, UserSessionDepending {
         if let nav = segue.destination as? UINavigationController, let vc = nav.viewControllers.first as? WebViewController {
             NavigationBarStyle.darkGray.configure(nav.navigationBar)
             if segue.identifier == SegueID.showBiddingTerms {
-                vc.request = URLRequest(url: ServiceURLs.biddingTerms)
+                vc.request = URLRequest(url: (sender as! URL))
                 vc.title = ActionRow.biddingTerms.displayName
             } else {
                 var req = URLRequest(url: ServiceURLs.terms)

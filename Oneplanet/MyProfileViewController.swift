@@ -16,17 +16,32 @@ class MyProfileViewController: UIViewController, UserSessionDepending {
     
     private var profileController: ProfileCollectionViewController!
     private var idHeader: IDHeaderView?
-    private var profileUpdateHandle: Any?
+    private var updateHandles: [Any]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareIDHeaderIfNeeded()
-        profileUpdateHandle = userSession.profileDidUpdate.add {[weak self] in
+        var handles: [Any] = []
+        handles.append(userSession.profileDidUpdate.add {[weak self] in
             OperationQueue.main.addOperation {
                 self?.updateViewsForProfile()
             }
-        }
+        })
+        handles.append(userSession.postListDidUpdate.add{[weak self] _ in
+            self?.setNeedsRefresh()
+        })
+        updateHandles = handles
         updateViewsForProfile()
+        userSession.followCounts.refreshIfNeeded()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        userSession.followCounts.refreshIfNeeded()
+    }
+    
+    func setNeedsRefresh() {
+        profileController?.setNeedsRefresh()
     }
     
     private func prepareIDHeaderIfNeeded() {
@@ -42,7 +57,9 @@ class MyProfileViewController: UIViewController, UserSessionDepending {
     private func updateViewsForProfile() {
         idHeader?.idLabel.text = profile.username
         profileController.profile = profile
+        profileController.followCounts = userSession.followCounts.counts
     }
+    
     private func copyID() {
         UIPasteboard.general.string = profile.username
         Toast.show(with: String(format: Localized.messageFormats.didCopyMyId, profile.username))
@@ -55,6 +72,7 @@ class MyProfileViewController: UIViewController, UserSessionDepending {
             vc.userSession = userSession
             vc.postList = PostList.myPostList(with: userSession)
             vc.profile = profile
+            vc.followCounts = userSession.followCounts.counts
             vc.configuration = userSession.isGuest ? .forGuest: .forMe
             vc.showFollowListAction = {[weak self] url in
                 self?.showFollowList(with: url)
@@ -74,7 +92,7 @@ class MyProfileViewController: UIViewController, UserSessionDepending {
                 vc.userSession = userSession
                 vc.profile = profile
                 vc.followerList = UserList.followerList(with: userSession)
-                vc.followingList = UserList.followerList(with: userSession)
+                vc.followingList = UserList.followingList(with: userSession)
                 if let url = sender as? URL, url == DeepLinks.followingList {
                     vc.preselectedTab = .following
                 }

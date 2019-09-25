@@ -9,6 +9,9 @@
 import Foundation
 
 class Localized {
+    class func lookUp(_ key: String) -> String {
+        return NSLocalizedString(key, comment: "")
+    }
     static let feature = Feature()
     static let acceptLanguageHeader: [String: String] = [acceptLanguageKey: languageCode]
     static let acceptLanguageKey = "Accept-Language"
@@ -29,8 +32,8 @@ class Localized {
     static let shippingInfoTerms = LocalizedShippingInfoTerms()
     static let phraseFormats = LocalizedPhraseFormats()
     static let reportReasons = LocalizedReportReasons()
-    static let symbols = LocalizedSimbols()
-    
+    static let symbols = LocalizedSymbols()
+    static let tutorial = LocalizedTutorial()
 }
 
 class LocalizedTitles {//tl_
@@ -340,8 +343,14 @@ class LocalizedMessages {//msg_
     var lotClosedDescription: String {
         return NSLocalizedString("msg_lot_closed_des", comment: "")
     }
+    var bidTooLate: String {
+        return NSLocalizedString("msg_bid_too_late", comment: "")
+    }
     var bidPaymentTooLate: String {
         return NSLocalizedString("msg_bid_payment_too_late", comment: "")
+    }
+    var gemUnchanged: String {
+        return NSLocalizedString("msg_gem_unchanged", comment: "")
     }
     var race1Monologue: String {
         return NSLocalizedString("msg_race1_monologue", comment: "")
@@ -393,6 +402,9 @@ class LocalizedMessages {//msg_
     }
     var usernameRules: String {
         return NSLocalizedString("msg_username_rules", comment: "")
+    }
+    var copiedOrderNumber: String {
+        return NSLocalizedString("msg_copied_order_number", comment: "")
     }
 }
 
@@ -487,6 +499,9 @@ class LocalizedMessageFormats {//msgf_
     }
     var noSearchResults: String {
         return NSLocalizedString("msgf_no_search_results", comment: "")
+    }
+    var dailyLoginReward: String {
+        return NSLocalizedString("msgf_daily_login_reward", comment: "")
     }
 }
 
@@ -657,6 +672,18 @@ class LocalizedPhrase { //ph_
     var noRoomForPhoto: String {
         return NSLocalizedString("ph_no_room_for_photo", comment: "")
     }
+    var categoryUnlocked: String {
+        return NSLocalizedString("ph_category_unlocked", comment: "")
+    }
+    var biddingBegins: String {
+        return NSLocalizedString("ph_bidding_begins", comment: "")
+    }
+    var purpleGem: String {
+        return NSLocalizedString("ph_purple_gem", comment: "")
+    }
+    var purchaseSuccess: String {
+        return NSLocalizedString("ph_purchase_success", comment: "")
+    }
 }
 
 class LocalizedPhraseFormats {//phf_
@@ -694,6 +721,15 @@ class LocalizedPhraseFormats {//phf_
     var remainingUploads: String {
         return NSLocalizedString("phf_remaining_uploads", comment: "")
     }
+    var buySome: String {
+        return NSLocalizedString("phf_buy_some", comment: "")
+    }
+    var buySomeGetSomeFree: String {
+        return NSLocalizedString("phf_buy_some_get_some_free", comment: "")
+    }
+    var purchaseSuccess: String {
+        return NSLocalizedString("phf_purchase_success", comment: "")
+    }
 }
 
 class EmptyMessages {//no_
@@ -723,6 +759,12 @@ class EmptyMessages {//no_
     }
     var generic: String {
         return NSLocalizedString("no_generic", comment: "")
+    }
+    var unlocked: String {
+        return NSLocalizedString("no_unlocked", comment: "")
+    }
+    var unlockedDetail: String {
+        return NSLocalizedString("no_unlocked_detail", comment: "")
     }
 }
 
@@ -833,9 +875,6 @@ class GemStonePopUp { //pop
     var greenGemBullet3: String {
         return NSLocalizedString("pop_green_gem_bullet3", comment: "")
     }
-    var greenGemBullet4: String {
-        return NSLocalizedString("pop_green_gem_bullet4", comment: "")
-    }
     var purpleGemBullet1: String {
         return NSLocalizedString("pop_purple_gem_bullet1", comment: "")
     }
@@ -891,10 +930,10 @@ class LocalizedReportReasons { //rp_
         return NSLocalizedString("rp_dont_like_post_detail", comment: "")
     }
     var nudityTitle: String {
-        return NSLocalizedString("rp_dnudity_title", comment: "")
+        return NSLocalizedString("rp_nudity_title", comment: "")
     }
     var nudityDetail: String {
-        return NSLocalizedString("rp_dnudity_detail", comment: "")
+        return NSLocalizedString("rp_nudity_detail", comment: "")
     }
     var hateSpeechTitle: String {
         return NSLocalizedString("rp_hate_speech_title", comment: "")
@@ -916,9 +955,20 @@ class LocalizedReportReasons { //rp_
     }
 }
 
-
-class LocalizedSimbols { //smb_
+class LocalizedSymbols { //smb_
     var enumSpliter: String {
         return NSLocalizedString("smb_enum_spliter", comment: "")
+    }
+}
+
+class LocalizedTutorial { //tut_
+    var unlock: String {
+        return NSLocalizedString("tut_unlock", comment: "")
+    }
+    var waitForBid: String {
+        return NSLocalizedString("tut_wait_for_bid", comment: "")
+    }
+    var bid: String {
+        return NSLocalizedString("tut_bid", comment: "")
     }
 }

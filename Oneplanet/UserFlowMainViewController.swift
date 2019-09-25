@@ -14,17 +14,21 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
     private var contentTabbarController: UITabBarController!
     private var auctionController: AuctionMainViewController!
     private var postController: PostFeedMainViewController!
+    private var profileController: MyProfileViewController!
+    private var hotPageController: HotCollectionViewController!
     private var treasuryBarController: TreasuryBarViewController!
     fileprivate var getPageListOperaion: GetPromotionPageListOperation?
     fileprivate var appearanceAction: (()->())?
     fileprivate var hasViewBeenVisible = false
-    private var appBecomeActiveHandle: Any?
+    private var appActivityHandles: [Any]?
     private var userActionRounter: URLRouter!
     @IBOutlet weak var balloonString: UIImageView!
     @IBOutlet weak var balloonRightPadding: NSLayoutConstraint!
     @IBOutlet weak var balloonButton: UIButton!
     var balloonNavigationCoordinator: BalloonNavigationCoordinator?
     var statusBarHandle: Any?
+    var currentSessionEndTime: Date?
+    private var postQuota: ValuedPostQuota?
     
     class func fromDefaultStoryboard() -> UserFlowMainViewController {
         return UIStoryboard(name: "MainUserFlow", bundle: nil).instantiateInitialViewController() as! UserFlowMainViewController
@@ -37,16 +41,17 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
     override func viewDidLoad() {
         super.viewDidLoad()
         let contents = contentTabbarController.viewControllers!.compactMap{$0 as? UINavigationController}.compactMap{$0.viewControllers.first}
-        auctionController = contents.compactMap{$0 as? AuctionMainViewController}.first
-        postController = contents.compactMap{$0 as? PostFeedMainViewController}.first
-        
-        setUpTabbarBackground()
-        getPromoPopupIfNeeded()
-        appBecomeActiveHandle = AppLifeCycleObserver.didBecomeActive.observers.add {[weak self] (_) in
-            OperationQueue.main.addOperation {
-                self?.getPromoPopupIfNeeded()
+        contents.forEach {
+            if let vc = $0 as? AuctionMainViewController {
+                auctionController = vc
+            } else if let vc = $0 as? PostFeedMainViewController {
+                postController = vc
+            } else if let vc = $0 as? MyProfileViewController {
+                profileController = vc
             }
         }
+        setUpTabbarBackground()
+        getPromoPopupIfNeeded()
         prepareRouter()
         [balloonButton, balloonString].forEach{
             $0?.layer.shadowColor = UIColor.black.cgColor
@@ -54,6 +59,42 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
             $0?.layer.shadowRadius = 4
             $0?.layer.shadowOffset = .init(width: -2, height: 4)
         }
+        if !userSession.isAdmin && !userSession.isGuest {
+            let q = ValuedPostQuota(userSession: userSession)
+            postQuota = q
+            q.refresh()
+        }
+        prepareAppActivityHandlers()
+    }
+    
+    private func prepareAppActivityHandlers() {
+        var handles = [Any]()
+        handles.append(AppLifeCycleObserver.didBecomeActive.observers.add {[weak self] (_) in
+            OperationQueue.main.addOperation {
+                self?.getPromoPopupIfNeeded()
+                self?.refreshIfSessionEndedOnWaking()
+            }
+        })
+        handles.append(AppLifeCycleObserver.willEnterForeground.observers.add({[weak self] (_) in
+            self?.recordBidSessionEndTime()
+        }))
+        appActivityHandles = handles
+    }
+    
+    private func recordBidSessionEndTime() {
+        currentSessionEndTime = userSession.bidPhaseIndicator.sessionEndDate
+    }
+    
+    private func refreshIfSessionEndedOnWaking() {
+        guard let date = currentSessionEndTime,
+            date.timeIntervalSinceNow < 0 else {
+            currentSessionEndTime = nil
+            return
+        }
+        currentSessionEndTime = nil
+        userSession.lotList.reload()
+        hotPageController.setNeedsRefresh()
+        auctionController.setNeedsRefresh()
     }
     
     private func setUpTabbarBackground() {
@@ -65,6 +106,7 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
         contentTabbarController.tabBar.addSubview(imageView)
         contentTabbarController.tabBar.sendSubviewToBack(imageView)
         let hot = contentTabbarController.viewControllers?.compactMap{$0 as? UINavigationController}.compactMap{$0.viewControllers.first as? HotCollectionViewController}.first
+        hotPageController = hot
         hot?.balloonString = balloonString
     }
     
@@ -156,6 +198,7 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
                     self?.showPostComposer(with: draft)
                 })
             }
+            vc.quota = postQuota
         } else if let nav = segue.destination as? UINavigationController {
             if let vc = nav.viewControllers.first as? PostCreationFlowViewController {
                 vc.userSession = userSession
@@ -170,15 +213,26 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
             }
         }
     }
-
 }
 
 fileprivate extension UserFlowMainViewController {
     func handleNewPost() {
         switchToTab(.life)
+        userSession.wallet.setNeedsUpdateBlueGem()
+        postQuota?.refresh()
+        handlePostUpdate()
+    }
+    
+    func handlePostUpdate() {
+        postController.setNeedsRefresh()
+        profileController.setNeedsRefresh()
     }
     
     func showCreationPortalIfAllowed() {
+        if userSession.isBanned {
+            switchToTab(.my)
+            return
+        }
         let op = FeatureAccessCheckOperation(userSession: userSession)
         op.start()
         if op.isAccessible {
@@ -241,6 +295,12 @@ fileprivate extension UserFlowMainViewController {
     }
 
     func checkAccess(forTab tab: TabFeature) -> Bool {
+        if tab == .life && userSession.isBanned {
+            OperationQueue.main.addOperation {
+                self.switchToTab(.my)
+            }
+            return false
+        }
         switch tab {
         case .hot, .bid:
             return true
@@ -298,6 +358,9 @@ extension UserFlowMainViewController {
 fileprivate extension UserFlowMainViewController {
     func getPromoPopupIfNeeded() {
         guard !userSession.isGuest else { return }
+        if userSession.bidPhaseIndicator.biddingHasStarted && userSession.bidPhaseIndicator.phase != .ended {
+            return
+        }
         if let lastDate = Preferences.lastPromoPopUpShowUpDate.value,
             Date().timeIntervalSince(lastDate) < appConfiguration.promoPopUpCoolDownInterval {
             return
@@ -362,6 +425,9 @@ extension UserFlowMainViewController: UITabBarControllerDelegate {
         let coord = BalloonNavigationCoordinator(navigationController: nav)
         coord.balloonAppearanceHandler = {[weak self] in
             self?.updateBalloonAppearance()
+        }
+        if let vc = nav.viewControllers.first as? AuctionMainViewController {
+            vc.setWantsTutorial()
         }
         balloonNavigationCoordinator = coord
         updateBalloonAppearance()

@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import ModelBlocks
 
 class ProductOverviewCell: UITableViewCell {
     @IBOutlet weak var contentBackgroundView: UIView!
@@ -15,6 +16,9 @@ class ProductOverviewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var lockButton: UIButton!
     @IBOutlet weak var lockLabel: UILabel!
+    @IBOutlet weak var tutorialBubble: ChatBubbleView!
+    private var fadeInFadeOutOperation: FadeInFadeOutOperation?
+    
     var isLocked = true {
         didSet {
             if oldValue != isLocked {
@@ -36,6 +40,7 @@ class ProductOverviewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         updateViewsForLockState()
+        tutorialBubble.titleLabel.text = Localized.tutorial.unlock
         selectedBackgroundView = CommonViewFactory.shared.makeSelectionBackground()
     }
     
@@ -48,6 +53,32 @@ class ProductOverviewCell: UITableViewCell {
     
     @IBAction func invokeUnlockAction(_ sender: UIButton) {
         unlockAction?()
+    }
+    
+    func showTutorial() {
+        fadeInFadeOutOperation?.cancel()
+        clipsToBounds = false
+        superview?.bringSubviewToFront(self)
+        let op = FadeInFadeOutOperation(view: tutorialBubble)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.restoreFromTutorial()
+            }
+        }
+        fadeInFadeOutOperation = op
+        op.start()
+    }
+    
+    override func prepareForReuse() {
+        if let op = fadeInFadeOutOperation {
+            op.cancel()
+            fadeInFadeOutOperation = nil
+            self.restoreFromTutorial()
+        }
+    }
+    
+    private func restoreFromTutorial() {
+        clipsToBounds = true
     }
 }
 
@@ -83,12 +114,19 @@ class BiddingProductCell: UITableViewCell {
     @IBOutlet weak var digitLabel: UILabel!
     @IBOutlet weak var coverView: UIView!
     @IBOutlet var leadIndicators: [UIButton]!
+    @IBOutlet weak var outcomeView: UIView!
+    @IBOutlet weak var winLabel: UILabel!
+    @IBOutlet weak var loseLabel: UILabel!
+    private var color: UIColor = ColorPalette.bidRed
+    @IBOutlet weak var tutorialBubble: ChatBubbleView!
+    private(set) var extensionDuration: TimeInterval = .minute
+
     var bidAction: (()->())?
     var showDetailAction: (()->())?
     var showProfileAction: (()->())?
     
     private let countdownTimeAttribute: [NSAttributedString.Key: Any] = [.kern: 3.5]
-    var deadline = Date() {
+    var deadline: Date? {
         didSet {
             tick()
         }
@@ -120,13 +158,16 @@ class BiddingProductCell: UITableViewCell {
     }
     
     func tick() {
-        let i = deadline.timeIntervalSinceNow
+        guard let deadline = self.deadline else { return }
+        let i = max(deadline.timeIntervalSinceNow, 0)
         let comps = TimeIntervalComponents(extractor.extract(from: i))
         let min = formatter.string(for: comps.minutes) ?? "00"
         let sec = formatter.string(for: comps.seconds) ?? "00"
         var attr = countdownTimeAttribute
-        attr[.foregroundColor] =  i < .minute ? ColorPalette.bidRed : ColorPalette.bidGreen
-        countdownLabel.attributedText = NSAttributedString(string: min + ":" + sec, attributes: countdownTimeAttribute)
+        if i < extensionDuration {
+            attr[.foregroundColor] = color
+        }
+        countdownLabel.attributedText = NSAttributedString(string: min + ":" + sec, attributes: attr)
     }
     
     @IBAction func invokeDetailAction(_ sender: Any) {
@@ -135,6 +176,70 @@ class BiddingProductCell: UITableViewCell {
     
     @IBAction func invokeBidAction(_ sender: UIButton) {
         bidAction?()
+    }
+}
+
+extension BiddingProductCell {
+    func updateViews(with product: ProductOverview) {
+        previewButton.kf.setImage(with: product.cover?.url, for: .normal)
+    }
+    
+    func updateViews(with process: ProductBidProcess) {
+        extensionDuration = process.extensionDuration
+        if process.isInitialized {
+            updateViewsWithValidProcess(process)
+        } else {
+            updateViewsForInitialState()
+        }
+    }
+    
+    func updateViewsForInitialState() {
+        bidButton.isHidden = true
+        runningIndicator.isHidden = true
+        countdownLabel.isHidden = true
+        outcomeView.isHidden = true
+        avatarView.isHidden = true
+    }
+    
+    func updateViewsWithValidProcess(_ process: ProductBidProcess) {
+        runningIndicator.isHidden = true
+        countdownLabel.isHidden = true
+        outcomeView.isHidden = true
+        bidButton.isHidden = true
+        avatarView.isHidden = true
+        coverView.isHidden = !process.isEnded
+        if process.isEnded {
+            outcomeView.isHidden = false
+            winLabel.isHidden = !process.isWinning
+            loseLabel.isHidden = process.isWinning
+        } else if let date = process.endDate {
+            if date.timeIntervalSinceNow > 1 {
+                deadline = process.endDate
+                countdownLabel.isHidden = false
+                bidButton.isHidden = false
+                bidButton.isEnabled = !process.isWinning
+            } else {
+                runningIndicator.isHidden = false
+                runningIndicator.startAnimating()
+            }
+        }
+        color = process.isWinning ? ColorPalette.bidGreen : ColorPalette.bidRed
+        if process.leadFetcher != nil {
+            avatarView.isHidden = false
+            avatarView.update(with: process.lead)
+        }
+        leadIndicators.forEach{$0.isSelected = process.isWinning}
+        updateCountLabel(process.myBid)
+    }
+    
+    func updateCountLabel(_ count: Int) {
+        let digits = SharedNumberFormatters.integer.string(for: count)!
+        let reversed = digits.reversed().map{String($0)}
+        let labels = [digitLabel, tensLabel, hundredLabel]
+        labels.forEach{ $0?.text = "0" }
+        for i in 0..<min(reversed.count, labels.count) {
+            labels[i]?.text = reversed[i]
+        }
     }
 }
 
@@ -210,5 +315,66 @@ class BiddingEndIndicationCell: BiddingStateIndicationCell {
         super.awakeFromNib()
         stateLabel.text = Localized.activity.biddingEnded
         descriptionTextView.attributedText = prepareWinnerNotice()
+    }
+}
+
+class ChatBubbleView: UIView {
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowRadius = 10
+        layer.shadowOpacity = 1.0
+        layer.shadowOffset = CGSize(width: 0, height: 2)
+    }
+}
+
+class FadeInFadeOutOperation: SimpleAsynchronousOperation {
+    let view: UIView
+    private weak var fadeOutTimer: Timer?
+    init(view: UIView) {
+        self.view = view
+    }
+    
+    override func main() {
+        guard !isCancelled else { return }
+        view.isHidden = false
+        view.alpha = 0.0
+        UIView.animate(withDuration: 0.2, animations: {
+            self.view.alpha = 1.0
+        }) { (_) in
+            self.didFadeIn()
+        }
+    }
+    
+    private func didFadeIn() {
+        guard !isCancelled else {
+            view.isHidden = true
+            return
+        }
+        scheduleFadeOut()
+    }
+    
+    private func scheduleFadeOut() {
+        Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) {[weak self] (_) in
+            self?.fadeOut()
+        }
+    }
+    
+    private func fadeOut() {
+        guard !isCancelled else { return }
+        UIView.animate(withDuration: 0.2, animations: {
+            self.view.alpha = 0.0
+        }) { (_) in
+            self.view.isHidden = true
+            self.finish()
+        }
+    }
+    
+    override func onCancel() {
+        fadeOutTimer?.invalidate()
+        view.isHidden = true
     }
 }

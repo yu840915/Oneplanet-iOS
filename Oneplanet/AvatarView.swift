@@ -40,11 +40,14 @@ class AvatarView: UIView {
             }
         }
     }
+    func update(with user: User?) {
+        avatar = user?.avatar
+        backgrondImage = user?.alien?.frameImage
+    }
     private var fetchOperation: DownloadImageOperaion?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        layer.borderWidth = 2
         updateButtonInteraction()
     }
     
@@ -85,7 +88,8 @@ class AvatarView: UIView {
             op.start()
         } else {
             cancelDownload()
-            avatarButton.kf.setBackgroundImage(with: info.url, for: .normal)
+            avatarButton.kf.setBackgroundImage(with: info.url, for: .normal, placeholder: #imageLiteral(resourceName: "im_userphotodefault_nor"))
+//            avatarButton.kf.setBackgroundImage(with: info.url, for: .normal)
         }
     }
     

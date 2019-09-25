@@ -109,6 +109,9 @@ class ProductFilterPickerTableViewController: PickerTableViewController, UserSes
 class CategoryNameViewModel: PickerItemDisplayable {
     let categoryName: CategoryName
     var mainTitle: String {
+        if categoryName.name.lowercased() == "unlocked" {
+            return Localized.phrases.categoryUnlocked
+        }
         return categoryName.name
     }
     var detailTitle: String? {

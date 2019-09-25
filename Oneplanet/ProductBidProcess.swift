@@ -41,11 +41,15 @@ class ProductBidProcessManager {
         processes[product.id] = process
         return process
     }
+    
+    func forceRefreshAll() {
+        
+    }
 }
 
 class ProductBidProcess: Equatable {
     static func == (lhs: ProductBidProcess, rhs: ProductBidProcess) -> Bool {
-        return lhs.product.id == rhs.product.id
+        return lhs === rhs
     }
     
     let product: ProductOverview

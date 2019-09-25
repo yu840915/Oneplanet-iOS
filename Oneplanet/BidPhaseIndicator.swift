@@ -78,8 +78,8 @@ class BidPhaseIndicator {
             && sessionEndDate.timeIntervalSinceNow < 0 else {
             return
         }
-        let timer = Timer(timeInterval: 10 * .minute, repeats: true) { (_) in
-            
+        let timer = Timer(timeInterval: 10 * .minute, repeats: true) {[weak self] (_) in
+            self?.refreshIfNeeded()
         }
         timer.tolerance = 1
         refreshTimer = timer

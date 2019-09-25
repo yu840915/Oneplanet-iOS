@@ -38,6 +38,12 @@ class PushListener {
 class PushChannel {
     let channel: PusherChannel
     let pusher: Pusher
+    var isConnected: Bool {
+        guard let connection = channel.connection else {
+            return false
+        }
+        return connection.connectionState == .connected
+    }
     
     init(channel: PusherChannel, pusher: Pusher) {
         self.channel = channel

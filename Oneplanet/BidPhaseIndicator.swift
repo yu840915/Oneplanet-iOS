@@ -87,7 +87,7 @@ class BidPhaseIndicator {
         refreshIfNeeded()
     }
     
-    private func refreshIfNeeded() {
+    func refreshIfNeeded() {
         guard refreshOperation == nil else {
             return
         }

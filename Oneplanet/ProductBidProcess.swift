@@ -42,8 +42,8 @@ class ProductBidProcessManager {
         return process
     }
     
-    func forceRefreshAll() {
-        
+    func refreshIfChannelNotConnected() {
+        processes.forEach{$0.value.refreshIfChannelNotConnected()}
     }
 }
 
@@ -94,9 +94,27 @@ class ProductBidProcess: Equatable {
         self.product = product
         self.pushListener = pushListener
         self.userSession = userSession
-        getNews()
         prepareChannel()
+        getNews()
         reloadBidCount()
+    }
+    
+    func refreshIfChannelNotConnected() {
+        if newsChannel.isConnected {
+            return
+        }
+        getNews()
+        reloadBidCount()
+    }
+
+    private func prepareChannel() {
+        let channel = pushListener.subscribeChannel(ofName: product.id)
+        chennelID = channel.addEventHandler(for: "bid") {[weak self] (data) in
+            OperationQueue.main.addOperation {
+                self?.handleBidEvent(data)
+            }
+        }
+        newsChannel = channel
     }
     
     func checkFinalStateIfNeeded() {
@@ -125,16 +143,6 @@ class ProductBidProcess: Equatable {
         }
         getNewsOperation = op
         op.start()
-    }
-    
-    private func prepareChannel() {
-        let channel = pushListener.subscribeChannel(ofName: product.id)
-        chennelID = channel.addEventHandler(for: "bid") {[weak self] (data) in
-            OperationQueue.main.addOperation {
-                self?.handleBidEvent(data)
-            }
-        }
-        newsChannel = channel
     }
     
     private func didGetNews() {

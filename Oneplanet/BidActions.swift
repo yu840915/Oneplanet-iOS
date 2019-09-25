@@ -57,4 +57,9 @@ class BidProductOperation: AlamofireAPIAccessOperation {
     override func handleUnauthorizedError(with response: HTTPURLResponse) throws {
         session.deactivate()
     }
+    
+    override func willFinishProcess() throws {
+        let process = session.bidProcessManager.process(for: product)
+        process.refreshIfChannelNotConnected()
+    }
 }

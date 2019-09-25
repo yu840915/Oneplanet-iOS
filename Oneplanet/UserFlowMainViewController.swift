@@ -95,6 +95,7 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
         userSession.lotList.reload()
         hotPageController.setNeedsRefresh()
         auctionController.setNeedsRefresh()
+        userSession.bidPhaseIndicator.refreshIfNeeded()
     }
     
     private func setUpTabbarBackground() {

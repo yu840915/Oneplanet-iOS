@@ -319,7 +319,7 @@ fileprivate class FollowUserOperation: AlamofireAPIAccessOperation {
     }
     
     override func prepareDataRequest() throws -> DataRequest {
-        return Alamofire.request(ServiceURLs.base.appendingPathComponent("me/following/\(userID)"), method: willFollow ? .put : .delete, parameters: ["id": userID], encoding: JSONEncoding(), headers: session.authorizationHeader)
+        return Alamofire.request(ServiceURLs.base.appendingPathComponent("me/follow/\(userID)"), method: willFollow ? .put : .delete, parameters: ["id": userID], encoding: JSONEncoding(), headers: session.authorizationHeader)
     }
 
     override func handleUnauthorizedError(with response: HTTPURLResponse) throws {

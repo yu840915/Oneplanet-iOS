@@ -201,6 +201,9 @@ class ProductBidProcess: Equatable {
     }
     
     private func update(with news: BidNews) {
+        if userSession.isAdmin || userSession.profile?.id == news.userID {
+            reloadBidCount()
+        }
         if let currentEnd = endDate, currentEnd > news.endDate {
             return
         }
@@ -217,9 +220,6 @@ class ProductBidProcess: Equatable {
         }
         endDate = news.endDate
         self.news = news
-        if userSession.isAdmin || userSession.profile?.id == news.userID {
-            reloadBidCount()
-        }
         if let ext = news.extensionDuration {
             extensionDuration = ext
         }

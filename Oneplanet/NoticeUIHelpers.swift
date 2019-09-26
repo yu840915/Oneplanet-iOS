@@ -176,9 +176,10 @@ class GiftFromOfficialNoticePopUpConfiguration: GemActionPopUpConfiguration {
     }
     
     override var attributedSubtitle: NSAttributedString {
-        let num = "3"
+        let name = "Supreme.AI"
         let gem = Localized.titles.blueGem
-        let text = String(format: Localized.messageFormats.gaveYouNumberGems, num, gem)
+        let num = "3"
+        let text = String(format: Localized.messageFormats.gaveYouNumberGems, name, num, gem)
         let attrStr = NSMutableAttributedString(string: text, attributes: subtitleAttributes)
         let numRange = (text as NSString).range(of: num)
         let gemRange = (text as NSString).range(of: gem)

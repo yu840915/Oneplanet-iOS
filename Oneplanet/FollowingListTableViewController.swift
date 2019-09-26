@@ -61,7 +61,7 @@ class FollowingListTableViewController: UITableViewController, DefaultInstanceFa
     
     private func prepareContentCell(_ cell: UserOverviewCell, at indexPath: IndexPath) {
         let user = users[indexPath.row]
-        cell.updateViews(with: FriendshipOverviewModel(profile: user))
+        updateContentCell(cell, at: indexPath)
         cell.action = {[weak self] in
             self?.changeFriendship(for: user)
         }
@@ -78,7 +78,11 @@ class FollowingListTableViewController: UITableViewController, DefaultInstanceFa
     }
     
     func updateContentCell(_ cell: UserOverviewCell, at indexPath: IndexPath) {
-        cell.updateViews(with: userSession.socialRelationshipRepo.relationshipWithUser(of: users[indexPath.row].id))
+        let user = users[indexPath.row]
+        cell.updateViews(with: userSession.socialRelationshipRepo.relationship(with: user))
+        let fetcher = userSession.userFetcherRepo.fetcher(for: user.id)
+        fetcher.initializeIfNeeded()
+        cell.updateViews(with: FriendshipOverviewModel(profile: fetcher.user ?? user))
     }
     
     override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
@@ -87,7 +91,9 @@ class FollowingListTableViewController: UITableViewController, DefaultInstanceFa
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        performSegue(withIdentifier: SegueID.showProfile, sender: users[indexPath.row])
+        if let user = userSession.userFetcherRepo.fetcher(for: users[indexPath.row].id).user {
+            performSegue(withIdentifier: SegueID.showProfile, sender: user)
+        }
     }
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

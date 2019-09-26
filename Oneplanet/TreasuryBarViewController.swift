@@ -32,6 +32,7 @@ class TreasuryBarViewController: UIViewController, UserSessionDepending {
     @IBOutlet weak var scoreMaskView: UIView!
     private var greenGemLevelUpAnimation: LevelUpAnimationOperation?
     private var purpleGemLevelUpAnimation: LevelUpAnimationOperation?
+    private var blueGemChangeAnimation: LevelUpAnimationOperation?
     private var blueGemLevelUpAnimation: BlueGemLevelUpAnimation?
     private var scoreAnimation: ScoreBarAnimation?
     fileprivate var userActionRounter: URLRouter!
@@ -68,7 +69,7 @@ class TreasuryBarViewController: UIViewController, UserSessionDepending {
             plan.blueGem = new.blueGem != old.blueGem
             plan.greenGem = new.greenGem != old.greenGem
             plan.purpleGem = new.purpleGem != old.purpleGem
-            plan.scoreBar = (new.score != new.score) || plan.blueGem
+            plan.scoreBar = (new.score != new.score) || new.blueGem > old.blueGem
             animationPlan = plan
         } else {
             visibleScorebarWidth.constant = scoreProgress * scorebarContainer.frame.width
@@ -189,12 +190,19 @@ fileprivate extension TreasuryBarViewController {
     func animateUpdateIfNeeded() {
         guard let plan = animationPlan else { return }
         animationPlan = nil
-        if plan.blueGem {
+        if plan.blueGem && plan.scoreBar {
             let op = BlueGemLevelUpAnimation(icon: blueGemIcon, endProgress: scoreProgress, containerView: scorebarContainer, scorebarLengthConstraint: visibleScorebarWidth)
             op.completionBlock = {[weak self] in
                 self?.blueGemLevelUpAnimation = nil
             }
             blueGemLevelUpAnimation = op
+            op.start()
+        } else if plan.blueGem {
+            let op = LevelUpAnimationOperation(icon: blueGemIcon)
+            op.completionBlock = {[weak self] in
+                self?.blueGemChangeAnimation = nil
+            }
+            blueGemChangeAnimation = op
             op.start()
         } else if plan.scoreBar {
             let op = ScoreBarAnimation(endProgress: scoreProgress, containerView: scorebarContainer, scorebarLengthConstraint: visibleScorebarWidth)
@@ -211,7 +219,6 @@ fileprivate extension TreasuryBarViewController {
             }
             greenGemLevelUpAnimation = op
             op.start()
-
         }
         if plan.purpleGem {
             let op =  LevelUpAnimationOperation(icon: purpleGemIcon)

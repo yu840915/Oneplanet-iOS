@@ -113,6 +113,7 @@
 "msg_thanks_for_reporting_post" = "いただいた情報は、Oneplanet コミュニティをより安全なものにするために使用されます";
 "msg_username_rules" = "ID は5文字以上";
 "msg_copied_order_number" = "追跡番号をコピーしました";
+"msg_no_internet" = "Your current network is unstable, please check your connection status!";
 
 "msgf_accept_tos" = "ログインすることによって、%@に同意することになります";
 "msgf_resend_verification_email" = "電子メールがみつかりませんか？%@";
@@ -204,6 +205,7 @@
 "ph_bidding_begins" = "オークション スタート";
 "ph_purple_gem" = "ルビッド（入札する時にオススメ）";
 "ph_purchase_success" = "購入が成功しました";
+"ph_no_internet" = "Your current network is unstable";
 
 "phf_seconds_ago_short" = "%@ s";
 "phf_minutes_ago_short" = "%@ m";

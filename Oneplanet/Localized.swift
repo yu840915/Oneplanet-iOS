@@ -406,6 +406,9 @@ class LocalizedMessages {//msg_
     var copiedOrderNumber: String {
         return NSLocalizedString("msg_copied_order_number", comment: "")
     }
+    var noInternet: String {
+        return NSLocalizedString("msg_no_internet", comment: "")
+    }
 }
 
 class LocalizedMessageFormats {//msgf_
@@ -683,6 +686,9 @@ class LocalizedPhrase { //ph_
     }
     var purchaseSuccess: String {
         return NSLocalizedString("ph_purchase_success", comment: "")
+    }
+    var noInternet: String {
+        return NSLocalizedString("ph_no_internet", comment: "")
     }
 }
 

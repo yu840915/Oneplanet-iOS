@@ -113,6 +113,7 @@
 "msg_thanks_for_reporting_post" = "您的反饋意見對於幫助我們保持 Oneplanet 社群的安全非常重要";
 "msg_username_rules" = "ID 至少五字元";
 "msg_copied_order_number" = "已複製貨單編號";
+"msg_no_internet" = "你目前的網路不穩，請保持網路暢通！";
 
 "msgf_accept_tos" = "登入即表示你同意我們的%@";
 "msgf_resend_verification_email" = "你沒有收到電子郵件？%@";
@@ -204,6 +205,7 @@
 "ph_bidding_begins" = "競標開始！";
 "ph_purple_gem" = "紅金寶（建議投標時使用）";
 "ph_purchase_success" = "購買成功";
+"ph_no_internet" = "你目前的網路不穩";
 
 "phf_seconds_ago_short" = "%@ s";
 "phf_minutes_ago_short" = "%@ m";

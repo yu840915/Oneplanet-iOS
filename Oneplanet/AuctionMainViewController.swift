@@ -32,7 +32,9 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
     private var needsRefresh = false
     private var isVisible = false
     private var reachability: Reachability?
-
+    private var bidPhaseChangeHandle: Any!
+    @IBOutlet weak var noInternetView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         PagerStyleConfigurer().configure(self)
@@ -55,8 +57,21 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
         if let q = initialQuery {
             showCategoryList(with: q)
         }
-        prepareReachability()
+        bidPhaseChangeHandle = userSession.bidPhaseIndicator.updateObservers.add{[weak self] in
+            OperationQueue.main.addOperation {
+                self?.handleBidPhaseChange()
+            }
+        }
         updateViewsForReachability()
+    }
+    
+    private func handleBidPhaseChange() {
+        if userSession.bidPhaseIndicator.phase == .running {
+            prepareReachability()
+        } else {
+            reachability = nil
+            updateViewsForReachability()
+        }
     }
     
     private func prepareReachability() {
@@ -78,10 +93,15 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
     }
     
     private func updateViewsForReachability() {
-        guard let r = reachability else { return }
+        guard let r = reachability else {
+            noInternetView.isHidden = true
+            return
+        }
         if r.isReachable {
+            noInternetView.isHidden = true
             userSession.bidProcessManager.refreshIfChannelNotConnected()
         } else {
+            noInternetView.isHidden = false
         }
     }
     
@@ -161,6 +181,13 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let container = segue.destination as? PopUpContainerViewController {
+            container.isDismissTapOn = false
+            container.contentViewControllerSetUpBlock = {vc in
+                let popUp = vc as! GemActionPopUpViewController
+                popUp.configuration = NoNetworkPopUpConfiguration()
+            }
+        }
     }
 
 }

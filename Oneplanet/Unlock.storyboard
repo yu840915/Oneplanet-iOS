@@ -97,7 +97,7 @@
         <!--Gem Action Pop Up View Controller-->
         <scene sceneID="YhT-Dn-Q28">
             <objects>
-                <viewController id="I1G-w4-e9K" customClass="GemActionPopUpViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GemActionPopUpViewController" id="I1G-w4-e9K" customClass="GemActionPopUpViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wy2-c1-NPI">
                         <rect key="frame" x="0.0" y="0.0" width="374" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

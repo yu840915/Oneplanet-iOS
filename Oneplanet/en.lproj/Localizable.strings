@@ -113,6 +113,7 @@
 "msg_thanks_for_reporting_post" = "Your feedback is important in helping us keep the Oneplanet community safe";
 "msg_username_rules" = "ID at least five characters";
 "msg_copied_order_number" = "Copyed order number";
+"msg_no_internet" = "Your current network is unstable, please check your connection status!";
 
 "msgf_accept_tos" = "Sign in means you agree to our %@.";
 "msgf_resend_verification_email" = "You did not receive the email? %@.";
@@ -204,6 +205,7 @@
 "ph_bidding_begins" = "The bidding begins!";
 "ph_purple_gem" = "Rubid (Suggest for bidding)";
 "ph_purchase_success" = "Purchase success";
+"ph_no_internet" = "Your current network is unstable";
 
 "phf_seconds_ago_short" = "%@s";
 "phf_minutes_ago_short" = "%@m";

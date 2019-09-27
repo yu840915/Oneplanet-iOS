@@ -33,6 +33,9 @@ class GemActionPopUpConfiguration {
     var cancelTitle: String {
         return Localized.titles.cancel
     }
+    var shouldShowAction: Bool {
+        return true
+    }
     var shouldShowCancel: Bool {
         return true
     }
@@ -43,6 +46,32 @@ class GemActionPopUpConfiguration {
         return true
     }
     var mainAction: (()->())?
+}
+
+class NoNetworkPopUpConfiguration: GemActionPopUpConfiguration {
+    override var icon: UIImage {
+        return #imageLiteral(resourceName: "im_14_wifi")
+    }
+    
+    override var attributedTitle: NSAttributedString {
+        return NSAttributedString(string: Localized.phrases.noInternet, attributes: boldTitleAttributes)
+    }
+    
+    override var attributedSubtitle: NSAttributedString {
+        return NSAttributedString(string: Localized.messages.noInternet, attributes: subtitleAttributes)
+    }
+
+    override var shouldShowCancel: Bool {
+        return false
+    }
+    
+    override var shouldShowAction: Bool {
+        return false
+    }
+
+    override var animatedTransition: Bool {
+        return false
+    }
 }
 
 class UnlockPopUpConfiguration: GemActionPopUpConfiguration {

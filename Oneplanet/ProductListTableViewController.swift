@@ -31,7 +31,6 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
     private var categoryListHandles: [Any]?
     private var lotListDidUpdateHandles: [Any]?
     private var bidPhaseUpdateHandle: Any?
-    private var reservedRefreshControl: UIRefreshControl!
 
     class func fromDefaultStoryboard() -> ProductListTableViewController {
         return UIStoryboard(name: "Auction", bundle: nil).instantiateViewController(withIdentifier: "ProductListTableViewController") as! ProductListTableViewController
@@ -39,7 +38,6 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        reservedRefreshControl = refreshControl
         tableView.register(ProductListHeader.defaultNib(), forHeaderFooterViewReuseIdentifier: ReuseID.productListHeader)
         tableView.register(BiddingListHeader.defaultNib(), forHeaderFooterViewReuseIdentifier: ReuseID.biddingListHeader)
         navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
@@ -110,17 +108,16 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
     private func prepareListForBidPhase() {
         if userSession.bidPhaseIndicator.biddingHasStarted {
             if myLotList == nil {
+                refreshControl?.endRefreshing()
                 prepareLotList()
             }
             categoryList = nil
-            reservedRefreshControl.endRefreshing()
-            refreshControl = nil
         } else {
             if categoryList == nil {
+                refreshControl?.endRefreshing()
                 updateCategoryList(with: "ALL")
             }
             myLotList = nil
-            refreshControl = reservedRefreshControl
         }
     }
     
@@ -180,6 +177,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
 
     @IBAction func refreshIfNeeded(_ sender: UIRefreshControl) {
         categoryList?.reload()
+        myLotList?.reload()
     }
     
     // MARK: - Table view data source
@@ -537,7 +535,7 @@ private extension ProductListTableViewController {
         })
         handles.append(list.addFetchingFailureHandler({[weak self] (error) in
             OperationQueue.main.addOperation {
-                self?.updateBackgroundForLotList(with: error)
+                self?.handleLotListFailure(with: error)
             }
         }))
         lotListDidUpdateHandles = handles
@@ -546,10 +544,16 @@ private extension ProductListTableViewController {
     }
     
     func lotListDidUpdate() {
+        refreshControl?.endRefreshing()
         guard let list = myLotList else { return }
         sortedLots = sortBidProcesses(list.items.map{userSession.bidProcessManager.process(for: $0)})
         updateBackgroundForLotList(with: nil)
         tableView.reloadData()
+    }
+    
+    func handleLotListFailure(with error: Error?) {
+        refreshControl?.endRefreshing()
+        updateBackgroundForLotList(with: error)
     }
     
     func sortBidProcesses(_ processes: [ProductBidProcess]) -> [ProductBidProcess] {

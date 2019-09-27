@@ -62,12 +62,18 @@ class ProductBidProcess: Equatable {
     var extensionDuration: TimeInterval = .minute
     private var news: BidNews?
     private var getNewsOperation: GetBidNewsOperation?
-    private var newsChannel: PushChannel!
+    private var newsChannel: PushChannel?
     private var chennelID: Any!
     var lead: User? {
         return leadFetcher?.user
     }
-    private(set) var isEnded: Bool = false
+    private(set) var isEnded: Bool = false {
+        didSet {
+            if isEnded {
+                newsChannel = nil
+            }
+        }
+    }
     var shouldBeEnded: Bool {
         if let date = endDate {
             return date.timeIntervalSinceNow < 0
@@ -105,7 +111,7 @@ class ProductBidProcess: Equatable {
     }
     
     func refreshIfChannelNotConnected() {
-        if newsChannel.isConnected {
+        if newsChannel?.isConnected == true {
             return
         }
         getNews()
@@ -113,7 +119,7 @@ class ProductBidProcess: Equatable {
     }
     
     func intervalRefreshNewsIfNeeded() {
-        if isEnded || newsChannel.isConnected { return }
+        if isEnded || newsChannel?.isConnected == true { return }
         let d = lastUpdateDate.timeIntervalSinceNow.magnitude
         let winningCase = isWinning && d > 1
         let losingCase = !isWinning && d > 5
@@ -134,7 +140,7 @@ class ProductBidProcess: Equatable {
     }
     
     func checkFinalStateIfNeeded() {
-        guard shouldBeEnded && !isEnded else {  return }
+        guard !isEnded && shouldBeEnded else {  return }
         guard checkFinalStateTimer == nil && checkOutcomeOperation == nil else { return }
         var delay: TimeInterval = 0.5
         if !isWinning {

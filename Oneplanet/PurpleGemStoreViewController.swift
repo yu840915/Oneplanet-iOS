@@ -18,9 +18,13 @@ class PurpleGemStoreViewController: UIViewController {
     @IBOutlet weak var bulletTextView1: UITextView!
     @IBOutlet weak var bulletTextView2: UITextView!
     
+    @IBOutlet weak var productListHeight: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
         localizeTitles()
+        if let plans = IAPTransactionProcessor.shared.prefetchedProducts.rubyProducts {
+            productListHeight.constant = CGFloat(plans.count * 50 + 2)
+        }
     }
     
     private func localizeTitles() {

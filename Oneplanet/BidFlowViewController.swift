@@ -97,8 +97,8 @@ extension BidFlowViewController {
     func showBlueGemPopUp() {
         let product = self.product!
         let container = prepareActionPopUp{[weak self] vc in
-            let iap = IAPTransactionProcessor.shared.blueGemRelatedProducts.bidProduct!
-            let price = IAPTransactionProcessor.shared.blueGemRelatedProducts.priceFormatter!.string(for: iap.price)!
+            let iap = IAPTransactionProcessor.shared.prefetchedProducts.bidProduct!
+            let price = IAPTransactionProcessor.shared.prefetchedProducts.priceFormatter!.string(for: iap.price)!
             vc.configuration =
                 BidWithBlueGemPopUpConfiguration(productName: product.displayName, formattedPrice: price)
             vc.mainAction = {
@@ -143,8 +143,8 @@ extension BidFlowViewController {
     
     func showInsufficientGemPopUp() {
         let container = prepareActionPopUp{[weak self] vc in
-            let iap = IAPTransactionProcessor.shared.blueGemRelatedProducts.bidProduct!
-            let price = IAPTransactionProcessor.shared.blueGemRelatedProducts.priceFormatter!.string(for: iap.price)!
+            let iap = IAPTransactionProcessor.shared.prefetchedProducts.bidProduct!
+            let price = IAPTransactionProcessor.shared.prefetchedProducts.priceFormatter!.string(for: iap.price)!
             vc.configuration = InsufficientBlueGemToBidPopUpConfiguration(formattedPrice: price)
             vc.mainAction = {
                 self?.goToCreatePost()

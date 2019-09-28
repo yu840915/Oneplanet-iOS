@@ -13,7 +13,7 @@ import ModelBlocks
 class IAPTransactionProcessor: NSObject, SKPaymentTransactionObserver {
     static let shared = IAPTransactionProcessor()
 
-    let blueGemRelatedProducts = BlueGemRelatedIAPProducts()
+    let prefetchedProducts = PrefetchedIAPProducts()
     
     private override init() {}
     
@@ -123,23 +123,54 @@ class Invoice {
     }
 }
 
-class BlueGemRelatedIAPProducts {
+class PrefetchedIAPProducts {
     private(set) var priceFormatter: NumberFormatter?
     private(set) var unlockProduct: SKProduct?
     private(set) var bidProduct: SKProduct?
-    private(set) var rubyProduct: SKProduct?
+    private(set) var rubyProducts: [IAPProductPlan]?
     private var getProductOperation: GetSKProductsOperation?
+    private var getRubyProdcutsOperation: PrepareRubyProductListOperation?
     private var retryExpCounter = 0
     
     init() {
         getProduct()
+        getRubyList()
+    }
+    
+    func initializeIfNeeded() {
+        if rubyProducts == nil {
+            getRubyList()
+        }
+        if unlockProduct == nil || bidProduct == nil {
+            getProduct()
+        }
+    }
+    
+    private func getRubyList() {
+        guard getRubyProdcutsOperation == nil else {
+            return
+        }
+        let op = PrepareRubyProductListOperation()
+        op.completionBlock = {[weak self] in
+            self?.didGetRubyList()
+        }
+        getRubyProdcutsOperation = op
+        op.start()
+    }
+    
+    private func didGetRubyList() {
+        let op = getRubyProdcutsOperation!
+        getRubyProdcutsOperation = nil
+        if op.success == true {
+            rubyProducts = op.plans
+        }
     }
     
     private func getProduct() {
         guard getProductOperation == nil else {
             return
         }
-        let op = GetSKProductsOperation(productIDs: [IAPProductIdentifiers.bid, IAPProductIdentifiers.unlock, "ruby"])
+        let op = GetSKProductsOperation(productIDs: [IAPProductIdentifiers.bid, IAPProductIdentifiers.unlock])
         op.completionBlock = {[weak self] in
             self?.didGetProduct()
         }
@@ -155,9 +186,6 @@ class BlueGemRelatedIAPProducts {
                 bidProduct = $0
             } else if $0.productIdentifier == IAPProductIdentifiers.unlock {
                 unlockProduct = $0
-            }
-            if $0.productIdentifier == "ruby" {
-                rubyProduct = $0
             }
         }
         setUpFormatterIfNeeded()
@@ -245,3 +273,115 @@ extension GetSKProductsOperation: SKProductsRequestDelegate {
     }
 }
 
+class PrepareRubyProductListOperation: SimpleAsynchronousOperation, FailableOperationType {
+    private(set) var success: Bool?
+    private(set) var error: Error?
+    private(set) var plans: [IAPProductPlan] = []
+    private var rubyPlans: [IAPProductPlan] = []
+    private var rubyPlanDict: [String: IAPProductPlan] = [:]
+    
+    private var getPlanOperation: GetIAPProductPlanOperation?
+    private var getSKProductsOperations: GetSKProductsOperation?
+    
+    override func main() {
+        let op = GetIAPProductPlanOperation()
+        op.completionBlock = {[weak self] in
+            self?.didGetPlan()
+        }
+        getPlanOperation = op
+        op.start()
+    }
+    
+    private func didGetPlan() {
+        let op = getPlanOperation!
+        if op.success == true {
+            getRubyProducts(from: op.plans)
+        } else {
+            fail(with: op.error)
+        }
+    }
+    
+    private func getRubyProducts(from plans: [IAPProductPlan]) {
+        let rubyPlans = plans.filter{IAPProductType.from($0.productID) == .ruby}
+        guard !rubyPlans.isEmpty else {
+            success = true
+            finish()
+            return
+        }
+        self.rubyPlans = rubyPlans
+        rubyPlans.forEach{rubyPlanDict[$0.productID] = $0}
+        let op = GetSKProductsOperation(productIDs: rubyPlans.map{$0.productID})
+        op.completionBlock = {[weak self] in
+            self?.handelDidGetSKProducts()
+        }
+        getSKProductsOperations = op
+        op.start()
+    }
+    
+    private func handelDidGetSKProducts() {
+        let op = getSKProductsOperations!
+        if op.success == true {
+            op.products.forEach{rubyPlanDict[$0.productIdentifier]?.associate(with: $0)}
+            plans = rubyPlans.filter{$0.skProduct != nil}
+            success = true
+            finish()
+        } else {
+            fail(with: op.error)
+        }
+    }
+    
+    private func fail(with error: Error?) {
+        success = false
+        self.error = error
+        finish()
+    }
+}
+
+class GetIAPProductPlanOperation: AlamofireAPIAccessOperation {
+    private(set) var plans: [IAPProductPlan] = []
+    
+    override func prepareURLRequest() throws -> URLRequest {
+        return URLRequest(url: ServiceURLs.base.appendingPathComponent("wallet/purchase/plans"))
+    }
+    
+    override func processData(with data: Data) throws {
+        plans = try JSONDecoder.default.decode([IAPProductPlan].self, from: data)
+    }
+}
+
+class IAPProductPlan: Decodable {
+    private(set) var skProduct: SKProduct!
+    let productID: String
+    let currencyID: String
+    var currency: BalanceAccount? {
+        return BalanceAccount(rawValue: currencyID)
+    }
+    let amount: Int
+    let bonus: Int
+    let redeem: IAPProductRedeemPlan?
+
+    enum CodingKeys: String, CodingKey {
+        case productID = "product_id"
+        case currencyID = "currency"
+        case amount, bonus, redeem
+    }
+    
+    func associate(with product: SKProduct) {
+        if product.productIdentifier == productID {
+            self.skProduct = product
+        }
+    }
+}
+
+class IAPProductRedeemPlan: Decodable {
+    let currencyID: String
+    var currency: BalanceAccount? {
+        return BalanceAccount(rawValue: currencyID)
+    }
+    let amount: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case currencyID = "diamond"
+        case amount
+    }
+}

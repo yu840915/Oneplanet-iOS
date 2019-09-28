@@ -280,10 +280,22 @@ private extension NoticeTableViewController {
         tableView.reloadData()
     }
 
-    func redeemGemsIfAllowed(for notice: Notice) {
+    func redeemGemsIfAllowed(for bonus: BonusEvent) {
         if actionPopUp != nil {
             dismiss(animated: true, completion: nil)
         }
+        bonus.redeemIfAllowed {[weak self] (_, error) in
+            OperationQueue.main.addOperation {
+                self?.showAlertIfNeeded(for: error)
+            }
+        }
+    }
+    
+    private func showAlertIfNeeded(for error: Error?) {
+        guard let error = error else { return }
+        let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Localized.titles.ok, style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
 }
 
@@ -322,12 +334,16 @@ private extension NoticeTableViewController {
         var config: GemActionPopUpConfiguration?
         switch info.type {
         case .likePost:
-            config = GiftFromOfficialNoticePopUpConfiguration(notice: notice)
-        case .gift: return
-        case .loginReward: return
+            guard let user = userSession.userFetcherRepo.fetcher(for: info.senderID).user else { return }
+            config = LikeFromOfficialNoticePopUpConfiguration(event: event, user: user)
+        case .gift:
+            guard let user = userSession.userFetcherRepo.fetcher(for: info.senderID).user else { return }
+            config = GiftFromOfficialNoticePopUpConfiguration(event: event, user: user)
+        case .loginReward:
+            config = DailyRewardNoticePopUpConfiguration(event: event)
         }
         config?.mainAction = {[weak self] in
-            self?.redeemGemsIfAllowed(for: notice)
+            self?.redeemGemsIfAllowed(for: event)
         }
         performSegue(withIdentifier: SegueID.showPopup, sender: config)
     }

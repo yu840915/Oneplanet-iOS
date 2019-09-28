@@ -247,24 +247,72 @@ class PostReportedViewModel: NoticeViewModel, WarningNoticeItemDisplayable {
     }
 }
 
-class LikeFromOfficalNoticePopUpConfiguration: GemActionPopUpConfiguration {
+class DailyRewardNoticePopUpConfiguration: GemActionPopUpConfiguration {
+    let event: BonusEvent
     
-}
-
-class GiftFromOfficialNoticePopUpConfiguration: GemActionPopUpConfiguration {
-    let notice: Notice
-    init(notice: Notice) {
-        self.notice = notice
+    init(event: BonusEvent) {
+        self.event = event
     }
     
     override var icon: UIImage {
-        return #imageLiteral(resourceName: "im_06_safrid")
+        switch event.info!.currency {
+        case .greenGem:
+            return #imageLiteral(resourceName: "im_05_emerkey")
+        case .blueGem:
+            return #imageLiteral(resourceName: "im_06_safrid")
+        case .purpleGem:
+            return #imageLiteral(resourceName: "im_07_rubid")
+        case .score:
+            return UIImage()
+        }
     }
     
     override var attributedSubtitle: NSAttributedString {
-        let name = "Supreme.AI"
-        let gem = Localized.titles.blueGem
-        let num = "3"
+        let gem = event.info!.currency.displayName
+        let text = String(format: Localized.messageFormats.dailyLoginReward, gem)
+        let attrStr = NSMutableAttributedString(string: text, attributes: subtitleAttributes)
+        let gemRange = (text as NSString).range(of: gem)
+        attrStr.addAttributes([.font: UIFont.systemFont(ofSize: 12, weight: .semibold)], range: gemRange)
+        return attrStr
+    }
+
+    override var actionTitle: String {
+        return Localized.phrases.getGem
+    }
+    override var shouldShowTitle: Bool {
+        return false
+    }
+    override var shouldShowCancel: Bool {
+        return false
+    }
+}
+
+class GiftFromOfficialNoticePopUpConfiguration: GemActionPopUpConfiguration {
+    let event: BonusEvent
+    let user: User
+    
+    init(event: BonusEvent, user: User) {
+        self.event = event
+        self.user = user
+    }
+
+    override var icon: UIImage {
+        switch event.info!.currency {
+        case .greenGem:
+            return #imageLiteral(resourceName: "im_05_emerkey")
+        case .blueGem:
+            return #imageLiteral(resourceName: "im_06_safrid")
+        case .purpleGem:
+            return #imageLiteral(resourceName: "im_07_rubid")
+        case .score:
+            return UIImage()
+        }
+    }
+    
+    override var attributedSubtitle: NSAttributedString {
+        let gem = event.info!.currency.displayName
+        let name = user.nickname
+        let num = SharedNumberFormatters.integer.string(for: event.info!.amount) ?? "-"
         let text = String(format: Localized.messageFormats.gaveYouNumberGems, name, num, gem)
         let attrStr = NSMutableAttributedString(string: text, attributes: subtitleAttributes)
         let numRange = (text as NSString).range(of: num)
@@ -286,18 +334,30 @@ class GiftFromOfficialNoticePopUpConfiguration: GemActionPopUpConfiguration {
 }
 
 class LikeFromOfficialNoticePopUpConfiguration: GemActionPopUpConfiguration {
-    let notice: Notice
-    init(notice: Notice) {
-        self.notice = notice
+    let event: BonusEvent
+    let user: User
+
+    init(event: BonusEvent, user: User) {
+        self.event = event
+        self.user = user
     }
 
     override var icon: UIImage {
-        return #imageLiteral(resourceName: "im_06_safrid")
+        switch event.info!.currency {
+        case .greenGem:
+            return #imageLiteral(resourceName: "im_05_emerkey")
+        case .blueGem:
+            return #imageLiteral(resourceName: "im_06_safrid")
+        case .purpleGem:
+            return #imageLiteral(resourceName: "im_07_rubid")
+        case .score:
+            return UIImage()
+        }
     }
     
     override var attributedSubtitle: NSAttributedString {
-        let gem = Currency.greenGem.displayName
-        let official = "Supreme.AI"
+        let gem = event.info!.currency.displayName
+        let official = user.nickname
         let text = String(format: Localized.messageFormats.likedYourPostAndGaveGem, official, gem)
         let attrStr = NSMutableAttributedString(string: text, attributes: subtitleAttributes)
         let nameRange = (text as NSString).range(of: official)

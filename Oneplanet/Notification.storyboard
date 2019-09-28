@@ -129,7 +129,12 @@
                                                     <state key="normal" title="Get it" backgroundImage="bt_smallgreen_nor">
                                                         <color key="titleColor" name="default text"/>
                                                     </state>
-                                                    <state key="selected" backgroundImage="bt_smallwirewhite_nor"/>
+                                                    <state key="disabled" backgroundImage="bt_smallwiregray_nor">
+                                                        <color key="titleColor" name="default placeholder"/>
+                                                    </state>
+                                                    <state key="selected" backgroundImage="bt_smallwirewhite_nor">
+                                                        <color key="titleColor" name="default text"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="invokeAction:" destination="2S8-qy-rV3" eventType="touchUpInside" id="Jl4-0g-UEy"/>
                                                     </connections>
@@ -321,6 +326,7 @@
     </scenes>
     <resources>
         <image name="bt_smallgreen_nor" width="29" height="28"/>
+        <image name="bt_smallwiregray_nor" width="29" height="28"/>
         <image name="bt_smallwirewhite_nor" width="29" height="28"/>
         <image name="ic_notice_nor" width="64" height="49"/>
         <image name="ic_notice_sel" width="64" height="49"/>

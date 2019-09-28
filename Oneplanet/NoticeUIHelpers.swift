@@ -202,6 +202,7 @@ class NormalNoticeItemCell: NoticeItemCell {
         actionButton.setTitle(dataSource.actionTitle, for: .normal)
         actionButton.setTitle(dataSource.selectedActionTitle, for: .selected)
         actionButton.setTitle(dataSource.selectedActionTitle, for: [.selected, .highlighted])
+        actionButton.setTitle(dataSource.selectedActionTitle, for: .disabled)
     }
 }
 
@@ -313,7 +314,7 @@ class GiftFromOfficialNoticePopUpConfiguration: GemActionPopUpConfiguration {
         let gem = event.info!.currency.displayName
         let name = user.nickname
         let num = SharedNumberFormatters.integer.string(for: event.info!.amount) ?? "-"
-        let text = String(format: Localized.messageFormats.gaveYouNumberGems, name, num, gem)
+        let text = String(format: Localized.messageFormats.gaveYouNumberGems, name, gem, num)
         let attrStr = NSMutableAttributedString(string: text, attributes: subtitleAttributes)
         let numRange = (text as NSString).range(of: num)
         let gemRange = (text as NSString).range(of: gem)

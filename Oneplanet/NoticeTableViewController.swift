@@ -82,8 +82,16 @@ class NoticeTableViewController: UITableViewController, UserSessionDepending {
         if let follow = notice as? FollowNotice {
             cell.updateViews(with: FollowNoticeViewModel(notice: follow, userSession: userSession))
             cell.action = {[weak self] in
-                self?.performFollowAction(for: notice)
+                self?.performFollowAction(for: follow)
             }
+            cell.actionButton.isEnabled = true
+            if let relationStates = userSession.socialRelationshipRepo.relationshipWithUser(of: follow.followerID)?.states {
+                cell.actionButton.isHidden = true
+                cell.actionButton.isSelected = relationStates.isFollowing
+            } else {
+                cell.actionButton.isHidden = false
+            }
+            
         } else if let bonus = notice as? BonusNotice {
             let event = bonusEventRepo.event(for: bonus.eventID)
             if event.info != nil {
@@ -115,7 +123,7 @@ class NoticeTableViewController: UITableViewController, UserSessionDepending {
         case .loginReward:
             cell.updateViews(with: LoginRewardNoticeViewModel(notice: notice, eventInfo: info))
         }
-        cell.actionButton.isSelected = event.isRedeemed
+        cell.actionButton.isEnabled = !event.isRedeemed
         cell.actionButton.isHidden = false
     }
     
@@ -124,8 +132,8 @@ class NoticeTableViewController: UITableViewController, UserSessionDepending {
         if let profile = notice as? ProfileReportedNotice {
             cell.updateViews(with: ProfileReportedViewModel(notice: profile, userSession: userSession))
         } else if let postNotice = notice as? PostReportedNotice {
-            
-            cell.updateViews(with: PostReportedViewModel(notice: postNotice, postCover: nil))
+            let thumbnail = WebImageInfo(url: ServiceURLs.base.appendingPathComponent("posts/\(postNotice.postID)/thumbnail"), accessToken: userSession.bearerToken)
+            cell.updateViews(with: PostReportedViewModel(notice: postNotice, postCover: thumbnail))
         }
     }
     
@@ -134,7 +142,13 @@ class NoticeTableViewController: UITableViewController, UserSessionDepending {
     }
     
 
-    private func performFollowAction(for notice: Notice) {
+    private func performFollowAction(for notice: FollowNotice) {
+        guard let relationship = userSession.socialRelationshipRepo.relationshipWithUser(of: notice.followerID), let states = relationship.states else { return }
+        if states.isFollowing {
+            relationship.unfollow()
+        } else {
+            relationship.follow()
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

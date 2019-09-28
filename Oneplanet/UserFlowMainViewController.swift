@@ -16,6 +16,7 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
     private var postController: PostFeedMainViewController!
     private var profileController: MyProfileViewController!
     private var hotPageController: HotCollectionViewController!
+    private var noticeController: NoticeTableViewController!
     private var treasuryBarController: TreasuryBarViewController!
     fileprivate var getPageListOperaion: GetPromotionPageListOperation?
     fileprivate var appearanceAction: (()->())?
@@ -27,8 +28,10 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
     @IBOutlet weak var balloonButton: UIButton!
     var balloonNavigationCoordinator: BalloonNavigationCoordinator?
     var statusBarHandle: Any?
+    var unreadCountHandle: Any!
     var currentSessionEndTime: Date?
     private var postQuota: ValuedPostQuota?
+    private var noticesUnreadCount: NoticeUnreadCount!
     
     class func fromDefaultStoryboard() -> UserFlowMainViewController {
         return UIStoryboard(name: "MainUserFlow", bundle: nil).instantiateInitialViewController() as! UserFlowMainViewController
@@ -40,6 +43,12 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        noticesUnreadCount = NoticeUnreadCount(userSession: userSession)
+        unreadCountHandle = noticesUnreadCount.updateHandlers.add {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.updateViewsForUnreadCount()
+            }
+        }
         let contents = contentTabbarController.viewControllers!.compactMap{$0 as? UINavigationController}.compactMap{$0.viewControllers.first}
         contents.forEach {
             if let vc = $0 as? AuctionMainViewController {
@@ -48,6 +57,9 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
                 postController = vc
             } else if let vc = $0 as? MyProfileViewController {
                 profileController = vc
+            } else if let vc = $0 as? NoticeTableViewController {
+                vc.unreadCount = noticesUnreadCount
+                noticeController = vc
             }
         }
         setUpTabbarBackground()
@@ -63,22 +75,39 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
             let q = ValuedPostQuota(userSession: userSession)
             postQuota = q
             q.refresh()
+            noticesUnreadCount.refresh()
         }
         prepareAppActivityHandlers()
+        updateViewsForUnreadCount()
+    }
+    
+    func updateViewsForUnreadCount() {
+        if let count = noticesUnreadCount.count, count > 0 {
+            noticeController.tabBarItem.badgeValue = SharedNumberFormatters.integer.string(for: count)
+        } else {
+            noticeController.tabBarItem.badgeValue = nil
+        }
     }
     
     private func prepareAppActivityHandlers() {
         var handles = [Any]()
         handles.append(AppLifeCycleObserver.didBecomeActive.observers.add {[weak self] (_) in
             OperationQueue.main.addOperation {
-                self?.getPromoPopupIfNeeded()
-                self?.refreshIfSessionEndedOnWaking()
+                self?.refreshDataOnWaking()
             }
         })
-        handles.append(AppLifeCycleObserver.willEnterForeground.observers.add({[weak self] (_) in
+        handles.append(AppLifeCycleObserver.didEnterBackground.observers.add({[weak self] (_) in
             self?.recordBidSessionEndTime()
         }))
         appActivityHandles = handles
+    }
+    
+    private func refreshDataOnWaking() {
+        if !userSession.isGuest && !userSession.isAdmin {
+            noticesUnreadCount.refresh()
+        }
+        refreshIfSessionEndedOnWaking()
+        getPromoPopupIfNeeded()
     }
     
     private func recordBidSessionEndTime() {

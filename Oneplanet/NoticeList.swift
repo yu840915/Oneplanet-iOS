@@ -199,3 +199,58 @@ enum NoticeType: String, Decodable {
     case profileReported = "banned"
     case unknwon
 }
+
+class NoticeUnreadCount {
+    let userSession: UserSession
+    let updateHandlers = MulticastCallbackNode<()->()>()
+    private var refreshOperation: GetNoticeUnreadCountOperation?
+    private(set) var count: Int? {
+        didSet {
+            updateHandlers.invokeEach{$0()}
+        }
+    }
+    
+    init(userSession: UserSession) {
+        self.userSession = userSession
+    }
+    
+    deinit {
+        refreshOperation?.cancel()
+    }
+    
+    func refresh() {
+        guard refreshOperation == nil else { return }
+        let op  = GetNoticeUnreadCountOperation(session: userSession)
+        op.completionBlock = {[weak self] in
+            self?.didRefresh()
+        }
+        refreshOperation = op
+        op.start()
+    }
+    
+    private func didRefresh() {
+        let op = refreshOperation!
+        refreshOperation = nil
+        if let count = op.count {
+            self.count = count
+        }
+    }
+}
+
+class GetNoticeUnreadCountOperation: AlamofireAPIAccessOperation {
+    let session: UserSession
+    private(set) var count: Int?
+    init(session: UserSession) {
+        self.session = session
+    }
+
+    override func prepareURLRequest() throws -> URLRequest {
+        return session.addingAuthorizationToken(to: try URLRequest(url: ServiceURLs.base.appendingPathComponent("notices"), method: .head))
+    }
+    
+    override func processHTTPResponseHeader(_ header: [AnyHashable : Any]) throws {
+        if let count = header["X-Total-Count"] as? String {
+            self.count = SharedNumberFormatters.integer.number(from: count)?.intValue
+        }
+    }
+}

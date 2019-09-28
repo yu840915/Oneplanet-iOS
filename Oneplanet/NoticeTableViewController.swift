@@ -14,6 +14,7 @@ class NoticeTableViewController: UITableViewController, UserSessionDepending {
     var userSession: UserSession!
     var bonusEventRepo: BonusEventRepository!
     var noticeList: NoticeList!
+    var unreadCount: NoticeUnreadCount!
     private var notices: [Notice] = [] {
         didSet {
             groupNotices()
@@ -40,6 +41,13 @@ class NoticeTableViewController: UITableViewController, UserSessionDepending {
         updateClock = UpdateClock(preferredFrameRate: 4, onTick: {[weak self] in
             self?.updateVisibleCells()
         })
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let count = unreadCount.count, count > 0 {
+            noticeList.reload()
+        }
     }
 
     @IBAction func reloadList(_ sender: UIRefreshControl) {
@@ -250,6 +258,9 @@ private extension NoticeTableViewController {
         refreshControl?.endRefreshing()
         notices = noticeList.items
         updateBackground()
+        if let count = unreadCount.count, count > 0 {
+            unreadCount.refresh()
+        }
     }
     
     func handleFetchFailure(with error: Error?) {

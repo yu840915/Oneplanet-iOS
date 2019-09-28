@@ -59,15 +59,29 @@ class NoticeItemCell: UITableViewCell {
 protocol NormalNoticeItemDisplayable: NoticeItemDisplayable {
     var actionTitle: String {get}
     var selectedActionTitle: String? {get}
-    //    var user: User {get}
+    var user: User? {get}
 }
 
 class LikeFromOfficialNoticeViewModel: NoticeViewModel, NormalNoticeItemDisplayable {
+    private let userFetcher: UserFetcher?
+    private let event: BonusEventInfo
+    var user: User? {
+        return userFetcher?.user
+    }
+    
+    init(notice: Notice, eventInfo: BonusEventInfo, userSession: UserSession) {
+        userFetcher = userSession.userFetcherRepo.fetcher(for: eventInfo.senderID)
+        userFetcher?.initializeIfNeeded()
+        event = eventInfo
+        super.init(notice: notice)
+    }
+    
     override var attributedMessage: NSAttributedString {
-        let official = "Suprem.AI"
-        let text = String(format: Localized.messageFormats.likedYourPost, official, Localized.titles.greenGem)
+        let nickname = user?.nickname ?? "-"
+        let currency = event.currency.displayName
+        let text = String(format: Localized.messageFormats.likedYourPost, nickname, currency)
         let attrStr = NSMutableAttributedString(string: text, attributes: [.font:  UIFont.systemFont(ofSize: 12)])
-        let range = (text as NSString).range(of: official)
+        let range = (text as NSString).range(of: nickname)
         attrStr.addAttributes([.font: UIFont.systemFont(ofSize: 12, weight: .semibold)], range: range)
         return attrStr
     }
@@ -77,15 +91,59 @@ class LikeFromOfficialNoticeViewModel: NoticeViewModel, NormalNoticeItemDisplaya
     let selectedActionTitle: String? = Localized.phrases.hasGotGem
 }
 
-class GiftFromOfficialNoticeViewModel: NoticeViewModel, NormalNoticeItemDisplayable {
+class EmptyBonusNoticeViewModel: NoticeViewModel, NormalNoticeItemDisplayable {
+    let actionTitle: String = Localized.phrases.getGem
+    let selectedActionTitle: String? = Localized.phrases.hasGotGem
+    let user: User? = nil
+}
+
+class LoginRewardNoticeViewModel: NoticeViewModel, NormalNoticeItemDisplayable {
+    let user: User? = nil
+    let event: BonusEventInfo
+
+    init(notice: Notice, eventInfo: BonusEventInfo) {
+        event = eventInfo
+        super.init(notice: notice)
+    }
+    
     override var attributedMessage: NSAttributedString {
-        let name = "Supreme.AI"
-        let num = "3"
-        let gem = Localized.titles.blueGem
-        let text = String(format: Localized.messageFormats.gaveYouNumberGems, name, gem, num)
+        let currency = event.currency.displayName
+        
+        let text = String(format: Localized.messageFormats.dailyLoginReward, currency)
+        let attrStr = NSMutableAttributedString(string: text, attributes: [.font:  UIFont.systemFont(ofSize: 12)])
+        let gemRange = (text as NSString).range(of: currency)
+        attrStr.addAttributes([.font: UIFont.systemFont(ofSize: 12, weight: .semibold)], range: gemRange)
+        return attrStr
+    }
+    
+    let actionTitle: String = Localized.phrases.getGem
+    let selectedActionTitle: String? = Localized.phrases.hasGotGem
+}
+
+class GiftFromOfficialNoticeViewModel: NoticeViewModel, NormalNoticeItemDisplayable {
+    private let userFetcher: UserFetcher?
+    private let event: BonusEventInfo
+    var user: User? {
+        return userFetcher?.user
+    }
+    
+    init(notice: Notice, eventInfo: BonusEventInfo, userSession: UserSession) {
+        userFetcher = userSession.userFetcherRepo.fetcher(for: eventInfo.senderID)
+        userFetcher?.initializeIfNeeded()
+        event = eventInfo
+        super.init(notice: notice)
+    }
+
+    override var attributedMessage: NSAttributedString {
+        let nickname = user?.nickname ?? "-"
+        let currency = event.currency.displayName
+        var num = "-"
+        num = SharedNumberFormatters.integer.string(for: event.amount) ?? "-"
+
+        let text = String(format: Localized.messageFormats.gaveYouNumberGems, nickname, currency, num)
         let attrStr = NSMutableAttributedString(string: text, attributes: [.font:  UIFont.systemFont(ofSize: 12)])
         let numRange = (text as NSString).range(of: num)
-        let gemRange = (text as NSString).range(of: gem)
+        let gemRange = (text as NSString).range(of: currency)
         attrStr.addAttributes([.font: UIFont.systemFont(ofSize: 12, weight: .semibold)], range: numRange)
         attrStr.addAttributes([.font: UIFont.systemFont(ofSize: 12, weight: .semibold)], range: gemRange)
         return attrStr
@@ -96,8 +154,19 @@ class GiftFromOfficialNoticeViewModel: NoticeViewModel, NormalNoticeItemDisplaya
 }
 
 class FollowNoticeViewModel: NoticeViewModel, NormalNoticeItemDisplayable {
+    let userFetcher: UserFetcher
+    var user: User? {
+        return userFetcher.user
+    }
+    
+    init(notice: FollowNotice, userSession: UserSession) {
+        userFetcher = userSession.userFetcherRepo.fetcher(for: notice.followerID)
+        userFetcher.initializeIfNeeded()
+        super.init(notice: notice)
+    }
+
     override var attributedMessage: NSAttributedString {
-        let nickname = "Mike"
+        let nickname = user?.nickname ?? "-"
         let text = String(format: Localized.messageFormats.startFollowingYou, nickname)
         let attrStr = NSMutableAttributedString(string: text, attributes: [.font:  UIFont.systemFont(ofSize: 12)])
         let range = (text as NSString).range(of: nickname)
@@ -128,6 +197,7 @@ class NormalNoticeItemCell: NoticeItemCell {
     }
     
     func updateViews(with dataSource: NormalNoticeItemDisplayable) {
+        avatarView.update(with: dataSource.user)
         super.updateViews(with: dataSource)
         actionButton.setTitle(dataSource.actionTitle, for: .normal)
         actionButton.setTitle(dataSource.selectedActionTitle, for: .selected)
@@ -145,20 +215,36 @@ class WarningNoticeItemCell: NoticeItemCell {
 }
 
 class ProfileReportedViewModel: NoticeViewModel, WarningNoticeItemDisplayable {
+    let account: String
+    let reasonKey: String
+    let contentImage: WebImageInfo? = nil
+
+    init(notice: ProfileReportedNotice, userSession: UserSession) {
+        account = userSession.profile?.username ?? userSession.loginType.displayName
+        reasonKey = notice.reason
+        super.init(notice: notice)
+    }
+    
     override var attributedMessage: NSAttributedString {
-        let account = "hello@oneplanet.live"
-        let reason = Localized.titles.tos
+        let reason = Localized.lookUp(reasonKey)
         return NSAttributedString(string: String(format: Localized.messageFormats.profileReported, account, reason), attributes: [.font:  UIFont.systemFont(ofSize: 12)])
     }
-    let contentImage: WebImageInfo? = nil
 }
 
 class PostReportedViewModel: NoticeViewModel, WarningNoticeItemDisplayable {
+    let reasonKey: String
+    let contentImage: WebImageInfo?
+    
+    init(notice: PostReportedNotice, postCover: WebImageInfo?) {
+        contentImage = postCover
+        reasonKey = notice.reason
+        super.init(notice: notice)
+    }
+    
     override var attributedMessage: NSAttributedString {
-        let reason = "nudity"
+        let reason = Localized.lookUp(reasonKey)
         return NSAttributedString(string: String(format: Localized.messageFormats.postReported, reason), attributes: [.font:  UIFont.systemFont(ofSize: 12)])
     }
-    let contentImage: WebImageInfo? = nil
 }
 
 class LikeFromOfficalNoticePopUpConfiguration: GemActionPopUpConfiguration {

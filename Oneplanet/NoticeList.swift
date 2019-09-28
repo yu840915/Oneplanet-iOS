@@ -42,8 +42,7 @@ class GetNoticePageOperation: AlamofireAPIAccessOperation, PaginatedFetchingOper
     }
 
     override func processData(with data: Data) throws {
-        let infos = try JSONDecoder.default.decode([NoticeInfo].self, from: data)
-        items = infos.compactMap{Notice($0)}
+        items = try JSONDecoder.default.decode([Notice].self, from: data).compactMap{$0.concreteNotice}
     }
 
     override func handleHTTPResponse(_ response: HTTPURLResponse) throws {
@@ -64,10 +63,6 @@ class GetNoticePageOperation: AlamofireAPIAccessOperation, PaginatedFetchingOper
     }
 }
 
-class NoticeInfo: Decodable {
-    
-}
-
 class GetNoticePageOperationFactory: PaginatedFetchingOperationFactoryType {
     
     let session: UserSession
@@ -80,26 +75,127 @@ class GetNoticePageOperationFactory: PaginatedFetchingOperationFactoryType {
     }
 }
 
-class Notice {
+class Notice: Decodable {
+    let typeString: String
+    var type: NoticeType {
+        return NoticeType(rawValue: typeString) ?? .unknwon
+    }
     let isRead: Bool
-    let type: NoticeType
-    let date: Date = Date()
+    let date: Date
+    let meta: NoticeMeta
     
-    init?(_ info: NoticeInfo) {
-        return nil
+    enum CodingKeys: String, CodingKey {
+        case isRead = "is_read"
+        case typeString = "cls"
+        case date = "created_at"
+        case meta
     }
     
-    init(type: NoticeType, isRead: Bool) {
-        self.type = type
+    init(typeString: String, date: Date, isRead: Bool, meta: NoticeMeta) {
+        self.typeString = typeString
+        self.date = date
         self.isRead = isRead
+        self.meta = meta
+    }
+    
+    var concreteNotice: Notice? {
+        switch type {
+        case .bonus: return BonusNotice(with: self)
+        case .followNotice: return FollowNotice(with: self)
+        case .postReported: return PostReportedNotice(with: self)
+        case .profileReported: return ProfileReportedNotice(with: self)
+        case .unknwon: return nil
+        }
     }
 }
 
-enum NoticeType {
-    case likeFromOfficialAccount
-    case giftFromOfficialAccount
-    case followNotice
-    case postReported
-    case profileReported
+class BonusNotice: Notice {
+    let eventID: String
+    
+    init?(with notice: Notice) {
+        guard notice.type == .bonus, let id = notice.meta.bonusEventID else {
+            return nil
+        }
+        eventID = id
+        super.init(typeString: notice.typeString, date: notice.date, isRead: notice.isRead, meta: notice.meta)
+    }
+    
+    required init(from decoder: Decoder) throws {
+        fatalError("init(from:) has not been implemented")
+    }
 }
 
+class FollowNotice: Notice {
+    let followerID: String
+
+    init?(with notice: Notice) {
+        guard notice.type == .followNotice, let id = notice.meta.userID else {
+            return nil
+        }
+        followerID = id
+        super.init(typeString: notice.typeString, date: notice.date, isRead: notice.isRead, meta: notice.meta)
+    }
+    
+    required init(from decoder: Decoder) throws {
+        fatalError("init(from:) has not been implemented")
+    }
+}
+
+class PostReportedNotice: Notice {
+    let postID: String
+    let reason: String
+
+    init?(with notice: Notice) {
+        guard notice.type == .postReported,
+            let id = notice.meta.postID,
+            let key = notice.meta.reason else {
+            return nil
+        }
+        postID = id
+        reason = key
+        super.init(typeString: notice.typeString, date: notice.date, isRead: notice.isRead, meta: notice.meta)
+    }
+    
+    required init(from decoder: Decoder) throws {
+        fatalError("init(from:) has not been implemented")
+    }
+}
+
+class ProfileReportedNotice: Notice {
+    let reason: String
+
+    init?(with notice: Notice) {
+        guard notice.type == .profileReported,
+            let key = notice.meta.reason else {
+                return nil
+        }
+        reason = key
+        super.init(typeString: notice.typeString, date: notice.date, isRead: notice.isRead, meta: notice.meta)
+    }
+    
+    required init(from decoder: Decoder) throws {
+        fatalError("init(from:) has not been implemented")
+    }
+}
+
+class NoticeMeta: Decodable {
+    let bonusEventID: String?
+    let userID: String?
+    let reason: String?
+    let postID: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case bonusEventID = "event_id"
+        case userID = "user_id"
+        case postID = "post_id"
+        case reason
+    }
+}
+
+enum NoticeType: String, Decodable {
+    case bonus = "bonus.event"
+    case followNotice = "follow"
+    case postReported = "report"
+    case profileReported = "banned"
+    case unknwon
+}

@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import Alamofire
 
 class NoticeTableViewController: UITableViewController, UserSessionDepending {
     
     var userSession: UserSession!
+    var bonusEventRepo: BonusEventRepository!
     var noticeList: NoticeList!
     private var notices: [Notice] = [] {
         didSet {
@@ -27,12 +29,17 @@ class NoticeTableViewController: UITableViewController, UserSessionDepending {
     var sections: [Section] = []
     private var listUpdateHandles: [Any]?
     private weak var actionPopUp: GemActionPopUpViewController?
+    private var updateClock: UpdateClock!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bonusEventRepo = BonusEventRepository(userSession: userSession)
         prepareNoticeList()
         tableView.register(SectionHeaderView.defaultNib(), forHeaderFooterViewReuseIdentifier: ReuseID.header)
         title = Localized.feature.notice
+        updateClock = UpdateClock(preferredFrameRate: 4, onTick: {[weak self] in
+            self?.updateVisibleCells()
+        })
     }
 
     @IBAction func reloadList(_ sender: UIRefreshControl) {
@@ -58,7 +65,7 @@ class NoticeTableViewController: UITableViewController, UserSessionDepending {
         let notice = getNotice(at: indexPath)
         
         switch notice.type {
-        case .followNotice, .giftFromOfficialAccount, .likeFromOfficialAccount:
+        case .followNotice, .bonus:
             let cell = tableView.dequeueReusableCell(withIdentifier: ReuseID.normalNoticeCell, for: indexPath) as! NormalNoticeItemCell
             setUpNormalNoticeCell(cell, forNoticeAt: indexPath)
             return cell
@@ -66,39 +73,59 @@ class NoticeTableViewController: UITableViewController, UserSessionDepending {
             let cell = tableView.dequeueReusableCell(withIdentifier: ReuseID.warningNoticeCell, for: indexPath) as! WarningNoticeItemCell
             setUpWarningNoticeCell(cell, forNoticeAt: indexPath)
             return cell
+        case .unknwon: return UITableViewCell()
         }
     }
     
     private func setUpNormalNoticeCell(_ cell: NormalNoticeItemCell, forNoticeAt indexPath: IndexPath) {
         let notice = getNotice(at: indexPath)
-        switch notice.type {
-        case .followNotice:
-            cell.updateViews(with: FollowNoticeViewModel(notice: notice))
+        if let follow = notice as? FollowNotice {
+            cell.updateViews(with: FollowNoticeViewModel(notice: follow, userSession: userSession))
             cell.action = {[weak self] in
                 self?.performFollowAction(for: notice)
             }
-        case .giftFromOfficialAccount:
-            cell.updateViews(with: GiftFromOfficialNoticeViewModel(notice: notice))
-            cell.action = {[weak self] in
-                self?.showGetGemPopUp(for: notice)
+        } else if let bonus = notice as? BonusNotice {
+            let event = bonusEventRepo.event(for: bonus.eventID)
+            if event.info != nil {
+                setUpBonusNoticeCell(cell, for: bonus)
+                cell.action = {[weak self] in
+                    self?.showGetGemPopUp(for: bonus)
+                }
+            } else {
+                cell.updateViews(with: EmptyBonusNoticeViewModel(notice: notice))
+                cell.actionButton.isHidden = true
+                cell.action = nil
             }
-        case .likeFromOfficialAccount:
-            cell.updateViews(with: LikeFromOfficialNoticeViewModel(notice: notice))
-            cell.action = {[weak self] in
-                self?.showGetGemPopUp(for: notice)
-            }
-        default: break
         }
+        cell.avatarView.action = {[weak self] in
+            self?.showProfilePage(for: notice)
+        }
+    }
+    
+    private func setUpBonusNoticeCell(_ cell: NormalNoticeItemCell, for notice: BonusNotice) {
+        let event = bonusEventRepo.event(for: notice.eventID)
+        guard let info = event.info else {
+            return
+        }
+        switch info.type {
+        case .gift:
+            cell.updateViews(with: GiftFromOfficialNoticeViewModel(notice: notice, eventInfo: info, userSession: userSession))
+        case .likePost:
+            cell.updateViews(with: LikeFromOfficialNoticeViewModel(notice: notice, eventInfo: info, userSession: userSession))
+        case .loginReward:
+            cell.updateViews(with: LoginRewardNoticeViewModel(notice: notice, eventInfo: info))
+        }
+        cell.actionButton.isSelected = event.isRedeemed
+        cell.actionButton.isHidden = false
     }
     
     private func setUpWarningNoticeCell(_ cell: WarningNoticeItemCell, forNoticeAt indexPath: IndexPath) {
         let notice = getNotice(at: indexPath)
-        switch notice.type {
-        case .profileReported:
-            cell.updateViews(with: ProfileReportedViewModel(notice: notice))
-        case .postReported:
-            cell.updateViews(with: PostReportedViewModel(notice: notice))
-        default: break
+        if let profile = notice as? ProfileReportedNotice {
+            cell.updateViews(with: ProfileReportedViewModel(notice: profile, userSession: userSession))
+        } else if let postNotice = notice as? PostReportedNotice {
+            
+            cell.updateViews(with: PostReportedViewModel(notice: postNotice, postCover: nil))
         }
     }
     
@@ -123,9 +150,9 @@ class NoticeTableViewController: UITableViewController, UserSessionDepending {
         }
         let result = tableView.dequeueReusableHeaderFooterView(withIdentifier: ReuseID.header) as! SectionHeaderView
         switch groups[section].label {
-        case .read:
-            result.titleLabel.text = Localized.phrases.newNotices
         case .unread:
+            result.titleLabel.text = Localized.phrases.newNotices
+        case .read:
             result.titleLabel.text = Localized.phrases.readNotices
         }
         result.titleLabel.textColor = ColorPalette.defaultText
@@ -149,11 +176,11 @@ class NoticeTableViewController: UITableViewController, UserSessionDepending {
         tableView.deselectRow(at: indexPath, animated: true)
         let notice = getNotice(at: indexPath)
         switch notice.type {
-        case .followNotice, .giftFromOfficialAccount, .likeFromOfficialAccount:
+        case .followNotice, .bonus:
             showProfilePage(for: notice)
         case .profileReported:
             switchToMyProfile()
-        case .postReported: break
+        case .postReported, .unknwon: break
         }
     }
     
@@ -179,6 +206,10 @@ class NoticeTableViewController: UITableViewController, UserSessionDepending {
                 vc.configuration = (sender as! GemActionPopUpConfiguration)
                 self?.actionPopUp = vc
             }
+        } else if let nav = segue.destination as? UINavigationController,
+            let vc = nav.viewControllers.first as? UserProfileViewController {
+            vc.userSession = userSession
+            vc.profile = (sender as! User)
         }
     }
 }
@@ -257,21 +288,43 @@ private extension NoticeTableViewController {
 }
 
 private extension NoticeTableViewController {
+    func updateVisibleCells() {
+        let indexPaths = tableView.indexPathsForVisibleRows?.filter{sections[$0.section] == .content} ?? []
+        indexPaths.forEach{updateVisibleCell(at: $0)}
+    }
+    
+    private func updateVisibleCell(at indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? NormalNoticeItemCell {
+            setUpNormalNoticeCell(cell, forNoticeAt: indexPath)
+        } else if let cell = tableView.cellForRow(at: indexPath) as? WarningNoticeItemCell {
+            setUpWarningNoticeCell(cell, forNoticeAt: indexPath)
+        }
+    }
+    
     func showProfilePage(for notice: Notice) {
+        if let bonus = notice as? BonusNotice,
+            let info = bonusEventRepo.event(for: bonus.eventID).info,
+            let user = userSession.userFetcherRepo.fetcher(for: info.senderID).user {
+            performSegue(withIdentifier: SegueID.showProfile, sender: user)
+        } else if let follow = notice as? FollowNotice,
+            let user = userSession.userFetcherRepo.fetcher(for: follow.followerID).user {
+            performSegue(withIdentifier: SegueID.showProfile, sender: user)
+        }
     }
     
     func switchToMyProfile() {
         router.handle(DeepLinks.meTab)
     }
     
-    func showGetGemPopUp(for notice: Notice) {
+    func showGetGemPopUp(for notice: BonusNotice) {
+        let event = bonusEventRepo.event(for: notice.eventID)
+        guard !event.isRedeemed, let info = event.info else { return }
         var config: GemActionPopUpConfiguration?
-        switch notice.type {
-        case .giftFromOfficialAccount:
+        switch info.type {
+        case .likePost:
             config = GiftFromOfficialNoticePopUpConfiguration(notice: notice)
-        case .likeFromOfficialAccount:
-            config = LikeFromOfficialNoticePopUpConfiguration(notice: notice)
-        default: return
+        case .gift: return
+        case .loginReward: return
         }
         config?.mainAction = {[weak self] in
             self?.redeemGemsIfAllowed(for: notice)
@@ -284,6 +337,7 @@ private extension NoticeTableViewController {
 extension NoticeTableViewController {
     struct SegueID {
         static let showPopup = "showPopup"
+        static let showProfile = "showProfile"
     }
     enum Section: String {
         case content

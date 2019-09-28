@@ -47,17 +47,21 @@ class Wallet {
         }
     }
     
+    func setNeedsUpdateBalance(for account: BalanceAccount) {
+        balance(for: account).setNeedsRefresh()
+    }
+    
     func setNeedsUpdateBlueGem() {
-        balance(for: .blueGem).setNeedsRefresh()
+        setNeedsUpdateBalance(for: .blueGem)
+        setNeedsUpdateBalance(for: .score)
     }
 
     func setNeedsUpdatePurpleGem() {
-        balance(for: .purpleGem).setNeedsRefresh()
+        setNeedsUpdateBalance(for: .purpleGem)
     }
 
     func setNeedsUpdateGreenGem() {
-        balance(for: .greenGem).setNeedsRefresh()
-        balance(for: .score).setNeedsRefresh()
+        setNeedsUpdateBalance(for: .greenGem)
     }
 
     private func balance(for account: BalanceAccount) -> Balance {
@@ -135,11 +139,20 @@ class Balance {
     }
 }
 
-enum BalanceAccount: String {
-    case blueGem = "unlock_diamond"
+enum BalanceAccount: String, Decodable {
+    case blueGem = "blue_diamond"
     case purpleGem = "red_diamond"
     case greenGem = "green_diamond"
     case score = "exp"
+    
+    var displayName: String {
+        switch self {
+        case .blueGem: return Localized.titles.blueGem
+        case .greenGem: return Localized.titles.greenGem
+        case .purpleGem: return Localized.titles.purpleGem
+        case .score: return "Exp"
+        }
+    }
 }
 
 class GetBalanceOperation: AlamofireAPIAccessOperation {
@@ -152,7 +165,7 @@ class GetBalanceOperation: AlamofireAPIAccessOperation {
     private(set) var total: Int?
     
     override func prepareURLRequest() throws -> URLRequest {
-        return userSession.addingAuthorizationToken(to: URLRequest(url: ServiceURLs.devBase.appendingPathComponent("wallet/currency/\(account.rawValue)")))
+        return userSession.addingAuthorizationToken(to: URLRequest(url: ServiceURLs.devBase.appendingPathComponent("wallet/balance/\(account.rawValue)")))
     }
     
     override func processData(with data: Data) throws {

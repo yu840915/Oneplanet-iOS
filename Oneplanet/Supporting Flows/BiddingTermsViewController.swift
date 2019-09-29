@@ -54,7 +54,8 @@ class BiddingTermsViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let vc = segue.destination as? WebViewController {
-            vc.request = URLRequest(url: ServiceURLs.biddingTerms)
+            let req = try! URLRequest(url: ServiceURLs.biddingTerms, method: .get, headers: Localized.acceptLanguageHeader)
+            vc.request = req
         }
     }
 }

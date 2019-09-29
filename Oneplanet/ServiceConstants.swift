@@ -32,7 +32,7 @@ struct ServiceURLs {
     static let appSettings = URL(string:UIApplication.openSettingsURLString)!
     static let terms = URL(string: "https://oneplanet-9e32a.firebaseapp.com/\(Localized.languageCode).html")!
     static var biddingTerms: URL {
-        return appConfiguration.biddingTermURL.value ?? URL(string: "https://oneplanet-9e32a.firebaseapp.com/\(Localized.languageCode).html")!
+        return base.appendingPathComponent("bidding_terms_url")
     }
 }
 

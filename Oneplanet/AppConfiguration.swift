@@ -16,13 +16,11 @@ class AppConfiguration {
     let didUpdateObservers = MulticastCallbackNode<()->()>()
     let promoPopUpCoolDownInterval: TimeInterval = 30 * .minute
     let biddingTermVersion: AppConfigurationIntItem
-    let biddingTermURL: AppConfigurationURLItem
     
     private let source: RemoteConfig
     fileprivate init() {
         source = RemoteConfig.remoteConfig()
         biddingTermVersion = AppConfigurationIntItem(key: "bidding_terms_version", source: source)
-        biddingTermURL = AppConfigurationURLItem(key: "bidding_terms_url", source: source)
         update()
     }
     

@@ -112,7 +112,7 @@ class SettingsTableViewController: UITableViewController, UserSessionDepending {
         case .blockList:
             performSegue(withIdentifier: SegueID.showBlockedList, sender: nil)
         case .biddingTerms:
-            performSegue(withIdentifier: SegueID.showBiddingTerms, sender: ServiceURLs.biddingTerms)
+            performSegue(withIdentifier: SegueID.showBiddingTerms, sender: nil)
         case .terms:
             performSegue(withIdentifier: SegueID.showTerms, sender: nil)
         case .logOut:
@@ -135,7 +135,8 @@ class SettingsTableViewController: UITableViewController, UserSessionDepending {
         if let nav = segue.destination as? UINavigationController, let vc = nav.viewControllers.first as? WebViewController {
             NavigationBarStyle.darkGray.configure(nav.navigationBar)
             if segue.identifier == SegueID.showBiddingTerms {
-                vc.request = URLRequest(url: (sender as! URL))
+                let req = try! URLRequest(url: ServiceURLs.biddingTerms, method: .get, headers: Localized.acceptLanguageHeader)
+                vc.request = req
                 vc.title = ActionRow.biddingTerms.displayName
             } else {
                 var req = URLRequest(url: ServiceURLs.terms)

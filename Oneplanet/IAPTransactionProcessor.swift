@@ -17,9 +17,14 @@ class IAPTransactionProcessor: NSObject, SKPaymentTransactionObserver {
     
     private override init() {}
     
-    weak var userSession: UserSession?
+    weak var userSession: UserSession? {
+        didSet {
+            submitPendingPurchasesIfNeeded()
+        }
+    }
     private(set) var waitingInvoice: Invoice?
     private(set) var pendingTransactions: [SKPaymentTransaction] = []
+    private(set) var submitTransactionOperation: ConcurrentTaskOperation<PurchaseOperation>?
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         transactions.forEach{ handleUpdate(of: $0, in: queue) }
@@ -100,6 +105,31 @@ class IAPTransactionProcessor: NSObject, SKPaymentTransactionObserver {
             logger.error("Cannot read receipt \(error)")
             return nil
         }
+    }
+    
+    func submitPendingPurchasesIfNeeded() {
+        let transactions = pendingTransactions.filter({$0.transactionState == .purchased || $0.transactionState == .restored})
+        guard submitTransactionOperation == nil, let session = userSession, !transactions.isEmpty, let data = readReceipt() else {
+            return
+        }
+        let ops = transactions.map{return PurchaseOperation(transaction: $0, receiptData: data, session: session)}
+        let op = ConcurrentTaskOperation<PurchaseOperation>(operations: ops)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didSubmitPendingPurchases()
+            }
+        }
+        submitTransactionOperation = op
+        op.start()
+    }
+    
+    private func didSubmitPendingPurchases() {
+        let op = submitTransactionOperation!
+        submitTransactionOperation = nil
+        let transactions = op.operations.filter{$0.success == true}.map{$0.transaction}
+        transactions.forEach{finishTransaction($0)}
+        pendingTransactions = pendingTransactions.filter{!transactions.contains($0)}
+        userSession?.wallet.setNeedsUpdate()
     }
 }
 

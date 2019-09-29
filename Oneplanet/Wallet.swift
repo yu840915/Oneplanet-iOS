@@ -191,9 +191,9 @@ enum Currency {
 extension Currency {
     var apiName: String {
         switch self {
-        case .blueGem: return "blue"
-        case .purpleGem: return "red"
-        case .greenGem: return "green"
+        case .blueGem: return "blue_diamond"
+        case .purpleGem: return "red_diamond"
+        case .greenGem: return "green_diamond"
         }
     }
     

@@ -28,6 +28,7 @@ class IAPTransactionProcessor: NSObject, SKPaymentTransactionObserver {
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         transactions.forEach{ handleUpdate(of: $0, in: queue) }
+        submitPendingPurchasesIfNeeded()
     }
     
     private func handleUpdate(of transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {

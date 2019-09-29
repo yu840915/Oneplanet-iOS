@@ -336,10 +336,10 @@ class BuyIAPProductOperation: SimpleAsynchronousOperation, FailableOperationType
         switch transaction.transactionState {
         case .failed:
             fail(with: transaction.error)
-        case .purchased:
+        case .purchased, .restored:
             success = true
             finish()
-        case .deferred, .purchasing, .restored: break
+        case .deferred, .purchasing: break
         }
     }
     

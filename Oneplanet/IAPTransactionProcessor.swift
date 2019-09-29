@@ -42,14 +42,16 @@ class IAPTransactionProcessor: NSObject, SKPaymentTransactionObserver {
                 waitingInvoice?.notifyStateChange()
             }
         case .purchased:
-            if waitingInvoice?.isRelated(to: transaction) == true {
+            if let inv = waitingInvoice, inv.isRelated(to: transaction) == true {
                 waitingInvoice = nil
-                waitingInvoice?.notifyStateChange()
+                inv.notifyStateChange()
             } else {
                 pendingTransactions.append(transaction)
             }
         case .restored:
-            break
+            if waitingInvoice?.setTransactionIfAllowed(transaction) == true {
+                waitingInvoice?.notifyStateChange()
+            }
         }
     }
     
@@ -79,8 +81,13 @@ class IAPTransactionProcessor: NSObject, SKPaymentTransactionObserver {
         guard canPlaceOrder else {
             fatalError("Should check before placing order")
         }
-        waitingInvoice = invoice
-        SKPaymentQueue.default().add(SKPayment(product: invoice.iapProduct))
+        if let transaction = pendingTransactions.first(where: {invoice.setTransactionIfAllowed($0)}) {
+            pendingTransactions = pendingTransactions.filter{$0 !== transaction}
+            invoice.notifyStateChange()
+        } else {
+            waitingInvoice = invoice
+            SKPaymentQueue.default().add(SKPayment(product: invoice.iapProduct))
+        }
     }
     
     func readReceipt() -> Data? {
@@ -395,7 +402,7 @@ class IAPProductRedeemPlan: Decodable {
     let amount: Int
     
     enum CodingKeys: String, CodingKey {
-        case currencyID = "diamond"
+        case currencyID = "currency"
         case amount
     }
 }

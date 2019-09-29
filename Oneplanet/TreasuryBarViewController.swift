@@ -163,6 +163,7 @@ fileprivate extension TreasuryBarViewController {
     }
     
     func showPurpleGemPopUp() {
+        userSession.wallet.setNeedsUpdate()
         showPopUpController(PurpleGemStoreViewController.entryPoint())
     }
 

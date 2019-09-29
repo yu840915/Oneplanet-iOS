@@ -50,6 +50,17 @@ class IAPTransactionProcessor: NSObject, SKPaymentTransactionObserver {
         }
     }
     
+    func finishTransaction(in invoice: Invoice) {
+        guard let transaction = invoice.transaction else {
+            return
+        }
+        finishTransaction(transaction)
+    }
+    
+    func finishTransaction(_ transaction: SKPaymentTransaction) {
+        SKPaymentQueue.default().finishTransaction(transaction)
+    }
+    
     var canPlaceOrder: Bool {
         guard let session = userSession,
             !session.isAdmin && !session.isGuest else {
@@ -384,4 +395,15 @@ class IAPProductRedeemPlan: Decodable {
         case currencyID = "diamond"
         case amount
     }
+}
+
+class InsufficienFundError: GenericAppError {
+    let currency: BalanceAccount
+    
+    init(currency: BalanceAccount) {
+        self.currency = currency
+        super.init("Insufficient balance of \(currency.displayName)")
+    }
+    
+    required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
 }

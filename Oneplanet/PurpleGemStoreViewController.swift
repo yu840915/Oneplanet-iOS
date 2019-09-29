@@ -8,11 +8,13 @@
 
 import UIKit
 
-class PurpleGemStoreViewController: UIViewController {
+class PurpleGemStoreViewController: UIViewController, UserSessionDepending {
 
     class func entryPoint() -> PopUpContainerViewController {
         return UIStoryboard(name: "MainUserFlow", bundle: nil).instantiateViewController(withIdentifier: "PurpleGemPopUpEntry") as! PopUpContainerViewController
     }
+    
+    var userSession: UserSession!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usageLabel: UILabel!
     @IBOutlet weak var bulletTextView1: UITextView!
@@ -53,6 +55,9 @@ class PurpleGemStoreViewController: UIViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? UserSessionDepending {
+            vc.userSession = userSession
+        }
     }
 
 }

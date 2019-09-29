@@ -241,6 +241,20 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
                 vc.exitTitle = Localized.titles.done
                 vc.request = URLRequest(url: sender as! URL)
             }
+        } else if let container = segue.destination as? PopUpContainerViewController {
+            container.contentViewControllerSetUpBlock = {vc in
+                if let popup = vc as? GemActionPopUpViewController {
+                    popup.configuration = (sender as! GemActionPopUpConfiguration)
+                    popup.cancelAction = {[weak self] in
+                        self?.dismiss(animated: true, completion: nil)
+                    }
+                    popup.mainAction = {[weak self] in
+                        self?.dismiss(animated: true, completion: {
+                            router.handle(DeepLinks.postEditor)
+                        })
+                    }
+                }
+            }
         }
     }
 }
@@ -306,6 +320,12 @@ fileprivate extension UserFlowMainViewController {
             }
             return true
         }
+        actionRouter.add(DeepLinks.insufficientFundPopUp.path) {[weak self] (_) -> Bool in
+            OperationQueue.main.addOperation {
+                self?.showInsufficientFundPopUp()
+            }
+            return true
+        }
         actionRouter.add("*") {[weak self] (info) -> Bool in
             return self?.routeToWebViewIfNeeded(with: info) ?? false
         }
@@ -363,6 +383,10 @@ fileprivate extension UserFlowMainViewController {
         auctionController.showCategoryList(with: query)
     }
     
+    func showInsufficientFundPopUp() {
+        performSegue(withIdentifier: SegueID.showInsufficienFundPopUp, sender: InsufficientBlueGemPopUpConfiguration())
+    }
+    
     func routeToWebViewIfNeeded(with info: [String: Any]) -> Bool {
         guard let url = info[URLRouter.Keys.url] as? URL else {
             return false
@@ -382,6 +406,7 @@ extension UserFlowMainViewController {
         static let showPostCreationPortal = "showPostCreationPortal"
         static let showPostComposer = "showPostComposer"
         static let showWebView = "showWebView"
+        static let showInsufficienFundPopUp = "showInsufficienFundPopUp"
     }
 }
 

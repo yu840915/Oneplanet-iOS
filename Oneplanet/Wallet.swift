@@ -64,7 +64,7 @@ class Wallet {
         setNeedsUpdateBalance(for: .greenGem)
     }
 
-    private func balance(for account: BalanceAccount) -> Balance {
+    func balance(for account: BalanceAccount) -> Balance {
         return balances[account]!
     }
     

@@ -82,6 +82,9 @@ struct DeepLinks {
     static var followingList: URL {
         return ServiceURLs.base.appendingPathComponent("modal/followings")
     }
+    static var insufficientFundPopUp: URL {
+        return ServiceURLs.base.appendingPathComponent("popup/insufficientFund")
+    }
 }
 
 extension JSONDecoder {

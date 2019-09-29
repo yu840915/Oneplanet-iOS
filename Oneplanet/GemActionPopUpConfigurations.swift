@@ -243,6 +243,42 @@ class InsufficientBlueGemToUnlockPopUpConfiguration: GemActionPopUpConfiguration
     }
 }
 
+class InsufficientBlueGemPopUpConfiguration: GemActionPopUpConfiguration {
+    override var icon: UIImage {
+        return #imageLiteral(resourceName: "im_00_insufficient")
+    }
+
+    override var attributedTitle: NSAttributedString {
+        return NSAttributedString(string: String(format: Localized.messageFormats.insufficientGem, Localized.titles.blueGem), attributes: titleAttributes)
+    }
+
+    override var attributedSubtitle: NSAttributedString {
+        let result = NSMutableAttributedString(attributedString: descriptionPart)
+        result.append(instructionPart)
+        return result
+    }
+
+    private var descriptionPart: NSAttributedString {
+        let text = String(format: Localized.messageFormats.insufficientGemDescription, Localized.titles.blueGem)
+        let range = (text as NSString).range(of: Localized.titles.blueGem)
+        let result = NSMutableAttributedString(string: text, attributes: subtitleAttributes)
+        result.addAttributes([.link : DeepLinks.blueGemPopUp], range: range)
+        return result
+    }
+    
+    private var instructionPart: NSAttributedString {
+        let text = String(format: Localized.messageFormats.earnBlueGemInstruction, Localized.titles.blueGem)
+        let range = (text as NSString).range(of: Localized.titles.blueGem)
+        let result = NSMutableAttributedString(string: text, attributes: subtitleAttributes)
+        result.addAttributes([.link : DeepLinks.blueGemPopUp], range: range)
+        return result
+    }
+    
+    override var actionTitle: String {
+        return Localized.gemStonePopUp.blueGemAction
+    }
+}
+
 class InsufficientBlueGemToBidPopUpConfiguration: GemActionPopUpConfiguration {
     let formattedPrice: String
     init(formattedPrice: String) {

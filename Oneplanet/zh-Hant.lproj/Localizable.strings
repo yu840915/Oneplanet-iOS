@@ -128,6 +128,7 @@
 "msgf_bid_prompt" = "投標 %@ 一次";
 "msgf_bid_with_gem_iap" = "使用一顆 %@ + %@ 投標一次?";
 "msgf_bid_with_gem" = "使用一顆 %@ 投標一次？";
+"msgf_insufficient_gem_des" = "你的%@不足。";
 "msgf_insufficient_gem_unlock_des" = "解鎖一件商品需要使用一顆 %@ + %@。";
 "msgf_insufficient_gem_bid_des" = "每投標一次需要使用一顆 %@ + %@。";
 "msgf_earn_blue_gem_instruction" = "再加把勁上傳照片獲得 %@！";

@@ -455,6 +455,9 @@ class LocalizedMessageFormats {//msgf_
     var bidWithGem: String {
         return NSLocalizedString("msgf_bid_with_gem", comment: "")
     }
+    var insufficientGemDescription: String {
+        return NSLocalizedString("msgf_insufficient_gem_des", comment: "")
+    }
     var insufficientGemToUnlockDescription: String {
         return NSLocalizedString("msgf_insufficient_gem_unlock_des", comment: "")
     }

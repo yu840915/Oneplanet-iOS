@@ -112,6 +112,7 @@
 		E076729C22E70C8800A3939A /* PetitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E076729B22E70C8800A3939A /* PetitionViewController.swift */; };
 		E077A72E22DDA4C300A2245E /* NoticeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E077A72D22DDA4C300A2245E /* NoticeList.swift */; };
 		E077A73022DDF63500A2245E /* NoticeUIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E077A72F22DDF63500A2245E /* NoticeUIHelpers.swift */; };
+		E08008E3233FDB2B001A3009 /* PurchaseActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08008E2233FDB2B001A3009 /* PurchaseActions.swift */; };
 		E0814E3522DC2BBF002D0E32 /* NoticeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0814E3422DC2BBF002D0E32 /* NoticeTableViewController.swift */; };
 		E0814FAE22864B10002F1C02 /* MainUserFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0814FAD22864B10002F1C02 /* MainUserFlow.storyboard */; };
 		E0814FB122864F79002F1C02 /* UserFlowMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0814FB022864F79002F1C02 /* UserFlowMainViewController.swift */; };
@@ -343,6 +344,7 @@
 		E076729B22E70C8800A3939A /* PetitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetitionViewController.swift; sourceTree = "<group>"; };
 		E077A72D22DDA4C300A2245E /* NoticeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeList.swift; sourceTree = "<group>"; };
 		E077A72F22DDF63500A2245E /* NoticeUIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeUIHelpers.swift; sourceTree = "<group>"; };
+		E08008E2233FDB2B001A3009 /* PurchaseActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseActions.swift; sourceTree = "<group>"; };
 		E0814E3422DC2BBF002D0E32 /* NoticeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTableViewController.swift; sourceTree = "<group>"; };
 		E0814FAD22864B10002F1C02 /* MainUserFlow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainUserFlow.storyboard; sourceTree = "<group>"; };
 		E0814FB022864F79002F1C02 /* UserFlowMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFlowMainViewController.swift; sourceTree = "<group>"; };
@@ -664,6 +666,7 @@
 				E03C329D226D772400C32FD7 /* Logger.swift */,
 				E03C3299226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift */,
 				E0B1E18E22C8F6F900F41248 /* IAPTransactionProcessor.swift */,
+				E08008E2233FDB2B001A3009 /* PurchaseActions.swift */,
 				E0BD3A7922C9E42400E2609F /* DataStore.swift */,
 				E07276FB22773F54001239C0 /* Server Push Message */,
 				E03C32B1226D902F00C32FD7 /* Shared Configurations */,
@@ -1269,6 +1272,7 @@
 				E0190F4F226DD06B00C212D5 /* Preferences.swift in Sources */,
 				E0814FB722893FB0002F1C02 /* ProfileCollectionViewController.swift in Sources */,
 				E0837EF722816B0D00B13BAF /* ImageAttachmentUploadFlowOperation.swift in Sources */,
+				E08008E3233FDB2B001A3009 /* PurchaseActions.swift in Sources */,
 				E02842B1229A32C2007212D7 /* ColorPickerCollectionViewController.swift in Sources */,
 				E06589CA2270C1A500C9E4E6 /* UpdateClock.swift in Sources */,
 				E0814FB122864F79002F1C02 /* UserFlowMainViewController.swift in Sources */,

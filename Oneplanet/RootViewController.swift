@@ -24,6 +24,7 @@ class RootViewController: UIViewController {
     private weak var userFlowRootController: UserFlowRootViewController?
     private var shouldAddConstraintsForUserFlow = false
     private var sessionEndHandle: Any?
+    private var updateInfo: UpdateInfo?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -142,4 +143,28 @@ extension RootViewController {
         static let showLogin = "showLogin"
         static let showWelcomePage = "showWelcomePage"
     }
+}
+
+class VersionCheckOperation: AlamofireAPIAccessOperation {
+    private(set) var updateInfo: UpdateInfo?
+    
+    override func prepareURLRequest() throws -> URLRequest {
+        return URLRequest(url: ServiceURLs.base.appendingPathComponent("preflight"))
+    }
+    
+    override func handleClientError(with response: HTTPURLResponse) throws {
+        if response.statusCode == 426 {
+            return
+        }
+    }
+    
+    override func processData(with data: Data) throws {
+        updateInfo = try JSONDecoder.default.decode(UpdateInfo.self, from: data)
+    }
+}
+
+class UpdateInfo: Decodable {
+    let forced: Bool
+    let url: URL
+    let version: String
 }

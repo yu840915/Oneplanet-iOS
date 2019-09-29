@@ -134,6 +134,7 @@ class Balance {
             self.total = total
             lastUpdateDate = Date()
         } else {
+            lastUpdateDate = lastUpdateDate.addingTimeInterval(.minute)
             logger.error("Cannot refresh balance: \(account)", context: op.error)
         }
     }
@@ -169,7 +170,7 @@ class GetBalanceOperation: AlamofireAPIAccessOperation {
     }
     
     override func processData(with data: Data) throws {
-        total = (try JSONDecoder.default.decode(Total.self, from: data)).total
+        total = Int((try JSONDecoder.default.decode(Total.self, from: data)).total)
     }
     
     override func handleUnauthorizedError(with response: HTTPURLResponse) throws {
@@ -177,7 +178,7 @@ class GetBalanceOperation: AlamofireAPIAccessOperation {
     }
     
     struct Total: Decodable {
-        let total: Int
+        let total: Double
     }
 }
 

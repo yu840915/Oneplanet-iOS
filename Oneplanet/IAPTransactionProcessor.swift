@@ -19,6 +19,7 @@ class IAPTransactionProcessor: NSObject, SKPaymentTransactionObserver {
     
     weak var userSession: UserSession?
     private(set) var waitingInvoice: Invoice?
+    private(set) var pendingTransactions: [SKPaymentTransaction] = []
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         transactions.forEach{ handleUpdate(of: $0, in: queue) }
@@ -32,18 +33,20 @@ class IAPTransactionProcessor: NSObject, SKPaymentTransactionObserver {
             }
         case .failed:
             if waitingInvoice?.isRelated(to: transaction) == true {
-                waitingInvoice = nil
                 waitingInvoice?.notifyStateChange()
+                waitingInvoice = nil
             }
             queue.finishTransaction(transaction)
         case .purchasing:
-            if waitingInvoice?.isRelated(to: transaction) == true {
+            if waitingInvoice?.setTransactionIfAllowed(transaction) == true {
                 waitingInvoice?.notifyStateChange()
             }
         case .purchased:
             if waitingInvoice?.isRelated(to: transaction) == true {
                 waitingInvoice = nil
                 waitingInvoice?.notifyStateChange()
+            } else {
+                pendingTransactions.append(transaction)
             }
         case .restored:
             break

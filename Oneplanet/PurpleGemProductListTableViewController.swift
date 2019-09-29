@@ -43,16 +43,28 @@ class PurpleGemProductListTableViewController: UITableViewController, UserSessio
         let check = FeatureAccessCheckOperation(userSession: userSession)
         check.start()
         guard check.isAccessible && purchaseOperation == nil else {return}
+        let loading = FullscreenLoadingViewController.fromDefaultStoryboard()
+        present(loading, animated: false, completion: nil)
         let op = BuyPurpleGemOperation(plan: plans[indexPath.row], transactionProcesser: IAPTransactionProcessor.shared, session: userSession)
         op.completionBlock = {[weak self] in
             OperationQueue.main.addOperation {
-                self?.didBuyPurpleGem()
+                self?.dismissLoadingAndHandleCompletion()
             }
         }
         purchaseOperation = op
         op.start()
     }
     
+    private func dismissLoadingAndHandleCompletion() {
+        if let vc = presentedViewController {
+            vc.dismiss(animated: false) {
+                self.didBuyPurpleGem()
+            }
+        } else {
+            didBuyPurpleGem()
+        }
+    }
+
     private func didBuyPurpleGem() {
         let op = purchaseOperation!
         purchaseOperation = nil
@@ -64,6 +76,7 @@ class PurpleGemProductListTableViewController: UITableViewController, UserSessio
             }
         }
     }
+    
     
     private func showAlert(with error: Error) {
         let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)

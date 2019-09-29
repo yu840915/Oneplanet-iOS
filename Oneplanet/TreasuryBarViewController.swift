@@ -118,7 +118,13 @@ class TreasuryBarViewController: UIViewController, UserSessionDepending {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if let container = segue.destination as? PopUpContainerViewController {
+            container.contentViewControllerSetUpBlock = {[weak self] content in
+                if let vc = content as? UserSessionDepending {
+                    vc.userSession = self?.userSession
+                }
+            }
+        }
     }
 }
 
@@ -161,6 +167,11 @@ fileprivate extension TreasuryBarViewController {
     }
 
     func showPopUpController(_ controller: PopUpContainerViewController) {
+        controller.contentViewControllerSetUpBlock = {[weak self] content in
+            if let vc = content as? UserSessionDepending {
+                vc.userSession = self?.userSession
+            }
+        }
         let presenter = FrontViewControllerFinder.findFront() ?? self
         presenter.present(controller, animated: true, completion: nil)
     }

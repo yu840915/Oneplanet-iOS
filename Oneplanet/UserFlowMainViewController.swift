@@ -83,9 +83,9 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
     
     func updateViewsForUnreadCount() {
         if let count = noticesUnreadCount.count, count > 0 {
-            noticeController.tabBarItem.badgeValue = SharedNumberFormatters.integer.string(for: count)
+            noticeController.navigationController?.tabBarItem.badgeValue = SharedNumberFormatters.integer.string(for: count)
         } else {
-            noticeController.tabBarItem.badgeValue = nil
+            noticeController.navigationController?.tabBarItem.badgeValue = nil
         }
     }
     

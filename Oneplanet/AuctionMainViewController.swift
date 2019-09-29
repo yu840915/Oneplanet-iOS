@@ -23,7 +23,7 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
     @IBOutlet weak var buttonBarContainer: UIView!
     private var shouldAddBadgeViews = true
     private var productListBadge: BadgeView!
-    private var biddingProcessBadge: BadgeView!
+    private var biddingProcessBadge: BadgeView?
     private var biddingFeatureCheckOperation: BiddingFeatureAccessCheckOperation?
     private var productListController: ProductListTableViewController!
     private var historyController: BiddingProcessTableViewController?
@@ -159,9 +159,9 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
     
     private func updateHistoryBadgeIfNeeded() {
         if Preferences.shouldShowBadgeOnHistory.value == true {
-            biddingProcessBadge.value = 1
+            biddingProcessBadge?.value = 1
         } else {
-            biddingProcessBadge.value = 0
+            biddingProcessBadge?.value = 0
         }
     }
     

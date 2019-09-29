@@ -166,6 +166,7 @@ class UnlockWithBlueGemOperation: SimpleAsynchronousOperation, FailableOperation
         let op = buyGreenGemOperation!
         if op.success == true {
             unlockProduct()
+            transactionProcesser.finishTransaction(op.transaction)
         } else {
             fail(with: op.error)
         }
@@ -271,6 +272,7 @@ class BidWithBlueGemOperation: SimpleAsynchronousOperation, FailableOperationTyp
         let op = buyRubyOperation!
         if op.success == true {
             bidProduct()
+            transactionProcesser.finishTransaction(op.transaction)
         } else {
             fail(with: op.error)
         }

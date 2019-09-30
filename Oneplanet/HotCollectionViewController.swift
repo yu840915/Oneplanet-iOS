@@ -52,9 +52,6 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
         news.action = {[weak self] in
             self?.showPromoPopUp()
         }
-        alien.action = {[weak self] in
-            router.handle(DeepLinks.bidTabHistory)
-        }
         navigationItem.rightBarButtonItems = [
             .init(customView: alien),
             .init(customView: events),

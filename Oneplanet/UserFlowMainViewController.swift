@@ -290,6 +290,12 @@ fileprivate extension UserFlowMainViewController {
     
     func prepareRouter() {
         let actionRouter = URLRouter()
+        actionRouter.add(DeepLinks.hotTab.path) {[weak self] (info) -> Bool in
+            OperationQueue.main.addOperation {
+                self?.switchToTab(.hot)
+            }
+            return true
+        }
         actionRouter.add(DeepLinks.lifeTab.path) {[weak self] (info) -> Bool in
             OperationQueue.main.addOperation {
                 self?.switchToTab(.life)
@@ -358,7 +364,11 @@ fileprivate extension UserFlowMainViewController {
             let idx = TabFeature.list.index(of: tab) else {
                 return
         }
+        presentedViewController?.dismiss(animated: false, completion: nil)
         contentTabbarController.selectedViewController = contentTabbarController.viewControllers![idx]
+        if let nav = contentTabbarController.selectedViewController as? UINavigationController {
+            nav.popToRootViewController(animated: false)
+        }
         OperationQueue.main.addOperation {
             self.handleTabbarSwitch()
         }

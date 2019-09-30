@@ -43,10 +43,14 @@ class UserNotificationDelegate: NSObject, UNUserNotificationCenterDelegate {
     private func getClickActionURL(from response: UNNotificationResponse) -> URL? {
         let userInfo = response.notification.request.content.userInfo
         debugPrint(userInfo)
-        if let urlStr = userInfo["clickAction"] as? String, let url = URL(string: urlStr) {
+        guard let aps = userInfo["aps"] as? [AnyHashable: Any],
+            let alert = aps["alert"] as? [AnyHashable: Any] else {
+            return nil
+        }
+        if let urlStr = alert["clickAction"] as? String, let url = URL(string: urlStr) {
             return url
         }
-        if let url = userInfo["clickAction"] as? URL {
+        if let url = alert["clickAction"] as? URL {
             return url
         }
         return nil

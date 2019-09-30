@@ -124,7 +124,7 @@ fileprivate class SubmitFacebookTokenOperation: LogInOperation {
     }
     
     override func prepareDataRequest() throws -> DataRequest {
-        return Alamofire.request(ServiceURLs.devBase.appendingPathComponent("login/facebook-app"), method: .post, parameters: ["access_token": fbAccessToken.authenticationToken], encoding: URLEncoding(), headers: nil)
+        return Alamofire.request(ServiceURLs.base.appendingPathComponent("login/facebook-app"), method: .post, parameters: ["access_token": fbAccessToken.authenticationToken], encoding: URLEncoding(), headers: nil)
     }
 }
 

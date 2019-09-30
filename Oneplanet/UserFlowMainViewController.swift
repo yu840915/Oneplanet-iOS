@@ -16,6 +16,7 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
     private var postController: PostFeedMainViewController!
     private var profileController: MyProfileViewController!
     private var hotPageController: HotCollectionViewController!
+    private var noticeController: NoticeTableViewController!
     private var treasuryBarController: TreasuryBarViewController!
     fileprivate var getPageListOperaion: GetPromotionPageListOperation?
     fileprivate var appearanceAction: (()->())?
@@ -27,8 +28,10 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
     @IBOutlet weak var balloonButton: UIButton!
     var balloonNavigationCoordinator: BalloonNavigationCoordinator?
     var statusBarHandle: Any?
+    var unreadCountHandle: Any!
     var currentSessionEndTime: Date?
     private var postQuota: ValuedPostQuota?
+    private var noticesUnreadCount: NoticeUnreadCount!
     
     class func fromDefaultStoryboard() -> UserFlowMainViewController {
         return UIStoryboard(name: "MainUserFlow", bundle: nil).instantiateInitialViewController() as! UserFlowMainViewController
@@ -40,6 +43,12 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        noticesUnreadCount = NoticeUnreadCount(userSession: userSession)
+        unreadCountHandle = noticesUnreadCount.updateHandlers.add {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.updateViewsForUnreadCount()
+            }
+        }
         let contents = contentTabbarController.viewControllers!.compactMap{$0 as? UINavigationController}.compactMap{$0.viewControllers.first}
         contents.forEach {
             if let vc = $0 as? AuctionMainViewController {
@@ -48,6 +57,9 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
                 postController = vc
             } else if let vc = $0 as? MyProfileViewController {
                 profileController = vc
+            } else if let vc = $0 as? NoticeTableViewController {
+                vc.unreadCount = noticesUnreadCount
+                noticeController = vc
             }
         }
         setUpTabbarBackground()
@@ -63,22 +75,39 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
             let q = ValuedPostQuota(userSession: userSession)
             postQuota = q
             q.refresh()
+            noticesUnreadCount.refresh()
         }
         prepareAppActivityHandlers()
+        updateViewsForUnreadCount()
+    }
+    
+    func updateViewsForUnreadCount() {
+        if let count = noticesUnreadCount.count, count > 0 {
+            noticeController.navigationController?.tabBarItem.badgeValue = SharedNumberFormatters.integer.string(for: count)
+        } else {
+            noticeController.navigationController?.tabBarItem.badgeValue = nil
+        }
     }
     
     private func prepareAppActivityHandlers() {
         var handles = [Any]()
         handles.append(AppLifeCycleObserver.didBecomeActive.observers.add {[weak self] (_) in
             OperationQueue.main.addOperation {
-                self?.getPromoPopupIfNeeded()
-                self?.refreshIfSessionEndedOnWaking()
+                self?.refreshDataOnWaking()
             }
         })
-        handles.append(AppLifeCycleObserver.willEnterForeground.observers.add({[weak self] (_) in
+        handles.append(AppLifeCycleObserver.didEnterBackground.observers.add({[weak self] (_) in
             self?.recordBidSessionEndTime()
         }))
         appActivityHandles = handles
+    }
+    
+    private func refreshDataOnWaking() {
+        if !userSession.isGuest && !userSession.isAdmin {
+            noticesUnreadCount.refresh()
+        }
+        refreshIfSessionEndedOnWaking()
+        getPromoPopupIfNeeded()
     }
     
     private func recordBidSessionEndTime() {
@@ -95,6 +124,7 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
         userSession.lotList.reload()
         hotPageController.setNeedsRefresh()
         auctionController.setNeedsRefresh()
+        userSession.bidPhaseIndicator.refreshIfNeeded()
     }
     
     private func setUpTabbarBackground() {
@@ -211,6 +241,20 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
                 vc.exitTitle = Localized.titles.done
                 vc.request = URLRequest(url: sender as! URL)
             }
+        } else if let container = segue.destination as? PopUpContainerViewController {
+            container.contentViewControllerSetUpBlock = {vc in
+                if let popup = vc as? GemActionPopUpViewController {
+                    popup.configuration = (sender as! GemActionPopUpConfiguration)
+                    popup.cancelAction = {[weak self] in
+                        self?.dismiss(animated: true, completion: nil)
+                    }
+                    popup.mainAction = {[weak self] in
+                        self?.dismiss(animated: true, completion: {
+                            router.handle(DeepLinks.postEditor)
+                        })
+                    }
+                }
+            }
         }
     }
 }
@@ -246,9 +290,35 @@ fileprivate extension UserFlowMainViewController {
     
     func prepareRouter() {
         let actionRouter = URLRouter()
+        actionRouter.add(DeepLinks.hotTab.path) {[weak self] (info) -> Bool in
+            OperationQueue.main.addOperation {
+                self?.switchToTab(.hot)
+            }
+            return true
+        }
         actionRouter.add(DeepLinks.lifeTab.path) {[weak self] (info) -> Bool in
             OperationQueue.main.addOperation {
                 self?.switchToTab(.life)
+            }
+            return true
+        }
+        actionRouter.add(DeepLinks.bidTab.path) {[weak self] (info) -> Bool in
+            OperationQueue.main.addOperation {
+                self?.switchToTab(.bid)
+            }
+            return true
+        }
+        actionRouter.add(DeepLinks.bidTabProducts.path) {[weak self] (info) -> Bool in
+            OperationQueue.main.addOperation {
+                self?.switchToTab(.bid)
+                self?.auctionController.selectProductsTabIfAllowed()
+            }
+            return true
+        }
+        actionRouter.add(DeepLinks.bidTabHistory.path) {[weak self] (info) -> Bool in
+            OperationQueue.main.addOperation {
+                self?.switchToTab(.bid)
+                self?.auctionController.selectHistoryTabIfAllowed()
             }
             return true
         }
@@ -276,6 +346,12 @@ fileprivate extension UserFlowMainViewController {
             }
             return true
         }
+        actionRouter.add(DeepLinks.insufficientFundPopUp.path) {[weak self] (_) -> Bool in
+            OperationQueue.main.addOperation {
+                self?.showInsufficientFundPopUp()
+            }
+            return true
+        }
         actionRouter.add("*") {[weak self] (info) -> Bool in
             return self?.routeToWebViewIfNeeded(with: info) ?? false
         }
@@ -288,7 +364,11 @@ fileprivate extension UserFlowMainViewController {
             let idx = TabFeature.list.index(of: tab) else {
                 return
         }
+        presentedViewController?.dismiss(animated: false, completion: nil)
         contentTabbarController.selectedViewController = contentTabbarController.viewControllers![idx]
+        if let nav = contentTabbarController.selectedViewController as? UINavigationController {
+            nav.popToRootViewController(animated: false)
+        }
         OperationQueue.main.addOperation {
             self.handleTabbarSwitch()
         }
@@ -333,6 +413,10 @@ fileprivate extension UserFlowMainViewController {
         auctionController.showCategoryList(with: query)
     }
     
+    func showInsufficientFundPopUp() {
+        performSegue(withIdentifier: SegueID.showInsufficienFundPopUp, sender: InsufficientBlueGemPopUpConfiguration())
+    }
+    
     func routeToWebViewIfNeeded(with info: [String: Any]) -> Bool {
         guard let url = info[URLRouter.Keys.url] as? URL else {
             return false
@@ -352,6 +436,7 @@ extension UserFlowMainViewController {
         static let showPostCreationPortal = "showPostCreationPortal"
         static let showPostComposer = "showPostComposer"
         static let showWebView = "showWebView"
+        static let showInsufficienFundPopUp = "showInsufficienFundPopUp"
     }
 }
 

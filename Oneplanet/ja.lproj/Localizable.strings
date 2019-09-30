@@ -113,6 +113,7 @@
 "msg_thanks_for_reporting_post" = "いただいた情報は、Oneplanet コミュニティをより安全なものにするために使用されます";
 "msg_username_rules" = "ID は5文字以上";
 "msg_copied_order_number" = "追跡番号をコピーしました";
+"msg_no_internet" = "ネットワークが不安定です。有効にしてネットワークに接続してください。";
 
 "msgf_accept_tos" = "ログインすることによって、%@に同意することになります";
 "msgf_resend_verification_email" = "電子メールがみつかりませんか？%@";
@@ -127,6 +128,7 @@
 "msgf_bid_prompt" = "%@ に一回入札しますか？";
 "msgf_bid_with_gem_iap" = "1 %@1コ + %@を使用して一回入札しますか？";
 "msgf_bid_with_gem" = "%@を1コ使用して一回入札しますか？";
+"msgf_insufficient_gem_des" = "%@が不足しています。";
 "msgf_insufficient_gem_unlock_des" = "一つ商品をアンロックするごとに、1 %@ + %@ が必要です。";
 "msgf_insufficient_gem_bid_des" = "毎回入札するごとに、 1 %@ + %@が必要です。";
 "msgf_earn_blue_gem_instruction" = "写真をアップロードして、%@ をゲットしよう！";
@@ -204,6 +206,7 @@
 "ph_bidding_begins" = "オークション スタート";
 "ph_purple_gem" = "ルビッド（入札する時にオススメ）";
 "ph_purchase_success" = "購入が成功しました";
+"ph_no_internet" = "ネットワークが不安定です";
 
 "phf_seconds_ago_short" = "%@ s";
 "phf_minutes_ago_short" = "%@ m";

@@ -13,6 +13,7 @@ class BidFlowViewController: UIViewController, UserSessionDepending {
     var product: ProductOverview!
     var bidProcess: ProductBidProcess!
     private var bidOperation: BidProductOperation?
+    private var bidWithBlueGemOperation: BidWithBlueGemOperation?
 
     var pageViewController: UIPageViewController!
     override func viewDidLoad() {
@@ -49,23 +50,61 @@ extension BidFlowViewController {
             showTimeOutAlert()
             return
         }
-        guard bidOperation == nil else {
+        guard bidOperation == nil && bidWithBlueGemOperation == nil else {
             return
         }
         let loading = FullscreenLoadingViewController.fromDefaultStoryboard()
         present(loading, animated: false, completion: nil)
-        let op = BidProductOperation(product: product, session: userSession, currency: gem)
-        op.completionBlock = {[weak self] in
-            OperationQueue.main.addOperation {[weak self] in
-                self?.didBid()
+        if gem == .blueGem {
+            let op = BidWithBlueGemOperation(product: product, transactionProcesser: .shared, session: userSession)
+            op.completionBlock = {[weak self] in
+                OperationQueue.main.addOperation {
+                    self?.dismisLoading{[weak self] in
+                        self?.didBidWithBlueGem()
+                    }
+                }
+            }
+            bidWithBlueGemOperation = op
+            op.start()
+        } else {
+            let op = BidProductOperation(product: product, session: userSession, currency: gem)
+            op.completionBlock = {[weak self] in
+                OperationQueue.main.addOperation {[weak self] in
+                    self?.dismisLoading{[weak self] in
+                        self?.didBid()
+                    }
+                }
+            }
+            bidOperation = op
+            op.start()
+        }
+    }
+    
+    func dismisLoading(completion: @escaping (()->())) {
+        if let vc = presentedViewController {
+            vc.dismiss(animated: false, completion: completion)
+        } else {
+            completion()
+        }
+    }
+
+    func didBidWithBlueGem() {
+        let op = bidWithBlueGemOperation!
+        bidWithBlueGemOperation = nil
+        if op.success == true {
+            dismiss(animated: false, completion: nil)
+        } else if let error = op.error {
+            if op.shouldShowCompensationPopUp {
+                showBidTooLatePopUp()
+            } else if error is InsufficienFundError {
+                showInsufficientGemPopUp()
+            } else {
+                showFailureAlert(error)
             }
         }
-        bidOperation = op
-        op.start()
     }
     
     func didBid() {
-        presentedViewController?.dismiss(animated: false, completion: nil)
         let op = bidOperation!
         bidOperation = nil
         if op.success == true {
@@ -97,8 +136,8 @@ extension BidFlowViewController {
     func showBlueGemPopUp() {
         let product = self.product!
         let container = prepareActionPopUp{[weak self] vc in
-            let iap = IAPTransactionProcessor.shared.blueGemRelatedProducts.bidProduct!
-            let price = IAPTransactionProcessor.shared.blueGemRelatedProducts.priceFormatter!.string(for: iap.price)!
+            let iap = IAPTransactionProcessor.shared.prefetchedProducts.bidProduct!
+            let price = IAPTransactionProcessor.shared.prefetchedProducts.priceFormatter!.string(for: iap.price)!
             vc.configuration =
                 BidWithBlueGemPopUpConfiguration(productName: product.displayName, formattedPrice: price)
             vc.mainAction = {
@@ -143,8 +182,8 @@ extension BidFlowViewController {
     
     func showInsufficientGemPopUp() {
         let container = prepareActionPopUp{[weak self] vc in
-            let iap = IAPTransactionProcessor.shared.blueGemRelatedProducts.bidProduct!
-            let price = IAPTransactionProcessor.shared.blueGemRelatedProducts.priceFormatter!.string(for: iap.price)!
+            let iap = IAPTransactionProcessor.shared.prefetchedProducts.bidProduct!
+            let price = IAPTransactionProcessor.shared.prefetchedProducts.priceFormatter!.string(for: iap.price)!
             vc.configuration = InsufficientBlueGemToBidPopUpConfiguration(formattedPrice: price)
             vc.mainAction = {
                 self?.goToCreatePost()

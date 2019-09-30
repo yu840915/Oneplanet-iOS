@@ -23,7 +23,7 @@ class UnlockProductOperation: AlamofireAPIAccessOperation {
     
     override func prepareDataRequest() throws -> DataRequest {
         let dict: [String: String] = ["currency": currency.apiName]
-        let url = ServiceURLs.devBase.appendingPathComponent("products/\(product.id)/unlock")
+        let url = ServiceURLs.base.appendingPathComponent("products/\(product.id)/unlock")
         return Alamofire.request(url, method: .post, parameters: dict, encoding: JSONEncoding.default, headers: session.authorizationHeader)
     }
     
@@ -50,11 +50,16 @@ class BidProductOperation: AlamofireAPIAccessOperation {
     
     override func prepareDataRequest() throws -> DataRequest {
         let dict: [String: String] = ["currency": currency.apiName]
-        let url = ServiceURLs.devBase.appendingPathComponent("bidding/\(product.id)")
+        let url = ServiceURLs.base.appendingPathComponent("bidding/\(product.id)")
         return Alamofire.request(url, method: .post, parameters: dict, encoding: JSONEncoding.default, headers: session.authorizationHeader)
     }
     
     override func handleUnauthorizedError(with response: HTTPURLResponse) throws {
         session.deactivate()
+    }
+    
+    override func willFinishProcess() throws {
+        let process = session.bidProcessManager.process(for: product)
+        process.refreshIfChannelNotConnected()
     }
 }

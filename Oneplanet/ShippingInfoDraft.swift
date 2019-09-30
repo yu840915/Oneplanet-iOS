@@ -288,7 +288,7 @@ class GetShippingAddressOperation: AlamofireAPIAccessOperation {
     
     override func processData(with data: Data) throws {
         guard !data.isEmpty else { return }
-        shippingAddress = try! JSONDecoder.default.decode(ShippingAddress.self, from: data)
+        shippingAddress = try? JSONDecoder.default.decode(ShippingAddress.self, from: data)
     }
     
     override func handleHTTPResponse(_ response: HTTPURLResponse) throws {

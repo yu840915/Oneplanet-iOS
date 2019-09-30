@@ -44,6 +44,8 @@
 		E032844D22ABB1F5001F02E8 /* BadgeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E032844C22ABB1F5001F02E8 /* BadgeView.xib */; };
 		E032844F22ABB2FE001F02E8 /* BadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E032844E22ABB2FE001F02E8 /* BadgeView.swift */; };
 		E033F0802300006E006EB3AE /* ProductListCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = E033F07F2300006E006EB3AE /* ProductListCells.swift */; };
+		E038B86E233F3F8E0079F87B /* BonusEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E038B86D233F3F8E0079F87B /* BonusEvent.swift */; };
+		E038B870233FB56D0079F87B /* PurpleGemProductListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E038B86F233FB56C0079F87B /* PurpleGemProductListTableViewController.swift */; };
 		E03C329A226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03C3299226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift */; };
 		E03C329C226D75F400C32FD7 /* SwiftyBeaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E03C329B226D75F400C32FD7 /* SwiftyBeaver.framework */; };
 		E03C329E226D772400C32FD7 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03C329D226D772400C32FD7 /* Logger.swift */; };
@@ -110,6 +112,7 @@
 		E076729C22E70C8800A3939A /* PetitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E076729B22E70C8800A3939A /* PetitionViewController.swift */; };
 		E077A72E22DDA4C300A2245E /* NoticeList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E077A72D22DDA4C300A2245E /* NoticeList.swift */; };
 		E077A73022DDF63500A2245E /* NoticeUIHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E077A72F22DDF63500A2245E /* NoticeUIHelpers.swift */; };
+		E08008E3233FDB2B001A3009 /* PurchaseActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08008E2233FDB2B001A3009 /* PurchaseActions.swift */; };
 		E0814E3522DC2BBF002D0E32 /* NoticeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0814E3422DC2BBF002D0E32 /* NoticeTableViewController.swift */; };
 		E0814FAE22864B10002F1C02 /* MainUserFlow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0814FAD22864B10002F1C02 /* MainUserFlow.storyboard */; };
 		E0814FB122864F79002F1C02 /* UserFlowMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0814FB022864F79002F1C02 /* UserFlowMainViewController.swift */; };
@@ -133,7 +136,6 @@
 		E093935222DF0308004F045A /* SimpleEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E093935122DF0308004F045A /* SimpleEmptyView.swift */; };
 		E093935422DF031D004F045A /* SimpleEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E093935322DF031D004F045A /* SimpleEmptyView.xib */; };
 		E0952B8B232FB7E80091AEEF /* ValuedPostQuota.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0952B8A232FB7E80091AEEF /* ValuedPostQuota.swift */; };
-		E0952B8D2331DC5A0091AEEF /* IAPTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0952B8C2331DC5A0091AEEF /* IAPTestViewController.swift */; };
 		E0952B8F23332E020091AEEF /* Follow.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0952B8E23332E020091AEEF /* Follow.swift */; };
 		E0A050C422E16B53002FCFC3 /* ReportReasonPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A050C322E16B53002FCFC3 /* ReportReasonPickerTableViewController.swift */; };
 		E0A050C622E17067002FCFC3 /* ReportDescriptionInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A050C522E17067002FCFC3 /* ReportDescriptionInputViewController.swift */; };
@@ -262,6 +264,8 @@
 		E032844C22ABB1F5001F02E8 /* BadgeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BadgeView.xib; sourceTree = "<group>"; };
 		E032844E22ABB2FE001F02E8 /* BadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeView.swift; sourceTree = "<group>"; };
 		E033F07F2300006E006EB3AE /* ProductListCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListCells.swift; sourceTree = "<group>"; };
+		E038B86D233F3F8E0079F87B /* BonusEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusEvent.swift; sourceTree = "<group>"; };
+		E038B86F233FB56C0079F87B /* PurpleGemProductListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurpleGemProductListTableViewController.swift; sourceTree = "<group>"; };
 		E03C3299226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireAPIAccessOperation.swift; sourceTree = "<group>"; };
 		E03C329B226D75F400C32FD7 /* SwiftyBeaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyBeaver.framework; path = Carthage/Build/iOS/SwiftyBeaver.framework; sourceTree = SOURCE_ROOT; };
 		E03C329D226D772400C32FD7 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -340,6 +344,7 @@
 		E076729B22E70C8800A3939A /* PetitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetitionViewController.swift; sourceTree = "<group>"; };
 		E077A72D22DDA4C300A2245E /* NoticeList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeList.swift; sourceTree = "<group>"; };
 		E077A72F22DDF63500A2245E /* NoticeUIHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeUIHelpers.swift; sourceTree = "<group>"; };
+		E08008E2233FDB2B001A3009 /* PurchaseActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseActions.swift; sourceTree = "<group>"; };
 		E0814E3422DC2BBF002D0E32 /* NoticeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeTableViewController.swift; sourceTree = "<group>"; };
 		E0814FAD22864B10002F1C02 /* MainUserFlow.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainUserFlow.storyboard; sourceTree = "<group>"; };
 		E0814FB022864F79002F1C02 /* UserFlowMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFlowMainViewController.swift; sourceTree = "<group>"; };
@@ -363,7 +368,6 @@
 		E093935122DF0308004F045A /* SimpleEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEmptyView.swift; sourceTree = "<group>"; };
 		E093935322DF031D004F045A /* SimpleEmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleEmptyView.xib; sourceTree = "<group>"; };
 		E0952B8A232FB7E80091AEEF /* ValuedPostQuota.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValuedPostQuota.swift; sourceTree = "<group>"; };
-		E0952B8C2331DC5A0091AEEF /* IAPTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPTestViewController.swift; sourceTree = "<group>"; };
 		E0952B8E23332E020091AEEF /* Follow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follow.swift; sourceTree = "<group>"; };
 		E0A050C322E16B53002FCFC3 /* ReportReasonPickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportReasonPickerTableViewController.swift; sourceTree = "<group>"; };
 		E0A050C522E17067002FCFC3 /* ReportDescriptionInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportDescriptionInputViewController.swift; sourceTree = "<group>"; };
@@ -496,7 +500,6 @@
 				E05398CA22FEB0E700AAF803 /* TabbarHidingSignalProducer.swift */,
 				E003BA372296933F001814F4 /* HotHeaderCollectionViewController.swift */,
 				E05398CC22FEB24D00AAF803 /* HotPageLists.swift */,
-				E0952B8C2331DC5A0091AEEF /* IAPTestViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -663,6 +666,7 @@
 				E03C329D226D772400C32FD7 /* Logger.swift */,
 				E03C3299226D73A700C32FD7 /* AlamofireAPIAccessOperation.swift */,
 				E0B1E18E22C8F6F900F41248 /* IAPTransactionProcessor.swift */,
+				E08008E2233FDB2B001A3009 /* PurchaseActions.swift */,
 				E0BD3A7922C9E42400E2609F /* DataStore.swift */,
 				E07276FB22773F54001239C0 /* Server Push Message */,
 				E03C32B1226D902F00C32FD7 /* Shared Configurations */,
@@ -808,6 +812,7 @@
 				E0814E3422DC2BBF002D0E32 /* NoticeTableViewController.swift */,
 				E077A72F22DDF63500A2245E /* NoticeUIHelpers.swift */,
 				E077A72D22DDA4C300A2245E /* NoticeList.swift */,
+				E038B86D233F3F8E0079F87B /* BonusEvent.swift */,
 			);
 			name = Notifications;
 			sourceTree = "<group>";
@@ -820,6 +825,7 @@
 				E081590C22A63616007C9776 /* BlueGemPopUpViewController.swift */,
 				E081590E22A63628007C9776 /* GreenGemPopUpViewController.swift */,
 				E081591022A65276007C9776 /* PurpleGemStoreViewController.swift */,
+				E038B86F233FB56C0079F87B /* PurpleGemProductListTableViewController.swift */,
 				E0D7DCDA229CE65C00B40D76 /* PromoPopUpFlowViewController.swift */,
 				E0D7DCDC229CE82300B40D76 /* PromoPopUpViewController.swift */,
 				E0BDCCE9229FA044006A9D20 /* PromotionPageList.swift */,
@@ -1244,6 +1250,7 @@
 				E03C32AE226D8E6800C32FD7 /* SharedFormatters.swift in Sources */,
 				E0DA38A222C31E3800EC4170 /* GemActionPopUpConfigurations.swift in Sources */,
 				E0EAEB7D22F2891400C8E7C8 /* LoadingCell.swift in Sources */,
+				E038B870233FB56D0079F87B /* PurpleGemProductListTableViewController.swift in Sources */,
 				E07276F82276D0DC001239C0 /* RequestUserNotificationAuthorizationOperation.swift in Sources */,
 				E0FF7986228D51E800F61318 /* SettingsTableViewController.swift in Sources */,
 				E06589C12270333100C9E4E6 /* PickImageOperation.swift in Sources */,
@@ -1265,6 +1272,7 @@
 				E0190F4F226DD06B00C212D5 /* Preferences.swift in Sources */,
 				E0814FB722893FB0002F1C02 /* ProfileCollectionViewController.swift in Sources */,
 				E0837EF722816B0D00B13BAF /* ImageAttachmentUploadFlowOperation.swift in Sources */,
+				E08008E3233FDB2B001A3009 /* PurchaseActions.swift in Sources */,
 				E02842B1229A32C2007212D7 /* ColorPickerCollectionViewController.swift in Sources */,
 				E06589CA2270C1A500C9E4E6 /* UpdateClock.swift in Sources */,
 				E0814FB122864F79002F1C02 /* UserFlowMainViewController.swift in Sources */,
@@ -1277,6 +1285,7 @@
 				E00611F6229500FA0032AE30 /* HotNavigationItemView.swift in Sources */,
 				E0D97601233A293C001295FA /* BidActions.swift in Sources */,
 				E02F49CB22E5948A0014DEBE /* FriendListsViewController.swift in Sources */,
+				E038B86E233F3F8E0079F87B /* BonusEvent.swift in Sources */,
 				E05398CD22FEB24D00AAF803 /* HotPageLists.swift in Sources */,
 				E05398C722FE9D8400AAF803 /* WebLinking.swift in Sources */,
 				E06F4FFE22789C760067DAE4 /* AppLifeCycleObserver.swift in Sources */,
@@ -1317,7 +1326,6 @@
 				E032844522AB6A50001F02E8 /* AuctionMainViewController.swift in Sources */,
 				E045BE7722E974640035D08B /* PostFeedMainViewController.swift in Sources */,
 				E0C98E292329D77400B0BF00 /* MyLotList.swift in Sources */,
-				E0952B8D2331DC5A0091AEEF /* IAPTestViewController.swift in Sources */,
 				E0190F4D226DCCFB00C212D5 /* UserSession.swift in Sources */,
 				E02F49D122E5A9A00014DEBE /* UserProfileViewController.swift in Sources */,
 				E0DCD05122B7E86B008D9C63 /* PickerConfirmButtonFooter.swift in Sources */,
@@ -1434,6 +1442,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1462,6 +1471,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -1500,6 +1510,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1522,6 +1533,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};

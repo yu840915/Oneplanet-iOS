@@ -33,8 +33,11 @@ class PromotionAd: CollectionItemPreviewing {
         return PromotionAd(id: collectionItem.id, imageURL: url, link: collectionItem.link)
     }
     
-    class func from(_ item: PopUpItem) -> PromotionAd {
-        return PromotionAd(id: item.id, imageURL: URL(string: item.thumbnail.toURLCompatible())!, link: item.link)
+    class func from(_ item: PopUpItem) -> PromotionAd? {
+        guard let url = URL(string: item.thumbnail.toURLCompatible()) else {
+            return nil
+        }
+        return PromotionAd(id: item.id, imageURL: url, link: item.link)
     }
 }
 
@@ -55,14 +58,14 @@ class GetPromotionPageListOperation: AlamofireAPIAccessOperation {
     }
     
     override func prepareURLRequest() throws -> URLRequest {
-        var req = session.addingAuthorizationToken(to: URLRequest(url: ServiceURLs.devBase.appendingPathComponent("collection/popups").addingFirstPageQeury(limit: 20)))
+        var req = session.addingAuthorizationToken(to: URLRequest(url: ServiceURLs.base.appendingPathComponent("collection/popups").addingFirstPageQeury(limit: 20)))
         req.addValue(Localized.languageCode, forHTTPHeaderField: Localized.acceptLanguageKey)
         return req
     }
     
     override func processData(with data: Data) throws {
         let items = try JSONDecoder.default.decode([PopUpItem].self, from: data)
-        list = PromotionPageList(pages: items.map{PromotionAd.from($0)})
+        list = PromotionPageList(pages: items.compactMap{PromotionAd.from($0)})
     }
 }
 

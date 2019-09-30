@@ -13,15 +13,22 @@ import ModelBlocks
 class IAPTransactionProcessor: NSObject, SKPaymentTransactionObserver {
     static let shared = IAPTransactionProcessor()
 
-    let blueGemRelatedProducts = BlueGemRelatedIAPProducts()
+    let prefetchedProducts = PrefetchedIAPProducts()
     
     private override init() {}
     
-    weak var userSession: UserSession?
+    weak var userSession: UserSession? {
+        didSet {
+            submitPendingPurchasesIfNeeded()
+        }
+    }
     private(set) var waitingInvoice: Invoice?
+    private(set) var pendingTransactions: [SKPaymentTransaction] = []
+    private(set) var submitTransactionOperation: ConcurrentTaskOperation<PurchaseOperation>?
     
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         transactions.forEach{ handleUpdate(of: $0, in: queue) }
+        submitPendingPurchasesIfNeeded()
     }
     
     private func handleUpdate(of transaction: SKPaymentTransaction, in queue: SKPaymentQueue) {
@@ -32,22 +39,37 @@ class IAPTransactionProcessor: NSObject, SKPaymentTransactionObserver {
             }
         case .failed:
             if waitingInvoice?.isRelated(to: transaction) == true {
-                waitingInvoice = nil
                 waitingInvoice?.notifyStateChange()
+                waitingInvoice = nil
             }
             queue.finishTransaction(transaction)
         case .purchasing:
-            if waitingInvoice?.isRelated(to: transaction) == true {
+            if waitingInvoice?.setTransactionIfAllowed(transaction) == true {
                 waitingInvoice?.notifyStateChange()
             }
         case .purchased:
-            if waitingInvoice?.isRelated(to: transaction) == true {
+            if let inv = waitingInvoice, inv.isRelated(to: transaction) == true {
                 waitingInvoice = nil
-                waitingInvoice?.notifyStateChange()
+                inv.notifyStateChange()
+            } else {
+                pendingTransactions.append(transaction)
             }
         case .restored:
-            break
+            if waitingInvoice?.setTransactionIfAllowed(transaction) == true {
+                waitingInvoice?.notifyStateChange()
+            }
         }
+    }
+    
+    func finishTransaction(in invoice: Invoice) {
+        guard let transaction = invoice.transaction else {
+            return
+        }
+        finishTransaction(transaction)
+    }
+    
+    func finishTransaction(_ transaction: SKPaymentTransaction) {
+        SKPaymentQueue.default().finishTransaction(transaction)
     }
     
     var canPlaceOrder: Bool {
@@ -65,8 +87,13 @@ class IAPTransactionProcessor: NSObject, SKPaymentTransactionObserver {
         guard canPlaceOrder else {
             fatalError("Should check before placing order")
         }
-        waitingInvoice = invoice
-        SKPaymentQueue.default().add(SKPayment(product: invoice.iapProduct))
+        if let transaction = pendingTransactions.first(where: {invoice.setTransactionIfAllowed($0)}) {
+            pendingTransactions = pendingTransactions.filter{$0 !== transaction}
+            invoice.notifyStateChange()
+        } else {
+            waitingInvoice = invoice
+            SKPaymentQueue.default().add(SKPayment(product: invoice.iapProduct))
+        }
     }
     
     func readReceipt() -> Data? {
@@ -79,6 +106,31 @@ class IAPTransactionProcessor: NSObject, SKPaymentTransactionObserver {
             logger.error("Cannot read receipt \(error)")
             return nil
         }
+    }
+    
+    func submitPendingPurchasesIfNeeded() {
+        let transactions = pendingTransactions.filter({$0.transactionState == .purchased || $0.transactionState == .restored})
+        guard submitTransactionOperation == nil, let session = userSession, !transactions.isEmpty, let data = readReceipt() else {
+            return
+        }
+        let ops = transactions.map{return PurchaseOperation(transaction: $0, receiptData: data, session: session)}
+        let op = ConcurrentTaskOperation<PurchaseOperation>(operations: ops)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didSubmitPendingPurchases()
+            }
+        }
+        submitTransactionOperation = op
+        op.start()
+    }
+    
+    private func didSubmitPendingPurchases() {
+        let op = submitTransactionOperation!
+        submitTransactionOperation = nil
+        let transactions = op.operations.filter{$0.success == true}.map{$0.transaction}
+        transactions.forEach{finishTransaction($0)}
+        pendingTransactions = pendingTransactions.filter{!transactions.contains($0)}
+        userSession?.wallet.setNeedsUpdate()
     }
 }
 
@@ -123,23 +175,54 @@ class Invoice {
     }
 }
 
-class BlueGemRelatedIAPProducts {
+class PrefetchedIAPProducts {
     private(set) var priceFormatter: NumberFormatter?
     private(set) var unlockProduct: SKProduct?
     private(set) var bidProduct: SKProduct?
-    private(set) var rubyProduct: SKProduct?
+    private(set) var rubyProducts: [IAPProductPlan]?
     private var getProductOperation: GetSKProductsOperation?
+    private var getRubyProdcutsOperation: PrepareRubyProductListOperation?
     private var retryExpCounter = 0
     
     init() {
         getProduct()
+        getRubyList()
+    }
+    
+    func initializeIfNeeded() {
+        if rubyProducts == nil {
+            getRubyList()
+        }
+        if unlockProduct == nil || bidProduct == nil {
+            getProduct()
+        }
+    }
+    
+    private func getRubyList() {
+        guard getRubyProdcutsOperation == nil else {
+            return
+        }
+        let op = PrepareRubyProductListOperation()
+        op.completionBlock = {[weak self] in
+            self?.didGetRubyList()
+        }
+        getRubyProdcutsOperation = op
+        op.start()
+    }
+    
+    private func didGetRubyList() {
+        let op = getRubyProdcutsOperation!
+        getRubyProdcutsOperation = nil
+        if op.success == true {
+            rubyProducts = op.plans
+        }
     }
     
     private func getProduct() {
         guard getProductOperation == nil else {
             return
         }
-        let op = GetSKProductsOperation(productIDs: [IAPProductIdentifiers.bid, IAPProductIdentifiers.unlock, "ruby"])
+        let op = GetSKProductsOperation(productIDs: [IAPProductIdentifiers.bid, IAPProductIdentifiers.unlock])
         op.completionBlock = {[weak self] in
             self?.didGetProduct()
         }
@@ -155,9 +238,6 @@ class BlueGemRelatedIAPProducts {
                 bidProduct = $0
             } else if $0.productIdentifier == IAPProductIdentifiers.unlock {
                 unlockProduct = $0
-            }
-            if $0.productIdentifier == "ruby" {
-                rubyProduct = $0
             }
         }
         setUpFormatterIfNeeded()
@@ -245,3 +325,126 @@ extension GetSKProductsOperation: SKProductsRequestDelegate {
     }
 }
 
+class PrepareRubyProductListOperation: SimpleAsynchronousOperation, FailableOperationType {
+    private(set) var success: Bool?
+    private(set) var error: Error?
+    private(set) var plans: [IAPProductPlan] = []
+    private var rubyPlans: [IAPProductPlan] = []
+    private var rubyPlanDict: [String: IAPProductPlan] = [:]
+    
+    private var getPlanOperation: GetIAPProductPlanOperation?
+    private var getSKProductsOperations: GetSKProductsOperation?
+    
+    override func main() {
+        let op = GetIAPProductPlanOperation()
+        op.completionBlock = {[weak self] in
+            self?.didGetPlan()
+        }
+        getPlanOperation = op
+        op.start()
+    }
+    
+    private func didGetPlan() {
+        let op = getPlanOperation!
+        if op.success == true {
+            getRubyProducts(from: op.plans)
+        } else {
+            fail(with: op.error)
+        }
+    }
+    
+    private func getRubyProducts(from plans: [IAPProductPlan]) {
+        let rubyPlans = plans.filter{IAPProductType.from($0.productID) == .ruby}
+        guard !rubyPlans.isEmpty else {
+            success = true
+            finish()
+            return
+        }
+        self.rubyPlans = rubyPlans
+        rubyPlans.forEach{rubyPlanDict[$0.productID] = $0}
+        let op = GetSKProductsOperation(productIDs: rubyPlans.map{$0.productID})
+        op.completionBlock = {[weak self] in
+            self?.handelDidGetSKProducts()
+        }
+        getSKProductsOperations = op
+        op.start()
+    }
+    
+    private func handelDidGetSKProducts() {
+        let op = getSKProductsOperations!
+        if op.success == true {
+            op.products.forEach{rubyPlanDict[$0.productIdentifier]?.associate(with: $0)}
+            plans = rubyPlans.filter{$0.skProduct != nil}
+            success = true
+            finish()
+        } else {
+            fail(with: op.error)
+        }
+    }
+    
+    private func fail(with error: Error?) {
+        success = false
+        self.error = error
+        finish()
+    }
+}
+
+class GetIAPProductPlanOperation: AlamofireAPIAccessOperation {
+    private(set) var plans: [IAPProductPlan] = []
+    
+    override func prepareURLRequest() throws -> URLRequest {
+        return URLRequest(url: ServiceURLs.base.appendingPathComponent("wallet/purchase/plans"))
+    }
+    
+    override func processData(with data: Data) throws {
+        plans = try JSONDecoder.default.decode([IAPProductPlan].self, from: data)
+    }
+}
+
+class IAPProductPlan: Decodable {
+    private(set) var skProduct: SKProduct!
+    let productID: String
+    let currencyID: String
+    var currency: BalanceAccount? {
+        return BalanceAccount(rawValue: currencyID)
+    }
+    let amount: Int
+    let bonus: Int
+    let redeem: IAPProductRedeemPlan?
+
+    enum CodingKeys: String, CodingKey {
+        case productID = "product_id"
+        case currencyID = "currency"
+        case amount, bonus, redeem
+    }
+    
+    func associate(with product: SKProduct) {
+        if product.productIdentifier == productID {
+            self.skProduct = product
+        }
+    }
+}
+
+class IAPProductRedeemPlan: Decodable {
+    let currencyID: String
+    var currency: BalanceAccount? {
+        return BalanceAccount(rawValue: currencyID)
+    }
+    let amount: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case currencyID = "currency"
+        case amount
+    }
+}
+
+class InsufficienFundError: GenericAppError {
+    let currency: BalanceAccount
+    
+    init(currency: BalanceAccount) {
+        self.currency = currency
+        super.init("Insufficient balance of \(currency.displayName)")
+    }
+    
+    required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+}

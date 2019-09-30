@@ -29,6 +29,7 @@ class GemActionPopUpViewController: UIViewController {
         subtitleTextView.attributedText = configuration.attributedSubtitle
         actionButton.setTitle(configuration.actionTitle, for: .normal)
         cancelButton.setTitle(configuration.cancelTitle, for: .normal)
+        actionButton.isHidden = !configuration.shouldShowAction
         cancelButton.isHidden = !configuration.shouldShowCancel
         titleLabel.isHidden = !configuration.shouldShowTitle
     }

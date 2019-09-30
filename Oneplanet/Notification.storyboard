@@ -129,7 +129,12 @@
                                                     <state key="normal" title="Get it" backgroundImage="bt_smallgreen_nor">
                                                         <color key="titleColor" name="default text"/>
                                                     </state>
-                                                    <state key="selected" backgroundImage="bt_smallwirewhite_nor"/>
+                                                    <state key="disabled" backgroundImage="bt_smallwiregray_nor">
+                                                        <color key="titleColor" name="default placeholder"/>
+                                                    </state>
+                                                    <state key="selected" backgroundImage="bt_smallwirewhite_nor">
+                                                        <color key="titleColor" name="default text"/>
+                                                    </state>
                                                     <connections>
                                                         <action selector="invokeAction:" destination="2S8-qy-rV3" eventType="touchUpInside" id="Jl4-0g-UEy"/>
                                                     </connections>
@@ -277,6 +282,7 @@
                     </refreshControl>
                     <connections>
                         <segue destination="ibo-9l-t1D" kind="presentation" identifier="showPopup" id="fR5-pg-HGz"/>
+                        <segue destination="obF-FO-Ffd" kind="presentation" identifier="showProfile" id="igQ-BA-6e5"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="phN-eK-i3y" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -291,9 +297,36 @@
             </objects>
             <point key="canvasLocation" x="1104" y="110"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Q3Q-Kr-ldT">
+            <objects>
+                <navigationController id="obF-FO-Ffd" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cai-aa-QgY">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="UhR-oL-9oV" kind="relationship" relationship="rootViewController" id="zMk-29-10H"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tll-zH-AWo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1242" y="520"/>
+        </scene>
+        <!--UserProfileViewController-->
+        <scene sceneID="ae6-U7-bcz">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Me" referencedIdentifier="UserProfileViewController" id="UhR-oL-9oV" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="y0u-QC-111"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MDZ-Jh-Gzd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2161" y="520"/>
+        </scene>
     </scenes>
     <resources>
         <image name="bt_smallgreen_nor" width="29" height="28"/>
+        <image name="bt_smallwiregray_nor" width="29" height="28"/>
         <image name="bt_smallwirewhite_nor" width="29" height="28"/>
         <image name="ic_notice_nor" width="64" height="49"/>
         <image name="ic_notice_sel" width="64" height="49"/>

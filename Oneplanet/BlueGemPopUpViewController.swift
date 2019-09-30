@@ -29,8 +29,8 @@ class BlueGemPopUpViewController: UIViewController {
         nameLabel.text = Localized.titles.blueGem
         usageLabel.text = Localized.gemStonePopUp.blueGemUsage
         var price = ""
-        if let prodcut = IAPTransactionProcessor.shared.blueGemRelatedProducts.unlockProduct,
-            let formatter = IAPTransactionProcessor.shared.blueGemRelatedProducts.priceFormatter {
+        if let prodcut = IAPTransactionProcessor.shared.prefetchedProducts.unlockProduct,
+            let formatter = IAPTransactionProcessor.shared.prefetchedProducts.priceFormatter {
             price = formatter.string(for: prodcut.price) ?? ""
         }
         bulletTextView1.text = String(format: Localized.gemStonePopUp.blueGemBullet1, Localized.titles.blueGem, price)

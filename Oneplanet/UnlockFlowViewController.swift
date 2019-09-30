@@ -12,6 +12,7 @@ class UnlockFlowViewController: UIViewController, UserSessionDepending {
     var userSession: UserSession!
     var product: ProductOverview!
     var unlockOperation: UnlockProductOperation?
+    var unlockWithBlueGemOperation: UnlockWithBlueGemOperation?
     var successHandler: (()->())?
     
     var pageViewController: UIPageViewController!
@@ -58,23 +59,61 @@ private extension UnlockFlowViewController {
             showTooLatePopUp(animated: true)
             return
         }
-        guard unlockOperation == nil else {
+        guard unlockOperation == nil && unlockWithBlueGemOperation == nil else {
             return
         }
         let loading = FullscreenLoadingViewController.fromDefaultStoryboard()
         present(loading, animated: false, completion: nil)
-        let op = UnlockProductOperation(product: product, session: userSession, currency: gemType)
-        op.completionBlock = {[weak self] in
-            OperationQueue.main.addOperation {
-                self?.didUnlock()
+        if gemType == .blueGem {
+            let op = UnlockWithBlueGemOperation(product: product, transactionProcesser: .shared, session: userSession)
+            op.completionBlock = {[weak self] in
+                OperationQueue.main.addOperation {
+                    self?.dismisLoading{[weak self] in
+                        self?.didUnlockWithBlueGem()
+                    }
+                }
+            }
+            unlockWithBlueGemOperation = op
+            op.start()
+        } else {
+            let op = UnlockProductOperation(product: product, session: userSession, currency: gemType)
+            op.completionBlock = {[weak self] in
+                OperationQueue.main.addOperation {
+                    self?.dismisLoading{[weak self] in
+                        self?.didUnlock()
+                    }
+                }
+            }
+            unlockOperation = op
+            op.start()
+        }
+    }
+    
+    func dismisLoading(completion: @escaping (()->())) {
+        if let vc = presentedViewController {
+            vc.dismiss(animated: false, completion: completion)
+        } else {
+            completion()
+        }
+    }
+    
+    func didUnlockWithBlueGem() {
+        let op = unlockWithBlueGemOperation!
+        unlockWithBlueGemOperation = nil
+        if op.success == true {
+            dismiss(animated: false, completion: successHandler)
+        } else if let error = op.error {
+            if op.shouldShowCompensationPopUp {
+                showTooLatePopUp(animated: true)
+            } else if error is InsufficienFundError {
+                showInsufficientGemPopUp()
+            } else {
+                showFailureAlert(error)
             }
         }
-        unlockOperation = op
-        op.start()
     }
     
     func didUnlock() {
-        presentedViewController?.dismiss(animated: false, completion: nil)
         let op = unlockOperation!
         unlockOperation = nil
         if op.success == true {
@@ -145,8 +184,8 @@ private extension UnlockFlowViewController {
     func showBlueGemPopUp(animated: Bool) {
         let product = self.product!
         let container = prepareActionPopUp{[weak self] vc in
-            let iap = IAPTransactionProcessor.shared.blueGemRelatedProducts.unlockProduct!
-            let price = IAPTransactionProcessor.shared.blueGemRelatedProducts.priceFormatter!.string(for: iap.price)!
+            let iap = IAPTransactionProcessor.shared.prefetchedProducts.unlockProduct!
+            let price = IAPTransactionProcessor.shared.prefetchedProducts.priceFormatter!.string(for: iap.price)!
             vc.configuration = UnlockWithBlueGemPopUpConfiguration(productName: product.displayName, formattedPrice: price)
             vc.mainAction = {
                 self?.unlock(with: .blueGem)
@@ -181,8 +220,8 @@ private extension UnlockFlowViewController {
     
     func showInsufficientGemPopUp() {
         let container = prepareActionPopUp{[weak self] vc in
-            let iap = IAPTransactionProcessor.shared.blueGemRelatedProducts.unlockProduct!
-            let price = IAPTransactionProcessor.shared.blueGemRelatedProducts.priceFormatter!.string(for: iap.price)!
+            let iap = IAPTransactionProcessor.shared.prefetchedProducts.unlockProduct!
+            let price = IAPTransactionProcessor.shared.prefetchedProducts.priceFormatter!.string(for: iap.price)!
             vc.configuration = InsufficientBlueGemToUnlockPopUpConfiguration(formattedPrice: price)
             vc.mainAction = {
                 self?.goToCreatePost()

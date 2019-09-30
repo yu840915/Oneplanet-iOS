@@ -262,6 +262,9 @@ fileprivate extension BiddingProcessTableViewController {
                 self?.updateViewsForShippingAddressChange()
             }
         })
+        handles.append(userSession.bidPhaseIndicator.updateObservers.add{[weak self] in
+            self?.updateIfNeededForBidPhaseChange()
+        })
         bidOutcomeHistory = history
         self.handles = handles
         history.reload()
@@ -300,6 +303,12 @@ fileprivate extension BiddingProcessTableViewController {
             }
             view.frame = CGRect(origin: .zero, size: CGSize(width: tableView.frame.width, height: 300))
             tableView.tableFooterView = view
+        }
+    }
+    
+    private func updateIfNeededForBidPhaseChange() {
+        if userSession.bidPhaseIndicator.phase == .ended {
+            refresh()
         }
     }
 }

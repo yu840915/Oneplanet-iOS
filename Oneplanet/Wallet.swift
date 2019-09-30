@@ -47,20 +47,24 @@ class Wallet {
         }
     }
     
+    func setNeedsUpdateBalance(for account: BalanceAccount) {
+        balance(for: account).setNeedsRefresh()
+    }
+    
     func setNeedsUpdateBlueGem() {
-        balance(for: .blueGem).setNeedsRefresh()
+        setNeedsUpdateBalance(for: .blueGem)
+        setNeedsUpdateBalance(for: .score)
     }
 
     func setNeedsUpdatePurpleGem() {
-        balance(for: .purpleGem).setNeedsRefresh()
+        setNeedsUpdateBalance(for: .purpleGem)
     }
 
     func setNeedsUpdateGreenGem() {
-        balance(for: .greenGem).setNeedsRefresh()
-        balance(for: .score).setNeedsRefresh()
+        setNeedsUpdateBalance(for: .greenGem)
     }
 
-    private func balance(for account: BalanceAccount) -> Balance {
+    func balance(for account: BalanceAccount) -> Balance {
         return balances[account]!
     }
     
@@ -130,16 +134,26 @@ class Balance {
             self.total = total
             lastUpdateDate = Date()
         } else {
+            lastUpdateDate = lastUpdateDate.addingTimeInterval(.minute)
             logger.error("Cannot refresh balance: \(account)", context: op.error)
         }
     }
 }
 
-enum BalanceAccount: String {
-    case blueGem = "unlock_diamond"
+enum BalanceAccount: String, Decodable {
+    case blueGem = "blue_diamond"
     case purpleGem = "red_diamond"
     case greenGem = "green_diamond"
     case score = "exp"
+    
+    var displayName: String {
+        switch self {
+        case .blueGem: return Localized.titles.blueGem
+        case .greenGem: return Localized.titles.greenGem
+        case .purpleGem: return Localized.titles.purpleGem
+        case .score: return "Exp"
+        }
+    }
 }
 
 class GetBalanceOperation: AlamofireAPIAccessOperation {
@@ -152,11 +166,11 @@ class GetBalanceOperation: AlamofireAPIAccessOperation {
     private(set) var total: Int?
     
     override func prepareURLRequest() throws -> URLRequest {
-        return userSession.addingAuthorizationToken(to: URLRequest(url: ServiceURLs.devBase.appendingPathComponent("wallet/currency/\(account.rawValue)")))
+        return userSession.addingAuthorizationToken(to: URLRequest(url: ServiceURLs.base.appendingPathComponent("wallet/balance/\(account.rawValue)")))
     }
     
     override func processData(with data: Data) throws {
-        total = (try JSONDecoder.default.decode(Total.self, from: data)).total
+        total = Int((try JSONDecoder.default.decode(Total.self, from: data)).total)
     }
     
     override func handleUnauthorizedError(with response: HTTPURLResponse) throws {
@@ -164,7 +178,7 @@ class GetBalanceOperation: AlamofireAPIAccessOperation {
     }
     
     struct Total: Decodable {
-        let total: Int
+        let total: Double
     }
 }
 
@@ -178,9 +192,9 @@ enum Currency {
 extension Currency {
     var apiName: String {
         switch self {
-        case .blueGem: return "blue"
-        case .purpleGem: return "red"
-        case .greenGem: return "green"
+        case .blueGem: return "blue_diamond"
+        case .purpleGem: return "red_diamond"
+        case .greenGem: return "green_diamond"
         }
     }
     

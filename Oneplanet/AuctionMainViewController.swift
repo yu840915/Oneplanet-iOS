@@ -9,6 +9,7 @@
 import UIKit
 import XLPagerTabStrip
 import ModelBlocks
+import Reachability
 
 class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessionDepending {
     
@@ -22,7 +23,7 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
     @IBOutlet weak var buttonBarContainer: UIView!
     private var shouldAddBadgeViews = true
     private var productListBadge: BadgeView!
-    private var biddingProcessBadge: BadgeView!
+    private var biddingProcessBadge: BadgeView?
     private var biddingFeatureCheckOperation: BiddingFeatureAccessCheckOperation?
     private var productListController: ProductListTableViewController!
     private var historyController: BiddingProcessTableViewController?
@@ -30,7 +31,34 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
     private var updateClock: UpdateClock!
     private var needsRefresh = false
     private var isVisible = false
-
+    private var reachability: Reachability?
+    private var bidPhaseChangeHandle: Any!
+    @IBOutlet weak var noInternetView: UIView!
+    private var pendingAction: (()->())?
+    
+    func selectProductsTabIfAllowed() {
+        if isViewLoaded {
+            moveTo(viewController: productListController)
+            moveToViewController(at: 0)
+        } else {
+            pendingAction = {[weak self] in
+                self?.selectProductsTabIfAllowed()
+            }
+        }
+    }
+    
+    func selectHistoryTabIfAllowed() {
+        if isViewLoaded {
+            if let vc = historyController {
+                moveTo(viewController: vc)
+            }
+        } else {
+            pendingAction = {[weak self] in
+                self?.selectHistoryTabIfAllowed()
+            }
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         PagerStyleConfigurer().configure(self)
@@ -52,6 +80,52 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
         navigationItem.backBarButtonItem = BarButtonItemFactory.shared.makeTitlelessBack()
         if let q = initialQuery {
             showCategoryList(with: q)
+        }
+        bidPhaseChangeHandle = userSession.bidPhaseIndicator.updateObservers.add{[weak self] in
+            OperationQueue.main.addOperation {
+                self?.handleBidPhaseChange()
+            }
+        }
+        updateViewsForReachability()
+    }
+    
+    private func handleBidPhaseChange() {
+        if userSession.bidPhaseIndicator.phase == .running {
+            prepareReachability()
+        } else {
+            reachability = nil
+            updateViewsForReachability()
+        }
+    }
+    
+    private func prepareReachability() {
+        guard let r = Reachability(hostname: ServiceURLs.base.host!) else {
+            return
+        }
+        r.whenReachable = {[weak self] _ in
+            self?.updateViewsForReachability()
+        }
+        r.whenUnreachable =  {[weak self] _ in
+            self?.updateViewsForReachability()
+        }
+        do {
+            try r.startNotifier()
+            reachability = r
+        } catch let error {
+            logger.error("Cannot start Reachability, error: \(error)")
+        }
+    }
+    
+    private func updateViewsForReachability() {
+        guard let r = reachability else {
+            noInternetView.isHidden = true
+            return
+        }
+        if r.isReachable {
+            noInternetView.isHidden = true
+            userSession.bidProcessManager.refreshIfChannelNotConnected()
+        } else {
+            noInternetView.isHidden = false
         }
     }
     
@@ -81,6 +155,8 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
         super.viewDidAppear(animated)
         setUpBadgeViewIfNeeded()
         checkBiddingFeatureOnEntryIfNeeded()
+        pendingAction?()
+        pendingAction = nil
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -109,9 +185,9 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
     
     private func updateHistoryBadgeIfNeeded() {
         if Preferences.shouldShowBadgeOnHistory.value == true {
-            biddingProcessBadge.value = 1
+            biddingProcessBadge?.value = 1
         } else {
-            biddingProcessBadge.value = 0
+            biddingProcessBadge?.value = 0
         }
     }
     
@@ -131,6 +207,13 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let container = segue.destination as? PopUpContainerViewController {
+            container.isDismissTapOn = false
+            container.contentViewControllerSetUpBlock = {vc in
+                let popUp = vc as! GemActionPopUpViewController
+                popUp.configuration = NoNetworkPopUpConfiguration()
+            }
+        }
     }
 
 }

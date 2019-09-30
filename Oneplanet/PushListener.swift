@@ -11,12 +11,11 @@ import PusherSwift
 import ModelBlocks
 
 class PushListener {
+    #if DEBUG
     static let key = "72a9204d5eb8a13b6fa2"
-//    #if DEBUG
-//    static let key = "72a9204d5eb8a13b6fa2"
-//    #else
-//    static let key = "85ab0484af04d39e9d3b"
-//    #endif
+    #else
+    static let key = "85ab0484af04d39e9d3b"
+    #endif
     
     let pusher: Pusher
     
@@ -38,6 +37,12 @@ class PushListener {
 class PushChannel {
     let channel: PusherChannel
     let pusher: Pusher
+    var isConnected: Bool {
+        guard let connection = channel.connection else {
+            return false
+        }
+        return connection.connectionState == .connected
+    }
     
     init(channel: PusherChannel, pusher: Pusher) {
         self.channel = channel

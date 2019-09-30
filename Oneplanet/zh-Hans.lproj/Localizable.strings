@@ -113,6 +113,7 @@
 "msg_thanks_for_reporting_post" = "您的反馈意见对于帮助我们保持 Oneplanet 社群的安全非常重要";
 "msg_username_rules" = "ID至少5个字符";
 "msg_copied_order_number" = "已复制货单编号";
+"msg_no_internet" = "你目前的网络不稳，请保持网络畅通！";
 
 "msgf_accept_tos" = "登入即表示你同意我们的%@";
 "msgf_resend_verification_email" = "你没有收到电子邮件？%@";
@@ -127,6 +128,7 @@
 "msgf_bid_prompt" = "投标 %@ 一次";
 "msgf_bid_with_gem_iap" = "使用一颗 %@ + %@ 投标一次?";
 "msgf_bid_with_gem" = "使用一颗 %@ 投标一次？";
+"msgf_insufficient_gem_des" = "你的%@数量不足。";
 "msgf_insufficient_gem_unlock_des" = "解锁一件商品需要使用一颗 %@ + %@。";
 "msgf_insufficient_gem_bid_des" = "每投标一次需要使用一颗%@ + %@。";
 "msgf_earn_blue_gem_instruction" = "再加把劲上传照片获得%@！";
@@ -204,6 +206,7 @@
 "ph_bidding_begins" = "竞标开始！";
 "ph_purple_gem" = "红金宝（建议投标时使用）";
 "ph_purchase_success" = "购买成功";
+"ph_no_internet" = "你目前的网络不稳";
 
 "phf_seconds_ago_short" = "%@ s";
 "phf_minutes_ago_short" = "%@ m";

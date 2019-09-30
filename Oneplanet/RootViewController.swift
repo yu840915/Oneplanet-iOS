@@ -24,20 +24,95 @@ class RootViewController: UIViewController {
     private weak var userFlowRootController: UserFlowRootViewController?
     private var shouldAddConstraintsForUserFlow = false
     private var sessionEndHandle: Any?
+    private var activeHandle: Any!
+    private var updateInfo: UpdateInfo?
+    private weak var alert: UIAlertController?
+    private var versionCheck: VersionCheckOperation?
+    private var lastVersionCheckDate = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        activeHandle = AppLifeCycleObserver.didBecomeActive.observers.add{[weak self] _ in
+            OperationQueue.main.addOperation {
+                self?.checkVersionOnWakingIfNeeded()
+            }
+        }
+        let op = VersionCheckOperation()
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.handleInitialCheck()
+            }
+        }
+        versionCheck = op
+        op.start()
+    }
+    
+    func handleInitialCheck() {
+        let op = versionCheck!
+        if let info = op.updateInfo, info.forced {
+            updateInfo = info
+            showUpdateAlert(with: info)
+        } else {
+            restoreUserSession()
+        }
+    }
+    
+    func checkVersionOnWakingIfNeeded() {
+        guard alert == nil else { return }
+        if let info = updateInfo, info.forced {
+            showUpdateAlert(with: info)
+        } else {
+            checkVersionIfNeeded()
+        }
+    }
+    
+    private func checkVersionIfNeeded() {
+        if lastVersionCheckDate.timeIntervalSinceNow.magnitude > 6 * .hour {
+            checkVersion()
+        }
+    }
+    
+    private func checkVersion() {
+        guard versionCheck == nil else { return }
+        let op = VersionCheckOperation()
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didCheckVersion()
+            }
+        }
+        versionCheck = op
+        op.start()
+    }
+    
+    private func didCheckVersion() {
+        let op = versionCheck!
+        versionCheck = nil
+        if op.success == true {
+            lastVersionCheckDate = Date()
+        }
+        if let info = op.updateInfo {
+            updateInfo = info
+            showUpdateAlert(with: info)
+        }
+    }
+    
+    private func showUpdateAlert(with info: UpdateInfo) {
+        let alert = UIAlertController(title: "New Version", message: info.version, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Upgrade", style: .default, handler: { (_) in
+            UIApplication.shared.open(info.url, options: [:], completionHandler: nil)
+        }))
+        if !info.forced {
+            alert.addAction(UIAlertAction(title: Localized.titles.ok, style: .cancel, handler: nil))
+        }
+        let presenter = FrontViewControllerFinder.findFront() ?? frontPresentedController
+        presenter.present(alert, animated: true, completion: nil)
+        self.alert = alert
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        restoreUserSession()
-    }
-    
+   
     private func restoreUserSession() {
         guard restoreUserSessionOperation == nil else {
             return
@@ -77,6 +152,7 @@ class RootViewController: UIViewController {
         let vc = storyboard!.instantiateViewController(withIdentifier: UserFlowRootViewController.defaultStoryboardID) as! UserFlowRootViewController
         vc.userSession = session
         vc.needsPreflightCheck = needsPreflightCheck
+        
         sessionEndHandle = session.sessionBecomeInactiveObservers.add {[weak self] in
             OperationQueue.main.addOperation {
                 self?.logOut()
@@ -142,4 +218,28 @@ extension RootViewController {
         static let showLogin = "showLogin"
         static let showWelcomePage = "showWelcomePage"
     }
+}
+
+class VersionCheckOperation: AlamofireAPIAccessOperation {
+    private(set) var updateInfo: UpdateInfo?
+    
+    override func prepareURLRequest() throws -> URLRequest {
+        return URLRequest(url: ServiceURLs.base.appendingPathComponent("preflight"))
+    }
+    
+    override func handleClientError(with response: HTTPURLResponse) throws {
+        if response.statusCode == 426 {
+            return
+        }
+    }
+    
+    override func processData(with data: Data) throws {
+        updateInfo = try JSONDecoder.default.decode(UpdateInfo.self, from: data)
+    }
+}
+
+class UpdateInfo: Decodable {
+    let forced: Bool
+    let url: URL
+    let version: String
 }

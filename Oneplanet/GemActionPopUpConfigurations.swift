@@ -33,6 +33,9 @@ class GemActionPopUpConfiguration {
     var cancelTitle: String {
         return Localized.titles.cancel
     }
+    var shouldShowAction: Bool {
+        return true
+    }
     var shouldShowCancel: Bool {
         return true
     }
@@ -43,6 +46,32 @@ class GemActionPopUpConfiguration {
         return true
     }
     var mainAction: (()->())?
+}
+
+class NoNetworkPopUpConfiguration: GemActionPopUpConfiguration {
+    override var icon: UIImage {
+        return #imageLiteral(resourceName: "im_14_wifi")
+    }
+    
+    override var attributedTitle: NSAttributedString {
+        return NSAttributedString(string: Localized.phrases.noInternet, attributes: boldTitleAttributes)
+    }
+    
+    override var attributedSubtitle: NSAttributedString {
+        return NSAttributedString(string: Localized.messages.noInternet, attributes: subtitleAttributes)
+    }
+
+    override var shouldShowCancel: Bool {
+        return false
+    }
+    
+    override var shouldShowAction: Bool {
+        return false
+    }
+
+    override var animatedTransition: Bool {
+        return false
+    }
 }
 
 class UnlockPopUpConfiguration: GemActionPopUpConfiguration {
@@ -195,6 +224,42 @@ class InsufficientBlueGemToUnlockPopUpConfiguration: GemActionPopUpConfiguration
     
     private var descriptionPart: NSAttributedString {
         let text = String(format: Localized.messageFormats.insufficientGemToUnlockDescription, Localized.titles.blueGem, formattedPrice)
+        let range = (text as NSString).range(of: Localized.titles.blueGem)
+        let result = NSMutableAttributedString(string: text, attributes: subtitleAttributes)
+        result.addAttributes([.link : DeepLinks.blueGemPopUp], range: range)
+        return result
+    }
+    
+    private var instructionPart: NSAttributedString {
+        let text = String(format: Localized.messageFormats.earnBlueGemInstruction, Localized.titles.blueGem)
+        let range = (text as NSString).range(of: Localized.titles.blueGem)
+        let result = NSMutableAttributedString(string: text, attributes: subtitleAttributes)
+        result.addAttributes([.link : DeepLinks.blueGemPopUp], range: range)
+        return result
+    }
+    
+    override var actionTitle: String {
+        return Localized.gemStonePopUp.blueGemAction
+    }
+}
+
+class InsufficientBlueGemPopUpConfiguration: GemActionPopUpConfiguration {
+    override var icon: UIImage {
+        return #imageLiteral(resourceName: "im_00_insufficient")
+    }
+
+    override var attributedTitle: NSAttributedString {
+        return NSAttributedString(string: String(format: Localized.messageFormats.insufficientGem, Localized.titles.blueGem), attributes: titleAttributes)
+    }
+
+    override var attributedSubtitle: NSAttributedString {
+        let result = NSMutableAttributedString(attributedString: descriptionPart)
+        result.append(instructionPart)
+        return result
+    }
+
+    private var descriptionPart: NSAttributedString {
+        let text = String(format: Localized.messageFormats.insufficientGemDescription, Localized.titles.blueGem)
         let range = (text as NSString).range(of: Localized.titles.blueGem)
         let result = NSMutableAttributedString(string: text, attributes: subtitleAttributes)
         result.addAttributes([.link : DeepLinks.blueGemPopUp], range: range)

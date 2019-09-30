@@ -65,7 +65,7 @@ class GetProductDetailOperation: AlamofireAPIAccessOperation {
     }
     
     override func prepareURLRequest() throws -> URLRequest {
-        return session.addingAuthorizationToken(to: URLRequest(url: ServiceURLs.devBase.appendingPathComponent("products/\(query)")))
+        return session.addingAuthorizationToken(to: URLRequest(url: ServiceURLs.base.appendingPathComponent("products/\(query)")))
     }
     
     override func processData(with data: Data) throws {
@@ -109,7 +109,7 @@ class GetProductCagegoryPageOperation: AlamofireAPIAccessOperation, PaginatedFet
     private let url: URL
     
     convenience init(session: UserSession, query: String) {
-        let url = query == "unlocked" ? ServiceURLs.devBase.appendingPathComponent("products/unlocks") : ServiceURLs.devBase.appendingPathComponent("products/category/\(query)")
+        let url = query == "unlocked" ? ServiceURLs.base.appendingPathComponent("products/unlocks") : ServiceURLs.base.appendingPathComponent("products/category/\(query)")
         self.init(session: session, url: url, isBeginning: true)
     }
     

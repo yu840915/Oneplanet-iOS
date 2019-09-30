@@ -320,7 +320,7 @@ class GetMyProfileOperation: AlamofireAPIAccessOperation {
     }
     
     override func prepareURLRequest() throws -> URLRequest {
-        let req = URLRequest(url: ServiceURLs.devBase.appendingPathComponent("me"))
+        let req = URLRequest(url: ServiceURLs.base.appendingPathComponent("me"))
         return session.addingAuthorizationToken(to: req)
     }
     

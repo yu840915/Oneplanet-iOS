@@ -91,7 +91,6 @@
 		E06F4FFA22782C8C0067DAE4 /* InputValidators.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06F4FF922782C8C0067DAE4 /* InputValidators.swift */; };
 		E06F4FFC22782E7D0067DAE4 /* EmailAuthCredentialTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06F4FFB22782E7D0067DAE4 /* EmailAuthCredentialTests.swift */; };
 		E06F4FFE22789C760067DAE4 /* AppLifeCycleObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06F4FFD22789C760067DAE4 /* AppLifeCycleObserver.swift */; };
-		E06F5000227ABE1C0067DAE4 /* OpenSDK1.8.0_NoPay in Resources */ = {isa = PBXBuildFile; fileRef = E06F4FFF227ABE1B0067DAE4 /* OpenSDK1.8.0_NoPay */; };
 		E06F5009227AFC770067DAE4 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E06F5008227AFC770067DAE4 /* libWeChatSDK.a */; };
 		E06F500B227AFC9B0067DAE4 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E06F500A227AFC9B0067DAE4 /* CoreTelephony.framework */; };
 		E06F500F227AFD740067DAE4 /* WeChatLogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06F500E227AFD740067DAE4 /* WeChatLogIn.swift */; };
@@ -1008,7 +1007,6 @@
 				E0DCD05922B9D828008D9C63 /* EmptyLotListView.xib in Resources */,
 				E0DA389722C0744E00EC4170 /* Unlock.storyboard in Resources */,
 				E00611F42294FFF10032AE30 /* HotNavigationItems.xib in Resources */,
-				E06F5000227ABE1C0067DAE4 /* OpenSDK1.8.0_NoPay in Resources */,
 				E0FF7980228D398300F61318 /* Auction.storyboard in Resources */,
 				E089F70F228EB16A003E77DF /* SectionHeaderView.xib in Resources */,
 				E030E4D2228AB0B70084D383 /* IDHeaderView.xib in Resources */,

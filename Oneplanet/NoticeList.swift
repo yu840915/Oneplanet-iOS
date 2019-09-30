@@ -102,8 +102,8 @@ class Notice: Decodable {
         switch type {
         case .bonus: return BonusNotice(with: self)
         case .followNotice: return FollowNotice(with: self)
-        case .postReported: return PostReportedNotice(with: self)
-        case .profileReported: return ProfileReportedNotice(with: self)
+        case .reported: return PostReportedNotice(with: self) ?? ProfileReportedNotice(with: self)
+        case .banned: return nil
         case .unknwon: return nil
         }
     }
@@ -129,7 +129,7 @@ class FollowNotice: Notice {
     let followerID: String
 
     init?(with notice: Notice) {
-        guard notice.type == .followNotice, let id = notice.meta.userID else {
+        guard notice.type == .followNotice, let id = notice.meta.followerID else {
             return nil
         }
         followerID = id
@@ -146,7 +146,7 @@ class PostReportedNotice: Notice {
     let reason: String
 
     init?(with notice: Notice) {
-        guard notice.type == .postReported,
+        guard notice.type == .reported,
             let id = notice.meta.postID,
             let key = notice.meta.reason else {
             return nil
@@ -165,7 +165,7 @@ class ProfileReportedNotice: Notice {
     let reason: String
 
     init?(with notice: Notice) {
-        guard notice.type == .profileReported,
+        guard notice.type == .reported,
             let key = notice.meta.reason else {
                 return nil
         }
@@ -180,13 +180,13 @@ class ProfileReportedNotice: Notice {
 
 class NoticeMeta: Decodable {
     let bonusEventID: String?
-    let userID: String?
+    let followerID: String?
     let reason: String?
     let postID: String?
     
     enum CodingKeys: String, CodingKey {
         case bonusEventID = "event_id"
-        case userID = "user_id"
+        case followerID = "follower"
         case postID = "post_id"
         case reason
     }
@@ -195,8 +195,8 @@ class NoticeMeta: Decodable {
 enum NoticeType: String, Decodable {
     case bonus = "bonus.event"
     case followNotice = "follow"
-    case postReported = "report"
-    case profileReported = "banned"
+    case reported = "report"
+    case banned = "banned"
     case unknwon
 }
 

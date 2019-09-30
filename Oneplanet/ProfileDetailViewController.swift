@@ -86,6 +86,7 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
         actionButton.setTitle(Localized.phrases.follow, for: .normal)
         actionButton.setTitle(Localized.phrases.following, for: .selected)
         actionButton.setTitle(Localized.phrases.following, for: [.selected, .highlighted])
+        actionButton.setBackgroundImage(actionButton.backgroundImage(for: .selected), for: [.selected, .highlighted])
     }
     
     private func updateViewsForProfile() {
@@ -100,11 +101,13 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
         avatarView.avatar = profile.avatar
         avatarView.backgrondImage = profile.alien?.frameImage
         if let rel = relationshipState {
-            var title = rel.isFollowing ? Localized.phrases.following : Localized.phrases.follow
             if rel.isBlocking {
-                title = Localized.titles.unblock
+                actionButton.setTitle(Localized.titles.unblock, for: .normal)
+                actionButton.isSelected = false
+            } else {
+                actionButton.setTitle(Localized.phrases.follow, for: .normal)
+                actionButton.isSelected = rel.isFollowing
             }
-            actionButton.setTitle(title, for: .normal)
             if rel.isBlocking {
                 countsTextView.alpha = 0.8
                 countsTextView.isUserInteractionEnabled = false

@@ -77,7 +77,7 @@ class NoticeTableViewController: UITableViewController, UserSessionDepending {
             let cell = tableView.dequeueReusableCell(withIdentifier: ReuseID.normalNoticeCell, for: indexPath) as! NormalNoticeItemCell
             setUpNormalNoticeCell(cell, forNoticeAt: indexPath)
             return cell
-        case .postReported, .profileReported:
+        case .reported, .banned:
             let cell = tableView.dequeueReusableCell(withIdentifier: ReuseID.warningNoticeCell, for: indexPath) as! WarningNoticeItemCell
             setUpWarningNoticeCell(cell, forNoticeAt: indexPath)
             return cell
@@ -94,10 +94,10 @@ class NoticeTableViewController: UITableViewController, UserSessionDepending {
             }
             cell.actionButton.isEnabled = true
             if let relationStates = userSession.socialRelationshipRepo.relationshipWithUser(of: follow.followerID)?.states {
-                cell.actionButton.isHidden = true
+                cell.actionButton.isHidden = false
                 cell.actionButton.isSelected = relationStates.isFollowing
             } else {
-                cell.actionButton.isHidden = false
+                cell.actionButton.isHidden = true
             }
             
         } else if let bonus = notice as? BonusNotice {
@@ -188,7 +188,7 @@ class NoticeTableViewController: UITableViewController, UserSessionDepending {
         }
 
         let notice = getNotice(at: indexPath)
-        return notice.type != .postReported
+        return notice.type != .reported
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -200,9 +200,9 @@ class NoticeTableViewController: UITableViewController, UserSessionDepending {
         switch notice.type {
         case .followNotice, .bonus:
             showProfilePage(for: notice)
-        case .profileReported:
+        case .banned:
             switchToMyProfile()
-        case .postReported, .unknwon: break
+        case .reported, .unknwon: break
         }
     }
     

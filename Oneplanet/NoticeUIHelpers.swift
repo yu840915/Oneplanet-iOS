@@ -197,8 +197,8 @@ class NormalNoticeItemCell: NoticeItemCell {
     }
     
     func updateViews(with dataSource: NormalNoticeItemDisplayable) {
-        avatarView.update(with: dataSource.user)
         super.updateViews(with: dataSource)
+        avatarView.update(with: dataSource.user)
         actionButton.setTitle(dataSource.actionTitle, for: .normal)
         actionButton.setTitle(dataSource.selectedActionTitle, for: .selected)
         actionButton.setTitle(dataSource.selectedActionTitle, for: [.selected, .highlighted])
@@ -213,6 +213,32 @@ protocol WarningNoticeItemDisplayable: NoticeItemDisplayable {
 
 class WarningNoticeItemCell: NoticeItemCell {
     @IBOutlet weak var contentImageView: UIImageView!
+    private var fetchOperation: DownloadImageOperaion?
+    
+    func updateViews(with dataSource: WarningNoticeItemDisplayable) {
+        super.updateViews(with: dataSource)
+        if let info = dataSource.contentImage {
+            if fetchOperation?.info.url == info.url {
+                return
+            }
+            let op = DownloadImageOperaion(info: info)
+            op.completionBlock = {[weak self] in
+                OperationQueue.main.addOperation {
+                    self?.updateCover()
+                }
+            }
+            fetchOperation = op
+            op.start()
+        } else {
+            fetchOperation?.cancel()
+            fetchOperation = nil
+        }
+    }
+    
+    private func updateCover() {
+        guard let op = fetchOperation, let image = op.image else {return}
+        contentImageView.image = image
+    }
 }
 
 class ProfileReportedViewModel: NoticeViewModel, WarningNoticeItemDisplayable {
@@ -227,8 +253,7 @@ class ProfileReportedViewModel: NoticeViewModel, WarningNoticeItemDisplayable {
     }
     
     override var attributedMessage: NSAttributedString {
-        let reason = Localized.lookUp(reasonKey)
-        return NSAttributedString(string: String(format: Localized.messageFormats.profileReported, account, reason), attributes: [.font:  UIFont.systemFont(ofSize: 12)])
+        return NSAttributedString(string: String(format: Localized.messageFormats.profileReported, account, Localized.titles.tos), attributes: [.font:  UIFont.systemFont(ofSize: 12)])
     }
 }
 

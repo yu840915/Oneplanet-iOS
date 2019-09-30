@@ -279,13 +279,14 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jse-9r-dtX">
                                         <rect key="frame" x="0.0" y="100" width="375" height="375"/>
                                         <subviews>
-                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IhM-tx-4f6" userLabel="Action Button">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IhM-tx-4f6" userLabel="Action Button">
                                                 <rect key="frame" x="21" y="10" width="82" height="28"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                 <inset key="contentEdgeInsets" minX="18" minY="0.0" maxX="18" maxY="0.0"/>
                                                 <state key="normal" title="Button" backgroundImage="bt_smallgreen_nor">
                                                     <color key="titleColor" name="default text"/>
                                                 </state>
+                                                <state key="selected" backgroundImage="bt_smallwiregray_nor"/>
                                                 <connections>
                                                     <action selector="performAction:" destination="Pj9-NT-Zwc" eventType="touchUpInside" id="wFx-Yb-frd"/>
                                                 </connections>
@@ -456,7 +457,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <imageView key="backgroundView" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_bgall" id="MVK-a5-ygs">
-                            <rect key="frame" x="0.0" y="19" width="375" height="603"/>
+                            <rect key="frame" x="0.0" y="-20" width="375" height="603"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <cells>
@@ -1593,6 +1594,7 @@
         <image name="bt_bigwirewhite_nor" width="41" height="41"/>
         <image name="bt_bigwirewhite_tap" width="41" height="41"/>
         <image name="bt_smallgreen_nor" width="29" height="28"/>
+        <image name="bt_smallwiregray_nor" width="29" height="28"/>
         <image name="bt_smallwirewhite_nor" width="29" height="28"/>
         <image name="ic_back_nor" width="40" height="40"/>
         <image name="ic_contactus_nor" width="40" height="40"/>

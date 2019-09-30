@@ -166,7 +166,7 @@ class GetBalanceOperation: AlamofireAPIAccessOperation {
     private(set) var total: Int?
     
     override func prepareURLRequest() throws -> URLRequest {
-        return userSession.addingAuthorizationToken(to: URLRequest(url: ServiceURLs.devBase.appendingPathComponent("wallet/balance/\(account.rawValue)")))
+        return userSession.addingAuthorizationToken(to: URLRequest(url: ServiceURLs.base.appendingPathComponent("wallet/balance/\(account.rawValue)")))
     }
     
     override func processData(with data: Data) throws {

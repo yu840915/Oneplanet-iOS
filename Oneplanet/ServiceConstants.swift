@@ -26,8 +26,7 @@ struct IAPProductIdentifiers {
 
 struct ServiceURLs {
 //    static var base: URL = URL(string: "https://api.oneplanet-official.com")!
-    static var base: URL = devBase
-    static var devBase: URL = URL(string:
+    static var base: URL = URL(string:
         "https://oneplanet-api.herokuapp.com")!
     static let appSettings = URL(string:UIApplication.openSettingsURLString)!
     static let terms = URL(string: "https://oneplanet-9e32a.firebaseapp.com/\(Localized.languageCode).html")!
@@ -54,6 +53,12 @@ struct DeepLinks {
     }
     static var bidTab: URL {
         return ServiceURLs.base.appendingPathComponent("tab/bid")
+    }
+    static var bidTabProducts: URL {
+        return ServiceURLs.base.appendingPathComponent("tab/bid/products")
+    }
+    static var bidTabHistory: URL {
+        return ServiceURLs.base.appendingPathComponent("tab/bid/history")
     }
     static var noticeTab: URL {
         return ServiceURLs.base.appendingPathComponent("tab/notice")

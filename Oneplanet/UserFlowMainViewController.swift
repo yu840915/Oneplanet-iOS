@@ -296,6 +296,26 @@ fileprivate extension UserFlowMainViewController {
             }
             return true
         }
+        actionRouter.add(DeepLinks.bidTab.path) {[weak self] (info) -> Bool in
+            OperationQueue.main.addOperation {
+                self?.switchToTab(.bid)
+            }
+            return true
+        }
+        actionRouter.add(DeepLinks.bidTabProducts.path) {[weak self] (info) -> Bool in
+            OperationQueue.main.addOperation {
+                self?.switchToTab(.bid)
+                self?.auctionController.selectProductsTabIfAllowed()
+            }
+            return true
+        }
+        actionRouter.add(DeepLinks.bidTabHistory.path) {[weak self] (info) -> Bool in
+            OperationQueue.main.addOperation {
+                self?.switchToTab(.bid)
+                self?.auctionController.selectHistoryTabIfAllowed()
+            }
+            return true
+        }
         actionRouter.add(DeepLinks.noticeTab.path) {[weak self] (info) -> Bool in
             OperationQueue.main.addOperation {
                 self?.switchToTab(.notice)

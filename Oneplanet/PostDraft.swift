@@ -135,7 +135,7 @@ class SubmitPostDraftOperation: AlamofireAPIAccessOperation {
     }
     
     override func prepareDataRequest() throws -> DataRequest {
-        var url = ServiceURLs.devBase.appendingPathComponent("posts")
+        var url = ServiceURLs.base.appendingPathComponent("posts")
         var method = HTTPMethod.post
         if let post = draft.originalPost {
             url.appendPathComponent(post.id)

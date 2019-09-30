@@ -101,6 +101,7 @@ class ProfileDetailViewController: UIViewController, UserSessionDepending, Defau
         avatarView.avatar = profile.avatar
         avatarView.backgrondImage = profile.alien?.frameImage
         if let rel = relationshipState {
+
             if rel.isBlocking {
                 actionButton.setTitle(Localized.titles.unblock, for: .normal)
                 actionButton.isSelected = false

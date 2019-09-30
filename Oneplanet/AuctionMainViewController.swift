@@ -34,6 +34,30 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
     private var reachability: Reachability?
     private var bidPhaseChangeHandle: Any!
     @IBOutlet weak var noInternetView: UIView!
+    private var pendingAction: (()->())?
+    
+    func selectProductsTabIfAllowed() {
+        if isViewLoaded {
+            moveTo(viewController: productListController)
+            moveToViewController(at: 0)
+        } else {
+            pendingAction = {[weak self] in
+                self?.selectProductsTabIfAllowed()
+            }
+        }
+    }
+    
+    func selectHistoryTabIfAllowed() {
+        if isViewLoaded {
+            if let vc = historyController {
+                moveTo(viewController: vc)
+            }
+        } else {
+            pendingAction = {[weak self] in
+                self?.selectHistoryTabIfAllowed()
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -131,6 +155,8 @@ class AuctionMainViewController: ButtonBarPagerTabStripViewController, UserSessi
         super.viewDidAppear(animated)
         setUpBadgeViewIfNeeded()
         checkBiddingFeatureOnEntryIfNeeded()
+        pendingAction?()
+        pendingAction = nil
     }
     
     override func viewDidDisappear(_ animated: Bool) {

@@ -53,7 +53,7 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
             self?.showPromoPopUp()
         }
         alien.action = {[weak self] in
-            self?.performSegue(withIdentifier: "iap", sender: nil)
+            router.handle(DeepLinks.bidTabHistory)
         }
         navigationItem.rightBarButtonItems = [
             .init(customView: alien),

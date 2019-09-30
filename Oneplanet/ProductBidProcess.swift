@@ -356,7 +356,7 @@ class GetBidNewsOperation: AlamofireAPIAccessOperation {
     }
     
     override func prepareURLRequest() throws -> URLRequest {
-        return userSession.addingAuthorizationToken(to: URLRequest(url: ServiceURLs.devBase.appendingPathComponent("bidding/\(product.id)/state")))
+        return userSession.addingAuthorizationToken(to: URLRequest(url: ServiceURLs.base.appendingPathComponent("bidding/\(product.id)/state")))
     }
     
     override func processData(with data: Data) throws {

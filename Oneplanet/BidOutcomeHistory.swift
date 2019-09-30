@@ -23,7 +23,7 @@ class GetBidOutcomeHistoryPageOperationFactory: PaginatedFetchingOperationFactor
     }
     
     func makeInitialOperation() -> GetBidOutcomeHistoryPageOperation {
-        let url = ServiceURLs.devBase.appendingPathComponent("bidding/history").addingFirstPageQeury()
+        let url = ServiceURLs.base.appendingPathComponent("bidding/history").addingFirstPageQeury()
         return GetBidOutcomeHistoryPageOperation(session: session, url: url, isBeginning: true)
     }
 }

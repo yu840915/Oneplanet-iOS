@@ -33,7 +33,7 @@ class GetCategoryCountOperation: AlamofireAPIAccessOperation {
         self.userSession = userSession
     }
     override func prepareURLRequest() throws -> URLRequest {
-        return userSession.addingAuthorizationToken(to: try URLRequest(url: ServiceURLs.devBase.appendingPathComponent("products/category/\(categoryName.name)"), method: .head))
+        return userSession.addingAuthorizationToken(to: try URLRequest(url: ServiceURLs.base.appendingPathComponent("products/category/\(categoryName.name)"), method: .head))
     }
     
     override func processHTTPResponseHeader(_ header: [AnyHashable : Any]) throws {
@@ -71,7 +71,7 @@ class GetCategoryNamePageOperation: AlamofireAPIAccessOperation, PaginatedFetchi
     }
     
     convenience init(session: UserSession) {
-        self.init(session: session, url: ServiceURLs.devBase.appendingPathComponent("categories").addingFirstPageQeury(), isBeginning: true)
+        self.init(session: session, url: ServiceURLs.base.appendingPathComponent("categories").addingFirstPageQeury(), isBeginning: true)
     }
     
     init(session: UserSession, url: URL, isBeginning: Bool) {

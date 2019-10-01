@@ -375,7 +375,7 @@ class BidTooLateConfiguration: GemActionPopUpConfiguration {
     }
     override var attributedSubtitle: NSAttributedString {
         let num = "1"
-        return NSAttributedString(string: String(format: Localized.messageFormats.receivedGem, Localized.titles.greenGem, num), attributes: subtitleAttributes)
+        return NSAttributedString(string: String(format: Localized.messageFormats.receivedGem, Localized.titles.purpleGem, num), attributes: subtitleAttributes)
     }
     override var shouldShowCancel: Bool {
         return false

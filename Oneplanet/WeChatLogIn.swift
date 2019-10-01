@@ -77,6 +77,26 @@ class WeChatLogInOperation: SimpleAsynchronousOperation, SocialAuthenticationOpe
         }
         self.token = token
         self.profile = profile
+        if let session = op.wechatSession {
+            getWeChatProfile(with: session)
+        } else {
+            success = true
+            finish()
+        }
+    }
+    
+    private func getWeChatProfile(with session: WeChatSession) {
+        let op = GetWeChatProfileOperation(wechatSession: session)
+        op.completionBlock = {[weak self] in
+            self?.didGetWeChatProfile()
+        }
+        getProfileOperation = op
+        op.start()
+    }
+    
+    private func didGetWeChatProfile() {
+        let op = getProfileOperation!
+        publicProfile = op.profile
         success = true
         finish()
     }

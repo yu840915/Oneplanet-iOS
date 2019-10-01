@@ -57,6 +57,7 @@
 		<string>fbshareextension</string>
 		<string>twitter</string>
 		<string>twitterauth</string>
+		<string>weixin</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

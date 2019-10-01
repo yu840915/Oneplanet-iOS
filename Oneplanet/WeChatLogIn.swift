@@ -9,6 +9,7 @@
 import Foundation
 import ModelBlocks
 import UIKit
+import Alamofire
 
 class WeChatLogInOperation: SimpleAsynchronousOperation, SocialAuthenticationOperationType, WXApiDelegate {
     static weak var runningLogIn: WeChatLogInOperation?
@@ -21,6 +22,7 @@ class WeChatLogInOperation: SimpleAsynchronousOperation, SocialAuthenticationOpe
     private var authReq: SendAuthReq?
     private var state = UUID().uuidString
     private var submitCodeOperation: SubmitWeChatAuthCodeOperation?
+    private var getProfileOperation: GetWeChatProfileOperation?
     
     let presenter: UIViewController
     init(presenter: UIViewController) {
@@ -88,8 +90,20 @@ class WeChatLogInOperation: SimpleAsynchronousOperation, SocialAuthenticationOpe
 
 class GetWeChatProfileOperation: AlamofireAPIAccessOperation {
     let wechatSession: WeChatSession
+    private(set) var profile: PublicProfile?
+
     init(wechatSession: WeChatSession) {
         self.wechatSession = wechatSession
+    }
+    
+    override func prepareDataRequest() throws -> DataRequest {
+        let url = URL(string: "https://api.weixin.qq.com/sns/userinfo")!
+        let params: Parameters = ["access_token": wechatSession.token, "openid": wechatSession.openID]
+        return Alamofire.request(url, method: .get, parameters: params, encoding: URLEncoding(), headers: nil)
+    }
+    
+    override func processData(with data: Data) throws {
+        debugPrint(String(data: data, encoding: .utf8))
     }
 }
 
@@ -106,9 +120,21 @@ class SubmitWeChatAuthCodeOperation: LogInOperation {
         return try URLRequest(url: comp.url!, method: .post)
     }
     
+    override func processHTTPResponseHeader(_ header: [AnyHashable : Any]) throws {
+        try super.processHTTPResponseHeader(header)
+        if let token = header["x-weixin-token"] as? String,
+            let id = header["x-weixin-openid"] as? String {
+            wechatSession = WeChatSession(token: token, openID: id)
+        }
+    }
 }
 
 class WeChatSession {
-    let token: String = ""
-    let openID: String = ""
+    let token: String
+    let openID: String
+    
+    init(token: String, openID: String) {
+        self.token = token
+        self.openID = openID
+    }
 }

@@ -131,3 +131,39 @@ class DeduplicationHelper {
         return true
     }
 }
+
+class ChangePinOperation: AlamofireAPIAccessOperation {
+    let post: Post
+    let session: UserSession
+    let isPinning: Bool
+    
+    init(post: Post, session: UserSession, isPinning: Bool) {
+        self.post = post
+        self.session = session
+        self.isPinning = isPinning
+    }
+    
+    override func prepareURLRequest() throws -> URLRequest {
+        guard session.isAdmin else {
+            throw GenericAppError("Only admin can pin")
+        }
+        return session.addingAuthorizationToken(to: try URLRequest(url: ServiceURLs.base.appendingPathComponent("posts/\(post.id)/pinning"), method: isPinning ? .put : .delete))
+    }
+}
+
+class LikePostOperation: AlamofireAPIAccessOperation {
+    let post: Post
+    let session: UserSession
+    
+    init(post: Post, session: UserSession) {
+        self.post = post
+        self.session = session
+    }
+    
+    override func prepareURLRequest() throws -> URLRequest {
+        guard session.isAdmin else {
+            throw GenericAppError("Only admin can pin")
+        }
+        return session.addingAuthorizationToken(to: try URLRequest(url: ServiceURLs.base.appendingPathComponent("posts/\(post.id)/favorite"), method: .post))
+    }
+}

@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             router.handle(url)
         }
         appConfiguration.update()
-        SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         TWTRTwitter.sharedInstance().start(withConsumerKey:TwitterCredentials.key, consumerSecret:TwitterCredentials.secret)
         WXApi.registerApp("wx8630436ab3a5f7c2")
 //        prepareDataStore()
@@ -85,7 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return router.handle(url) || SDKApplicationDelegate.shared.application(app, open: url, options: options) || TWTRTwitter.sharedInstance().application(app, open: url, options: options) || WXApi.handleOpen(url, delegate: WeChatLogInOperation.runningLogIn ?? self)
+        return router.handle(url) || ApplicationDelegate.shared.application(app, open: url, options: options) || TWTRTwitter.sharedInstance().application(app, open: url, options: options) || WXApi.handleOpen(url, delegate: WeChatLogInOperation.runningLogIn ?? self)
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

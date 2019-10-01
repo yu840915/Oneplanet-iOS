@@ -6,14 +6,14 @@ target 'Oneplanet' do
   use_frameworks!
 
   pod 'Alamofire', '~> 4.7'
-  pod 'Firebase/Core', '~> 5.17.0'
+  pod 'Firebase/Core', '~> 6.9.0'
   pod 'Crashlytics', '~> 3.12.0'
   pod 'Firebase/Messaging'
   pod 'Firebase/DynamicLinks'
   pod 'Firebase/RemoteConfig'
-  pod 'FacebookCore', '~> 0.5.0'
-  pod 'FacebookLogin', '~> 0.5.0'
-  pod 'FacebookShare', '~> 0.5.0'
+  pod 'FacebookCore', '~> 0.9.0'
+  pod 'FacebookLogin', '~> 0.9.0'
+  pod 'FacebookShare', '~> 0.9.0'
   pod 'TwitterKit', '~> 3.4.2'
   pod 'Kingfisher', '~> 5.5.0'
   pod 'PusherSwift', '~> 7.0'

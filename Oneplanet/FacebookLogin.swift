@@ -31,7 +31,7 @@ class FacebookLoginOperation: SimpleAsynchronousOperation, SocialAuthenticationO
     private var parallelOperations = Set<Operation>()
     init(presenter: UIViewController) {
         self.presenter = presenter
-        manager = LoginManager(loginBehavior: .native, defaultAudience: .onlyMe)
+        manager = LoginManager(loginBehavior: .browser, defaultAudience: .onlyMe)
     }
     
     override func main() {
@@ -39,7 +39,7 @@ class FacebookLoginOperation: SimpleAsynchronousOperation, SocialAuthenticationO
         if let token = AccessToken.current {
             submitTokenAndGetProfile(token)
         } else {
-            manager.logIn(readPermissions: [.publicProfile], viewController: presenter) {[weak self] (result) in
+            manager.logIn(permissions: [.publicProfile], viewController: presenter) {[weak self] (result) in
                 self?.didLogIn(with: result)
             }
         }
@@ -58,7 +58,7 @@ class FacebookLoginOperation: SimpleAsynchronousOperation, SocialAuthenticationO
     }
     
     private func handleSucessLogin(with token: AccessToken, granted: Set<Permission>, declined: Set<Permission>) {
-        guard granted.contains(Permission(name: "public_profile")) else {
+        guard granted.contains(Permission(stringLiteral: "public_profile")) else {
             fail(with: GenericAppError("You need to grant public profile access to use Facebook login"))
             return
         }
@@ -124,7 +124,8 @@ fileprivate class SubmitFacebookTokenOperation: LogInOperation {
     }
     
     override func prepareDataRequest() throws -> DataRequest {
-        return Alamofire.request(ServiceURLs.base.appendingPathComponent("login/facebook-app"), method: .post, parameters: ["access_token": fbAccessToken.authenticationToken], encoding: URLEncoding(), headers: nil)
+        return Alamofire.request(ServiceURLs.base.appendingPathComponent("login/facebook-app"),
+                                 method: .post, parameters: ["access_token": fbAccessToken.tokenString], encoding: URLEncoding(), headers: nil)
     }
 }
 
@@ -137,29 +138,21 @@ fileprivate class GetFacebookProfileOperation: SimpleAsynchronousOperation, Fail
     override func main() {
         let req = GraphRequest(graphPath: "me")
         request = req
-        req.start {[weak self] (res, result) in
-            self?.handelResponse(res, result: result)
+        req.start {[weak self] (connection, result, error) in
+            self?.handleResult(result, error: error)
         }
     }
     
-    private func handelResponse(_ response: HTTPURLResponse?, result: GraphRequestResult<GraphRequest>) {
-        switch result {
-        case .success(let res):
-            handleResponseDate(res)
-        case .failed(let error):
+    private func handleResult(_ result: Any?, error: Error?) {
+        if let dict = result as? [String: Any],
+            let name = dict["name"] as? String,
+            let id = dict["id"] as? String {
+            profile = PublicProfile(nickname: name, avatarURL: URL(string: "https://graph.facebook.com/\(id)/picture?type=large"))
+            success = true
+            finish()
+        } else {
             fail(with: error)
         }
-    }
-    
-    private func handleResponseDate(_ response: GraphRequest.Response) {
-        guard let dict = response.dictionaryValue,
-            let name = dict["name"] as? String,
-            let id = dict["id"] as? String else {
-            return
-        }
-        profile = PublicProfile(nickname: name, avatarURL: URL(string: "https://graph.facebook.com/\(id)/picture?type=large"))
-        success = true
-        finish()
     }
     
     private func fail(with error: Error?) {

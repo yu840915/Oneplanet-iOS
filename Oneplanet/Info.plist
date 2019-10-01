@@ -62,6 +62,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>So that you can use camera feature</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>For Facebook Sign In</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>So you can pick photos for upload</string>
 	<key>UIAppFonts</key>

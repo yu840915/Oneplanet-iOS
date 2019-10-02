@@ -22,6 +22,7 @@ class BlueGemPopUpViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        IAPTransactionProcessor.shared.prefetchedProducts.initializeIfNeeded()
         localizeTitles()
     }
     

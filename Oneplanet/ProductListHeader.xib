@@ -44,7 +44,7 @@
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_bubbledown_nor" translatesAutoresizingMaskIntoConstraints="NO" id="gtK-1q-HCb">
                             <rect key="frame" x="0.0" y="-8" width="150" height="53"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M5e-iJ-85a">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M5e-iJ-85a">
                             <rect key="frame" x="15" y="10" width="120" height="25"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                             <nil key="textColor"/>
@@ -70,6 +70,7 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ROe-sv-XVf" secondAttribute="trailing" constant="20" id="AFx-nC-jk4"/>
                 <constraint firstItem="nrI-Ku-65x" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="CHI-N3-bhu"/>
                 <constraint firstItem="nrI-Ku-65x" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="Qv5-S7-6Kt"/>
                 <constraint firstItem="nrI-Ku-65x" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="XnR-uw-HsC"/>

@@ -43,6 +43,7 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        IAPTransactionProcessor.shared.prefetchedProducts.initializeIfNeeded()
         noticesUnreadCount = NoticeUnreadCount(userSession: userSession)
         unreadCountHandle = noticesUnreadCount.updateHandlers.add {[weak self] in
             OperationQueue.main.addOperation {

@@ -355,7 +355,7 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_bubbleup_nor" translatesAutoresizingMaskIntoConstraints="NO" id="nWv-Fs-pPh">
                                                     <rect key="frame" x="0.0" y="0.0" width="77.5" height="44.5"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9V-4H-B4u">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i9V-4H-B4u">
                                                     <rect key="frame" x="15" y="10" width="43.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -382,6 +382,7 @@
                                     <constraints>
                                         <constraint firstItem="nWv-Fs-pPh" firstAttribute="bottom" secondItem="nUg-8I-Sdp" secondAttribute="top" constant="5" id="0g9-nz-VKM"/>
                                         <constraint firstItem="Jq4-ZX-0hE" firstAttribute="centerX" secondItem="Vrd-5h-xiF" secondAttribute="centerX" id="GDr-Zf-JfI"/>
+                                        <constraint firstItem="8Ub-Br-hdO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Vrd-5h-xiF" secondAttribute="leading" constant="20" id="PHQ-Sl-69S"/>
                                         <constraint firstItem="Jq4-ZX-0hE" firstAttribute="centerY" secondItem="Vrd-5h-xiF" secondAttribute="centerY" id="PdR-Vn-mXf"/>
                                         <constraint firstItem="Jq4-ZX-0hE" firstAttribute="top" secondItem="Vrd-5h-xiF" secondAttribute="top" constant="3" id="czn-4E-PIc"/>
                                         <constraint firstItem="Jq4-ZX-0hE" firstAttribute="leading" secondItem="Vrd-5h-xiF" secondAttribute="leading" constant="10" id="gaa-Hg-3ff"/>
@@ -2466,8 +2467,8 @@ The winner must check if the Receipt information is filled in to ensure that the
         <image name="bt_biggreen_nor" width="41" height="41"/>
         <image name="bt_smallgreen_nor" width="29" height="28"/>
         <image name="bt_smallwiregray_nor" width="29" height="28"/>
-        <image name="ic_bid_nor" width="64" height="49"/>
-        <image name="ic_bid_sel" width="64" height="49"/>
+        <image name="ic_bid_nor" width="42" height="42"/>
+        <image name="ic_bid_sel" width="42" height="42"/>
         <image name="ic_flitertap_tap" width="20" height="20"/>
         <image name="ic_lockoff_nor" width="40" height="40"/>
         <image name="ic_lockon_nor" width="40" height="40"/>

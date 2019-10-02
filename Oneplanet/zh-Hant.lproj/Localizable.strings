@@ -49,7 +49,7 @@
 "tl_delete" = "刪除";
 "tl_unlock" = "解鎖商品";
 "tl_unlocked" = "已解鎖";
-"tl_bid" = "投標一次";
+"tl_bid" = "投標";
 "tl_required_input" = "必填";
 "tl_agree" = "我同意";
 "tl_filter" = "商品過濾";

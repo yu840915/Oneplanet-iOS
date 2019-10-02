@@ -49,7 +49,7 @@
 "tl_delete" = "Delete";
 "tl_unlock" = "unlock goods";
 "tl_unlocked" = "Unlocked";
-"tl_bid" = "Bid once";
+"tl_bid" = "Bid";
 "tl_required_input" = "Required";
 "tl_agree" = "Agree";
 "tl_filter" = "Filter";

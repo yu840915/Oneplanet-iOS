@@ -49,7 +49,7 @@
 "tl_delete" = "削除";
 "tl_unlock" = "商品をアンロックします";
 "tl_unlocked" = "アンロックしました";
-"tl_bid" = "一回入札する";
+"tl_bid" = "入札";
 "tl_required_input" = "必須項目";
 "tl_agree" = "同意する";
 "tl_filter" = "検索フィルタ";
@@ -88,7 +88,7 @@
 "msg_bidding_terms_acceptence" = "チェックボックスにチェックを入れて、ｵｰｸｼｮﾝ規約に同意します";
 "msg_unlock_succeeded" = "アンロックに成功しました。";
 "msg_bid_succeeded" = "Successfully qualified for CommodityName bidding";
-"msg_lot_being_bid" = " This commodity is being bid";
+"msg_lot_being_bid" = "この商品はただいま入札中です";
 "msg_lot_being_bid_des" = "ただいま入札中です。48時間以内次回の入札商品を公表します。お見逃しなく！";
 "msg_lot_closed" = "アンロックできる時間を超えてしまいました";
 "msg_lot_closed_des" = "オークションが終了しました。48時間以内次回の入札商品を公表します。お見逃しなく！";
@@ -103,8 +103,8 @@
 "msg_report_post_prompt" = "この投稿を報告する理由を選択してください。";
 "msg_report_user_caption" = "報告された投稿に関して、Oneplanetが投稿者に報告した人の情報を開示することはありません";
 "msg_report_post_caption" = "報告された投稿に関して、Oneplanetが投稿者に報告した人の情報を開示することはありません";
-"msg_thankyou_reporting_user" = "Thanks for reporting this";
-"msg_thankyou_reporting_post" = "Thanks for reporting this post";
+"msg_thankyou_reporting_user" = "ご報告ありがとうございました";
+"msg_thankyou_reporting_post" = "ご報告ありがとうございました";
 "msg_unblock_des" = "ブロックを解除すると、この人はOneplanetであなたをファローできるようになります。ブロックが解除されたことは、相手に通知されません。";
 "msg_block_des" = "ブロックされた人は、Oneplanetであなたのプロフィールや投稿を見られなくなります。プロックしたことは、相手に通知されません";
 "msg_recover_account_des" = "利用規約違反していない場合、確認するために、下記までの情報をお願いいたします";
@@ -182,7 +182,7 @@
 "ph_bid_leader" = "予定落札者";
 "ph_product_name" = "商品名";
 "ph_bid_outcome" = "入札結果";
-"ph_bid_lot" = "Commodity";
+"ph_bid_lot" = "商品";
 "ph_successful_shipping_info_submission" = "入力完了";
 "ph_goto_bidding" = "Go bidding page";
 "ph_get_gem" = "報酬を受け取りしましょう";

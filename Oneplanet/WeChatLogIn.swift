@@ -123,7 +123,12 @@ class GetWeChatProfileOperation: AlamofireAPIAccessOperation {
     }
     
     override func processData(with data: Data) throws {
-        debugPrint(String(data: data, encoding: .utf8))
+        let wechatProfile = try JSONDecoder.default.decode(WeChatProfile.self, from: data)
+        var url: URL?
+        if let avatar = wechatProfile.headimgurl {
+            url = URL(string: avatar)
+        }
+        profile = PublicProfile(nickname: wechatProfile.nickname, avatarURL: url)
     }
 }
 
@@ -142,8 +147,8 @@ class SubmitWeChatAuthCodeOperation: LogInOperation {
     
     override func processHTTPResponseHeader(_ header: [AnyHashable : Any]) throws {
         try super.processHTTPResponseHeader(header)
-        if let token = header["x-weixin-token"] as? String,
-            let id = header["x-weixin-openid"] as? String {
+        if let token = header["X-Weixin-Token"] as? String,
+            let id = header["X-Weixin-Openid"] as? String {
             wechatSession = WeChatSession(token: token, openID: id)
         }
     }
@@ -157,4 +162,9 @@ class WeChatSession {
         self.token = token
         self.openID = openID
     }
+}
+
+class WeChatProfile: Decodable {
+    let nickname: String
+    let headimgurl: String?
 }

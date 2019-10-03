@@ -26,6 +26,9 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
     private var isVisible = false
     private var updateClock: UpdateClock!
     private var deletePostOperation: DeletePostOperation?
+    private var likedPosts = Set<String>()
+    private var likePostOperation: LikePostOperation?
+    private var changePinOperation: ChangePinOperation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,6 +119,9 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
         cell.showProfileAction = {[weak self] in
             self?.showProfile(for: post)
         }
+        cell.likeAction = {[weak self] in
+            self?.like(post)
+        }
         updateCell(cell, at: indexPath)
     }
     
@@ -126,6 +132,12 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
             cell.actionButton.isHidden = rel.isFollowing
         } else {
             cell.actionButton.isHidden = true
+        }
+        if userSession.isAdmin && post.authorID != userSession.profile?.id {
+            cell.adminView.isHidden = false
+            cell.likeButton.isEnabled = !likedPosts.contains(post.id)
+        } else {
+            cell.adminView.isHidden = true
         }
     }
     
@@ -162,7 +174,18 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
                         self.followAuthor(of: post)
                     }))
                 }
-
+            }
+        }
+        if userSession.isAdmin {
+            let sticky = post.sticky == true
+            if sticky {
+                sheet.addAction(UIAlertAction(title: "Unpin", style: .default, handler: {[weak self] (_) in
+                    self?.unpin(post)
+                }))
+            } else {
+                sheet.addAction(UIAlertAction(title: "Pin to Top", style: .default, handler: {[weak self] (_) in
+                    self?.pin(post)
+                }))
             }
         }
         sheet.addAction(UIAlertAction(title: Localized.titles.cancel, style: .cancel, handler: nil))
@@ -239,6 +262,7 @@ private extension PostFeedTableViewController {
         refreshControl?.endRefreshing()
         let helper = DeduplicationHelper()
         posts = postList.items.filter{ helper.addIfAllowed($0.id) }
+        posts.filter{$0.liked}.map{$0.id}.forEach{likedPosts.insert($0)}
         prepareSections()
         updateBackground()
     }
@@ -309,6 +333,30 @@ private extension PostFeedTableViewController {
         performSegue(withIdentifier: SegueID.showProfile, sender: user)
     }
     
+    func like(_ post: Post) {
+        guard userSession.isAdmin && !likedPosts.contains(post.id) && likePostOperation == nil else {
+            return
+        }
+        let op = LikePostOperation(post: post, session: userSession)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didLikePost()
+            }
+        }
+        likePostOperation = op
+        op.start()
+    }
+    
+    private func didLikePost() {
+        let op = likePostOperation!
+        likePostOperation = nil
+        if op.success == true {
+            likedPosts.insert(op.post.id)
+        } else if let error = op.error {
+            showAlert(with: error)
+        }
+    }
+    
     func deletePost(_ post: Post) {
         guard deletePostOperation == nil else { return }
         let op = DeletePostOperation(post: post, session: userSession)
@@ -325,10 +373,14 @@ private extension PostFeedTableViewController {
         let op = deletePostOperation!
         deletePostOperation = nil
         if let error = op.error {
-            let alert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: Localized.titles.ok, style: .cancel, handler: nil))
-            present(alert, animated: true, completion: nil)
+            showAlert(with: error)
         }
+    }
+    
+    func showAlert(with error: Error) {
+        let alert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Localized.titles.ok, style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
 
     func edit(_ post: Post) {
@@ -337,6 +389,34 @@ private extension PostFeedTableViewController {
     
     func report(_ post: Post) {
         performSegue(withIdentifier: SegueID.showReportFlow, sender: PostReportFlowController(post: post, session: userSession))
+    }
+    
+    func pin(_ post: Post) {
+        changePin(for: post, isPinning: true)
+    }
+    
+    func unpin(_ post: Post) {
+        changePin(for: post, isPinning: false)
+    }
+    
+    func changePin(for post: Post, isPinning: Bool) {
+        guard userSession.isAdmin && changePinOperation == nil else { return }
+        let op = ChangePinOperation(post: post, session: userSession, isPinning: isPinning)
+        op.completionBlock = {[weak self] in
+            self?.didChangePin()
+        }
+        changePinOperation = op
+        op.start()
+    }
+    
+    func didChangePin() {
+        let op = changePinOperation!
+        changePinOperation = nil
+        if op.success == true {
+            postList.reload()
+        } else if let error = op.error {
+            showAlert(with: error)
+        }
     }
 }
 

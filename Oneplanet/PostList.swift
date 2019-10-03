@@ -16,6 +16,11 @@ class Post: Decodable {
     let imageURLs: [URL]
     let createdAt: Date
     let type: String?
+    let liked: Bool
+    var sticky: Bool {
+        return stickerInfo != nil
+    }
+    let stickerInfo: StikerInfo?
     var images: [WebImageInfo] {
         return imageURLs.map{WebImageInfo(url: $0)}
     }
@@ -29,6 +34,8 @@ class Post: Decodable {
         createdAt = post.createdAt
         type = post.type
         score = post.score
+        liked = post.liked
+        stickerInfo = post.stickerInfo
     }
     
     enum CodingKeys: String, CodingKey {
@@ -38,7 +45,12 @@ class Post: Decodable {
         case createdAt = "created_at"
         case type
         case score
+        case liked = "favorited"
+        case stickerInfo = "sticky"
     }
+}
+
+class StikerInfo: Decodable {
 }
 
 enum PostType: String {
@@ -147,7 +159,7 @@ class ChangePinOperation: AlamofireAPIAccessOperation {
         guard session.isAdmin else {
             throw GenericAppError("Only admin can pin")
         }
-        return session.addingAuthorizationToken(to: try URLRequest(url: ServiceURLs.base.appendingPathComponent("posts/\(post.id)/pinning"), method: isPinning ? .put : .delete))
+        return session.addingAuthorizationToken(to: try URLRequest(url: ServiceURLs.base.appendingPathComponent("posts/\(post.id)/sticky"), method: isPinning ? .put : .delete))
     }
 }
 

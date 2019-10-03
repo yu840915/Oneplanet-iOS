@@ -546,6 +546,26 @@
                                                 <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="s6A-rP-aSa">
                                                     <rect key="frame" x="0.0" y="492" width="374" height="37"/>
                                                 </pageControl>
+                                                <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eMH-V0-lPm" userLabel="Admin View">
+                                                    <rect key="frame" x="0.0" y="534" width="374" height="0.0"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWN-ww-ILm">
+                                                            <rect key="frame" x="0.0" y="-20" width="40" height="40"/>
+                                                            <state key="normal" image="ic_like_nor"/>
+                                                            <state key="disabled" image="ic_like_tap"/>
+                                                            <state key="selected" image="ic_like_tap"/>
+                                                            <connections>
+                                                                <action selector="invokeLikeAction:" destination="C2V-pE-YM6" eventType="touchUpInside" id="OPP-JN-3Hw"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstItem="CWN-ww-ILm" firstAttribute="leading" secondItem="eMH-V0-lPm" secondAttribute="leading" id="VC7-MQ-Y1V"/>
+                                                        <constraint firstAttribute="height" priority="900" constant="44" id="rvG-OS-sO2"/>
+                                                        <constraint firstItem="CWN-ww-ILm" firstAttribute="centerY" secondItem="eMH-V0-lPm" secondAttribute="centerY" id="wkb-xc-qVd"/>
+                                                    </constraints>
+                                                </view>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Content" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="dJx-dF-4OQ">
                                                     <rect key="frame" x="0.0" y="539" width="374" height="33"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -598,12 +618,14 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="actionButton" destination="jaP-pc-ueI" id="08u-TK-Pf1"/>
+                                    <outlet property="adminView" destination="eMH-V0-lPm" id="QaK-bn-ptb"/>
                                     <outlet property="avatarView" destination="QIt-Ox-D7M" id="rtU-Cg-iui"/>
                                     <outlet property="contentTextView" destination="dJx-dF-4OQ" id="3W8-9K-DbO"/>
                                     <outlet property="dateLabel" destination="Q1C-Po-9oS" id="eDs-SS-UaS"/>
                                     <outlet property="expandedContentTextView" destination="yqN-K9-qio" id="bdQ-7b-ZEg"/>
                                     <outlet property="galleryCollectionView" destination="d3o-no-tRI" id="wSS-5e-Yi0"/>
                                     <outlet property="layoutTextView" destination="P3q-ET-SRu" id="tKy-4k-uCv"/>
+                                    <outlet property="likeButton" destination="CWN-ww-ILm" id="XjE-Zt-uzR"/>
                                     <outlet property="moreActionButton" destination="2LV-Vp-mmr" id="Q5U-P7-HTc"/>
                                     <outlet property="moreButton" destination="qoS-QU-uyV" id="wd6-Aw-0Rt"/>
                                     <outlet property="nameLabel" destination="iyR-sf-rhE" id="jV6-bx-c9h"/>
@@ -1217,8 +1239,10 @@
         <image name="bt_smallwirewhite_nor" width="29" height="28"/>
         <image name="ic_back_nor" width="40" height="40"/>
         <image name="ic_flitertap_tap" width="20" height="20"/>
-        <image name="ic_life_nor" width="64" height="49"/>
-        <image name="ic_life_sel" width="64" height="49"/>
+        <image name="ic_life_nor" width="42" height="42"/>
+        <image name="ic_life_sel" width="42" height="42"/>
+        <image name="ic_like_nor" width="40" height="40"/>
+        <image name="ic_like_tap" width="40" height="40"/>
         <image name="ic_more_nor" width="13" height="3"/>
         <image name="ic_search_nor" width="13" height="13"/>
         <image name="im_120film" width="20" height="160"/>

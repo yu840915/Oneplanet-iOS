@@ -19,7 +19,10 @@ class PushListener {
     
     let pusher: Pusher
     
-    init() {
+    
+    init(session: UserSession) {
+        let builder = AuthRequestBuilder(session: session)
+//        let opt = PusherClientOptions(authMethod: AuthMethod.authRequestBuilder(authRequestBuilder: builder), host: .cluster("ap3"))
         let opt = PusherClientOptions(host: .cluster("ap3"))
         pusher = Pusher(key: PushListener.key, options: opt)
         pusher.connect()
@@ -31,6 +34,34 @@ class PushListener {
     
     deinit {
         pusher.disconnect()
+    }
+}
+
+class AuthRequestBuilder: AuthRequestBuilderProtocol {
+    private weak var session: UserSession?
+    init(session: UserSession) {
+        self.session = session
+    }
+    
+    func requestFor(socketID: String, channelName: String) -> URLRequest? {
+        var req = URLRequest(url: ServiceURLs.base.appendingPathComponent("pusher/auth"))
+        req.httpMethod = "POST"
+        req.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        let info = ChannelInfo(socketID: socketID, channelName: socketID)
+        req.httpBody = try? JSONEncoder().encode(info)
+        return session?.addingAuthorizationToken(to: req)
+    }
+}
+
+extension AuthRequestBuilder {
+    class ChannelInfo: Encodable {
+        let socketID: String
+        let channelName: String
+        
+        init(socketID: String, channelName: String) {
+            self.socketID = socketID
+            self.channelName = channelName
+        }
     }
 }
 

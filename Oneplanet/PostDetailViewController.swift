@@ -162,6 +162,8 @@ class PostDetailViewController: UIViewController, UserSessionDepending {
         if let post = op.post {
             self.post = post
             updateViews(with: post)
+        } else {
+            logger.error("Cannot refresh post, error: \(op.error)")
         }
     }
     

@@ -11,7 +11,7 @@ import ModelBlocks
 import Alamofire
 
 class ProductBidProcessManager {
-    lazy var pushListener: PushListener = PushListener()
+    lazy var pushListener: PushListener = PushListener(session: self.userSession)
     private weak var userSession: UserSession!
     private var processes: [String: ProductBidProcess] = [:]
     var isEnded: Bool {

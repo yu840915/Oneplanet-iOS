@@ -234,6 +234,7 @@
 "no_generic" = "No Items";
 "no_unlocked" = "You have not unlocked any items yet.";
 "no_unlocked_detail" = "Unlock items to participate in the bidding! Go and unlock it!";
+"no_bidding_history" = "You have no bidding History";
 
 "err_no_camera_access" = "Enable Camera Access";
 "err_no_library_access" = "Enable Library Access";

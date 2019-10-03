@@ -234,6 +234,7 @@
 "no_generic" = "No Items";
 "no_unlocked" = "まだ商品をアンロックしていません。";
 "no_unlocked_detail" = "オークションに参加するには商品をアンロックしてください。急いでアンロックしよう！";
+"no_bidding_history" = "入札履歴";
 
 "err_no_camera_access" = "カメラへのリクセルを求めています";
 "err_no_library_access" = "写真をライブラリに追加しようとしています";

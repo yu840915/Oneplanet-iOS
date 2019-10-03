@@ -775,6 +775,9 @@ class EmptyMessages {//no_
     var unlockedDetail: String {
         return NSLocalizedString("no_unlocked_detail", comment: "")
     }
+    var biddingHistory: String {
+        return NSLocalizedString("no_bidding_history", comment: "")
+    }
 }
 
 class LocalizedErrorsTitles {//errtl_

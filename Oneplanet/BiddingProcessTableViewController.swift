@@ -296,7 +296,7 @@ fileprivate extension BiddingProcessTableViewController {
             tableView.tableFooterView = UIView()
         } else {
             let view = CommonViewFactory.shared.makeSimpleEmptyView()
-            view.titleLabel.text = Localized.emptyMessages.unlocked
+            view.titleLabel.text = Localized.emptyMessages.biddingHistory
             view.detailLabel.text = Localized.emptyMessages.unlockedDetail
             if let error = error {
                 view.detailLabel.text = error.localizedDescription

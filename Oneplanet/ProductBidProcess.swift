@@ -331,7 +331,12 @@ class GetMyBidCountOperation: AlamofireAPIAccessOperation {
     }
 
     override func prepareURLRequest() throws -> URLRequest {
-        return userSession.addingAuthorizationToken(to: try URLRequest(url: ServiceURLs.base.appendingPathComponent("bidding/\(product.id)/bidded"), method: .head))
+        var url = ServiceURLs.base.appendingPathComponent("bidding/\(product.id)/bidded")
+        if userSession.isAdmin {
+            url = ServiceURLs.base.appendingPathComponent("admin/bidding/\(product.id)/bidded")
+        }
+
+        return userSession.addingAuthorizationToken(to: try URLRequest(url: url, method: .head))
     }
     
     override func processHTTPResponseHeader(_ header: [AnyHashable : Any]) throws {

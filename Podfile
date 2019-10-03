@@ -6,7 +6,7 @@ target 'Oneplanet' do
   use_frameworks!
 
   pod 'Alamofire', '~> 4.7'
-  pod 'Firebase/Core', '~> 6.9.0'
+  pod 'Firebase/Core', '~> 5.17.0'
   pod 'Crashlytics', '~> 3.12.0'
   pod 'Firebase/Messaging'
   pod 'Firebase/DynamicLinks'

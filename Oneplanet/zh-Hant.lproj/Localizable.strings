@@ -234,6 +234,7 @@
 "no_generic" = "No Items";
 "no_unlocked" = "你還沒解鎖任何商品";
 "no_unlocked_detail" = "解鎖商品就可以參加競標喔！趕緊去解鎖吧！";
+"no_bidding_history" = "你還沒有競標歷程";
 
 "err_no_camera_access" = "啟用相機權限";
 "err_no_library_access" = "啟用圖庫存取權限";

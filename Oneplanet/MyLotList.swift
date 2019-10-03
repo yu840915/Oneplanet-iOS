@@ -52,7 +52,11 @@ class GetMyLotPageOperation: AlamofireAPIAccessOperation, PaginatedFetchingOpera
     private let url: URL
     
     convenience init(session: UserSession) {
-        self.init(session: session, url: ServiceURLs.base.appendingPathComponent("products/unlocks"), isBeginning: true)
+        if session.isAdmin {
+            self.init(session: session, url: ServiceURLs.base.appendingPathComponent("products/all"), isBeginning: true)
+        } else {
+            self.init(session: session, url: ServiceURLs.base.appendingPathComponent("products/unlocks"), isBeginning: true)
+        }
     }
     
     init(session: UserSession, url: URL, isBeginning: Bool) {

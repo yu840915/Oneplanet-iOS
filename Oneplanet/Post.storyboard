@@ -1043,6 +1043,26 @@
                                             <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="DGO-5A-nSh">
                                                 <rect key="frame" x="0.0" y="482" width="374" height="37"/>
                                             </pageControl>
+                                            <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RtG-QA-ycd" userLabel="Admin View">
+                                                <rect key="frame" x="0.0" y="524" width="374" height="0.0"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ii-Wz-Fnx">
+                                                        <rect key="frame" x="0.0" y="-20" width="40" height="40"/>
+                                                        <state key="normal" image="ic_like_nor"/>
+                                                        <state key="disabled" image="ic_like_tap"/>
+                                                        <state key="selected" image="ic_like_tap"/>
+                                                        <connections>
+                                                            <action selector="likePost:" destination="OGY-9S-l3i" eventType="touchUpInside" id="Nrz-Ay-Uey"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="0ii-Wz-Fnx" firstAttribute="centerY" secondItem="RtG-QA-ycd" secondAttribute="centerY" id="KMp-3Z-mqS"/>
+                                                    <constraint firstAttribute="height" priority="900" constant="44" id="Z6t-40-gPi"/>
+                                                    <constraint firstItem="0ii-Wz-Fnx" firstAttribute="leading" secondItem="RtG-QA-ycd" secondAttribute="leading" id="sDA-FU-vLk"/>
+                                                </constraints>
+                                            </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Content" translatesAutoresizingMaskIntoConstraints="NO" id="j5w-IG-QqI">
                                                 <rect key="frame" x="0.0" y="529" width="374" height="33"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1101,11 +1121,13 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="adminView" destination="RtG-QA-ycd" id="Fi9-yg-Bse"/>
                         <outlet property="avatarView" destination="Zpl-VX-XQ0" id="rm3-0S-Qpd"/>
                         <outlet property="contentTextView" destination="j5w-IG-QqI" id="5Vg-Ez-Lv5"/>
                         <outlet property="contentView" destination="9jL-yL-Bn4" id="LVB-sk-9iK"/>
                         <outlet property="dateLabel" destination="2Hc-Hj-oNJ" id="Nda-OX-2hK"/>
                         <outlet property="galleryCollectionView" destination="NTa-Xb-1MK" id="Ot4-zY-FRh"/>
+                        <outlet property="likeButton" destination="0ii-Wz-Fnx" id="h32-Gl-64r"/>
                         <outlet property="moreButtonItem" destination="xRW-a7-bap" id="YD9-Zk-ra8"/>
                         <outlet property="nameLabel" destination="Y7R-28-rOk" id="xmb-g2-1Pl"/>
                         <outlet property="pageControl" destination="DGO-5A-nSh" id="x3L-Uz-lOc"/>
@@ -1266,7 +1288,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="aNy-aY-wjN"/>
-        <segue reference="HoG-Gy-8of"/>
-        <segue reference="IHc-2l-Dfz"/>
+        <segue reference="h1E-Fs-afE"/>
+        <segue reference="H9R-mZ-s12"/>
     </inferredMetricsTieBreakers>
 </document>

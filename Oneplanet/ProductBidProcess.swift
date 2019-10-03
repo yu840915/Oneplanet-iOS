@@ -29,6 +29,11 @@ class ProductBidProcessManager {
         })
     }
     
+    func deactivate() {
+        processes = [:]
+        updateClock = nil
+    }
+    
     private func invokeCheck() {
         processes.forEach{$0.value.checkFinalStateIfNeeded()}
         processes.forEach{$0.value.intervalRefreshNewsIfNeeded()}
@@ -55,6 +60,9 @@ class ProductBidProcess: Equatable {
     
     let product: ProductOverview
     let userSession: UserSession
+    var isAdmin: Bool {
+        return userSession.isAdmin
+    }
     let pushListener: PushListener
     var isInitialized: Bool {
         return news != nil

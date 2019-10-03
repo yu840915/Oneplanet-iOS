@@ -223,6 +223,9 @@ extension BiddingProductCell {
                 runningIndicator.startAnimating()
             }
         }
+        if process.isAdmin {
+            bidButton.isHidden = true
+        }
         color = process.isWinning ? ColorPalette.bidGreen : ColorPalette.bidRed
         if process.leadFetcher != nil {
             avatarView.isHidden = false

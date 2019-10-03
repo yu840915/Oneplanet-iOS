@@ -22,12 +22,17 @@ class PostDetailViewController: UIViewController, UserSessionDepending {
     @IBOutlet weak var reportedPostView: ReportedPostView!
     @IBOutlet weak var scorebarView: ScoreBarView!
     @IBOutlet weak var contentView: UIScrollView!
+    @IBOutlet weak var adminView: UIView!
+    @IBOutlet weak var likeButton: UIButton!
     
     private var galleryDataSource: PostPhotoGalleryDataSource?
     private var deletePostOperation: DeletePostOperation?
     var canShowAuthorProfile = true
     private var hidingUpdateHandle: Any?
-    
+    private var likePostOperation: LikePostOperation?
+    private var changePinOperation: ChangePinOperation?
+    private var getPostOperation: GetPostOperation?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = Localized.titles.photo
@@ -36,11 +41,16 @@ class PostDetailViewController: UIViewController, UserSessionDepending {
         avatarView.action = {[weak self] in
             self?.showProfileForAuthor()
         }
-        updateViews(with: PostCardViewModel(post: post, userSession: userSession))
+        updateViews(with: post)
         hidingUpdateHandle = userSession.hiddenPosts.didUpdateHandlers.add {[weak self] in
             OperationQueue.main.addOperation {
                 self?.updateViewsForIsHidden()
             }
+        }
+        if userSession.isAdmin && post.authorID != userSession.profile?.id {
+            adminView.isHidden = false
+        } else {
+            adminView.isHidden = true
         }
         updateViewsForIsHidden()
     }
@@ -83,12 +93,81 @@ class PostDetailViewController: UIViewController, UserSessionDepending {
                 self.reportPost()
             }))
         }
+        if userSession.isAdmin {
+            let sticky = post.sticky == true
+            if sticky {
+                sheet.addAction(UIAlertAction(title: "Unpin", style: .default, handler: {[weak self] (_) in
+                    self?.unpin()
+                }))
+            } else {
+                sheet.addAction(UIAlertAction(title: "Pin to Top", style: .default, handler: {[weak self] (_) in
+                    self?.pin()
+                }))
+            }
+        }
         sheet.addAction(UIAlertAction(title: Localized.titles.cancel, style: .cancel, handler: nil))
         present(sheet, animated: true, completion: nil)
     }
     
     @IBAction func unhidePost(_ sender: Any) {
         userSession.hiddenPosts.unhide(post)
+    }
+    
+    @IBAction func likePost(_ sender: Any) {
+        guard userSession.isAdmin && !post.liked && likePostOperation == nil else {
+            return
+        }
+        let op = LikePostOperation(post: post, session: userSession)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didLikePost()
+            }
+        }
+        likePostOperation = op
+        op.start()
+    }
+    
+    private func didLikePost() {
+        let op = likePostOperation!
+        likePostOperation = nil
+        if op.success == true {
+            refresh()
+            userSession.notifyPostListUpdate()
+        } else if let error = op.error {
+            showAlert(with: error)
+        }
+    }
+    
+    func showAlert(with error: Error) {
+        let alert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Localized.titles.ok, style: .cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func refresh() {
+        guard getPostOperation == nil else { return }
+        let op = GetPostOperation(postID: post.id, session: userSession)
+        op.completionBlock = {[weak self] in
+            OperationQueue.main.addOperation {
+                self?.didRefresh()
+            }
+        }
+        getPostOperation = op
+        op.start()
+    }
+    
+    func didRefresh() {
+        let op = getPostOperation!
+        getPostOperation = nil
+        if let post = op.post {
+            self.post = post
+            updateViews(with: post)
+        }
+    }
+    
+    func updateViews(with post: Post) {
+        likeButton.isEnabled = !post.liked
+        updateViews(with: PostCardViewModel(post: post, userSession: userSession))
     }
     
     func updateViews(with dataSource: PostDisplayable) {
@@ -152,7 +231,7 @@ private extension PostDetailViewController {
     func handlePostUpdate(_ post: Post?) {
         if let post = post {
             self.post = post
-            updateViews(with: PostCardViewModel(post: post, userSession: userSession))
+            updateViews(with: post)
         }
     }
     
@@ -200,6 +279,39 @@ private extension PostDetailViewController {
     func reportPost() {
         performSegue(withIdentifier: SegueID.showReportFlow, sender: PostReportFlowController(post: post, session: userSession))
     }
+    
+    func changePin() {
+        guard userSession.isAdmin else {return}
+    }
+    
+    func pin() {
+        changePin(true)
+    }
+    
+    func unpin() {
+        changePin(false)
+    }
+    
+    func changePin(_ isPinning: Bool) {
+        guard userSession.isAdmin && changePinOperation == nil else { return }
+        let op = ChangePinOperation(post: post, session: userSession, isPinning: isPinning)
+        op.completionBlock = {[weak self] in
+            self?.didChangePin()
+        }
+        changePinOperation = op
+        op.start()
+    }
+    
+    func didChangePin() {
+        let op = changePinOperation!
+        changePinOperation = nil
+        if op.success == true {
+            refresh()
+            userSession.notifyPostListUpdate()
+        } else if let error = op.error {
+            showAlert(with: error)
+        }
+    }
 }
 
 extension PostDetailViewController {
@@ -221,5 +333,24 @@ class ReportedPostView: UIStackView {
         mainLabel.text = Localized.phrases.thanksForReportingPost
         detailLabel.text = Localized.messages.thanksForReportingPost
         showPostButton.setTitle(Localized.phrases.showPost, for: .normal)
+    }
+}
+
+class GetPostOperation: AlamofireAPIAccessOperation {
+    let postID: String
+    let session: UserSession
+    private(set) var post: Post?
+    
+    init(postID: String, session: UserSession) {
+        self.postID = postID
+        self.session = session
+    }
+    
+    override func prepareURLRequest() throws -> URLRequest {
+        return session.addingAuthorizationToken(to: URLRequest(url: ServiceURLs.base.appendingPathComponent("posts/\(postID)")))
+    }
+    
+    override func processData(with data: Data) throws {
+        post = try JSONDecoder.default.decode(Post.self, from: data)
     }
 }

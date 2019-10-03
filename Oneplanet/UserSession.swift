@@ -153,6 +153,7 @@ class UserSession {
         updateProfileOperation = nil
         submitPushTokenOperation?.cancel()
         sessionBecomeInactiveObservers.invokeEach{$0()}
+        bidProcessManager.deactivate()
     }
     
     func broadcastPostPublish(_ post: Post?) {

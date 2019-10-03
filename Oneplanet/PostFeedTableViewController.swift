@@ -351,6 +351,7 @@ private extension PostFeedTableViewController {
         let op = likePostOperation!
         likePostOperation = nil
         if op.success == true {
+            postList.reload()
             likedPosts.insert(op.post.id)
         } else if let error = op.error {
             showAlert(with: error)

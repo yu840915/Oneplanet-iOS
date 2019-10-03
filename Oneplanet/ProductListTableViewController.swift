@@ -233,6 +233,10 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
         let product = productOverviews[indexPath.row]
         cell.updateViews(with: product)
         cell.isLocked = userSession.lotList.isLocked(product)
+        if userSession.isAdmin {
+            cell.lockLabel.isHidden = true
+            cell.lockButton.isHidden = true
+        }
     }
     
     private func configureBiddingCell(_ cell: BiddingProductCell, at indexPath: IndexPath) {

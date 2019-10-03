@@ -138,7 +138,7 @@ class ProductBidProcess: Equatable {
     }
 
     private func prepareChannel() {
-        let channel = pushListener.subscribeChannel(ofName: product.id)
+        let channel = pushListener.subscribeChannel(ofName: "private-" + product.id)
         chennelID = channel.addEventHandler(for: "bid") {[weak self] (data) in
             OperationQueue.main.addOperation {
                 self?.handleBidEvent(data)

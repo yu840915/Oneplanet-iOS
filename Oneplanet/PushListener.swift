@@ -12,6 +12,7 @@ import ModelBlocks
 
 class PushListener {
     #if DEBUG
+//    static let key = "85ab0484af04d39e9d3b"
     static let key = "72a9204d5eb8a13b6fa2"
     #else
     static let key = "85ab0484af04d39e9d3b"
@@ -19,11 +20,9 @@ class PushListener {
     
     let pusher: Pusher
     
-    
     init(session: UserSession) {
         let builder = AuthRequestBuilder(session: session)
-//        let opt = PusherClientOptions(authMethod: AuthMethod.authRequestBuilder(authRequestBuilder: builder), host: .cluster("ap3"))
-        let opt = PusherClientOptions(host: .cluster("ap3"))
+        let opt = PusherClientOptions(authMethod: AuthMethod.authRequestBuilder(authRequestBuilder: builder), host: .cluster("ap3"))
         pusher = Pusher(key: PushListener.key, options: opt)
         pusher.connect()
     }
@@ -47,7 +46,7 @@ class AuthRequestBuilder: AuthRequestBuilderProtocol {
         var req = URLRequest(url: ServiceURLs.base.appendingPathComponent("pusher/auth"))
         req.httpMethod = "POST"
         req.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        let info = ChannelInfo(socketID: socketID, channelName: socketID)
+        let info = ChannelInfo(socketID: socketID, channelName: channelName)
         req.httpBody = try? JSONEncoder().encode(info)
         return session?.addingAuthorizationToken(to: req)
     }

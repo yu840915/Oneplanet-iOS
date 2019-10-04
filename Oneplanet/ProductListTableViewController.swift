@@ -172,7 +172,7 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
     }
     
     func setWantsTutorial() {
-        if userSession.isAdmin { return }
+        if userSession?.isAdmin == true { return }
         wantsTutorial = true
     }
 

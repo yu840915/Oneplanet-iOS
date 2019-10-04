@@ -41,6 +41,13 @@ class PreflightCheckFlowViewController: UIViewController, UserSessionDepending {
         navigationController!.navigationBar.barStyle = .blackTranslucent
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if !userSession.isActive {
+            dismiss(animated: false, completion: nil)
+        }
+    }
+    
     private func updateViewsForRunningOperations() {
         let isRunning = getProfileOperation != nil || getBidSessionTimeframeOperation != nil
         loadingIndicator.isHidden = !isRunning

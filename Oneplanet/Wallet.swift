@@ -87,9 +87,7 @@ class Balance {
     private(set) var isInitialized = false
     private(set) var total: Int = 0 {
         didSet {
-            if oldValue != total {
-                updateHandler?()
-            }
+            updateHandler?()
         }
     }
     private(set) var needsRefresh = false

@@ -61,7 +61,9 @@ class ProfileDraft {
     
     func validate() throws {
         try validateField(.username, input: username, validator: usernameValidator)
-        try validateField(.nickname, input: nickname, validator: nicknameValidator)
+        if !isAdmin {
+            try validateField(.nickname, input: nickname, validator: nicknameValidator)
+        }
     }
     
     private func validateField(_ field: Field, input: String, validator: TextInputValidator) throws {
@@ -81,14 +83,14 @@ class ProfileDraft {
         }
     }
     
-    init() {}
-    
     init(profile: MyProfile) {
         nickname = profile.nickname
         username = profile.username
         gender = profile.gender
         alien = profile.alien
+        isAdmin = profile.isAdmin
     }
+    let isAdmin: Bool
     
     enum Field {
         case username, nickname

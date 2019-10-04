@@ -53,7 +53,7 @@ class GetMyLotPageOperation: AlamofireAPIAccessOperation, PaginatedFetchingOpera
     
     convenience init(session: UserSession) {
         if session.isAdmin {
-            self.init(session: session, url: ServiceURLs.base.appendingPathComponent("products"), isBeginning: true)
+            self.init(session: session, url: ServiceURLs.base.appendingPathComponent("products/category/all"), isBeginning: true)
         } else {
             self.init(session: session, url: ServiceURLs.base.appendingPathComponent("products/unlocks"), isBeginning: true)
         }

@@ -67,7 +67,9 @@ class HotHeaderCollectionViewController: UICollectionViewController, UserSession
     }
 
     private func autoScrollToNextPage() {
-        let currentIdx = collectionView.indexPathsForVisibleItems.first!
+        guard let currentIdx = collectionView.indexPathsForVisibleItems.first else {
+            return
+        }
         guard sections[currentIdx.section] == .body else { return }
         let nextRow = currentIdx.row.advanced(by: 1)
         let isAtEnd = items.count == nextRow

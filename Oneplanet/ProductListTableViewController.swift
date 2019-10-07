@@ -86,10 +86,11 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
             return
         }
         if plan.unlock,
-            let indexPath = tableView.indexPathsForVisibleRows?.first(where: { sections[$0.section] == .productList }),
-            let cell = tableView.cellForRow(at: indexPath) as? ProductOverviewCell {
-            tutorialPlan = nil
-            cell.showTutorial()
+            tableView.indexPathsForVisibleRows?.first(where: { sections[$0.section] == .productList }) != nil,
+            let index = sections.firstIndex(where: {$0 == .productList}),
+            let header = tableView.headerView(forSection: index) as? ProductListHeader {
+                tutorialPlan = nil
+                header.showUnlockTutorial()
         } else if plan.bid,
             let index = sections.firstIndex(where: {$0 == .bidList}),
             let header = tableView.headerView(forSection: index) as? BiddingListHeader {
@@ -316,13 +317,6 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
             if isLast {
                 categoryList?.loadMoreIfAllowed()
             }
-            if let plan = tutorialPlan, plan.unlock,
-                let productCell = cell as? ProductOverviewCell {
-                tutorialPlan = nil
-                OperationQueue.main.addOperation {
-                    productCell.showTutorial()
-                }
-            }
         case .bidList:
             let isLast = indexPath.row == (sortedLots.count - 1)
             if isLast {
@@ -344,6 +338,14 @@ class ProductListTableViewController: UITableViewController, DefaultInstanceFact
                 }
             }
         case .productList:
+            if let plan = tutorialPlan,
+                plan.unlock && !productOverviews.isEmpty,
+                let header = view as? ProductListHeader {
+                tutorialPlan = nil
+                OperationQueue.main.addOperation {
+                    header.showUnlockTutorial()
+                }
+            }
             if let plan = tutorialPlan, plan.waitForBid,
                 let header = view as? ProductListHeader {
                 tutorialPlan = nil

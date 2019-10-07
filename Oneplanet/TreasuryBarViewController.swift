@@ -73,7 +73,7 @@ class TreasuryBarViewController: UIViewController, UserSessionDepending {
             plan.blueGem = new.blueGem != old.blueGem
             plan.greenGem = new.greenGem != old.greenGem
             plan.purpleGem = new.purpleGem != old.purpleGem
-            plan.scoreBar = (new.score != old.score) || new.blueGem > old.blueGem
+            plan.scoreBar = new.score != old.score
             animationPlan = plan
         } else {
             visibleScorebarWidth.constant = scoreProgress * scorebarContainer.frame.width

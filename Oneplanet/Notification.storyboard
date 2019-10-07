@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="omY-to-dGY">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="omY-to-dGY">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -54,10 +52,10 @@
                                             </constraints>
                                         </view>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="X9B-BV-QFZ">
-                                            <rect key="frame" x="10" y="15" width="388" height="50"/>
+                                            <rect key="frame" x="10" y="12" width="388" height="56"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K0f-1e-Rwe">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <rect key="frame" x="0.0" y="3" width="50" height="50"/>
                                                     <subviews>
                                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yPA-bc-JMg" userLabel="Avatar View" customClass="AvatarView" customModule="Oneplanet" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -103,15 +101,15 @@
                                                     </constraints>
                                                 </view>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="N0y-AV-top">
-                                                    <rect key="frame" x="60" y="7.5" width="218" height="35.5"/>
+                                                    <rect key="frame" x="60" y="10.5" width="218" height="35.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1b-Yd-Twa" userLabel="Message Label">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1b-Yd-Twa" userLabel="Message Label">
                                                             <rect key="frame" x="0.0" y="0.0" width="218" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" name="default text"/>
                                                             <color key="highlightedColor" name="default text"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AWi-Wq-wTK" userLabel="Time Label">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AWi-Wq-wTK" userLabel="Time Label">
                                                             <rect key="frame" x="0.0" y="21" width="218" height="14.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" name="default placeholder"/>
@@ -120,7 +118,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6z8-rQ-9eq" userLabel="Action Button">
-                                                    <rect key="frame" x="288" y="11" width="100" height="28"/>
+                                                    <rect key="frame" x="288" y="0.0" width="100" height="56"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" priority="900" constant="100" id="b1e-4o-Px4"/>
                                                     </constraints>
@@ -185,7 +183,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_warning_nor" translatesAutoresizingMaskIntoConstraints="NO" id="LWW-sc-q09">
-                                                            <rect key="frame" x="13" y="13" width="20" height="20"/>
+                                                            <rect key="frame" x="3" y="3" width="40" height="40"/>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -300,7 +298,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Q3Q-Kr-ldT">
             <objects>
-                <navigationController id="obF-FO-Ffd" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="fullScreen" id="obF-FO-Ffd" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cai-aa-QgY">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -328,8 +326,8 @@
         <image name="bt_smallgreen_nor" width="29" height="28"/>
         <image name="bt_smallwiregray_nor" width="29" height="28"/>
         <image name="bt_smallwirewhite_nor" width="29" height="28"/>
-        <image name="ic_notice_nor" width="64" height="49"/>
-        <image name="ic_notice_sel" width="64" height="49"/>
+        <image name="ic_notice_nor" width="42" height="42"/>
+        <image name="ic_notice_sel" width="42" height="42"/>
         <image name="ic_warning_nor" width="20" height="20"/>
         <image name="im_userphotodefault_nor" width="179" height="179"/>
         <namedColor name="black background">

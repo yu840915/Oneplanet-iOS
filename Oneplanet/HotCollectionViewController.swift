@@ -14,12 +14,6 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
     var userSession: UserSession!
     var needsUpdateTabar = true
     private var headerController: HotHeaderCollectionViewController?
-    private var hidingSignalProducer: TabbarHidingSignalProducer?
-    var expectedTabbarFrame: CGRect = .zero
-    var expectedBalloonStringFrame: CGRect = .zero
-    var balloonTransform: CGAffineTransform {
-        return .init(translationX: .zero, y: -StatusBarFrameObserver.shared.extraBarHeight)
-    }
     var hotList: HotItemList!
     var bannerList: BannerItemList!
     var updateHandles: [Any]?
@@ -70,27 +64,10 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let producer = TabbarHidingSignalProducer(scrollView: collectionView, halfHidingInterval: (expectedTabbarFrame.height + 20))
-        producer.hidingFactorDidChange = {[weak self] in
-            self?.moveTabbar()
-        }
-        producer.animateFactorChange = {[weak self] in
-            self?.animateTabbar()
-        }
-        hidingSignalProducer = producer
-        if expectedBalloonStringFrame == .zero {
-            expectedBalloonStringFrame = balloonString.frame
-        } else {
-            animateTabbar()
-        }
-        statusBarHandle = StatusBarFrameObserver.shared.statusBarHeightChangeObserverse.add {[weak self] in
-            self?.animateTabbar()
-        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        hidingSignalProducer = nil
         statusBarHandle = nil
         isVisible = false
     }
@@ -109,43 +86,6 @@ class HotCollectionViewController: UICollectionViewController, UserSessionDepend
             refresh()
         } else {
             needsRefresh = true
-        }
-    }
-    
-    private func moveTabbar() {
-        guard let producer = hidingSignalProducer,
-            let tabbar = tabBarController?.tabBar else {
-            return
-        }
-        var frame = expectedTabbarFrame
-        var balloonFrame = expectedBalloonStringFrame
-        frame.origin.y += producer.hidingFactor * (frame.height + 20)
-        balloonFrame.size.height += producer.hidingFactor * (frame.height + 20)
-        tabbar.frame = frame.applying(balloonTransform)
-        balloonString.frame = balloonFrame.applying(balloonTransform)
-    }
-    
-    private func animateTabbar() {
-        guard let producer = hidingSignalProducer,
-            let tabbar = tabBarController?.tabBar else {
-                return
-        }
-        var frame = expectedTabbarFrame
-        var balloonFrame = expectedBalloonStringFrame
-        frame.origin.y += producer.hidingFactor * (frame.height + 20)
-        balloonFrame.size.height += producer.hidingFactor * (frame.height + 20)
-        UIView.animate(withDuration: 0.15) {
-            tabbar.frame = frame.applying(self.balloonTransform)
-            self.balloonString.frame = balloonFrame.applying(self.balloonTransform)
-        }
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        if expectedTabbarFrame == .zero {
-            let rect = tabBarController!.tabBar.frame
-            expectedTabbarFrame = CGRect(x: 0, y: rect.origin.y - 20, width: rect.width, height: rect.height + 20)
-            tabBarController!.tabBar.frame = expectedTabbarFrame
         }
     }
     

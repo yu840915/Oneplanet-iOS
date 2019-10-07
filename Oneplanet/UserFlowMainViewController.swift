@@ -132,13 +132,11 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
         let imageView = UIImageView(image: #imageLiteral(resourceName: "im_tabbar_nor"))
         var frame = imageView.frame
         frame.size.width = UIScreen.main.bounds.width
-        frame.origin.y = 20
         imageView.frame = frame
         contentTabbarController.tabBar.addSubview(imageView)
         contentTabbarController.tabBar.sendSubviewToBack(imageView)
         let hot = contentTabbarController.viewControllers?.compactMap{$0 as? UINavigationController}.compactMap{$0.viewControllers.first as? HotCollectionViewController}.first
         hotPageController = hot
-        hot?.balloonString = balloonString
     }
     
     override func viewDidLayoutSubviews() {
@@ -166,9 +164,6 @@ class UserFlowMainViewController: UIViewController, UserSessionDepending, Defaul
         router.resume()
         if balloonNavigationCoordinator == nil {
             handleTabbarSwitch()
-        }
-        statusBarHandle = StatusBarFrameObserver.shared.statusBarHeightChangeObserverse.add {[weak self] in
-            self?.handleStatusBarChange()
         }
     }
     
@@ -395,20 +390,9 @@ fileprivate extension UserFlowMainViewController {
     func updateBalloonAppearance() {
         let showingBid = TabFeature.list[contentTabbarController.selectedIndex] == .bid
         let canShowWithNav = balloonNavigationCoordinator?.canShowBalloon ?? true
-        if canShowWithNav {
-            OperationQueue.main.addOperation {
-                self.adjustTabBarFrame()
-            }
-        }
         [balloonButton, balloonString].forEach{$0?.isHidden = showingBid || !canShowWithNav}
     }
-    
-    func adjustTabBarFrame() {
-        let hot = contentTabbarController.viewControllers!.compactMap{$0 as? UINavigationController}.compactMap{$0.viewControllers.first as? HotCollectionViewController}.first!
-        contentTabbarController.tabBar.frame = hot.expectedTabbarFrame.applying(hot.balloonTransform)
-        balloonString.frame = hot.expectedBalloonStringFrame.applying(hot.balloonTransform)
-    }
-    
+       
     func showCategoryList(with query: String) {
         switchToTab(.bid)
         auctionController.showCategoryList(with: query)

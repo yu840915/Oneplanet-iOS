@@ -217,7 +217,7 @@
                                                 <rect key="frame" x="20" y="0.0" width="335" height="77"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="1000" image="ic_warning_nor" translatesAutoresizingMaskIntoConstraints="NO" id="QCk-Rs-Dit">
-                                                        <rect key="frame" x="147.5" y="0.0" width="40" height="0.0"/>
+                                                        <rect key="frame" x="157.5" y="0.0" width="20" height="0.0"/>
                                                     </imageView>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bmV-4S-81q">
                                                         <rect key="frame" x="47.5" y="6" width="240" height="4"/>
@@ -278,7 +278,7 @@
                                         <rect key="frame" x="0.0" y="100" width="375" height="375"/>
                                         <subviews>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IhM-tx-4f6" userLabel="Action Button">
-                                                <rect key="frame" x="21" y="10" width="82" height="56"/>
+                                                <rect key="frame" x="21" y="10" width="82" height="28"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                 <inset key="contentEdgeInsets" minX="18" minY="0.0" maxX="18" maxY="0.0"/>
                                                 <state key="normal" title="Button" backgroundImage="bt_smallgreen_nor">
@@ -290,7 +290,7 @@
                                                 </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="im_alien_none0" translatesAutoresizingMaskIntoConstraints="NO" id="jAJ-tK-o1l" userLabel="Race Image View">
-                                                <rect key="frame" x="-187.5" y="0.0" width="750" height="375"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="375"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </imageView>
                                         </subviews>
@@ -515,16 +515,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ht-M8-fZo">
-                                            <rect key="frame" x="88" y="-20.5" width="160" height="201"/>
+                                            <rect key="frame" x="119" y="20" width="98" height="120.5"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="s4x-uw-9U1">
-                                                    <rect key="frame" x="0.0" y="0.0" width="160" height="201"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="98" height="120.5"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" ambiguous="YES" image="ui_nopic_nor" translatesAutoresizingMaskIntoConstraints="NO" id="pZ5-MO-eLB">
-                                                            <rect key="frame" x="0.0" y="0.0" width="160" height="160.5"/>
+                                                            <rect key="frame" x="9" y="0.0" width="80" height="80"/>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" ambiguous="YES" text="No Posts Yet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qrb-bB-BTh">
-                                                            <rect key="frame" x="31" y="180.5" width="98" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="100" width="98" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" name="default text"/>
                                                             <nil key="highlightedColor"/>
@@ -605,7 +605,7 @@
             <objects>
                 <tableViewController id="7FN-v5-bgi" customClass="SettingsTableViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="44" sectionFooterHeight="28" id="xoJ-W4-cGa">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="black background"/>
                         <inset key="separatorInset" minX="26" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -691,7 +691,7 @@
             <objects>
                 <tableViewController id="L0a-wa-f85" customClass="ProfileEditorTableViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="sD1-YI-Ahi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="black background"/>
                         <gestureRecognizers/>
@@ -1086,7 +1086,7 @@
             <objects>
                 <tableViewController id="6Dr-pj-fYY" customClass="BlockListTableViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="W8E-l4-jxI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="black background"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="S4V-Pd-UXd">
@@ -1169,7 +1169,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ObD-Gr-Fwb" userLabel="Action Button">
-                                                    <rect key="frame" x="349" y="7" width="0.0" height="56"/>
+                                                    <rect key="frame" x="349" y="21" width="0.0" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" priority="900" constant="100" id="5IB-tO-LAC"/>
                                                     </constraints>
@@ -1252,9 +1252,9 @@
         <!--Navigation Controller-->
         <scene sceneID="dUf-Bg-thQ">
             <objects>
-                <navigationController id="MFV-ro-C8x" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="fullScreen" id="MFV-ro-C8x" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="yHi-WP-DnS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1353,7 +1353,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xrW-Sa-bha" userLabel="Action Button">
-                                                    <rect key="frame" x="349" y="7" width="0.0" height="56"/>
+                                                    <rect key="frame" x="349" y="21" width="0.0" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" priority="900" constant="100" id="lSz-fY-Mfb"/>
                                                     </constraints>
@@ -1468,7 +1468,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="FuL-Z3-vy1">
-                                <rect key="frame" x="0.0" y="15" width="375" height="302.5"/>
+                                <rect key="frame" x="0.0" y="15" width="375" height="261.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mGr-eH-pux">
                                         <rect key="frame" x="16" y="0.0" width="343" height="17"/>
@@ -1489,7 +1489,7 @@
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="lln-2N-YsO">
-                                        <rect key="frame" x="20" y="49.5" width="335" height="253"/>
+                                        <rect key="frame" x="20" y="49.5" width="335" height="212"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3E-g5-9Oy" userLabel="Content Label">
                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="17"/>
@@ -1536,7 +1536,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kT7-jk-cR0" userLabel="Submit Button">
-                                                <rect key="frame" x="0.0" y="171" width="335" height="82"/>
+                                                <rect key="frame" x="0.0" y="171" width="335" height="41"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                 <state key="normal" title="Next" backgroundImage="bt_bigred_nor">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

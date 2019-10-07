@@ -25,7 +25,14 @@ class DefaultStyleConfiguration {
         UITabBarItem.appearance()
             .setTitleTextAttributes([.foregroundColor : ColorPalette.defaultText, .font: UIFont.systemFont(ofSize: 10, weight: .semibold), .shadow: highlightedShadow],
                                     for: .selected)
-        UITabBar.appearance().shadowImage = UIImage()
+        if #available(iOS 13.0, *) {
+            UITabBar.appearance().standardAppearance.shadowColor = .clear
+            UITabBar.appearance().standardAppearance.shadowImage = UIImage()
+            UITabBarItem.appearance()
+            
+        } else {
+            UITabBar.appearance().shadowImage = UIImage()
+        }
         UINavigationBar.appearance().backIndicatorImage = UIImage(named: "ic_back_nor")
         UINavigationBar.appearance().backIndicatorTransitionMaskImage = UIImage(named: "ic_back_nor")
     }

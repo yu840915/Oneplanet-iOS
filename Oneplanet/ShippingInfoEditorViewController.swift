@@ -149,6 +149,7 @@ fileprivate extension ShippingInfoEditorViewController {
     
     func localizeTitles() {
         title = Localized.phrases.shippingInfo
+        informationLabel.text = Localized.messages.shippingInfoDescription
         exitButtonItem.title = Localized.titles.cancel
         submitButton.setTitle(Localized.titles.ok, for: .normal)
         emailFieldBlock.title = Localized.shippingInfoTerms.email

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nIr-Ca-Nry">
-    <device id="retina4_0" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nIr-Ca-Nry">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,9 +12,9 @@
         <!--Navigation Controller-->
         <scene sceneID="hkn-6Y-56G">
             <objects>
-                <navigationController id="nIr-Ca-Nry" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="fullScreen" id="nIr-Ca-Nry" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jGq-7T-kg7">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
@@ -138,9 +136,9 @@
         <!--Navigation Controller-->
         <scene sceneID="n9i-ao-YDx">
             <objects>
-                <navigationController storyboardIdentifier="WelcomePageEntry" id="mRy-zb-ayP" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="WelcomePageEntry" modalPresentationStyle="fullScreen" id="mRy-zb-ayP" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="O9d-Lz-EGZ">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
@@ -172,7 +170,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="NtM-nd-hoI">
-                                <rect key="frame" x="36" y="112" width="248" height="276.5"/>
+                                <rect key="frame" x="36" y="92" width="248" height="276.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_logotext" translatesAutoresizingMaskIntoConstraints="NO" id="UWx-Ss-6Oa">
                                         <rect key="frame" x="0.0" y="0.0" width="248" height="33"/>
@@ -406,7 +404,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="5eC-lM-byT">
-                                <rect key="frame" x="60" y="124" width="200" height="307.5"/>
+                                <rect key="frame" x="60" y="104" width="200" height="307.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The email has been sent. Please click the link in the email to complete the registration process." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nqo-3f-tpr" userLabel="Message Label">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="172"/>
@@ -496,6 +494,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="aed-ZJ-r1z"/>
-        <segue reference="WL2-xg-ZCo"/>
+        <segue reference="cDA-Cr-QNR"/>
     </inferredMetricsTieBreakers>
 </document>

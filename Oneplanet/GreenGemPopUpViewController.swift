@@ -30,6 +30,9 @@ class GreenGemPopUpViewController: UIViewController {
     private func localizeTitles() {
         nameLabel.text = Localized.titles.greenGem
         usageLabel.text = Localized.gemStonePopUp.greenGemUsage
+        bulletTextView1.font = UIFont.systemFont(ofSize: 12)
+        bulletTextView2.font = UIFont.systemFont(ofSize: 12)
+        bulletTextView3.font = UIFont.systemFont(ofSize: 12)
         bulletTextView1.text = String(format: Localized.gemStonePopUp.greenGemBullet1, Localized.titles.greenGem)
         bulletTextView2.text = Localized.gemStonePopUp.greenGemBullet2
         bulletTextView3.text = Localized.gemStonePopUp.greenGemBullet3

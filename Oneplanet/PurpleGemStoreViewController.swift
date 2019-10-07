@@ -32,6 +32,7 @@ class PurpleGemStoreViewController: UIViewController, UserSessionDepending {
     private func localizeTitles() {
         nameLabel.text = Localized.titles.purpleGem
         usageLabel.text = Localized.gemStonePopUp.purpleGemUsage
+        bulletTextView1.font = UIFont.systemFont(ofSize: 12)
         bulletTextView1.text = Localized.gemStonePopUp.purpleGemBullet1
         prepareActionBullet()
     }

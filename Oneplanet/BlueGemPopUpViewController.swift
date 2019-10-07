@@ -34,6 +34,8 @@ class BlueGemPopUpViewController: UIViewController {
             let formatter = IAPTransactionProcessor.shared.prefetchedProducts.priceFormatter {
             price = formatter.string(for: prodcut.price) ?? ""
         }
+        bulletTextView1.font = UIFont.systemFont(ofSize: 12)
+        bulletTextView2.font = UIFont.systemFont(ofSize: 12)
         bulletTextView1.text = String(format: Localized.gemStonePopUp.blueGemBullet1, Localized.titles.blueGem, price)
         bulletTextView2.text = String(format: Localized.gemStonePopUp.blueGemBullet2, Localized.titles.blueGem)
         goButton.setTitle(Localized.gemStonePopUp.blueGemAction, for: .normal)

@@ -203,6 +203,13 @@ class PostFeedTableViewController: UITableViewController, DefaultInstanceFactory
             (cell as! LoadingCell).activityIndicator.startAnimating()
         }
     }
+    
+    override func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        guard sections[indexPath.section] == .content &&            !userSession.hiddenPosts.isHidden(posts[indexPath.row]) else {
+            return false
+        }
+        return true
+    }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard sections[indexPath.section] == .content &&

@@ -257,6 +257,13 @@ class ScoreBarView: UIView {
         super.awakeFromNib()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if scoreBarVisibleLength.constant != CGFloat(value) * bounds.width {
+            updateScoreBarVisibleLength()
+        }
+    }
+    
     var value: Float = 0 {
         didSet {
             value = .maximum(0, .minimum(1, value))

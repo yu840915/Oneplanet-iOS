@@ -64,7 +64,9 @@ class EmailVerificationViewController: UIViewController, EmailAuthFlowStep {
         guard resendEmailOperation == nil else { return }
         let op = SendEmailLinkOperation(email: emailAuthCredential.email)
         op.completionBlock = {[weak self] in
-            self?.didResendEmail()
+            OperationQueue.main.addOperation {
+                self?.didResendEmail()
+            }
         }
         resendEmailOperation = op
         op.start()

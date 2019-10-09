@@ -490,11 +490,15 @@
                                 </constraints>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="C9u-a5-KxZ">
-                                <rect key="frame" x="44" y="14" width="319" height="56"/>
+                                <rect key="frame" x="44" y="28" width="319" height="28"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="900" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wVJ-lV-SXm" userLabel="Blue Gem Button">
-                                        <rect key="frame" x="0.0" y="0.0" width="101" height="56"/>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="900" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="wVJ-lV-SXm" userLabel="Blue Gem Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="101" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="9lv-Ua-HdY"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="DS-Digital-Bold" family="DS-Digital" pointSize="20"/>
+                                        <inset key="titleEdgeInsets" minX="-3" minY="0.0" maxX="-3" maxY="0.0"/>
                                         <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="0000" image="ic_gem_nor">
                                             <color key="titleColor" name="blue gem"/>
@@ -503,9 +507,13 @@
                                             <segue destination="2Sp-TV-Ej7" kind="presentation" identifier="showBlueGemPopUP" id="Vig-IT-DEU"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="900" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I92-QH-Ey3" userLabel="Purple Gem Button">
-                                        <rect key="frame" x="109" y="0.0" width="101" height="56"/>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="900" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="I92-QH-Ey3" userLabel="Purple Gem Button">
+                                        <rect key="frame" x="109" y="0.0" width="101" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="deS-r0-KRp"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="DS-Digital-Bold" family="DS-Digital" pointSize="20"/>
+                                        <inset key="titleEdgeInsets" minX="-3" minY="0.0" maxX="-3" maxY="0.0"/>
                                         <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="0000" image="ic_coin_nor">
                                             <color key="titleColor" name="purple coin"/>
@@ -514,9 +522,13 @@
                                             <segue destination="IJt-xM-ud5" kind="presentation" identifier="showPurpleGemPopUP" id="W4h-UX-Ans"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="900" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PWD-vp-jYx" userLabel="Greeen Gem Button">
-                                        <rect key="frame" x="218" y="0.0" width="101" height="56"/>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="900" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="PWD-vp-jYx" userLabel="Greeen Gem Button">
+                                        <rect key="frame" x="218" y="0.0" width="101" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="qiP-bc-adI"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" name="DS-Digital-Bold" family="DS-Digital" pointSize="20"/>
+                                        <inset key="titleEdgeInsets" minX="-3" minY="0.0" maxX="-3" maxY="0.0"/>
                                         <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" title="0000" image="ic_key_nor">
                                             <color key="titleColor" name="green key"/>

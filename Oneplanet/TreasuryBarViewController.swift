@@ -59,10 +59,6 @@ class TreasuryBarViewController: UIViewController, UserSessionDepending {
         handleWalletUpdate()
     }
     
-    func setNeedHandleWalletUpdate() {
-        
-    }
-    
     private func handleWalletUpdate() {
         let wallet = userSession.wallet!
         let new = BalanceSnapshot(blueGem: wallet.blueGem.total, purpleGem: wallet.purpleGem.total, greenGem: wallet.greenGem.total, score: wallet.score.total)

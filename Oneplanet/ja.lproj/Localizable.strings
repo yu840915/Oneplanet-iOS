@@ -264,23 +264,21 @@
 "act_bigging_ended" = "オークションが終了しました！";
 "act_countdown" = "オークション カウントダウン...";
 
-"pop_blue_gem_usage" = "使いみち：商品のアンロック、入札。";
+"pop_blue_gem_usage" = "使いみち：商品のアンロック。";
 "pop_green_gem_usage" = "使いみち：商品のアンロック。";
-"pop_purple_gem_usage" = "使いみち：商品のアンロック、高効率の商品入札。";
+"pop_purple_gem_usage" = "使いみち：高効率の商品入札。";
 
 "pop_blue_gem_action" = "写真をアップロードします";
 "pop_green_gem_action" = "%@へ";
 
-"pop_blue_gem_bullet1" = "%@＋%@を1コ使用したら、商品をアンロックすること、または商品への入札することができます。";
+"pop_blue_gem_bullet1" = "%@＋%@を1コ使うことで、商品をアンロックできます。";
 "pop_blue_gem_bullet2" = "獲得方法：写真をアップロードして評価されて経験値が満タンになると即に%@を1コ獲得します。";
-"pop_blue_gem_bullet3" = "%@を%@にアップグレードすることは、入札時の効率に、またクレジットカード又はキャリア決済の支払問題の減少に役立ちます。";
 
 "pop_green_gem_bullet1" = "%@を1コ使用したら、直接に商品をアンロックできます。";
 "pop_green_gem_bullet2" = "獲得方法1：Supreme.AIがあなたの写真にLIKEされます。";
 "pop_green_gem_bullet3" = "獲得方法2：イベントに合わせて贈ります。";
 
-"pop_purple_gem_bullet1" = "ルビッドを1コ使用したら、直接に商品へのアンロック、または入札することが一回できます。（高効率入札に達するため、商品への入札に使用のがお勧め。）";
-"pop_purple_gem_bullet2" = "ルビッドは%@のアップグレードバージョン。入札時の効率に、またクレジットカード又はキャリア決済の支払問題の減少に役立ちます。";
+"pop_purple_gem_bullet1" = "ルビッド 1コを使うことで、直接に一回入札することができます。";
 
 "pop_post_suspended" = "回数制限が切れました";
 "pop_cooldown_time" = "待ち時間 (%@)";

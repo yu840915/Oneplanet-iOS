@@ -264,23 +264,21 @@
 "act_bigging_ended" = "竞标结束！";
 "act_countdown" = "竞标倒数...";
 
-"pop_blue_gem_usage" = "用途：解锁商品、投标商品。";
+"pop_blue_gem_usage" = "用途：解锁商品。";
 "pop_green_gem_usage" = "用途：解锁商品。";
-"pop_purple_gem_usage" = "用途：解锁商品、高效率投标商品。";
+"pop_purple_gem_usage" = "用途：高效率投标商品。";
 
 "pop_blue_gem_action" = "立即前往 上传照片";
 "pop_green_gem_action" = "前往%@";
 
-"pop_blue_gem_bullet1" = "使用一颗 %@ + %@，可以解锁一件商品或投标一次。";
+"pop_blue_gem_bullet1" = "使用一颗 %@ + %@，可以解锁一件商品。";
 "pop_blue_gem_bullet2" = "获得方式：上传照片评分获得经验值，当经验值满格即获得一颗 %@。";
-"pop_blue_gem_bullet3" = "将 %@ 升级成 %@，有助于竞标时的效率，并减少信用卡或电信商的支付问题。";
 
 "pop_green_gem_bullet1" = "使用一颗%@可以直接解锁一件商品。";
 "pop_green_gem_bullet2" = "获得方式ㄧ：Supreme.AI（官方）喜欢你的相片。";
 "pop_green_gem_bullet3" = "获得方式二：配合活动赠送";
 
-"pop_purple_gem_bullet1" = "使用一颗 红金宝 可以直接解锁一件商品或投标一次。（建议使用在投标，以达到高效率投标之效果）";
-"pop_purple_gem_bullet2" = "红金宝 是 %@ 的升级版，有助于竞标时的效率，并减少信用卡或电信商的支付问题。";
+"pop_purple_gem_bullet1" = "使用一颗 红金宝 可以直接投标一次。";
 
 "pop_post_suspended" = "次数用完了";
 "pop_cooldown_time" = "等待时间 (%@)";

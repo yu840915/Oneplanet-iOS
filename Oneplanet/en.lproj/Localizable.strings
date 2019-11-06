@@ -264,23 +264,21 @@
 "act_bigging_ended" = "End of Bidding!";
 "act_countdown" = "COUNTDOWN TO BIDDING…";
 
-"pop_blue_gem_usage" = "The use: Unlock items, bidding.";
+"pop_blue_gem_usage" = "The use: Unlock items.";
 "pop_green_gem_usage" = "The use: Unlock items.";
-"pop_purple_gem_usage" = "The use: Unlock items, high-efficiency bidding.";
+"pop_purple_gem_usage" = "The use: High-efficiency bidding.";
 
 "pop_blue_gem_action" = "Go to upload photos";
 "pop_green_gem_action" = "Go to %@";
 
-"pop_blue_gem_bullet1" = "You can unlock or bid for an item by using %@ + %@.";
+"pop_blue_gem_bullet1" = "You can unlock for an item by using %@ + %@.";
 "pop_blue_gem_bullet2" = "How to gain Safrid: Upload photos to get EXP, when you hit full EXP, you get one %@.";
-"pop_blue_gem_bullet3" = "By upgrading %@ to %@, you will experience higher efficiency at bidding, and possibly reduce payment issues from credit card/telecom company.";
 
 "pop_green_gem_bullet1" = "You can unlock an item by using one %@.";
 "pop_green_gem_bullet2" = "How to gain 1. If Supreme.AI official account likes your photo.";
 "pop_green_gem_bullet3" = "How to gain 2. Gaining through events give-aways.";
 
-"pop_purple_gem_bullet1" = "You can unlock or bid for an item straight away by using one Rubid.";
-"pop_purple_gem_bullet2" = "The Rubid is an upgrade of %@. Rubid improves bidding efficiency, and possibly reduce payment issues from credit card/telecom company.";
+"pop_purple_gem_bullet1" = "You can bid for an item straight away by using one Rubid.";
 
 "pop_post_suspended" = "Run out";
 "pop_cooldown_time" = "Waiting for recovery (%@)";

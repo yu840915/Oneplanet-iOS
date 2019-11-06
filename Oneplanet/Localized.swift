@@ -875,9 +875,6 @@ class GemStonePopUp { //pop
     var blueGemBullet2: String {
         return NSLocalizedString("pop_blue_gem_bullet2", comment: "")
     }
-    var blueGemBullet3: String {
-        return NSLocalizedString("pop_blue_gem_bullet3", comment: "")
-    }
     var greenGemBullet1: String {
         return NSLocalizedString("pop_green_gem_bullet1", comment: "")
     }
@@ -889,9 +886,6 @@ class GemStonePopUp { //pop
     }
     var purpleGemBullet1: String {
         return NSLocalizedString("pop_purple_gem_bullet1", comment: "")
-    }
-    var purpleGemBullet2: String {
-        return NSLocalizedString("pop_purple_gem_bullet2", comment: "")
     }
 }
 

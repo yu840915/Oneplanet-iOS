@@ -17,7 +17,6 @@ class BlueGemPopUpViewController: UIViewController {
     @IBOutlet weak var usageLabel: UILabel!
     @IBOutlet weak var bulletTextView1: UITextView!
     @IBOutlet weak var bulletTextView2: UITextView!
-    @IBOutlet weak var bulletTextView3: UITextView!
     @IBOutlet weak var goButton: UIButton!
 
     override func viewDidLoad() {
@@ -39,20 +38,7 @@ class BlueGemPopUpViewController: UIViewController {
         bulletTextView1.text = String(format: Localized.gemStonePopUp.blueGemBullet1, Localized.titles.blueGem, price)
         bulletTextView2.text = String(format: Localized.gemStonePopUp.blueGemBullet2, Localized.titles.blueGem)
         goButton.setTitle(Localized.gemStonePopUp.blueGemAction, for: .normal)
-        prepareActionBullet()
     }
-    
-    private func prepareActionBullet() {
-        let text = String(format: Localized.gemStonePopUp.blueGemBullet3, Localized.titles.blueGem, Localized.titles.purpleGem)
-        let linkRange = (text as NSString).range(of: Localized.titles.purpleGem)
-        let attrStr = NSMutableAttributedString(string: text, attributes: [.font:  UIFont.systemFont(ofSize: 12)])
-        attrStr.addAttributes([.link : DeepLinks.purpleGemPopUp, .font: UIFont.systemFont(ofSize: 12, weight: .semibold)], range: linkRange)
-        bulletTextView3.attributedText = attrStr
-        bulletTextView3.linkTextAttributes = [
-            .foregroundColor : ColorPalette.buttonGreen,
-            .font: UIFont.systemFont(ofSize: 12, weight: .semibold)]
-    }
-    
     
     @IBAction func exit(_ sender: Any) {
         dismiss(animated: true, completion: nil)

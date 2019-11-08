@@ -130,7 +130,7 @@
 "msgf_bid_with_gem" = "Would you like to place a bid with one %@?";
 "msgf_insufficient_gem_des" = "You don't have enough %@. ";
 "msgf_insufficient_gem_unlock_des" = "You need one %@ + %@ to unlock an item. ";
-"msgf_insufficient_gem_bid_des" = "You need one %@ + %@ to place a bid. ";
+"msgf_insufficient_gem_bid_des" = "You need one %@ to place a bid. ";
 "msgf_earn_blue_gem_instruction" = "Upload more photos to get %@!";
 "msgf_received_gem" = "You have acquired %@ x %@";
 "msgf_unlock_succeeded" = "The bidding needs to use %@. ";
@@ -286,6 +286,7 @@
 "pop_cant_upload_bullet" = "Please waiting for recovery";
 "pop_valued_upload_bullet1" = "Upload photos with AI scores to gain EXP points. When you hit full EXP, you will get one %@.";
 "pop_valued_upload_bullet2" = "The more you match with the Oneplanet color theme, the higher chance you could collect %@.";
+"pop_purple_gem_action" = "Go to BUY";
 
 "ship_first_name" = "First Name";
 "ship_last_name" = "Last Name";

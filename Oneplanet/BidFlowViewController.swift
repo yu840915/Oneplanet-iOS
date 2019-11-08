@@ -20,8 +20,6 @@ class BidFlowViewController: UIViewController, UserSessionDepending {
         super.viewDidLoad()
         if userSession.wallet.purpleGem.total > 0 {
             showPurpleGemPopUp(animated: false)
-        } else if userSession.wallet.blueGem.total > 0 {
-            showBlueGemPopUp()
         } else {
             showInsufficientGemPopUp()
         }
@@ -184,9 +182,9 @@ extension BidFlowViewController {
         let container = prepareActionPopUp{[weak self] vc in
             let iap = IAPTransactionProcessor.shared.prefetchedProducts.bidProduct!
             let price = IAPTransactionProcessor.shared.prefetchedProducts.priceFormatter!.string(for: iap.price)!
-            vc.configuration = InsufficientBlueGemToBidPopUpConfiguration(formattedPrice: price)
+            vc.configuration = InsufficientPurpleGemToBidPopUpConfiguration(formattedPrice: price)
             vc.mainAction = {
-                self?.goToCreatePost()
+                self?.goToPurpleGemStore()
             }
             vc.cancelAction = {
                 self?.cancelAndExit()
@@ -206,9 +204,9 @@ extension BidFlowViewController {
         pageViewController.setViewControllers([container], direction: .forward, animated: false, completion: nil)
     }
     
-    func goToCreatePost() {
+    func goToPurpleGemStore() {
         dismiss(animated: true) {
-            router.handle(DeepLinks.postEditor)
+            router.handle(DeepLinks.purpleGemPopUp)
         }
     }
 }

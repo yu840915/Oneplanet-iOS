@@ -130,7 +130,7 @@
 "msgf_bid_with_gem" = "%@を1コ使用して一回入札しますか？";
 "msgf_insufficient_gem_des" = "%@が不足しています。";
 "msgf_insufficient_gem_unlock_des" = "一つ商品をアンロックするごとに、1 %@ + %@ が必要です。";
-"msgf_insufficient_gem_bid_des" = "毎回入札するごとに、 1 %@ + %@が必要です。";
+"msgf_insufficient_gem_bid_des" = "毎回入札するごとに、 1 %@ が必要です。";
 "msgf_earn_blue_gem_instruction" = "写真をアップロードして、%@ をゲットしよう！";
 "msgf_received_gem" = "%@を%@コ 獲得しました。";
 "msgf_unlock_succeeded" = "入札するには %@ が必要です!";
@@ -286,6 +286,7 @@
 "pop_cant_upload_bullet" = "時間復元するまでしばらくお待ちください";
 "pop_valued_upload_bullet1" = "写真をアップロードして評価されて経験値を獲得して、経験値が満タンになると即に%@を1コ獲得します。";
 "pop_valued_upload_bullet2" = "今回Oneplanetが提示したカラーテーマに該当するほど、%@の収集効率が高くなります。";
+"pop_purple_gem_action" = "購入 へ";
 
 "ship_first_name" = "名前";
 "ship_last_name" = "苗字";

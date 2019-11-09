@@ -340,7 +340,7 @@ class PrepareRubyProductListOperation: SimpleAsynchronousOperation, FailableOper
         let op = getPlanOperation!
         if op.success == true {
             success = true
-            plans = op.plans
+            plans = op.plans.filter{$0.productID.lowercased().hasPrefix("ruby")}
             finish()
         } else {
             fail(with: op.error)

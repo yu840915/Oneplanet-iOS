@@ -43,16 +43,14 @@ class PurpleGemProductListTableViewController: UITableViewController, UserSessio
         let check = FeatureAccessCheckOperation(userSession: userSession)
         check.start()
         guard check.isAccessible && purchaseOperation == nil else {return}
-        let loading = FullscreenLoadingViewController.fromDefaultStoryboard()
-        present(loading, animated: false, completion: nil)
-        let op = BuyPurpleGemOperation(plan: plans[indexPath.row], transactionProcesser: IAPTransactionProcessor.shared, session: userSession)
-        op.completionBlock = {[weak self] in
-            OperationQueue.main.addOperation {
-                self?.dismissLoadingAndHandleCompletion()
-            }
+        let plan = plans[indexPath.row]
+        if let redeem = plan.redeem,
+            let cur = redeem.currency,
+            plan.amount > userSession.wallet.balance(for: cur).total {
+            showPopUpForInsufficientFundError()
+            return
         }
-        purchaseOperation = op
-        op.start()
+        performSegue(withIdentifier: SegueID.directPay, sender: plan)
     }
     
     private func dismissLoadingAndHandleCompletion() {
@@ -77,7 +75,6 @@ class PurpleGemProductListTableViewController: UITableViewController, UserSessio
         }
     }
     
-    
     private func showAlert(with error: Error) {
         let alert = UIAlertController(title: nil, message: error.localizedDescription, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: Localized.titles.ok, style: .cancel, handler: nil))
@@ -88,6 +85,24 @@ class PurpleGemProductListTableViewController: UITableViewController, UserSessio
         dismiss(animated: true) {
             router.handle(DeepLinks.insufficientFundPopUp)
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let nav = segue.destination as? UINavigationController {
+            if let vc = nav.viewControllers.first as? UserSessionDepending {
+                vc.userSession = userSession
+            }
+            if let vc = nav.viewControllers.first as? CardInputViewController {
+                NavigationBarStyle.darkGray.configure(nav.navigationBar)
+                vc.plan = (sender as! IAPProductPlan)
+            }
+        }
+    }
+}
+
+extension PurpleGemProductListTableViewController {
+    struct SegueID {
+        static let directPay = "directPayFlow"
     }
 }
 
@@ -113,7 +128,7 @@ extension PurpleGemProductCell {
         if let redeem = plan.redeem, redeem.amount > 0 {
             priceTag += formatter.string(for: plan.amount)! + " + "
         }
-        priceTag +=  IAPTransactionProcessor.shared.prefetchedProducts.priceFormatter!.string(for: plan.skProduct.price)!
+//        priceTag +=  IAPTransactionProcessor.shared.prefetchedProducts.priceFormatter!.string(for: plan.skProduct.price)!
         buyButton.setTitle(priceTag, for: .normal)
     }
 }

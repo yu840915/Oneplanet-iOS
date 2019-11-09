@@ -37,6 +37,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         TWTRTwitter.sharedInstance().start(withConsumerKey:TwitterCredentials.key, consumerSecret:TwitterCredentials.secret)
         WXApi.registerApp("wx8630436ab3a5f7c2")
 //        prepareDataStore()
+        #if DEBUG
+        TPDSetup.setWithAppId(15424, withAppKey: "app_TqeuLT98s7hYcyCIGWWVWKIkiikqoD370jZJqmLiiRO9dtE7c8UbljhGKODH", with: TPDServerType.sandBox)
+        #else
+        TPDSetup.setWithAppId(15424, withAppKey: "app_TqeuLT98s7hYcyCIGWWVWKIkiikqoD370jZJqmLiiRO9dtE7c8UbljhGKODH", with: TPDServerType.production)
+        #endif
+        TPDSetup.shareInstance().serverSync()
         return true
     }
     

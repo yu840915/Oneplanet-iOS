@@ -78,6 +78,8 @@
 		E05BB273226D5D2F00721F20 /* OneplanetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BB272226D5D2F00721F20 /* OneplanetTests.swift */; };
 		E06261C8226D640D00A96F55 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E06261C7226D640D00A96F55 /* StoreKit.framework */; };
 		E06261CE226D6F2200A96F55 /* ModelBlocks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E06261CD226D6F2200A96F55 /* ModelBlocks.framework */; };
+		E0634DAA2376970F00733C2D /* TPDirect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0634DA82376970F00733C2D /* TPDirect.framework */; };
+		E0634DAD237697C400733C2D /* TPDirectResource in Resources */ = {isa = PBXBuildFile; fileRef = E0634DA92376970F00733C2D /* TPDirectResource */; };
 		E064A78622E6B0D200636387 /* UserLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = E064A78522E6B0D200636387 /* UserLists.swift */; };
 		E06589BB227001F300C9E4E6 /* AskForAuthorizationOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06589BA227001F300C9E4E6 /* AskForAuthorizationOperation.swift */; };
 		E06589BD22700AEC00C9E4E6 /* CaptureSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06589BC22700AEC00C9E4E6 /* CaptureSessionController.swift */; };
@@ -302,6 +304,8 @@
 		E06261C6226D63E700A96F55 /* Oneplanet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Oneplanet.entitlements; sourceTree = "<group>"; };
 		E06261C7226D640D00A96F55 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		E06261CD226D6F2200A96F55 /* ModelBlocks.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ModelBlocks.framework; path = Carthage/Build/iOS/ModelBlocks.framework; sourceTree = SOURCE_ROOT; };
+		E0634DA82376970F00733C2D /* TPDirect.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TPDirect.framework; sourceTree = SOURCE_ROOT; };
+		E0634DA92376970F00733C2D /* TPDirectResource */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TPDirectResource; sourceTree = SOURCE_ROOT; };
 		E064A78522E6B0D200636387 /* UserLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLists.swift; sourceTree = "<group>"; };
 		E06589BA227001F300C9E4E6 /* AskForAuthorizationOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskForAuthorizationOperation.swift; sourceTree = "<group>"; };
 		E06589BC22700AEC00C9E4E6 /* CaptureSessionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSessionController.swift; sourceTree = "<group>"; };
@@ -459,6 +463,7 @@
 				E03C329C226D75F400C32FD7 /* SwiftyBeaver.framework in Frameworks */,
 				E0BDCCEC229FD3CE006A9D20 /* SwiftMessages.framework in Frameworks */,
 				E06261C8226D640D00A96F55 /* StoreKit.framework in Frameworks */,
+				E0634DAA2376970F00733C2D /* TPDirect.framework in Frameworks */,
 				E032844722AB6F66001F02E8 /* XLPagerTabStrip.framework in Frameworks */,
 				E0F2688C231289E100CE5C45 /* MarkdownKit.framework in Frameworks */,
 				E06F5009227AFC770067DAE4 /* libWeChatSDK.a in Frameworks */,
@@ -741,6 +746,8 @@
 		E06261CC226D6EF900A96F55 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E0634DA82376970F00733C2D /* TPDirect.framework */,
+				E0634DA92376970F00733C2D /* TPDirectResource */,
 				E0F2688B231289E100CE5C45 /* MarkdownKit.framework */,
 				E0A4618722B6328300D26720 /* PhoneNumberKit.framework */,
 				E032844622AB6F66001F02E8 /* XLPagerTabStrip.framework */,
@@ -985,6 +992,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0634DAD237697C400733C2D /* TPDirectResource in Resources */,
 				E006BAC622AE250D00D7D118 /* DS-DIGIT.TTF in Resources */,
 				E05BB268226D5D2E00721F20 /* LaunchScreen.storyboard in Resources */,
 				E0CB5E15228F0E5F00C0C010 /* DS-DIGIB.TTF in Resources */,
@@ -1545,6 +1553,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Oneplanet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1576,6 +1585,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Oneplanet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

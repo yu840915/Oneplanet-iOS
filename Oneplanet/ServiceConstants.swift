@@ -21,7 +21,6 @@ struct ServiceConstants {
 
 struct IAPProductIdentifiers {
     static let unlock = "Bidding_qualificationAA"
-    static let bid = "Bidding_placardAA"
 }
 
 struct ServiceURLs {

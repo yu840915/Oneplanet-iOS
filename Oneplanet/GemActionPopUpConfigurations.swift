@@ -280,10 +280,6 @@ class InsufficientBlueGemPopUpConfiguration: GemActionPopUpConfiguration {
 }
 
 class InsufficientPurpleGemToBidPopUpConfiguration: GemActionPopUpConfiguration {
-    let formattedPrice: String
-    init(formattedPrice: String) {
-        self.formattedPrice = formattedPrice
-    }
     override var icon: UIImage {
         return #imageLiteral(resourceName: "ic_coin80_nor")
     }

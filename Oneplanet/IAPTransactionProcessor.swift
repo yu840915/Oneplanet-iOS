@@ -178,7 +178,6 @@ class Invoice {
 class PrefetchedIAPProducts {
     private(set) var priceFormatter: NumberFormatter?
     private(set) var unlockProduct: SKProduct?
-    private(set) var bidProduct: SKProduct?
     private(set) var rubyProducts: [IAPProductPlan]?
     private var getProductOperation: GetSKProductsOperation?
     private var getRubyProdcutsOperation: PrepareRubyProductListOperation?
@@ -193,7 +192,7 @@ class PrefetchedIAPProducts {
         if rubyProducts == nil {
             getRubyList()
         }
-        if unlockProduct == nil || bidProduct == nil {
+        if unlockProduct == nil {
             getProduct()
         }
     }
@@ -222,7 +221,7 @@ class PrefetchedIAPProducts {
         guard getProductOperation == nil else {
             return
         }
-        let op = GetSKProductsOperation(productIDs: [IAPProductIdentifiers.bid, IAPProductIdentifiers.unlock])
+        let op = GetSKProductsOperation(productIDs: [IAPProductIdentifiers.unlock])
         op.completionBlock = {[weak self] in
             self?.didGetProduct()
         }
@@ -234,14 +233,12 @@ class PrefetchedIAPProducts {
         let op = getProductOperation!
         getProductOperation = nil
         op.products.forEach{
-            if $0.productIdentifier == IAPProductIdentifiers.bid {
-                bidProduct = $0
-            } else if $0.productIdentifier == IAPProductIdentifiers.unlock {
+            if $0.productIdentifier == IAPProductIdentifiers.unlock {
                 unlockProduct = $0
             }
         }
         setUpFormatterIfNeeded()
-        if bidProduct == nil || unlockProduct == nil {
+        if unlockProduct == nil {
             Timer.scheduledTimer(withTimeInterval: TimeInterval(pow(2, Double(retryExpCounter))),
                                  repeats: false) {[weak self] (_) in
                 self?.getProduct()
@@ -251,7 +248,7 @@ class PrefetchedIAPProducts {
     }
     
     private func setUpFormatterIfNeeded() {
-        guard priceFormatter == nil, let prod = bidProduct ?? unlockProduct else {
+        guard priceFormatter == nil, let prod = unlockProduct else {
             return
         }
         let formatter = NumberFormatter()
@@ -263,13 +260,10 @@ class PrefetchedIAPProducts {
 
 enum IAPProductType: Equatable {
     case unlock
-    case bid
     case ruby
     
     static func from(_ productID: String) -> IAPProductType? {
-        if productID == IAPProductIdentifiers.bid {
-            return .bid
-        } else if productID == IAPProductIdentifiers.unlock {
+        if productID == IAPProductIdentifiers.unlock {
             return .unlock
         } else if productID.contains("ruby") {
             return .ruby
@@ -331,9 +325,7 @@ class PrepareRubyProductListOperation: SimpleAsynchronousOperation, FailableOper
     private(set) var plans: [IAPProductPlan] = []
     private var rubyPlans: [IAPProductPlan] = []
     private var rubyPlanDict: [String: IAPProductPlan] = [:]
-    
     private var getPlanOperation: GetIAPProductPlanOperation?
-    private var getSKProductsOperations: GetSKProductsOperation?
     
     override func main() {
         let op = GetIAPProductPlanOperation()
@@ -347,35 +339,8 @@ class PrepareRubyProductListOperation: SimpleAsynchronousOperation, FailableOper
     private func didGetPlan() {
         let op = getPlanOperation!
         if op.success == true {
-            getRubyProducts(from: op.plans)
-        } else {
-            fail(with: op.error)
-        }
-    }
-    
-    private func getRubyProducts(from plans: [IAPProductPlan]) {
-        let rubyPlans = plans.filter{IAPProductType.from($0.productID) == .ruby}
-        guard !rubyPlans.isEmpty else {
             success = true
-            finish()
-            return
-        }
-        self.rubyPlans = rubyPlans
-        rubyPlans.forEach{rubyPlanDict[$0.productID] = $0}
-        let op = GetSKProductsOperation(productIDs: rubyPlans.map{$0.productID})
-        op.completionBlock = {[weak self] in
-            self?.handelDidGetSKProducts()
-        }
-        getSKProductsOperations = op
-        op.start()
-    }
-    
-    private func handelDidGetSKProducts() {
-        let op = getSKProductsOperations!
-        if op.success == true {
-            op.products.forEach{rubyPlanDict[$0.productIdentifier]?.associate(with: $0)}
-            plans = rubyPlans.filter{$0.skProduct != nil}
-            success = true
+            plans = op.plans
             finish()
         } else {
             fail(with: op.error)

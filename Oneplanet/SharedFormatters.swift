@@ -37,6 +37,13 @@ struct SharedNumberFormatters {
         value.groupingSeparator = ""
         return value
     }()
+    
+    static let price: NumberFormatter = {
+        let value = NumberFormatter()
+        value.numberStyle = .decimal
+        value.maximumFractionDigits = 0
+        return value
+    }()
 }
 
 struct SharedDateFormatters {

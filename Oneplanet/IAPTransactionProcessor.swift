@@ -340,7 +340,7 @@ class PrepareRubyProductListOperation: SimpleAsynchronousOperation, FailableOper
         let op = getPlanOperation!
         if op.success == true {
             success = true
-            plans = op.plans.filter{$0.productID.lowercased().hasPrefix("ruby")}
+            plans = op.plans.filter{$0.productID.lowercased().hasPrefix("ruby")}.filter{$0.priceTag != nil}
             finish()
         } else {
             fail(with: op.error)
@@ -376,17 +376,34 @@ class IAPProductPlan: Decodable {
     let amount: Int
     let bonus: Int
     let redeem: IAPProductRedeemPlan?
+    let price: [String: Int]
+    var priceTag: PriceTag? {
+        if let first = price.first {
+            return PriceTag(currency: first.key, amount: first.value)
+        }
+        return nil
+    }
 
     enum CodingKeys: String, CodingKey {
         case productID = "product_id"
         case currencyID = "currency"
-        case amount, bonus, redeem
+        case amount, bonus, redeem, price
     }
     
     func associate(with product: SKProduct) {
         if product.productIdentifier == productID {
             self.skProduct = product
         }
+    }
+}
+
+class PriceTag {
+    let amount: NSDecimalNumber
+    let currency: String
+    
+    init(currency: String, amount: Int) {
+        self.currency = currency
+        self.amount = NSDecimalNumber(value: amount)
     }
 }
 

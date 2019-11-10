@@ -128,8 +128,7 @@ extension PurpleGemProductCell {
         if let redeem = plan.redeem, redeem.amount > 0 {
             priceTag += formatter.string(for: plan.amount)! + " + "
         }
-        priceTag += SharedNumberFormatters.price.string(for: plan.priceTag!.amount)!
-        priceTag += " " + plan.priceTag!.currency
+        priceTag += plan.priceTag!.currency + " " + SharedNumberFormatters.price.string(for: plan.priceTag!.amount)!
         buyButton.setTitle(priceTag, for: .normal)
     }
 }

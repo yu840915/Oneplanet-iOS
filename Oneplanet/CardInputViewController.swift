@@ -15,6 +15,8 @@ class CardInputViewController: UIViewController, UserSessionDepending {
     var userSession: UserSession!
     var plan: IAPProductPlan!
     var successHandler: (()->())?
+    
+    @IBOutlet weak var productNameLabel: UILabel!
     @IBOutlet weak var cardView: UIView!
     var cardForm : TPDForm!
     @IBOutlet weak var buyButton: UIButton!
@@ -29,7 +31,14 @@ class CardInputViewController: UIViewController, UserSessionDepending {
     override func viewDidLoad() {
         super.viewDidLoad()
         cancelItem.title = Localized.titles.cancel
+        if plan.bonus > 0 {
+            productNameLabel.text = String(format: Localized.phraseFormats.buySomeGetSomeFree, SharedNumberFormatters.integer.string(for: plan.amount)!, SharedNumberFormatters.integer.string(for: plan.bonus)!)
+        } else {
+            productNameLabel.text = String(format: Localized.phraseFormats.buySome, SharedNumberFormatters.integer.string(for: plan.amount)!)
+        }
         buyButton.isEnabled = false
+        let priceTag = plan.priceTag!.currency + " " + SharedNumberFormatters.price.string(for: plan.priceTag!.amount)! 
+        buyButton.setTitle(priceTag, for: .normal)
         cardForm = TPDForm.setup(withContainer: cardView)
         cardForm.setErrorColor(ColorPalette.alertRed)
         cardForm.setOkColor(.black)
@@ -56,9 +65,7 @@ class CardInputViewController: UIViewController, UserSessionDepending {
     }
     
     @IBAction func buy(_ sender: UIButton) {
-        guard buyRubyOperation == nil else {
-            return
-        }
+        guard buyRubyOperation == nil else { return }
         let op = BuyRubyOperation(form: cardForm, plan: plan, userSession: userSession)
         op.completionBlock = {[weak self] in
             OperationQueue.main.addOperation {

@@ -29,7 +29,7 @@ class CardInputViewController: UIViewController, UserSessionDepending {
     private var keyboardObserver: KeyboardAppearanceObserver?
     @IBOutlet var endEditingTap: UITapGestureRecognizer!
 
-    private var buyRubyOperation: BuyRubyOperation? {
+    private var buyRubyOperation: BuyRubyFlowOperation? {
         didSet {
             updateBuyButton()
         }
@@ -152,7 +152,7 @@ class CardInputViewController: UIViewController, UserSessionDepending {
     
     @IBAction func buy(_ sender: UIButton) {
         guard buyRubyOperation == nil else { return }
-        let op = BuyRubyOperation(form: cardForm, plan: plan, userSession: userSession)
+        let op = BuyRubyFlowOperation(form: cardForm, plan: plan, cardholderInfo: draft, userSession: userSession)
         op.completionBlock = {[weak self] in
             OperationQueue.main.addOperation {
                 self?.didBuyRuby()
@@ -360,9 +360,12 @@ class CardholderInfoDraft {
     }
     
     func validate() throws {
-        try? nameValidator.validate(name)
-        try? emailValidator.validate(email)
-        try? phoneNumberValidator.validate(phoneNumber)
+        if country == nil {
+            throw GenericAppError("Please select a country")
+        }
+        try nameValidator.validate(name)
+        try emailValidator.validate(email)
+        try phoneNumberValidator.validate(phoneNumber)
     }
 
     var hasEmptyRequiredField: Bool {

@@ -33,7 +33,7 @@
 		E02F49CB22E5948A0014DEBE /* FriendListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02F49CA22E5948A0014DEBE /* FriendListsViewController.swift */; };
 		E02F49CF22E595010014DEBE /* FollowingListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02F49CE22E595010014DEBE /* FollowingListTableViewController.swift */; };
 		E02F49D122E5A9A00014DEBE /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02F49D022E5A9A00014DEBE /* UserProfileViewController.swift */; };
-		E03094FF2379C2D3003A8FC3 /* BuyRubyOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03094FE2379C2D3003A8FC3 /* BuyRubyOperation.swift */; };
+		E03094FF2379C2D3003A8FC3 /* BuyRubyFlowOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03094FE2379C2D3003A8FC3 /* BuyRubyFlowOperation.swift */; };
 		E030E4D0228A71CB0084D383 /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030E4CF228A71CB0084D383 /* ProfileDetailViewController.swift */; };
 		E030E4D2228AB0B70084D383 /* IDHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E030E4D1228AB0B60084D383 /* IDHeaderView.xib */; };
 		E030E4D4228AB1ED0084D383 /* IDHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030E4D3228AB1ED0084D383 /* IDHeaderView.swift */; };
@@ -271,7 +271,7 @@
 		E02F49CA22E5948A0014DEBE /* FriendListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListsViewController.swift; sourceTree = "<group>"; };
 		E02F49CE22E595010014DEBE /* FollowingListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingListTableViewController.swift; sourceTree = "<group>"; };
 		E02F49D022E5A9A00014DEBE /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
-		E03094FE2379C2D3003A8FC3 /* BuyRubyOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyRubyOperation.swift; sourceTree = "<group>"; };
+		E03094FE2379C2D3003A8FC3 /* BuyRubyFlowOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyRubyFlowOperation.swift; sourceTree = "<group>"; };
 		E030E4CF228A71CB0084D383 /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
 		E030E4D1228AB0B60084D383 /* IDHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IDHeaderView.xib; sourceTree = "<group>"; };
 		E030E4D3228AB1ED0084D383 /* IDHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDHeaderView.swift; sourceTree = "<group>"; };
@@ -898,7 +898,7 @@
 				E081591022A65276007C9776 /* PurpleGemStoreViewController.swift */,
 				E038B86F233FB56C0079F87B /* PurpleGemProductListTableViewController.swift */,
 				E0634DAE2376A26700733C2D /* CardInputViewController.swift */,
-				E03094FE2379C2D3003A8FC3 /* BuyRubyOperation.swift */,
+				E03094FE2379C2D3003A8FC3 /* BuyRubyFlowOperation.swift */,
 				E0D7DCDA229CE65C00B40D76 /* PromoPopUpFlowViewController.swift */,
 				E0D7DCDC229CE82300B40D76 /* PromoPopUpViewController.swift */,
 				E0BDCCE9229FA044006A9D20 /* PromotionPageList.swift */,
@@ -1414,7 +1414,7 @@
 				E045BE7722E974640035D08B /* PostFeedMainViewController.swift in Sources */,
 				E0C98E292329D77400B0BF00 /* MyLotList.swift in Sources */,
 				E0190F4D226DCCFB00C212D5 /* UserSession.swift in Sources */,
-				E03094FF2379C2D3003A8FC3 /* BuyRubyOperation.swift in Sources */,
+				E03094FF2379C2D3003A8FC3 /* BuyRubyFlowOperation.swift in Sources */,
 				E02F49D122E5A9A00014DEBE /* UserProfileViewController.swift in Sources */,
 				E0DCD05122B7E86B008D9C63 /* PickerConfirmButtonFooter.swift in Sources */,
 				E0190F49226DB0E000C212D5 /* WelcomeMessageViewController.swift in Sources */,

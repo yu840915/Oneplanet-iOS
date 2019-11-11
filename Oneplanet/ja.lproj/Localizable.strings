@@ -297,6 +297,8 @@
 "ship_postal_code" = "郵便番号";
 "ship_country" = "国";
 "ship_phoneNumber" = "電話番号（配送に関する連絡のため）";
+"ship_phoneNumber_s" = "電話番号";
+"ship_cardholder" = "カード所持者";
 
 "rp_terms_violation" = "このアカウントはOneplanet利用規約に違反しているよ思う";
 "rp_dont_like_post_title" = "単に気に入らない";

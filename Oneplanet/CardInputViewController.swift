@@ -16,11 +16,18 @@ class CardInputViewController: UIViewController, UserSessionDepending {
     var plan: IAPProductPlan!
     var successHandler: (()->())?
     
+    @IBOutlet weak var cardholderFieldView: CardInfoInputView!
+    @IBOutlet weak var emailFieldView: CardInfoInputView!
+    @IBOutlet weak var phoneFieldView: CardInfoInputView!
+    
     @IBOutlet weak var productNameLabel: UILabel!
     @IBOutlet weak var cardView: UIView!
     var cardForm : TPDForm!
     @IBOutlet weak var buyButton: UIButton!
     @IBOutlet weak var cancelItem: UIBarButtonItem!
+    private var keyboardObserver: KeyboardAppearanceObserver?
+    @IBOutlet var endEditingTap: UITapGestureRecognizer!
+
     private var buyRubyOperation: BuyRubyOperation? {
         didSet {
             updateBuyButton()
@@ -49,6 +56,23 @@ class CardInputViewController: UIViewController, UserSessionDepending {
                 self?.updateViewsForFormStatus(status)
             }
         }
+        cardholderFieldView.title = Localized.shippingInfoTerms.cardholder
+        emailFieldView.title = Localized.titles.email
+        phoneFieldView.title = Localized.shippingInfoTerms.phoneNumberShort
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let observer = KeyboardAppearanceObserver()
+        observer.keyboardWillChange = {[weak self] change in
+            self?.handleKeyboardChange(change)
+        }
+        keyboardObserver = observer
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        keyboardObserver = nil
     }
     
     private func updateViewsForFormStatus(_ status: TPDStatus) {
@@ -58,6 +82,11 @@ class CardInputViewController: UIViewController, UserSessionDepending {
     
     private func updateBuyButton() {
         buyButton.isEnabled = buyRubyOperation == nil && lastStatus?.isCanGetPrime() == true
+    }
+    
+    func handleKeyboardChange(_ change: KeyboardChangeInfo) {
+        let isAppearing = view.bounds.intersects(change.endRect)
+        additionalSafeAreaInsets.bottom = isAppearing ? change.endRect.height : 0
     }
     
     @IBAction func exit(_ sender: Any) {
@@ -74,6 +103,10 @@ class CardInputViewController: UIViewController, UserSessionDepending {
         }
         buyRubyOperation = op
         op.start()
+    }
+    
+    @IBAction func tapToEndEditing(_ sender: UITapGestureRecognizer) {
+        view.endEditing(false)
     }
     
     private func didBuyRuby() {
@@ -93,6 +126,18 @@ class CardInputViewController: UIViewController, UserSessionDepending {
     }
 }
 
+class CardInfoInputView: UIStackView {
+    var title: String? {
+        set {
+            titleLabel.text = newValue
+        }
+        get {
+            return titleLabel.text
+        }
+    }
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var field: UITextField!
+}
 
 class BuyRubyOperation: SimpleAsynchronousOperation, FailableOperationType {
     var success: Bool?

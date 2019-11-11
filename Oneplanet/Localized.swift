@@ -924,6 +924,12 @@ class LocalizedShippingInfoTerms {//ship_
     var phoneNumber: String {
         return NSLocalizedString("ship_phoneNumber", comment: "")
     }
+    var phoneNumberShort: String {
+        return NSLocalizedString("ship_phoneNumber_s", comment: "")
+    }
+    var cardholder: String {
+        return NSLocalizedString("ship_cardholder", comment: "")
+    }
 }
 
 class LocalizedReportReasons { //rp_

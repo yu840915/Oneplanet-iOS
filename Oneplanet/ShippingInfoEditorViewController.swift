@@ -56,7 +56,6 @@ class ShippingInfoEditorViewController: UIViewController, UserSessionDepending {
     override func viewDidLoad() {
         super.viewDidLoad()
         let builder = PhoneNumberBuilder(countryCode: nil)
-        debugPrint(builder.countries)
         tapToEndEditingRequestTracker = ReferenceTracker()
         endEditingTapRequestHandle = tapToEndEditingRequestTracker.isEmptyDidChangeObservers.add {[weak self] (_) in
             self?.updateEndEditingTap()

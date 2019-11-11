@@ -297,6 +297,8 @@
 "ship_postal_code" = "郵遞區號";
 "ship_country" = "國家";
 "ship_phoneNumber" = "電話號碼（僅限送貨）";
+"ship_phoneNumber_s" = "電話號碼";
+"ship_cardholder" = "持卡人";
 
 "rp_terms_violation" = "我認為此帳戶違反了 Oneplanet 的使用條款";
 "rp_dont_like_post_title" = "我不喜歡這則貼文";

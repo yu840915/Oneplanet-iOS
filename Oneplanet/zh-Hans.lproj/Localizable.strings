@@ -297,6 +297,8 @@
 "ship_postal_code" = "邮政编码";
 "ship_country" = "国家";
 "ship_phoneNumber" = "电话号码（仅限送货）";
+"ship_phoneNumber_s" = "电话号码";
+"ship_cardholder" = "持卡人";
 
 "rp_terms_violation" = "我认为此账户违反了 Oneplanet 的使用条款";
 "rp_dont_like_post_title" = "我不喜欢这则帖子";

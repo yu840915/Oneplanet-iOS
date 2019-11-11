@@ -297,6 +297,8 @@
 "ship_postal_code" = "Postal Code";
 "ship_country" = "Country";
 "ship_phoneNumber" = "Phone number (For delivery purpose only)";
+"ship_phoneNumber_s" = "Phone number";
+"ship_cardholder" = "Cardholder";
 
 "rp_terms_violation" = "I believe this account violates Oneplanet’s Terms";
 "rp_dont_like_post_title" = "I just don’t like it";

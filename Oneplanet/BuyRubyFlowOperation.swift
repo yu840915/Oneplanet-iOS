@@ -98,7 +98,7 @@ class BuyRubyOperation: AlamofireAPIAccessOperation {
     override func prepareDataRequest() throws -> DataRequest {
         try cardholderInfo.validate()
         let params: Parameters = ["product_id": plan.productID, "prime": prime, "name": cardholderInfo.name, "email": cardholderInfo.email, "phone_number": cardholderInfo.country!.cellPhoneContryCode +  cardholderInfo.phoneNumber]
-        return Alamofire.request(ServiceURLs.base.appendingPathComponent("wallet/purchase/tappay"), method: .post, parameters: params, encoding: JSONEncoding.default, headers: userSession.authorizationHeader)
+        return Alamofire.request(ServiceURLs.base.appendingPathComponent("wallet/purchase/TAPPAY"), method: .post, parameters: params, encoding: JSONEncoding.default, headers: userSession.authorizationHeader)
     }
     
     override func processErrorData(with data: Data, response: HTTPURLResponse) throws {

@@ -95,8 +95,17 @@ class PurpleGemProductListTableViewController: UITableViewController, UserSessio
             if let vc = nav.viewControllers.first as? CardInputViewController {
                 NavigationBarStyle.darkGray.configure(nav.navigationBar)
                 vc.plan = (sender as! IAPProductPlan)
+                vc.successHandler = {[weak self] in
+                    self?.exit()
+                }
             }
         }
+    }
+}
+
+private extension PurpleGemProductListTableViewController {
+    func exit() {
+        presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }
 

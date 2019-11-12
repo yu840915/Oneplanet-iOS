@@ -222,7 +222,7 @@ private extension CardInputViewController {
     
     func showAlert(with error: Error) {
         let alert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: Localized.titles.cancel, style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: Localized.titles.ok, style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }
 }

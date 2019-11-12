@@ -262,6 +262,6 @@ class PurchaseOperation: AlamofireAPIAccessOperation {
             throw GenericAppError("Missing transaction ID")
         }
         let params: Parameters = ["transaction_id": id, "receipt": receiptData.base64EncodedString()]
-        return Alamofire.request(ServiceURLs.base.appendingPathComponent("wallet/purchase/iap"), method: .post, parameters: params, encoding: JSONEncoding.default, headers: session.authorizationHeader)
+        return Alamofire.request(ServiceURLs.base.appendingPathComponent("wallet/purchase/IAP"), method: .post, parameters: params, encoding: JSONEncoding.default, headers: session.authorizationHeader)
     }
 }

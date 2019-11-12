@@ -42,7 +42,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         TPDSetup.setWithAppId(15424, withAppKey: "app_TqeuLT98s7hYcyCIGWWVWKIkiikqoD370jZJqmLiiRO9dtE7c8UbljhGKODH", with: TPDServerType.sandBox)
         #else
         TPDSetup.setWithAppId(15424, withAppKey: "app_TqeuLT98s7hYcyCIGWWVWKIkiikqoD370jZJqmLiiRO9dtE7c8UbljhGKODH", with: TPDServerType.production)
-        TPDSetup.shareInstance().setupIDFA(ASIdentifierManager.shared().advertisingIdentifier.uuidString)
         #endif
         TPDSetup.shareInstance().serverSync()
         return true

@@ -328,7 +328,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6NP-UI-6VG" userLabel="Go Button">
-                                <rect key="frame" x="36" y="645.33333333333337" width="303" height="82"/>
+                                <rect key="frame" x="36" y="686.33333333333337" width="303" height="41"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                 <state key="normal" title="Go" backgroundImage="bt_biggreen_nor">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -338,7 +338,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wwF-Rb-4tZ" userLabel="Close Button">
-                                <rect key="frame" x="20" y="72.666666666666671" width="88" height="88.000000000000014"/>
+                                <rect key="frame" x="20" y="72.666666666666671" width="44" height="44"/>
                                 <state key="normal" image="ic_addcancel_nor"/>
                                 <connections>
                                     <action selector="exit:" destination="tft-0J-hOU" eventType="touchUpInside" id="fbc-mO-d5V"/>
@@ -2464,7 +2464,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bt_addphoto_nor" translatesAutoresizingMaskIntoConstraints="NO" id="tcK-m1-AiJ">
-                                            <rect key="frame" x="-6" y="-7" width="112" height="114"/>
+                                            <rect key="frame" x="22" y="21.666666666666671" width="56" height="57"/>
                                         </imageView>
                                     </subviews>
                                 </view>

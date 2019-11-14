@@ -152,16 +152,28 @@ class CardInputViewController: UIViewController, UserSessionDepending {
     
     @IBAction func buy(_ sender: UIButton) {
         guard buyRubyOperation == nil else { return }
+        let loading = FullscreenLoadingViewController.fromDefaultStoryboard()
+        present(loading, animated: false, completion: nil)
         let op = BuyRubyFlowOperation(form: cardForm, plan: plan, cardholderInfo: draft, userSession: userSession)
         op.completionBlock = {[weak self] in
             OperationQueue.main.addOperation {
-                self?.didBuyRuby()
+                self?.dismisLoading(completion: {
+                    self?.didBuyRuby()
+                })
             }
         }
         buyRubyOperation = op
         op.start()
     }
-    
+
+    func dismisLoading(completion: @escaping (()->())) {
+        if presentedViewController != nil {
+            dismiss(animated: false, completion: completion)
+        } else {
+            completion()
+        }
+    }
+
     @IBAction func tapToEndEditing(_ sender: UITapGestureRecognizer) {
         view.endEditing(false)
     }

@@ -46,9 +46,8 @@ class ProductFilterPickerTableViewController: PickerTableViewController, UserSes
             selection = options[index]
             setNeedsPreselect()
         }
-        if options.isEmpty {
-            updateViewsForListUpdate()
-        } else {
+        updateViewsForListUpdate()
+        if !options.isEmpty {
             getCounts()
         }
     }
@@ -74,6 +73,11 @@ class ProductFilterPickerTableViewController: PickerTableViewController, UserSes
     
     private func didGetCounts() {
         getCountsOperation = nil
+        refreshViewsForListUpdate()
+    }
+    
+    func refreshViewsForListUpdate() {
+        setNeedsPreselect()
         updateViewsForListUpdate()
     }
     

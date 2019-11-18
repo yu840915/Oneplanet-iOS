@@ -9,6 +9,7 @@
 import Foundation
 import ModelBlocks
 import UIKit
+import Alamofire
 
 class WeChatLogInOperation: SimpleAsynchronousOperation, SocialAuthenticationOperationType, WXApiDelegate {
     static weak var runningLogIn: WeChatLogInOperation?
@@ -21,6 +22,7 @@ class WeChatLogInOperation: SimpleAsynchronousOperation, SocialAuthenticationOpe
     private var authReq: SendAuthReq?
     private var state = UUID().uuidString
     private var submitCodeOperation: SubmitWeChatAuthCodeOperation?
+    private var getProfileOperation: GetWeChatProfileOperation?
     
     let presenter: UIViewController
     init(presenter: UIViewController) {
@@ -75,6 +77,26 @@ class WeChatLogInOperation: SimpleAsynchronousOperation, SocialAuthenticationOpe
         }
         self.token = token
         self.profile = profile
+        if let session = op.wechatSession {
+            getWeChatProfile(with: session)
+        } else {
+            success = true
+            finish()
+        }
+    }
+    
+    private func getWeChatProfile(with session: WeChatSession) {
+        let op = GetWeChatProfileOperation(wechatSession: session)
+        op.completionBlock = {[weak self] in
+            self?.didGetWeChatProfile()
+        }
+        getProfileOperation = op
+        op.start()
+    }
+    
+    private func didGetWeChatProfile() {
+        let op = getProfileOperation!
+        publicProfile = op.profile
         success = true
         finish()
     }
@@ -88,8 +110,25 @@ class WeChatLogInOperation: SimpleAsynchronousOperation, SocialAuthenticationOpe
 
 class GetWeChatProfileOperation: AlamofireAPIAccessOperation {
     let wechatSession: WeChatSession
+    private(set) var profile: PublicProfile?
+
     init(wechatSession: WeChatSession) {
         self.wechatSession = wechatSession
+    }
+    
+    override func prepareDataRequest() throws -> DataRequest {
+        let url = URL(string: "https://api.weixin.qq.com/sns/userinfo")!
+        let params: Parameters = ["access_token": wechatSession.token, "openid": wechatSession.openID]
+        return Alamofire.request(url, method: .get, parameters: params, encoding: URLEncoding(), headers: nil)
+    }
+    
+    override func processData(with data: Data) throws {
+        let wechatProfile = try JSONDecoder.default.decode(WeChatProfile.self, from: data)
+        var url: URL?
+        if let avatar = wechatProfile.headimgurl {
+            url = URL(string: avatar)
+        }
+        profile = PublicProfile(nickname: wechatProfile.nickname, avatarURL: url)
     }
 }
 
@@ -106,9 +145,26 @@ class SubmitWeChatAuthCodeOperation: LogInOperation {
         return try URLRequest(url: comp.url!, method: .post)
     }
     
+    override func processHTTPResponseHeader(_ header: [AnyHashable : Any]) throws {
+        try super.processHTTPResponseHeader(header)
+        if let token = header["X-Weixin-Token"] as? String,
+            let id = header["X-Weixin-Openid"] as? String {
+            wechatSession = WeChatSession(token: token, openID: id)
+        }
+    }
 }
 
 class WeChatSession {
-    let token: String = ""
-    let openID: String = ""
+    let token: String
+    let openID: String
+    
+    init(token: String, openID: String) {
+        self.token = token
+        self.openID = openID
+    }
+}
+
+class WeChatProfile: Decodable {
+    let nickname: String
+    let headimgurl: String?
 }

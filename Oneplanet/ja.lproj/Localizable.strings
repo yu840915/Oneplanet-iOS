@@ -49,7 +49,7 @@
 "tl_delete" = "削除";
 "tl_unlock" = "商品をアンロックします";
 "tl_unlocked" = "アンロックしました";
-"tl_bid" = "一回入札する";
+"tl_bid" = "入札";
 "tl_required_input" = "必須項目";
 "tl_agree" = "同意する";
 "tl_filter" = "検索フィルタ";
@@ -88,7 +88,7 @@
 "msg_bidding_terms_acceptence" = "チェックボックスにチェックを入れて、ｵｰｸｼｮﾝ規約に同意します";
 "msg_unlock_succeeded" = "アンロックに成功しました。";
 "msg_bid_succeeded" = "Successfully qualified for CommodityName bidding";
-"msg_lot_being_bid" = " This commodity is being bid";
+"msg_lot_being_bid" = "この商品はただいま入札中です";
 "msg_lot_being_bid_des" = "ただいま入札中です。48時間以内次回の入札商品を公表します。お見逃しなく！";
 "msg_lot_closed" = "アンロックできる時間を超えてしまいました";
 "msg_lot_closed_des" = "オークションが終了しました。48時間以内次回の入札商品を公表します。お見逃しなく！";
@@ -103,8 +103,8 @@
 "msg_report_post_prompt" = "この投稿を報告する理由を選択してください。";
 "msg_report_user_caption" = "報告された投稿に関して、Oneplanetが投稿者に報告した人の情報を開示することはありません";
 "msg_report_post_caption" = "報告された投稿に関して、Oneplanetが投稿者に報告した人の情報を開示することはありません";
-"msg_thankyou_reporting_user" = "Thanks for reporting this";
-"msg_thankyou_reporting_post" = "Thanks for reporting this post";
+"msg_thankyou_reporting_user" = "ご報告ありがとうございました";
+"msg_thankyou_reporting_post" = "ご報告ありがとうございました";
 "msg_unblock_des" = "ブロックを解除すると、この人はOneplanetであなたをファローできるようになります。ブロックが解除されたことは、相手に通知されません。";
 "msg_block_des" = "ブロックされた人は、Oneplanetであなたのプロフィールや投稿を見られなくなります。プロックしたことは、相手に通知されません";
 "msg_recover_account_des" = "利用規約違反していない場合、確認するために、下記までの情報をお願いいたします";
@@ -130,7 +130,7 @@
 "msgf_bid_with_gem" = "%@を1コ使用して一回入札しますか？";
 "msgf_insufficient_gem_des" = "%@が不足しています。";
 "msgf_insufficient_gem_unlock_des" = "一つ商品をアンロックするごとに、1 %@ + %@ が必要です。";
-"msgf_insufficient_gem_bid_des" = "毎回入札するごとに、 1 %@ + %@が必要です。";
+"msgf_insufficient_gem_bid_des" = "毎回入札するごとに、 1 %@ が必要です。";
 "msgf_earn_blue_gem_instruction" = "写真をアップロードして、%@ をゲットしよう！";
 "msgf_received_gem" = "%@を%@コ 獲得しました。";
 "msgf_unlock_succeeded" = "入札するには %@ が必要です!";
@@ -182,7 +182,7 @@
 "ph_bid_leader" = "予定落札者";
 "ph_product_name" = "商品名";
 "ph_bid_outcome" = "入札結果";
-"ph_bid_lot" = "Commodity";
+"ph_bid_lot" = "商品";
 "ph_successful_shipping_info_submission" = "入力完了";
 "ph_goto_bidding" = "Go bidding page";
 "ph_get_gem" = "報酬を受け取りしましょう";
@@ -234,6 +234,7 @@
 "no_generic" = "No Items";
 "no_unlocked" = "まだ商品をアンロックしていません。";
 "no_unlocked_detail" = "オークションに参加するには商品をアンロックしてください。急いでアンロックしよう！";
+"no_bidding_history" = "入札履歴";
 
 "err_no_camera_access" = "カメラへのリクセルを求めています";
 "err_no_library_access" = "写真をライブラリに追加しようとしています";
@@ -263,23 +264,21 @@
 "act_bigging_ended" = "オークションが終了しました！";
 "act_countdown" = "オークション カウントダウン...";
 
-"pop_blue_gem_usage" = "使いみち：商品のアンロック、入札。";
+"pop_blue_gem_usage" = "使いみち：商品のアンロック。";
 "pop_green_gem_usage" = "使いみち：商品のアンロック。";
-"pop_purple_gem_usage" = "使いみち：商品のアンロック、高効率の商品入札。";
+"pop_purple_gem_usage" = "使いみち：高効率の商品入札。";
 
 "pop_blue_gem_action" = "写真をアップロードします";
 "pop_green_gem_action" = "%@へ";
 
-"pop_blue_gem_bullet1" = "%@＋%@を1コ使用したら、商品をアンロックすること、または商品への入札することができます。";
+"pop_blue_gem_bullet1" = "%@＋%@を1コ使うことで、商品をアンロックできます。";
 "pop_blue_gem_bullet2" = "獲得方法：写真をアップロードして評価されて経験値が満タンになると即に%@を1コ獲得します。";
-"pop_blue_gem_bullet3" = "%@を%@にアップグレードすることは、入札時の効率に、またクレジットカード又はキャリア決済の支払問題の減少に役立ちます。";
 
 "pop_green_gem_bullet1" = "%@を1コ使用したら、直接に商品をアンロックできます。";
 "pop_green_gem_bullet2" = "獲得方法1：Supreme.AIがあなたの写真にLIKEされます。";
 "pop_green_gem_bullet3" = "獲得方法2：イベントに合わせて贈ります。";
 
-"pop_purple_gem_bullet1" = "ルビッドを1コ使用したら、直接に商品へのアンロック、または入札することが一回できます。（高効率入札に達するため、商品への入札に使用のがお勧め。）";
-"pop_purple_gem_bullet2" = "ルビッドは%@のアップグレードバージョン。入札時の効率に、またクレジットカード又はキャリア決済の支払問題の減少に役立ちます。";
+"pop_purple_gem_bullet1" = "ルビッド 1コを使うことで、直接に一回入札することができます。";
 
 "pop_post_suspended" = "回数制限が切れました";
 "pop_cooldown_time" = "待ち時間 (%@)";
@@ -287,6 +286,7 @@
 "pop_cant_upload_bullet" = "時間復元するまでしばらくお待ちください";
 "pop_valued_upload_bullet1" = "写真をアップロードして評価されて経験値を獲得して、経験値が満タンになると即に%@を1コ獲得します。";
 "pop_valued_upload_bullet2" = "今回Oneplanetが提示したカラーテーマに該当するほど、%@の収集効率が高くなります。";
+"pop_purple_gem_action" = "購入 へ";
 
 "ship_first_name" = "名前";
 "ship_last_name" = "苗字";
@@ -297,6 +297,8 @@
 "ship_postal_code" = "郵便番号";
 "ship_country" = "国";
 "ship_phoneNumber" = "電話番号（配送に関する連絡のため）";
+"ship_phoneNumber_s" = "電話番号";
+"ship_cardholder" = "カード所持者";
 
 "rp_terms_violation" = "このアカウントはOneplanet利用規約に違反しているよ思う";
 "rp_dont_like_post_title" = "単に気に入らない";
@@ -316,8 +318,8 @@
 
 "smb_enum_spliter" = ", ";
 
-"tut_unlock" = "アンロックして、オークションに参加しよう";
-"tut_wait_for_bid" = "オークションが開始するまでしばらくお待ちください！";
+"tut_unlock" = "アンロックして入札しよう";
+"tut_wait_for_bid" = "オークションまで待てください！";
 "tut_bid" = "入札しよう！";
 
 "pn_session_start" = "今回の入札商品を公表しました。商品をアンロックする時間をお見逃しなく！";

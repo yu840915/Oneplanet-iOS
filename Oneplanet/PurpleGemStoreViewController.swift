@@ -18,7 +18,6 @@ class PurpleGemStoreViewController: UIViewController, UserSessionDepending {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usageLabel: UILabel!
     @IBOutlet weak var bulletTextView1: UITextView!
-    @IBOutlet weak var bulletTextView2: UITextView!
     
     @IBOutlet weak var productListHeight: NSLayoutConstraint!
     override func viewDidLoad() {
@@ -32,21 +31,10 @@ class PurpleGemStoreViewController: UIViewController, UserSessionDepending {
     private func localizeTitles() {
         nameLabel.text = Localized.titles.purpleGem
         usageLabel.text = Localized.gemStonePopUp.purpleGemUsage
+        bulletTextView1.font = UIFont.systemFont(ofSize: 12)
         bulletTextView1.text = Localized.gemStonePopUp.purpleGemBullet1
-        prepareActionBullet()
     }
 
-    private func prepareActionBullet() {
-        let text = String(format: Localized.gemStonePopUp.purpleGemBullet2, Localized.titles.blueGem)
-        let linkRange = (text as NSString).range(of: Localized.titles.blueGem)
-        let attrStr = NSMutableAttributedString(string: text, attributes: [.font:  UIFont.systemFont(ofSize: 12)])
-        attrStr.addAttributes([.link : DeepLinks.blueGemPopUp, .font: UIFont.systemFont(ofSize: 12, weight: .semibold)], range: linkRange)
-        bulletTextView2.delegate = self
-        bulletTextView2.attributedText = attrStr
-        bulletTextView2.linkTextAttributes = [
-            .foregroundColor : ColorPalette.buttonGreen,
-            .font: UIFont.systemFont(ofSize: 12, weight: .semibold)]
-    }
     
     @IBAction func exit(_ sender: Any) {
         dismiss(animated: true, completion: nil)

@@ -33,6 +33,7 @@
 		E02F49CB22E5948A0014DEBE /* FriendListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02F49CA22E5948A0014DEBE /* FriendListsViewController.swift */; };
 		E02F49CF22E595010014DEBE /* FollowingListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02F49CE22E595010014DEBE /* FollowingListTableViewController.swift */; };
 		E02F49D122E5A9A00014DEBE /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02F49D022E5A9A00014DEBE /* UserProfileViewController.swift */; };
+		E03094FF2379C2D3003A8FC3 /* BuyRubyFlowOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03094FE2379C2D3003A8FC3 /* BuyRubyFlowOperation.swift */; };
 		E030E4D0228A71CB0084D383 /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030E4CF228A71CB0084D383 /* ProfileDetailViewController.swift */; };
 		E030E4D2228AB0B70084D383 /* IDHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E030E4D1228AB0B60084D383 /* IDHeaderView.xib */; };
 		E030E4D4228AB1ED0084D383 /* IDHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E030E4D3228AB1ED0084D383 /* IDHeaderView.swift */; };
@@ -78,6 +79,24 @@
 		E05BB273226D5D2F00721F20 /* OneplanetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05BB272226D5D2F00721F20 /* OneplanetTests.swift */; };
 		E06261C8226D640D00A96F55 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E06261C7226D640D00A96F55 /* StoreKit.framework */; };
 		E06261CE226D6F2200A96F55 /* ModelBlocks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E06261CD226D6F2200A96F55 /* ModelBlocks.framework */; };
+		E0634DAA2376970F00733C2D /* TPDirect.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0634DA82376970F00733C2D /* TPDirect.framework */; };
+		E0634DAF2376A26700733C2D /* CardInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0634DAE2376A26700733C2D /* CardInputViewController.swift */; };
+		E0634DC22376AD9D00733C2D /* card_jcb.png in Resources */ = {isa = PBXBuildFile; fileRef = E0634DB22376AD9D00733C2D /* card_jcb.png */; };
+		E0634DC32376AD9D00733C2D /* card_amex@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E0634DB32376AD9D00733C2D /* card_amex@2x.png */; };
+		E0634DC42376AD9D00733C2D /* card_visa.png in Resources */ = {isa = PBXBuildFile; fileRef = E0634DB42376AD9D00733C2D /* card_visa.png */; };
+		E0634DC52376AD9D00733C2D /* card_amex@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E0634DB52376AD9D00733C2D /* card_amex@3x.png */; };
+		E0634DC62376AD9D00733C2D /* card_mastercard.png in Resources */ = {isa = PBXBuildFile; fileRef = E0634DB62376AD9D00733C2D /* card_mastercard.png */; };
+		E0634DC72376AD9D00733C2D /* card_unknown@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E0634DB72376AD9D00733C2D /* card_unknown@3x.png */; };
+		E0634DC82376AD9D00733C2D /* card_jcb@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E0634DB82376AD9D00733C2D /* card_jcb@3x.png */; };
+		E0634DC92376AD9D00733C2D /* card_union_pay.png in Resources */ = {isa = PBXBuildFile; fileRef = E0634DB92376AD9D00733C2D /* card_union_pay.png */; };
+		E0634DCA2376AD9D00733C2D /* card_jcb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E0634DBA2376AD9D00733C2D /* card_jcb@2x.png */; };
+		E0634DCB2376AD9D00733C2D /* card_unknown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E0634DBB2376AD9D00733C2D /* card_unknown@2x.png */; };
+		E0634DCC2376AD9D00733C2D /* card_amex.png in Resources */ = {isa = PBXBuildFile; fileRef = E0634DBC2376AD9D00733C2D /* card_amex.png */; };
+		E0634DCD2376AD9D00733C2D /* card_unknown.png in Resources */ = {isa = PBXBuildFile; fileRef = E0634DBD2376AD9D00733C2D /* card_unknown.png */; };
+		E0634DCE2376AD9D00733C2D /* card_mastercard@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E0634DBE2376AD9D00733C2D /* card_mastercard@3x.png */; };
+		E0634DCF2376AD9D00733C2D /* card_visa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E0634DBF2376AD9D00733C2D /* card_visa@2x.png */; };
+		E0634DD02376AD9D00733C2D /* card_visa@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = E0634DC02376AD9D00733C2D /* card_visa@3x.png */; };
+		E0634DD12376AD9D00733C2D /* card_mastercard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E0634DC12376AD9D00733C2D /* card_mastercard@2x.png */; };
 		E064A78622E6B0D200636387 /* UserLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = E064A78522E6B0D200636387 /* UserLists.swift */; };
 		E06589BB227001F300C9E4E6 /* AskForAuthorizationOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06589BA227001F300C9E4E6 /* AskForAuthorizationOperation.swift */; };
 		E06589BD22700AEC00C9E4E6 /* CaptureSessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06589BC22700AEC00C9E4E6 /* CaptureSessionController.swift */; };
@@ -91,7 +110,6 @@
 		E06F4FFA22782C8C0067DAE4 /* InputValidators.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06F4FF922782C8C0067DAE4 /* InputValidators.swift */; };
 		E06F4FFC22782E7D0067DAE4 /* EmailAuthCredentialTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06F4FFB22782E7D0067DAE4 /* EmailAuthCredentialTests.swift */; };
 		E06F4FFE22789C760067DAE4 /* AppLifeCycleObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06F4FFD22789C760067DAE4 /* AppLifeCycleObserver.swift */; };
-		E06F5000227ABE1C0067DAE4 /* OpenSDK1.8.0_NoPay in Resources */ = {isa = PBXBuildFile; fileRef = E06F4FFF227ABE1B0067DAE4 /* OpenSDK1.8.0_NoPay */; };
 		E06F5009227AFC770067DAE4 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E06F5008227AFC770067DAE4 /* libWeChatSDK.a */; };
 		E06F500B227AFC9B0067DAE4 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E06F500A227AFC9B0067DAE4 /* CoreTelephony.framework */; };
 		E06F500F227AFD740067DAE4 /* WeChatLogIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06F500E227AFD740067DAE4 /* WeChatLogIn.swift */; };
@@ -253,6 +271,7 @@
 		E02F49CA22E5948A0014DEBE /* FriendListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendListsViewController.swift; sourceTree = "<group>"; };
 		E02F49CE22E595010014DEBE /* FollowingListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowingListTableViewController.swift; sourceTree = "<group>"; };
 		E02F49D022E5A9A00014DEBE /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		E03094FE2379C2D3003A8FC3 /* BuyRubyFlowOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyRubyFlowOperation.swift; sourceTree = "<group>"; };
 		E030E4CF228A71CB0084D383 /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
 		E030E4D1228AB0B60084D383 /* IDHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IDHeaderView.xib; sourceTree = "<group>"; };
 		E030E4D3228AB1ED0084D383 /* IDHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDHeaderView.swift; sourceTree = "<group>"; };
@@ -303,6 +322,24 @@
 		E06261C6226D63E700A96F55 /* Oneplanet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Oneplanet.entitlements; sourceTree = "<group>"; };
 		E06261C7226D640D00A96F55 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		E06261CD226D6F2200A96F55 /* ModelBlocks.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ModelBlocks.framework; path = Carthage/Build/iOS/ModelBlocks.framework; sourceTree = SOURCE_ROOT; };
+		E0634DA82376970F00733C2D /* TPDirect.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TPDirect.framework; sourceTree = SOURCE_ROOT; };
+		E0634DAE2376A26700733C2D /* CardInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardInputViewController.swift; sourceTree = "<group>"; };
+		E0634DB22376AD9D00733C2D /* card_jcb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card_jcb.png; sourceTree = "<group>"; };
+		E0634DB32376AD9D00733C2D /* card_amex@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card_amex@2x.png"; sourceTree = "<group>"; };
+		E0634DB42376AD9D00733C2D /* card_visa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card_visa.png; sourceTree = "<group>"; };
+		E0634DB52376AD9D00733C2D /* card_amex@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card_amex@3x.png"; sourceTree = "<group>"; };
+		E0634DB62376AD9D00733C2D /* card_mastercard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card_mastercard.png; sourceTree = "<group>"; };
+		E0634DB72376AD9D00733C2D /* card_unknown@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card_unknown@3x.png"; sourceTree = "<group>"; };
+		E0634DB82376AD9D00733C2D /* card_jcb@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card_jcb@3x.png"; sourceTree = "<group>"; };
+		E0634DB92376AD9D00733C2D /* card_union_pay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card_union_pay.png; sourceTree = "<group>"; };
+		E0634DBA2376AD9D00733C2D /* card_jcb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card_jcb@2x.png"; sourceTree = "<group>"; };
+		E0634DBB2376AD9D00733C2D /* card_unknown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card_unknown@2x.png"; sourceTree = "<group>"; };
+		E0634DBC2376AD9D00733C2D /* card_amex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card_amex.png; sourceTree = "<group>"; };
+		E0634DBD2376AD9D00733C2D /* card_unknown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = card_unknown.png; sourceTree = "<group>"; };
+		E0634DBE2376AD9D00733C2D /* card_mastercard@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card_mastercard@3x.png"; sourceTree = "<group>"; };
+		E0634DBF2376AD9D00733C2D /* card_visa@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card_visa@2x.png"; sourceTree = "<group>"; };
+		E0634DC02376AD9D00733C2D /* card_visa@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card_visa@3x.png"; sourceTree = "<group>"; };
+		E0634DC12376AD9D00733C2D /* card_mastercard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "card_mastercard@2x.png"; sourceTree = "<group>"; };
 		E064A78522E6B0D200636387 /* UserLists.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLists.swift; sourceTree = "<group>"; };
 		E06589BA227001F300C9E4E6 /* AskForAuthorizationOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskForAuthorizationOperation.swift; sourceTree = "<group>"; };
 		E06589BC22700AEC00C9E4E6 /* CaptureSessionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureSessionController.swift; sourceTree = "<group>"; };
@@ -460,6 +497,7 @@
 				E03C329C226D75F400C32FD7 /* SwiftyBeaver.framework in Frameworks */,
 				E0BDCCEC229FD3CE006A9D20 /* SwiftMessages.framework in Frameworks */,
 				E06261C8226D640D00A96F55 /* StoreKit.framework in Frameworks */,
+				E0634DAA2376970F00733C2D /* TPDirect.framework in Frameworks */,
 				E032844722AB6F66001F02E8 /* XLPagerTabStrip.framework in Frameworks */,
 				E0F2688C231289E100CE5C45 /* MarkdownKit.framework in Frameworks */,
 				E06F5009227AFC770067DAE4 /* libWeChatSDK.a in Frameworks */,
@@ -659,6 +697,7 @@
 		E05BB25C226D5D2A00721F20 /* Oneplanet */ = {
 			isa = PBXGroup;
 			children = (
+				E0634DB02376AD9D00733C2D /* TPDirectResource */,
 				E06261C6226D63E700A96F55 /* Oneplanet.entitlements */,
 				E05BB25D226D5D2A00721F20 /* AppDelegate.swift */,
 				E0FE73AF22F596C500CE665B /* PushListener.swift */,
@@ -742,6 +781,7 @@
 		E06261CC226D6EF900A96F55 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E0634DA82376970F00733C2D /* TPDirect.framework */,
 				E0F2688B231289E100CE5C45 /* MarkdownKit.framework */,
 				E0A4618722B6328300D26720 /* PhoneNumberKit.framework */,
 				E032844622AB6F66001F02E8 /* XLPagerTabStrip.framework */,
@@ -752,6 +792,37 @@
 				E06261CD226D6F2200A96F55 /* ModelBlocks.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E0634DB02376AD9D00733C2D /* TPDirectResource */ = {
+			isa = PBXGroup;
+			children = (
+				E0634DB12376AD9D00733C2D /* Image */,
+			);
+			path = TPDirectResource;
+			sourceTree = SOURCE_ROOT;
+		};
+		E0634DB12376AD9D00733C2D /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				E0634DB22376AD9D00733C2D /* card_jcb.png */,
+				E0634DB32376AD9D00733C2D /* card_amex@2x.png */,
+				E0634DB42376AD9D00733C2D /* card_visa.png */,
+				E0634DB52376AD9D00733C2D /* card_amex@3x.png */,
+				E0634DB62376AD9D00733C2D /* card_mastercard.png */,
+				E0634DB72376AD9D00733C2D /* card_unknown@3x.png */,
+				E0634DB82376AD9D00733C2D /* card_jcb@3x.png */,
+				E0634DB92376AD9D00733C2D /* card_union_pay.png */,
+				E0634DBA2376AD9D00733C2D /* card_jcb@2x.png */,
+				E0634DBB2376AD9D00733C2D /* card_unknown@2x.png */,
+				E0634DBC2376AD9D00733C2D /* card_amex.png */,
+				E0634DBD2376AD9D00733C2D /* card_unknown.png */,
+				E0634DBE2376AD9D00733C2D /* card_mastercard@3x.png */,
+				E0634DBF2376AD9D00733C2D /* card_visa@2x.png */,
+				E0634DC02376AD9D00733C2D /* card_visa@3x.png */,
+				E0634DC12376AD9D00733C2D /* card_mastercard@2x.png */,
+			);
+			path = Image;
 			sourceTree = "<group>";
 		};
 		E06589C42270536A00C9E4E6 /* Image Picking */ = {
@@ -826,6 +897,8 @@
 				E081590E22A63628007C9776 /* GreenGemPopUpViewController.swift */,
 				E081591022A65276007C9776 /* PurpleGemStoreViewController.swift */,
 				E038B86F233FB56C0079F87B /* PurpleGemProductListTableViewController.swift */,
+				E0634DAE2376A26700733C2D /* CardInputViewController.swift */,
+				E03094FE2379C2D3003A8FC3 /* BuyRubyFlowOperation.swift */,
 				E0D7DCDA229CE65C00B40D76 /* PromoPopUpFlowViewController.swift */,
 				E0D7DCDC229CE82300B40D76 /* PromoPopUpViewController.swift */,
 				E0BDCCE9229FA044006A9D20 /* PromotionPageList.swift */,
@@ -987,35 +1060,50 @@
 			buildActionMask = 2147483647;
 			files = (
 				E006BAC622AE250D00D7D118 /* DS-DIGIT.TTF in Resources */,
+				E0634DCD2376AD9D00733C2D /* card_unknown.png in Resources */,
+				E0634DD02376AD9D00733C2D /* card_visa@3x.png in Resources */,
 				E05BB268226D5D2E00721F20 /* LaunchScreen.storyboard in Resources */,
 				E0CB5E15228F0E5F00C0C010 /* DS-DIGIB.TTF in Resources */,
+				E0634DCB2376AD9D00733C2D /* card_unknown@2x.png in Resources */,
 				E032844D22ABB1F5001F02E8 /* BadgeView.xib in Resources */,
 				E0A4617622B2351100D26720 /* BiddingProcessHeader.xib in Resources */,
 				E0814FAE22864B10002F1C02 /* MainUserFlow.storyboard in Resources */,
+				E0634DC92376AD9D00733C2D /* card_union_pay.png in Resources */,
 				E0814FB322865CC2002F1C02 /* Me.storyboard in Resources */,
 				E07276F32276AA85001239C0 /* GoogleService-Info.plist in Resources */,
 				E03C32A3226D866200C32FD7 /* Localizable.strings in Resources */,
 				E05BB265226D5D2E00721F20 /* Assets.xcassets in Resources */,
+				E0634DC72376AD9D00733C2D /* card_unknown@3x.png in Resources */,
 				E093935422DF031D004F045A /* SimpleEmptyView.xib in Resources */,
+				E0634DCE2376AD9D00733C2D /* card_mastercard@3x.png in Resources */,
+				E0634DC62376AD9D00733C2D /* card_mastercard.png in Resources */,
+				E0634DC82376AD9D00733C2D /* card_jcb@3x.png in Resources */,
 				E0DCD04F22B7E77D008D9C63 /* PickerConfirmButtonFooter.xib in Resources */,
+				E0634DC42376AD9D00733C2D /* card_visa.png in Resources */,
 				E03C32B9226DA44A00C32FD7 /* Onboarding.storyboard in Resources */,
 				E0FF797C228D2FC400F61318 /* Home.storyboard in Resources */,
 				E06F5016227B4E7E0067DAE4 /* PreflightCheck.storyboard in Resources */,
 				E0190F5A226EDD1100C212D5 /* SupportingFlows.storyboard in Resources */,
 				E05BB263226D5D2A00721F20 /* Main.storyboard in Resources */,
+				E0634DCA2376AD9D00733C2D /* card_jcb@2x.png in Resources */,
 				E0A4617422B234F600D26720 /* BiddingListHeader.xib in Resources */,
 				E0B57DE722A0FE77006AEADB /* Toast.xib in Resources */,
 				E0DCD05922B9D828008D9C63 /* EmptyLotListView.xib in Resources */,
+				E0634DD12376AD9D00733C2D /* card_mastercard@2x.png in Resources */,
 				E0DA389722C0744E00EC4170 /* Unlock.storyboard in Resources */,
 				E00611F42294FFF10032AE30 /* HotNavigationItems.xib in Resources */,
-				E06F5000227ABE1C0067DAE4 /* OpenSDK1.8.0_NoPay in Resources */,
 				E0FF7980228D398300F61318 /* Auction.storyboard in Resources */,
 				E089F70F228EB16A003E77DF /* SectionHeaderView.xib in Resources */,
 				E030E4D2228AB0B70084D383 /* IDHeaderView.xib in Resources */,
 				E0A4617222B234D500D26720 /* ProductListHeader.xib in Resources */,
 				E0FF797E228D38CE00F61318 /* Post.storyboard in Resources */,
+				E0634DC22376AD9D00733C2D /* card_jcb.png in Resources */,
+				E0634DC32376AD9D00733C2D /* card_amex@2x.png in Resources */,
+				E0634DCC2376AD9D00733C2D /* card_amex.png in Resources */,
 				E0FF7982228D3A3D00F61318 /* Notification.storyboard in Resources */,
 				E03C32A6226D866500C32FD7 /* InfoPlist.strings in Resources */,
+				E0634DCF2376AD9D00733C2D /* card_visa@2x.png in Resources */,
+				E0634DC52376AD9D00733C2D /* card_amex@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1073,7 +1161,6 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Oneplanet/Pods-Oneplanet-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
@@ -1096,7 +1183,6 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
@@ -1200,6 +1286,7 @@
 				E081590D22A63616007C9776 /* BlueGemPopUpViewController.swift in Sources */,
 				E03C32AC226D872A00C32FD7 /* Localized.swift in Sources */,
 				E093935222DF0308004F045A /* SimpleEmptyView.swift in Sources */,
+				E0634DAF2376A26700733C2D /* CardInputViewController.swift in Sources */,
 				E03C32B5226D969500C32FD7 /* ColorPalette .swift in Sources */,
 				E05398C522FE98AC00AAF803 /* WebLinkingKeyMap.swift in Sources */,
 				E0C18E5F22FAA3DE0086C114 /* PostCreationFlowViewController.swift in Sources */,
@@ -1327,6 +1414,7 @@
 				E045BE7722E974640035D08B /* PostFeedMainViewController.swift in Sources */,
 				E0C98E292329D77400B0BF00 /* MyLotList.swift in Sources */,
 				E0190F4D226DCCFB00C212D5 /* UserSession.swift in Sources */,
+				E03094FF2379C2D3003A8FC3 /* BuyRubyFlowOperation.swift in Sources */,
 				E02F49D122E5A9A00014DEBE /* UserProfileViewController.swift in Sources */,
 				E0DCD05122B7E86B008D9C63 /* PickerConfirmButtonFooter.swift in Sources */,
 				E0190F49226DB0E000C212D5 /* WelcomeMessageViewController.swift in Sources */,
@@ -1442,7 +1530,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 11;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -1510,7 +1598,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 11;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1549,6 +1637,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Oneplanet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1580,6 +1669,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Oneplanet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

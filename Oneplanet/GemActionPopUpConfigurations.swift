@@ -279,41 +279,28 @@ class InsufficientBlueGemPopUpConfiguration: GemActionPopUpConfiguration {
     }
 }
 
-class InsufficientBlueGemToBidPopUpConfiguration: GemActionPopUpConfiguration {
-    let formattedPrice: String
-    init(formattedPrice: String) {
-        self.formattedPrice = formattedPrice
-    }
+class InsufficientPurpleGemToBidPopUpConfiguration: GemActionPopUpConfiguration {
     override var icon: UIImage {
-        return #imageLiteral(resourceName: "im_00_insufficient")
+        return #imageLiteral(resourceName: "ic_coin80_nor")
     }
     override var attributedTitle: NSAttributedString {
-        return NSAttributedString(string: String(format: Localized.messageFormats.insufficientGem, Localized.titles.blueGem), attributes: titleAttributes)
+        return NSAttributedString(string: String(format: Localized.messageFormats.insufficientGem, Localized.titles.purpleGem), attributes: titleAttributes)
     }
 
     override var attributedSubtitle: NSAttributedString {
-        let result = NSMutableAttributedString(attributedString: descriptionPart)
-        result.append(instructionPart)
-        return result
+        return NSMutableAttributedString(attributedString: descriptionPart)
     }
 
     private var descriptionPart: NSAttributedString {
-        let text = String(format: Localized.messageFormats.insufficientGemToBidDescription, Localized.titles.blueGem, formattedPrice)
-        let range = (text as NSString).range(of: Localized.titles.blueGem)
+        let text = String(format: Localized.messageFormats.insufficientGemToBidDescription, Localized.titles.blueGem)
+        let range = (text as NSString).range(of: Localized.titles.purpleGem)
         let result = NSMutableAttributedString(string: text, attributes: subtitleAttributes)
-        result.addAttributes([.link : DeepLinks.blueGemPopUp], range: range)
+        result.addAttributes([.link : DeepLinks.purpleGemPopUp], range: range)
         return result
     }
     
-    private var instructionPart: NSAttributedString {
-        let text = String(format: Localized.messageFormats.earnBlueGemInstruction, Localized.titles.blueGem)
-        let range = (text as NSString).range(of: Localized.titles.blueGem)
-        let result = NSMutableAttributedString(string: text, attributes: subtitleAttributes)
-        result.addAttributes([.link : DeepLinks.blueGemPopUp], range: range)
-        return result
-    }
     override var actionTitle: String {
-        return Localized.gemStonePopUp.blueGemAction
+        return Localized.gemStonePopUp.purpleGemAction
     }
 }
 
@@ -375,7 +362,7 @@ class BidTooLateConfiguration: GemActionPopUpConfiguration {
     }
     override var attributedSubtitle: NSAttributedString {
         let num = "1"
-        return NSAttributedString(string: String(format: Localized.messageFormats.receivedGem, Localized.titles.greenGem, num), attributes: subtitleAttributes)
+        return NSAttributedString(string: String(format: Localized.messageFormats.receivedGem, Localized.titles.purpleGem, num), attributes: subtitleAttributes)
     }
     override var shouldShowCancel: Bool {
         return false

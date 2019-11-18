@@ -153,6 +153,7 @@ class UserSession {
         updateProfileOperation = nil
         submitPushTokenOperation?.cancel()
         sessionBecomeInactiveObservers.invokeEach{$0()}
+        bidProcessManager.deactivate()
     }
     
     func broadcastPostPublish(_ post: Post?) {
@@ -262,11 +263,15 @@ class MyProfile: Decodable, UserProfileDisplayable {
     }
     
     func updating(with draft: ProfileDraft) -> MyProfile {
+        var avatarInfo = avatar
+        if let url = draft.avatar?.progress.imageLocation?.url {
+            avatarInfo = WebImageInfo(url: url)
+        }
         let profile = MyProfile(id: id,
                                 username: draft.username,
                                 nickname: draft.nickname,
                                 gender: draft.gender,
-                                avatar: avatar,
+                                avatar: avatarInfo,
                                 isBanned: isBanned,
                                 isAdmin: isAdmin)
         profile.alien = draft.alien

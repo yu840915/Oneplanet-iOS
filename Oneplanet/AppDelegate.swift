@@ -14,6 +14,7 @@ import FacebookCore
 import TwitterKit
 import StoreKit
 import ModelBlocks
+import AdSupport
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -33,10 +34,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             router.handle(url)
         }
         appConfiguration.update()
-        SDKApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         TWTRTwitter.sharedInstance().start(withConsumerKey:TwitterCredentials.key, consumerSecret:TwitterCredentials.secret)
         WXApi.registerApp("wx8630436ab3a5f7c2")
 //        prepareDataStore()
+        #if DEBUG
+        TPDSetup.setWithAppId(15424, withAppKey: "app_TqeuLT98s7hYcyCIGWWVWKIkiikqoD370jZJqmLiiRO9dtE7c8UbljhGKODH", with: TPDServerType.sandBox)
+        #else
+        TPDSetup.setWithAppId(15424, withAppKey: "app_TqeuLT98s7hYcyCIGWWVWKIkiikqoD370jZJqmLiiRO9dtE7c8UbljhGKODH", with: TPDServerType.production)
+        #endif
+        TPDSetup.shareInstance().serverSync()
         return true
     }
     
@@ -85,7 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return router.handle(url) || SDKApplicationDelegate.shared.application(app, open: url, options: options) || TWTRTwitter.sharedInstance().application(app, open: url, options: options) || WXApi.handleOpen(url, delegate: WeChatLogInOperation.runningLogIn ?? self)
+        return router.handle(url) || ApplicationDelegate.shared.application(app, open: url, options: options) || TWTRTwitter.sharedInstance().application(app, open: url, options: options) || WXApi.handleOpen(url, delegate: WeChatLogInOperation.runningLogIn ?? self)
     }
     
     func applicationWillResignActive(_ application: UIApplication) {

@@ -156,7 +156,7 @@ class BonusEventInfo: Decodable {
 }
 
 enum BonusEventType: String, Decodable {
-    case likePost = "like_post"
+    case likePost = "favorite_post"
     case gift = "free_bonus_reward"
     case loginReward = "login_reward"
 }

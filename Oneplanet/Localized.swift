@@ -775,6 +775,9 @@ class EmptyMessages {//no_
     var unlockedDetail: String {
         return NSLocalizedString("no_unlocked_detail", comment: "")
     }
+    var biddingHistory: String {
+        return NSLocalizedString("no_bidding_history", comment: "")
+    }
 }
 
 class LocalizedErrorsTitles {//errtl_
@@ -863,6 +866,9 @@ class GemStonePopUp { //pop
     var blueGemAction: String {
         return NSLocalizedString("pop_blue_gem_action", comment: "")
     }
+    var purpleGemAction: String {
+        return NSLocalizedString("pop_purple_gem_action", comment: "")
+    }
     var greenGemAction: String {
         return NSLocalizedString("pop_green_gem_action", comment: "")
     }
@@ -871,9 +877,6 @@ class GemStonePopUp { //pop
     }
     var blueGemBullet2: String {
         return NSLocalizedString("pop_blue_gem_bullet2", comment: "")
-    }
-    var blueGemBullet3: String {
-        return NSLocalizedString("pop_blue_gem_bullet3", comment: "")
     }
     var greenGemBullet1: String {
         return NSLocalizedString("pop_green_gem_bullet1", comment: "")
@@ -886,9 +889,6 @@ class GemStonePopUp { //pop
     }
     var purpleGemBullet1: String {
         return NSLocalizedString("pop_purple_gem_bullet1", comment: "")
-    }
-    var purpleGemBullet2: String {
-        return NSLocalizedString("pop_purple_gem_bullet2", comment: "")
     }
 }
 
@@ -923,6 +923,12 @@ class LocalizedShippingInfoTerms {//ship_
     }
     var phoneNumber: String {
         return NSLocalizedString("ship_phoneNumber", comment: "")
+    }
+    var phoneNumberShort: String {
+        return NSLocalizedString("ship_phoneNumber_s", comment: "")
+    }
+    var cardholder: String {
+        return NSLocalizedString("ship_cardholder", comment: "")
     }
 }
 

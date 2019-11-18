@@ -132,7 +132,8 @@ fileprivate extension PromoPopUpFlowViewController {
     
     func dismissCurrentAndShowNextIfAvailable() {
         if promoPages.isEmpty {
-            presentingViewController!.dismiss(animated: true, completion: nil)
+            let presenter = presentingViewController ?? self
+            presenter.dismiss(animated: true, completion: nil)
         } else {
             dismiss(animated: true) {[weak self] in
                 self?.popAndShowPromotionPage()

@@ -75,7 +75,7 @@
                         <viewLayoutGuide key="safeArea" id="eLJ-UA-7Rf"/>
                     </view>
                     <connections>
-                        <segue destination="oaO-Qs-4lc" kind="presentation" identifier="preflightCheck" modalTransitionStyle="crossDissolve" id="hi8-8u-MMT"/>
+                        <segue destination="oaO-Qs-4lc" kind="presentation" identifier="preflightCheck" animates="NO" modalTransitionStyle="crossDissolve" id="hi8-8u-MMT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="foh-Ve-dv3" userLabel="First Responder" sceneMemberID="firstResponder"/>

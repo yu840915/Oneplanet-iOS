@@ -7,6 +7,7 @@ class AlamofireAPIAccessOperation: SimpleAsynchronousOperation, FailableOperatio
     private(set) var error: Error?
     
     private var dataRequest: Alamofire.DataRequest?
+    private var dataResponse: DefaultDataResponse?
     private(set) var httpResponse: HTTPURLResponse?
     
     override func main() {
@@ -30,6 +31,7 @@ class AlamofireAPIAccessOperation: SimpleAsynchronousOperation, FailableOperatio
     
     private func processDataResponse(_ dataResponse: DefaultDataResponse) {
         guard !isCancelled else { return }
+        self.dataResponse = dataResponse
         guard let httpResponse = dataResponse.response else {
             if let error = dataResponse.error {
                 errorOut(with: error)
@@ -68,6 +70,9 @@ class AlamofireAPIAccessOperation: SimpleAsynchronousOperation, FailableOperatio
         if response.statusCode == 401 {
             try handleUnauthorizedError(with: response)
         }
+        if let data = dataResponse?.data {
+            try processErrorData(with: data, response: response)
+        }
         throw GenericHTTPResponseError(response: response)
     }
     
@@ -79,6 +84,11 @@ class AlamofireAPIAccessOperation: SimpleAsynchronousOperation, FailableOperatio
     }
     
     open func processData(with data: Data) throws {}
+    open func processErrorData(with data: Data, response: HTTPURLResponse) throws {
+        if let msg = String(data: data, encoding: .utf8) {
+            debugPrint(msg)
+        }
+    }
     
     open func willFinishProcess() throws {}
     

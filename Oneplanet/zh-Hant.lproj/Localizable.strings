@@ -49,7 +49,7 @@
 "tl_delete" = "刪除";
 "tl_unlock" = "解鎖商品";
 "tl_unlocked" = "已解鎖";
-"tl_bid" = "投標一次";
+"tl_bid" = "投標";
 "tl_required_input" = "必填";
 "tl_agree" = "我同意";
 "tl_filter" = "商品過濾";
@@ -130,7 +130,7 @@
 "msgf_bid_with_gem" = "使用一顆 %@ 投標一次？";
 "msgf_insufficient_gem_des" = "你的%@不足。";
 "msgf_insufficient_gem_unlock_des" = "解鎖一件商品需要使用一顆 %@ + %@。";
-"msgf_insufficient_gem_bid_des" = "每投標一次需要使用一顆 %@ + %@。";
+"msgf_insufficient_gem_bid_des" = "每投標一次需要使用一顆 %@。";
 "msgf_earn_blue_gem_instruction" = "再加把勁上傳照片獲得 %@！";
 "msgf_received_gem" = "獲得 %@ %@ 顆";
 "msgf_unlock_succeeded" = "投標需要使用到 %@!";
@@ -234,6 +234,7 @@
 "no_generic" = "No Items";
 "no_unlocked" = "你還沒解鎖任何商品";
 "no_unlocked_detail" = "解鎖商品就可以參加競標喔！趕緊去解鎖吧！";
+"no_bidding_history" = "你還沒有競標歷程";
 
 "err_no_camera_access" = "啟用相機權限";
 "err_no_library_access" = "啟用圖庫存取權限";
@@ -263,23 +264,21 @@
 "act_bigging_ended" = "競標結束！";
 "act_countdown" = "競標倒數...";
 
-"pop_blue_gem_usage" = "用途：解鎖商品、投標商品。";
+"pop_blue_gem_usage" = "用途：解鎖商品。";
 "pop_green_gem_usage" = "用途：解鎖商品。";
-"pop_purple_gem_usage" = "用途：解鎖商品、高效率投標商品。";
+"pop_purple_gem_usage" = "用途：高效率投標商品。";
 
 "pop_blue_gem_action" = "立即前往 上傳照片";
 "pop_green_gem_action" = "前往%@";
 
-"pop_blue_gem_bullet1" = "使用一顆 %@ + %@，可以解鎖一件商品或投標一次。";
+"pop_blue_gem_bullet1" = "使用一顆 %@ + %@，可以解鎖一件商品。";
 "pop_blue_gem_bullet2" = "獲得方式：上傳照片評分獲得經驗值，當經驗值滿格即獲得一顆 %@。";
-"pop_blue_gem_bullet3" = "將 %@ 升級成 %@，有助於競標時的效率，並減少信用卡或電信商的支付問題。";
 
 "pop_green_gem_bullet1" = "使用一顆 %@ 可以直接解鎖一件商品。";
 "pop_green_gem_bullet2" = "獲得方式ㄧ：Supreme.AI (官方) 喜歡你的相片。";
 "pop_green_gem_bullet3" = "獲得方式二：配合活動贈送";
 
-"pop_purple_gem_bullet1" = "使用一顆 紅金寶 可以直接解鎖一件商品或投標一次（建議使用在投標，以達到高效率投標之效果）。";
-"pop_purple_gem_bullet2" = "紅金寶 是 %@ 的升級版，有助於競標時的效率，並減少信用卡或電信商的支付問題。";
+"pop_purple_gem_bullet1" = "使用一顆 紅金寶 可以直接投標一次";
 
 "pop_post_suspended" = "次數用完了";
 "pop_cooldown_time" = "等待時間 (%@)";
@@ -287,6 +286,7 @@
 "pop_cant_upload_bullet" = "請等待時間回復";
 "pop_valued_upload_bullet1" = "上傳照片經過 AI 評分獲得經驗值，當經驗值滿格即獲得一顆 %@。";
 "pop_valued_upload_bullet2" = "越符合本次 Oneplanet 提示的顏色主題，收集 %@ 的效率越高。";
+"pop_purple_gem_action" = "前往 購買";
 
 "ship_first_name" = "名字";
 "ship_last_name" = "姓氏";
@@ -297,6 +297,8 @@
 "ship_postal_code" = "郵遞區號";
 "ship_country" = "國家";
 "ship_phoneNumber" = "電話號碼（僅限送貨）";
+"ship_phoneNumber_s" = "電話號碼";
+"ship_cardholder" = "持卡人";
 
 "rp_terms_violation" = "我認為此帳戶違反了 Oneplanet 的使用條款";
 "rp_dont_like_post_title" = "我不喜歡這則貼文";

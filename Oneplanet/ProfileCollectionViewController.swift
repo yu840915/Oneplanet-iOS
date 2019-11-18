@@ -51,6 +51,7 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
         }
     }
     private var listUpdateHandles: [Any]?
+    private var needsUpdateHandle: Any?
     private var isVisible = false
     private var needsUpdate = false
     
@@ -62,6 +63,9 @@ class ProfileCollectionViewController: UICollectionViewController, UserSessionDe
         collectionView.addSubview(control)
         refreshControl = control
         prepareForList()
+        needsUpdateHandle = userSession.postListDidUpdate.add({[weak self] (_) in
+            self?.postList.reload()
+        })
     }
 
     func setNeedsRefresh() {

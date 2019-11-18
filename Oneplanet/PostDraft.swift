@@ -126,7 +126,6 @@ class SubmitPostOperation: SimpleAsynchronousOperation, FailableOperationType {
 class SubmitPostDraftOperation: AlamofireAPIAccessOperation {
     let draft: PostDraft
     let session: UserSession
-    private(set) var post: Post?
     typealias Keys = Post.CodingKeys
 
     init(draft: PostDraft, session: UserSession) {
@@ -155,11 +154,6 @@ class SubmitPostDraftOperation: AlamofireAPIAccessOperation {
         return [Keys.caption.rawValue: draft.caption,
                 Keys.imageURLs.rawValue: images.map{$0.absoluteString},
                 Keys.type.rawValue: draft.isValued ? PostType.valued.rawValue : PostType.free.rawValue]
-    }
-    
-    override func processData(with data: Data) throws {
-        if data.isEmpty { return }
-        post = try JSONDecoder.default.decode(Post.self, from: data)
     }
     
     override func handleUnauthorizedError(with response: HTTPURLResponse) throws {

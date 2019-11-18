@@ -16,6 +16,11 @@ class Post: Decodable {
     let imageURLs: [URL]
     let createdAt: Date
     let type: String?
+    let liked: Bool
+    var sticky: Bool {
+        return stickerInfo != nil
+    }
+    let stickerInfo: StikerInfo?
     var images: [WebImageInfo] {
         return imageURLs.map{WebImageInfo(url: $0)}
     }
@@ -29,6 +34,8 @@ class Post: Decodable {
         createdAt = post.createdAt
         type = post.type
         score = post.score
+        liked = post.liked
+        stickerInfo = post.stickerInfo
     }
     
     enum CodingKeys: String, CodingKey {
@@ -38,7 +45,12 @@ class Post: Decodable {
         case createdAt = "created_at"
         case type
         case score
+        case liked = "favorited"
+        case stickerInfo = "sticky"
     }
+}
+
+class StikerInfo: Decodable {
 }
 
 enum PostType: String {
@@ -129,5 +141,41 @@ class DeduplicationHelper {
         }
         ids.insert(id)
         return true
+    }
+}
+
+class ChangePinOperation: AlamofireAPIAccessOperation {
+    let post: Post
+    let session: UserSession
+    let isPinning: Bool
+    
+    init(post: Post, session: UserSession, isPinning: Bool) {
+        self.post = post
+        self.session = session
+        self.isPinning = isPinning
+    }
+    
+    override func prepareURLRequest() throws -> URLRequest {
+        guard session.isAdmin else {
+            throw GenericAppError("Only admin can pin")
+        }
+        return session.addingAuthorizationToken(to: try URLRequest(url: ServiceURLs.base.appendingPathComponent("posts/\(post.id)/sticky"), method: isPinning ? .put : .delete))
+    }
+}
+
+class LikePostOperation: AlamofireAPIAccessOperation {
+    let post: Post
+    let session: UserSession
+    
+    init(post: Post, session: UserSession) {
+        self.post = post
+        self.session = session
+    }
+    
+    override func prepareURLRequest() throws -> URLRequest {
+        guard session.isAdmin else {
+            throw GenericAppError("Only admin can pin")
+        }
+        return session.addingAuthorizationToken(to: try URLRequest(url: ServiceURLs.base.appendingPathComponent("posts/\(post.id)/favorite"), method: .post))
     }
 }

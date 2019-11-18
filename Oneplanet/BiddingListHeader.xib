@@ -114,7 +114,7 @@
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_bubbleup_nor" translatesAutoresizingMaskIntoConstraints="NO" id="c6y-hi-y3p">
                             <rect key="frame" x="0.0" y="0.0" width="77.5" height="45"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1G-rd-cqa">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h1G-rd-cqa">
                             <rect key="frame" x="15" y="10.5" width="43.5" height="20.5"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                             <nil key="textColor"/>
@@ -141,6 +141,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="t8q-9X-IN3" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="21r-N8-fDO"/>
+                <constraint firstItem="hbX-ay-NK7" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="7iF-CF-YKg"/>
                 <constraint firstItem="t8q-9X-IN3" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="M9g-VU-ag3"/>
                 <constraint firstAttribute="trailing" secondItem="hbX-ay-NK7" secondAttribute="trailing" constant="48" id="X1Y-qZ-oEo"/>
                 <constraint firstItem="t8q-9X-IN3" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="adB-2w-KTq"/>

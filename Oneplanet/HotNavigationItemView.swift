@@ -34,8 +34,23 @@ class HotNavigationItemView: UIView {
     }
     
     @IBOutlet weak var titleLabel: UILabel!
-    var action: (()->())?
+    var action: (()->())? {
+        didSet {
+            updateViewsForAction()
+        }
+    }
     @IBAction func invokeAction(_ sender: UIButton) {
         action?()
+    }
+    
+    private func updateViewsForAction() {
+        let enabled = action != nil
+        alpha = enabled ? 1.0 : 0.5
+        isUserInteractionEnabled = enabled
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        updateViewsForAction()
     }
 }

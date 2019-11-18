@@ -75,6 +75,8 @@ class NoticeTableViewController: UITableViewController, UserSessionDepending {
         switch notice.type {
         case .followNotice, .bonus:
             let cell = tableView.dequeueReusableCell(withIdentifier: ReuseID.normalNoticeCell, for: indexPath) as! NormalNoticeItemCell
+            cell.actionButton.isSelected = false
+            cell.actionButton.isHidden = true
             setUpNormalNoticeCell(cell, forNoticeAt: indexPath)
             return cell
         case .reported, .banned:

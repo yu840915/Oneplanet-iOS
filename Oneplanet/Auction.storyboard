@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="A6j-Aw-7aO">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="A6j-Aw-7aO">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -25,7 +23,7 @@
                     </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6it-6A-rGM">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -48,7 +46,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9P0-wO-VqV">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                             </scrollView>
                             <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dvg-JG-vWs">
                                 <rect key="frame" x="0.0" y="-200" width="375" height="1067"/>
@@ -138,26 +136,26 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <view contentMode="scaleToFill" horizontalCompressionResistancePriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="f1Q-vV-ogN" customClass="CountDownClockView" customModule="Oneplanet" customModuleProvider="target">
-                                    <rect key="frame" x="10" y="11" width="180" height="48"/>
+                                <view contentMode="scaleToFill" horizontalCompressionResistancePriority="100" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f1Q-vV-ogN" customClass="CountDownClockView" customModule="Oneplanet" customModuleProvider="target">
+                                    <rect key="frame" x="10" y="-13" width="180" height="96"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_timebg" translatesAutoresizingMaskIntoConstraints="NO" id="Sol-Ru-IwG">
-                                            <rect key="frame" x="0.0" y="0.0" width="180" height="48"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="ui_timebg" translatesAutoresizingMaskIntoConstraints="NO" id="Sol-Ru-IwG">
+                                            <rect key="frame" x="0.0" y="0.0" width="180" height="96"/>
                                         </imageView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6Q9-Kp-vjq">
-                                            <rect key="frame" x="10" y="6" width="160" height="36"/>
+                                        <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6Q9-Kp-vjq">
+                                            <rect key="frame" x="10" y="28" width="160" height="40"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="MMf-bK-kkZ" userLabel="Day Stack View">
-                                                    <rect key="frame" x="0.0" y="0.0" width="34" height="36"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="34" height="40"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sI0-Oc-y2V" userLabel="Value Label">
-                                                            <rect key="frame" x="0.0" y="0.0" width="34" height="24"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="34" height="28"/>
                                                             <fontDescription key="fontDescription" name="DS-Digital-BoldItalic" family="DS-Digital" pointSize="24"/>
                                                             <color key="textColor" name="lock red"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DAYS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bpx-eW-iZN" userLabel="Unit Label">
-                                                            <rect key="frame" x="0.0" y="24" width="34" height="12"/>
+                                                            <rect key="frame" x="0.0" y="28" width="34" height="12"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <color key="textColor" name="lock red"/>
                                                             <nil key="highlightedColor"/>
@@ -168,16 +166,16 @@
                                                     </constraints>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="D6O-nD-vRO" userLabel="Hour Stack View">
-                                                    <rect key="frame" x="42" y="0.0" width="34" height="36"/>
+                                                    <rect key="frame" x="42" y="0.0" width="34" height="40"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5RY-oP-dDX" userLabel="Value Label">
-                                                            <rect key="frame" x="0.0" y="0.0" width="34" height="24"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="34" height="28"/>
                                                             <fontDescription key="fontDescription" name="DS-Digital-BoldItalic" family="DS-Digital" pointSize="24"/>
                                                             <color key="textColor" name="lock red"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HRS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="07z-hF-uep" userLabel="Unit Label">
-                                                            <rect key="frame" x="0.0" y="24" width="34" height="12"/>
+                                                            <rect key="frame" x="0.0" y="28" width="34" height="12"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <color key="textColor" name="lock red"/>
                                                             <nil key="highlightedColor"/>
@@ -188,16 +186,16 @@
                                                     </constraints>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="L21-L0-EzI" userLabel="Minute Stack View">
-                                                    <rect key="frame" x="84" y="0.0" width="34" height="36"/>
+                                                    <rect key="frame" x="84" y="0.0" width="34" height="40"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Elj-uT-zXu" userLabel="Value Label">
-                                                            <rect key="frame" x="0.0" y="0.0" width="34" height="24"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="34" height="28"/>
                                                             <fontDescription key="fontDescription" name="DS-Digital-BoldItalic" family="DS-Digital" pointSize="24"/>
                                                             <color key="textColor" name="lock red"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MINS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePP-8v-a0e" userLabel="Unit Label">
-                                                            <rect key="frame" x="0.0" y="24" width="34" height="12"/>
+                                                            <rect key="frame" x="0.0" y="28" width="34" height="12"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <color key="textColor" name="lock red"/>
                                                             <nil key="highlightedColor"/>
@@ -208,16 +206,16 @@
                                                     </constraints>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ivj-El-aHB" userLabel="Second Stack View">
-                                                    <rect key="frame" x="126" y="0.0" width="34" height="36"/>
+                                                    <rect key="frame" x="126" y="0.0" width="34" height="40"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k6H-si-aVr" userLabel="Value Label">
-                                                            <rect key="frame" x="0.0" y="0.0" width="34" height="24"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="34" height="28"/>
                                                             <fontDescription key="fontDescription" name="DS-Digital-BoldItalic" family="DS-Digital" pointSize="24"/>
                                                             <color key="textColor" name="lock red"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SECS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBP-by-CbP" userLabel="Unit Label">
-                                                            <rect key="frame" x="0.0" y="24" width="34" height="12"/>
+                                                            <rect key="frame" x="0.0" y="28" width="34" height="12"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <color key="textColor" name="lock red"/>
                                                             <nil key="highlightedColor"/>
@@ -246,7 +244,7 @@
                                         <outlet property="secondValueLabel" destination="k6H-si-aVr" id="p3W-1Y-fad"/>
                                     </connections>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="COUNTDOWN TO BIDDING…" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVm-Rb-9Px" userLabel="Countdown Description Label">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" ambiguous="YES" text="COUNTDOWN TO BIDDING…" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVm-Rb-9Px" userLabel="Countdown Description Label">
                                     <rect key="frame" x="206" y="29" width="153" height="12"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                     <color key="textColor" name="default text"/>
@@ -288,32 +286,32 @@
                                                             </constraints>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="G2q-3z-sIU">
-                                                            <rect key="frame" x="66" y="0.0" width="224" height="56"/>
+                                                            <rect key="frame" x="66" y="0.0" width="184" height="56"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cui-IC-yWy" userLabel="Padding">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="224" height="8"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="184" height="8"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="8" id="16R-Jh-lvI"/>
                                                                     </constraints>
                                                                 </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uf8-xS-jFW" userLabel="Title Label">
-                                                                    <rect key="frame" x="0.0" y="8" width="224" height="17"/>
+                                                                    <rect key="frame" x="0.0" y="8" width="184" height="17"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wZ0-kS-BjA" userLabel="Padding">
-                                                                    <rect key="frame" x="0.0" y="25" width="224" height="31"/>
+                                                                    <rect key="frame" x="0.0" y="25" width="184" height="31"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </view>
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sXq-PC-cGe">
-                                                            <rect key="frame" x="300" y="0.0" width="40" height="56"/>
+                                                            <rect key="frame" x="260" y="0.0" width="80" height="56"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nUg-8I-Sdp" userLabel="Lock Button">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="80" height="56"/>
                                                                     <state key="normal" image="ic_lockoff_nor"/>
                                                                     <state key="disabled" image="ic_lockon_nor"/>
                                                                     <connections>
@@ -321,7 +319,7 @@
                                                                     </connections>
                                                                 </button>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6GH-Dy-bwX" userLabel="Lock Label">
-                                                                    <rect key="frame" x="0.0" y="40" width="40" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="56" width="80" height="0.0"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
                                                                     <color key="textColor" name="lock red"/>
                                                                     <nil key="highlightedColor"/>
@@ -350,13 +348,13 @@
                                             </constraints>
                                         </view>
                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Ub-Br-hdO" userLabel="Bubble View" customClass="ChatBubbleView" customModule="Oneplanet" customModuleProvider="target">
-                                            <rect key="frame" x="246.5" y="-34.5" width="73.5" height="40.5"/>
+                                            <rect key="frame" x="206.5" y="-56" width="73.5" height="62"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_bubbleup_nor" translatesAutoresizingMaskIntoConstraints="NO" id="nWv-Fs-pPh">
-                                                    <rect key="frame" x="0.0" y="0.0" width="77.5" height="44.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="77.5" height="66"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9V-4H-B4u">
-                                                    <rect key="frame" x="15" y="10" width="43.5" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i9V-4H-B4u">
+                                                    <rect key="frame" x="15" y="10" width="43.5" height="42"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -382,6 +380,7 @@
                                     <constraints>
                                         <constraint firstItem="nWv-Fs-pPh" firstAttribute="bottom" secondItem="nUg-8I-Sdp" secondAttribute="top" constant="5" id="0g9-nz-VKM"/>
                                         <constraint firstItem="Jq4-ZX-0hE" firstAttribute="centerX" secondItem="Vrd-5h-xiF" secondAttribute="centerX" id="GDr-Zf-JfI"/>
+                                        <constraint firstItem="8Ub-Br-hdO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Vrd-5h-xiF" secondAttribute="leading" constant="20" id="PHQ-Sl-69S"/>
                                         <constraint firstItem="Jq4-ZX-0hE" firstAttribute="centerY" secondItem="Vrd-5h-xiF" secondAttribute="centerY" id="PdR-Vn-mXf"/>
                                         <constraint firstItem="Jq4-ZX-0hE" firstAttribute="top" secondItem="Vrd-5h-xiF" secondAttribute="top" constant="3" id="czn-4E-PIc"/>
                                         <constraint firstItem="Jq4-ZX-0hE" firstAttribute="leading" secondItem="Vrd-5h-xiF" secondAttribute="leading" constant="10" id="gaa-Hg-3ff"/>
@@ -444,7 +443,7 @@
                                                                             <rect key="frame" x="0.0" y="0.0" width="20" height="44"/>
                                                                             <subviews>
                                                                                 <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qc9-Jx-66z" userLabel="Lead Indicator">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="44"/>
+                                                                                    <rect key="frame" x="0.0" y="-22" width="20" height="88"/>
                                                                                     <state key="normal" backgroundImage="ui_bids_red"/>
                                                                                     <state key="selected" backgroundImage="ui_bids_green"/>
                                                                                 </button>
@@ -470,7 +469,7 @@
                                                                             <rect key="frame" x="22" y="0.0" width="20" height="44"/>
                                                                             <subviews>
                                                                                 <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qZb-sd-0Oy" userLabel="Lead Indicator">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="44"/>
+                                                                                    <rect key="frame" x="0.0" y="-22" width="20" height="88"/>
                                                                                     <state key="normal" backgroundImage="ui_bids_red"/>
                                                                                     <state key="selected" backgroundImage="ui_bids_green"/>
                                                                                 </button>
@@ -496,7 +495,7 @@
                                                                             <rect key="frame" x="44" y="0.0" width="20" height="44"/>
                                                                             <subviews>
                                                                                 <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="udO-bU-1Iy" userLabel="Lead Indicator">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="20" height="44"/>
+                                                                                    <rect key="frame" x="0.0" y="-22" width="20" height="88"/>
                                                                                     <state key="normal" backgroundImage="ui_bids_red"/>
                                                                                     <state key="selected" backgroundImage="ui_bids_green"/>
                                                                                 </button>
@@ -534,10 +533,10 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L1U-rM-8Nz">
-                                                            <rect key="frame" x="160" y="0.0" width="32" height="56"/>
+                                                            <rect key="frame" x="160" y="0.0" width="25.5" height="56"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d32-hI-8d7" userLabel="Avatar View" customClass="AvatarView" customModule="Oneplanet" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="12" width="32" height="32"/>
+                                                                    <rect key="frame" x="-3" y="12" width="32" height="32"/>
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uYf-Qh-0cd">
                                                                             <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
@@ -580,36 +579,36 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bIS-q9-31b">
-                                                            <rect key="frame" x="192" y="0.0" width="48" height="56"/>
+                                                            <rect key="frame" x="185.5" y="0.0" width="0.0" height="56"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" priority="750" constant="5" id="4Kf-uz-egw"/>
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tgj-da-2TG">
-                                                            <rect key="frame" x="240" y="0.0" width="41" height="56"/>
+                                                            <rect key="frame" x="185.5" y="0.0" width="45.5" height="56"/>
                                                             <subviews>
                                                                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="vsX-eB-LJM">
-                                                                    <rect key="frame" x="2" y="9.5" width="37" height="37"/>
+                                                                    <rect key="frame" x="4.5" y="9.5" width="37" height="37"/>
                                                                     <color key="color" name="default placeholder"/>
                                                                 </activityIndicatorView>
                                                                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="00:00" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zfw-7n-PSp" userLabel="Countdown Label">
-                                                                    <rect key="frame" x="0.0" y="19" width="41" height="18"/>
+                                                                    <rect key="frame" x="0.0" y="17.5" width="45.5" height="21"/>
                                                                     <fontDescription key="fontDescription" name="DS-Digital-BoldItalic" family="DS-Digital" pointSize="18"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zab-2B-r2s">
-                                                                    <rect key="frame" x="2" y="19" width="37" height="18"/>
+                                                                    <rect key="frame" x="-0.5" y="17.5" width="46.5" height="21"/>
                                                                     <subviews>
                                                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WIN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N0m-7T-DfP" userLabel="Win Label">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="18"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="21"/>
                                                                             <fontDescription key="fontDescription" name="DS-Digital-BoldItalic" family="DS-Digital" pointSize="18"/>
                                                                             <color key="textColor" name="lock green"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOSE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kwi-2u-U8Z" userLabel="Lose Label">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="37" height="18"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="46.5" height="21"/>
                                                                             <fontDescription key="fontDescription" name="DS-Digital-BoldItalic" family="DS-Digital" pointSize="18"/>
                                                                             <color key="textColor" name="lock red"/>
                                                                             <nil key="highlightedColor"/>
@@ -629,14 +628,14 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gmi-sy-dW8">
-                                                            <rect key="frame" x="281" y="0.0" width="10" height="56"/>
+                                                            <rect key="frame" x="231" y="0.0" width="0.0" height="56"/>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" priority="500" constant="10" id="bOg-3s-JjD"/>
                                                             </constraints>
                                                         </view>
                                                         <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HCI-9F-GnE">
-                                                            <rect key="frame" x="291" y="0.0" width="60" height="56"/>
+                                                            <rect key="frame" x="231" y="0.0" width="120" height="56"/>
                                                             <state key="normal" image="bt_bid1_nor"/>
                                                             <state key="disabled" image="bt_bid2_nor"/>
                                                             <state key="highlighted" image="bt_bid1_tap"/>
@@ -829,6 +828,8 @@ The winner must check if the Receipt information is filled in to ensure that the
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="Mgf-2j-MeW">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <connections>
                             <action selector="refreshIfNeeded:" destination="GKE-yx-ygO" eventType="valueChanged" id="iDB-nh-PqV"/>
                         </connections>
@@ -863,23 +864,23 @@ The winner must check if the Receipt information is filled in to ensure that the
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="shippingInfoPromptCell" id="AYN-Uo-dr1" customClass="EmptyShippingInfoCell" customModule="Oneplanet" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="61"/>
+                                <rect key="frame" x="0.0" y="90.5" width="375" height="61"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AYN-Uo-dr1" id="uFq-0m-WpL">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="61"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Lqo-vl-dr0">
-                                            <rect key="frame" x="26" y="12" width="219.5" height="28"/>
+                                            <rect key="frame" x="26" y="12" width="219.5" height="56"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shipping Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3sE-eR-Eg1" userLabel="Shipping Label">
-                                                    <rect key="frame" x="0.0" y="0.0" width="113.5" height="28"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="113.5" height="56"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" name="default text"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pWQ-Mg-RQS" userLabel="Address Button">
-                                                    <rect key="frame" x="119.5" y="0.0" width="100" height="28"/>
+                                                    <rect key="frame" x="119.5" y="0.0" width="100" height="56"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                                                     <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="12" maxY="0.0"/>
                                                     <state key="normal" title="Add Address" backgroundImage="bt_smallgreen_nor">
@@ -916,23 +917,23 @@ The winner must check if the Receipt information is filled in to ensure that the
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="shippingInfoCell" rowHeight="100" id="rwj-4u-nDC" customClass="ConfiguredShippingInfoCell" customModule="Oneplanet" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="116.5" width="375" height="100"/>
+                                <rect key="frame" x="0.0" y="151.5" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rwj-4u-nDC" id="lwk-Mp-vgl">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="dPX-8T-nXa">
-                                            <rect key="frame" x="26" y="12" width="218.5" height="28"/>
+                                            <rect key="frame" x="26" y="12" width="218.5" height="47.5"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shipping Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oEI-JG-dgK" userLabel="Shipping Label">
-                                                    <rect key="frame" x="0.0" y="0.0" width="113.5" height="28"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="113.5" height="47.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" name="default text"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZZP-ZP-wPf" userLabel="Address Button">
-                                                    <rect key="frame" x="119.5" y="0.0" width="99" height="28"/>
+                                                    <rect key="frame" x="119.5" y="0.0" width="99" height="47.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                                                     <inset key="contentEdgeInsets" minX="12" minY="0.0" maxX="12" maxY="0.0"/>
                                                     <state key="normal" title="Edit Address" backgroundImage="bt_smallwiregray_nor">
@@ -945,7 +946,7 @@ The winner must check if the Receipt information is filled in to ensure that the
                                             </subviews>
                                         </stackView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPA-IC-ODi">
-                                            <rect key="frame" x="26" y="46" width="323" height="34"/>
+                                            <rect key="frame" x="26" y="65.5" width="323" height="14.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <color key="textColor" name="default placeholder"/>
                                             <nil key="highlightedColor"/>
@@ -980,7 +981,7 @@ The winner must check if the Receipt information is filled in to ensure that the
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="biddingItemResultCell" id="A9n-ZS-IXs" customClass="BidOutcomeCell" customModule="Oneplanet" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="216.5" width="375" height="61"/>
+                                <rect key="frame" x="0.0" y="251.5" width="375" height="61"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A9n-ZS-IXs" id="Zif-HZ-oP8">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="61"/>
@@ -1104,7 +1105,7 @@ The winner must check if the Receipt information is filled in to ensure that the
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="loadingCell" rowHeight="60" id="zrv-qg-0Xe" customClass="LoadingCell" customModule="Oneplanet" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="277.5" width="375" height="60"/>
+                                <rect key="frame" x="0.0" y="312.5" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zrv-qg-0Xe" id="7f8-FM-kcD">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
@@ -1134,6 +1135,8 @@ The winner must check if the Receipt information is filled in to ensure that the
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="VPq-hr-TbL">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <connections>
                             <action selector="refresh:" destination="N0x-I6-uS2" eventType="valueChanged" id="P4A-dx-9us"/>
                         </connections>
@@ -1150,9 +1153,9 @@ The winner must check if the Receipt information is filled in to ensure that the
         <!--Navigation Controller-->
         <scene sceneID="fBb-5s-h0G">
             <objects>
-                <navigationController id="K1B-0s-WCJ" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="fullScreen" id="K1B-0s-WCJ" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hhE-YP-N1A">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1168,7 +1171,7 @@ The winner must check if the Receipt information is filled in to ensure that the
             <objects>
                 <navigationController storyboardIdentifier="productDetail" id="rgg-0G-mBk" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jg5-f4-dAx">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1184,11 +1187,11 @@ The winner must check if the Receipt information is filled in to ensure that the
             <objects>
                 <viewController storyboardIdentifier="ProductDetailViewController" hidesBottomBarWhenPushed="YES" id="Kvw-Xq-bR5" customClass="ProductDetailViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4fI-dk-UoM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZXb-JW-AKT">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="oxS-Zv-zib">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="484.5"/>
@@ -1251,10 +1254,10 @@ The winner must check if the Receipt information is filled in to ensure that the
                                                         <rect key="frame" x="0.0" y="375" width="375" height="40"/>
                                                         <subviews>
                                                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5QL-eJ-FCI" userLabel="Lock Stack View">
-                                                                <rect key="frame" x="10" y="0.0" width="90" height="40"/>
+                                                                <rect key="frame" x="10" y="-20" width="130" height="80"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Low-rR-min" userLabel="Lock Button">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                                         <state key="normal" image="ic_lockoff_nor"/>
                                                                         <state key="disabled" image="ic_lockon_nor"/>
                                                                         <connections>
@@ -1262,7 +1265,7 @@ The winner must check if the Receipt information is filled in to ensure that the
                                                                         </connections>
                                                                     </button>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nHQ-w0-Ye0" userLabel="Lock Label">
-                                                                        <rect key="frame" x="40" y="0.0" width="50" height="40"/>
+                                                                        <rect key="frame" x="80" y="0.0" width="50" height="80"/>
                                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
                                                                         <color key="textColor" name="lock red"/>
                                                                         <nil key="highlightedColor"/>
@@ -1322,7 +1325,7 @@ The winner must check if the Receipt information is filled in to ensure that the
                                 </constraints>
                             </scrollView>
                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vrL-Jz-O94">
-                                <rect key="frame" x="131" y="291.5" width="113.5" height="104"/>
+                                <rect key="frame" x="131" y="271.5" width="113.5" height="104"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="m0M-Ld-hrv">
                                         <rect key="frame" x="38" y="0.0" width="37" height="37"/>
@@ -1395,13 +1398,13 @@ The winner must check if the Receipt information is filled in to ensure that the
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GYk-Tn-Whd">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IE1-Es-L9e">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="768"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="809"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="aM1-Vl-fPa">
-                                                <rect key="frame" x="16" y="10" width="343" height="748"/>
+                                                <rect key="frame" x="16" y="10" width="343" height="789"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xZ-iJ-T9Y" userLabel="Information Label">
                                                         <rect key="frame" x="0.0" y="0.0" width="343" height="43"/>
@@ -1423,10 +1426,10 @@ The winner must check if the Receipt information is filled in to ensure that the
                                                                 <rect key="frame" x="0.0" y="16.5" width="343" height="44"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_fieldwhite_nor" translatesAutoresizingMaskIntoConstraints="NO" id="y7c-9t-DnC" userLabel="Normal Background">
-                                                                        <rect key="frame" x="0.0" y="1.5" width="343" height="41"/>
+                                                                        <rect key="frame" x="0.0" y="-19" width="343" height="82"/>
                                                                     </imageView>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_fieldwhite_fai" translatesAutoresizingMaskIntoConstraints="NO" id="ILc-qW-hFK" userLabel="Rejecting Background">
-                                                                        <rect key="frame" x="0.0" y="1.5" width="343" height="41"/>
+                                                                        <rect key="frame" x="0.0" y="-19" width="343" height="82"/>
                                                                     </imageView>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="UcW-pc-0ox">
                                                                         <rect key="frame" x="16" y="0.0" width="311" height="44"/>
@@ -1498,10 +1501,10 @@ The winner must check if the Receipt information is filled in to ensure that the
                                                                         <rect key="frame" x="0.0" y="16.5" width="163.5" height="44"/>
                                                                         <subviews>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_fieldwhite_nor" translatesAutoresizingMaskIntoConstraints="NO" id="WRZ-NJ-UfJ" userLabel="Normal Background">
-                                                                                <rect key="frame" x="0.0" y="1.5" width="163.5" height="41"/>
+                                                                                <rect key="frame" x="0.0" y="-19" width="163.5" height="82"/>
                                                                             </imageView>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_fieldwhite_fai" translatesAutoresizingMaskIntoConstraints="NO" id="fox-ay-7P7" userLabel="Rejecting Background">
-                                                                                <rect key="frame" x="0.0" y="1.5" width="163.5" height="41"/>
+                                                                                <rect key="frame" x="0.0" y="-19" width="163.5" height="82"/>
                                                                             </imageView>
                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="heE-ag-VfE">
                                                                                 <rect key="frame" x="16" y="0.0" width="131.5" height="44"/>
@@ -1570,10 +1573,10 @@ The winner must check if the Receipt information is filled in to ensure that the
                                                                         <rect key="frame" x="0.0" y="16.5" width="163.5" height="44"/>
                                                                         <subviews>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_fieldwhite_nor" translatesAutoresizingMaskIntoConstraints="NO" id="ZhE-01-YlQ" userLabel="Normal Background">
-                                                                                <rect key="frame" x="0.0" y="1.5" width="163.5" height="41"/>
+                                                                                <rect key="frame" x="0.0" y="-19" width="163.5" height="82"/>
                                                                             </imageView>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_fieldwhite_fai" translatesAutoresizingMaskIntoConstraints="NO" id="vsL-ho-etY" userLabel="Rejecting Background">
-                                                                                <rect key="frame" x="0.0" y="1.5" width="163.5" height="41"/>
+                                                                                <rect key="frame" x="0.0" y="-19" width="163.5" height="82"/>
                                                                             </imageView>
                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="BMg-5B-3Za">
                                                                                 <rect key="frame" x="16" y="0.0" width="131.5" height="44"/>
@@ -1644,10 +1647,10 @@ The winner must check if the Receipt information is filled in to ensure that the
                                                                 <rect key="frame" x="0.0" y="16.5" width="343" height="44"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_fieldwhite_nor" translatesAutoresizingMaskIntoConstraints="NO" id="k1u-c0-0wq" userLabel="Normal Background">
-                                                                        <rect key="frame" x="0.0" y="1.5" width="343" height="41"/>
+                                                                        <rect key="frame" x="0.0" y="-19" width="343" height="82"/>
                                                                     </imageView>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_fieldwhite_fai" translatesAutoresizingMaskIntoConstraints="NO" id="ABK-vg-a4v" userLabel="Rejecting Background">
-                                                                        <rect key="frame" x="0.0" y="1.5" width="343" height="41"/>
+                                                                        <rect key="frame" x="0.0" y="-19" width="343" height="82"/>
                                                                     </imageView>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ttP-MS-SLc">
                                                                         <rect key="frame" x="16" y="0.0" width="311" height="44"/>
@@ -1716,10 +1719,10 @@ The winner must check if the Receipt information is filled in to ensure that the
                                                                 <rect key="frame" x="0.0" y="16.5" width="343" height="44"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_fieldwhite_nor" translatesAutoresizingMaskIntoConstraints="NO" id="K3S-zA-oQO" userLabel="Normal Background">
-                                                                        <rect key="frame" x="0.0" y="1.5" width="343" height="41"/>
+                                                                        <rect key="frame" x="0.0" y="-19" width="343" height="82"/>
                                                                     </imageView>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_fieldwhite_fai" translatesAutoresizingMaskIntoConstraints="NO" id="luE-dd-seF" userLabel="Rejecting Background">
-                                                                        <rect key="frame" x="0.0" y="1.5" width="343" height="41"/>
+                                                                        <rect key="frame" x="0.0" y="-19" width="343" height="82"/>
                                                                     </imageView>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ZwV-Ss-h3x">
                                                                         <rect key="frame" x="16" y="0.0" width="311" height="44"/>
@@ -1788,10 +1791,10 @@ The winner must check if the Receipt information is filled in to ensure that the
                                                                 <rect key="frame" x="0.0" y="16.5" width="343" height="44"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_fieldwhite_nor" translatesAutoresizingMaskIntoConstraints="NO" id="jtI-cN-aJf" userLabel="Normal Background">
-                                                                        <rect key="frame" x="0.0" y="1.5" width="343" height="41"/>
+                                                                        <rect key="frame" x="0.0" y="-19" width="343" height="82"/>
                                                                     </imageView>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_fieldwhite_fai" translatesAutoresizingMaskIntoConstraints="NO" id="mNs-fH-O9B" userLabel="Rejecting Background">
-                                                                        <rect key="frame" x="0.0" y="1.5" width="343" height="41"/>
+                                                                        <rect key="frame" x="0.0" y="-19" width="343" height="82"/>
                                                                     </imageView>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="YVk-eF-zZE">
                                                                         <rect key="frame" x="16" y="0.0" width="311" height="44"/>
@@ -1863,10 +1866,10 @@ The winner must check if the Receipt information is filled in to ensure that the
                                                                         <rect key="frame" x="0.0" y="16.5" width="245" height="44"/>
                                                                         <subviews>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_fieldwhite_nor" translatesAutoresizingMaskIntoConstraints="NO" id="FQG-Kz-7GQ" userLabel="Normal Background">
-                                                                                <rect key="frame" x="0.0" y="1.5" width="245" height="41"/>
+                                                                                <rect key="frame" x="0.0" y="-19" width="245" height="82"/>
                                                                             </imageView>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_fieldwhite_fai" translatesAutoresizingMaskIntoConstraints="NO" id="XaK-yZ-aFv" userLabel="Rejecting Background">
-                                                                                <rect key="frame" x="0.0" y="1.5" width="245" height="41"/>
+                                                                                <rect key="frame" x="0.0" y="-19" width="245" height="82"/>
                                                                             </imageView>
                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="HRD-do-Rdj">
                                                                                 <rect key="frame" x="16" y="0.0" width="213" height="44"/>
@@ -1935,10 +1938,10 @@ The winner must check if the Receipt information is filled in to ensure that the
                                                                         <rect key="frame" x="0.0" y="16.5" width="82" height="44"/>
                                                                         <subviews>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_fieldwhite_nor" translatesAutoresizingMaskIntoConstraints="NO" id="ACg-an-Qs4" userLabel="Normal Background">
-                                                                                <rect key="frame" x="0.0" y="1.5" width="82" height="41"/>
+                                                                                <rect key="frame" x="0.0" y="-19" width="82" height="82"/>
                                                                             </imageView>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_fieldwhite_fai" translatesAutoresizingMaskIntoConstraints="NO" id="EpR-FT-2g9" userLabel="Rejecting Background">
-                                                                                <rect key="frame" x="0.0" y="1.5" width="82" height="41"/>
+                                                                                <rect key="frame" x="0.0" y="-19" width="82" height="82"/>
                                                                             </imageView>
                                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="14" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="6T0-22-3Gy">
                                                                                 <rect key="frame" x="16" y="0.0" width="50" height="44"/>
@@ -2012,10 +2015,10 @@ The winner must check if the Receipt information is filled in to ensure that the
                                                                 <rect key="frame" x="0.0" y="16.5" width="343" height="44"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_fieldwhite_nor" translatesAutoresizingMaskIntoConstraints="NO" id="3UZ-MK-xKY" userLabel="Normal Background">
-                                                                        <rect key="frame" x="0.0" y="1.5" width="343" height="41"/>
+                                                                        <rect key="frame" x="0.0" y="-19" width="343" height="82"/>
                                                                     </imageView>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_fieldwhite_fai" translatesAutoresizingMaskIntoConstraints="NO" id="R5U-cR-Gjx" userLabel="Rejecting Background">
-                                                                        <rect key="frame" x="0.0" y="1.5" width="343" height="41"/>
+                                                                        <rect key="frame" x="0.0" y="-19" width="343" height="82"/>
                                                                     </imageView>
                                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="8H8-HR-Hmu">
                                                                         <rect key="frame" x="16" y="0.0" width="311" height="44"/>
@@ -2084,10 +2087,10 @@ The winner must check if the Receipt information is filled in to ensure that the
                                                                 <rect key="frame" x="0.0" y="16.5" width="343" height="44"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_fieldwhite_nor" translatesAutoresizingMaskIntoConstraints="NO" id="UtP-9d-eYF" userLabel="Normal Background">
-                                                                        <rect key="frame" x="0.0" y="1.5" width="343" height="41"/>
+                                                                        <rect key="frame" x="0.0" y="-19" width="343" height="82"/>
                                                                     </imageView>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_fieldwhite_fai" translatesAutoresizingMaskIntoConstraints="NO" id="vx7-bG-y2J" userLabel="Rejecting Background">
-                                                                        <rect key="frame" x="0.0" y="1.5" width="343" height="41"/>
+                                                                        <rect key="frame" x="0.0" y="-19" width="343" height="82"/>
                                                                     </imageView>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Vl1-yS-MXb">
                                                                         <rect key="frame" x="16" y="0.0" width="311" height="44"/>
@@ -2159,7 +2162,7 @@ The winner must check if the Receipt information is filled in to ensure that the
                                                         </connections>
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T35-mZ-F9n" userLabel="Submit Button">
-                                                        <rect key="frame" x="0.0" y="707" width="343" height="41"/>
+                                                        <rect key="frame" x="0.0" y="707" width="343" height="82"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                         <state key="normal" title="OK" backgroundImage="bt_biggreen_nor">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2256,9 +2259,9 @@ The winner must check if the Receipt information is filled in to ensure that the
         <!--Navigation Controller-->
         <scene sceneID="i6I-av-Z0o">
             <objects>
-                <navigationController id="uEV-Dg-8VA" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="fullScreen" id="uEV-Dg-8VA" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="y2w-TJ-Svv">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -2274,11 +2277,11 @@ The winner must check if the Receipt information is filled in to ensure that the
             <objects>
                 <tableViewController id="4jn-EZ-SqX" customClass="ProductFilterPickerTableViewController" customModule="Oneplanet" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="116" id="5ec-FJ-MBj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="black background"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="U3L-2S-MS5">
-                            <rect key="frame" x="0.0" y="78" width="375" height="8"/>
+                            <rect key="frame" x="0.0" y="106" width="375" height="8"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
@@ -2291,19 +2294,19 @@ The winner must check if the Receipt information is filled in to ensure that the
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="na5-AA-dhP">
-                                            <rect key="frame" x="20" y="15" width="339" height="20"/>
+                                            <rect key="frame" x="20" y="5" width="339" height="40"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="foP-6b-mwM">
-                                                    <rect key="frame" x="0.0" y="0.0" width="313" height="20"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="293" height="40"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d92-zJ-nRK" userLabel="Main Label">
-                                                            <rect key="frame" x="0.0" y="0.0" width="313" height="20"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="293" height="40"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                             <color key="textColor" name="default text"/>
                                                             <color key="highlightedColor" name="button green"/>
                                                         </label>
                                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="500" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rmj-SI-GX1" userLabel="Detail Label">
-                                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="20"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="40"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" name="default text"/>
                                                             <color key="highlightedColor" name="button green"/>
@@ -2311,10 +2314,10 @@ The winner must check if the Receipt information is filled in to ensure that the
                                                     </subviews>
                                                 </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sdv-HN-vFc">
-                                                    <rect key="frame" x="323" y="0.0" width="16" height="20"/>
+                                                    <rect key="frame" x="303" y="0.0" width="36" height="40"/>
                                                     <subviews>
                                                         <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" image="ic_flitertap_tap" translatesAutoresizingMaskIntoConstraints="NO" id="i4w-6s-etg">
-                                                            <rect key="frame" x="-2" y="0.0" width="20" height="20"/>
+                                                            <rect key="frame" x="-2" y="0.0" width="40" height="40"/>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2367,7 +2370,7 @@ The winner must check if the Receipt information is filled in to ensure that the
             <objects>
                 <navigationController id="nDB-bM-hfJ" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qLT-Er-uVe">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -2421,7 +2424,7 @@ The winner must check if the Receipt information is filled in to ensure that the
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uDr-Wg-Sfb">
-                                <rect key="frame" x="20" y="116" width="374" height="600"/>
+                                <rect key="frame" x="20" y="106" width="374" height="600"/>
                                 <subviews>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ROo-VC-ZQs">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="600"/>
@@ -2466,8 +2469,8 @@ The winner must check if the Receipt information is filled in to ensure that the
         <image name="bt_biggreen_nor" width="41" height="41"/>
         <image name="bt_smallgreen_nor" width="29" height="28"/>
         <image name="bt_smallwiregray_nor" width="29" height="28"/>
-        <image name="ic_bid_nor" width="64" height="49"/>
-        <image name="ic_bid_sel" width="64" height="49"/>
+        <image name="ic_bid_nor" width="42" height="42"/>
+        <image name="ic_bid_sel" width="42" height="42"/>
         <image name="ic_flitertap_tap" width="20" height="20"/>
         <image name="ic_lockoff_nor" width="40" height="40"/>
         <image name="ic_lockon_nor" width="40" height="40"/>

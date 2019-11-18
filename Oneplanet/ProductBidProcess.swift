@@ -11,7 +11,7 @@ import ModelBlocks
 import Alamofire
 
 class ProductBidProcessManager {
-    lazy var pushListener: PushListener = PushListener()
+    lazy var pushListener: PushListener = PushListener(session: self.userSession)
     private weak var userSession: UserSession!
     private var processes: [String: ProductBidProcess] = [:]
     var isEnded: Bool {
@@ -27,6 +27,11 @@ class ProductBidProcessManager {
         updateClock = UpdateClock(preferredFrameRate: 10, onTick: {[weak self] in
             self?.invokeCheck()
         })
+    }
+    
+    func deactivate() {
+        processes = [:]
+        updateClock = nil
     }
     
     private func invokeCheck() {
@@ -55,6 +60,9 @@ class ProductBidProcess: Equatable {
     
     let product: ProductOverview
     let userSession: UserSession
+    var isAdmin: Bool {
+        return userSession.isAdmin
+    }
     let pushListener: PushListener
     var isInitialized: Bool {
         return news != nil
@@ -130,7 +138,7 @@ class ProductBidProcess: Equatable {
     }
 
     private func prepareChannel() {
-        let channel = pushListener.subscribeChannel(ofName: product.id)
+        let channel = pushListener.subscribeChannel(ofName: "private-" + product.id)
         chennelID = channel.addEventHandler(for: "bid") {[weak self] (data) in
             OperationQueue.main.addOperation {
                 self?.handleBidEvent(data)
@@ -331,7 +339,12 @@ class GetMyBidCountOperation: AlamofireAPIAccessOperation {
     }
 
     override func prepareURLRequest() throws -> URLRequest {
-        return userSession.addingAuthorizationToken(to: try URLRequest(url: ServiceURLs.base.appendingPathComponent("bidding/\(product.id)/bidded"), method: .head))
+        var url = ServiceURLs.base.appendingPathComponent("bidding/\(product.id)/bidded")
+        if userSession.isAdmin {
+            url = ServiceURLs.base.appendingPathComponent("admin/bidding/\(product.id)/bidded")
+        }
+
+        return userSession.addingAuthorizationToken(to: try URLRequest(url: url, method: .head))
     }
     
     override func processHTTPResponseHeader(_ header: [AnyHashable : Any]) throws {

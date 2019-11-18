@@ -33,6 +33,7 @@ class PostCardCell: UITableViewCell {
     var moreActions: (()->())?
     var showProfileAction: (()->())?
     var showDetailAction: (()->())?
+    var likeAction: (()->())?
     
     @IBOutlet weak var avatarView: AvatarView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -42,6 +43,9 @@ class PostCardCell: UITableViewCell {
     @IBOutlet weak var galleryCollectionView: UICollectionView!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var contentTextView: UITextView!
+    
+    @IBOutlet weak var adminView: UIView!
+    @IBOutlet weak var likeButton: UIButton!
     
     @IBOutlet weak var expandedContentTextView: UITextView!
     @IBOutlet weak var moreButton: UIButton!
@@ -102,6 +106,10 @@ class PostCardCell: UITableViewCell {
     
     @IBAction func invokeShowDetailAction(_ sender: UIButton) {
         showDetailAction?()
+    }
+    
+    @IBAction func invokeLikeAction(_ sender: Any) {
+        likeAction?()
     }
 }
 
@@ -247,6 +255,13 @@ class ScoreBarView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if scoreBarVisibleLength.constant != CGFloat(value) * bounds.width {
+            updateScoreBarVisibleLength()
+        }
     }
     
     var value: Float = 0 {

@@ -49,7 +49,7 @@
 "tl_delete" = "删除";
 "tl_unlock" = "解锁商品";
 "tl_unlocked" = "已解锁";
-"tl_bid" = "投标一次";
+"tl_bid" = "投标";
 "tl_required_input" = "必填";
 "tl_agree" = "我同意";
 "tl_filter" = "商品过滤";
@@ -130,7 +130,7 @@
 "msgf_bid_with_gem" = "使用一颗 %@ 投标一次？";
 "msgf_insufficient_gem_des" = "你的%@数量不足。";
 "msgf_insufficient_gem_unlock_des" = "解锁一件商品需要使用一颗 %@ + %@。";
-"msgf_insufficient_gem_bid_des" = "每投标一次需要使用一颗%@ + %@。";
+"msgf_insufficient_gem_bid_des" = "每投标一次需要使用一颗%@。";
 "msgf_earn_blue_gem_instruction" = "再加把劲上传照片获得%@！";
 "msgf_received_gem" = "获得 %@ %@ 颗";
 "msgf_unlock_succeeded" = "投标需要使用到 %@!";
@@ -234,6 +234,7 @@
 "no_generic" = "No Items";
 "no_unlocked" = "你还没解锁任何商品";
 "no_unlocked_detail" = "解锁商品就可以参加竞标喔！赶紧去解锁吧！";
+"no_bidding_history" = "你还没有竞标历程";
 
 "err_no_camera_access" = "启用摄像头访问";
 "err_no_library_access" = "启用图库访问";
@@ -263,23 +264,21 @@
 "act_bigging_ended" = "竞标结束！";
 "act_countdown" = "竞标倒数...";
 
-"pop_blue_gem_usage" = "用途：解锁商品、投标商品。";
+"pop_blue_gem_usage" = "用途：解锁商品。";
 "pop_green_gem_usage" = "用途：解锁商品。";
-"pop_purple_gem_usage" = "用途：解锁商品、高效率投标商品。";
+"pop_purple_gem_usage" = "用途：高效率投标商品。";
 
 "pop_blue_gem_action" = "立即前往 上传照片";
 "pop_green_gem_action" = "前往%@";
 
-"pop_blue_gem_bullet1" = "使用一颗 %@ + %@，可以解锁一件商品或投标一次。";
+"pop_blue_gem_bullet1" = "使用一颗 %@ + %@，可以解锁一件商品。";
 "pop_blue_gem_bullet2" = "获得方式：上传照片评分获得经验值，当经验值满格即获得一颗 %@。";
-"pop_blue_gem_bullet3" = "将 %@ 升级成 %@，有助于竞标时的效率，并减少信用卡或电信商的支付问题。";
 
 "pop_green_gem_bullet1" = "使用一颗%@可以直接解锁一件商品。";
 "pop_green_gem_bullet2" = "获得方式ㄧ：Supreme.AI（官方）喜欢你的相片。";
 "pop_green_gem_bullet3" = "获得方式二：配合活动赠送";
 
-"pop_purple_gem_bullet1" = "使用一颗 红金宝 可以直接解锁一件商品或投标一次。（建议使用在投标，以达到高效率投标之效果）";
-"pop_purple_gem_bullet2" = "红金宝 是 %@ 的升级版，有助于竞标时的效率，并减少信用卡或电信商的支付问题。";
+"pop_purple_gem_bullet1" = "使用一颗 红金宝 可以直接投标一次。";
 
 "pop_post_suspended" = "次数用完了";
 "pop_cooldown_time" = "等待时间 (%@)";
@@ -287,6 +286,7 @@
 "pop_cant_upload_bullet" = "请等待时间回复";
 "pop_valued_upload_bullet1" = "上传照片经过 AI评分获得经验值，当经验值满格即获得一颗%@。";
 "pop_valued_upload_bullet2" = "越符合本次Oneplanet提示的颜色主题，收集%@的效率越高。";
+"pop_purple_gem_action" = "前往 购买";
 
 "ship_first_name" = "名字";
 "ship_last_name" = "姓氏";
@@ -297,6 +297,8 @@
 "ship_postal_code" = "邮政编码";
 "ship_country" = "国家";
 "ship_phoneNumber" = "电话号码（仅限送货）";
+"ship_phoneNumber_s" = "电话号码";
+"ship_cardholder" = "持卡人";
 
 "rp_terms_violation" = "我认为此账户违反了 Oneplanet 的使用条款";
 "rp_dont_like_post_title" = "我不喜欢这则帖子";

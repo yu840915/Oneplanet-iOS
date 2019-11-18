@@ -49,7 +49,7 @@
 "tl_delete" = "Delete";
 "tl_unlock" = "unlock goods";
 "tl_unlocked" = "Unlocked";
-"tl_bid" = "Bid once";
+"tl_bid" = "Bid";
 "tl_required_input" = "Required";
 "tl_agree" = "Agree";
 "tl_filter" = "Filter";
@@ -130,7 +130,7 @@
 "msgf_bid_with_gem" = "Would you like to place a bid with one %@?";
 "msgf_insufficient_gem_des" = "You don't have enough %@. ";
 "msgf_insufficient_gem_unlock_des" = "You need one %@ + %@ to unlock an item. ";
-"msgf_insufficient_gem_bid_des" = "You need one %@ + %@ to place a bid. ";
+"msgf_insufficient_gem_bid_des" = "You need one %@ to place a bid. ";
 "msgf_earn_blue_gem_instruction" = "Upload more photos to get %@!";
 "msgf_received_gem" = "You have acquired %@ x %@";
 "msgf_unlock_succeeded" = "The bidding needs to use %@. ";
@@ -234,6 +234,7 @@
 "no_generic" = "No Items";
 "no_unlocked" = "You have not unlocked any items yet.";
 "no_unlocked_detail" = "Unlock items to participate in the bidding! Go and unlock it!";
+"no_bidding_history" = "You have no bidding History";
 
 "err_no_camera_access" = "Enable Camera Access";
 "err_no_library_access" = "Enable Library Access";
@@ -263,23 +264,21 @@
 "act_bigging_ended" = "End of Bidding!";
 "act_countdown" = "COUNTDOWN TO BIDDING…";
 
-"pop_blue_gem_usage" = "The use: Unlock items, bidding.";
+"pop_blue_gem_usage" = "The use: Unlock items.";
 "pop_green_gem_usage" = "The use: Unlock items.";
-"pop_purple_gem_usage" = "The use: Unlock items, high-efficiency bidding.";
+"pop_purple_gem_usage" = "The use: High-efficiency bidding.";
 
 "pop_blue_gem_action" = "Go to upload photos";
 "pop_green_gem_action" = "Go to %@";
 
-"pop_blue_gem_bullet1" = "You can unlock or bid for an item by using %@ + %@.";
+"pop_blue_gem_bullet1" = "You can unlock for an item by using %@ + %@.";
 "pop_blue_gem_bullet2" = "How to gain Safrid: Upload photos to get EXP, when you hit full EXP, you get one %@.";
-"pop_blue_gem_bullet3" = "By upgrading %@ to %@, you will experience higher efficiency at bidding, and possibly reduce payment issues from credit card/telecom company.";
 
 "pop_green_gem_bullet1" = "You can unlock an item by using one %@.";
 "pop_green_gem_bullet2" = "How to gain 1. If Supreme.AI official account likes your photo.";
 "pop_green_gem_bullet3" = "How to gain 2. Gaining through events give-aways.";
 
-"pop_purple_gem_bullet1" = "You can unlock or bid for an item straight away by using one Rubid.";
-"pop_purple_gem_bullet2" = "The Rubid is an upgrade of %@. Rubid improves bidding efficiency, and possibly reduce payment issues from credit card/telecom company.";
+"pop_purple_gem_bullet1" = "You can bid for an item straight away by using one Rubid.";
 
 "pop_post_suspended" = "Run out";
 "pop_cooldown_time" = "Waiting for recovery (%@)";
@@ -287,6 +286,7 @@
 "pop_cant_upload_bullet" = "Please waiting for recovery";
 "pop_valued_upload_bullet1" = "Upload photos with AI scores to gain EXP points. When you hit full EXP, you will get one %@.";
 "pop_valued_upload_bullet2" = "The more you match with the Oneplanet color theme, the higher chance you could collect %@.";
+"pop_purple_gem_action" = "Go to BUY";
 
 "ship_first_name" = "First Name";
 "ship_last_name" = "Last Name";
@@ -297,6 +297,8 @@
 "ship_postal_code" = "Postal Code";
 "ship_country" = "Country";
 "ship_phoneNumber" = "Phone number (For delivery purpose only)";
+"ship_phoneNumber_s" = "Phone number";
+"ship_cardholder" = "Cardholder";
 
 "rp_terms_violation" = "I believe this account violates Oneplanet’s Terms";
 "rp_dont_like_post_title" = "I just don’t like it";

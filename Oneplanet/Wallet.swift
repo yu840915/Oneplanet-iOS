@@ -73,6 +73,9 @@ class Wallet {
     }
     
     private func notifyUpdate() {
+        if balance(for: .score).isBusy || balance(for: .blueGem).isBusy {
+            return
+        }
         updateObservers.invokeEach{$0()}
     }
 }
@@ -84,13 +87,12 @@ class Balance {
     private(set) var isInitialized = false
     private(set) var total: Int = 0 {
         didSet {
-            if oldValue != total {
-                updateHandler?()
-            }
+            updateHandler?()
         }
     }
     private(set) var needsRefresh = false
     private var refreshOperation: GetBalanceOperation?
+    var isBusy: Bool { return refreshOperation != nil }
     private(set) var lastUpdateDate = Date()
     private var isOutdated: Bool {
         return lastUpdateDate.timeIntervalSinceNow.magnitude > 10 * .minute

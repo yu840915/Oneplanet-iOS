@@ -56,7 +56,6 @@ class ShippingInfoEditorViewController: UIViewController, UserSessionDepending {
     override func viewDidLoad() {
         super.viewDidLoad()
         let builder = PhoneNumberBuilder(countryCode: nil)
-        debugPrint(builder.countries)
         tapToEndEditingRequestTracker = ReferenceTracker()
         endEditingTapRequestHandle = tapToEndEditingRequestTracker.isEmptyDidChangeObservers.add {[weak self] (_) in
             self?.updateEndEditingTap()
@@ -149,6 +148,7 @@ fileprivate extension ShippingInfoEditorViewController {
     
     func localizeTitles() {
         title = Localized.phrases.shippingInfo
+        informationLabel.text = Localized.messages.shippingInfoDescription
         exitButtonItem.title = Localized.titles.cancel
         submitButton.setTitle(Localized.titles.ok, for: .normal)
         emailFieldBlock.title = Localized.shippingInfoTerms.email

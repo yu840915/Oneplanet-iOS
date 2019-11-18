@@ -12,15 +12,17 @@ import ModelBlocks
 
 class PushListener {
     #if DEBUG
-    static let key = "72a9204d5eb8a13b6fa2"
+    static let key = "85ab0484af04d39e9d3b"
+//    static let key = "72a9204d5eb8a13b6fa2"
     #else
     static let key = "85ab0484af04d39e9d3b"
     #endif
     
     let pusher: Pusher
     
-    init() {
-        let opt = PusherClientOptions(host: .cluster("ap3"))
+    init(session: UserSession) {
+        let builder = AuthRequestBuilder(session: session)
+        let opt = PusherClientOptions(authMethod: AuthMethod.authRequestBuilder(authRequestBuilder: builder), host: .cluster("ap3"))
         pusher = Pusher(key: PushListener.key, options: opt)
         pusher.connect()
     }
@@ -31,6 +33,34 @@ class PushListener {
     
     deinit {
         pusher.disconnect()
+    }
+}
+
+class AuthRequestBuilder: AuthRequestBuilderProtocol {
+    private weak var session: UserSession?
+    init(session: UserSession) {
+        self.session = session
+    }
+    
+    func requestFor(socketID: String, channelName: String) -> URLRequest? {
+        var req = URLRequest(url: ServiceURLs.base.appendingPathComponent("pusher/auth"))
+        req.httpMethod = "POST"
+        req.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        let info = ChannelInfo(socketID: socketID, channelName: channelName)
+        req.httpBody = try? JSONEncoder().encode(info)
+        return session?.addingAuthorizationToken(to: req)
+    }
+}
+
+extension AuthRequestBuilder {
+    class ChannelInfo: Encodable {
+        let socketID: String
+        let channelName: String
+        
+        init(socketID: String, channelName: String) {
+            self.socketID = socketID
+            self.channelName = channelName
+        }
     }
 }
 

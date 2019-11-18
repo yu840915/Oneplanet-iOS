@@ -28,6 +28,10 @@ class ProductListHeader: UITableViewHeaderFooterView {
     var showFilterAction: (()->())?
     @IBOutlet weak var filterButton: UIButton!
     @IBOutlet weak var bubbleView: ChatBubbleView!
+    
+    @IBOutlet weak var unlockBubbleView: ChatBubbleView!
+    
+    
     private var fadeInFadeOutOperation: FadeInFadeOutOperation?
     @IBAction func showFilter(_ sender: UIButton) {
         showFilterAction?()
@@ -37,12 +41,25 @@ class ProductListHeader: UITableViewHeaderFooterView {
         super.awakeFromNib()
         titleLabel.text = Localized.titles.filter
         bubbleView.titleLabel.text = Localized.tutorial.waitForBid
+        unlockBubbleView.titleLabel.text = Localized.tutorial.unlock
     }
     
     private func updateForTitle() {
         let attrStr = NSMutableAttributedString(string: title + " ", attributes: [.foregroundColor : ColorPalette.defaultText])
         attrStr.append(NSAttributedString(attachment: TextAttachmentFactory.shared.arrowDown()))
         filterButton.setAttributedTitle(attrStr, for: .normal)
+    }
+    
+    func showUnlockTutorial() {
+        fadeInFadeOutOperation?.cancel()
+        clipsToBounds = false
+        superview?.bringSubviewToFront(self)
+        let op = FadeInFadeOutOperation(view: unlockBubbleView)
+        op.completionBlock = {[weak self] in
+            self?.restoreFromTutorial()
+        }
+        fadeInFadeOutOperation = op
+        op.start()
     }
     
     func showTutorial() {

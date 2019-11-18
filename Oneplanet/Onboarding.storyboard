@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nIr-Ca-Nry">
-    <device id="retina4_0" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nIr-Ca-Nry">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,9 +12,9 @@
         <!--Navigation Controller-->
         <scene sceneID="hkn-6Y-56G">
             <objects>
-                <navigationController id="nIr-Ca-Nry" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="fullScreen" id="nIr-Ca-Nry" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jGq-7T-kg7">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
@@ -50,7 +48,7 @@
                                 <rect key="frame" x="140.5" y="461" width="39" height="37"/>
                             </pageControl>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X85-4A-R0C" userLabel="Skip Button">
-                                <rect key="frame" x="224" y="520" width="76" height="28"/>
+                                <rect key="frame" x="224" y="492" width="76" height="56"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <inset key="contentEdgeInsets" minX="24" minY="0.0" maxX="24" maxY="0.0"/>
                                 <state key="normal" title="Skip" backgroundImage="bt_smallwirewhite_nor">
@@ -138,9 +136,9 @@
         <!--Navigation Controller-->
         <scene sceneID="n9i-ao-YDx">
             <objects>
-                <navigationController storyboardIdentifier="WelcomePageEntry" id="mRy-zb-ayP" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="WelcomePageEntry" modalPresentationStyle="fullScreen" id="mRy-zb-ayP" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="O9d-Lz-EGZ">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
@@ -172,13 +170,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="NtM-nd-hoI">
-                                <rect key="frame" x="36" y="112" width="248" height="276.5"/>
+                                <rect key="frame" x="36" y="92" width="248" height="394.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_logotext" translatesAutoresizingMaskIntoConstraints="NO" id="UWx-Ss-6Oa">
-                                        <rect key="frame" x="0.0" y="0.0" width="248" height="33"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="248" height="66"/>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="LXG-JO-VjG">
-                                        <rect key="frame" x="0.0" y="59" width="248" height="66"/>
+                                        <rect key="frame" x="0.0" y="92" width="248" height="110"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Bk-8v-4Eh">
                                                 <rect key="frame" x="4" y="0.0" width="240" height="12"/>
@@ -188,24 +186,24 @@
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="sZ9-FA-EFj">
-                                                <rect key="frame" x="42" y="22" width="164" height="44"/>
+                                                <rect key="frame" x="0.0" y="22" width="248" height="88"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iuu-ol-1Md" userLabel="Facebook Button">
-                                                        <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iuu-ol-1Md" userLabel="Facebook Button">
+                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="88"/>
                                                         <state key="normal" image="ic_facebook_nor"/>
                                                         <connections>
                                                             <action selector="facebookLogIn:" destination="ogP-NA-qCD" eventType="touchUpInside" id="GkK-qm-TDi"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wsb-mG-ei5" userLabel="Twitter Button">
-                                                        <rect key="frame" x="60" y="0.0" width="44" height="44"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wsb-mG-ei5" userLabel="Twitter Button">
+                                                        <rect key="frame" x="56" y="0.0" width="88" height="88"/>
                                                         <state key="normal" image="ic_twitter_nor"/>
                                                         <connections>
                                                             <action selector="twitterLogIn:" destination="ogP-NA-qCD" eventType="touchUpInside" id="N0I-Ya-Ag7"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OPo-aD-ROX" userLabel="WeChat Button">
-                                                        <rect key="frame" x="120" y="0.0" width="44" height="44"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OPo-aD-ROX" userLabel="WeChat Button">
+                                                        <rect key="frame" x="160" y="0.0" width="88" height="88"/>
                                                         <state key="normal" image="ic_wechat_nor"/>
                                                         <connections>
                                                             <action selector="weChatLogIn:" destination="ogP-NA-qCD" eventType="touchUpInside" id="oJs-nc-hCT"/>
@@ -216,7 +214,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="vHs-ZF-pp5">
-                                        <rect key="frame" x="0.0" y="151" width="248" height="125.5"/>
+                                        <rect key="frame" x="0.0" y="228" width="248" height="166.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quick registration" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJo-Hw-BK8" userLabel="Email Login Label">
                                                 <rect key="frame" x="0.0" y="0.0" width="248" height="14.5"/>
@@ -231,10 +229,10 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="248" height="44"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_fieldwhite_nor" translatesAutoresizingMaskIntoConstraints="NO" id="H5c-3N-YJK" userLabel="Normal Background">
-                                                                <rect key="frame" x="0.0" y="1.5" width="248" height="41"/>
+                                                                <rect key="frame" x="0.0" y="-19" width="248" height="82"/>
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ui_fieldwhite_fai" translatesAutoresizingMaskIntoConstraints="NO" id="21N-7D-ENn" userLabel="Rejecting Background">
-                                                                <rect key="frame" x="0.0" y="1.5" width="248" height="41"/>
+                                                                <rect key="frame" x="0.0" y="-19" width="248" height="82"/>
                                                             </imageView>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="E0v-zO-IyU">
                                                                 <rect key="frame" x="16" y="0.0" width="216" height="44"/>
@@ -289,7 +287,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Itx-BQ-7dS">
-                                                <rect key="frame" x="0.0" y="78.5" width="248" height="47"/>
+                                                <rect key="frame" x="0.0" y="78.5" width="248" height="88"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8UD-1V-Qbu">
                                                         <rect key="frame" x="0.0" y="0.0" width="248" height="6"/>
@@ -299,7 +297,7 @@
                                                         </constraints>
                                                     </view>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zKf-00-ba5" userLabel="Sign Up Button">
-                                                        <rect key="frame" x="0.0" y="6" width="248" height="41"/>
+                                                        <rect key="frame" x="0.0" y="6" width="248" height="82"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                         <state key="normal" title="Next" backgroundImage="bt_biggreen_nor">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -315,10 +313,10 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="FMD-YK-nB4">
-                                <rect key="frame" x="36" y="460.5" width="248" height="87.5"/>
+                                <rect key="frame" x="36" y="419.5" width="248" height="128.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vZB-Ya-G8W" userLabel="Guest Button">
-                                        <rect key="frame" x="0.0" y="0.0" width="248" height="41"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="248" height="82"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                         <state key="normal" title="Later" backgroundImage="bt_bigwhite_nor">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -328,7 +326,7 @@
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="By login" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="PHr-sp-ahW">
-                                        <rect key="frame" x="0.0" y="57" width="248" height="30.5"/>
+                                        <rect key="frame" x="0.0" y="98" width="248" height="30.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -406,7 +404,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="5eC-lM-byT">
-                                <rect key="frame" x="60" y="124" width="200" height="307.5"/>
+                                <rect key="frame" x="60" y="104" width="200" height="307.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The email has been sent. Please click the link in the email to complete the registration process." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nqo-3f-tpr" userLabel="Message Label">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="172"/>
@@ -496,6 +494,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="aed-ZJ-r1z"/>
-        <segue reference="WL2-xg-ZCo"/>
+        <segue reference="cDA-Cr-QNR"/>
     </inferredMetricsTieBreakers>
 </document>

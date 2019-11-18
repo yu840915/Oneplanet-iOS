@@ -19,7 +19,7 @@ carthage update --platform iOS
 
 ## 簡述
 
-此專案使用Swift 4.2語言。
+此專案使用Swift 5語言。
 
 為物件導向設計，大量的使用物件聚合與委派(delegation)，故必須對此有深入的暸解。
 

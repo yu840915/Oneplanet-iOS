@@ -1,0 +1,330 @@
+/* 
+  Localizable.strings
+  Oneplanet
+
+  Created by 立宣于 on 2019/4/22.
+  Copyright © 2019 何一品居. All rights reserved.
+*/
+
+"iso_code" = "en";
+
+"fx_hot" = "HOT";
+"fx_my" = "MY";
+"fx_life" = "LIFE";
+"fx_bid" = "BID";
+"fx_notice" = "NOTICE";
+"fx_news" = "News";
+"fx_events" = "Events";
+"fx_alien" = "Ranking";
+
+"tl_cancel" = "Cancel";
+"tl_dismiss" = "Dismiss";
+"tl_done" = "Done";
+"tl_ok" = "OK";
+"tl_all_photos" = "All Photos";
+"tl_login" = "Log In";
+"tl_logins" = "Logins";
+"tl_log_out" = "Log Out";
+"tl_title" = "Title";
+"tl_tos" = "Terms";
+"tl_bidding_terms" = "Bidding Terms";
+"tl_pp" = "Privacy Policy";
+"tl_next" = "Next";
+"tl_skip" = "Skip";
+"tl_exit" = "Exit";
+"tl_back" = "Back";
+"tl_more" = "More";
+"tl_account" = "Account";
+"tl_mail_sent" = "The email has been sent";
+"tl_user_id" = "User ID";
+"tl_email" = "Email";
+"tl_gender" = "Gender";
+"tl_male" = "Male";
+"tl_female" = "Female";
+"tl_private_info" = "Private Information";
+"tl_go" = "Go";
+"tl_blue_gem" = "Safrid";
+"tl_purple_gem" = "Rubid";
+"tl_green_gem" = "Emerkey";
+"tl_delete" = "Delete";
+"tl_unlock" = "unlock goods";
+"tl_unlocked" = "Unlocked";
+"tl_bid" = "Bid";
+"tl_required_input" = "Required";
+"tl_agree" = "Agree";
+"tl_filter" = "Filter";
+"tl_bid_state_lost" = "Lose";
+"tl_bid_state_to_ship" = "Waiting for shipment";
+"tl_bid_state_shipping" = "Shipped";
+"tl_bid_state_delivered" = "Received";
+"tl_report" = "Report";
+"tl_block" = "Block";
+"tl_unblock" = "Unblock";
+"tl_followers" = "Followers";
+"tl_followings" = "Following";
+"tl_content" = "Content";
+"tl_send" = "Send";
+"tl_edit" = "Edit";
+"tl_photo" = "Photo";
+"tl_library" = "Library";
+"tl_post" = "Post";
+"tl_share" = "Share";
+"tl_discard" = "Discard";
+"tl_search_id" = "Search ID";
+
+"pl_email" = "Email Address";
+"pl_nickname" = "Nickname";
+"pl_report_description" = "Enter the reason for the report";
+"pl_caption" = "Write a caption...";
+
+"msg_email_verification_instruction" = "The email has been sent. Please use the current mobile device to click the link in the email to complete the login.";
+"msg_add_avatar_prompt" = "Add a profile photo so your friends know it’s you";
+"msg_open_mail_app_prompt" = "Click here to open your email address";
+"msg_mail_resent" = "The email has been sent again";
+"msg_join_prompt" = "Sign in now for more features";
+"msg_alien_description" = "The alien you choose will be on your own page";
+"msg_ongoing_bidding" = "Other items are still bidding, please wait for the bidding to end.";
+"msg_successful_shipping_info_submission" = "The winning items will be sent to this address. If the address changes, please remember to update this page";
+"msg_bidding_terms_acceptence" = "Ticking means that you have agreed to the bidding terms";
+"msg_unlock_succeeded" = "Successfully unlocked";
+"msg_bid_succeeded" = "Successfully qualified for CommodityName bidding";
+"msg_lot_being_bid" = "This item is being bid";
+"msg_lot_being_bid_des" = "The bidding is in progress and the next issue will be announced within 48H, so stay tuned!";
+"msg_lot_closed" = "Unlock time was ended";
+"msg_lot_closed_des" = "The bidding has ended. The next issue will be announced within 48H, so stay tuned!";
+"msg_bid_too_late" = "Exceeds the biding time limit";
+"msg_bid_payment_too_late" = "Payment is successful but exceeding the biding time limit";
+"msg_gem_unchanged" = "This condition does not buckle the gems";
+"msg_race1_monologue" = "My name is Focker.";
+"msg_race2_monologue" = "My name is Dicker.";
+"msg_race3_monologue" = "My name is Drunker.";
+"msg_shipping_info_des" = "Please fill in your name as written on the passport. Make sure the receiving information is authentic and correct for your item to be delivered";
+"msg_report_user_prompt" = "Why are you reporting this account?";
+"msg_report_post_prompt" = "Choose a reason for reporting this post:";
+"msg_report_user_caption" = "If you report someone’s post, Oneplanet doesn’t tell them who reported it";
+"msg_report_post_caption" = "If you report someone’s post, Oneplanet doesn’t tell them who reported it";
+"msg_thankyou_reporting_user" = "Thanks for reporting this";
+"msg_thankyou_reporting_post" = "Thanks for reporting this post";
+"msg_unblock_des" = "They will now be able to request to follow you on Oneplanet. Oneplanet won't let them know you unblocked them";
+"msg_block_des" = "They won’t be able to find your profile, posts or story on Oneplanet. Oneplanet won’t let them know you blocked them";
+"msg_recover_account_des" = "If you disagree with our disposition, please provide the following information to help us investigate.";
+"msg_petition_submitted" = "The problem has been reported to Oneplanet, please wait for the Oneplanet review and reply to you";
+"msg_unlock_option_prompt" = "Which gem do you want to use to unlock?";
+"msg_thanks_for_reporting_post" = "Your feedback is important in helping us keep the Oneplanet community safe";
+"msg_username_rules" = "ID at least five characters";
+"msg_copied_order_number" = "Copyed order number";
+"msg_no_internet" = "Your current network is unstable, please check your connection status!";
+
+"msgf_accept_tos" = "Sign in means you agree to our %@.";
+"msgf_resend_verification_email" = "You did not receive the email? %@.";
+"msgf_did_copy_my_id" = "My Oneplanet ID [%@] Copied.";
+"msgf_did_copy_id" = "Oneplanet ID [%@] Copied";
+"msgf_winner_notice" = "The winner must check if the %@ is filled in to ensure that the items can be delivered.";
+"msgf_unlock_lot" = "Unlock %@?";
+"msgf_did_unlock_lot" = "%@ Unlocked!";
+"msgf_unlock_with_gem_iap" = "Would you like to unlock this item with one %@ + %@?";
+"msgf_unlock_with_gem" = "Would you like to unlock this item with one %@?";
+"msgf_insufficient_gem" = "Your %@ is not enough";
+"msgf_bid_prompt" = "Bid %@ once";
+"msgf_bid_with_gem_iap" = "Would you like to place a bid with one %@ + %@?";
+"msgf_bid_with_gem" = "Would you like to place a bid with one %@?";
+"msgf_insufficient_gem_des" = "You don't have enough %@. ";
+"msgf_insufficient_gem_unlock_des" = "You need one %@ + %@ to unlock an item. ";
+"msgf_insufficient_gem_bid_des" = "You need one %@ to place a bid. ";
+"msgf_earn_blue_gem_instruction" = "Upload more photos to get %@!";
+"msgf_received_gem" = "You have acquired %@ x %@";
+"msgf_unlock_succeeded" = "The bidding needs to use %@. ";
+"msgf_bid_succeeded" = "Successfully qualified for %@ bidding";
+"msgf_start_following_you" = "%@ started following you";
+"msgf_liked_your_post" = "Congratulaions! %@ has liked your photo. You have acquired one %@.";
+"msgf_you_received_num_gems" = "%@ gifted you %@ x %@";
+"msgf_post_reported" = "Your photo was reported by the user because of %@";
+"msgf_profile_reported" = "Your Oneplanet account %@ was reported by the user because of the violation of Oneplanet %@";
+"msgf_liked_your_post_and_gave_gem" = "%@ liked your post! get 1 %@";
+"msgf_thankyou_report_user" = "Thank you for helping keep the Oneplanet safe and fun for everyone. Remember, we don’t reveal who submitted reports to the person who posted the photo or comment.\n\nOur team will review the post and if it vidolates our %@, we’ll remove it.";
+"msgf_unblock_user_prompt" = "Unblock %@?";
+"msgf_block_user_prompt" = "Block %@?";
+"msgf_no_search_results" = "No results for \"%@\"";
+"msgf_daily_login_reward" = "Sign in daily, give 1 %@";
+
+"ph_guest_login" = "Guest";
+"ph_email_login" = "Or Login With Email";
+"ph_resend_email" = "Resend the email";
+"ph_newuser_greeting" = "Welcome to Oneplanet";
+"ph_add_avatar" = "Add Profile Photo";
+"ph_avatar_added" = "Profile Photo Added";
+"ph_change_avatar" = "Change Profile Photo";
+"ph_take_photo" = "Take Photo";
+"ph_from_library" = "Choose from Library";
+"ph_open_settings" = "Open Settings";
+"ph_remove_avatar" = "Remove Current Photo";
+"ph_try_again" = "Try Again";
+"ph_nickname_rule" = "Nickname cap 30 characters, can't use punctuation or emoji";
+"ph_copy_id" = "copy ID";
+"ph_follow" = "Follow";
+"ph_unfollow" = "Unfollow";
+"ph_following" = "Following";
+"ph_choose_role" = "Choose your Alien";
+"ph_choose_color" = "Choose Color";
+"ph_edit_profile" = "Edit Profile";
+"ph_block_list" = "Blocked Account";
+"ph_privacy_and_security" = "Privacy and Security";
+"ph_not_specified" = "Not Specified";
+"ph_join_prompt" = "Sign in now";
+"ph_shipping_info" = "Receipt info";
+"ph_create_shipping_info" = "Fill in the recipient information";
+"ph_edit_shipping_info" = "Change the receipt information";
+"ph_view_shipping_status" = "View shipping status";
+"ph_commodities" = "Item";
+"ph_bidding_process" = "History";
+"ph_bid_count" = "Frequency";
+"ph_countdown" = "Closing time";
+"ph_bid_leader" = "Leading";
+"ph_product_name" = "Item name";
+"ph_bid_outcome" = "Bidding result";
+"ph_bid_lot" = "Item";
+"ph_successful_shipping_info_submission" = "Filled in successfully";
+"ph_goto_bidding" = "Go bidding page";
+"ph_get_gem" = "Get it";
+"ph_has_got_gem" = "Has got it";
+"ph_new_notices" = "New Notices";
+"ph_read_notices" = "Past notification";
+"ph_recover_account" = "Recover account";
+"ph_petition_submitted" = "Successful return";
+"ph_i_get_it" = "I get it";
+"ph_unlock_option_prompt" = "Select gems to unlock";
+"ph_latest_posts" = "Latest";
+"ph_best_posts" = "Highest socreds";
+"ph_thanks_for_reporting_post" = "Thanks for reporting this post";
+"ph_show_post" = "Show Post";
+"ph_more" = "more";
+"ph_upload_valued_photo" = "Upload photo rating";
+"ph_upload_free_photo" = "Upload photo";
+"ph_dont_show_again" = "Never show again";
+"ph_no_room_for_photo" = "full";
+"ph_category_unlocked" = "The items I unlocked";
+"ph_bidding_begins" = "The bidding begins!";
+"ph_purple_gem" = "Rubid (Suggest for bidding)";
+"ph_purchase_success" = "Purchase success";
+"ph_no_internet" = "Your current network is unstable";
+
+"phf_seconds_ago_short" = "%@s";
+"phf_minutes_ago_short" = "%@m";
+"phf_hours_ago_short" = "%@h";
+"phf_days_ago_short" = "%@d";
+"phf_seconds_ago" = "%@ seconds ago";
+"phf_minutes_ago" = "%@ minutes ago";
+"phf_hours_ago" = "%@ hours ago";
+"phf_days_ago" = "%@ days ago";
+"phf_followers" = "%@ followers";
+"phf_followings" = "%@ following";
+"phf_remaining_uploads" = "remaining times %@/%@ (%@)";
+"phf_buy_some" = "Buy %@";
+"phf_buy_some_get_some_free" = "Buy %@ get %@ free";
+"phf_purchase_success" = "You have successfully purchased %@ x %@";
+
+"no_posts" = "No Posts Yet";
+"no_promo_popups" = "No Promotion Pop-ups Yet";
+"no_unlocked_lots_title" = "You did not participate in this bidding";
+"no_unlocked_lots_message" = "Please grasp the next bid! The next issue will be announced in 48H!";
+"no_notices" = "No notification at present";
+"no_block_list" = "Empty list";
+"no_follower_list" = "You don't have followers yet";
+"no_following_list" = "You haven't followed others yet";
+"no_generic" = "No Items";
+"no_unlocked" = "You have not unlocked any items yet.";
+"no_unlocked_detail" = "Unlock items to participate in the bidding! Go and unlock it!";
+"no_bidding_history" = "You have no bidding History";
+
+"err_no_camera_access" = "Enable Camera Access";
+"err_no_library_access" = "Enable Library Access";
+"err_invalid_email" = "Please enter a valid email";
+"err_non_alphanumerics" = "Only letters and digits are allowed";
+"err_non_digit_input" = "Only digits are allowed";
+"err_account_not_exist" = "The email you entered does not appear to belong to an account.\n Please check your email and try again";
+"err_invalid_nickname" = "Your nickname is in the wrong format";
+"err_invalid_phone_number" = "Please input valid phone number";
+"err_username_unavailable" = "Please use a different ID";
+
+"errtl_cannot_capture_photo" = "Cannot Take Photo";
+"errtl_cannot_pick_avatar" = "Cannot Get Profile Image";
+"errtl_generic_failure" = "Failed";
+"errtl_username_too_short" = "This ID is too short";
+"errtl_username_unavailable" = "This ID is not effective";
+
+"warn_logout" = "Log Out?";
+"warn_character_selection" = "Alien species determined after the non-replaceable, determine the choice?";
+"warn_account_banned" = "The community feature of your account has been deactivated because it violates our terms of use. Learn how to recover your account";
+"warn_discard_post" = "Discard the draft?";
+
+"warntl_character_selection" = "Confirm?";
+"warntl_account_banned" = "Community function suspension";
+
+"act_bigging" = "Bidding...";
+"act_bigging_ended" = "End of Bidding!";
+"act_countdown" = "COUNTDOWN TO BIDDING…";
+
+"pop_blue_gem_usage" = "The use: Unlock items.";
+"pop_green_gem_usage" = "The use: Unlock items.";
+"pop_purple_gem_usage" = "The use: High-efficiency bidding.";
+
+"pop_blue_gem_action" = "Go to upload photos";
+"pop_green_gem_action" = "Go to %@";
+
+"pop_blue_gem_bullet1" = "You can unlock for an item by using %@ + %@.";
+"pop_blue_gem_bullet2" = "How to gain Safrid: Upload photos to get EXP, when you hit full EXP, you get one %@.";
+
+"pop_green_gem_bullet1" = "You can unlock an item by using one %@.";
+"pop_green_gem_bullet2" = "How to gain 1. If Supreme.AI official account likes your photo.";
+"pop_green_gem_bullet3" = "How to gain 2. Gaining through events give-aways.";
+
+"pop_purple_gem_bullet1" = "You can bid for an item straight away by using one Rubid.";
+
+"pop_post_suspended" = "Run out";
+"pop_cooldown_time" = "Waiting for recovery (%@)";
+"pop_free_upload_bullet" = "There is no frequency limitation of uploads here, but no %@ will be given";
+"pop_cant_upload_bullet" = "Please waiting for recovery";
+"pop_valued_upload_bullet1" = "Upload photos with AI scores to gain EXP points. When you hit full EXP, you will get one %@.";
+"pop_valued_upload_bullet2" = "The more you match with the Oneplanet color theme, the higher chance you could collect %@.";
+"pop_purple_gem_action" = "Go to BUY";
+
+"ship_first_name" = "First Name";
+"ship_last_name" = "Last Name";
+"ship_address1" = "Address line 1";
+"ship_address2" = "Address line 2";
+"ship_city" = "City";
+"ship_region" = "Region";
+"ship_postal_code" = "Postal Code";
+"ship_country" = "Country";
+"ship_phoneNumber" = "Phone number (For delivery purpose only)";
+"ship_phoneNumber_s" = "Phone number";
+"ship_cardholder" = "Cardholder";
+
+"rp_terms_violation" = "I believe this account violates Oneplanet’s Terms";
+"rp_dont_like_post_title" = "I just don’t like it";
+"rp_nudity_title" = "Nudity or pornography";
+"rp_hate_speech_title" = "Hate speech or symbols";
+"rp_violance_title" = "Violence or threat of violence";
+"rp_hate_speech_subtitle" = "Racist, homophobic or sexist slurs";
+"rp_violance_subtitle" = "Graphic injury, unlawful activity, dangerous or criminal organizations";
+"rp_dont_like_post_detail" = "Don’t like this post?";
+"rp_nudity_detail" = "Report as nudity or pornography?";
+"rp_hate_speech_detail" = "Report as hate speech or symbols?";
+"rp_violance_detail" = "Report as violence or threat of violence?";
+"rp_dont_like_post" = "I don’t like it";
+"rp_nudity" = "nip slip or pornography";
+"rp_violance" = "the hate speech or sign";
+"rp_hate_speech" = "the violent or violent threats";
+
+"smb_enum_spliter" = ", ";
+
+"tut_unlock" = "Unlock to join the bidding";
+"tut_wait_for_bid" = "Waiting for the bid to start!";
+"tut_bid" = "Start bidding!";
+
+"pn_session_start" = "This issue has been published bid items, please take the time to unlock items!";
+"pn_1hr_to_bid" = "There is one hour left before the bidding starts, please take the time to unlock the items!";
+"pn_win_a_lot" = "You win the %@!";
+"pn_winner_notice" = "You have won the bid in this week! View the history.";
+"pn_loser_notice" = "You have not won the bid in this week. The next issue will be announced in 48H!";
+"pn_prerelease_login_reward" = "Congratulations, you have completed the login beforehand, the gem has been sent, hurry to unlock it!";

@@ -1,0 +1,116 @@
+//
+//  AvatarView.swift
+//  Oneplanet
+//
+//  Created by 立宣于 on 2019/5/17.
+//  Copyright © 2019 何一品居. All rights reserved.
+//
+
+import UIKit
+import Kingfisher
+
+class AvatarView: UIView {
+    @IBOutlet var avatarButton: UIButton!
+    @IBOutlet var backgroundImageView: UIImageView!
+    
+    var action: (()->())? {
+        didSet {
+            updateButtonInteraction()
+        }
+    }
+    var backgrondImage: UIImage? {
+        get {
+            return backgroundImageView.image
+        }
+        set {
+            backgroundImageView.image = newValue
+        }
+    }
+    var avatar: WebImageInfo? {
+        didSet {
+            if oldValue != avatar {
+                updateAvatar()
+            }
+        }
+    }
+    var attachment: ImageAttachment? {
+        didSet {
+            if oldValue !== attachment {
+                updateAvatar()
+            }
+        }
+    }
+    func update(with user: User?) {
+        avatar = user?.avatar
+        backgrondImage = user?.alien?.frameImage
+    }
+    private var fetchOperation: DownloadImageOperaion?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        updateButtonInteraction()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        layer.cornerRadius = bounds.width / 2
+        avatarButton.layer.cornerRadius = avatarButton.bounds.width / 2
+    }
+    
+    
+    private func updateButtonInteraction() {
+        avatarButton.isUserInteractionEnabled = (action != nil)
+    }
+    
+    private func updateAvatar() {
+        setDefaultAvatar()
+        if let attachment = self.attachment {
+            cancelDownload()
+            avatarButton.setBackgroundImage(attachment.localImage, for: .normal)
+            return
+        }
+        guard let info = avatar else {
+            cancelDownload()
+            return
+        }
+        if info.accessToken != nil {
+            if let op = fetchOperation, op.info == info {
+                return
+            }
+            cancelDownload()
+            let op = DownloadImageOperaion(info: info)
+            op.completionBlock = {[weak self] in
+                OperationQueue.main.addOperation {
+                    self?.didDownloadImage()
+                }
+            }
+            fetchOperation = op
+            op.start()
+        } else {
+            cancelDownload()
+            avatarButton.kf.setBackgroundImage(with: info.url, for: .normal, placeholder: #imageLiteral(resourceName: "im_userphotodefault_nor"))
+//            avatarButton.kf.setBackgroundImage(with: info.url, for: .normal)
+        }
+    }
+    
+    private func setDefaultAvatar() {
+        avatarButton.setBackgroundImage(#imageLiteral(resourceName: "im_userphotodefault_nor"), for: .normal)
+    }
+    
+    private func didDownloadImage() {
+        let op = fetchOperation!
+        fetchOperation = nil
+        if let image = op.image {
+           avatarButton.setBackgroundImage(image, for: .normal)
+        }
+    }
+    
+    private func cancelDownload() {
+        fetchOperation?.cancel()
+        fetchOperation = nil
+    }
+    
+    @IBAction func invokeAction(_ sender: UIButton) {
+        action?()
+    }
+}

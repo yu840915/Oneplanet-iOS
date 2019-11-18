@@ -1,0 +1,61 @@
+//
+//  BiddingListHeader.swift
+//  Oneplanet
+//
+//  Created by 立宣于 on 2019/6/13.
+//  Copyright © 2019 何一品居. All rights reserved.
+//
+
+import UIKit
+
+class BiddingListHeader: UITableViewHeaderFooterView {
+
+    @IBOutlet weak var productLabel: UILabel!
+    @IBOutlet weak var bidCountLabel: UILabel!
+    @IBOutlet weak var leaderLabel: UILabel!
+    @IBOutlet weak var countdownLabel: UILabel!
+    @IBOutlet weak var bidLabel: UILabel!
+    @IBOutlet weak var bubbleView: ChatBubbleView!
+    private var fadeInFadeOutOperation: FadeInFadeOutOperation?
+    
+    class func defaultNib() -> UINib {
+        return UINib(nibName: "BiddingListHeader", bundle: nil)
+    }
+    class func height() -> CGFloat {
+        return 22.0
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        productLabel.text = Localized.phrases.bidLot
+        bidCountLabel.text = Localized.phrases.bidCount
+        leaderLabel.text = Localized.phrases.bidLeader
+        countdownLabel.text = Localized.phrases.countdown
+        bidLabel.text = Localized.titles.bid
+        bubbleView.titleLabel.text = Localized.tutorial.bid
+    }
+    
+    func showTutorial() {
+        fadeInFadeOutOperation?.cancel()
+        clipsToBounds = false
+        superview?.bringSubviewToFront(self)
+        let op = FadeInFadeOutOperation(view: bubbleView)
+        op.completionBlock = {[weak self] in
+            self?.restoreFromTutorial()
+        }
+        fadeInFadeOutOperation = op
+        op.start()
+    }
+    
+    private func restoreFromTutorial() {
+        fadeInFadeOutOperation = nil
+    }
+    
+    override func prepareForReuse() {
+        if let op = fadeInFadeOutOperation {
+            op.cancel()
+            fadeInFadeOutOperation = nil
+            restoreFromTutorial()
+        }
+    }
+}

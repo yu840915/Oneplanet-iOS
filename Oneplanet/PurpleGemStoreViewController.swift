@@ -1,0 +1,62 @@
+//
+//  PurpleGemStoreViewController.swift
+//  Oneplanet
+//
+//  Created by 立宣于 on 2019/6/4.
+//  Copyright © 2019 何一品居. All rights reserved.
+//
+
+import UIKit
+
+class PurpleGemStoreViewController: UIViewController, UserSessionDepending {
+
+    class func entryPoint() -> PopUpContainerViewController {
+        return UIStoryboard(name: "MainUserFlow", bundle: nil).instantiateViewController(withIdentifier: "PurpleGemPopUpEntry") as! PopUpContainerViewController
+    }
+    
+    var userSession: UserSession!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var usageLabel: UILabel!
+    @IBOutlet weak var bulletTextView1: UITextView!
+    
+    @IBOutlet weak var productListHeight: NSLayoutConstraint!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        localizeTitles()
+        if let plans = IAPTransactionProcessor.shared.prefetchedProducts.rubyProducts {
+            productListHeight.constant = CGFloat(plans.count * 50 + 2)
+        }
+    }
+    
+    private func localizeTitles() {
+        nameLabel.text = Localized.titles.purpleGem
+        usageLabel.text = Localized.gemStonePopUp.purpleGemUsage
+        bulletTextView1.font = UIFont.systemFont(ofSize: 12)
+        bulletTextView1.text = Localized.gemStonePopUp.purpleGemBullet1
+    }
+
+    
+    @IBAction func exit(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? UserSessionDepending {
+            vc.userSession = userSession
+        }
+    }
+
+}
+
+extension PurpleGemStoreViewController: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        OperationQueue.main.addOperation {
+            self.dismiss(animated: true, completion: {
+                router.handle(URL)
+            })
+        }
+        return false
+    }
+}

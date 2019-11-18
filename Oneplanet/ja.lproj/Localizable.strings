@@ -1,0 +1,330 @@
+/* 
+  Localizable.strings
+  Oneplanet
+
+  Created by 立宣于 on 2019/4/22.
+  Copyright © 2019 何一品居. All rights reserved.
+*/
+
+"iso_code" = "ja";
+
+"fx_hot" = "人気";
+"fx_my" = "マイページ";
+"fx_life" = "タイムライン";
+"fx_bid" = "オークション";
+"fx_notice" = "通知";
+"fx_news" = "お知らせ";
+"fx_events" = "イベント";
+"fx_alien" = "ランキング";
+
+"tl_cancel" = "キャンセル";
+"tl_dismiss" = "閉じる";
+"tl_done" = "完成";
+"tl_ok" = "OK";
+"tl_all_photos" = "すべての写真";
+"tl_login" = "ログイン";
+"tl_logins" = "ログイン";
+"tl_log_out" = "ログアウト";
+"tl_title" = "タイトル";
+"tl_tos" = "利用規約";
+"tl_bidding_terms" = "オークション規約";
+"tl_pp" = "Privacy Policy";
+"tl_next" = "次へ";
+"tl_skip" = "スキップ";
+"tl_exit" = "出る";
+"tl_back" = "戻る";
+"tl_more" = "もっと";
+"tl_account" = "アカウント";
+"tl_mail_sent" = "メールを送りました";
+"tl_user_id" = " ユーザーID";
+"tl_email" = "メール";
+"tl_gender" = "性別";
+"tl_male" = "男性";
+"tl_female" = "女性";
+"tl_private_info" = "個人情報";
+"tl_go" = "Go";
+"tl_blue_gem" = "サフリッド";
+"tl_purple_gem" = "ルビッド";
+"tl_green_gem" = "エメキー";
+"tl_delete" = "削除";
+"tl_unlock" = "商品をアンロックします";
+"tl_unlocked" = "アンロックしました";
+"tl_bid" = "入札";
+"tl_required_input" = "必須項目";
+"tl_agree" = "同意する";
+"tl_filter" = "検索フィルタ";
+"tl_bid_state_lost" = "落札できませんでした";
+"tl_bid_state_to_ship" = "出荷待ち";
+"tl_bid_state_shipping" = "発送済み";
+"tl_bid_state_delivered" = "受け取りました";
+"tl_report" = "報告する";
+"tl_block" = "ブロック";
+"tl_unblock" = "ブロックを解除";
+"tl_followers" = "フォロワー";
+"tl_followings" = "フォロー中";
+"tl_content" = "コンテンツ";
+"tl_send" = "送信";
+"tl_edit" = "編集する";
+"tl_photo" = "写真";
+"tl_library" = "ライブラリ";
+"tl_post" = "投稿";
+"tl_share" = "シェアする";
+"tl_discard" = "破棄";
+"tl_search_id" = "ID検索";
+
+"pl_email" = "メールアドレス";
+"pl_nickname" = "ニックネーム";
+"pl_report_description" = "報告する理由を入力";
+"pl_caption" = "キャプションを書く";
+
+"msg_email_verification_instruction" = "電子メールを送信しました。ログインするには、お手持ちのスマートフォンから、下記のURLをクリックしてください。";
+"msg_add_avatar_prompt" = "友達があなただとわかるようにプロフィール写真を登録してください";
+"msg_mail_resent" = "メールを再送しました";
+"msg_open_mail_app_prompt" = "メールはこちらをクリック";
+"msg_join_prompt" = "新規登録をしてアプリの機能を楽しめます";
+"msg_alien_description" = "選んだエリアンがマイページに表示されます";
+"msg_ongoing_bidding" = "入札中の商品またありますので、終了までしばらくお待ちください。";
+"msg_successful_shipping_info_submission" = "落札された商品はこの住所へ発送します。このページよりお届け先を変更できます";
+"msg_bidding_terms_acceptence" = "チェックボックスにチェックを入れて、ｵｰｸｼｮﾝ規約に同意します";
+"msg_unlock_succeeded" = "アンロックに成功しました。";
+"msg_bid_succeeded" = "Successfully qualified for CommodityName bidding";
+"msg_lot_being_bid" = "この商品はただいま入札中です";
+"msg_lot_being_bid_des" = "ただいま入札中です。48時間以内次回の入札商品を公表します。お見逃しなく！";
+"msg_lot_closed" = "アンロックできる時間を超えてしまいました";
+"msg_lot_closed_des" = "オークションが終了しました。48時間以内次回の入札商品を公表します。お見逃しなく！";
+"msg_bid_too_late" = "入札時間を超えました";
+"msg_bid_payment_too_late" = "支払いが成功しましたが、入札時間を超えました";
+"msg_gem_unchanged" = "この状況でジェムは減らしません";
+"msg_race1_monologue" = "ファッカーです。";
+"msg_race2_monologue" = "ディカーです。";
+"msg_race3_monologue" = "ドランカーです。";
+"msg_shipping_info_des" = "商品を無事に配送するために、パスポートと同じローマ字氏名表示、また配送先の情報を確実に記入ください。\n＊本サービスは運賃免除です。ただし、海外配送の場合は、相手国に徴収される関税を支払う可能性があります。";
+"msg_report_user_prompt" = "このアカウントを報告する理由?";
+"msg_report_post_prompt" = "この投稿を報告する理由を選択してください。";
+"msg_report_user_caption" = "報告された投稿に関して、Oneplanetが投稿者に報告した人の情報を開示することはありません";
+"msg_report_post_caption" = "報告された投稿に関して、Oneplanetが投稿者に報告した人の情報を開示することはありません";
+"msg_thankyou_reporting_user" = "ご報告ありがとうございました";
+"msg_thankyou_reporting_post" = "ご報告ありがとうございました";
+"msg_unblock_des" = "ブロックを解除すると、この人はOneplanetであなたをファローできるようになります。ブロックが解除されたことは、相手に通知されません。";
+"msg_block_des" = "ブロックされた人は、Oneplanetであなたのプロフィールや投稿を見られなくなります。プロックしたことは、相手に通知されません";
+"msg_recover_account_des" = "利用規約違反していない場合、確認するために、下記までの情報をお願いいたします";
+"msg_petition_submitted" = "Oneplanetに報告を成功しました。Oneplanetが確認してからの返信を待ってください";
+"msg_unlock_option_prompt" = "どのジェムでアンロックしますか？";
+"msg_thanks_for_reporting_post" = "いただいた情報は、Oneplanet コミュニティをより安全なものにするために使用されます";
+"msg_username_rules" = "ID は5文字以上";
+"msg_copied_order_number" = "追跡番号をコピーしました";
+"msg_no_internet" = "ネットワークが不安定です。有効にしてネットワークに接続してください。";
+
+"msgf_accept_tos" = "ログインすることによって、%@に同意することになります";
+"msgf_resend_verification_email" = "電子メールがみつかりませんか？%@";
+"msgf_did_copy_my_id" = "自分の Oneplanet ID [%@] をコビー";
+"msgf_did_copy_id" = "Oneplanet ID [%@] をコビー";
+"msgf_winner_notice" = "確実にお届けするために、落札者は%@が正しく入力されていることをよくご確認下さい。";
+"msgf_unlock_lot" = "Unlock %@?";
+"msgf_did_unlock_lot" = "%@ でアンロックに成功しました";
+"msgf_unlock_with_gem_iap" = "1 %@1コ + %@を使用してアンロックしますか？";
+"msgf_unlock_with_gem" = "1 %@ でアンロックしますか？";
+"msgf_insufficient_gem" = "%@が不足しています";
+"msgf_bid_prompt" = "%@ に一回入札しますか？";
+"msgf_bid_with_gem_iap" = "1 %@1コ + %@を使用して一回入札しますか？";
+"msgf_bid_with_gem" = "%@を1コ使用して一回入札しますか？";
+"msgf_insufficient_gem_des" = "%@が不足しています。";
+"msgf_insufficient_gem_unlock_des" = "一つ商品をアンロックするごとに、1 %@ + %@ が必要です。";
+"msgf_insufficient_gem_bid_des" = "毎回入札するごとに、 1 %@ が必要です。";
+"msgf_earn_blue_gem_instruction" = "写真をアップロードして、%@ をゲットしよう！";
+"msgf_received_gem" = "%@を%@コ 獲得しました。";
+"msgf_unlock_succeeded" = "入札するには %@ が必要です!";
+"msgf_bid_succeeded" = "Successfully qualified for %@ bidding";
+"msgf_start_following_you" = "%@さんがあなたをファローしました。";
+"msgf_liked_your_post" = "おめでとうございます！あなたの写真が%@にLIKEされましたので、%@を1コ獲得しました。";
+"msgf_you_received_num_gems" = "%@から%@を%@コ贈りました。";
+"msgf_post_reported" = "%@の原因で投稿が報告されました";
+"msgf_profile_reported" = "あなたのアカウント%@はOneplanet%@に違反しているので、アカウントが報告されました";
+"msgf_liked_your_post_and_gave_gem" = "めでとうございます！あなたの写真が%@にLIKEされましたので、%@を1コ獲得しました。";
+"msgf_thankyou_report_user" = "Oneplanetの安全の維持にご協力いただきありがとうございます。報告を受けた写真やコメントの投稿者には、報告した人についての情報は開示されません。\n審査により%@に違反していると判断された場合、この投稿は削除されます。";
+"msgf_unblock_user_prompt" = "%@さんのブロックを解除しますか？";
+"msgf_block_user_prompt" = "%@さんをブロックしますか？";
+"msgf_no_search_results" = "No results for \"%@\"";
+"msgf_daily_login_reward" = "毎日ログインして、$@をもらおう！";
+
+"ph_guest_login" = "ゲスト登録";
+"ph_email_login" = "またはメールアドレスでログイン";
+"ph_resend_email" = "メールの再送を要求。";
+"ph_newuser_greeting" = "Oneplanet へようこそ";
+"ph_add_avatar" = "プロフィール写真を追加する";
+"ph_avatar_added" = "プロフィール写真を変更しました";
+"ph_change_avatar" = "写真を変更する";
+"ph_take_photo" = "写真を撮る";
+"ph_from_library" = "ライブラリから写真を選択する";
+"ph_open_settings" = "「設定」を開く";
+"ph_remove_avatar" = "現在の写真を削除";
+"ph_try_again" = "もう一度実行";
+"ph_nickname_rule" = "ニックネームは30字以内で、特殊記号や絵文字は使えません";
+"ph_copy_id" = "ID をコピー";
+"ph_follow" = "フォローする";
+"ph_unfollow" = "フォローをやめる";
+"ph_following" = "フォロー中";
+"ph_choose_role" = "エリアンの選択";
+"ph_choose_color" = "色を選んでください";
+"ph_edit_profile" = "プロフィールを編集";
+"ph_block_list" = "ブロックしたアカウント";
+"ph_privacy_and_security" = "プライバシーとセキュリティ";
+"ph_not_specified" = "表示しません";
+"ph_join_prompt" = "新規登録はこちら";
+"ph_shipping_info" = "お届け先情報";
+"ph_create_shipping_info" = "お届け先情報入力";
+"ph_edit_shipping_info" = "お届け先情報を変更";
+"ph_view_shipping_status" = "配送状況の確認";
+"ph_commodities" = "商品";
+"ph_bidding_process" = "入札履歴";
+"ph_bid_count" = "入札回数";
+"ph_countdown" = "終了時間";
+"ph_bid_leader" = "予定落札者";
+"ph_product_name" = "商品名";
+"ph_bid_outcome" = "入札結果";
+"ph_bid_lot" = "商品";
+"ph_successful_shipping_info_submission" = "入力完了";
+"ph_goto_bidding" = "Go bidding page";
+"ph_get_gem" = "報酬を受け取りしましょう";
+"ph_has_got_gem" = "報酬を受け取りました";
+"ph_new_notices" = "新通知";
+"ph_read_notices" = "過去の通知";
+"ph_recover_account" = "アカウント復元";
+"ph_petition_submitted" = "報告成功";
+"ph_i_get_it" = "分かりました";
+"ph_unlock_option_prompt" = "アンロックするジェムを選択しましょう";
+"ph_latest_posts" = "最新";
+"ph_best_posts" = "最好評";
+"ph_thanks_for_reporting_post" = "ご報告ありがとうございました";
+"ph_show_post" = "投稿を見る";
+"ph_more" = "more";
+"ph_upload_valued_photo" = "写真をアップロードして評価される";
+"ph_upload_free_photo" = "写真をアップロードする";
+"ph_dont_show_again" = "二度とこのメッセージを表示しない";
+"ph_no_room_for_photo" = "full";
+"ph_category_unlocked" = "私がアンロックした商品";
+"ph_bidding_begins" = "オークション スタート";
+"ph_purple_gem" = "ルビッド（入札する時にオススメ）";
+"ph_purchase_success" = "購入が成功しました";
+"ph_no_internet" = "ネットワークが不安定です";
+
+"phf_seconds_ago_short" = "%@ s";
+"phf_minutes_ago_short" = "%@ m";
+"phf_hours_ago_short" = "%@ h";
+"phf_days_ago_short" = "%@ d";
+"phf_seconds_ago" = "%@秒前";
+"phf_minutes_ago" = "%@分前";
+"phf_hours_ago" = "%@時間前";
+"phf_days_ago" = "%@天前";
+"phf_followers" = "%@ フォロワー";
+"phf_followings" = "%@ フォロー中";
+"phf_remaining_uploads" = "残り回数%@/%@ (%@)";
+"phf_buy_some" = "%@ つ購入";
+"phf_buy_some_get_some_free" = "%@ つ購入すると %@ つが無料";
+"phf_purchase_success" = "%@を %@ つを購入しました。";
+
+"no_posts" = "投稿がありません";
+"no_promo_popups" = "No Promotion Pop-ups Yet";
+"no_unlocked_lots_title" = "あなたは今回のオークションに参加していません";
+"no_unlocked_lots_message" = "請把握下次競標！48H 內會公布下一期競標品！";
+"no_notices" = "通知なし";
+"no_block_list" = "Empty list";
+"no_follower_list" = "You don't have followers yet";
+"no_following_list" = "You haven't followed others yet";
+"no_generic" = "No Items";
+"no_unlocked" = "まだ商品をアンロックしていません。";
+"no_unlocked_detail" = "オークションに参加するには商品をアンロックしてください。急いでアンロックしよう！";
+"no_bidding_history" = "入札履歴";
+
+"err_no_camera_access" = "カメラへのリクセルを求めています";
+"err_no_library_access" = "写真をライブラリに追加しようとしています";
+"err_invalid_email" = "有効なメールアドレスを入力してください";
+"err_non_alphanumerics" = "Only letters and digits are allowed";
+"err_non_digit_input" = "Only digits are allowed";
+"err_account_not_exist" = "有効なメールアドレスではないようです。";
+"err_invalid_nickname" = "命名規則に準拠していません";
+"err_invalid_phone_number" = "Please input valid phone number";
+"err_username_unavailable" = "ほかの ID を使ってください";
+
+"errtl_cannot_capture_photo" = "Cannot Take Photo";
+"errtl_cannot_pick_avatar" = "プロフィール画像を取得できません";
+"errtl_generic_failure" = "エラー";
+"errtl_username_too_short" = "ID が短すぎる";
+"errtl_username_unavailable" = "この ID は使えません";
+
+"warn_logout" = "ログアウト？";
+"warn_character_selection" = "エリアンの種類を一度選んだら変更ができません。よろしいですか？";
+"warn_account_banned" = "コミュニティガイドライン違反ということで、コミュニティ機能を停止されました。アカウント復元はこちら";
+"warn_discard_post" = "編集内容を破棄しますか？";
+
+"warntl_character_selection" = "選択しました。よろしいですか？";
+"warntl_account_banned" = "コミュニティ機能停止";
+
+"act_bigging" = "入札中...";
+"act_bigging_ended" = "オークションが終了しました！";
+"act_countdown" = "オークション カウントダウン...";
+
+"pop_blue_gem_usage" = "使いみち：商品のアンロック。";
+"pop_green_gem_usage" = "使いみち：商品のアンロック。";
+"pop_purple_gem_usage" = "使いみち：高効率の商品入札。";
+
+"pop_blue_gem_action" = "写真をアップロードします";
+"pop_green_gem_action" = "%@へ";
+
+"pop_blue_gem_bullet1" = "%@＋%@を1コ使うことで、商品をアンロックできます。";
+"pop_blue_gem_bullet2" = "獲得方法：写真をアップロードして評価されて経験値が満タンになると即に%@を1コ獲得します。";
+
+"pop_green_gem_bullet1" = "%@を1コ使用したら、直接に商品をアンロックできます。";
+"pop_green_gem_bullet2" = "獲得方法1：Supreme.AIがあなたの写真にLIKEされます。";
+"pop_green_gem_bullet3" = "獲得方法2：イベントに合わせて贈ります。";
+
+"pop_purple_gem_bullet1" = "ルビッド 1コを使うことで、直接に一回入札することができます。";
+
+"pop_post_suspended" = "回数制限が切れました";
+"pop_cooldown_time" = "待ち時間 (%@)";
+"pop_free_upload_bullet" = "写真アップロードの回数は限られていませんけど、%@を獲得できません。";
+"pop_cant_upload_bullet" = "時間復元するまでしばらくお待ちください";
+"pop_valued_upload_bullet1" = "写真をアップロードして評価されて経験値を獲得して、経験値が満タンになると即に%@を1コ獲得します。";
+"pop_valued_upload_bullet2" = "今回Oneplanetが提示したカラーテーマに該当するほど、%@の収集効率が高くなります。";
+"pop_purple_gem_action" = "購入 へ";
+
+"ship_first_name" = "名前";
+"ship_last_name" = "苗字";
+"ship_address1" = "住所1";
+"ship_address2" = "住所2";
+"ship_city" = "都道府県";
+"ship_region" = "市区都";
+"ship_postal_code" = "郵便番号";
+"ship_country" = "国";
+"ship_phoneNumber" = "電話番号（配送に関する連絡のため）";
+"ship_phoneNumber_s" = "電話番号";
+"ship_cardholder" = "カード所持者";
+
+"rp_terms_violation" = "このアカウントはOneplanet利用規約に違反しているよ思う";
+"rp_dont_like_post_title" = "単に気に入らない";
+"rp_nudity_title" = "ヌードまたはわいせつコンテンツ";
+"rp_hate_speech_title" = "ヘイトスピーチや差別的なシンボル";
+"rp_violance_title" = "暴力または暴力的脅威";
+"rp_hate_speech_subtitle" = "人種差別、同性愛嫌悪、性差別";
+"rp_violance_subtitle" = "生々しい傷、違法行為、危険な团体、犯罪組織";
+"rp_dont_like_post_detail" = "この投稿が気に入らない場合";
+"rp_nudity_detail" = "ヌードまたはわいせつコンテンツとして報告しますか？";
+"rp_hate_speech_detail" = "ヘイトスピーチや差別的なシンボルとして報告しますか？";
+"rp_violance_detail" = "暴力または暴力的脅威として報告しますか？";
+"rp_dont_like_post" = "単に気に入らない";
+"rp_nudity" = "わいせつコンテンツまたは暴力";
+"rp_violance" = "ヘイトスピーチや差別的なシンボル";
+"rp_hate_speech" = "暴力または暴力的脅威";
+
+"smb_enum_spliter" = ", ";
+
+"tut_unlock" = "アンロックして入札しよう";
+"tut_wait_for_bid" = "オークションまで待てください！";
+"tut_bid" = "入札しよう！";
+
+"pn_session_start" = "今回の入札商品を公表しました。商品をアンロックする時間をお見逃しなく！";
+"pn_1hr_to_bid" = "オークションが開始するまであと1時間、商品をアンロックする時間をお見逃しなく！";
+"pn_win_a_lot" = "%@を落札しました！";
+"pn_winner_notice" = "今回のオークションで落札しました！マイオクから落札分で確認します。";
+"pn_loser_notice" = "今回のオークションで落札できませんでした。次回の商品が48時間以内に発表されます！";
+"pn_prerelease_login_reward" = "事前登録完了、ジェムを獲得できました。商品をアンロックしよう！";

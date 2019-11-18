@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vDn-Hu-Gsa" customClass="HotNavigationItemView" customModule="Oneplanet" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="28" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="JJA-D0-H8s">
+                    <rect key="frame" x="0.0" y="0.0" width="28" height="40"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmI-ax-e3n">
+                            <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
+                            <state key="normal" image="ic_news_nor"/>
+                            <connections>
+                                <action selector="invokeAction:" destination="vDn-Hu-Gsa" eventType="touchUpInside" id="Pg3-Dd-jvS"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="News" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lMQ-cE-dIm" userLabel="Title Label">
+                            <rect key="frame" x="0.0" y="28" width="28" height="12"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
+                            <color key="textColor" name="default text"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="JJA-D0-H8s" firstAttribute="height" secondItem="vDn-Hu-Gsa" secondAttribute="height" id="Id7-TD-wEm"/>
+                <constraint firstItem="JJA-D0-H8s" firstAttribute="width" secondItem="vDn-Hu-Gsa" secondAttribute="width" id="ccJ-74-ULh"/>
+                <constraint firstItem="JJA-D0-H8s" firstAttribute="centerY" secondItem="vDn-Hu-Gsa" secondAttribute="centerY" id="m9h-ok-5Zd"/>
+                <constraint firstItem="JJA-D0-H8s" firstAttribute="centerX" secondItem="vDn-Hu-Gsa" secondAttribute="centerX" id="nzd-HW-AaV"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="titleLabel" destination="lMQ-cE-dIm" id="Hgy-XQ-2pR"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="56.919642857142854"/>
+        </view>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6Uh-uO-EUR" customClass="HotNavigationItemView" customModule="Oneplanet" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Hmb-Js-ZaD">
+                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="33k-29-fO9">
+                            <rect key="frame" x="0.0" y="0.0" width="40" height="28"/>
+                            <state key="normal" image="ic_events_nor"/>
+                            <connections>
+                                <action selector="invokeAction:" destination="6Uh-uO-EUR" eventType="touchUpInside" id="VHh-TE-RcE"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Events" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IaN-MM-7q9" userLabel="Title Label">
+                            <rect key="frame" x="0.0" y="28" width="40" height="12"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
+                            <color key="textColor" name="default text"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Hmb-Js-ZaD" firstAttribute="centerX" secondItem="6Uh-uO-EUR" secondAttribute="centerX" id="6Zm-Rl-2n2"/>
+                <constraint firstItem="Hmb-Js-ZaD" firstAttribute="height" secondItem="6Uh-uO-EUR" secondAttribute="height" id="LjE-Pv-KZA"/>
+                <constraint firstItem="Hmb-Js-ZaD" firstAttribute="width" secondItem="6Uh-uO-EUR" secondAttribute="width" id="eMH-gN-YNa"/>
+                <constraint firstItem="Hmb-Js-ZaD" firstAttribute="centerY" secondItem="6Uh-uO-EUR" secondAttribute="centerY" id="gYz-TQ-BIv"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="4Na-71-ioJ"/>
+            <connections>
+                <outlet property="titleLabel" destination="IaN-MM-7q9" id="v7k-IE-l5F"/>
+            </connections>
+            <point key="canvasLocation" x="146.37681159420291" y="114.50892857142857"/>
+        </view>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="SB2-mM-Quh" customClass="HotNavigationItemView" customModule="Oneplanet" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="28" height="40"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="m4k-mM-8df">
+                    <rect key="frame" x="0.0" y="0.0" width="28" height="40"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C9C-jR-3jc">
+                            <rect key="frame" x="0.0" y="0.0" width="28" height="28"/>
+                            <state key="normal" image="ic_alien_nor"/>
+                            <connections>
+                                <action selector="invokeAction:" destination="SB2-mM-Quh" eventType="touchUpInside" id="lrM-Ey-DJI"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alien" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTx-wZ-mSS" userLabel="Title Label">
+                            <rect key="frame" x="0.0" y="28" width="28" height="12"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
+                            <color key="textColor" name="default text"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="m4k-mM-8df" firstAttribute="centerX" secondItem="SB2-mM-Quh" secondAttribute="centerX" id="3JJ-FW-yHR"/>
+                <constraint firstItem="m4k-mM-8df" firstAttribute="width" secondItem="SB2-mM-Quh" secondAttribute="width" id="8j9-OY-rx5"/>
+                <constraint firstItem="m4k-mM-8df" firstAttribute="centerY" secondItem="SB2-mM-Quh" secondAttribute="centerY" id="Yjl-Hm-u2Z"/>
+                <constraint firstItem="m4k-mM-8df" firstAttribute="height" secondItem="SB2-mM-Quh" secondAttribute="height" id="pku-Pz-mJP"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="DNC-37-qr1"/>
+            <connections>
+                <outlet property="titleLabel" destination="tTx-wZ-mSS" id="VNO-gN-EhP"/>
+            </connections>
+            <point key="canvasLocation" x="138" y="173"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_alien_nor" width="28" height="28"/>
+        <image name="ic_events_nor" width="28" height="28"/>
+        <image name="ic_news_nor" width="28" height="28"/>
+        <namedColor name="default text">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  Oneplanet
+
+  Created by 立宣于 on 2019/4/22.
+  Copyright © 2019 何一品居. All rights reserved.
+*/
+
+"NSPhotoLibraryUsageDescription" = "これによりOneplanetがライブラリから写真をシェアするようになります。";
+"NSCameraUsageDescription" = "Oneplanetがカメラへのアクセスを求めています。これよりOneplanetで写真を撮影することができます。";
